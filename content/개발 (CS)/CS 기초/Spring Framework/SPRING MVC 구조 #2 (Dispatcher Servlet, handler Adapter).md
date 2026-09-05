@@ -117,5 +117,3 @@ mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
 *   찾은 adapter를 통해 handle() 메서드를 통해서 Controller를 실행하고, 그의 결과값을 ModelAndView 클래스로 반환하게 된다
 *   이후, 결과값인 ModelAndView를 이용하여 View의 전달하게 된다.
 *   View 처리 과정은 다음 문서에서 다룬다
-
-> 원문: https://gradualprecision.tistory.com/80

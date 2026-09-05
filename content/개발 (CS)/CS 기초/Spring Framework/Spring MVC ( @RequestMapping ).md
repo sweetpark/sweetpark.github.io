@@ -211,5 +211,3 @@ map.add("keyA", "value1");
 map.add("keyA", "value2");  
   
 List<String> values = map.get("keyA");
-
-> 원문: https://gradualprecision.tistory.com/82

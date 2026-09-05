@@ -104,5 +104,3 @@ public void method() throws RuntimeException{
     //..
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/146

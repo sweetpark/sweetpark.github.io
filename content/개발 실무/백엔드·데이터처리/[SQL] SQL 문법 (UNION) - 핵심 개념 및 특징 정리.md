@@ -34,6 +34,3 @@ FROM   TABLE_B
 ;
 ```
 
-## 🔗 참고
-
-- [UNION 과 UNION ALL 이란](https://silverji.tistory.com/49)

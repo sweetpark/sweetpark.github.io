@@ -60,5 +60,3 @@ modified: 2026-09-05
     *   ~{::section} : 현재 html 파일 내부 section 태그 내용 전달
     *   th:replace : 전달받은 내용으로 대체하여 적용 (<div> 없어짐)
 *   th:insert로도 받을 수 있다
-
-> 원문: https://gradualprecision.tistory.com/118

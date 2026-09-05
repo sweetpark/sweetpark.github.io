@@ -98,5 +98,3 @@ BEGIN;
 Update my_tale set username = "testUser" where username="test";
 COMMIT;
 ```
-
-> 원문: https://gradualprecision.tistory.com/124

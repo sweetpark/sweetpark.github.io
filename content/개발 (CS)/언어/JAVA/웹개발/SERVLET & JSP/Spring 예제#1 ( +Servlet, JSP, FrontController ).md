@@ -367,5 +367,3 @@ name: <input type="text" name="name" /> age: <input type="text" name="age" />
 </body>
 </html>
 ```
-
-> 원문: https://gradualprecision.tistory.com/77

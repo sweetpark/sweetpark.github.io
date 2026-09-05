@@ -121,5 +121,3 @@ ORDER BY t.id DESC
 LIMIT :pageSize;
 */
 ```
-
-> 원문: https://gradualprecision.tistory.com/255

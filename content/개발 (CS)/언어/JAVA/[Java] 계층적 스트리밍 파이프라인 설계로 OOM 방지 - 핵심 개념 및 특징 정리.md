@@ -9,7 +9,7 @@ modified: 2026-09-05
 
 > [!NOTE]
 > 대량 데이터 생성 시 발생하는 OOM을, "파일 기반 전체 로드"(File-first) 방식에서 "Context 기반 계층적 Stream 처리"(Data-driven)로 전환해 해결한 설계 패턴. "Init Data 생성 Tool" 미니프로젝트의 고도화 작업에서 추출.
-> 관련 노트: [(Spring) 동적 템플릿 엔진 설계 패턴 (계층화·SpEL·Chain of - 핵심 개념 및 특징 정리](../../CS%20%EA%B8%B0%EC%B4%88/Spring%20Framework/%EC%8B%A4%EC%8A%B5_%EC%8A%A4%ED%94%84%EB%A7%81MVC/[Spring]%20%EB%8F%99%EC%A0%81%20%ED%85%9C%ED%94%8C%EB%A6%BF%20%EC%97%94%EC%A7%84%20%EC%84%A4%EA%B3%84%20%ED%8C%A8%ED%84%B4%20(%EA%B3%84%EC%B8%B5%ED%99%94%C2%B7SpEL%C2%B7Chain%20of%20-%20%ED%95%B5%EC%8B%AC%20%EA%B0%9C%EB%85%90%20%EB%B0%8F%20%ED%8A%B9%EC%A7%95%20%EC%A0%95%EB%A6%AC.md) — 같은 도구의 템플릿 확장 설계
+> 관련 노트: [(Spring) 동적 템플릿 엔진 설계 패턴 (계층화·SpEL·Chain of - 핵심 개념 및 특징 정리](../../../%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC/Spring%20Framework/%EC%8B%A4%EC%8A%B5_%EC%8A%A4%ED%94%84%EB%A7%81MVC/[Spring]%20%EB%8F%99%EC%A0%81%20%ED%85%9C%ED%94%8C%EB%A6%BF%20%EC%97%94%EC%A7%84%20%EC%84%A4%EA%B3%84%20%ED%8C%A8%ED%84%B4%20(%EA%B3%84%EC%B8%B5%ED%99%94%C2%B7SpEL%C2%B7Chain%20of%20-%20%ED%95%B5%EC%8B%AC%20%EA%B0%9C%EB%85%90%20%EB%B0%8F%20%ED%8A%B9%EC%A7%95%20%EC%A0%95%EB%A6%AC.md) — 같은 도구의 템플릿 확장 설계
 
 ## ⚙️ 문제 진단 — OOM 발생 원인
 

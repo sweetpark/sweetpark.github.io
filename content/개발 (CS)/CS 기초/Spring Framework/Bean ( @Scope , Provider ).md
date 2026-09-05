@@ -267,5 +267,3 @@ public class TestExample{
     
  }
 ```
-
-> 원문: https://gradualprecision.tistory.com/61

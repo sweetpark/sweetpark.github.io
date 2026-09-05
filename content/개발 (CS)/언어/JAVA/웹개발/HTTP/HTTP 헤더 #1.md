@@ -106,5 +106,3 @@ Content-Type: application/json; charset=UTF-8 <- Representation 헤더
 Content-Length: 15 <- Representation 헤더  
   
 {name : "test"} <- Representation 본문
-
-> 원문: https://gradualprecision.tistory.com/68

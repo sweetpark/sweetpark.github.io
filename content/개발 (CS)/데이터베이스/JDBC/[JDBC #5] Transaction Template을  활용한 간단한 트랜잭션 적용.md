@@ -123,5 +123,3 @@ public boolean processLogic() {
 | 예외 발생 안함 (return) | 자동 커밋 | 정상 흐름 |
 | 예외 발생 (throw new) | 자동 롤백 | Spring이 감지함 |
 | 예외 처리 후 setRollbackOnly() | 수동 롤백 지정 필요 | 예외를 삼켰기 때문 |
-
-> 원문: https://gradualprecision.tistory.com/173

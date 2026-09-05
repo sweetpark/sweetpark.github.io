@@ -94,5 +94,3 @@ public static class User{
     private String username;
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/120

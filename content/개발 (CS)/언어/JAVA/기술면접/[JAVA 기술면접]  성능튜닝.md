@@ -110,5 +110,3 @@ public final class Test{
       }
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/144

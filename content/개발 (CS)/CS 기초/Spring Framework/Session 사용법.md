@@ -122,5 +122,3 @@ server.servlet.session.timeout="원하는 (초) 기록"
 *    session.getLastAccessedTime()
     *   session 마지막 접근 시간을 갱신하며, 서버시간에 맞추어서 세션을 만료 시켜도 됨
     *   session.invalidate() 를 사용하여 시간이 도래할경우 세션 만료 로직
-
-> 원문: https://gradualprecision.tistory.com/92

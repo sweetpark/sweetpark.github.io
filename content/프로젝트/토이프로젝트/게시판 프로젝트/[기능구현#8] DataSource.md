@@ -81,5 +81,3 @@ private void close(Connection con, Statement stmt, ResultSet rs){
 
 *   DataSource를 이용하여 성능이 얼마나 향상되는지 측정이 되질 않았다. (테스트 코드 작성을 통한 CRUD 확인)
 *   DataSource를 이용한 인터페이스 활용 대한 장점은 알겠지만, 이를 몇개를 활용해야하는지에 대한 궁금증이 해결되지 못했다
-
-> 원문: https://gradualprecision.tistory.com/212

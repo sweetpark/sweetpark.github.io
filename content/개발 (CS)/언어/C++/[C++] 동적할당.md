@@ -170,5 +170,3 @@ int main()
     *   사이즈를 직접 지정하고 싶을때 사용
 *   New
     *   생성자와 소멸자를 이용하고 싶을 때 사용
-
-> 원문: https://gradualprecision.tistory.com/41

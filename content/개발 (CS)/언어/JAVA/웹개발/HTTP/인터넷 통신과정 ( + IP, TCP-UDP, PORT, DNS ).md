@@ -150,5 +150,3 @@ Address: 223.130.xxx.xxx   <- domain 명이 실제 IP 주소로 변환되어 반
 ```
 
 nslookup 명령어 사용 결과
-
-> 원문: https://gradualprecision.tistory.com/62

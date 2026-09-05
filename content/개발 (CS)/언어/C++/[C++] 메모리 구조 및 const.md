@@ -52,5 +52,3 @@ int main(void)
 *   const 는 상수처럼 사용되며, 컴파일 도중에 값이 변경되거나, PERFECT_SCORE라는 변수에 값을 넣을 수가 없다.
 *   따라서, 읽기모드 영역인 .rodata에 들어갈거라고 예상되지만 그렇지 않다.
 *   (* C++ 표준에도 해당 부분은 언급되어있지 않으며, 컴파일러에 따라 다른 영역에 처리가 된다)
-
-> 원문: https://gradualprecision.tistory.com/25

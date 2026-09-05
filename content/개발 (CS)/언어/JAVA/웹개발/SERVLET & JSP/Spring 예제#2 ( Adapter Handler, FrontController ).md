@@ -211,5 +211,3 @@ public class FrontController extends HttpServlet{
 *   하지만, 인터페이스 구조가 다를경우 ControllerHandlerAdapter가 서로 다른 구조였을 것이다 ( handle() 부분 )
 *   이렇듯, adapter를 사용하면 "변압기"처럼 원하는 것을 끼우며 사용할 수있다
 *   더 나아가, Annotaion을 지원하게 된다면 스프링과 유사하게 프레임워크를 구성할 수 있게 된다.
-
-> 원문: https://gradualprecision.tistory.com/78

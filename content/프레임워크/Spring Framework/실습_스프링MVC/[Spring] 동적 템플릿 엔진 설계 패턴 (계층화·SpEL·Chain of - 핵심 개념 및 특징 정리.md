@@ -9,7 +9,7 @@ modified: 2026-09-05
 
 > [!NOTE]
 > SI 환경처럼 고객사별 요구사항이 파편화된 상황에서, JSON 템플릿 기반 데이터 생성 도구를 점진적으로 고도화하는 4단계 전략. "Init Data 생성 Tool" 미니프로젝트의 고도화 검토에서 추출.
-> 관련 노트: [(Java) 계층적 스트리밍 파이프라인 설계로 OOM 방지 - 핵심 개념 및 특징 정리](../../../%EC%96%B8%EC%96%B4/JAVA/[Java]%20%EA%B3%84%EC%B8%B5%EC%A0%81%20%EC%8A%A4%ED%8A%B8%EB%A6%AC%EB%B0%8D%20%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8%20%EC%84%A4%EA%B3%84%EB%A1%9C%20OOM%20%EB%B0%A9%EC%A7%80%20-%20%ED%95%B5%EC%8B%AC%20%EA%B0%9C%EB%85%90%20%EB%B0%8F%20%ED%8A%B9%EC%A7%95%20%EC%A0%95%EB%A6%AC.md) — 같은 도구의 메모리 구조 고도화
+> 관련 노트: [(Java) 계층적 스트리밍 파이프라인 설계로 OOM 방지 - 핵심 개념 및 특징 정리](../../../개발 (CS)/언어/JAVA/[Java]%20%EA%B3%84%EC%B8%B5%EC%A0%81%20%EC%8A%A4%ED%8A%B8%EB%A6%AC%EB%B0%8D%20%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8%20%EC%84%A4%EA%B3%84%EB%A1%9C%20OOM%20%EB%B0%A9%EC%A7%80%20-%20%ED%95%B5%EC%8B%AC%20%EA%B0%9C%EB%85%90%20%EB%B0%8F%20%ED%8A%B9%EC%A7%95%20%EC%A0%95%EB%A6%AC.md) — 같은 도구의 메모리 구조 고도화
 
 ## ⚙️ 개념 — 왜 점진적 고도화가 필요한가
 

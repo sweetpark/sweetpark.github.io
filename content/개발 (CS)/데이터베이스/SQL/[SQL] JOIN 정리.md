@@ -110,5 +110,3 @@ Cross Join [Table 2]
 ```sql
 select table1.ID , table1.name, table1.age, table2.address, table2.money FROM table1 Cross Join table2;
 ```
-
-> 원문: https://gradualprecision.tistory.com/131

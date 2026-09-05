@@ -105,5 +105,3 @@ public class FormatterController{
     }
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/98

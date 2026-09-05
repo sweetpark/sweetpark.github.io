@@ -234,5 +234,3 @@ public class ListServlet extends HttpServlet{
 *    한계
     *   반복적인 코드 사용 ( JSP forward 관련 코드 )
     *   컨트롤러 공통 처리 부분의 어려움 ( servlet이 각 기능마다 따로 설계되어있고, 공통적으로 처리하는 부분이 존재하지 않음 -> JSP forward )
-
-> 원문: https://gradualprecision.tistory.com/76

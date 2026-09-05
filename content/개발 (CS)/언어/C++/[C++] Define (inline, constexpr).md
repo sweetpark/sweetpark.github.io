@@ -127,5 +127,3 @@ int main()
     return 0;
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/28

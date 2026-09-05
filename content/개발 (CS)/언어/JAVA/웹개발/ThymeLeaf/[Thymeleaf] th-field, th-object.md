@@ -40,5 +40,3 @@ modified: 2026-09-05
 ```
 
 *   **th:object와 같이 사용하는 경우를 권장하며**, 어떤 모델 객체를 의미하는지 알 수 있으므로 "*"로 표현해도 된다 (권장)
-
-> 원문: https://gradualprecision.tistory.com/119

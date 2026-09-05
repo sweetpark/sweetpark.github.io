@@ -61,5 +61,3 @@ public static void main(String []args){
 
 *   Spring Containter는 Config의 정보를 이용해서, Bean들을 싱글톤으로 관리하게 된다
 *   자원을 효율적으로 이용하게 되고, 무분별한 생성을 방지할 수 있다
-
-> 원문: https://gradualprecision.tistory.com/55

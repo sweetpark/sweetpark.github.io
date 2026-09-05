@@ -110,7 +110,6 @@ try{
 Controller  --- throws SQLException --->  Service  --- throws SQLException --->  Repository
    (모든 계층에 SQLException을 알고 있어야 함, 즉 throws 명시 필요)
 
-
 [ UnChecked 예외로 변환해서 던질 경우 ]
 
 Controller  <-----------------------  Service  <-----------------------  Repository
@@ -160,5 +159,3 @@ public void func(){
 
 *   **1번의 경우, SQLException의 예외정보까지 같이 나온다**
 *   2번의 경우, SQLException의 예외정보는 날아가고, RuntimeException 부분만 표시된다
-
-> 원문: https://gradualprecision.tistory.com/177

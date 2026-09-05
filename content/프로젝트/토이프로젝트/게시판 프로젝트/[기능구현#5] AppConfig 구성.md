@@ -60,5 +60,3 @@ public class AppConfig implements WebMvcConfigurer {
 *   자동 Bean  VS 수동 Bean
     *   spring은 수동으로 구현한 것을 우선적으로 처리하기에, 수동 Bean이 등록이 되게 된다
     *   자동 Bean과 수동Bean을 동시에 작성해서 사용해도 큰 상관은 없지만, 확실한 구분을 위해서 수동으로 등록한 Bean이 있을경우 자동 Bean은 사용하지 않는 편이 좋다
-
-> 원문: https://gradualprecision.tistory.com/209

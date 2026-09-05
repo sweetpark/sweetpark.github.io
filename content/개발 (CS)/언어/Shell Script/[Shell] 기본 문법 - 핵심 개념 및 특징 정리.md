@@ -484,6 +484,3 @@ awk '/^(aa|bb)/' filename              # aa 또는 bb로 시작하는 라인 출
     - 예) `sed '1,2d' 1.html` : 처음 1줄, 2줄을 지운다
     - 예) `sed '/Src/!d' 1.html` : Src 포함된 줄은 지우지 않는다
 
-## 🔗 참고
-
-- [LINUX BASH 쉘 프로그래밍 문법 마스터 총정리 (inpa)](https://inpa.tistory.com/entry/LINUX-%EC%89%98-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%95%B5%EC%8B%AC-%EB%AC%B8%EB%B2%95-%EC%B4%9D%EC%A0%95%EB%A6%AC)

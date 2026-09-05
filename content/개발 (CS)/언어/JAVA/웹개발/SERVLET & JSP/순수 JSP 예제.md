@@ -167,5 +167,3 @@ class MemberRepository{
 *   유지보수가 어렵다
 *   비즈니스 로직이 노출되어있다
 *   -> MVC 패턴의 도입 이유
-
-> 원문: https://gradualprecision.tistory.com/75

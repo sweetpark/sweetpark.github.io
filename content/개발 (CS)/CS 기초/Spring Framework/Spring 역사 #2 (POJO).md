@@ -102,5 +102,3 @@ public class MainApp {
 
 *   Main 메서드에서 HelloService의 빈을 가지고와서 원하는 메서드를 호출함
 *   이로써, Spring은 POJO를 지키며 프로그래밍을 가능하게 만듬
-
-> 원문: https://gradualprecision.tistory.com/52

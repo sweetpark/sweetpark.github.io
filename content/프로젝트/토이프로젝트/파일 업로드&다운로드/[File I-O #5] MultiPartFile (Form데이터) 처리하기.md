@@ -7,20 +7,6 @@ modified: 2026-09-05
 
 # [File I/O #5] MultiPartFile (Form데이터) 처리하기
 
-목차
-
-[1. Resource와 Stream I/O 이해](https://gradualprecision.tistory.com/266)
-
-[2. Resource 구현체 이해하기](https://gradualprecision.tistory.com/267)
-
-[3. InputStream/OutputStream 이해하기](https://gradualprecision.tistory.com/268)
-
-[4. InputStreamReader, BufferedReader 이해하기](https://gradualprecision.tistory.com/269)
-
-[5. Multipartfile 처리하기](https://gradualprecision.tistory.com/270)
-
-[6. File 이외의 I/O stream 정리](https://gradualprecision.tistory.com/271)
-
 File I/O #5 — MultipartFile 업로드 처리 흐름
 
 * * *
@@ -136,5 +122,3 @@ System.out.println("파일 저장 완료: " + targetFile.getAbsolutePath());
 - getInputStream() : 파일 내용을 InputStream으로 읽을 수 있음  
 - BufferedReader :  **줄 단위**로 쉽게 읽을 수 있음  
 - **transferTo()** :  서버에 파일을 저장할 수도 있음 (서버에 **"파일을 다른이름으로 저장"** 같은 느낌으로 저장)
-
-> 원문: https://gradualprecision.tistory.com/270

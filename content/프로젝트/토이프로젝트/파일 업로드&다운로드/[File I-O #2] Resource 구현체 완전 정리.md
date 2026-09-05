@@ -7,20 +7,6 @@ modified: 2026-09-05
 
 # [File I/O #2] Resource 구현체 완전 정리
 
-목차
-
-[1. Resource와 Stream I/O 이해](https://gradualprecision.tistory.com/266)
-
-[2. Resource 구현체 이해하기](https://gradualprecision.tistory.com/267)
-
-[3. InputStream/OutputStream 이해하기](https://gradualprecision.tistory.com/268)
-
-[4. InputStreamReader, BufferedReader 이해하기](https://gradualprecision.tistory.com/269)
-
-[5. Multipartfile 처리하기](https://gradualprecision.tistory.com/270)
-
-[6. File 이외의 I/O stream 정리](https://gradualprecision.tistory.com/271)
-
 File I/O #2 — Resource 구현체 완전 정리
 
 * * *
@@ -123,5 +109,3 @@ InputStream is = resource.getInputStream();
 *   외부 API 파일 → UrlResource
 
 *   모든 Resource는 결국 `getInputStream()`으로 **InputStream으로 변환**해 파일 내용을 읽습니다.
-
-> 원문: https://gradualprecision.tistory.com/267

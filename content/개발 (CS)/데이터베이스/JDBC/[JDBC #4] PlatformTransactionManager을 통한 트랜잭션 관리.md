@@ -234,5 +234,3 @@ public static class Config{
                                      │
                              DataSourceUtils.releaseConnection()
 ```
-
-> 원문: https://gradualprecision.tistory.com/169

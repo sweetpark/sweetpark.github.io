@@ -21,7 +21,6 @@ App --send()--> (재시도 반복) -->OS   App --WSASend()--> OS
                               WSAGetOverlappedResult()로 결과 확인
 ```
 
-
 이 글에서는 Windows 환경에서 고성능 네트워크 통신을 위해 사용되는  
 Overlapped I/O를 설명한다.  
   
@@ -386,5 +385,3 @@ int main()
 
 다음 글에서는 Client-Server 구조를 실습하기 위해 "기초적인 소켓 프로그래밍(1편: 기본 연결과 통신)"을 다룬다.  
 비동기 소켓 설정(ioctlsocket, select 사용법)까지 함께 알아본다.
-
-> 원문: https://gradualprecision.tistory.com/16

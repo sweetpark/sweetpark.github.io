@@ -7,20 +7,6 @@ modified: 2026-09-05
 
 # [File I/O #6] File이외의 I/O Stream 정리 (Object, Audio, Piped 등)
 
-목차
-
-[1. Resource와 Stream I/O 이해](https://gradualprecision.tistory.com/266)
-
-[2. Resource 구현체 이해하기](https://gradualprecision.tistory.com/267)
-
-[3. InputStream/OutputStream 이해하기](https://gradualprecision.tistory.com/268)
-
-[4. InputStreamReader, BufferedReader 이해하기](https://gradualprecision.tistory.com/269)
-
-[5. Multipartfile 처리하기](https://gradualprecision.tistory.com/270)
-
-[6. File 이외의 I/O stream 정리](https://gradualprecision.tistory.com/271)
-
 File I/O #6 — 고급 입출력 스트림 정리 (Object, Audio, Piped 등)
 
 * * *
@@ -208,5 +194,3 @@ channel.close();
 *   **#4** InputStreamReader & BufferedReader
 *   **#5** MultipartFile 업로드 처리
 *   **#6** File이외의 I/O Stream 정리 (Object, Audio, Piped 등)
-
-> 원문: https://gradualprecision.tistory.com/271

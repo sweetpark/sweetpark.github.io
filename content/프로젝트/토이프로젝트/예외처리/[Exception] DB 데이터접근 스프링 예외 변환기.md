@@ -165,5 +165,3 @@ public interface SQLExceptionTranslator {
 *   직접 예외를 만들어서 (RuntimeException 상속), 에러코드에 따라 만들어도됨
 *   스프링이 만들어둔 데이터 접근 예외처리를 에러코드에 따라 만들어도 됨
 *   **스프링 예외 변환기를 활용하여, 에러코드는 모르더라도 스프링의 데이터 접근 예외처리를 이용**
-
-> 원문: https://gradualprecision.tistory.com/178

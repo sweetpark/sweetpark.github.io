@@ -93,5 +93,3 @@ Create Table example_table(
      preferences JSON
 );
 ```
-
-> 원문: https://gradualprecision.tistory.com/125

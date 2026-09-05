@@ -48,5 +48,3 @@ model.addAttribute("data", data);
 2.  또는, 작은따옴표(')를 이용하여 표현
 3.  작은따옴표(') 와 객체 출력을 이용하여 표현
 4.  리터럴 대체문법 ( "|" ) 사용
-
-> 원문: https://gradualprecision.tistory.com/113

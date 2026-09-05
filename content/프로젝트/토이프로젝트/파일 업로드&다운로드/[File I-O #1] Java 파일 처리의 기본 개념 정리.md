@@ -9,18 +9,6 @@ modified: 2026-09-05
 
 목차
 
-[1. Resource와 Stream I/O 이해](https://gradualprecision.tistory.com/266)
-
-[2. Resource 구현체 이해하기](https://gradualprecision.tistory.com/267)
-
-[3. InputStream/OutputStream 이해하기](https://gradualprecision.tistory.com/268)
-
-[4. InputStreamReader, BufferedReader 이해하기](https://gradualprecision.tistory.com/269)
-
-[5. Multipartfile 처리하기](https://gradualprecision.tistory.com/270)
-
-[6. File 이외의 I/O stream 정리](https://gradualprecision.tistory.com/271)
-
 * * *
 
 ## File I/O #1 — Java 파일 처리의 기본 개념 정리
@@ -122,5 +110,3 @@ if (resource.exists()) {
 1. Resource로 위치확인   
 2. InputStream으로 읽기  
 3. OutputStream으로 쓰기
-
-> 원문: https://gradualprecision.tistory.com/266

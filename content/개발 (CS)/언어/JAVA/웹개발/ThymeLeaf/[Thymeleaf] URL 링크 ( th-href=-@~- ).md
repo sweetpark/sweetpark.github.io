@@ -42,5 +42,3 @@ public String link(Model model){
         *   /hello/data1/data2
     *   @{/hello/{param1}(param1=${param1} ,param2=${param2})}
         *   /hello/data1?param2=data2
-
-> 원문: https://gradualprecision.tistory.com/112

@@ -59,5 +59,3 @@ GCP 콘솔의 VPC 네트워크 > 방화벽 규칙에서 아래와 같이 8080 �
 | 프로토콜 및 포트 | TCP: 8080 |
 
 *   [서버외부ip]:8080 접속 확인
-
-> 원문: https://gradualprecision.tistory.com/170

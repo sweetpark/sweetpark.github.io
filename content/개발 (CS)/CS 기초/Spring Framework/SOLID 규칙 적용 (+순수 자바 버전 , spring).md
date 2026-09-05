@@ -212,5 +212,3 @@ public static void main(String []args){
     System.out.println("find member = "+ findMember.getName());
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/54

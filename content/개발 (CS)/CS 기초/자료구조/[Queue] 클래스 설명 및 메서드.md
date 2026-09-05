@@ -63,5 +63,3 @@ public interface Collection<E> extends Iterable<E>{
     *   큐가 비어있는지 확인
 *   contains()
     *   큐에 포함되어있는지 true/false반환
-
-> 원문: https://gradualprecision.tistory.com/165

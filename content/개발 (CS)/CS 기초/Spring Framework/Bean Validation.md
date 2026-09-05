@@ -224,5 +224,3 @@ public class ValidationItemApiController {
 *   bindingResult.getAllErrors()의 경우 모든 오류 메시지 관련 내용을 가지고 있음
     *   해당 부분에서 필요한 부분만 필터해서, RequestBody로 전달 가능
 *   Return 값으로 객체 전달 (form)
-
-> 원문: https://gradualprecision.tistory.com/90

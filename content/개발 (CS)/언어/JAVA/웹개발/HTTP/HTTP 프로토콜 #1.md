@@ -89,5 +89,3 @@ Content-Length : 3423
 *   field Line
     *   Content-Type : message body 형태 및 인코딩정보
     *   Content-Length : message body의 길이
-
-> 원문: https://gradualprecision.tistory.com/64

@@ -84,5 +84,3 @@ int main ()
 ...  
   
 }
-
-> 원문: https://gradualprecision.tistory.com/31

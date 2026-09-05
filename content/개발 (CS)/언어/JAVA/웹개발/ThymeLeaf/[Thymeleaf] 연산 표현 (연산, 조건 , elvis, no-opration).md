@@ -72,5 +72,3 @@ modified: 2026-09-05
 *   no-operation
     *   _ : ${data}가 없으면, th:text가 무시됨 (결국, 데이터가 없습니다 출력)
     *   data가 있으면 ,data 출력
-
-> 원문: https://gradualprecision.tistory.com/114

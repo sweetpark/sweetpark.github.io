@@ -27,7 +27,6 @@ modified: 2026-09-05
     - 설정 변경: `alternatives --config java`, `alternatives --config javac`
 
 ### C to JAVA library
-- 기본적인 JNI 사용법 참고: [java에서 JNI를 이용하여 c 라이브러리(.so,.dll) 사용하기](https://shuming.tistory.com/entry/java%EC%97%90%EC%84%9C-JNI-%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-c-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%ACsodll-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
 - 헤더파일 만들기: `javac -h . <소스파일>`
 - c 파일 → so 파일 만들기: `gcc -I$JAVA_HOME/include -I$JAVA_HOME/include/linux -shared -fpic -o libexample.so example.c`
 
@@ -45,7 +44,6 @@ modified: 2026-09-05
     ```bash
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$JAVA_HOME:$JAVA_HOME/include:$JAVA_HOME/include/linux:[so파일 위치 디렉토리]
     ```
-- 참고: [(Error) Java 실행 명령어와 cannot find symbol 에러](https://dwaejinho.tistory.com/entry/Java-%EC%8B%A4%ED%96%89-%EB%AA%85%EB%A0%B9%EC%96%B4%EC%99%80-cannot-find-symbol-%EC%97%90%EB%9F%AC)
 
 ### DLL(Windows)
 - 외부 라이브러리 / 동적 링크 라이브러리
@@ -60,7 +58,6 @@ modified: 2026-09-05
 - LD_LIBRARY_PATH 설정이 안 되면 `/usr/lib`에 so 파일을 직접 복사하는 방법도 있음
 - MAIN file: `gcc -o [out 파일명] [main.c] -l [라이브러리명] -L [라이브러리 경로]`
     - 예) `libhello.so` ⇒ 라이브러리명: hello
-- 참고: [리눅스 동적 라이브러리(공유 라이브러리) 생성하기](https://my-repo.tistory.com/68)
 
 ## 📌 비고
 - Windows DLL 생성/의존성 이슈 대응은 원문에서 "구체적으로 파악 필요"로 남겨져 있던 부분이라, 추가 검증 후 보강 필요.

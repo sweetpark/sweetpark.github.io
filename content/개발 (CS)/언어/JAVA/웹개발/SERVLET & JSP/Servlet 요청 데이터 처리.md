@@ -91,5 +91,3 @@ public class APIServlet extends HttpServlet{
     }
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/71

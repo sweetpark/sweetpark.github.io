@@ -140,5 +140,3 @@ public class memberUpdateForm {
     private String address;
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/140

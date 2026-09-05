@@ -144,5 +144,3 @@ int *ptr;
 __int8 num = reinterpret_cast<__int8>(ptr); // 주소값을 __int8 (1바이트)로 캐스팅
 // 말도안되지만,가능하게 해준다.
 ```
-
-> 원문: https://gradualprecision.tistory.com/45

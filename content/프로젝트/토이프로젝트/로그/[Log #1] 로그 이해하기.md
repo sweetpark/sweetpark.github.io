@@ -98,5 +98,3 @@ log.info("[INFO] 로그 내용");
 By default, Spring Boot logs only to the console and does not write log files. If you want to write log files in addition to the console output, you need to set a logging.file.name or logging.file.path property (for example, in your application.properties)
 
 docs.spring.io](https://docs.spring.io/spring-boot/reference/features/logging.html#features.logging.file-output)
-
-> 원문: https://gradualprecision.tistory.com/250

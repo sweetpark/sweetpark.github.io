@@ -106,5 +106,3 @@ spring.datasource.username=root
 spring.datasource.password=[패스워드]
 spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 ```
-
-> 원문: https://gradualprecision.tistory.com/166

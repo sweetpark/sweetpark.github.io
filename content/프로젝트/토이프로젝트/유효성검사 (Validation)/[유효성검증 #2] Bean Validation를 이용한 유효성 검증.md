@@ -131,5 +131,3 @@ HTTP/1.1 400 Bad Request
 
 Spring Bean Validation을 활용하면 복잡한 로직 없이도 사용자 입력 검증을 손쉽게 적용할 수 있다. @NotBlank, @Pattern 등 기본 제공 어노테이션만으로 충분한 경우도 많지만, 직접 비즈니스에 맞는 커스텀 어노테이션을 만들어 사용하는 것도 매우 유용하다.
 다음 글에서는 유효성 검사를 더욱 체계적으로 관리하기 위해 Validator 인터페이스, @InitBinder, AOP와 어노테이션 기반 유효성 검사 확장 전략에 대해 소개할 예정이다.
-
-> 원문: https://gradualprecision.tistory.com/276

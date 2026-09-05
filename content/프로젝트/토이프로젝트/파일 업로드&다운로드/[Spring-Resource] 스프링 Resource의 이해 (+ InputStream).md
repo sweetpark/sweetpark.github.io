@@ -268,5 +268,3 @@ docs.spring.io](https://docs.spring.io/spring-framework/reference/core/resources
 Java’s standard java.net.URL class and standard handlers for various URL prefixes, unfortunately, are not quite adequate enough for all access to low-level resources. For example, there is no standardized URL implementation that may be used to access a r
 
 docs.spring.io](https://docs.spring.io/spring-framework/reference/core/resources.html)
-
-> 원문: https://gradualprecision.tistory.com/259

@@ -121,5 +121,3 @@ map.put('userA', userA);
 </body>
 </html>
 ```
-
-> 원문: https://gradualprecision.tistory.com/110

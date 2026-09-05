@@ -105,5 +105,3 @@ HOST : www.naver.com
 *   GET / HEAD / POST / PATCH 캐시 가능
 *   실제로는 GET, HEAD 정도만 캐시로 이용
 *   POST, PATCH 는 구현이 어려움
-
-> 원문: https://gradualprecision.tistory.com/65

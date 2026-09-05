@@ -191,5 +191,3 @@ public class Main{
      }
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/143

@@ -109,5 +109,3 @@ ex) delete from member where id = 1;
 | --- | --- |
 | 2 | 2000 |
 | 3 | 1500 |
-
-> 원문: https://gradualprecision.tistory.com/121

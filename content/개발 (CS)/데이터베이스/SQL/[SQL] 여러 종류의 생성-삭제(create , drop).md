@@ -71,5 +71,3 @@ Create USER 'test'@'localhost' IDENTIFIED BY 'password';
 -- 삭제
 Drop USER 'test'@'localhost';
 ```
-
-> 원문: https://gradualprecision.tistory.com/123

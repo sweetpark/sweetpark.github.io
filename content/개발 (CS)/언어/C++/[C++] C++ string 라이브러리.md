@@ -63,5 +63,3 @@ delete[] sum_string;
 ## 마무리
 
 *   위 코드의 재할당 로직은 간략화한 예시이며, 실제로는 안정성이 검증된 표준 라이브러리(std::string)를 사용하는 것이 바람직하다.
-
-> 원문: https://gradualprecision.tistory.com/7

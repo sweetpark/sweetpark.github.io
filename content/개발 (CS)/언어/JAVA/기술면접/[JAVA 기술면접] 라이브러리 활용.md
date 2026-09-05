@@ -221,5 +221,3 @@ public class StreamEx{
      }
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/147

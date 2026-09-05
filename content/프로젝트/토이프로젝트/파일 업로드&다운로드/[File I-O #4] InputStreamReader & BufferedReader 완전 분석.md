@@ -7,20 +7,6 @@ modified: 2026-09-05
 
 # [File I/O #4] InputStreamReader & BufferedReader 완전 분석
 
-목차
-
-[1. Resource와 Stream I/O 이해](https://gradualprecision.tistory.com/266)
-
-[2. Resource 구현체 이해하기](https://gradualprecision.tistory.com/267)
-
-[3. InputStream/OutputStream 이해하기](https://gradualprecision.tistory.com/268)
-
-[4. InputStreamReader, BufferedReader 이해하기](https://gradualprecision.tistory.com/269)
-
-[5. Multipartfile 처리하기](https://gradualprecision.tistory.com/270)
-
-[6. File 이외의 I/O stream 정리](https://gradualprecision.tistory.com/271)
-
 File I/O #4 — InputStreamReader & BufferedReader 완전 분석
 
 * * *
@@ -97,5 +83,3 @@ try (BufferedReader reader = new BufferedReader(
 
 - **InputStreamReader**: 바이트 → 문자로 변환해줌  
 - **BufferedReader**: 문자 스트림을 줄 단위로 효율적으로 읽기
-
-> 원문: https://gradualprecision.tistory.com/269

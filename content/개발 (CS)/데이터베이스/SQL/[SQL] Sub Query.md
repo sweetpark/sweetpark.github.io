@@ -135,5 +135,3 @@ DELETE FROM ex_table1 WHERE sub_id = (SELECT id FROM ex_table2 WHERE sub_name = 
 | 1 | testA |
 | 1 | testB |
 | 2 | testC |
-
-> 원문: https://gradualprecision.tistory.com/132

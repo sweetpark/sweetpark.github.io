@@ -233,5 +233,3 @@ TDD에서는
 | 11 | 조건문(if)을 반복문(loop) 기반 흐름으로 변환 |
 | 12 | 반복문을 재귀(recursion)로 단순화 |
 | 13 | 최종 단계: 재귀 제거 → 반복문으로 최적화 (거의 가지 않음) |
-
-> 원문: https://gradualprecision.tistory.com/286

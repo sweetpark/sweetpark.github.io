@@ -137,5 +137,3 @@ public class CustomException extends RuntimeException{
 *   java 1.7 이상부터는 try~catch 문 대신해서 , try~with~resources가 사용되는 추세이다
     *   catch를 잡게되면 프로그램이 종료되거나, 메서드가 로직 중간에 끝나기 때문에, I/O나 소켓등 로직 중간에 닫아주지 않으면 남게되는 리소스들을 정리할 수 있도록 도와주는 기능이다.
     *   (원래는 try~catch~finally 를 이용했지만, resources 도입으로 편하게 정리할 수 있게 되었다.)
-
-> 원문: https://gradualprecision.tistory.com/261

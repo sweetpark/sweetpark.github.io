@@ -25,7 +25,6 @@ ARP 프로토콜의 동작 원리와 취약점을 이해하고, ARP Spoofing이 
 ### 참고자료
 - [ARP 동작 과정을 패킷트레이서로 구경하기](https://www.youtube.com/watch?v=Nw4dNyh1dUY)
 - [ARP Spoofing(스푸핑) 개념을 알아보기](https://www.youtube.com/watch?v=E6458qelSco)
-- [C/libpcap ARP Spoofing 정리 (tistory)](https://py0zz1.tistory.com/m/6)
 
 ### Ethernet + ARP 프레임 구조 (14byte + 28byte)
 

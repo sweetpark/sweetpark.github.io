@@ -102,7 +102,6 @@ int main() {
 ```
 
 ### curlopt 옵션
-참고: [curl - setopt 종류](https://redstory2010.tistory.com/150)
 
 - `CURLOPT_ERRORBUFFER` — char* 형태로 에러값 저장하는 버퍼
 - `CURLOPT_FOLLOWLOCATION` — 리다이렉션을 따르도록 curl에게 지시

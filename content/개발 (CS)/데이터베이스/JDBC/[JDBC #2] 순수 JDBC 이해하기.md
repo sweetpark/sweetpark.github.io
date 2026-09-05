@@ -144,5 +144,3 @@ public List<Member> findAll() throws SQLException{
 
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/156

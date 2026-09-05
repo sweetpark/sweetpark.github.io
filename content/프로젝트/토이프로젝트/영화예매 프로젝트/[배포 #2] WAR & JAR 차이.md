@@ -164,5 +164,3 @@ JAR VS WAR
 - JVM위에서 애플리케이션을 구동해도 상관없다 (JAR)  
 - JSP를 사용해야할 경우 (WAR)  
 (TOMCAT 표준은 JSP를 지원하지만, spring boot의 tomcat의 경우 추가적인 설정이 필요하며 WAR파일로 배포해야 jsp처리를 할 수 있다)
-
-> 원문: https://gradualprecision.tistory.com/220

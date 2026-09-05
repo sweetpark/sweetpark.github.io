@@ -124,5 +124,3 @@ new_sock_handle.close()
     *   서버의 경우 CPU 효율도 생각해야함 
 
 Non-Blocking 자세한 사항은 다음 장으로...
-
-> 원문: https://gradualprecision.tistory.com/9

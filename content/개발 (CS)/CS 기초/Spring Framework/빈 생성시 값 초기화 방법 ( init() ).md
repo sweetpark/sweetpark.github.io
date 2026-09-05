@@ -101,5 +101,3 @@ public class TestBean{
   
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/60

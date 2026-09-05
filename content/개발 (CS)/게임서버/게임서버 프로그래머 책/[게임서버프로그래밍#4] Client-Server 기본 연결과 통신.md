@@ -24,7 +24,6 @@ recv()  <----------------------> send()
 closesocket()                  closesocket()
 ```
 
-
 이 글에서는 TCP 기반으로 클라이언트-서버 연결을 구현하는 기본 흐름을 설명한다.  
 Winsock 초기화, 비동기 소켓 설정(ioctlsocket), select를 통한 이벤트 감지 등  
 기본적인 소켓 프로그래밍을 단계별로 다룬다.
@@ -183,5 +182,3 @@ server.socket_recv("Hello from server");
 여러 클라이언트를 동시에 처리하는 방법을 다룬다.  
   
 Thread, Mutex, Chrono를 이용한 타임아웃 제어까지 자세히 살펴본다.
-
-> 원문: https://gradualprecision.tistory.com/17

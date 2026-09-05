@@ -52,5 +52,3 @@ modified: 2026-09-05
 
     }
 ```
-
-> 원문: https://gradualprecision.tistory.com/141

@@ -89,5 +89,3 @@ public class AppConfig {
 *   @Repository : @Component가 포함되어있음 + 데이터 접근 계층에서 사용
 *   @Configuration : @Component가 포함되어있음 + 스프링 설정정보에서 사용 (ex AppConfig.class )
     *   ex) AppConfig의 경우 basePackges를 사용하지 않고, Application실행 계층에 동일하게 위치시킴
-
-> 원문: https://gradualprecision.tistory.com/58

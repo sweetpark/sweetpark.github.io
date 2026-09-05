@@ -100,5 +100,3 @@ int (*pp)[4] = arr;
   pp 는 "int[4] 배열을 가리키는 포인터" → pp 의 값은 arr 의 시작 주소(0x1000)
   pp + 1  ==  arr[1] 의 시작 주소(0x1010)  (한 행 전체(16byte)만큼 이동)
 ```
-
-> 원문: https://gradualprecision.tistory.com/34

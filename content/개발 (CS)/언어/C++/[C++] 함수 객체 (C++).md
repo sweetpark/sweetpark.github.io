@@ -46,5 +46,3 @@ int main()
 
 *   연산자 오버로딩을 통해 여러종류의 반환타입, 인자타입 및 개수를 생성할 수 있다.
 *   상태값을 가질 수 있다 ( ex) _value )
-
-> 원문: https://gradualprecision.tistory.com/47

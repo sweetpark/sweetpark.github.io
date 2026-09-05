@@ -205,5 +205,3 @@ public void invokeFromContext() throws Exception {
     *   또는, 외부 유틸리티의 사용 혹은 직접 호출하게 될경우, 프록시 객체가 적용이 안되므로 스프링이 지원하는 AOP를 사용할 수 없게 된다.
 4.  **공통 처리(AOP) 활용**
     *   여러 서비스에서 동일한 트랜잭션 로직·예외 처리를 한다면, AOP로 묶어서 관리하면 코드 중복 방지 가능
-
-> 원문: https://gradualprecision.tistory.com/273

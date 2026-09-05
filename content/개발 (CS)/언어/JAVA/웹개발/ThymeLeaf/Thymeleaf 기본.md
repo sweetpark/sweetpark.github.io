@@ -105,5 +105,3 @@ th:switch="${[변수]}"
 *   타임리프 프로토타입 주석
     *   html파일을 그대로 열면 주석처리, 타임리프를 렌더링하면 보이는 기능 
     *   <!--/*/ ~~ /*/-->
-
-> 원문: https://gradualprecision.tistory.com/87

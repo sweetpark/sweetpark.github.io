@@ -128,5 +128,3 @@ public:
      int& _hpRef; // int& _hpRef = _hp; // 이런식으로 멤버변수 생성당시 바로 초기화를 진행 (C++11 이후)  
      const int number; // 위와 동일  
 }
-
-> 원문: https://gradualprecision.tistory.com/38

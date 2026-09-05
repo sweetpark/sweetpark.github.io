@@ -62,5 +62,3 @@ Drop [객체종류] [객체이름];
 ALTER TABLE [테이블명] [동작]
 
 실행 결과: 지정한 동작(컬럼 추가/삭제, 테이블명 변경, 기본키 추가, 데이터타입 변경 등)이 테이블에 적용됨.
-
-> 원문: https://gradualprecision.tistory.com/122

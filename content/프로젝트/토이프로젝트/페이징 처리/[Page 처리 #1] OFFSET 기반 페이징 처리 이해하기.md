@@ -78,5 +78,3 @@ FROM member
 ORDER BY id DESC
 LIMIT #{pagePerCnt} OFFSET #{(currentPage - 1)* pagePerCnt};
 ```
-
-> 원문: https://gradualprecision.tistory.com/256

@@ -208,5 +208,3 @@ public Map<String, Object> findPageToCursor(Long lastIndex, int limit) {
 코드 정보
 
 [https://github.com/sweetpark/lab](https://github.com/sweetpark/lab)
-
-> 원문: https://gradualprecision.tistory.com/262

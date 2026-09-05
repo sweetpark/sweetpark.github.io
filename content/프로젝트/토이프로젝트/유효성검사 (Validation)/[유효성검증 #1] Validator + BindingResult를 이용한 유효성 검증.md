@@ -124,5 +124,3 @@ Content-Type: application/json
 
 **다음 포스팅**에서는 보다 널리 쓰이는 방식인 `@NotNull`, `@Pattern` 등으로 대표되는 **Bean Validation**을 소개할 예정이다.  
 그 이후에는 Validator와 Bean Validation을 조합하고, **AOP 및 사용자 정의 어노테이션을 활용한 유효성 검사 아키텍처의 확장** 방법을 다룰 계획이다.
-
-> 원문: https://gradualprecision.tistory.com/275

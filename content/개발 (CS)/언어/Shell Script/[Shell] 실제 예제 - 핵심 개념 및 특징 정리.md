@@ -82,9 +82,3 @@ do
 done
 ```
 
-### Linux Check List (C Shell Script)
-
-## 🔗 참고
-
-- [리눅스 취약점 체크리스트 쉘 스크립트](https://sunny-security.tistory.com/22)
-- [쉘(bash Shell) 스크립트 기본 문법, 실제 예제(백업하기, 로그 파일 정리하기)](https://probe29.tistory.com/47)

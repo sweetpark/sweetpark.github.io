@@ -54,8 +54,6 @@ Wireshark는 GUI에서 패킷을 예쁘게 보여주지만, "왜 그렇게 보�
 
 이 그림이 이후 나오는 C 코드의 포인터 연산(`buffer + sizeof(struct ethhdr)`, `packet += 14` 등)을 이해하는 기준이 된다. 결국 파싱이라는 건 "이 오프셋부터 몇 바이트가 무슨 필드다"라는 표를 그대로 포인터 캐스팅으로 옮기는 작업이다.
 
-> 참고: 패킷 생성과 캡슐화 원리는 [패킷의 생성 원리와 캡슐화](https://www.youtube.com/watch?v=Bz-K-DPfioE) 영상이 계층별 헤더가 어떻게 덧붙여지는지 시각적으로 잘 보여준다. 더 깊이 들어가면 [DPI(Deep Packet Inspection)](https://genius12.tistory.com/218) — 헤더뿐 아니라 페이로드까지 들여다보는 기법 — 개념도 같이 봐두면 좋다.
-
 ---
 
 ## 1️⃣ libpcap 기반 패킷 스니퍼 (C)

@@ -115,5 +115,3 @@ public void namedSave(Member member) {
 | queryForObject(...) | 단일 결과 SELECT 쿼리에 사용함 (Object 반환) |
 | RowMapper | ResultSet을 도메인 객체로 매핑하는 함수형 인터페이스 |
 | NamedParameterJdbcTemplate |  |
-
-> 원문: https://gradualprecision.tistory.com/179

@@ -35,5 +35,3 @@ model.attribute("users", list);
 </body>
 </html>
 ```
-
-> 원문: https://gradualprecision.tistory.com/111

@@ -242,5 +242,3 @@ logback.qos.ch](https://logback.qos.ch/manual/configuration.html)
 Starting with Log4j 2, the configuration file syntax has been considered part of the public API and has remained stable across significant version upgrades. The syntax of the configuration file changed between Log4j 1 and Log4j 2. Files in the Log4j 1 s
 
 logging.apache.org](https://logging.apache.org/log4j/2.x/manual/configuration.html)
-
-> 원문: https://gradualprecision.tistory.com/263

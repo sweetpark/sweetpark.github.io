@@ -91,5 +91,3 @@ EJB (Enterprise Java Beans)
 [https://docs.oracle.com/cd/E24329_01/web.1211/e24972/examples.htm#EJBAD122](https://docs.oracle.com/cd/E24329_01/web.1211/e24972/examples.htm#EJBAD122 "oracle/document/EJB")
 
 Spring과 EJB는 상호 배타적인 상황이 아니므로, 주어진 문제에 있어 분산이 필요하거나 안정성을 높일때에 EJB도 고려할 수 있다.
-
-> 원문: https://gradualprecision.tistory.com/51

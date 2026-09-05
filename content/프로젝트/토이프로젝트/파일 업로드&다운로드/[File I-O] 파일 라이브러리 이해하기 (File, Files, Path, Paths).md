@@ -150,5 +150,3 @@ docs.oracle.com](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 The Java Tutorials have been written for JDK 8. Examples and practices described in this page don't take advantage of improvements introduced in later releases and might use technology no longer available. See Dev.java for updated tutorials taking advantag
 
 docs.oracle.com](https://docs.oracle.com/javase/tutorial/essential/io/)
-
-> 원문: https://gradualprecision.tistory.com/258

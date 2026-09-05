@@ -148,5 +148,3 @@ public:
         ~Player() {   [원하는 동작]  }  
 ...  
 }
-
-> 원문: https://gradualprecision.tistory.com/35

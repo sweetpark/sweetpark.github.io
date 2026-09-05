@@ -49,5 +49,3 @@ log.error("[내용]");
 
 SLF4J - http://www.slf4j.org  
 Logback - http://logback.qos.ch
-
-> 원문: https://gradualprecision.tistory.com/83

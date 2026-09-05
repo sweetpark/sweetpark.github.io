@@ -140,5 +140,3 @@ int main()
 *   템플릿 초기화가 무조건 <>이 아닌, 다중 인자일경우 원하는 타입 제외하고 나머지는 그대로 다시 작성해줘야함
     *   template<int SIZE>
     *   class RandomBax<double, SIZE> ...
-
-> 원문: https://gradualprecision.tistory.com/49

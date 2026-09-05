@@ -120,5 +120,3 @@ module 모듈명{
     //...
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/145

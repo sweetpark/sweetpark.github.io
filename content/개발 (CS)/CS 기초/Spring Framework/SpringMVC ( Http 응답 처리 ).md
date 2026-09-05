@@ -118,5 +118,3 @@ public class ResponseBody{
      }
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/85

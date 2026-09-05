@@ -69,5 +69,3 @@ void ref2PtrTest(int& ref)
 }
 ref2PtrTest(*ptr);
 ```
-
-> 원문: https://gradualprecision.tistory.com/32

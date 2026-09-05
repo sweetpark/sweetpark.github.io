@@ -137,5 +137,3 @@ Content-Length : 29
     *   애매할경우 주로 사용됨
 *   503 (Service Unavailable)
     *   서버가 일시적인 과부하 또는 예정된 작업으로 서버 요청 처리 불가 상태
-
-> 원문: https://gradualprecision.tistory.com/66

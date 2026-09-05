@@ -122,5 +122,3 @@ public interface View {
 *   반환값으로 받은 ModelAndView의 저장 내용에 따라, 형식에 맞는 ViewResolver()를 통해 이름을 재지정하고, view 인터페이스의 Render() 메서드를 통해서 렌더링 시작
 *   모든 절차가 끝나면, 응답 메시지를 가지고 클라이언트에게 전달
 *   Spring 의 HTTP 처리 메커니즘 완료
-
-> 원문: https://gradualprecision.tistory.com/81

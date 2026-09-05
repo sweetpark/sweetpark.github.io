@@ -85,5 +85,3 @@ Method 활용
         *   파일 대략 등록 (/files) -> POST
     *   API를 설계시 **주체를 기준**으로 URL을 설정해야함 (**행위 기준 X**)
     *   행위는 HTTP 메서드로 이용 ( 조회 -> GET, 생성/수정 -> POST, 삭제 -> DELETE)
-
-> 원문: https://gradualprecision.tistory.com/67

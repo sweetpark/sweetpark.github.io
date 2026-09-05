@@ -107,5 +107,3 @@ SELECT age, MAX(MONEY) FROM test  WHERE address='suwon' GROUP BY age HAVING MAX(
 | --- | --- |
 | 19 | 1500 |
 | 15 | 3000 |
-
-> 원문: https://gradualprecision.tistory.com/129

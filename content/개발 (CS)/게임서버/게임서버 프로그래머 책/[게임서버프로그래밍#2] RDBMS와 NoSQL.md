@@ -20,7 +20,6 @@ RDBMS (Table)                    NoSQL (Document/Collection)
 JOIN으로 관계 표현                 문서 하나에 중첩 데이터 포함 가능
 ```
 
-
 이 글에서는 데이터베이스의 두 가지 큰 흐름인 RDBMS와 NoSQL의 개념과 차이를 설명한다.  
 각각이 중시하는 원칙(ACID, BASE), 구조상의 차이, 분산처리(샤딩)까지 예시와 함께 살펴본다.
 
@@ -130,5 +129,3 @@ NoSQL은 가용성과 확장성을 최우선시한다.
 **주의할 점:**
 
 *   샤드 키를 잘못 설정하면 데이터 쏠림(Hot Spot) 문제가 발생할 수 있다.
-
-> 원문: https://gradualprecision.tistory.com/18

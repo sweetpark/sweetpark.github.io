@@ -164,5 +164,3 @@ public class WebConfig implements WebMvcConfigurer {
      }
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/95

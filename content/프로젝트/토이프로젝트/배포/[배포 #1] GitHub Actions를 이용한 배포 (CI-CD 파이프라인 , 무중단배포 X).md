@@ -145,5 +145,3 @@ jobs:
 2. SSH KEY 처리  
 - AWS 접속 SSH Key는  base64 인코딩 후 비공개 저장  
 (키 값에는 파싱에 방해되는 부분이 있을 수 있기에 base64를 적용하여 처리)
-
-> 원문: https://gradualprecision.tistory.com/265

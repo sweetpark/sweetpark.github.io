@@ -97,5 +97,3 @@ PriorityQueue<클래스명> 변수명 = new PriortyQueue<>();
     *   contains(값) : true / false
 *   공백 큐 확인
     *   isEmpty() : true / false
-
-> 원문: https://gradualprecision.tistory.com/224

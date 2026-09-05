@@ -309,5 +309,3 @@ public class RequestBodyStringController{
     
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/84

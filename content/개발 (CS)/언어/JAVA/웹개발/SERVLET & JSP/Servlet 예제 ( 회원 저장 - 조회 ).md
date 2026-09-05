@@ -174,5 +174,3 @@ public class MemberSaveServlet extends HttpServlet{
     *   분리되어있지 않아 유지보수의 어려움이 존재한다
 
 단점들을 보완하고자, "템플릿 엔진"이 나오게 되었다
-
-> 원문: https://gradualprecision.tistory.com/73

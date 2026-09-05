@@ -117,5 +117,3 @@ SELECT DISTINCT name FROM test WHERE age IS NOT NULL;
 | kim |
 | park |
 | na |
-
-> 원문: https://gradualprecision.tistory.com/130

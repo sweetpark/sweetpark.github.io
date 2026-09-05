@@ -56,5 +56,3 @@ public class TestServlet extends HttpServlet{
     }
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/70

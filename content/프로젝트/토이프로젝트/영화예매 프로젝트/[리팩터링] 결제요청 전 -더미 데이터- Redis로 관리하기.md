@@ -109,5 +109,3 @@ public class RedisService {
     }
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/245

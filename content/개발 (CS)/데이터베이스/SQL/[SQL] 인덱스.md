@@ -65,5 +65,3 @@ from IndexTest
 JOIN UserDetails ON IndexTest.username = UserDetails.username
 Where IndexTest.username='test';
 ```
-
-> 원문: https://gradualprecision.tistory.com/126

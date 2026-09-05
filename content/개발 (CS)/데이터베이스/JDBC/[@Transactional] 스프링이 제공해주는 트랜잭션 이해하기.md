@@ -147,5 +147,3 @@ public void methodB() {
 | Checked 예외 | 기본적으로 rollback 되지 않음. rollbackFor로 지정해야 함 |
 | 예외를 catch 후 처리 시 | 예외가 외부로 전파되지 않으면 rollback 되지 않음 |
 | 자기 호출(self-call) | 프록시를 우회하므로 트랜잭션이 적용되지 않음 |
-
-> 원문: https://gradualprecision.tistory.com/174

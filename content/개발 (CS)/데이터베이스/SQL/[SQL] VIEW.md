@@ -53,5 +53,3 @@ Select * From ViewTest;
 -- 1 / test / seoul
 -- 2 / SQL / busan
 ```
-
-> 원문: https://gradualprecision.tistory.com/127

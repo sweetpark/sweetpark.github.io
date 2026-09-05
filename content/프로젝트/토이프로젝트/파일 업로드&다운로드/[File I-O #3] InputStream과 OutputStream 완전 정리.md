@@ -7,20 +7,6 @@ modified: 2026-09-05
 
 # [File I/O #3] InputStream과 OutputStream 완전 정리
 
-목차
-
-[1. Resource와 Stream I/O 이해](https://gradualprecision.tistory.com/266)
-
-[2. Resource 구현체 이해하기](https://gradualprecision.tistory.com/267)
-
-[3. InputStream/OutputStream 이해하기](https://gradualprecision.tistory.com/268)
-
-[4. InputStreamReader, BufferedReader 이해하기](https://gradualprecision.tistory.com/269)
-
-[5. Multipartfile 처리하기](https://gradualprecision.tistory.com/270)
-
-[6. File 이외의 I/O stream 정리](https://gradualprecision.tistory.com/271)
-
 File I/O #3 — InputStream과 OutputStream 완전 정리
 
 * * *
@@ -120,5 +106,3 @@ os.close();
 - OutputStream: 바이트 단위 출력 처리 (쓰기)  
 - **BufferedStream**을 함께 사용하면 **성능이 향상**됩니다.  
 - **Resource로부터 InputStream**을 받아 처리할 수 있습니다.
-
-> 원문: https://gradualprecision.tistory.com/268

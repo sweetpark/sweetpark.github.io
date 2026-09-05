@@ -102,5 +102,3 @@ https://github.com/sweetpark/springBoard
 2) AES256 패스워드 암호화 적용완료 /board/auth/enc 확인  
 3) HandlerMethodArgumentResolver를 통해서 URL에 사용자id @Pathvariable을 제거하고 커스텀 어노테이션을 통해 사용자id를 추출할 수 있었음 (session 내부에 저장되어있던)  
 4) session내부에는 많은정보 담아두지 말기
-
-> 원문: https://gradualprecision.tistory.com/234

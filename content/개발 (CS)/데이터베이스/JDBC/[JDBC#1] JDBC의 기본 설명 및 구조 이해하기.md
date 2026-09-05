@@ -64,5 +64,3 @@ DB 커넥션 세부 과정
 java.sql.Connection : 커넥션 연결  
 java.sql.statement : SQL을 담은 내용 (prepareStatement로서 파라미터를 담는걸로 사용)  
 java.sql.ResultSet : SQL 결과 내용
-
-> 원문: https://gradualprecision.tistory.com/154

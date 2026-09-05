@@ -61,5 +61,3 @@ modified: 2026-09-05
 | --- | --- | --- |
 | IF | 조건에 따라 다른값 반환 | Select If(age >20, 'adult', 'child') From [테이블명]; |
 | CASE | 조건에 따라 여러값 반환 | SELECT CASE WHEN age>60 THEN 'senior' WHEN age Between 20 AND 60 THEN 'adult' ELSE 'child'END AS age_typeFrom [테이블명]; |
-
-> 원문: https://gradualprecision.tistory.com/128

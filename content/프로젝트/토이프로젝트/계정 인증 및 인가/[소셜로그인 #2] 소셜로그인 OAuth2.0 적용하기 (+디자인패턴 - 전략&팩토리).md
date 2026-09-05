@@ -245,5 +245,3 @@ public class CustomOAuth2LoginFilter extends AbstractAuthenticationProcessingFil
     }
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/251

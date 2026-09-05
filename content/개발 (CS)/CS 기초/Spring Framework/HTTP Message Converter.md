@@ -79,5 +79,3 @@ public interface HttpMessageConverter<T> {
     *   JSON 형식의 요청 및 응답
     *   요청 ) 요청 -> json converter -> 데이터 읽기
     *   응답 ) 객체 -> json converter -> 데이터 쓰기
-
-> 원문: https://gradualprecision.tistory.com/86

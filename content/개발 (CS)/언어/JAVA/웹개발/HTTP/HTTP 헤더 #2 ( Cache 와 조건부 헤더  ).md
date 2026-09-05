@@ -71,5 +71,3 @@ Pragma : no-cache
 *   Cache-Control : must-revalidate
     *   Origin 서버에 검증해야함 (캐시 만료 후 )
     *   항상 Origin 서버 접근 불가시 (504 Gateway 상태코드 오류 발생)
-
-> 원문: https://gradualprecision.tistory.com/69

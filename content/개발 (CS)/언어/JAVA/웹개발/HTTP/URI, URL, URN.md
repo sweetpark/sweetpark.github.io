@@ -69,5 +69,3 @@ https://www.google.com:443/search?q=hello#getting-spring-info
 "urn:" <NID> ":" <NSS>  
   
 ex) urn:isbn:0451450523
-
-> 원문: https://gradualprecision.tistory.com/63

@@ -328,5 +328,3 @@ public class ExampleAdvice2 {}
 @ControllerAdvice(assignableTypes = {ControllerInterface.class, AbstractController.class})
 public class ExampleAdvice3 {}
 ```
-
-> 원문: https://gradualprecision.tistory.com/96

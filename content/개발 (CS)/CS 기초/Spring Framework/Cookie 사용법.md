@@ -71,5 +71,3 @@ public String test(HttpServletResponse response){
 
 *   Cookie값의 경우, 개발자모드에서 임의로 값을 변경해서 보낼 수 있다 (* 위조)
 *   보안상의 큰 이슈로 인해, 쿠키 값의 경우 Random한 값을 사용하고 서버에 모든 내용이 저장된 형태를 사용하게 된다 (-> 세션)
-
-> 원문: https://gradualprecision.tistory.com/91

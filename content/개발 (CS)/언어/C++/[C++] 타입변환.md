@@ -159,5 +159,3 @@ public:
         *   자식 -> 부모
             *   Dog& dog = bulldog; // 캐스팅 가능
             *   참조타입으로 넘기더라도, BullDog메모리에 Dog영역을 가지고 있기에 문제가 없다
-
-> 원문: https://gradualprecision.tistory.com/42

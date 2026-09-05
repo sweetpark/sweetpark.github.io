@@ -131,5 +131,3 @@ public void txSaveAfterDelete(Map<String, Object> params) throws Exception{
     *   코드가 복잡하다 (서비스 계층이 복잡해진다)
     *   **Connection의 경우, Repository층에서 닫을 경우 세션이 달라지는 일이 발생하므로 꼭 트랜잭션이 행해지는 구간에서 Connection 리소스를 해제해야함.**
     *   AutoCommit모드를 수동으로 관리해야하는 불편함이 존재
-
-> 원문: https://gradualprecision.tistory.com/168
