@@ -61,11 +61,4 @@ modified: 2026-09-05
     *   th:replace : 전달받은 내용으로 대체하여 적용 (<div> 없어짐)
 *   th:insert로도 받을 수 있다
 
-## 직접 적용
-
-*   추후, 직접 구조화하여 적용을 해봐야겠다... (아직 제대로된 적용을 안해봐서 어색..)
-*   잘못된 정보와 수정해야할부분 있으면 댓글 부탁드립니다..!
-
-![](https://t1.daumcdn.net/keditor/emoticon/friends1/large/021.gif)
-
 > 원문: https://gradualprecision.tistory.com/118

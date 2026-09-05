@@ -44,7 +44,23 @@ select name, age, MAX(money) From member GROUP BY age;
 select ANY_VALUE(name), age, MAX(MONEY) from test GROUP BY age;
 ```
 
-![](https://blog.kakaocdn.net/dna/pSY61/btsKec9nSGb/AAAAAAAAAAAAAAAAAAAAAN7O4RLisH6oqmRnb5Ll9WRs4wPEJIQmEFCAz-GXp5dC/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=SqPSUHUCvcdP63FphDBvRQR7quo%3D)
+예시 테이블 `test`:
+
+| name | age | address | money |
+| --- | --- | --- | --- |
+| kim | 15 | suwon | 1500 |
+| park | 15 | suwon | 3000 |
+| lee | 22 | seoul | 5000 |
+| na | 19 | busan | 1800 |
+| choi | 19 | suwon | 1500 |
+
+실행 결과 (age로 그룹화):
+
+| name | age | MAX(money) |
+| --- | --- | --- |
+| kim | 15 | 3000 |
+| lee | 22 | 5000 |
+| na | 19 | 1800 |
 
 ## HAVING 절
 
@@ -56,7 +72,12 @@ select ANY_VALUE(name), age, MAX(MONEY) from test GROUP BY age;
 select age, MAX(MONEY) from test group by age having MAX(MONEY) > 2000;
 ```
 
-![](https://blog.kakaocdn.net/dna/bj4cFF/btsKdNvsjwI/AAAAAAAAAAAAAAAAAAAAABAt-nwGfloVu73_-8X974p68iEVARo-n3DpefCOGs9u/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=4c50YfWhIHtWi98UjR9jOkfKyuA%3D)
+실행 결과 (그룹화 후 MAX(money) > 2000인 그룹만, 위 예시 테이블 기준 age=19 그룹은 최대값이 1800이라 제외):
+
+| age | MAX(money) |
+| --- | --- |
+| 15 | 3000 |
+| 22 | 5000 |
 
 ## ORDER BY 절
 
@@ -80,6 +101,11 @@ select * from test order by name;
 SELECT age, MAX(MONEY) FROM test  WHERE address='suwon' GROUP BY age HAVING MAX(MONEY) > 1000 ORDER BY age DESC;
 ```
 
-![](https://blog.kakaocdn.net/dna/ShpDi/btsKeyLap2c/AAAAAAAAAAAAAAAAAAAAAK12Wwn5AId3UwePWpdLxv6VRDtgl-YipCPYugdtrVqV/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=XwQoXMF1xHnO12xMYYTFtNrrhjE%3D)
+실행 결과 (address가 'suwon'인 행만 대상으로 age별 그룹화 후 age 내림차순 정렬, 위 예시 테이블 기준):
+
+| age | MAX(money) |
+| --- | --- |
+| 19 | 1500 |
+| 15 | 3000 |
 
 > 원문: https://gradualprecision.tistory.com/129

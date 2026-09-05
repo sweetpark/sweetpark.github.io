@@ -8,7 +8,7 @@ modified: 2026-09-05
 # 프론트엔드 기초 개념
 
 > [!NOTE]
-> 실무에서 자주 쓰는 프론트엔드 기초: HTML/JSP·JSTL 구조, JavaScript·jQuery 문법과 DOM 조작·이벤트·AJAX, 그리고 실습 예제 모음.
+> 자주 쓰는 프론트엔드 기초: HTML/JSP·JSTL 구조, JavaScript·jQuery 문법과 DOM 조작·이벤트·AJAX, 그리고 실습 예제 모음.
 
 ## 📌 개념
 

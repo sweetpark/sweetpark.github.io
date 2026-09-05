@@ -15,7 +15,7 @@ Spring에서는 서비스 계층에서 트랜잭션을 분리하고 비즈니스
 
 1. 기존 방식) 트랜잭션을 직접 작성한 경우
 
-```
+```java
 
 TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
 
@@ -33,7 +33,7 @@ try {
 
 (Spring의 경우, AOP형식으로 Proxy구조를 사용하므로 로직에만 집중할 수 있다)
 
-```
+```java
 
 public class Service {
     public void logic() {
@@ -64,7 +64,7 @@ public class Proxy {
 @Transactional을 사용하면 **프록시 객체가 자동으로 생성**되어 트랜잭션을 시작하고,  
 예외 발생 시 rollback 처리까지 담당한다.
 
-```
+```java
 
 @Service
 public class MemberService {
@@ -89,7 +89,7 @@ public class MemberService {
 Spring의 기본 설정에서는 **RuntimeException**, **Error** 계열의 예외만 **rollback**된다.  
 (필요 시  rollbackFor 을 명시해야 한다)
 
-```
+```java
 @Transactional
 public void transfer() throws SQLException { // Checked 예외
     // 예외 발생 시 rollback 안 됨
@@ -103,7 +103,7 @@ public void transfer() throws SQLException { // Checked 예외
 예외를 catch하여, 정상흐름으로 바꿨을경우 명시적으로 롤백을 지정해야함  
 (TransactionAspectSupport)
 
-```
+```java
 
 @Transactional
 public void doSomething() {
@@ -124,7 +124,7 @@ public void doSomething() {
 
 이 문제를 해결하려면 **AopProxyUtils**를 이용해 **자기 자신의 프록시를 주입**받거나 **구조를 분리**하는 방식이 필요하다.
 
-```
+```java
 
 @Transactional
 public void methodA() {

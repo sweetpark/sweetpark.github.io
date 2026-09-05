@@ -9,7 +9,18 @@ modified: 2026-09-05
 
 ## Repository 구성
 
-![](https://blog.kakaocdn.net/dna/zhQDX/btsKQqGcjgV/AAAAAAAAAAAAAAAAAAAAAOP1D9EkwwVhQkykeeKEbV_Ep-vML6G4i2RMuAYTh_uW/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=a7xCLSt%2BhFMINvh%2Fzz1EkcNBSTQ%3D)
+```text
+        <<interface>>
+        MemberRepository                    BoardRepository
+        (findByLoginId 등)                   (save, findById 등)
+             ▲   ▲                                ▲   ▲
+             │   │                                │   │
+   ┌─────────┘   └─────────┐          ┌───────────┘   └───────────┐
+MemberMemRepository   MemberDBRepository   BoardMemRepository   BoardDBRepository
+   (In-Memory 구현)      (DB 구현)             (In-Memory 구현)      (DB 구현)
+
+  → AppConfig에서 @Bean으로 어떤 구현체를 사용할지 선택하여 주입
+```
 
 *   Repository로 의존성을 Interface로 두고, Memory 버전과 DB버전을 나누어서 진행
 *   Memory 버전으로 빠르게 개발하고, 후에 DB를 연결시켜서 필요한 부분만 Repository로 진행

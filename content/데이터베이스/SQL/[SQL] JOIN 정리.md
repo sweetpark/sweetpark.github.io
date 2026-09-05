@@ -23,7 +23,33 @@ SELECT [Columns] FROM [Table 1]
 Inner Join [Table 2] ON Table1.column = Table2.column;
 ```
 
-![](https://blog.kakaocdn.net/dna/duLxsF/btsKeel5EI7/AAAAAAAAAAAAAAAAAAAAAFbilNRBgcsaLY4uEqdB_O6G6JXOTsvuSYpS6tbnQUCg/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=5q4Ry5eyDSIxKBgpx9Gs8dnAR4w%3D)
+예시 테이블:
+
+`table1` (ID, name, age)
+
+| ID | name | age |
+| --- | --- | --- |
+| 1 | kim | 25 |
+| 2 | park | 32 |
+| 3 | lee | 28 |
+| 4 | choi | 19 |
+
+`table2` (name, address, money)
+
+| name | address | money |
+| --- | --- | --- |
+| kim | 서울 | 15000 |
+| park | 부산 | 22000 |
+| jung | 대구 | 9000 |
+| choi | 인천 | 5000 |
+
+실행 결과 (table1.name = table2.name 기준 Inner Join, 양쪽에 모두 존재하는 name만 반환):
+
+| ID | name | age | address | money |
+| --- | --- | --- | --- | --- |
+| 1 | kim | 25 | 서울 | 15000 |
+| 2 | park | 32 | 부산 | 22000 |
+| 4 | choi | 19 | 인천 | 5000 |
 
 ## Left Join
 
@@ -34,7 +60,14 @@ SELECT [Columns] FROM [Table 1]
 Left Join [Table 2] ON Table1.column = Table2.column;
 ```
 
-![](https://blog.kakaocdn.net/dna/bVxjq5/btsKc2GRnDx/AAAAAAAAAAAAAAAAAAAAANrM2xMqTvo2DBCOfRLnUauA0ubrh4dxwC0lk4cUP7yG/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=%2BmrrQ4EUdHOeyz9eK5DNQwGJPzY%3D)
+실행 결과 (table1의 모든 행 + 일치하는 table2 데이터, 일치하지 않으면 NULL, 위 예시 테이블 기준):
+
+| ID | name | age | address | money |
+| --- | --- | --- | --- | --- |
+| 1 | kim | 25 | 서울 | 15000 |
+| 2 | park | 32 | 부산 | 22000 |
+| 3 | lee | 28 | NULL | NULL |
+| 4 | choi | 19 | 인천 | 5000 |
 
 ## Right Join
 
@@ -45,7 +78,14 @@ SELECT [Columns] FROM [Table 1]
 Right Join [Table 2] ON Table1.column = Table2.column;
 ```
 
-![](https://blog.kakaocdn.net/dna/cGtPJ7/btsKeBH3CpL/AAAAAAAAAAAAAAAAAAAAALVTWWwbC35WfeCO1Qka7RdXE74xs5GKdP5-4SrbApgW/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=K4FcdL5IMKpYJV8tGiZSckL4k%2BQ%3D)
+실행 결과 (table2의 모든 행 + 일치하는 table1 데이터, 일치하지 않으면 NULL, 위 예시 테이블 기준):
+
+| ID | name | age | address | money |
+| --- | --- | --- | --- | --- |
+| 1 | kim | 25 | 서울 | 15000 |
+| 2 | park | 32 | 부산 | 22000 |
+| NULL | jung | NULL | 대구 | 9000 |
+| 4 | choi | 19 | 인천 | 5000 |
 
 ## Full Join
 
@@ -68,7 +108,7 @@ SELECT [Columns] FROM [Table 1]
 Cross Join [Table 2]
 ```
 ```sql
-select table1.ID , table1.name, table1.age, table2.address, table2.money FROM table1 Cross Join table2 ON table1.name = table2.name;
+select table1.ID , table1.name, table1.age, table2.address, table2.money FROM table1 Cross Join table2;
 ```
 
 > 원문: https://gradualprecision.tistory.com/131

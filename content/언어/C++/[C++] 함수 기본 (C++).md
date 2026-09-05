@@ -137,7 +137,23 @@ int main()
 }
 ```
 
-![](https://blog.kakaocdn.net/dna/mGS6W/btsIi9TXbVm/AAAAAAAAAAAAAAAAAAAAAM4oHf_JGOtuJ6UfQAQeu46t_kMksbF2XwBNXgFsc6Y6/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=8Ot20HEj5X6dS1NAWOW4CicCX6I%3D)
+```text
+[ 스택 쌓이는 순서 (호출) ]      [ 스택 제거 순서 (LIFO) ]
+   main()                          Func3()  -> 제거
+     └ Func1()                     Func2()  -> 제거
+         └ Func2()                 Func1()  -> 제거
+             └ Func3()             main()   -> 제거
+
+높은 주소 ┌─────────┐
+         │ Func3() │  result = 10
+         ├─────────┤
+         │ Func2() │
+         ├─────────┤
+         │ Func1() │
+         ├─────────┤
+         │ main()  │
+낮은 주소 └─────────┘
+```
 
 함수 호출 스택
 
@@ -165,10 +181,28 @@ int main()
 }
 ```
 
-![](https://blog.kakaocdn.net/dna/w9gop/btsIi9NbNKt/AAAAAAAAAAAAAAAAAAAAACT-TCoraIgLyp2-aEHgoEa2aplFF-qiL8y9UnzuR-ma/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=QMqNeyK0Vafbi3qtC5VmAsJLzoc%3D)
+```text
+[ 재귀 호출로 계속 쌓이는 스택 프레임 ]
+
+높은 주소 ┌───────────────────┐
+         │ Factorial(1000)   │
+         ├───────────────────┤
+         │ Factorial(999)    │
+         ├───────────────────┤
+         │        ...        │  <- 재귀 호출마다 스택 프레임 추가
+         ├───────────────────┤
+         │ Factorial(2)      │
+         ├───────────────────┤
+         │ Factorial(1)      │
+         ├───────────────────┤
+         │ main()            │
+낮은 주소 └───────────────────┘
+             ↑
+     스택 한계 초과 시 Stack Overflow 발생 (프로세스 비정상 종료)
+```
 
 스택 오버플로우
 
-![](https://blog.kakaocdn.net/dna/OO2IW/btsIhWgVdeF/AAAAAAAAAAAAAAAAAAAAAMKByuyubefenGJlSCxeqyPuZgZUikPO7Wq8v-cAiu2l/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=a9tXXdKoRLbcocfKm68vKze4NKo%3D)
+*   호출 깊이가 스택 크기 한계를 넘으면, 더 이상 쌓을 공간이 없어 프로그램이 강제 종료(크래시)됨
 
 > 원문: https://gradualprecision.tistory.com/30

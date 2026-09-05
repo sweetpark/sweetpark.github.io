@@ -16,7 +16,19 @@ Adapter handler
 
 ## Adapter Handler 도식화
 
-![](https://blog.kakaocdn.net/dna/FUpol/btsJk0hdMj9/AAAAAAAAAAAAAAAAAAAAALnMG-UfQ4VF4Icmz2D2Fb7KdtC_Ki86Cih21OkTmP6-/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=LmX%2BUTerdkC8d6SoK2%2Bggfk%2F0Mc%3D)
+```text
+Client
+  └─▶ FrontController.service(request, response)
+        └─▶ getHandler(request)              // handlerMappingMap 에서 handler(=controller) 조회
+              handler : Controller 객체 or Controller2 객체 (타입이 다를 수 있음)
+        └─▶ getHandlerAdapter(handler)        // handlerAdapters 순회하며 supports(handler)==true 인 어댑터 탐색
+              ├─ ControllerHandlerAdapter   (supports: handler instanceof Controller)
+              └─ Controller2HandlerAdapter  (supports: handler instanceof Controller2)
+        └─▶ adapter.handle(request, response, handler)
+              └─▶ (형변환 후) controller.process(paramMap) → ModelView 반환
+        └─▶ viewResolver(mv.getViewName()) → MyView
+        └─▶ view.render(mv.getModel(), request, response)  // JSP forward
+```
 
 ## 수정해야하는 부분
 

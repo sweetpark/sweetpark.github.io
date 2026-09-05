@@ -24,7 +24,7 @@ modified: 2026-09-05
     - Transaction Manager가 내부적으로 동작하는 것이기에, 수동으로 설정할경우 Manager를 직접 이용해 처리를 해줘야한다.
     - SQLException 등 예외 발생시 예외를 처리하게 된다면, 트랜잭션 프록시는 정상처리로 간주하고 트랜잭션이 일어나지 않는다.
 - 트랜잭션 실패 사례
-    - 직접 경험한 실패 사례로서, @Transactional이 걸려있음에도 불구하고,  제대로 동작하지 않았다.
+    - `@Transactional`이 걸려있음에도 불구하고 제대로 동작하지 않는 대표적인 사례들.
         1. try ~ catch문을 이용하여 Exception을 직접 처리를 진행하여, 정상화 흐름으로 바꾸는 바람에 제대로 동작하지 못했다.
             - 직접 제어를 할경우 , TransactionAspectSupport.currentTransactionStatus().setRollbackOnly(); 을 이용하여 롤백을 지정해줄 수 있다.
             - 또는, result Code값이 필요하여 Exception을 처리해야한다면, 공통적인 부분은 AOP로 감싸서 처리하는 방식도 있다.

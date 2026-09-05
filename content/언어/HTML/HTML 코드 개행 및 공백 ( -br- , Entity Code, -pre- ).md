@@ -5,36 +5,51 @@ created: 2026-09-05
 modified: 2026-09-05
 ---
 
-# HTML 코드 개행 및 공백 ( <br> , Entity Code, <pre> )
+# HTML 코드 개행 및 공백 ( `<br>` , Entity Code, `<pre>` )
 
 1. 개행  
-2. 공백
+2. 공백  
+3. 있는 그대로 표현
 
-## 개행 ( <br> )
+## 개행 ( `<br>` )
 
-![](https://blog.kakaocdn.net/dna/pRGfv/btsJ6sk0Yh9/AAAAAAAAAAAAAAAAAAAAAKgBa94gzqFnB4u-WDh_HWTj4mzDlwdqUEWNEzefCEii/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=x5teKLemiw6rXoIRHTGFJ7Com%2Fg%3D)
+*   HTML은 소스코드 상의 줄바꿈이나 연속된 공백을 그대로 반영하지 않는다
+*   화면에서 줄을 바꾸려면 `<br>` 태그를 명시적으로 사용해야 함
 
-*   <br> 태그를 이용하여 개행 표시
+```html
+첫 번째 줄<br>
+두 번째 줄
+```
 
-## 공백 ( Entity Code ) 
+## 공백 ( Entity Code )
 
-*   일반적으로, 공백의 경우 여러개를 사용할 수 없다
-*   그래서, 엔티티 코드 (특수문자 표현)를 사용
-    *   & 로 시작 ;로 끝나는 표현 방식
+*   일반적으로 공백을 여러 개 이어 쓸 수 없다 (하나로 합쳐져서 표시됨)
+*   그래서 엔티티 코드(특수문자 표현)를 사용
+    *   `&`로 시작해서 `;`로 끝나는 표현 방식
 
-![](https://blog.kakaocdn.net/dna/cLM9KM/btsJ6jaHxYs/AAAAAAAAAAAAAAAAAAAAAP5rPRRKKQF1go1TZ0lORb3GNKAVxtiKadcqya0CPdlr/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=utDsdezoAlOyvFIwDLxdxCjAcTg%3D)
-
-| 표시할문자 | 엔티티코드 | 표시할문자 | 엔티티코드 |
+| 표시할 문자 | 엔티티 코드 | 표시할 문자 | 엔티티 코드 |
 | --- | --- | --- | --- |
-| 공백 |   | ' | ‘ / ’ |
-| & | & | < | < |
-| " | " / “ | > | > |
-| · | · | © | © |
+| 공백 | `&nbsp;` | ' | `&lsquo;` / `&rsquo;` |
+| & | `&amp;` | < | `&lt;` |
+| " | `&quot;` / `&ldquo;` | > | `&gt;` |
+| · | `&middot;` | © | `&copy;` |
 
-## 있는 그대로 표현 ( <pre> )
+```html
+공백&nbsp;&nbsp;&nbsp;세개
+5 &lt; 10
+```
 
-![](https://blog.kakaocdn.net/dna/dfeS1z/btsJ6SRkewJ/AAAAAAAAAAAAAAAAAAAAAFJKIO8q6v8C1zzPYJzbQlJVDW_T6e4VrAOTPU4EeO7q/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=cY%2Bp0Np2YpllF1rDR8iiDzLFB3Q%3D)
+## 있는 그대로 표현 ( `<pre>` )
 
-*   pre 태그를 이용하여, 있는 그대로 표현
+*   `<pre>` 태그를 이용하면 소스코드에 작성한 줄바꿈과 공백을 그대로 화면에 표시할 수 있음
+*   들여쓰기가 포함된 코드나 텍스트를 표시할 때 유용함
+
+```html
+<pre>
+  이 줄은
+    들여쓰기와
+      줄바꿈이 그대로 유지된다
+</pre>
+```
 
 > 원문: https://gradualprecision.tistory.com/102

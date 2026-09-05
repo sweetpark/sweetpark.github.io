@@ -29,7 +29,7 @@ modified: 2026-09-05
   
 CREATE [객체종류] [객체이름] (속성 및 제약 조건)
 
-![](https://blog.kakaocdn.net/dna/bhDw2v/btsKa1VNzpE/AAAAAAAAAAAAAAAAAAAAABnsE6nBmIsnRZBM1ycTz_n6HaBYWODy8IstXjfm3iWv/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=S88oWd9j6B1od5yilXR%2BrnXzpgU%3D)
+실행 결과: 지정한 이름과 속성(컬럼명, 데이터타입, 제약조건 등)으로 새로운 객체(테이블 등)가 생성됨.
 
 ## DROP
 
@@ -42,7 +42,7 @@ CREATE [객체종류] [객체이름] (속성 및 제약 조건)
   
 Drop [객체종류] [객체이름];
 
-![](https://blog.kakaocdn.net/dna/lnsAu/btsKbLxR9BI/AAAAAAAAAAAAAAAAAAAAAN51j6TpuAAeduzqOcxbkdd_rgU5xJCyQDrdZgIvUG0T/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=JYBg1641UEd%2BjOeAuafelmBRUk8%3D)
+실행 결과: 지정한 객체(테이블 등)가 데이터베이스에서 완전히 삭제됨 (Rollback 불가능).
 
 ## TRUNCATE
 
@@ -50,7 +50,7 @@ Drop [객체종류] [객체이름];
 *   **ROLLBACK 불가능**
 *   **delete는 where절이 사용 가능하며, 한줄한줄 삭제하는 반면 truncate는 한번에 삭제함 (속도 빠름)**
 
-![](https://blog.kakaocdn.net/dna/xo2d9/btsKbAciPRs/AAAAAAAAAAAAAAAAAAAAAFJb57ZMzSkX6bxP5JChEUtnaPYZopmDafjI7HFhFtvM/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=BJAd4n2Q805NYbZhNoRAUXvEKSE%3D)
+실행 결과: 테이블 구조(컬럼, 제약조건)는 그대로 유지된 채 테이블 안의 모든 행이 삭제됨.
 
 ## ALTER
 
@@ -61,6 +61,6 @@ Drop [객체종류] [객체이름];
   
 ALTER TABLE [테이블명] [동작]
 
-![](https://blog.kakaocdn.net/dna/UrBjS/btsKb4jELkZ/AAAAAAAAAAAAAAAAAAAAAHTgfXNztjTCwmhBttGa11J8iANMxJsILY6ATTmMgnlz/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=gQiobHk58Sb6LG2zioPSVpoL0A8%3D)
+실행 결과: 지정한 동작(컬럼 추가/삭제, 테이블명 변경, 기본키 추가, 데이터타입 변경 등)이 테이블에 적용됨.
 
 > 원문: https://gradualprecision.tistory.com/122

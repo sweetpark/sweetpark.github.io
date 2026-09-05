@@ -111,8 +111,6 @@ public class Zoo{
 }
 ```
 
-ㅈㅈ
-
 ## 객체 지향 설계 5대 원칙 (SOLID)
 
 *   SRP 단일 책임 원칙(Single Responsibility Principle)
@@ -135,7 +133,7 @@ public class Zoo{
 
 ```java
 // ISP : 알림기능만 하는 인터페이스
-Interface Notifier{
+interface Notifier{
     void send(String message);
 }
 

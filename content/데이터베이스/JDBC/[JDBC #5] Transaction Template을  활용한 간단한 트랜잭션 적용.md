@@ -9,7 +9,15 @@ modified: 2026-09-05
 
 ## Transaction Template 도식화
 
-![](https://blog.kakaocdn.net/dna/bIlzKC/btsNKuNfKIw/AAAAAAAAAAAAAAAAAAAAAJx-phni3o3BvD7VrBik8MSTDfK33XZNWBZMlCWrgDuz/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=85qTDPFElCJz1gX9788hNFSJ914%3D)
+```text
+Service
+  └─ transactionTemplate.execute(status -> {           <- 트랜잭션 시작 (내부적으로 getTransaction())
+        비즈니스 로직 실행
+        정상 종료 -> commit()
+        예외 발생 -> rollback()
+     });                                                <- 트랜잭션 종료
+```
+TransactionTemplate이 내부에서 PlatformTransactionManager의 getTransaction() / commit() / rollback() 호출을 대신 감싸주므로, 개발자는 콜백(람다) 안에 비즈니스 로직만 작성하면 된다.
 
 ## Transaction Template 사용
 
@@ -26,7 +34,7 @@ Spring에서는 TransactionTemplate을 사용하여 트랜잭션 제어를 더 �
 
 ## Transaction Template 설정 예시 (JDBC 기준)
 
-```cpp
+```java
 @Configuration
 public static class Config {
     @Autowired
@@ -63,7 +71,7 @@ public class TransactionTemplate {
 
 1. 성공시, 자동으로 commit  
 2. 실패시, 자동으로 rollback
-```cpp
+```java
 @Service
 public class TxTemplateService {
 
@@ -92,10 +100,10 @@ public class TxTemplateService {
 
 2. execute() 예시
 
-*   retrun true일 때, 자동 커밋
+*   return true일 때, 자동 커밋
 *   return false일 때, setRollbackOnly()를 통한 수동 롤백 명시 필요
 
-```cpp
+```java
 public boolean processLogic() {
     return transactionTemplate.execute(status -> {
         try {

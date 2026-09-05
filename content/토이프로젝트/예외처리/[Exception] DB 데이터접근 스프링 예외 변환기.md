@@ -101,7 +101,17 @@ public class Service{
 *   DataAccessException이 데이터접근 최상위 예외
 *   에러코드에 따른, 여러 예외 존재 (Bad Sql, DB Timeout .... )
 
-![](https://blog.kakaocdn.net/dna/bqpAQW/btsKxKMyAYF/AAAAAAAAAAAAAAAAAAAAAFQOFieuTaEV2MLIo1uRn6G_D_UXF6WQqP1NRCtTT0f_/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=QoJOcjNgxYB%2FtUlzUUEUdlwFBvY%3D)
+```text
+RuntimeException
+└── DataAccessException (데이터 접근 최상위 예외)
+    ├── BadSqlGrammarException          (잘못된 SQL 문법)
+    ├── DataIntegrityViolationException  (제약조건 위반)
+    ├── DuplicateKeyException            (키 중복)
+    ├── DataAccessResourceFailureException (DB 연결/자원 실패)
+    ├── TransientDataAccessResourceException (일시적 자원 오류)
+    ├── DeadlockLoserDataAccessException (데드락)
+    └── CannotAcquireLockException       (락 획득 실패)
+```
 
 ## 스프링 예외 추상화
 

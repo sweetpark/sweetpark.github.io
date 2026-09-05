@@ -7,7 +7,10 @@ modified: 2026-09-05
 
 # [JDBC #2] 순수 JDBC 이해하기
 
-![](https://blog.kakaocdn.net/dna/ExwC4/btsNK3BPzqg/AAAAAAAAAAAAAAAAAAAAAN1REQUTzJHxwcGFjgTNNIkWZtTZUVqS7wIjobFsSVZ_/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=u8IwVBT4TdjbndXyrNyZ%2FNeZfv0%3D)
+```text
+[Java Application] --(URL, USERNAME, PASSWORD)--> [DriverManager] --> [Connection] --> [DB]
+```
+DriverManager에 접속 정보(URL, 계정)를 넘기면 매번 새로운 Connection을 생성해 DB와 연결한다. (커넥션 풀 없이 요청마다 연결/해제)
 
 ## DB와 연결하기
 
@@ -27,7 +30,7 @@ DriverManager의 경우, 간단하거나 순수 JDBC를 연습할때는 사용�
 
 ## DriverManger 사용법
 
-```cpp
+```java
 public DBUtil{
 //...
 public static Connection getConnection(){
@@ -48,7 +51,7 @@ public static Connection getConnection(){
 1. Connection : DB연결을 위한 자바 인터페이스  
 2. PreparedStatement  : sql 구문 정의  
 3. ResultSet  : DB 결과 응답 값 저장
-```cpp
+```java
 Connection con = null; // DB 연결
     PreparedStatement pstmt = null; // SQL 구문 
     ResultSet rs = null; // 결과값
@@ -96,7 +99,7 @@ finally{
 
 ## JDBC 예제
 
-```cpp
+```java
 public void save(Member member) throws SQLException{
     try{
         con = DBConnectionUtil.getConnection();
@@ -126,7 +129,7 @@ public List<Member> findAll() throws SQLException{
             Member member = new Member();
             member.setName(rs.getString("name"));
             member.setAge(rs.getInt("age"));
-            member.setAddr(rs.getString("age"));
+            member.setAddr(rs.getString("addr"));
             result.add(member);
         }
 

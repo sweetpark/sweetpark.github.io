@@ -9,7 +9,23 @@ modified: 2026-09-05
 
 ## 예외 계층
 
-![](https://blog.kakaocdn.net/dna/cbf8o9/btsKzeFOQrE/AAAAAAAAAAAAAAAAAAAAAJ-XM8svDn3Q45EDsE9ecYfUWrWmnUCVETZ6s0_GgZmX/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=VNRdNtSjWLFRsAvbcilibNRGlv8%3D)
+```text
+Object
+ └── Throwable
+       ├── Error                    (시스템 레벨 심각한 오류, 처리 대상 아님)
+       │      ex) OutOfMemoryError, StackOverflowError
+       │
+       └── Exception                (Checked 예외 - RuntimeException 제외 전부)
+              ├── IOException
+              ├── SQLException
+              ├── ...
+              │
+              └── RuntimeException  (UnChecked 예외)
+                     ├── NullPointerException
+                     ├── IllegalArgumentException
+                     ├── IndexOutOfBoundsException
+                     └── ...
+```
 
 1. 예외계층은 최상위 계층의 Object 하위에 속한다  
 2. Exception과 Error로 나뉘게 되는데, 흔히 말하는 예외는 Exception을 말한다  
@@ -88,7 +104,20 @@ try{
 
 ## UnChecked 예외 사용하기
 
-![](https://blog.kakaocdn.net/dna/1WGG8/btsKy0AYOVT/AAAAAAAAAAAAAAAAAAAAAImHJsHLGJdoWRjAr8vV-tH9Fos0RqA3XBLnrnyezPtg/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=farqx%2BLCyKoLsrpvjSV85iToXA0%3D)
+```text
+[ Checked 예외를 그대로 던질 경우 ]
+
+Controller  --- throws SQLException --->  Service  --- throws SQLException --->  Repository
+   (모든 계층에 SQLException을 알고 있어야 함, 즉 throws 명시 필요)
+
+
+[ UnChecked 예외로 변환해서 던질 경우 ]
+
+Controller  <-----------------------  Service  <-----------------------  Repository
+  (throws 선언 불필요)                 (throws 선언 불필요)          catch(SQLException e) {
+                                                                        throw new RuntimeException(e);
+                                                                    }
+```
 
 *   위 그림을 보면, checked예외의 경우 throws를 통해 Controller, Service구간에도 명시를 해줘야한다
     *   단점1) 만약 Checked예외가 바뀌게 된다면,  모든 소스코드에서 수정이 이루어져야하는 번거로움이 존재

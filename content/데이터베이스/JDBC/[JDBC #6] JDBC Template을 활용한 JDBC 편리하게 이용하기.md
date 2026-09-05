@@ -19,7 +19,7 @@ JdbcTemplate은 SQL 실행, 파라미터 바인딩, 예외 처리, 리소스 정
 
 1) DataSource 주입 방법
 
-```cpp
+```java
 public class Test {
     private final JdbcTemplate template;
 
@@ -31,7 +31,7 @@ public class Test {
 
 2) @Autowired 사용
 
-```cpp
+```java
 @Component
 public class JDBCTemplateRepo {
     @Autowired
@@ -46,7 +46,7 @@ public class JDBCTemplateRepo {
 ## _데이터 삽입, 수정, 삭제 (update 메서드 사용)_
 
 **update() 메서드**는 INSERT, UPDATE, DELETE와 같이 반환값이 필요 없는 SQL문을 실행할 때 사용한다.
-```cpp
+```java
 public void save(Member member) {
     jdbcTemplate.update("INSERT INTO MEMBER(name, age, addr) VALUES (?, ?, ?)",
         member.getName(),
@@ -64,7 +64,7 @@ public void delete(String name) {
 ## _데이터 조회 (query, queryForObject)_
 
 조회 시에는 **RowMapper**를 사용하여 결과를 객체로 매핑해야 한다.
-```cpp
+```java
 public List<Member> findAll() {
     return jdbcTemplate.query("SELECT * FROM MEMBER", memberRowMapper());
 }
@@ -92,7 +92,7 @@ private RowMapper<Member> memberRowMapper() {
 ## _NamedParameterJdbcTemplate 사용법_
 
 이름 기반의 파라미터를 사용할 수 있어 가독성이 좋고 **파라미터 순서 실수를 방지**할 수 있다
-```cpp
+```java
 public void namedSave(Member member) {
     Map<String, Object> param = new HashMap<>();
     param.put("name", member.getName());

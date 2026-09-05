@@ -47,7 +47,16 @@ WantedBy=multi-user.target
 
 ## GCP 포트열기
 
-![](https://blog.kakaocdn.net/dna/dzFek0/btsKwxsiSbY/AAAAAAAAAAAAAAAAAAAAAIgFBeXh9XX2Ep0psYO3t9OMHrrwAa5dqfkX78D-YwA4/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=QVhpR4f7xfQg1ou%2BJa9oZF0U8Io%3D)
+GCP 콘솔의 VPC 네트워크 > 방화벽 규칙에서 아래와 같이 8080 포트를 여는 규칙을 추가한다.
+
+| 항목 | 값 |
+| --- | --- |
+| 이름 | springboot-allow-8080 |
+| 트래픽 방향 | 인그레스 (Ingress) |
+| 일치 시 작업 | 허용 |
+| 대상 | 네트워크의 모든 인스턴스 |
+| 소스 IP 범위 | 0.0.0.0/0 |
+| 프로토콜 및 포트 | TCP: 8080 |
 
 *   [서버외부ip]:8080 접속 확인
 

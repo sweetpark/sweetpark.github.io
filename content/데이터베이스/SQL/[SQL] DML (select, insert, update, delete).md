@@ -39,7 +39,15 @@ Select [컬럼],[컬럼2]... from [테이블명];
 *참고) [컬럼]을 대신해서 "*"으로 사용할경우, 모든 컬럼을 의미  
 ex) select * from member;
 
-![](https://blog.kakaocdn.net/dna/EZcSH/btsKbUHYWmW/AAAAAAAAAAAAAAAAAAAAAKHObIc86N7EU1rwZbtyCS7LV8atzrI1B5RFaoRSkbF8/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=ErLoRrqOPxP2xub7wshQHqZ5k7w%3D)
+예시 테이블 `member` (id, money):
+
+| id | money |
+| --- | --- |
+| 1 | 1000 |
+| 2 | 2000 |
+| 3 | 1500 |
+
+실행 결과: 위와 같이 `member` 테이블의 모든 컬럼과 행이 조회됨.
 
 ## INSERT
 
@@ -53,7 +61,13 @@ Insert Into [테이블명]( [필드이름1], [필드이름2], ...) Values ( [데
 *참고) 필드이름의 경우 생략될 수 있다 ( 순서대로 Values가 적용됨 )  
 insert into member values(1, 1000);
 
-![](https://blog.kakaocdn.net/dna/c0QRWL/btsKcWrowtN/AAAAAAAAAAAAAAAAAAAAALLoYB9CCIHubCwMjVN_ixv9wL_uSkmL9oWdzRFLL9i6/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=eSyEhCpc73G0CSyuRzLOTRFKcEw%3D)
+실행 결과 (`member` 테이블에 (id=1, money=1000) 행이 새로 추가됨):
+
+| id | money |
+| --- | --- |
+| 2 | 2000 |
+| 3 | 1500 |
+| 1 | 1000 |
 
 ## UPDATE
 
@@ -66,7 +80,15 @@ Update [ 테이블명 ] set [열] = [변경할값] where [조건]
   
 *참고) 조건이 없는 경우, 테이블에 있는 전체 열을 전부 수정
 
-![](https://blog.kakaocdn.net/dna/oTzLK/btsKcZnYGbY/AAAAAAAAAAAAAAAAAAAAAErIESo1QGzRgITHFntinq1KoJqP-IKyO33NMiE31oJZ/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=UKSapidDT%2FN4mGEyz%2FOzV%2FRndSs%3D)
+ex) update member set money = 5000 where id = 1;
+
+실행 결과 (id가 1인 행의 money만 변경됨):
+
+| id | money |
+| --- | --- |
+| 1 | 5000 |
+| 2 | 2000 |
+| 3 | 1500 |
 
 ## DELETE
 
@@ -79,6 +101,13 @@ delete from [테이블명] where [조건]
   
 *참고) where 조건절이 없을 경우, 해당 테이블 모든 데이터 삭제
 
-![](https://blog.kakaocdn.net/dna/daxk2u/btsKb6akP0m/AAAAAAAAAAAAAAAAAAAAABcT9ALcK4wEmvEJj1cxG3S82NwkkV-LA_zwcFfMfIjv/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=7r2FHXRUWn45tyfL85MvE3BIQ7o%3D)
+ex) delete from member where id = 1;
+
+실행 결과 (id가 1인 행이 삭제되고 남은 데이터):
+
+| id | money |
+| --- | --- |
+| 2 | 2000 |
+| 3 | 1500 |
 
 > 원문: https://gradualprecision.tistory.com/121

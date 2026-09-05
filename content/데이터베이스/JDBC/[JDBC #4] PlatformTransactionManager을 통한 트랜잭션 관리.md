@@ -9,7 +9,16 @@ modified: 2026-09-05
 
 ## 애플리케이션 구조
 
-![](https://blog.kakaocdn.net/dna/bXujQG/btsKybWvzjA/AAAAAAAAAAAAAAAAAAAAAANpe-6vmix2Ni9V1nx029rLKxKcxjLb8Fzhj2e6kAqS/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=4DiN6DkZ23KFDz8C4tR8TZGV2vQ%3D)
+```text
+[Controller]  프레젠테이션 계층
+     │
+     ▼
+[Service]     서비스 계층 (트랜잭션 제어)
+     │
+     ▼
+[Repository]  데이터 접근 계층 (실제 DB 접근/SQL 실행)
+```
+(이미지는 아래 텍스트와 동일한 내용의 도식이라 텍스트로 대체함)
 
 프레젠테이션 계층 (Controller)  
 └─ UI와 요청 응답 처리, 사용자 요청 검증  
@@ -24,7 +33,7 @@ modified: 2026-09-05
 
 ## 순수 JDBC 트랜잭션 문제점
 
-```cpp
+```java
 public void func(String param1, String param2, int param3) throws SQLException {
     Connection con = dataSource.getConnection();
     try {
@@ -51,7 +60,15 @@ public void func(String param1, String param2, int param3) throws SQLException {
 
 ## 트랜잭션 관리 인터페이스
 
-![](https://blog.kakaocdn.net/dna/cnhlvk/btsKxXjXq1e/AAAAAAAAAAAAAAAAAAAAAKYWB37pZo762dNoQ2GAMVVgDdl7-SGgM4mCwD27_xhg/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=B1ddzrK5sXeOAFi%2BRPNISltqsts%3D)
+```text
+        interface PlatformTransactionManager
+       (getTransaction / commit / rollback)
+                    ▲   ▲   ▲
+                    │   │   │ (구현)
+   DataSourceTransactionManager  JpaTransactionManager  HibernateTransactionManager
+           (JDBC)                     (JPA)                  (Hibernate)
+```
+Service 계층은 구체적인 구현체가 아닌 PlatformTransactionManager 인터페이스에만 의존하므로, 기술(JDBC ↔ JPA 등)이 바뀌어도 비즈니스 로직 코드는 그대로 유지할 수 있다.
 
 대표 구현체 )
 
@@ -61,7 +78,7 @@ public void func(String param1, String param2, int param3) throws SQLException {
 
 핵심 인터페이스 구조 )
 
-```cpp
+```java
 public interface PlatformTransactionManager {
     TransactionStatus getTransaction(TransactionDefinition definition);
     void commit(TransactionStatus status);
@@ -81,7 +98,22 @@ Spring에서는 트랜잭션 경계를 지정하면 내부적으로 TransactionS
 2.  레포지토리 계층에서 DataSourceUtils.getConnection()을 통해 동일 커넥션 획득
 3.  서비스 계층에서 트랜잭션 커밋/롤백 처리 후 커넥션 해제
 
-![](https://blog.kakaocdn.net/dna/dZxu2r/btsKwZv1uys/AAAAAAAAAAAAAAAAAAAAAOffywygGwMYLBr-tHvWeFsmYpnjp4KjNvruQSfr4H0g/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=%2F2wrSHYKQDrs%2FIA6VhsVFY7aYKQ%3D)
+```text
+[Service]
+   │ 1. transactionManager.getTransaction()
+   ▼
+[TransactionSynchronizationManager]  (ThreadLocal)
+   │ Connection 저장 ─────────────┐
+   ▼                              │
+[Repository]                      │
+   │ 2. DataSourceUtils.getConnection()
+   │    (ThreadLocal에서 동일 Connection 조회) ◄──┘
+   ▼
+[동일 Connection으로 SQL 실행]
+   │
+   ▼
+[Service] 3. transactionManager.commit()/rollback() → ThreadLocal에서 Connection 제거 및 해제
+```
 
 * * *
 
@@ -91,7 +123,7 @@ Spring에서는 트랜잭션 경계를 지정하면 내부적으로 TransactionS
     *   DataSource 인터페이스로 커넥션 연결 (DataSourceUtils.getConnection() 사용)
     *   **트랜잭션 계층까지 Connection이 연결되어야하기에, Connection close처리 지연( DataSourceUtils.releaseConnection(con, dataSource); )**
 
-```cpp
+```java
 public class TxDataSourceRepo {
 
     @Autowired
@@ -101,7 +133,7 @@ public class TxDataSourceRepo {
 
         try{
             con = DataSourceUtils.getConnection(dataSource);
-            pstmt = con.prepareStatement("IINSERT INTO MEMBER(name, age, addr) VALUES (?, ?, ?)");
+            pstmt = con.prepareStatement("INSERT INTO MEMBER(name, age, addr) VALUES (?, ?, ?)");
             pstmt.setString(1, member.getName());
             pstmt.setInt(2, member.getAge());
             pstmt.setString(3, member.getAddr());
@@ -140,7 +172,7 @@ public class TxDataSourceRepo {
     *   **transactionManager의 구현체를 Bean으로 설정했으면 그에 맞게 트랜잭션 처리 진행 (안되어있으면, Spring이 판단하여 구현체를 삽입 - @Autowired 사용시)**
     *   **try ~ catch문을 이용한, commit() / rollback() 수행**
 
-```cpp
+```java
 public void txDataSourceSaveAfterDelete(Map<String, Object> params) throws Exception {
     TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
     try {
@@ -162,7 +194,7 @@ public void txDataSourceSaveAfterDelete(Map<String, Object> params) throws Excep
 
 *   참고) DataSourceTransactionManager 빈 등록
 
-```cpp
+```java
 @Configuration
 public static class Config{
     @Autowired
@@ -189,6 +221,18 @@ public static class Config{
 | PlatformTransactionManager | 트랜잭션을 시작/커밋/롤백하는 추상화된 인터페이스 |
 | TransactionSynchronizationManager | ThreadLocal 기반 커넥션 동기화 관리 |
 
-![](https://blog.kakaocdn.net/dna/baEhNu/btsKxJzddsg/AAAAAAAAAAAAAAAAAAAAAOcHyH8STu24b2SRFheDakWs-BLLNLbVHzYH9BIptKjP/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=PPUujzBM8Y65BXmJ1AoVWfnSP%2FI%3D)
+```text
+[Controller] -> [Service] -> transactionManager.getTransaction()
+                                     │
+                             DataSource.getConnection()
+                                     │
+                    TransactionSynchronizationManager (ThreadLocal 저장)
+                                     │
+                              [Repository] -> DataSourceUtils.getConnection() (동일 커넥션 재사용)
+                                     │
+                    Service: transactionManager.commit()/rollback()
+                                     │
+                             DataSourceUtils.releaseConnection()
+```
 
 > 원문: https://gradualprecision.tistory.com/169

@@ -7,7 +7,18 @@ modified: 2026-09-05
 
 # [게임서버프로그래밍#7] 네트워크 기본 통신 정리 (TCP/UDP, NAT, 네트워크 품질)
 
-![](https://blog.kakaocdn.net/dna/lFsFm/btsNDmabDto/AAAAAAAAAAAAAAAAAAAAABpuLdNvVc1V8jfKhAlRUGNIqz5vHsdliRAQj5vqYmqI/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=P1oxwGgW1MhdBw7CQp5DIRYLsDI%3D)
+```text
+사설망(내부)                       공인망(외부)
++------------------+
+| PC 192.168.0.2   |----+
++------------------+    |        +--------------+
++------------------+    +------->|   NAT 라우터  |------> Internet
+| PC 192.168.0.3   |----+        | (공인 IP 1개) |
++------------------+             +--------------+
+   여러 대의 사설 IP가 하나의 공인 IP로 변환되어 통신
+   (응답 패킷은 포트 매핑 정보를 보고 원래 기기로 다시 전달)
+```
+
 
 이 글에서는 네트워크 통신의 기본 개념을 정리한다.  
 레이턴시, 패킷 유실률, 전송 속도와 같은 품질 지표부터, TCP/UDP 통신 방식 차이, NAT(Network Address Translation)의 개념까지 실제 사례를 통해 살펴본다.

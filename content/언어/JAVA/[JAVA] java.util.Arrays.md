@@ -62,8 +62,8 @@ int [] arr = {1,2,3,4,5};
 // newArr = {1,2,3,4,5}
 int[] newArr = Arrays.copyOf(arr, arr.length);
 
-// newRangeArr = {3,4,5} 인덱스 2부터 4까지 복사
-int[] newRangeArr = Arrays.copyOf(arr, 2, 5);
+// newRangeArr = {3,4,5} 인덱스 2부터 4까지(끝 인덱스 미포함) 복사
+int[] newRangeArr = Arrays.copyOfRange(arr, 2, 5);
 ```
 
 *   toString()

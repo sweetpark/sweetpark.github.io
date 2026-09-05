@@ -7,7 +7,20 @@ modified: 2026-09-05
 
 # [게임서버프로그래밍#3] Overlapped I/O
 
-![](https://blog.kakaocdn.net/dna/cyKDHn/btsNDQBPzab/AAAAAAAAAAAAAAAAAAAAADaJr7b2HncCY7Tj7OVquJ3mVdjOW5REkXhEd_RaKh7t/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=b5aXQY57AzQRtFrG%2F1EM5HHSVls%3D)
+```text
+[기존 비동기 방식]                    [Overlapped I/O]
+
+App --send()--> (재시도 반복) -->OS   App --WSASend()--> OS
+     실패해도 계속 호출 (CPU 낭비)          |  I/O를 OS에 위임하고
+                                          |  즉시 리턴, 다른 작업 수행
+                                          v
+                                     작업 완료 시 OS가 알림
+                                     (이벤트 객체 or 콜백)
+                                          |
+                                          v
+                              WSAGetOverlappedResult()로 결과 확인
+```
+
 
 이 글에서는 Windows 환경에서 고성능 네트워크 통신을 위해 사용되는  
 Overlapped I/O를 설명한다.  

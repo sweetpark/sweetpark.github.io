@@ -27,7 +27,18 @@ modified: 2026-09-05
 
 ## Front-Controller 도식화
 
-![](https://blog.kakaocdn.net/dna/dyfaEm/btsJj0oce0H/AAAAAAAAAAAAAAAAAAAAAGLhFm5Q1rHbrpvxCtxRuvQVA81sK7YZ9acIwiT3x6K7/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=te6129el9gY1iQ%2FObOrgXIBtiJA%3D)
+```text
+Client
+  └─▶ FrontControllerServlet.service(request, response)
+        └─▶ controllerMap.get(requestURI)      // URL -> Controller 매핑
+        └─▶ createParamMap(request)             // request 파라미터 -> Map<String,String>
+        └─▶ controller.process(paramMap)        // 실제 비즈니스 로직 실행
+              반환값: ModelView (viewName + model 데이터)
+        └─▶ viewResolver(mv.getViewName())      // 논리 뷰 이름 -> MyView 객체
+        └─▶ view.render(mv.getModel(), request, response)
+              └─▶ modelToRequestAttribute(model, request)  // model -> request.setAttribute
+              └─▶ dispatcher.forward(request, response)    // JSP로 포워딩
+```
 
 ## Model  생성
 

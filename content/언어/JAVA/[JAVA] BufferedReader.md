@@ -23,17 +23,17 @@ modified: 2026-09-05
 
 ## 예제
 
-bufferedReader의 경우 Reader객체와 함께 사용됨  
+BufferedReader는 Reader 객체와 함께 사용됨  
 ( Reader 객체 : **FileReader, InputStreamReader** 등 )
 ```java
 public class Test{
      public static void main(String[] args) throws Exception{
          
-         BufferedReader buffer = new BufferedReader( new InputStreamReader(System.in) );
+         BufferedReader buf = new BufferedReader( new InputStreamReader(System.in) );
          //...
          
          
-         buf.close() // 사용후에는 리소스를 잡으므로, close() 해줘야함
+         buf.close(); // 사용 후에는 리소스를 잡고 있으므로, close() 해줘야함
      }
 }
 ```

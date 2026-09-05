@@ -136,6 +136,6 @@ protected HandlerExecutionChain getHandler(HttpServletRequest request) throws Ex
 ## 정리
 
 *   Client의 Request의 첫번째 요청에 따른 처리 과정을 Handler Mapping 까지 진행해보았다
-*   Disaptcher의 경우 전반적인 제어를 담당하기에, handler Adapter를 통해 컨트롤러를 호출하고 처리하는 과정을 다음 포스팅을 통해 정리해보도록 하겠다.
+*   Dispatcher는 전반적인 제어를 담당하며, handler Adapter를 통해 컨트롤러를 호출하고 처리하는 과정은 다음 문서에서 다룬다.
 
 > 원문: https://gradualprecision.tistory.com/79

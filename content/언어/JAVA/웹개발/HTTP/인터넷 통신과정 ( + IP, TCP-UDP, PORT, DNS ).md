@@ -9,14 +9,21 @@ modified: 2026-09-05
 
 ## 네트워크 과정
 
-![](https://blog.kakaocdn.net/dna/7Sn2J/btsJcUWCIxY/AAAAAAAAAAAAAAAAAAAAAH7dNQNmvx3BCrsLOoDZphi8ZEaSOyt5P2I8OdIarhSP/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=KouAfUQJYbZGb1j5JWb8ImYqEo4%3D)
+```text
+[ 컴퓨터 A ]  ─────  네트워크(인터넷)  ─────  [ 컴퓨터 B ]
+   (송신)         수많은 라우터/스위치 경유         (수신)
+```
 
 *   컴퓨터 A와 B는 네트워크라는 공간을 통해 서로의 데이터를 주고 받게 된다.
 *   컴퓨터는 많이 보급되어 있기에 누구가 누군것인지를 특정할 필요가 있다
 
 ## 네트워크에서 구분하는 방법
 
-![](https://blog.kakaocdn.net/dna/4dzgl/btsJc4EXzPP/AAAAAAAAAAAAAAAAAAAAAII3ibHfWCrC2moYIzs66BvcutvgCzfLv6hY3gS4jXuU/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=A9GfktlHUaAGpd%2FRJZr%2B9iW9yv8%3D)
+```text
+[ 컴퓨터 A ]              [ 컴퓨터 B ]
+ IP: 100.100.1.1  ───▶   IP: 200.200.2.2
+   (출발지 주소)            (도착지 주소)
+```
 
 *   해당 컴퓨터는 IP라는 네트워크 주소를 가지고 있게 된다.
 *   해당 주소를 통해 서로에게 올바르게 원하는 데이터를 주고받게 된다.
@@ -30,7 +37,16 @@ modified: 2026-09-05
         *   Destination Address
 *   데이터와 함께 아래 "헤더"가 같이 보내지게 되고, 받는 쪽에서 이 부분을 보고 자기 것인지 확인 후 데이터를 얻게 된다.
 
-![](https://blog.kakaocdn.net/dna/dyHe6P/btsJcNDyT4r/AAAAAAAAAAAAAAAAAAAAAEqZPIZ8KSIaucNSx9Ge-LOgNygiqyBeyefB8IH141za/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=%2BDJnNo%2FJ31OL5KGYTj0NEUU1hUA%3D)
+| IP 헤더 필드 | 설명 |
+| --- | --- |
+| Version | IP 버전 (IPv4 / IPv6) |
+| Header Length | 헤더 길이 |
+| Total Length | 전체 패킷 길이 |
+| TTL (Time To Live) | 패킷 생존 시간(홉 수 제한) |
+| Protocol | 상위 프로토콜 종류 (TCP/UDP 등) |
+| **Source Address** | 출발지 IP 주소 (중요) |
+| **Destination Address** | 목적지 IP 주소 (중요) |
+| Data | 실제 전송할 데이터 |
 
 IP 헤더 정보
 
@@ -47,7 +63,15 @@ IP 헤더 정보
         *   이미 IP 헤더로서 상대방 컴퓨터의 정보는 어느정도 알았기에, 세부 주소를 알기 위해서 port 사용
             *   ex) IP 정보 : 아파트 / PORT 정보 : 호수
 
-![](https://blog.kakaocdn.net/dna/obpzG/btsJcMScCAo/AAAAAAAAAAAAAAAAAAAAAGANgEFLgAlHW3uDzI7SgmG8noOc3193A13KN6t8KgA0/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=82Zhlk93oaxN%2F%2BiHUcm2QGDYwFI%3D)
+| TCP 헤더 필드 | 설명 |
+| --- | --- |
+| **Source Port** | 출발지 포트 번호 (중요) |
+| **Destination Port** | 목적지 포트 번호 (중요) |
+| Sequence Number | 전송하는 데이터의 순서 번호 |
+| Acknowledgment Number | 수신 확인 응답 번호 |
+| Flags (SYN/ACK/FIN 등) | 연결 제어 플래그 |
+| Window Size | 수신 가능한 데이터 크기 |
+| Checksum | 오류 검출용 체크섬 |
 
 TCP 헤더
 
@@ -61,7 +85,12 @@ TCP 헤더
     *   컴퓨터A가 연결 요청을 하면, B가 허락을 하고 , A가 허락한 것을 알았다를 보내고 연결시작 과정을 마무리한다
     *   총 3번 왔다갔다 한다해서 "3-way-handshake"이다.
 
-![](https://blog.kakaocdn.net/dna/dDJ4sy/btsJdqVdIz2/AAAAAAAAAAAAAAAAAAAAANP8awo3DEl6-Um_2ONp2LilTyVg9XIlCgeWZGoJowI9/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=dI6Ls468h%2B0RtXx8o72MIrt2VP4%3D)
+```text
+컴퓨터 A (Client)                     컴퓨터 B (Server)
+       │──────── ① SYN ─────────────▶│   "연결 요청"
+       │◀─────── ② SYN + ACK ────────│   "요청 수락 + 확인 요청"
+       │──────── ③ ACK ─────────────▶│   "확인 응답, 연결 성립"
+```
 
 3-Way-Handshake
 
@@ -71,7 +100,14 @@ TCP 헤더
 *   빠른 전송을 위해 연결 지향적이지 않은 채로 데이터를 보내게된다 ( IP만을 이용한 전송과 유사 )
 *   신뢰성은 없어도 빠른 데이터 제공을 위해 사용할 때가 있다.
 
-![](https://blog.kakaocdn.net/dna/ba6hnM/btsJc2tKCCw/AAAAAAAAAAAAAAAAAAAAAOuWXYsR6D9UemxuoeYHplx0SbsD9kO5WEQXv3B0FY94/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=MsYUjGOzUR3goS3GLwcqsCq26vs%3D)
+| UDP 헤더 필드 | 설명 |
+| --- | --- |
+| Source Port | 출발지 포트 번호 |
+| Destination Port | 목적지 포트 번호 |
+| Length | 헤더 + 데이터의 전체 길이 |
+| Checksum | 오류 검출용 체크섬 |
+
+*   TCP 헤더에 비해 필드 수가 적어 구조가 훨씬 단순함 (연결 확인/재전송 관련 필드 없음)
 
 UDP 헤더
 
@@ -102,7 +138,16 @@ UDP 헤더
     *   직접 IP를 검색하지 않더라도, domain 명을 통해서 쉽게 검색 가능
     *   ex) www.naver.com
 
-![](https://blog.kakaocdn.net/dna/bjJC1D/btsJdeALiHD/AAAAAAAAAAAAAAAAAAAAAMSKdFXLLyx31-v4g-XwLw-KsanVukeJUv8ZJL_JyYik/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=DZ3cdflOK9ahEPRfutUj%2FeFgH%2BE%3D)
+```text
+$ nslookup www.naver.com
+
+서버:    (DNS 서버 주소)
+Address: (DNS 서버 IP)
+
+Non-authoritative answer:
+이름:    www.naver.com
+Address: 223.130.xxx.xxx   <- domain 명이 실제 IP 주소로 변환되어 반환됨
+```
 
 nslookup 명령어 사용 결과
 

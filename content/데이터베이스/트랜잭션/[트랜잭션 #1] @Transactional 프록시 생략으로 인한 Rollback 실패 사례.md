@@ -9,14 +9,14 @@ modified: 2026-09-05
 
 트랜잭션(Transaction) 실패 경험을 통한 내용 정리  
   
-1.. 예외처리로인한 Transaction Proxy 실패  
+1. 예외 처리로 인한 Transaction Proxy 실패  
 2. self Call로 인한 @Transactional 실패
 
 ## _트랜잭션(Transaction) 개요_
 
 스프링 프레임워크에서 트랜잭션은 **ACID**(원자성·일관성·격리성·지속성) 규칙을 따르며,  
-하나의 처리 흐름이 모두 성공해야 커밋되고, 중간에 문제가 발생하면 전부 롤백되도록 보장  
-주로 @Transactional 애노테이션을 통해 스프링 AOP 프록시가 트랜잭션 경계를 관리
+하나의 처리 흐름이 모두 성공해야 커밋되고, 중간에 문제가 발생하면 전부 롤백되도록 보장한다.  
+주로 @Transactional 애노테이션을 통해 스프링 AOP 프록시가 트랜잭션 경계를 관리한다.
 
 *   **원자성(Atomicity)**: 작업 전체가 성공하거나, 하나라도 실패하면 모두 롤백
 *   **일관성(Consistency)**: 트랜잭션 전후에 데이터베이스 일관성이 유지
@@ -39,13 +39,13 @@ public void someMethod() { … }
 
 **2. 트랜잭션 매니저**
 
-*   스프링 환경에서는 PlatformTransactionManager(txManager)가 내부적으로 트랜잭션 경계를 관리합니다.
-*   직접 트랜잭션을 제어하려면, **TransactionAspectSupport.currentTransactionStatus().setRollbackOnly()** 등을 활용할 수 있습니다. **(직접 롤백 요청)**
+*   스프링 환경에서는 PlatformTransactionManager(txManager)가 내부적으로 트랜잭션 경계를 관리한다.
+*   직접 트랜잭션을 제어하려면 **TransactionAspectSupport.currentTransactionStatus().setRollbackOnly()** 등을 활용할 수 있다. **(직접 롤백 요청)**
 
 **3. 예외 처리 시 주의사항**
 
-*   **메서드 내에서 try–catch로 예외를 모두 처리해 버리면, 트랜잭션 프록시가 예외를 인지하지 못해 Commit이 진행**
-    *    ****catch 블록에서 정상화를 진행하게 될경우, TransactionAspectSupport를 이용해 직접 롤백을 지정 )****
+*   **메서드 내에서 try–catch로 예외를 모두 처리해 버리면, 트랜잭션 프록시가 예외를 인지하지 못해 Commit이 진행된다.**
+    *   **catch 블록에서 정상화를 진행할 경우, TransactionAspectSupport를 이용해 직접 롤백을 지정해야 한다.**
 
 *   **자기 호출(self-invocation)을 할 경우, 메서드를 직접 호출하게 되어 AOP 프록시가 작동하지 않으므로 @Transactional이 적용되지 않음**
 
@@ -73,7 +73,7 @@ public Map<String,Object> run() {
 }
 ```
 
-*   **문제**: catch 블록에서 예외를 잡아 버리면, **실제로는 Commit 진행**
+*   **문제**: catch 블록에서 예외를 잡아 버리면, **실제로는 Commit이 진행된다**
 *   **해결**:
     *   방법1) TransactionAspectSupport.currentTransactionStatus().setRollbackOnly() 호출
     *   방법2) 예외를 다시 던져서(AOP 프록시가 인지하도록) 자동 롤백 유도
@@ -153,7 +153,7 @@ public class MyService {
     *   방법1 ) 외부에서 호출되도록 구조를 변경
     *   방법 2) ApplicationContext에서 자기 자신 빈을 주입 받아 호출
 
-**4. MethodUtil.inboke()와 같은 외부 유틸리티를 통한 Method() 직접 호출**
+**4. MethodUtil.invoke()와 같은 외부 유틸리티를 통한 Method() 직접 호출**
 
 ```java
 public class MethodUtil {
@@ -184,7 +184,7 @@ public void invokeFromContext() throws Exception {
 }
 ```
 
-*   **문제**: Spring은 **프록시 기반 AOP**를 사용합니다. 따라서 외부 유틸리티(예: MethodUtil)를 통해 리플렉션으로 메서드를 직접 호출하면, 해당 호출은 **프록시 객체를 경유하지 않고 실제 객체 인스턴스의 메서드를 직접 실행**하게 된다. 이는 Spring 컨테이너가 제공하는 @Transactional, @Cacheable, @Async 등의 AOP 기능이 **작동하지 않게 되는 원인**이 됩니다. 다시 말해, **스프링의 프록시 관리를 벗어난 직접 호출**은 AOP 적용 대상에서 제외된다
+*   **문제**: Spring은 **프록시 기반 AOP**를 사용한다. 따라서 외부 유틸리티(예: MethodUtil)를 통해 리플렉션으로 메서드를 직접 호출하면, 해당 호출은 **프록시 객체를 경유하지 않고 실제 객체 인스턴스의 메서드를 직접 실행**하게 된다. 이는 Spring 컨테이너가 제공하는 @Transactional, @Cacheable, @Async 등의 AOP 기능이 **작동하지 않게 되는 원인**이 된다. 다시 말해, **스프링의 프록시 관리를 벗어난 직접 호출**은 AOP 적용 대상에서 제외된다.
 *   **해결**:
     *   방법1 ) **AOP 프록시 객체를 이용한 리플렉션 호출**  
         → 실제 빈이 아닌 **스프링 컨테이너에 등록된 프록시 객체를 이용해서 invoke**

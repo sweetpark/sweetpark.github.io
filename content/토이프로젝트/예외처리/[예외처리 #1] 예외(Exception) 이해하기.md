@@ -7,9 +7,6 @@ modified: 2026-09-05
 
 # [예외처리 #1] 예외(Exception) 이해하기
 
-머릿속에 있는 개념을 정리하는 블로그 글입니다. (개인적인 주관이 포함되어있습니다.)  
-개념 정보가 정확하지 않을 수 있으므로, 참고만 부탁드립니다.
-
 ## 예외(Exception)가 왜 필요할까?
 
 ( 개인적인 경험 )  
@@ -47,7 +44,7 @@ modified: 2026-09-05
 
 ## 예외의 종류
 
-예외에 대해서 아는것만 토대로 말하자면, RuntimeException, IllegalargumentException, NullPointerException, ClassNotFoundException, InterruptedException 등등... 많은 예외들이 존재하고 이것들을 전부다 외우는 건 불가능에 가깝다고 생각이 든다.. (글쓴이 기준..)  
+예외에 대해서 아는것만 토대로 말하자면, RuntimeException, IllegalArgumentException, NullPointerException, ClassNotFoundException, InterruptedException 등등... 많은 예외들이 존재하고 이것들을 전부다 외우는 건 불가능에 가깝다고 생각이 든다.. (글쓴이 기준..)  
   
 Java에서는 다양한 예외가 존재하며, 모든 예외를 전부 외우는 것은 사실상 불가능하다. 하지만 예외를 분류별로 이해하고 있으면, 필요할 때 적절하게 활용할 수 있다. 이에 따라 예외를 정리해보고자 한다.  
   
@@ -86,7 +83,21 @@ Java에서는 다양한 예외가 존재하며, 모든 예외를 전부 외우�
 
 ## 예외 상속 관계
 
-![](https://blog.kakaocdn.net/dna/TRfCn/btsMJGAH4FM/AAAAAAAAAAAAAAAAAAAAAHNxyyxZNONjDbJugNtsDD5vrqwzewvaWx3S_DVe6xlA/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=%2FBP993Z1141cZVgfasFS2PUUwb8%3D)
+```text
+Throwable
+├── Error (시스템 레벨 오류, 복구 불가능)
+└── Exception
+    ├── Checked Exception (Exception 직접 상속)
+    │   ├── IOException
+    │   ├── SQLException
+    │   ├── ClassNotFoundException
+    │   └── InterruptedException
+    └── RuntimeException (Unchecked Exception)
+        ├── NullPointerException
+        ├── IllegalArgumentException
+        ├── ArrayIndexOutOfBoundsException
+        └── ArithmeticException
+```
 
 Java의 예외는 Exception 클래스를 기반으로 두 가지 유형, Checked Exception과 Unchecked Exception으로 나뉜다.  
   

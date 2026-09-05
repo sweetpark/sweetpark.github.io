@@ -7,7 +7,17 @@ modified: 2026-09-05
 
 # [Log #2] LogBack을 이용한 로그 설정
 
-![](https://blog.kakaocdn.net/dna/SEPsY/btsNEDbLtpb/AAAAAAAAAAAAAAAAAAAAAJkdA1dlBW_dH2D9SDjnH4NriSpkdlFKrv-D3_avA3yF/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=uGx774YdcCEWQ27njTG35yXvGmI%3D)
+```text
+[애플리케이션 코드] → Logger.info/debug/warn(...)
+                              │
+                              ▼
+                       logback-spring.xml
+                              │
+                ┌─────────────┼─────────────┐
+                ▼             ▼             ▼
+          ConsoleAppender  RollingFileAppender  (SMTP/DB Appender 등)
+           (콘솔 출력)      (파일 저장 + 롤링)      (선택적 확장)
+```
 
 # LogBack
 
@@ -16,10 +26,9 @@ modified: 2026-09-05
 
 ## **로그 출력 경로 제어**
 
-클래스 종류설명
-
-| ConsoleAppender | 콘솔에 출력 |
+| Appender 클래스 | 설명 |
 | --- | --- |
+| ConsoleAppender | 콘솔에 출력 |
 | FileAppender | 고정된 파일에 저장 |
 | RollingFileAppender | 시간/용량 기준으로 파일 분리 저장 |
 | SMTPAppender | 메일 전송용 |
@@ -27,8 +36,9 @@ modified: 2026-09-05
 
 ## **로그 Level정의**
 
-| OFF | 로그 기록 안 함 |
+| Level | 설명 |
 | --- | --- |
+| OFF | 로그 기록 안 함 |
 | FATAL | 시스템 치명적 오류 |
 | ERROR | 예상하지 못한 오류 |
 | WARN | 경고, 주의 필요 |
@@ -45,6 +55,8 @@ modified: 2026-09-05
 
 ## **로그 패턴 정책**
 
+| 패턴 | 설명 |
+| --- | --- |
 | %d{yyyy-MM-dd HH:mm:ss.SSS} | 로그 발생 시점의 날짜와 시간을 포맷에 맞춰 출력→ 2025-04-07 15:32:12.451 |
 | --- | --- |
 | %magenta(...) | 해당 내용(여기선 쓰레드)을 보라색으로 출력 (콘솔 색상 적용용) |
@@ -201,7 +213,17 @@ ex) JDBC 관련 로그 설정
 
 ## 로그파일 기록 현황
 
-![](https://blog.kakaocdn.net/dna/clFAx2/btsNr0Lfg6f/AAAAAAAAAAAAAAAAAAAAAC22jT1HWvvIybDa7hYdVZTuNquo8U3vgS9Dp54CCHlT/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=JtuSN6t7eWNByECbO8aHx%2BoE1u0%3D)
+설정한 `LOG_NAME_PATTERN`에 따라 `logs/` 디렉토리에 아래와 같이 시간·용량 기준으로 분리된 로그 파일들이 순차적으로 쌓이는 것을 확인할 수 있다.
+
+```text
+logs/
+├── application-2025-04-07-10.0.log
+├── application-2025-04-07-11.0.log
+├── application-2025-04-07-12.0.log
+└── application.log        (현재 기록 중인 로그 파일)
+```
+
+각 파일은 `maxFileSize`(10MB) 도달 시 새 파일로 분리되고, `totalSizeCap`(30MB) 초과 시 가장 오래된 파일부터 자동 삭제된다.
 
 ## *참고 자료*
 

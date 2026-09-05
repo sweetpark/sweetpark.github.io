@@ -118,17 +118,17 @@ public class MemberFormServlet extends HttpServlet{
     protected void service (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType("text/html");
-        response.setCharsetEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         
         PrintWriter w = response.getWriter();
-        w.write( "<!DOCTYPE html>\n" + "<html>\n" + "<head>\n" + "<meta charset="UTF-8">\n" + "</head>\n" + "<body>\n"
-        + "<form action = \" /servlet/members/save\" method=\"post\">\n"
+        w.write( "<!DOCTYPE html>\n" + "<html>\n" + "<head>\n" + "<meta charset=\"UTF-8\">\n" + "</head>\n" + "<body>\n"
+        + "<form action=\"/servlet/members/save\" method=\"post\">\n"
         + "username : <input type=\"text\" name=\"username\" /> \n"
         + " age : <input type=\"text\" name=\"age\" />\n"
-        + <button type =\"submit\"> 전송 </button>\n"
-        "</form>"
-        +"</body>"
-        +"</html>" );
+        + "<button type=\"submit\"> 전송 </button>\n"
+        + "</form>"
+        + "</body>"
+        + "</html>" );
     }
 }
 
@@ -150,16 +150,16 @@ public class MemberSaveServlet extends HttpServlet{
         response.setCharacterEncoding("utf-8");
         
         PrintWriter w = response.getWriter();
-        w.write("<html>\n" + "<head>\n" + "<meta charset = \"UTF-8"\>\n" + "</head>"
+        w.write("<html>\n" + "<head>\n" + "<meta charset=\"UTF-8\">\n" + "</head>"
         + "<body>\n" + "성공\n" 
-        +"<ul>\n" 
-        + " <li>id="+member.getId()+"</li?\n"
-        + " <li>id="+member.userName()+"</li?\n"
-        + " <li>id="+member.getAge()+"</li?\n"
+        + "<ul>\n" 
+        + " <li>id=" + member.getId() + "</li>\n"
+        + " <li>username=" + member.getUsername() + "</li>\n"
+        + " <li>age=" + member.getAge() + "</li>\n"
         + "</ul>\n"
         + "</body>"
-        " "</html>"
-        }
+        + "</html>" );
+    }
 }
 ```
 

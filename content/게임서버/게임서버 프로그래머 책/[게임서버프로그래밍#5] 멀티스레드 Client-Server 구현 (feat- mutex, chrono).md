@@ -7,7 +7,17 @@ modified: 2026-09-05
 
 # [게임서버프로그래밍#5] 멀티스레드 Client-Server 구현 (feat: mutex, chrono)
 
-![](https://blog.kakaocdn.net/dna/dXkCRz/btsNBEbQ7pj/AAAAAAAAAAAAAAAAAAAAAEVJvLNiuer0_HFyt-r88Hty9nE5Q1hpGxanfPc8lFxJ/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=AdsNunpwwIk%2B7XYrClTGbbYilPQ%3D)
+```text
+                    Server Process
+                +-----------------------+
+Client A -----> | Thread A: recv/send   |
+Client B -----> | Thread B: recv/send   |  --> 공유 자원 접근 시
+Client C -----> | Thread C: recv/send   |      mutex.lock() / unlock()
+                +-----------------------+
+listen()/accept()가 새 연결마다 스레드를 하나씩 생성해
+각 클라이언트를 독립적으로 담당하게 한다.
+```
+
 
 이 글에서는 서버가 여러 클라이언트의 요청을 동시에 처리하기 위해 멀티스레드를 사용하는 방법을 설명한다. 멀티스레드 환경에서 발생하는 자원 충돌 문제를 막기 위해 **mutex(뮤텍스)**를 사용하고,  
 통신 타임아웃 처리를 위해 chrono를 적용하는 방법도 함께 다룬다.

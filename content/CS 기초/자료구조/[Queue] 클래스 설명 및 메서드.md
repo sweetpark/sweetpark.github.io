@@ -12,7 +12,12 @@ modified: 2026-09-05
 **선입선출 (First In First Out)**  
 - 먼저 들어온 값을, 먼저 내보내는 자료구조
 
-![](https://blog.kakaocdn.net/dna/n8yWE/btsKwPecOdb/AAAAAAAAAAAAAAAAAAAAADTYF7n0J_WITk1E4xvBdaAEwR9wizWnv5BKvRXuXu7y/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=OeW7OV4hwvhq5at1PudOYcP7Y9o%3D)
+```text
+[ 삽입(enqueue) ]                         [ 삭제(dequeue) ]
+       →  1  2  3  4  →
+       Front(head)   Rear(tail)
+       (먼저 나감)     (나중에 나감)
+```
 
 ## Queue 클래스
 

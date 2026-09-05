@@ -157,14 +157,13 @@ ArrayList Vs LinkedList
   
 [선언]  
 List<String> arrayList = new ArrayList<>();  
-List<String> linkedList = new ArrayList<>();
+List<String> linkedList = new LinkedList<>();
 Iterator Vs ListIterator  
 - Iterator : 컬렉션의 요소를 순방향으로 순회 **(현재 요소 삭제 가능 / 수정 ,삽입 불가능)**  
 - ListIterator : 컬렉션의 요소를 양방향으로 순회 **(요소를 삽입, 수정, 삭제 가능)**  
   
 [선언]  
-List<String> iterator = list.iterator();  
-Iterator<String> iterator  = list.iterator();  
+Iterator<String> iterator = list.iterator();  
 ListIterator<String> listIterator = list.listIterator();
 HashSet Vs TreeSet  
 - HashSet : **순서가 없는 컬렉션 ,** 빠른검색과 삽입  

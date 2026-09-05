@@ -21,7 +21,25 @@ modified: 2026-09-05
 SELECT DISTINCT name FROM test;
 ```
 
-![](https://blog.kakaocdn.net/dna/QmZ3F/btsKdREsyQ1/AAAAAAAAAAAAAAAAAAAAAGGWJ1zMe_7x8g6bB26naNnsdmzgxBPmHki9i1wKqZiY/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=y%2BOZOQyglaUEV4NZ4AGJxRGXjWQ%3D)
+예시 테이블 `test`:
+
+| name | age | address | money |
+| --- | --- | --- | --- |
+| kim | 25 | 서울 | 15000 |
+| park | 32 | 부산 | 22000 |
+| na | 28 | 대구 | 18000 |
+| park | 19 | 인천 | 9000 |
+| lee | NULL | 서울 | 12000 |
+| na | NULL | 광주 | 20000 |
+
+실행 결과 (중복 제거된 name):
+
+| name |
+| --- |
+| kim |
+| park |
+| na |
+| lee |
 
 ## LIKE
 
@@ -41,9 +59,14 @@ SELECT DISTINCT name FROM test;
 SELECT name FROM test WHERE name LIKE 'p%';
 ```
 
-![](https://blog.kakaocdn.net/dna/IVF8x/btsKdS4qf1p/AAAAAAAAAAAAAAAAAAAAAEk22qyBu416bsqTfmABSfepfJN7kbX2rwgDQyro3SCl/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=Bcp1Z2Z5Lc4sPms7acfzU1jhsRk%3D)
+실행 결과 ('p'로 시작하는 name, 위 예시 테이블 기준):
 
-![](https://blog.kakaocdn.net/dna/I9eC0/btsKcgZJoIi/AAAAAAAAAAAAAAAAAAAAAKbCph4Jg0CkdA9YPQ1thxCftEiobLT_xFRVm52n9clp/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=qqUdYfCzahjBuKANtSjc7WHPODw%3D)
+| name |
+| --- |
+| park |
+| park |
+
+실행 결과: 'p'로 시작하는 이름을 가진 행만 조회되며, 조건에 맞지 않는 kim, na, lee 등은 제외된다.
 
 ## BETWEEN
 
@@ -61,7 +84,14 @@ SELECT name, age, address, money FROM test where age BETWEEN 10 AND 20 ORDER BY 
 SELECT name, age, address, money FROM test where name IN ('park', 'na');
 ```
 
-![](https://blog.kakaocdn.net/dna/XIY8a/btsKezi1EwZ/AAAAAAAAAAAAAAAAAAAAAKDCDq5qM5oMCQkokpv44bUKrQoG-E8-1mVW4p7a_59v/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=7N%2BHkqJks%2F4pZoKEjvaiISOyqHs%3D)
+실행 결과 (name이 'park' 또는 'na'인 행):
+
+| name | age | address | money |
+| --- | --- | --- | --- |
+| park | 32 | 부산 | 22000 |
+| na | 28 | 대구 | 18000 |
+| park | 19 | 인천 | 9000 |
+| na | NULL | 광주 | 20000 |
 
 ## IS NULL / IS NOT NULL
 
@@ -73,6 +103,19 @@ SELECT DISTINCT name FROM test WHERE age IS NULL;
 SELECT DISTINCT name FROM test WHERE age IS NOT NULL;
 ```
 
-![](https://blog.kakaocdn.net/dna/cUkCg3/btsKepAUAKJ/AAAAAAAAAAAAAAAAAAAAAKTJ65B19Y68ftgscKscW-aLwbZDJs8kVTNQ7ONAUf8c/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=qcO%2BxXY6%2Bc914KfO4GXLISgDGo8%3D)
+실행 결과 (age가 NULL인 name):
+
+| name |
+| --- |
+| lee |
+| na |
+
+실행 결과 (age가 NULL이 아닌 name):
+
+| name |
+| --- |
+| kim |
+| park |
+| na |
 
 > 원문: https://gradualprecision.tistory.com/130

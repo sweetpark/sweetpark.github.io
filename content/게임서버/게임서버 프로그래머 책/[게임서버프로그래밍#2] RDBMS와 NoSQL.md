@@ -7,7 +7,19 @@ modified: 2026-09-05
 
 # [게임서버프로그래밍#2] RDBMS와 NoSQL
 
-![](https://blog.kakaocdn.net/dna/dbgF8v/btsNB7x5bl5/AAAAAAAAAAAAAAAAAAAAALYGS6diFHKhOXhEu8dim3UDESXcGPk6wrhzorVP2oWD/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=dPO1uG8bMFV3sulHSgPHvf6%2F8qw%3D)
+```text
+RDBMS (Table)                    NoSQL (Document/Collection)
+
++----+--------+-----+            {
+| id | name   | lv  |              "_id": 1,
++----+--------+-----+              "name": "hero",
+| 1  | hero   | 10  |              "lv": 10,
+| 2  | mage   | 7   |              "inventory": ["sword", "shield"]
++----+--------+-----+            }
+고정된 스키마, 행/열 구조          컬렉션마다 스키마가 달라도 됨
+JOIN으로 관계 표현                 문서 하나에 중첩 데이터 포함 가능
+```
+
 
 이 글에서는 데이터베이스의 두 가지 큰 흐름인 RDBMS와 NoSQL의 개념과 차이를 설명한다.  
 각각이 중시하는 원칙(ACID, BASE), 구조상의 차이, 분산처리(샤딩)까지 예시와 함께 살펴본다.

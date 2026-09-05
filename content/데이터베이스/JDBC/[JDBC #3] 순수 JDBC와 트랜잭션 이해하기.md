@@ -61,9 +61,15 @@ modified: 2026-09-05
 
 4. 예시
 
-![](https://blog.kakaocdn.net/dna/cHXuKM/btsKvGpGEFl/AAAAAAAAAAAAAAAAAAAAACBSnopq310Aflu9WH1rq1ohJeikUUeGn0CDmHiB2pWK/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=6yz9Unhfj8JeN8NQAUorKNVJ2Ag%3D)
+```text
+[Client A] --connect--> [Connection A] --> [Session A]  (자신만의 트랜잭션 상태 유지)
+[Client B] --connect--> [Connection B] --> [Session B]  (자신만의 트랜잭션 상태 유지)
 
-![](https://blog.kakaocdn.net/dna/kDqpU/btsKvaSkGze/AAAAAAAAAAAAAAAAAAAAAGrSZOJKOqkC-JnFHz6_zj0hgw2rxc8wO4OffxiV5Vgh/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=MV4fi5Jjz5WxGNfODq6xHIXWw4k%3D)
+DB 서버
+ ├─ Session A: 커넥션 A와 매핑, 독립적인 트랜잭션 상태 보유
+ └─ Session B: 커넥션 B와 매핑, 독립적인 트랜잭션 상태 보유
+```
+서로 다른 클라이언트가 각각 커넥션을 맺으면 DB 내부적으로도 각 커넥션에 대응하는 별도의 세션이 생성되어, 세션 A와 세션 B는 서로의 트랜잭션 상태에 영향을 주지 않는다.
 
 *   데이터베이스는 내부적으로 커넥션 요청에따른 세션을 유지하게 된다.
 *   일반적으로 조회의 경우, 트랜잭션이 필요 없을수 있지만 "수정/삭제/생성"에 있어서는 유지되어야하기에 세션A와 세션B가 작업적으로 독립적이어야 한다
@@ -72,14 +78,25 @@ modified: 2026-09-05
 
 ## 순수 JDBC 트랜잭션 사용기
 
-![](https://blog.kakaocdn.net/dna/cXBFhx/btsNKxXy0bL/AAAAAAAAAAAAAAAAAAAAAM15-r1rMa2yKFa8mIc6vPworhMmD3VOlQRKISHsP-N_/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=6FTyxPJEOwrQMc%2FrL9CIu4zON3o%3D)
+```text
+AutoCommit = true (기본값)
+INSERT ... -> 즉시 commit
+UPDATE ... -> 즉시 commit
+DELETE ... -> 즉시 commit
+(각 SQL 구문이 하나의 독립된 트랜잭션으로 처리됨)
+```
 
 DB와 연결을 도와주는 인터페이스의 경우, 특별한 설정이 없다면 AutoCommit이 활성화 되어있다.  
 (* 트랜잭션 과정은 ACID의 규칙에 따라 모든 과정이 끝난 후에 처리되어야하므로 AutoCommit은 false로 두어야한다.)
 
-![](https://blog.kakaocdn.net/dna/bRFy9T/btsKvgLHJCF/AAAAAAAAAAAAAAAAAAAAAPk2aSttczBeF2lsOgK7m9DQWiyUCApGSop429vcv2u7/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=U5h4tHxuKkppXNBYWunx7AQI2lA%3D)
+```text
+con.setAutoCommit(false);
+  DELETE ... ─┐
+  INSERT ... ─┼─> (커밋 전까지 임시 반영, 다른 세션에서는 보이지 않음)
+  con.commit(); ─┘ -> 여기서 한 번에 확정 반영 (실패 시 con.rollback())
+```
 
-```cpp
+```java
 public void txSaveAfterDelete(Map<String, Object> params) throws Exception{
     Connection con = DBConnectionUtil.getConnection();
     con.setAutoCommit(false);

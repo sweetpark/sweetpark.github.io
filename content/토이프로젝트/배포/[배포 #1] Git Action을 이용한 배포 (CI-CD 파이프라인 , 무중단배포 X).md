@@ -11,7 +11,22 @@ modified: 2026-09-05
 
 Docker 기반 자동 배포를 구축한 실제 프로젝트를 바탕으로 배포 과정을 정리
 
-![](https://blog.kakaocdn.net/dna/ejIVrb/btsNsqcePXx/AAAAAAAAAAAAAAAAAAAAABhgHkZP0Wrx_RukjPTIPjH5_sqYEk_yzwxJHBMazPZA/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=or8CBhhlIXq%2BYzs50fnuYlnjOSE%3D)
+```text
+[GitHub Push/PR]
+        │
+        ▼
+[GitHub Actions: ubuntu-latest]
+        │  1. Checkout
+        │  2. JDK 17 설치
+        │  3. ./gradlew build → jar 생성
+        │  4. Docker 이미지 빌드
+        │  5. Docker Hub 로그인 & push
+        ▼
+[AWS 서버: SSH 접속]
+        │  docker pull → 기존 컨테이너 stop/rm → docker run (재배포)
+        ▼
+[운영 서버 (8080 포트)]
+```
 
 프로젝트 적용 과정
 

@@ -77,11 +77,28 @@ int main()
         *   포인터 사용시, 2차원 배열 ( int *arr[4]  == int arr [?][4])
             *   한 행에 4개의 값의 공간크기를 가진 배열을 가리키는 *arr 생성
 
-int arr[2][4] = { {1,2,3,4} , {5,6,7,8} };  
-int(*pp)[4] = arr; //[ pp 주소는 arr 주소 ]   
-~int(**ptr)[4] = (int **)arr;~  // arr은 주소값(==&arr)이기에, 다중 포인터를 할시에 **값을 타고 가게 된다** .  
-//( (int**)arr == 0x0f ) -> 0x0f: 0001 (*ptr) -> **0x0001 : ? 오류 (**ptr)**
+```cpp
+int arr[2][4] = { {1,2,3,4} , {5,6,7,8} };
+int(*pp)[4] = arr; // pp 주소는 arr 주소
 
-![](https://blog.kakaocdn.net/dna/oADkP/btsIkehzstV/AAAAAAAAAAAAAAAAAAAAADTgWu7VCjwHk7qjtZ5Cm5MVWRT6uj4Tp3xzKzq5G14Q/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=%2FMS9dByyxFjWNKRosXM%2BOBsoQWc%3D)
+// 아래처럼 다중 포인터로 받으면 오류가 발생한다
+// int(**ptr)[4] = (int**)arr;
+// arr은 주소값(== &arr)이므로, 다중 포인터로 받으면 한 단계 더 값을 타고 들어가게 되어
+// (int**)arr을 역참조하는 시점에 의도하지 않은 값을 가리키게 된다
+```
+
+```text
+arr (2차원 배열, int[2][4])
+
+주소:      0x1000              0x1010
+        ┌───┬───┬───┬───┐  ┌───┬───┬───┬───┐
+arr[0] →│ 1 │ 2 │ 3 │ 4 │  │ 5 │ 6 │ 7 │ 8 │← arr[1]
+        └───┴───┴───┴───┘  └───┴───┴───┴───┘
+        0x1000              0x1010
+
+int (*pp)[4] = arr;
+  pp 는 "int[4] 배열을 가리키는 포인터" → pp 의 값은 arr 의 시작 주소(0x1000)
+  pp + 1  ==  arr[1] 의 시작 주소(0x1010)  (한 행 전체(16byte)만큼 이동)
+```
 
 > 원문: https://gradualprecision.tistory.com/34

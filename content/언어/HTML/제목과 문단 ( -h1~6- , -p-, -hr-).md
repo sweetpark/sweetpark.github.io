@@ -5,7 +5,7 @@ created: 2026-09-05
 modified: 2026-09-05
 ---
 
-# 제목과 문단 ( <h1~6> , <p>, <hr>)
+# 제목과 문단 ( `<h1>`~`<h6>` , `<p>`, `<hr>`)
 
 1. 제목 표현  
 2. 문단 표시  
@@ -14,31 +14,41 @@ modified: 2026-09-05
 
 ## **제목 표시하기**
 
-![](https://blog.kakaocdn.net/dna/AQnHh/btsJ8ouEtoa/AAAAAAAAAAAAAAAAAAAAAHh5cd91DRQXyGsvKUAiB2oQPthhzZHxTqjv-wOTGRb_/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=3SlRIndpiS45uXNaoi5UFQ8VaZA%3D)
+*   `<h1>` ~ `<h6>` : 숫자가 작을수록 중요도가 높은 제목 (한 문서에 `<h1>`은 보통 하나만 사용)
 
-*   h1 ~ h6 : 제목 표시 가능
+```html
+<h1>제목 1</h1>
+<h2>제목 2</h2>
+```
 
 ## **문단 표시**
 
-![](https://blog.kakaocdn.net/dna/czkefQ/btsJ6gSvCuy/AAAAAAAAAAAAAAAAAAAAALPsuKLX_hX6FGUkw4EWf9mKVILCUsGal1szh1nD8Qjg/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=mEGGl2cLZCWAYzoOokdGjMKL03g%3D)
+*   `<p>` 태그를 이용해 문단을 나누어 쓸 수 있음
 
-*   "p 태그"를 이용하여 문단을 나누어 쓸 수 있음
+```html
+<p>첫 번째 문단입니다.</p>
+<p>두 번째 문단입니다.</p>
+```
 
 ## **인용구 표시**
 
-![](https://blog.kakaocdn.net/dna/b2PkcV/btsJ7cosIXH/AAAAAAAAAAAAAAAAAAAAAMWZeI2dUwyuJq2mqsUAqNpu8cdFHwtTSZ0Q0VlBZA2O/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=03V%2Bcv%2Bmqb4%2Bk3GjgQkU7C2k64A%3D)
+*   `<blockquote>`를 이용해 인용구 표시 가능
+    *   cite 속성을 이용해 인용 출처 URL을 명시할 수 있음
+    *   `<blockquote>` 사용 시 들여쓰기되어 표현됨
 
-*   "blockquote"를 이용하여 인용구 표시 가능
-    *   cite 속성을 이용하여 인용 URL 표시
-    *   blockquote사용시 들여써져서 표현됨
+```html
+<blockquote cite="https://example.com/source">
+    인용된 문장이 여기에 들어간다.
+</blockquote>
+```
 
 ## **수평선 표시**
 
-![](https://blog.kakaocdn.net/dna/mFOsz/btsJ8lEH4Yq/AAAAAAAAAAAAAAAAAAAAAE3Cdr9gX_Xa3ejF9nVYp7vqRyIbcAuotUAya2cAX-mK/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=%2BSyKRmkqkxTSI%2FYBwI6mUPTV1ho%3D)
+*   `<hr>` 태그를 이용해 수평선(구분선)을 표시
+    *   CSS로 color, height 등을 지정해 스타일을 꾸밀 수 있음
 
-*   hr 태그를 이용하여 수평선 표시
-    *   속성 태그를 이용하여 color, size 지정가능
-    *   color : 수평선 색상
-    *   size : 수평선 두께
+```html
+<hr style="border: 1px solid #ccc;">
+```
 
 > 원문: https://gradualprecision.tistory.com/101

@@ -36,14 +36,14 @@ UnCheck 예외 : 런타임 당시에 오류가 발생 ( 컴파일 단계 이상 
 ```java
 try{
         String data;
-        data = null
-        int result = data.length() // NUllPointerException
+        data = null;
+        int result = data.length(); // NullPointerException 발생
     } catch (NullPointerException e){
         System.out.println(e.getMessage());
-        //         System.out.println(e.toString());
-        //        System.out.println(e.printStackTrace();
+        // System.out.println(e.toString());
+        // e.printStackTrace();
     }finally{
-                System.out.println ("마무리 실행");
+        System.out.println("마무리 실행");
     }
 ```
 
@@ -54,25 +54,27 @@ try{
 ```java
 try{
         String data;
-        data = null
-        int result = data.length() // NUllPointerException
+        data = null;
+        int result = data.length(); // NullPointerException 발생
     } 
     catch (NullPointerException e){
         System.out.println(e.getMessage());
-        //         System.out.println(e.toString());
-        //        System.out.println(e.printStackTrace();
+        // System.out.println(e.toString());
+        // e.printStackTrace();
     }
     catch (Exception e){
         //... 제일 마지막에 예외로 잡힘 (상위클래스)
     }
     finally{
-                System.out.println ("마무리 실행");
+        System.out.println("마무리 실행");
     }
 ```
 
 ## 예외 떠넘기기
 
+```java
 리턴타입 메서드명(매개변수,...) throws 예외클래스1, 예외클래스2, ... {}
+```
 
 *   메서드를 호출한 곳으로, 예외를 떠넘김
 
@@ -86,7 +88,7 @@ public void method1(){
 }
 
 //예외 떠넘기기
-public void method2()throws ClassNotFoundEcception{
+public void method2() throws ClassNotFoundException{
     }
 ```
 
@@ -94,11 +96,13 @@ public void method2()throws ClassNotFoundEcception{
 
 *   throw new [예외]
 
-public void method() throws RuntimeException{  
-    try{  
-        throw new RuntimeException;  
-    }  
-    //..  
+```java
+public void method() throws RuntimeException{
+    try{
+        throw new RuntimeException();
+    }
+    //..
 }
+```
 
 > 원문: https://gradualprecision.tistory.com/146

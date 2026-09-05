@@ -30,7 +30,7 @@ Content-Length : 29
 *   201 (Created)
     *   요청 성공해서 새로운 리소스가 생성됨
 
-HTTP/1.1 200 OK  
+HTTP/1.1 201 Created  
 Content-Type : application/json  
 Content-Length : 29  
 **Location: /main/100**  
@@ -40,7 +40,7 @@ Content-Length : 29
     "count" : 20  
 }
 
-*   202 (Accept)
+*   202 (Accepted)
     *   요청은 되었으나, 처리가 완료되지 않음
 *   204 (No Content)
     *   서버가 요청에 성공적으로 수행했지만, 응답 본문에 보낼 데이터가 없음
@@ -122,7 +122,7 @@ Content-Length : 29
 *   401 (Unauthorized)
     *   클라이언트가 접근 권한이 없음 (인증되지 않음)
     *   로그인 정보가 아닐때 사용됨
-*   403 (Forvidden)
+*   403 (Forbidden)
     *   접근권한이 불충분할 경우 (admin 리소스에 접근)
 *   404(Not Found)
     *   리소스가 서버에 존재하지 않음

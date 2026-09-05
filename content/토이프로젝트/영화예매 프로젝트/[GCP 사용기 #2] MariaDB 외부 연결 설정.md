@@ -48,15 +48,25 @@ select user,host from user;
 
 *   mariaDB Binding IP 확인 (127.0.0.1)
 
-![](https://blog.kakaocdn.net/dna/cmTosp/btsKv8eGjmh/AAAAAAAAAAAAAAAAAAAAAL80O2Ygk6ifulrrD0jUhVBankLTtEBgthlGY300xi6P/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=JMJytDWTcfoegZj1PIwyKHPYV90%3D)
+기본 설정 파일을 열어보면 아래와 같이 `bind-address`가 `127.0.0.1`(localhost)로 고정되어 있어, 외부에서는 접속이 불가능한 상태임을 확인할 수 있다.
+
+```text
+[mysqld]
+bind-address = 127.0.0.1
+```
 
 *   mariaDB Binding IP 설정
     *   /etc/mysql/mariadb.conf.d/50-server.cnf
     *   **bind-address : 127.0.0.1 (주석 처리)**
 
-![](https://blog.kakaocdn.net/dna/CF3zq/btsKwt3TxvW/AAAAAAAAAAAAAAAAAAAAAEqd0avY3IOZoUTdE5MeOtpUBx4We5mw0niJ6IwbApb8/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=0D5Ha3cRK5xbacdVQ9y9OJHfhGY%3D)
+해당 라인을 아래처럼 주석 처리하여 모든 IP 대역에서의 접속을 허용하도록 변경한다.
 
-![](https://blog.kakaocdn.net/dna/bGZfMA/btsKvErvvl2/AAAAAAAAAAAAAAAAAAAAALPmPn445pCEGPva-y4tVJrti7FyBJ-vo2QGX6rOJCDE/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=47oZNKj%2B6swHfxBrB07yx%2FrCYQU%3D)
+```text
+[mysqld]
+# bind-address = 127.0.0.1
+```
+
+수정 후 설정 파일을 저장하고 나온 모습(변경된 `.cnf` 파일 내용)까지 확인한다.
 
 *   MariaDB 재시동 및 방화벽 오픈
 
@@ -73,14 +83,28 @@ ufw enable 3306 **// 따로 GCP 플랫폼에서도 열어줘야함**
 4.TCP 포트 지정  
 (3306)
 
-![](https://blog.kakaocdn.net/dna/bx84nd/btsKwDrCXNa/AAAAAAAAAAAAAAAAAAAAAHNOSQWsy9SKbRB1DdKn1E5FYKoWMnJceq1FBBMzr-Gu/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=VrS5R8LLj9WpgZbETAopuiQsc8k%3D)
+GCP 콘솔의 VPC 네트워크 > 방화벽 규칙 생성 화면에서 아래와 같이 입력하여 규칙을 만든다.
 
-![](https://blog.kakaocdn.net/dna/H6w4W/btsKwiuMHUf/AAAAAAAAAAAAAAAAAAAAAKzSCQPW-W1Rn_6serRACpyCczuh9Av8zhGXhWrEcI09/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=D3YQNR9%2FHklyO9vdSc3rLlMtbUw%3D)
+| 항목 | 값 |
+| --- | --- |
+| 이름 | mariadb-allow-3306 |
+| 트래픽 방향 | 인그레스 (Ingress) |
+| 일치 시 작업 | 허용 |
+| 대상 | 네트워크의 모든 인스턴스 |
+| 소스 IP 범위 | 0.0.0.0/0 |
+| 프로토콜 및 포트 | TCP: 3306 |
+
+규칙 생성 후 방화벽 목록에 위 규칙이 정상적으로 추가되어 활성화된 것을 확인한다.
 
 ## Spring Boot 설정
 
 *   application.properties 설정
 
-![](https://blog.kakaocdn.net/dna/SpGyB/btsKvJM2O2N/AAAAAAAAAAAAAAAAAAAAAPZIvyrM9EV8bGq4S5jmNVZV5j_3nQtqW07op_JWdIbk/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=Wmz8S18efPbG11bnymwPdhV7L7A%3D)
+```properties
+spring.datasource.url=jdbc:mariadb://[GCP 외부 IP]:3306/[database]
+spring.datasource.username=root
+spring.datasource.password=[패스워드]
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+```
 
 > 원문: https://gradualprecision.tistory.com/166

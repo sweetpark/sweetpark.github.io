@@ -12,7 +12,7 @@ EJB (Enterprise Java Beans)
 ### EJB ? 
 
 *   Enterprise JavaBeans 는 oracle에서 표준기술로서 내놓은 "비즈니스 로직" 구현을 위한 방법으로 나온 기술이다.
-*   Bean은 객체라고 이해하면 좋을 것 같다.
+*   Bean은 일반적으로 객체를 의미한다.
 *   EJB는 이러한 Bean들의 재사용성을 높이고 편리한 개발을 추구했다.
 *   ex) webLogic , Jeus 등을 이용해 개발됨
 

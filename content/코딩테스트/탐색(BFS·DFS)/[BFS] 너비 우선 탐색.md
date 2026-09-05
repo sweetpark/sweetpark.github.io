@@ -85,5 +85,3 @@ public class App {
     }
 }
 ```
-
-> 원문: https://gradualprecision.tistory.com/203

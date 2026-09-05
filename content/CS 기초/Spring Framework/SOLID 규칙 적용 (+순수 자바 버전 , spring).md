@@ -20,7 +20,18 @@ modified: 2026-09-05
 
 ## 구조도
 
-![](https://blog.kakaocdn.net/dna/bTg4CK/btsI9GRJain/AAAAAAAAAAAAAAAAAAAAAObZbKqGdMARE_9_NwizVYqv436Gw2tPLxJWOC9jnXeY/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=4NYEon0C6qjlG%2FYdd5slAvEz160%3D)
+```text
+                (역할, interface)
+Client  --->  MemberService  <----- 구현 -----  MemberServiceImpl
+                                                       |
+                                                       | 의존
+                                                       v
+                (역할, interface)
+              MemberRepository  <----- 구현 -----  MemoryMemberRepository
+                                  <----- 구현 -----  DbMemberRepository
+
+AppConfig : MemberServiceImpl 에 어떤 MemberRepository 구현체를 주입할지 결정 (생성자 주입)
+```
 
 ## SOLID 규칙 적용
 

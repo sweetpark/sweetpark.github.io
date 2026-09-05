@@ -7,7 +7,23 @@ modified: 2026-09-05
 
 # [게임서버프로그래밍#4] Client-Server 기본 연결과 통신
 
-![](https://blog.kakaocdn.net/dna/byy7oc/btsNEfVtOPm/AAAAAAAAAAAAAAAAAAAAAE1c6iQRe91e13HT6l5frMGLtLfs2dyxdFvcZJCSUcOF/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=rtL1k9kGZX68%2F3W%2B2BZaVC5jHBE%3D)
+```text
+Client                          Server
+------                          ------
+socket()                        socket()
+   |                               |
+connect()  ------------------>  bind()
+   |                               |
+   |                            listen()
+   |                               |
+   |        (3-way handshake)   accept()  <-- 연결 수락
+   |------------------------------->|
+send()  <----------------------> recv()
+recv()  <----------------------> send()
+   |                               |
+closesocket()                  closesocket()
+```
+
 
 이 글에서는 TCP 기반으로 클라이언트-서버 연결을 구현하는 기본 흐름을 설명한다.  
 Winsock 초기화, 비동기 소켓 설정(ioctlsocket), select를 통한 이벤트 감지 등  

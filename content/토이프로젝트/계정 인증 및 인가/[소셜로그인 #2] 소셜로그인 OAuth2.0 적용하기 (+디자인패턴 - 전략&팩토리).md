@@ -9,7 +9,24 @@ modified: 2026-09-05
 
 ## 소셜로그인 FLOW
 
-![](https://blog.kakaocdn.net/dna/cxODge/btsMdHNL2i0/AAAAAAAAAAAAAAAAAAAAAGCVbvijJcjiQuX6ZqV0yx3uF9D6pPL2nD8sqfvYdosU/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1790780399&allow_ip=&allow_referer=&signature=lUEoJxoWWQowF%2B4RtJX2PzsNLBQ%3D)
+```text
+[내 서버]                              [외부 인증 서버 (구글/네이버/카카오)]
+   │  1. 외부 인증서버 요청               │
+   │ ───────────────────────────────▶  │
+   │                                    │  2. 로그인 처리
+   │  3. code 값 획득                    │
+   │ ◀───────────────────────────────  │
+   │  4. code로 accessToken 발급 요청     │
+   │ ───────────────────────────────▶  │
+   │  5. accessToken 수신                │
+   │ ◀───────────────────────────────  │
+   │  accessToken으로 계정정보 요청       │
+   │ ───────────────────────────────▶  │
+   │  계정정보 수신                      │
+   │ ◀───────────────────────────────  │
+   │  6. 자체 서버(DB)에 저장             │
+   ▼
+```
 
 ## 소셜로그인 방식
 
