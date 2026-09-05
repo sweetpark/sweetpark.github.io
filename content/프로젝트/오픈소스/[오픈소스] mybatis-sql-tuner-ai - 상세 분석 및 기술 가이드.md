@@ -261,7 +261,7 @@ sequenceDiagram
 
 또한 `SqlExtractor`는 `DocumentBuilderFactory` 생성 시 `createSecureFactory()`를 통해 외부 엔티티 로딩과 DTD 검증을 모두 비활성화해 **XXE(XML External Entity) 공격을 차단**한다 — 사용자 프로젝트의 임의 XML 파일을 파싱하는 플러그인 특성상 실제로 신경 써야 하는 보안 포인트다.
 
-> `<include>` 태그의 2-Phase 캐싱 전략, `<choose>` 분기 처리로 인한 `EXPLAIN` 실행계획 왜곡 문제의 배경과 대안 비교(쿼리 파편화 vs 대표 쿼리 추출) 등 MyBatis 동적 SQL 정적분석의 일반론은 [[MyBatis] MyBatis 동적 SQL 정적분석 - 핵심 개념 및 특징 정리](../개발%20(CS)/데이터베이스/[MyBatis]%20MyBatis%20동적%20SQL%20정적분석%20-%20핵심%20개념%20및%20특징%20정리.md) 노트에 정리되어 있다.
+> `<include>` 태그의 2-Phase 캐싱 전략, `<choose>` 분기 처리로 인한 `EXPLAIN` 실행계획 왜곡 문제의 배경과 대안 비교(쿼리 파편화 vs 대표 쿼리 추출) 등 MyBatis 동적 SQL 정적분석의 일반론은 [[MyBatis] MyBatis 동적 SQL 정적분석 - 핵심 개념 및 특징 정리](../../개발%20(CS)/데이터베이스/MyBatis/[MyBatis]%20MyBatis%20동적%20SQL%20정적분석%20-%20핵심%20개념%20및%20특징%20정리.md) 노트에 정리되어 있다.
 
 ---
 
@@ -333,4 +333,4 @@ sequenceDiagram
 - 아키텍처 문서: [`docs/ARCHITECTURE.md`](https://github.com/sweetpark/mybatis-sql-tuner-ai/blob/main/docs/ARCHITECTURE.md)
 - 핵심 소스: [`SqlExtractor.java`](https://github.com/sweetpark/mybatis-sql-tuner-ai/blob/main/mybatis-sql-tuner-core/src/main/java/io/github/sweetpark/sqltuner/core/SqlExtractor.java) · [`JdbcAnalyzer.java`](https://github.com/sweetpark/mybatis-sql-tuner-ai/blob/main/mybatis-sql-tuner-core/src/main/java/io/github/sweetpark/sqltuner/core/JdbcAnalyzer.java) · [`PromptGenerator.java`](https://github.com/sweetpark/mybatis-sql-tuner-ai/blob/main/mybatis-sql-tuner-core/src/main/java/io/github/sweetpark/sqltuner/core/PromptGenerator.java) · [`AiChatClient.java`](https://github.com/sweetpark/mybatis-sql-tuner-ai/blob/main/mybatis-sql-tuner-intellij/src/main/java/io/github/sweetpark/sqltuner/intellij/service/AiChatClient.java)
 - 라이선스: Apache License 2.0
-- 관련 노트: [[MyBatis] MyBatis 동적 SQL 정적분석 - 핵심 개념 및 특징 정리](../개발%20(CS)/데이터베이스/[MyBatis]%20MyBatis%20동적%20SQL%20정적분석%20-%20핵심%20개념%20및%20특징%20정리.md)
+- 관련 노트: [[MyBatis] MyBatis 동적 SQL 정적분석 - 핵심 개념 및 특징 정리](../../개발%20(CS)/데이터베이스/MyBatis/[MyBatis]%20MyBatis%20동적%20SQL%20정적분석%20-%20핵심%20개념%20및%20특징%20정리.md)

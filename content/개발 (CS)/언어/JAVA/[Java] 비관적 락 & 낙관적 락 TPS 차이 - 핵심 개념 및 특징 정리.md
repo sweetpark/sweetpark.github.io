@@ -14,7 +14,7 @@ modified: 2026-09-05
 
 ### [1편] 개념과 구조
 
-#### 1️⃣ 동시성 제어는 왜 필요한가
+#### 1. 동시성 제어는 왜 필요한가
 
 동시에 여러 요청이 같은 데이터를 수정하면 다음 문제가 발생한다.
 
@@ -30,7 +30,7 @@ modified: 2026-09-05
 낙관적 락 (Optimistic Lock)
 ```
 
-#### 2️⃣ 비관적 락 (Pessimistic Lock)
+#### 2. 비관적 락 (Pessimistic Lock)
 
 - **개념**: "충돌이 발생할 것이다"라고 가정하고, 먼저 잠근다.
 - **동작 시점**: `SELECT ... FOR UPDATE` — 조회 시점에 Row Lock 획득
@@ -45,7 +45,7 @@ FOR UPDATE;
 - **장점**: 강한 정합성, 예측 가능한 동작, 고경쟁 write 환경에 안정적
 - **단점**: 블로킹 발생, 대기 시간 존재, 데드락 가능성
 
-#### 3️⃣ 낙관적 락 (Optimistic Lock)
+#### 3. 낙관적 락 (Optimistic Lock)
 
 - **개념**: "충돌이 거의 없을 것이다"라고 가정하고, 충돌 시 감지한다.
 - **동작 시점**: UPDATE 시 version 비교
@@ -64,7 +64,7 @@ WHERE id = #{id}
 
 ### [2편] 실험 결과와 Retry + Backoff 적용 후 해석
 
-#### 4️⃣ Retry + Backoff 전략 적용 코드
+#### 4. Retry + Backoff 전략 적용 코드
 
 ```java
 public void decreaseWithRetry(Long id){
@@ -91,7 +91,7 @@ public void decreaseWithRetry(Long id){
 }
 ```
 
-#### 5️⃣ 실험 결과
+#### 5. 실험 결과
 
 ```text
 (낙관적)
@@ -103,7 +103,7 @@ time : 1099 ms
 TPS  : 909
 ```
 
-#### 6️⃣ 왜 Backoff를 넣었는데도 낙관적 락이 느린가?
+#### 6. 왜 Backoff를 넣었는데도 낙관적 락이 느린가?
 
 **🔥 1. Retry 자체가 DB 호출을 증가시킨다**
 
@@ -125,19 +125,19 @@ SELECT → UPDATE 성공
 
 > totalTime이 길어지는 건 자연스러운 결과
 
-#### 7️⃣ 중요한 함정 — TPS 계산 방식
+#### 7. 중요한 함정 — TPS 계산 방식
 
 이번 TPS 계산은: `(전체 요청 수 × 1000) / totalTime`
 
 하지만 낙관적 락은 일부 요청 실패, retry 초과 발생. 성공 기준 TPS로 계산하면 차이는 더 벌어질 수 있습니다.
 
-#### 8️⃣ 핵심 해석
+#### 8. 핵심 해석
 
 이번 테스트 환경은 `동일 row / 1000 동시 write / 고경쟁` — 낙관적 락이 가장 불리한 조건입니다.
 
 > 이 환경에서는 줄 세워서 처리하는 비관적 락이 오히려 효율적
 
-#### 9️⃣ 그럼 Backoff는 의미 없나?
+#### 9. 그럼 Backoff는 의미 없나?
 
 아닙니다. Backoff는 Retry storm 완화 / DB 부하 감소 / 충돌률 감소에 도움이 됩니다.
 

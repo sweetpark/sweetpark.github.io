@@ -21,7 +21,7 @@ modified: 2026-09-05
     
     ---
     
-    ## 1️⃣ `List<Integer>[]` — **리스트 배열 (그래프 인접리스트의 정석 구조)**
+    ## 1. `List<Integer>[]` — **리스트 배열 (그래프 인접리스트의 정석 구조)**
     
     ### ✔ 선언
     
@@ -60,7 +60,7 @@ modified: 2026-09-05
     
     ---
     
-    ## 2️⃣ `List<List<Integer>>` — **리스트 안에 리스트를 넣는 동적 2차원 구조**
+    ## 2. `List<List<Integer>>` — **리스트 안에 리스트를 넣는 동적 2차원 구조**
     
     ### ✔ 선언
     
@@ -95,7 +95,7 @@ modified: 2026-09-05
     
     ---
     
-    ## 3️⃣ `List<Integer[]>` — **정수 배열(Integer[])을 원소로 가지는 리스트**
+    ## 3. `List<Integer[]>` — **정수 배열(Integer[])을 원소로 가지는 리스트**
     
     ### ✔ 선언
     
@@ -131,7 +131,7 @@ modified: 2026-09-05
     
     ---
     
-    ## 4️⃣ remove() 오버로딩 주의점
+    ## 4. remove() 오버로딩 주의점
     
     ### ✔ 문제 상황
     
@@ -158,7 +158,7 @@ modified: 2026-09-05
     
     ---
     
-    ## 5️⃣ 비교 요약표
+    ## 5. 비교 요약표
     
     | 형태 | 구조 | 목적 | 장점 | 단점 |
     | --- | --- | --- | --- | --- |
@@ -168,7 +168,7 @@ modified: 2026-09-05
     
     ---
     
-    ## 6️⃣ 어떤 상황에서 무엇을 써야 하나?
+    ## 6. 어떤 상황에서 무엇을 써야 하나?
     
     ### ✔ 그래프/트리(전력망, BFS/DFS 문제)
     
@@ -257,7 +257,7 @@ modified: 2026-09-05
     
 - HashMap 정렬방식
     
-    ## 1️⃣ 정렬 방식 (`songs.sort(new Comparator ...)`)
+    ## 1. 정렬 방식 (`songs.sort(new Comparator ...)`)
     
     ```java
     songs.sort((s1, s2) -> {
@@ -294,7 +294,7 @@ modified: 2026-09-05
     
 - Collection value에 추가하기 ( Map<String, List<Song>> //computeIfAbsent() )
     
-    ## 2️⃣ `computeIfAbsent()`와 `k`의 의미
+    ## 2. `computeIfAbsent()`와 `k`의 의미
     
     ```java
     songMap.computeIfAbsent(genres[i], k -> new ArrayList<>())
@@ -316,7 +316,7 @@ modified: 2026-09-05
     
 - Collections.List 를 기본 배열로 변경 ( List > int[] )
     
-    ## 3️⃣ `List<Integer>` → `int[]` 변환 (Stream 활용)
+    ## 3. `List<Integer>` → `int[]` 변환 (Stream 활용)
     
     ```java
     int[] arr = result.stream()

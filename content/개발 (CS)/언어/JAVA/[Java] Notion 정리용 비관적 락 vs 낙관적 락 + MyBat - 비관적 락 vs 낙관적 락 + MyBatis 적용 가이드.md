@@ -12,7 +12,7 @@ modified: 2026-09-05
 
 ## 📌 개념
 
-### 1️⃣ 왜 DB 락이 필요한가?
+### 1. 왜 DB 락이 필요한가?
 
 멀티 서버 / 멀티 트랜잭션 환경에서는 다음 문제가 발생할 수 있다.
 
@@ -25,7 +25,7 @@ Java Lock은 단일 JVM에서만 유효
 
 👉 운영 환경에서는 **DB 레벨 제어 필요**
 
-### 2️⃣ 비관적 락 (Pessimistic Lock)
+### 2. 비관적 락 (Pessimistic Lock)
 
 #### 🔒 개념
 
@@ -75,7 +75,7 @@ public void decreaseStock(Long productId, int quantity) {
 - 트랜잭션 범위가 길면 성능 저하
 - 데드락 가능성 존재
 
-### 3️⃣ 낙관적 락 (Optimistic Lock)
+### 3. 낙관적 락 (Optimistic Lock)
 
 #### 🟢 개념
 
@@ -87,7 +87,7 @@ public void decreaseStock(Long productId, int quantity) {
 id | stock | version
 ```
 
-### 4️⃣ MyBatis에서 낙관적 락 구현 방법 ⭐ (핵심)
+### 4. MyBatis에서 낙관적 락 구현 방법 ⭐ (핵심)
 
 MyBatis는 JPA처럼 @Version 자동 처리 기능이 없다.
 
@@ -151,7 +151,7 @@ public void decreaseStock(Long productId, int quantity) {
 
 이 체크를 안 하면 👉 낙관적 락이 무의미해진다.
 
-### 5️⃣ 재시도 로직 (실무에서 거의 필수)
+### 5. 재시도 로직 (실무에서 거의 필수)
 
 ```java
 public void decreaseWithRetry(Long productId, int quantity) {
@@ -173,7 +173,7 @@ public void decreaseWithRetry(Long productId, int quantity) {
 }
 ```
 
-### 6️⃣ 비관적 vs 낙관적 비교
+### 6. 비관적 vs 낙관적 비교
 
 | 구분 | 비관적 락 | 낙관적 락 |
 | --- | --- | --- |
@@ -183,7 +183,7 @@ public void decreaseWithRetry(Long productId, int quantity) {
 | 데드락 | 가능 | 없음 |
 | 재시도 | 필요 없음 | 필요 |
 
-### 7️⃣ 실무 선택 기준
+### 7. 실무 선택 기준
 
 **🔥 재고 차감 / 금융** 👉 비관적 락
 
@@ -195,7 +195,7 @@ public void decreaseWithRetry(Long productId, int quantity) {
 - 충돌 확률 낮음
 - 성능 중요
 
-### 8️⃣ MyBatis 환경에서 자주 하는 실수
+### 8. MyBatis 환경에서 자주 하는 실수
 
 - ❌ version 컬럼 안 만듦
 - ❌ WHERE 절에 version 안 넣음
@@ -203,7 +203,7 @@ public void decreaseWithRetry(Long productId, int quantity) {
 - ❌ 재시도 로직 없음
 - ❌ 트랜잭션 범위 과도
 
-### 9️⃣ 구조적으로 이해하기
+### 9. 구조적으로 이해하기
 
 ```text
 비관적 락 = 먼저 잠그고 시작

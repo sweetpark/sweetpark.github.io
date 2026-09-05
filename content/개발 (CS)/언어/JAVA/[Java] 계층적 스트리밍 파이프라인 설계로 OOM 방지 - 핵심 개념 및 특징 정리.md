@@ -33,17 +33,17 @@ modified: 2026-09-05
 
 ## ⚙️ 전체 파이프라인 구조
 
-**1️⃣ Ready Phase — 템플릿 사전 로드**: 템플릿은 용량이 작으므로 초기에 한 번만 메모리에 적재.
+**1. Ready Phase — 템플릿 사전 로드**: 템플릿은 용량이 작으므로 초기에 한 번만 메모리에 적재.
 ```java
 Map<Division, List<MetaData>> templates;
 ```
 
-**2️⃣ 상위 Scope 처리(기반 데이터)**: 계약/제휴사 정보 등, 이후 하위 단계 생성의 Context 역할.
+**2. 상위 Scope 처리(기반 데이터)**: 계약/제휴사 정보 등, 이후 하위 단계 생성의 Context 역할.
 ```java
 templates.get(AFFILIATE).forEach(t -> process(t, cpidContext));
 ```
 
-**3️⃣ 중간 Scope 처리(루프)**: Assembler는 더 이상 `List`를 반환하지 않고 `Stream<XxxContext>` 제공.
+**3. 중간 Scope 처리(루프)**: Assembler는 더 이상 `List`를 반환하지 않고 `Stream<XxxContext>` 제공.
 ```java
 assembler.streamMids(cpids).forEach(midContext -> {
     registry.process(Division.MERCHANT, midContext);
@@ -51,7 +51,7 @@ assembler.streamMids(cpids).forEach(midContext -> {
 });
 ```
 
-**4️⃣ 최하위 Scope 처리(결제 등)**: 현재 상위 컨텍스트 기준으로 하위 데이터를 하나씩 생성.
+**4. 최하위 Scope 처리(결제 등)**: 현재 상위 컨텍스트 기준으로 하위 데이터를 하나씩 생성.
 ```java
 assembler.streamPayData(midContext).forEach(payData -> {
     registry.process(Division.PAY, midContext, payData);

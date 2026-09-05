@@ -14,7 +14,7 @@ modified: 2026-09-05
 
 ### Part 1. 멀티스레드와 동시성 (Thread & Concurrency)
 
-#### 1️⃣ 스레드 기초 (Thread vs Runnable)
+#### 1. 스레드 기초 (Thread vs Runnable)
 
 > [!TIP]
 > - `Runnable` : 작업 내용 (해야 할 일)
@@ -32,7 +32,7 @@ thread.start(); // 반드시 start()
 > [!WARNING]
 > 스레드와 작업을 분리해야 스레드 풀, Executor 프레임워크로 확장 가능
 
-#### 2️⃣ 동시성 문제 해결 (Synchronized & Volatile)
+#### 2. 동시성 문제 해결 (Synchronized & Volatile)
 
 > [!WARNING]
 > 여러 스레드가 하나의 자원에 동시에 접근 → Race Condition 발생
@@ -57,7 +57,7 @@ public synchronized void withdraw(int amount) {
 }
 ```
 
-#### 3️⃣ 스레드 협력의 진화 (Wait & Notify)
+#### 3. 스레드 협력의 진화 (Wait & Notify)
 
 > [!CAUTION]
 > Busy Waiting은 CPU 낭비
@@ -83,7 +83,7 @@ Condition consumerCond = lock.newCondition();
 - 생산자 / 소비자 대기 공간 분리
 - 필요한 대상만 `signal()`
 
-#### 4️⃣ 스레드 풀 (ThreadPoolExecutor)
+#### 4. 스레드 풀 (ThreadPoolExecutor)
 
 > [!WARNING]
 > 스레드 생성은 매우 비쌈 → **미리 만들고 재사용**
@@ -110,7 +110,7 @@ ExecutorService es = new ThreadPoolExecutor(
 
 ### Part 2. 입출력과 성능 최적화 (I/O)
 
-#### 1️⃣ 버퍼링 (Buffered I/O)
+#### 1. 버퍼링 (Buffered I/O)
 
 > [!TIP]
 > 디스크 접근(System Call)은 매우 느리다
@@ -126,7 +126,7 @@ try (BufferedInputStream bis =
 
 - **기본 스트림 + 보조 스트림(체인 구조)**가 정석
 
-#### 2️⃣ 문자 인코딩 (Charset)
+#### 2. 문자 인코딩 (Charset)
 
 > [!TIP]
 > 컴퓨터는 byte만 이해한다 → 문자 처리는 인코딩 규칙이 필요
@@ -139,7 +139,7 @@ Reader reader =
 > [!WARNING]
 > 한글 깨짐의 99% 원인 → `InputStreamReader`에서 인코딩 미지정
 
-#### 3️⃣ 자원 정리 (try-with-resources)
+#### 3. 자원 정리 (try-with-resources)
 
 > [!WARNING]
 > close() 안 하면 → 파일 핸들 / 소켓 고갈 → 서버 다운
@@ -150,7 +150,7 @@ try (InputStream in = ...) {
 }
 ```
 
-#### 4️⃣ File vs Files (java.io vs java.nio)
+#### 4. File vs Files (java.io vs java.nio)
 
 | 구분 | File | Files |
 | --- | --- | --- |
@@ -170,7 +170,7 @@ try (InputStream in = ...) {
 
 ### Part 3. 네트워크와 웹 서버 구현 (Network & WAS)
 
-#### 1️⃣ 소켓 통신
+#### 1. 소켓 통신
 
 - **ServerSocket** : 문지기 (`accept()` → Blocking)
 - **Socket** : 연결된 통로
@@ -178,7 +178,7 @@ try (InputStream in = ...) {
 > [!WARNING]
 > 요청 하나당 스레드 하나 필요 → **Thread Pool 필수**
 
-#### 2️⃣ 리플렉션 (Reflection)
+#### 2. 리플렉션 (Reflection)
 
 > [!TIP]
 > 실행 중(Runtime)에 클래스 구조를 분석하고, 메서드를 이름으로 호출하는 기술
@@ -192,7 +192,7 @@ method.invoke(controller);
 > [!TIP]
 > Spring이 개발자 코드를 실행할 수 있는 핵심 원리
 
-#### 3️⃣ 애노테이션 (Annotation)
+#### 3. 애노테이션 (Annotation)
 
 > [!TIP]
 > 런타임에 읽을 수 있는 메타데이터
@@ -204,7 +204,7 @@ method.invoke(controller);
 
 - 리플렉션 + 애노테이션 = **프레임워크의 자동화**
 
-#### 4️⃣ 미니 WAS 아키텍처
+#### 4. 미니 WAS 아키텍처
 
 | 구성 요소 | 역할 | Spring 매칭 |
 | --- | --- | --- |
@@ -213,7 +213,7 @@ method.invoke(controller);
 | Dispatcher | 동적 실행 | DispatcherServlet |
 | Controller | 비즈니스 로직 | @Controller |
 
-#### 5️⃣ Dispatcher 성능 최적화
+#### 5. Dispatcher 성능 최적화
 
 > [!WARNING]
 > 초기 방식: 요청마다 전체 탐색 → **O(N)**
@@ -224,7 +224,7 @@ method.invoke(controller);
 > 2. `Map<URL, Method>` 캐싱
 > 3. 요청 시 **O(1)** 조회
 
-#### 6️⃣ DI의 본질 (구성과 사용의 분리)
+#### 6. DI의 본질 (구성과 사용의 분리)
 
 ```java
 MemberController controller =

@@ -69,8 +69,8 @@ void write(List<? super Integer> list) { } // add OK
 **hashCode + equals 핵심 원리**
 
 ```java
-1️⃣ hashCode() → 같은 버킷
-2️⃣ equals() → 진짜 같은 객체인지 확인
+1. hashCode() → 같은 버킷
+2. equals() → 진짜 같은 객체인지 확인
 ```
 
 👉 둘 중 하나라도 잘못 구현하면 **Set / Map 동작이 깨짐**

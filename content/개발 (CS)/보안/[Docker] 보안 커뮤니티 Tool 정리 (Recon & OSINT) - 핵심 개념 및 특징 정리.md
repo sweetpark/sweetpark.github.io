@@ -16,7 +16,7 @@ modified: 2026-09-05
 
 ## 🔎 1. 포트 / 네트워크 스캐닝
 
-### 1️⃣ RustScan
+### 1. RustScan
 
 **개요**
 
@@ -39,7 +39,7 @@ modified: 2026-09-05
 
 ## 🌐 2. 도메인 / 자산 정찰 (Recon)
 
-### 2️⃣ Amass
+### 2. Amass
 
 **개요**
 
@@ -61,7 +61,7 @@ modified: 2026-09-05
 
 ---
 
-### 3️⃣ ASM (Attack Surface Mapping)
+### 3. ASM (Attack Surface Mapping)
 
 **개요**
 
@@ -79,7 +79,7 @@ modified: 2026-09-05
 
 ---
 
-### 4️⃣ dnscan
+### 4. dnscan
 
 **개요**
 
@@ -99,7 +99,7 @@ modified: 2026-09-05
 
 ## ☁️ 3. 클라우드 OSINT
 
-### 5️⃣ cloud_enum
+### 5. cloud_enum
 
 **개요**
 
@@ -126,7 +126,7 @@ modified: 2026-09-05
 
 ---
 
-### 6️⃣ S3Scanner
+### 6. S3Scanner
 
 **개요**
 
@@ -146,7 +146,7 @@ modified: 2026-09-05
 
 ## 📧 4. 이메일 / 계정 OSINT
 
-### 7️⃣ Buster
+### 7. Buster
 
 **개요**
 
@@ -170,7 +170,7 @@ modified: 2026-09-05
 
 ---
 
-### 8️⃣ linkedin2username
+### 8. linkedin2username
 
 **개요**
 
@@ -195,7 +195,7 @@ modified: 2026-09-05
 
 ---
 
-### 9️⃣ spoofcheck
+### 9. spoofcheck
 
 **개요**
 
@@ -237,7 +237,7 @@ modified: 2026-09-05
 
 ---
 
-### 11️⃣ SpiderFoot
+### 11. SpiderFoot
 
 **개요**
 
@@ -254,7 +254,7 @@ modified: 2026-09-05
 
 ---
 
-### 12️⃣ WitnessMe
+### 12. WitnessMe
 
 **개요**
 
@@ -275,7 +275,7 @@ modified: 2026-09-05
 
 ## 🔗 6. LinkedIn 데이터 수집
 
-### 13️⃣ LinkedInt
+### 13. LinkedInt
 
 **개요**
 

@@ -21,7 +21,7 @@ modified: 2026-09-05
 
 ---
 
-## 1️⃣ Docker CLI를 활용한 MariaDB 서버 기동
+## 1. Docker CLI를 활용한 MariaDB 서버 기동
 
 ### 🔹 목적
 
@@ -51,7 +51,7 @@ docker run -d \
 
 ---
 
-## 2️⃣ Docker CLI를 통한 MariaDB 접속 방법
+## 2. Docker CLI를 통한 MariaDB 접속 방법
 
 ### 🔹 macOS에 MariaDB Client가 없는 경우
 
@@ -84,7 +84,7 @@ docker exec -i mariadb-local mariadb -u root -p<PASSWORD> DB_NAME < file.sql
 
 ---
 
-## 3️⃣ MariaDB 사용자 생성 및 권한 부여 (CLI)
+## 3. MariaDB 사용자 생성 및 권한 부여 (CLI)
 
 ### 🔹 목적
 
@@ -128,7 +128,7 @@ docker exec -it mariadb-local mariadb -u app_user -p<PASSWORD>
 
 ---
 
-## 4️⃣ macOS 환경에서 CTE(WITH) 테이블 조회 실패 원인
+## 4. macOS 환경에서 CTE(WITH) 테이블 조회 실패 원인
 
 ### 🔹 증상
 

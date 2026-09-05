@@ -71,10 +71,10 @@ Tail → OutboundHandler 전부 탐색 → Head
 `@Sharable` 트레이스/로깅 핸들러는 하나의 인스턴스를 두 번 등록해도 안전하므로, Head와 Tail 양쪽에 동일 인스턴스를 배치한다.
 
 ```java
-// 1️⃣ 핸들러 인스턴스 생성 (Bean 주입)
+// 1. 핸들러 인스턴스 생성 (Bean 주입)
 NettyTraceDuplexHandler loggingHandler = ...;
 
-// 2️⃣ 파이프라인 구성
+// 2. 파이프라인 구성
 pipeline.addFirst("logging_head", loggingHandler); // 맨 앞
 pipeline.addLast(new StringDecoder());
 pipeline.addLast(new StringEncoder());
@@ -105,12 +105,12 @@ pipeline.addLast("logging_tail", loggingHandler); // 맨 뒤 (예외 캡처)
 ```java
 channel.pipeline().addLast("proxyDetector", new ProxyDetector());
 channel.pipeline().addLast(new LoggingHandler(LogLevel.INFO));
-channel.pipeline().addLast("decoder", new MessageDecoder());      // 1️⃣ ByteBuf → DTO
+channel.pipeline().addLast("decoder", new MessageDecoder());      // 1. ByteBuf → DTO
 
 channel.pipeline().addLast("logging_head", nettyTraceDuplexHandler); // ⭐ 위치 A(가독성 최적)
 
-channel.pipeline().addLast("encoder", new MessageEncoder());      // 2️⃣ DTO → ByteBuf
-channel.pipeline().addLast("handler", new MessageHandler(appMapper)); // 3️⃣ 비즈니스 로직
+channel.pipeline().addLast("encoder", new MessageEncoder());      // 2. DTO → ByteBuf
+channel.pipeline().addLast("handler", new MessageHandler(appMapper)); // 3. 비즈니스 로직
 
 channel.pipeline().addLast("logging_tail", nettyTraceDuplexHandler); // ⭐ 위치 B(예외 전용)
 ```

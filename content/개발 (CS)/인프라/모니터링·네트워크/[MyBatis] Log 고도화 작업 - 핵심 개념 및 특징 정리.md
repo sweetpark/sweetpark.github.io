@@ -24,7 +24,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 1️⃣ 원하는 로그 흐름 (정답 구조)
+>     ## 1. 원하는 로그 흐름 (정답 구조)
 >     
 >     ```
 >     [API_REQUEST]  ───────────────▶
@@ -45,7 +45,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 2️⃣ 전체 책임 분리 (이게 핵심 설계)
+>     ## 2. 전체 책임 분리 (이게 핵심 설계)
 >     
 >     | 계층 | 역할 |
 >     | --- | --- |
@@ -58,7 +58,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 3️⃣ TraceContext 설계 (SQL 누적의 핵심)
+>     ## 3. TraceContext 설계 (SQL 누적의 핵심)
 >     
 >     ### ✅ ThreadLocal 기반 컨텍스트
 >     
@@ -95,7 +95,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 4️⃣ MyBatis Interceptor → SQL “중간” 로그
+>     ## 4. MyBatis Interceptor → SQL “중간” 로그
 >     
 >     ### ✅ MyBatis Interceptor
 >     
@@ -140,7 +140,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 5️⃣ Filter에서 “흐름 로그” 완성 (가장 중요)
+>     ## 5. Filter에서 “흐름 로그” 완성 (가장 중요)
 >     
 >     ### ✅ LoggingFilter (요약본)
 >     
@@ -191,7 +191,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 6️⃣ 결과 로그 예시 (네가 원하는 바로 그 그림)
+>     ## 6. 결과 로그 예시 (네가 원하는 바로 그 그림)
 >     
 >     ```
 >     [traceId=abc123] [API_REQUEST] uri=/api/payment/send method=POST body={"mid":"123"}
@@ -213,7 +213,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 7️⃣ 왜 Interceptor가 아니라 Filter에서 찍어야 하나?
+>     ## 7. 왜 Interceptor가 아니라 Filter에서 찍어야 하나?
 >     
 >     | 이유 | 설명 |
 >     | --- | --- |
@@ -225,7 +225,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 8️⃣ 네 구조에 딱 맞는 최종 원칙
+>     ## 8. 네 구조에 딱 맞는 최종 원칙
 >     
 >     ✔ Wrapper → **Filter**
 >     
@@ -266,7 +266,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 1️⃣ 당신이 하려는 건 정확히 이거다
+>     ## 1. 당신이 하려는 건 정확히 이거다
 >     
 >     ### 🎯 목표 요약
 >     
@@ -285,7 +285,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 2️⃣ 왜 request / response 로그부터가 맞는가
+>     ## 2. 왜 request / response 로그부터가 맞는가
 >     
 >     ### 레거시에서 흔한 현실
 >     
@@ -309,7 +309,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 3️⃣ 이 접근의 정체: Golden Master Strategy
+>     ## 3. 이 접근의 정체: Golden Master Strategy
 >     
 >     당신이 하는 걸 정확히 이름 붙이면 이겁니다.
 >     
@@ -331,7 +331,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 4️⃣ Grafana + 로그 적재는 보너스다 (중요한 관점)
+>     ## 4. Grafana + 로그 적재는 보너스다 (중요한 관점)
 >     
 >     Grafana 가시화는 **목적이 아니라 수단**입니다.
 >     
@@ -345,7 +345,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 5️⃣ 다음 단계 방향성 (이 순서가 정답)
+>     ## 5. 다음 단계 방향성 (이 순서가 정답)
 >     
 >     ### 🔹 Step 1. 관찰 안정화 (지금 단계)
 >     
@@ -410,7 +410,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 6️⃣ 이 방식이 “안전한” 이유
+>     ## 6. 이 방식이 “안전한” 이유
 >     
 >     | 접근 | 리스크 |
 >     | --- | --- |
@@ -423,7 +423,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 7️⃣ 리팩토링은 그 다음이다
+>     ## 7. 리팩토링은 그 다음이다
 >     
 >     테스트가 생기면:
 >     
@@ -439,7 +439,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 8️⃣ 아주 중요한 경고 (경험에서 나오는 말)
+>     ## 8. 아주 중요한 경고 (경험에서 나오는 말)
 >     
 >     ❌ “테스트부터 작성해야지”
 >     
@@ -453,7 +453,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     ## 9️⃣ 한 줄 결론
+>     ## 9. 한 줄 결론
 >     
 >     > 지금 방향성은 단위테스트와 리팩토링을 ‘가능하게 만드는’ 가장 현실적이고 성숙한 접근이다.
 >     > 
@@ -493,7 +493,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     # 0️⃣ 로그 단계 정의 (고정)
+>     # 0. 로그 단계 정의 (고정)
 >     
 >     ```
 >     TRACE : 원문 해부 (단기·조건부)
@@ -510,7 +510,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     # 1️⃣ 공통 Context (ThreadLocal)
+>     # 1. 공통 Context (ThreadLocal)
 >     
 >     ## TraceLevel
 >     
@@ -564,7 +564,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     # 2️⃣ SQL Trace 누적 구조
+>     # 2. SQL Trace 누적 구조
 >     
 >     ## SqlTrace
 >     
@@ -613,7 +613,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     # 3️⃣ MyBatis SQL Interceptor (핵심)
+>     # 3. MyBatis SQL Interceptor (핵심)
 >     
 >     > ❗ 절대 여기서 logger 찍지 않는다
 >     > 
@@ -671,7 +671,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     # 4️⃣ Logging Filter (전체 흐름 제어)
+>     # 4. Logging Filter (전체 흐름 제어)
 >     
 >     ## 핵심 역할
 >     
@@ -811,7 +811,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     # 5️⃣ WARN 로그는 어떻게 쓰나?
+>     # 5. WARN 로그는 어떻게 쓰나?
 >     
 >     WARN은 **레벨이 아니라 조건**이다.
 >     
@@ -833,7 +833,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     # 6️⃣ 최종 흐름 요약
+>     # 6. 최종 흐름 요약
 >     
 >     ```
 >     [Filter]
@@ -850,7 +850,7 @@ modified: 2026-09-05
 >     
 >     ---
 >     
->     # 7️⃣ 이 구조의 강점 (확신해도 됨)
+>     # 7. 이 구조의 강점 (확신해도 됨)
 >     
 >     ✔ prod 기본 가볍다
 >     
@@ -1736,7 +1736,7 @@ modified: 2026-09-05
     
     ---
     
-    ## 1️⃣ JitPack이 처음에 안 되었던 이유
+    ## 1. JitPack이 처음에 안 되었던 이유
     
     ### ❌ 증상
     
@@ -1770,7 +1770,7 @@ modified: 2026-09-05
     
     ---
     
-    ## 2️⃣ Spring Boot Starter 만드는 기본 구조
+    ## 2. Spring Boot Starter 만드는 기본 구조
     
     ### 📁 프로젝트 성격
     
@@ -1814,7 +1814,7 @@ modified: 2026-09-05
     
     ---
     
-    ## 3️⃣ build.gradle에서 `api` / `compileOnly`를 쓰는 이유
+    ## 3. build.gradle에서 `api` / `compileOnly`를 쓰는 이유
     
     ### ❌ 문제의 시작
     
@@ -1862,16 +1862,16 @@ modified: 2026-09-05
     
     ---
     
-    ## 4️⃣ mavenLocal() 테스트 흐름
+    ## 4. mavenLocal() 테스트 흐름
     
-    ### 1️⃣ 로컬에 publish
+    ### 1. 로컬에 publish
     
     ```bash
     ./gradlew clean publishToMavenLocal
     
     ```
     
-    ### 2️⃣ 결과 확인 경로
+    ### 2. 결과 확인 경로
     
     ```bash
     ~/.m2/repository/com/company/logging-starter/1.0.0/
@@ -1886,7 +1886,7 @@ modified: 2026-09-05
     
     ```
     
-    ### 3️⃣ 소비 프로젝트에서 사용
+    ### 3. 소비 프로젝트에서 사용
     
     ```
     repositories {
@@ -1904,7 +1904,7 @@ modified: 2026-09-05
     
     ---
     
-    ## 5️⃣ JitPack에서 Git tag를 사용하는 이유
+    ## 5. JitPack에서 Git tag를 사용하는 이유
     
     ### 🔍 JitPack 동작 방식
     
@@ -1945,7 +1945,7 @@ modified: 2026-09-05
     
     ---
     
-    ## 6️⃣ properties 값이 소비 프로젝트에서 안 먹었던 이유 & 해결
+    ## 6. properties 값이 소비 프로젝트에서 안 먹었던 이유 & 해결
     
     ### ❌ 문제 코드
     
@@ -1969,7 +1969,7 @@ modified: 2026-09-05
     
     ### ✅ 정답 해결 방법
     
-    ### 1️⃣ `@ConfigurationProperties` 사용
+    ### 1. `@ConfigurationProperties` 사용
     
     ```java
     @ConfigurationProperties(prefix = "log")
@@ -1980,14 +1980,14 @@ modified: 2026-09-05
     
     ```
     
-    ### 2️⃣ AutoConfiguration에서 활성화
+    ### 2. AutoConfiguration에서 활성화
     
     ```java
     @EnableConfigurationProperties(LoggingProperties.class)
     
     ```
     
-    ### 3️⃣ Filter는 **Spring Bean으로 생성**
+    ### 3. Filter는 **Spring Bean으로 생성**
     
     ```java
     @Bean
@@ -1999,7 +1999,7 @@ modified: 2026-09-05
     
     ```
     
-    ### 4️⃣ 소비 프로젝트 설정
+    ### 4. 소비 프로젝트 설정
     
     ```yaml
     log:

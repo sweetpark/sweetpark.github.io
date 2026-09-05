@@ -12,7 +12,7 @@ modified: 2026-09-05
 
 ## 📌 개념
 
-### 1️⃣ 프로세스와 스레드 (Why Thread?)
+### 1. 프로세스와 스레드 (Why Thread?)
 
 #### 프로세스 vs 스레드
 
@@ -27,7 +27,7 @@ modified: 2026-09-05
 
 ---
 
-### 2️⃣ 스레드 생성과 실행 책임 분리
+### 2. 스레드 생성과 실행 책임 분리
 
 #### Runnable vs Thread
 
@@ -59,7 +59,7 @@ public static void main(String[] args) {
 
 ---
 
-### 3️⃣ 스레드 생명주기와 상태 전이
+### 3. 스레드 생명주기와 상태 전이
 
 #### Thread 상태 (중요)
 
@@ -83,7 +83,7 @@ public static void main(String[] args) {
 
 ---
 
-### 4️⃣ 실행 순서 제어 – join()
+### 4. 실행 순서 제어 – join()
 
 ```java
 thread.start();
@@ -99,7 +99,7 @@ thread.join(); // 종료까지 대기
 
 ---
 
-### 5️⃣ 메모리 가시성 문제 (volatile)
+### 5. 메모리 가시성 문제 (volatile)
 
 #### 문제
 
@@ -123,7 +123,7 @@ volatile 의미:
 
 ---
 
-### 6️⃣ 상호 배제 – synchronized
+### 6. 상호 배제 – synchronized
 
 ```java
 public synchronized void withdraw(int amount) {
@@ -146,7 +146,7 @@ public synchronized void withdraw(int amount) {
 
 ---
 
-### 7️⃣ 잘못된 해결 – Busy Waiting ❌
+### 7. 잘못된 해결 – Busy Waiting ❌
 
 ```java
 while(queue.isEmpty()) {
@@ -166,7 +166,7 @@ while(queue.isEmpty()) {
 
 ---
 
-### 8️⃣ 1세대 협력 – wait / notify
+### 8. 1세대 협력 – wait / notify
 
 ```java
 synchronized(lock) {
@@ -185,7 +185,7 @@ synchronized(lock) {
 
 ---
 
-### 9️⃣ 2세대 협력 – Lock & Condition
+### 9. 2세대 협력 – Lock & Condition
 
 ```java
 Lock lock = new ReentrantLock();
@@ -228,7 +228,7 @@ count.incrementAndGet();
 
 ---
 
-### 1️⃣1️⃣ 동시성 컬렉션 (재발명 금지)
+### 1.1. 동시성 컬렉션 (재발명 금지)
 
 | 자료구조 | 사용 금지 | 사용 권장 |
 | --- | --- | --- |
@@ -242,7 +242,7 @@ count.incrementAndGet();
 
 ---
 
-### 1️⃣2️⃣ 왜 스레드 풀인가?
+### 1.2. 왜 스레드 풀인가?
 
 #### 문제
 
@@ -259,7 +259,7 @@ new Thread(task); // 요청마다 생성 ❌
 
 ---
 
-### 1️⃣3️⃣ ThreadPoolExecutor 동작 원리 (중요)
+### 1.3. ThreadPoolExecutor 동작 원리 (중요)
 
 #### 처리 순서
 
@@ -276,7 +276,7 @@ new Thread(task); // 요청마다 생성 ❌
 
 ---
 
-### 1️⃣4️⃣ 스레드 풀 전략
+### 1.4. 스레드 풀 전략
 
 #### 고정 풀
 
@@ -302,7 +302,7 @@ new ThreadPoolExecutor(
 
 ---
 
-### 1️⃣5️⃣ 거절 정책 (Backpressure)
+### 1.5. 거절 정책 (Backpressure)
 
 | 정책 | 설명 |
 | --- | --- |
@@ -314,7 +314,7 @@ new ThreadPoolExecutor(
 
 ---
 
-### 1️⃣6️⃣ Executor 우아한 종료 (Graceful Shutdown)
+### 1.6. Executor 우아한 종료 (Graceful Shutdown)
 
 ```java
 es.shutdown();
