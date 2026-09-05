@@ -1,5 +1,5 @@
 ---
-title: 함수 기본 (C++)
+title: "함수 기본 (C++)"
 tags: [C++, 함수]
 created: 2026-09-05
 modified: 2026-09-05

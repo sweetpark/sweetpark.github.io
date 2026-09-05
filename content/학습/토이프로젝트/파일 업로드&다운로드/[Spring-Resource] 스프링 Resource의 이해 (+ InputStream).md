@@ -1,5 +1,5 @@
 ---
-title: [Spring-Resource] 스프링 Resource의 이해 (+ InputStream)
+title: "[Spring-Resource] 스프링 Resource의 이해 (+ InputStream)"
 tags: [토이프로젝트, 파일 업로드&다운로드]
 created: 2026-09-05
 modified: 2026-09-05

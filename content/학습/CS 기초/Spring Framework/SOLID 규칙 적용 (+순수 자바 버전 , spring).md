@@ -1,5 +1,5 @@
 ---
-title: SOLID 규칙 적용 (+순수 자바 버전 , spring)
+title: "SOLID 규칙 적용 (+순수 자바 버전 , spring)"
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

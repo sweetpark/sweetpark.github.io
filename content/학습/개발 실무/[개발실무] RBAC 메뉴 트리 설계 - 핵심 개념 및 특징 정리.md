@@ -1,5 +1,5 @@
 ---
-title: RBAC 메뉴 트리 설계 — soft-delete와 upsert-revive
+title: "RBAC 메뉴 트리 설계 — soft-delete와 upsert-revive"
 tags: [학습, 개발실무, 아키텍처, RBAC]
 modified: 2026-09-05
 ---

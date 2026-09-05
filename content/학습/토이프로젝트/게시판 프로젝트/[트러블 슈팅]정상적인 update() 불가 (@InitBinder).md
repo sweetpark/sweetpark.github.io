@@ -1,5 +1,5 @@
 ---
-title: [트러블 슈팅]정상적인 update() 불가 (@InitBinder)
+title: "[트러블 슈팅]정상적인 update() 불가 (@InitBinder)"
 tags: [프로젝트, 게시판 프로젝트]
 created: 2026-09-05
 modified: 2026-09-05

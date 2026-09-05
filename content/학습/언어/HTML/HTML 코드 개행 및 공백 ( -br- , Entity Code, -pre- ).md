@@ -1,5 +1,5 @@
 ---
-title: HTML 코드 개행 및 공백 ( <br> , Entity Code, <pre> )
+title: "HTML 코드 개행 및 공백 ( <br> , Entity Code, <pre> )"
 tags: [프로그래밍 언어, HTML]
 created: 2026-09-05
 modified: 2026-09-05

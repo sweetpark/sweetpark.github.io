@@ -1,5 +1,5 @@
 ---
-title: [GCP 사용기 #3] Spring boot 서버 구축
+title: "[GCP 사용기 #3] Spring boot 서버 구축"
 tags: [프로젝트, 영화예매 프로젝트]
 created: 2026-09-05
 modified: 2026-09-05

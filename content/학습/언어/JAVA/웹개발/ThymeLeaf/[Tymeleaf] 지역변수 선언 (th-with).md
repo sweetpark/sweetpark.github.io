@@ -1,5 +1,5 @@
 ---
-title: [Tymeleaf] 지역변수 선언 (th:with)
+title: "[Tymeleaf] 지역변수 선언 (th:with)"
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

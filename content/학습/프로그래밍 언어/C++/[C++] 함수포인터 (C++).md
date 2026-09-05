@@ -1,5 +1,5 @@
 ---
-title: 함수포인터 (C++)
+title: "함수포인터 (C++)"
 tags: [C++, 함수포인터]
 created: 2026-09-05
 modified: 2026-09-05

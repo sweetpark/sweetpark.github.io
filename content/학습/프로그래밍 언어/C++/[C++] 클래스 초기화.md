@@ -1,5 +1,5 @@
 ---
-title: 클래스 초기화
+title: "클래스 초기화"
 tags: [C++, 클래스, 초기화]
 created: 2026-09-05
 modified: 2026-09-05

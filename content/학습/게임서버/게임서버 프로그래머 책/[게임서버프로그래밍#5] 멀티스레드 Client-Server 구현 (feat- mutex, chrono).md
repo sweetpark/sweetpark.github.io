@@ -1,5 +1,5 @@
 ---
-title: [게임서버프로그래밍#5] 멀티스레드 Client-Server 구현 (feat: mutex, chrono)
+title: "[게임서버프로그래밍#5] 멀티스레드 Client-Server 구현 (feat: mutex, chrono)"
 tags: [개발 서적 리뷰, 게임서버 프로그래머 책]
 created: 2026-09-05
 modified: 2026-09-05

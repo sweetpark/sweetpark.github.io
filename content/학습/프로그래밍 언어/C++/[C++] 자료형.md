@@ -1,5 +1,5 @@
 ---
-title: 자료형
+title: "자료형"
 tags: [C++, 자료형]
 created: 2026-09-05
 modified: 2026-09-05

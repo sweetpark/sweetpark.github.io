@@ -1,5 +1,5 @@
 ---
-title: Spring 역사 #3 (Spring의 탄생)
+title: "Spring 역사 #3 (Spring의 탄생)"
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

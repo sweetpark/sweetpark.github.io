@@ -1,5 +1,5 @@
 ---
-title: Stateless 서비스 + Connection 값객체 패턴
+title: "Stateless 서비스 + Connection 값객체 패턴"
 tags: [학습, 개발실무, 아키텍처, 동시성]
 modified: 2026-09-05
 ---

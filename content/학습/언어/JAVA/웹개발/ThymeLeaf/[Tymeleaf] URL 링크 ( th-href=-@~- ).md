@@ -1,5 +1,5 @@
 ---
-title: [Tymeleaf] URL 링크 ( th:href="@~" )
+title: "[Tymeleaf] URL 링크 ( th:href=\"@~\" )"
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

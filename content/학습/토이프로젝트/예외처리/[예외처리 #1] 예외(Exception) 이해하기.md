@@ -1,5 +1,5 @@
 ---
-title: [예외처리 #1] 예외(Exception) 이해하기
+title: "[예외처리 #1] 예외(Exception) 이해하기"
 tags: [토이프로젝트, 예외처리]
 created: 2026-09-05
 modified: 2026-09-05

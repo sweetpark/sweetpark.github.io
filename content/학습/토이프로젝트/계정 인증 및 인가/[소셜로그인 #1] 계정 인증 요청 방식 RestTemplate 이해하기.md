@@ -1,5 +1,5 @@
 ---
-title: [소셜로그인 #1] 계정 인증 요청 방식 RestTemplate 이해하기
+title: "[소셜로그인 #1] 계정 인증 요청 방식 RestTemplate 이해하기"
 tags: [토이프로젝트, 계정 인증 및 인가]
 created: 2026-09-05
 modified: 2026-09-05

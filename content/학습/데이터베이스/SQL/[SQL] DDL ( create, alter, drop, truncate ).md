@@ -1,5 +1,5 @@
 ---
-title: [SQL] DDL ( create, alter, drop, truncate )
+title: "[SQL] DDL ( create, alter, drop, truncate )"
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,5 @@
 ---
-title: [Page 처리 #1] OFFSET 기반 페이징 처리 이해하기
+title: "[Page 처리 #1] OFFSET 기반 페이징 처리 이해하기"
 tags: [토이프로젝트, 페이징 처리]
 created: 2026-09-05
 modified: 2026-09-05

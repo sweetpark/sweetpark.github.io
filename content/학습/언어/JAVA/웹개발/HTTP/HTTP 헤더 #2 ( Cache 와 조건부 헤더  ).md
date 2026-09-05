@@ -1,5 +1,5 @@
 ---
-title: HTTP 헤더 #2 ( Cache 와 조건부 헤더  )
+title: "HTTP 헤더 #2 ( Cache 와 조건부 헤더  )"
 tags: [JAVA 기반 웹개발, HTTP]
 created: 2026-09-05
 modified: 2026-09-05

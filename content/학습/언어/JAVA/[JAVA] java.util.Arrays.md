@@ -1,5 +1,5 @@
 ---
-title: [JAVA] java.util.Arrays
+title: "[JAVA] java.util.Arrays"
 tags: [프로그래밍 언어, JAVA]
 created: 2026-09-05
 modified: 2026-09-05

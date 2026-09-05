@@ -1,5 +1,5 @@
 ---
-title: [SQL] 주요 연산자 (distinct,like,between,in,is null)
+title: "[SQL] 주요 연산자 (distinct,like,between,in,is null)"
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05
 modified: 2026-09-05

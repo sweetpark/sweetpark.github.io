@@ -1,5 +1,5 @@
 ---
-title: [SQL] 집계함수, 스칼라함수
+title: "[SQL] 집계함수, 스칼라함수"
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05
 modified: 2026-09-05

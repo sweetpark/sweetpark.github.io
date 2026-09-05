@@ -1,5 +1,5 @@
 ---
-title: [Thymeleaf] 데이터 출력
+title: "[Thymeleaf] 데이터 출력"
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

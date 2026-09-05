@@ -1,5 +1,5 @@
 ---
-title: [Log #1] 로그 이해하기
+title: "[Log #1] 로그 이해하기"
 tags: [토이프로젝트, 로그]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,5 @@
 ---
-title: 배열 기초
+title: "배열 기초"
 tags: [C++, 배열]
 created: 2026-09-05
 modified: 2026-09-05

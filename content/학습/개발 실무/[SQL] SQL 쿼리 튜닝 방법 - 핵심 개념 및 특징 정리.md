@@ -1,5 +1,5 @@
 ---
-title: SQL 쿼리 튜닝 방법
+title: "SQL 쿼리 튜닝 방법"
 tags: [학습, 개발실무, 저장소-&-데이터베이스]
 created: 2026-02-04
 modified: 2026-09-05

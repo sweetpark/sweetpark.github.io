@@ -1,5 +1,5 @@
 ---
-title: "**🌿 브랜치 관리 전략 (Branch Management Guide)**"
+title: "\"**🌿 브랜치 관리 전략 (Branch Management Guide)**\""
 tags: [학습, 개발실무, 컨벤션]
 modified: 2026-09-05
 ---

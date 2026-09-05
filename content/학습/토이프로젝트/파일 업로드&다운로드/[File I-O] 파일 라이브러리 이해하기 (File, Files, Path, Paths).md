@@ -1,5 +1,5 @@
 ---
-title: [File I/O] 파일 라이브러리 이해하기 (File, Files, Path, Paths)
+title: "[File I/O] 파일 라이브러리 이해하기 (File, Files, Path, Paths)"
 tags: [토이프로젝트, 파일 업로드&다운로드]
 created: 2026-09-05
 modified: 2026-09-05

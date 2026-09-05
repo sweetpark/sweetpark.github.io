@@ -1,5 +1,5 @@
 ---
-title: [Log #2] LogBack을 이용한 로그 설정
+title: "[Log #2] LogBack을 이용한 로그 설정"
 tags: [토이프로젝트, 로그]
 created: 2026-09-05
 modified: 2026-09-05

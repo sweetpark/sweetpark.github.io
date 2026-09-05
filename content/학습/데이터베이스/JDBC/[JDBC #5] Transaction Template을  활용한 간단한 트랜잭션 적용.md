@@ -1,5 +1,5 @@
 ---
-title: [JDBC #5] Transaction Template을  활용한 간단한 트랜잭션 적용
+title: "[JDBC #5] Transaction Template을  활용한 간단한 트랜잭션 적용"
 tags: [데이터베이스, JDBC]
 created: 2026-09-05
 modified: 2026-09-05

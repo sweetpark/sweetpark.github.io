@@ -1,5 +1,5 @@
 ---
-title: 빈 생성시 값 초기화 방법 ( init() )
+title: "빈 생성시 값 초기화 방법 ( init() )"
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

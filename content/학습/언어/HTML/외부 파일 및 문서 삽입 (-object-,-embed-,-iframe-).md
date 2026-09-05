@@ -1,5 +1,5 @@
 ---
-title: 외부 파일 및 문서 삽입 (<object>,<embed>,<iframe>)
+title: "외부 파일 및 문서 삽입 (<object>,<embed>,<iframe>)"
 tags: [프로그래밍 언어, HTML]
 created: 2026-09-05
 modified: 2026-09-05

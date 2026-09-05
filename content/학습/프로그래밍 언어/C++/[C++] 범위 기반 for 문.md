@@ -1,5 +1,5 @@
 ---
-title: 범위 기반 for 문
+title: "범위 기반 for 문"
 tags: [C++, 범위기반for문]
 created: 2026-09-05
 modified: 2026-09-05

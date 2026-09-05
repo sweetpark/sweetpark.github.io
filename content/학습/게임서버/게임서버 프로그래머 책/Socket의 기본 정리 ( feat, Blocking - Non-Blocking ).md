@@ -1,5 +1,5 @@
 ---
-title: Socket의 기본 정리 ( feat, Blocking / Non-Blocking )
+title: "Socket의 기본 정리 ( feat, Blocking / Non-Blocking )"
 tags: [개발 서적 리뷰, 게임서버 프로그래머 책]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,5 @@
 ---
-title: [Thymeleaf] 자체 태그 (th:block , th:inline, th:fragment)
+title: "[Thymeleaf] 자체 태그 (th:block , th:inline, th:fragment)"
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

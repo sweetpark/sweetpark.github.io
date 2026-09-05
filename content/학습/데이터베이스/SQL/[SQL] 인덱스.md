@@ -1,5 +1,5 @@
 ---
-title: [SQL] 인덱스
+title: "[SQL] 인덱스"
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05
 modified: 2026-09-05

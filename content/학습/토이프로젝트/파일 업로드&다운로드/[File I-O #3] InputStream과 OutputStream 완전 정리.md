@@ -1,5 +1,5 @@
 ---
-title: [File I/O #3] InputStream과 OutputStream 완전 정리
+title: "[File I/O #3] InputStream과 OutputStream 완전 정리"
 tags: [토이프로젝트, 파일 업로드&다운로드]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,5 @@
 ---
-title: 동적할당
+title: "동적할당"
 tags: [C++, 동적할당]
 created: 2026-09-05
 modified: 2026-09-05

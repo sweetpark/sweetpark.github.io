@@ -1,5 +1,5 @@
 ---
-title: [Thymeleaf] th:field, th:object
+title: "[Thymeleaf] th:field, th:object"
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

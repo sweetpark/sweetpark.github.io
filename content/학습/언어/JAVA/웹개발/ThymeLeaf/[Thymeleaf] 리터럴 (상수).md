@@ -1,5 +1,5 @@
 ---
-title: [Thymeleaf] 리터럴 (상수)
+title: "[Thymeleaf] 리터럴 (상수)"
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

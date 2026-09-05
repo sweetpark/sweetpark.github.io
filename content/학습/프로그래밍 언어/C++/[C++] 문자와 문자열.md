@@ -1,5 +1,5 @@
 ---
-title: 문자와 문자열
+title: "문자와 문자열"
 tags: [C++, 문자, 문자열]
 created: 2026-09-05
 modified: 2026-09-05

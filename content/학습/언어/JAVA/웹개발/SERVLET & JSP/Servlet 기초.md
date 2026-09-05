@@ -1,5 +1,5 @@
 ---
-title: Servlet 기초
+title: "Servlet 기초"
 tags: [JAVA 기반 웹개발, SERVLET & JSP]
 created: 2026-09-05
 modified: 2026-09-05

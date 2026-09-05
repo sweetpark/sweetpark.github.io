@@ -1,5 +1,5 @@
 ---
-title: @Component에 관하여...
+title: "@Component에 관하여..."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,5 @@
 ---
-title: HTML 문서 기본 구조
+title: "HTML 문서 기본 구조"
 tags: [프로그래밍 언어, HTML]
 created: 2026-09-05
 modified: 2026-09-05

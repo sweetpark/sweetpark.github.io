@@ -1,5 +1,5 @@
 ---
-title: [DataSource] Connection Pool의 이해와 DataSource
+title: "[DataSource] Connection Pool의 이해와 DataSource"
 tags: [데이터베이스, JDBC]
 created: 2026-09-05
 modified: 2026-09-05

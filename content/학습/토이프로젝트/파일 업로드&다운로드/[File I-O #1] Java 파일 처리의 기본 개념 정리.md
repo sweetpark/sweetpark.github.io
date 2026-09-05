@@ -1,5 +1,5 @@
 ---
-title: [File I/O #1] Java 파일 처리의 기본 개념 정리
+title: "[File I/O #1] Java 파일 처리의 기본 개념 정리"
 tags: [토이프로젝트, 파일 업로드&다운로드]
 created: 2026-09-05
 modified: 2026-09-05

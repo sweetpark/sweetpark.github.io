@@ -1,5 +1,5 @@
 ---
-title: Servlet 예제 ( 회원 저장 / 조회 )
+title: "Servlet 예제 ( 회원 저장 / 조회 )"
 tags: [JAVA 기반 웹개발, SERVLET & JSP]
 created: 2026-09-05
 modified: 2026-09-05

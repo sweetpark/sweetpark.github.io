@@ -1,5 +1,5 @@
 ---
-title: 타입변환
+title: "타입변환"
 tags: [C++, 타입변환]
 created: 2026-09-05
 modified: 2026-09-05

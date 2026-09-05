@@ -1,5 +1,5 @@
 ---
-title: Log 설정 및 Logging 사용
+title: "Log 설정 및 Logging 사용"
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

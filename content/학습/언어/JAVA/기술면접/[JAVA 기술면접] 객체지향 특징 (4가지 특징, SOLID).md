@@ -1,5 +1,5 @@
 ---
-title: [JAVA 기술면접] 객체지향 특징 (4가지 특징, SOLID)
+title: "[JAVA 기술면접] 객체지향 특징 (4가지 특징, SOLID)"
 tags: [기술면접, JAVA 관련 기술면접]
 created: 2026-09-05
 modified: 2026-09-05

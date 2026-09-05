@@ -1,5 +1,5 @@
 ---
-title: 제목과 문단 ( <h1~6> , <p>, <hr>)
+title: "제목과 문단 ( <h1~6> , <p>, <hr>)"
 tags: [프로그래밍 언어, HTML]
 created: 2026-09-05
 modified: 2026-09-05

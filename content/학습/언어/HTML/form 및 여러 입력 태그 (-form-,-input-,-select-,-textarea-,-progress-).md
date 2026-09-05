@@ -1,5 +1,5 @@
 ---
-title: form 및 여러 입력 태그 (<form>,<input>,<select>,<textarea>,<progress>)
+title: "form 및 여러 입력 태그 (<form>,<input>,<select>,<textarea>,<progress>)"
 tags: [프로그래밍 언어, HTML]
 created: 2026-09-05
 modified: 2026-09-05

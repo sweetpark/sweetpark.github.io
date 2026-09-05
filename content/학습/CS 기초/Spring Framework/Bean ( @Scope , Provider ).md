@@ -1,5 +1,5 @@
 ---
-title: Bean ( @Scope , Provider )
+title: "Bean ( @Scope , Provider )"
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

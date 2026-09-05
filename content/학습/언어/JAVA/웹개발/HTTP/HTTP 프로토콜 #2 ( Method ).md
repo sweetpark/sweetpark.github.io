@@ -1,5 +1,5 @@
 ---
-title: HTTP 프로토콜 #2 ( Method )
+title: "HTTP 프로토콜 #2 ( Method )"
 tags: [JAVA 기반 웹개발, HTTP]
 created: 2026-09-05
 modified: 2026-09-05

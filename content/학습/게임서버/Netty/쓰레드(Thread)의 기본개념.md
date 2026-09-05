@@ -1,5 +1,5 @@
 ---
-title: 쓰레드(Thread)의 기본개념
+title: "쓰레드(Thread)의 기본개념"
 tags: [Netty Framework, Thread]
 created: 2026-09-05
 modified: 2026-09-05

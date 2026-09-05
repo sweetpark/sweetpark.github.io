@@ -1,5 +1,5 @@
 ---
-title: 유효성검사
+title: "유효성검사"
 tags: [학습, 개발실무, 공통]
 created: 2026-02-04
 modified: 2026-09-05

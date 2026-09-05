@@ -1,5 +1,5 @@
 ---
-title: [사전 준비] Redis Server 설치하기
+title: "[사전 준비] Redis Server 설치하기"
 tags: [프로젝트, 영화예매 프로젝트]
 created: 2026-09-05
 modified: 2026-09-05

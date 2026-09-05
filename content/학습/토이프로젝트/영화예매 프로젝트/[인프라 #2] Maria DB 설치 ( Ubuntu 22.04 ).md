@@ -1,5 +1,5 @@
 ---
-title: [인프라 #2] Maria DB 설치 ( Ubuntu 22.04 )
+title: "[인프라 #2] Maria DB 설치 ( Ubuntu 22.04 )"
 tags: [프로젝트, 영화예매 프로젝트]
 created: 2026-09-05
 modified: 2026-09-05

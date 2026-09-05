@@ -1,5 +1,5 @@
 ---
-title: [Queue] 클래스 설명 및 메서드
+title: "[Queue] 클래스 설명 및 메서드"
 tags: [알고리즘 & 자료구조, 자료구조]
 created: 2026-09-05
 modified: 2026-09-05

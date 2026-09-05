@@ -1,5 +1,5 @@
 ---
-title: SPRING MVC 구조 #3 (Dispatcher Servlet, View)
+title: "SPRING MVC 구조 #3 (Dispatcher Servlet, View)"
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

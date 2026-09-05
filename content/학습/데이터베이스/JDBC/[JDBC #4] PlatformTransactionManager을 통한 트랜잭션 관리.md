@@ -1,5 +1,5 @@
 ---
-title: [JDBC #4] PlatformTransactionManager을 통한 트랜잭션 관리
+title: "[JDBC #4] PlatformTransactionManager을 통한 트랜잭션 관리"
 tags: [데이터베이스, JDBC]
 created: 2026-09-05
 modified: 2026-09-05

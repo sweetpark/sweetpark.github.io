@@ -1,5 +1,5 @@
 ---
-title: [유효성검증 #2] Bean Validation를 이용한 유효성 검증
+title: "[유효성검증 #2] Bean Validation를 이용한 유효성 검증"
 tags: [토이프로젝트, 유효성검사 (Validation)]
 created: 2026-09-05
 modified: 2026-09-05

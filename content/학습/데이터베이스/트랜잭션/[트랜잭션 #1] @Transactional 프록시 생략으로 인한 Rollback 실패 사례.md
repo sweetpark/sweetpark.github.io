@@ -1,5 +1,5 @@
 ---
-title: [트랜잭션 #1] @Transactional 프록시 생략으로 인한 Rollback 실패 사례
+title: "[트랜잭션 #1] @Transactional 프록시 생략으로 인한 Rollback 실패 사례"
 tags: [데이터베이스, 트랜잭션]
 created: 2026-09-05
 modified: 2026-09-05

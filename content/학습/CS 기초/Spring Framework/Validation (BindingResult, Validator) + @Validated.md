@@ -1,5 +1,5 @@
 ---
-title: Validation (BindingResult, Validator) + @Validated
+title: "Validation (BindingResult, Validator) + @Validated"
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

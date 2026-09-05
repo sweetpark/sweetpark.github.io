@@ -1,5 +1,5 @@
 ---
-title: Spring 역사 #2 (POJO)
+title: "Spring 역사 #2 (POJO)"
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

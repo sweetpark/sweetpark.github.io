@@ -1,5 +1,5 @@
 ---
-title: Spring 예제#2 ( Adapter Handler, FrontController )
+title: "Spring 예제#2 ( Adapter Handler, FrontController )"
 tags: [JAVA 기반 웹개발, SERVLET & JSP]
 created: 2026-09-05
 modified: 2026-09-05

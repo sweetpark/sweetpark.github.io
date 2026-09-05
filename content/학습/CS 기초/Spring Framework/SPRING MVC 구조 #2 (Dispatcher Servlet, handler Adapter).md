@@ -1,5 +1,5 @@
 ---
-title: SPRING MVC 구조 #2 (Dispatcher Servlet, handler Adapter)
+title: "SPRING MVC 구조 #2 (Dispatcher Servlet, handler Adapter)"
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

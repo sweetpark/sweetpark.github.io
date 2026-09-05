@@ -1,5 +1,5 @@
 ---
-title: Template (함수 템플릿)
+title: "Template (함수 템플릿)"
 tags: [C++, 템플릿, 함수템플릿]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,5 @@
 ---
-title: 포인터 기초
+title: "포인터 기초"
 tags: [C++, 포인터]
 created: 2026-09-05
 modified: 2026-09-05

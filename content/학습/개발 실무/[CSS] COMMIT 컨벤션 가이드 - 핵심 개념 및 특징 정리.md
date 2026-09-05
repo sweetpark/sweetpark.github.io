@@ -1,5 +1,5 @@
 ---
-title: COMMIT 컨벤션 가이드
+title: "COMMIT 컨벤션 가이드"
 tags: [학습, 개발실무, 컨벤션]
 modified: 2026-09-05
 ---

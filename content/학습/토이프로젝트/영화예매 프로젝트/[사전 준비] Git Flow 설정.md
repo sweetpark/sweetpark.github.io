@@ -1,5 +1,5 @@
 ---
-title: [사전 준비] Git Flow 설정
+title: "[사전 준비] Git Flow 설정"
 tags: [프로젝트, 영화예매 프로젝트]
 created: 2026-09-05
 modified: 2026-09-05

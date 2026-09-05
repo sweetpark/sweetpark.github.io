@@ -1,5 +1,5 @@
 ---
-title: [배포 #1] Git Action을 이용한 배포 (CI/CD 파이프라인 , 무중단배포 X)
+title: "[배포 #1] Git Action을 이용한 배포 (CI/CD 파이프라인 , 무중단배포 X)"
 tags: [토이프로젝트, 배포]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,5 @@
 ---
-title: std::cin 정리
+title: "std::cin 정리"
 tags: [C++, cin]
 created: 2026-09-05
 modified: 2026-09-05

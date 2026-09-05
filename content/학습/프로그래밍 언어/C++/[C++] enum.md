@@ -1,5 +1,5 @@
 ---
-title: enum
+title: "enum"
 tags: [C++, enum]
 created: 2026-09-05
 modified: 2026-09-05

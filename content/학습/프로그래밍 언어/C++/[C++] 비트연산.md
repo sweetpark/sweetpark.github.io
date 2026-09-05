@@ -1,5 +1,5 @@
 ---
-title: 비트연산
+title: "비트연산"
 tags: [C++, 비트연산]
 created: 2026-09-05
 modified: 2026-09-05

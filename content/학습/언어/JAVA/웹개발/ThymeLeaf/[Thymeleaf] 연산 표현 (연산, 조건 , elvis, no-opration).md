@@ -1,5 +1,5 @@
 ---
-title: [Thymeleaf] 연산 표현 (연산, 조건 , elvis, no-opration)
+title: "[Thymeleaf] 연산 표현 (연산, 조건 , elvis, no-opration)"
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

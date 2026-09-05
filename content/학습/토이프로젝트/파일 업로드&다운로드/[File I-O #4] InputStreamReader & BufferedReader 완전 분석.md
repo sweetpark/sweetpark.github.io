@@ -1,5 +1,5 @@
 ---
-title: [File I/O #4] InputStreamReader & BufferedReader 완전 분석
+title: "[File I/O #4] InputStreamReader & BufferedReader 완전 분석"
 tags: [토이프로젝트, 파일 업로드&다운로드]
 created: 2026-09-05
 modified: 2026-09-05

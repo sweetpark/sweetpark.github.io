@@ -1,5 +1,5 @@
 ---
-title: [Thymeleaf] 속성, 반복, 조건 (th:*, th:each,th:if)
+title: "[Thymeleaf] 속성, 반복, 조건 (th:*, th:each,th:if)"
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

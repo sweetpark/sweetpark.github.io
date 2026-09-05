@@ -1,5 +1,5 @@
 ---
-title: [JAVA 기술면접]  성능튜닝
+title: "[JAVA 기술면접]  성능튜닝"
 tags: [기술면접, JAVA 관련 기술면접]
 created: 2026-09-05
 modified: 2026-09-05

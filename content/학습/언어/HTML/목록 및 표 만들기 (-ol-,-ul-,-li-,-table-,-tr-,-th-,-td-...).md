@@ -1,5 +1,5 @@
 ---
-title: 목록 및 표 만들기 (<ol>,<ul>,<li>,<table>,<tr>,<th>,<td>...)
+title: "목록 및 표 만들기 (<ol>,<ul>,<li>,<table>,<tr>,<th>,<td>...)"
 tags: [프로그래밍 언어, HTML]
 created: 2026-09-05
 modified: 2026-09-05

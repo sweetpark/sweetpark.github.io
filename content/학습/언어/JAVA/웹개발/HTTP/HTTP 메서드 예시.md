@@ -1,5 +1,5 @@
 ---
-title: HTTP 메서드 예시
+title: "HTTP 메서드 예시"
 tags: [JAVA 기반 웹개발, HTTP]
 created: 2026-09-05
 modified: 2026-09-05

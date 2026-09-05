@@ -1,5 +1,5 @@
 ---
-title: "[Netty_TLS] Netty 파이프라인 SSL-TLS 적용"
+title: "\"[Netty_TLS] Netty 파이프라인 SSL-TLS 적용\""
 tags: [학습, 개발실무, Netty, TLS]
 modified: 2026-09-05
 ---

@@ -1,5 +1,5 @@
 ---
-title: [Page처리 #3] 성능 차이 비교하기 (OFFSET, CURSOR)
+title: "[Page처리 #3] 성능 차이 비교하기 (OFFSET, CURSOR)"
 tags: [토이프로젝트, 페이징 처리]
 created: 2026-09-05
 modified: 2026-09-05

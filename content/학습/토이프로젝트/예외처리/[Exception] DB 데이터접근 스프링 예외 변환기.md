@@ -1,5 +1,5 @@
 ---
-title: [Exception] DB 데이터접근 스프링 예외 변환기
+title: "[Exception] DB 데이터접근 스프링 예외 변환기"
 tags: [토이프로젝트, 예외처리]
 created: 2026-09-05
 modified: 2026-09-05

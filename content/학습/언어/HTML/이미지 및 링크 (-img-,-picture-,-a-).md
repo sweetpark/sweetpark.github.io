@@ -1,5 +1,5 @@
 ---
-title: 이미지 및 링크 (<img>,<picture>,<a>)
+title: "이미지 및 링크 (<img>,<picture>,<a>)"
 tags: [프로그래밍 언어, HTML]
 created: 2026-09-05
 modified: 2026-09-05

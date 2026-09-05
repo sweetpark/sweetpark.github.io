@@ -1,5 +1,5 @@
 ---
-title: [JDBC #6] JDBC Template을 활용한 JDBC 편리하게 이용하기
+title: "[JDBC #6] JDBC Template을 활용한 JDBC 편리하게 이용하기"
 tags: [데이터베이스, JDBC]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,5 @@
 ---
-title: [JDBC#1] JDBC의 기본 설명 및 구조 이해하기
+title: "[JDBC#1] JDBC의 기본 설명 및 구조 이해하기"
 tags: [데이터베이스, JDBC]
 created: 2026-09-05
 modified: 2026-09-05

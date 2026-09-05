@@ -1,5 +1,5 @@
 ---
-title: Spring 역사 #1 (EJB)
+title: "Spring 역사 #1 (EJB)"
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

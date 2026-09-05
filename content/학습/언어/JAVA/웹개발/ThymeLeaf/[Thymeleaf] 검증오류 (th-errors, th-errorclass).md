@@ -1,5 +1,5 @@
 ---
-title: [Thymeleaf] 검증오류 (th:errors, th:errorclass)
+title: "[Thymeleaf] 검증오류 (th:errors, th:errorclass)"
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

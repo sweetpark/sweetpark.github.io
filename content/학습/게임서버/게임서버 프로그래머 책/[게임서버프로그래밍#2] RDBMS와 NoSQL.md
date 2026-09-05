@@ -1,5 +1,5 @@
 ---
-title: [게임서버프로그래밍#2] RDBMS와 NoSQL
+title: "[게임서버프로그래밍#2] RDBMS와 NoSQL"
 tags: [개발 서적 리뷰, 게임서버 프로그래머 책]
 created: 2026-09-05
 modified: 2026-09-05

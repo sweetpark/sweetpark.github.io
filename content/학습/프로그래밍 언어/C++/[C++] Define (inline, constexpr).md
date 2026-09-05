@@ -1,5 +1,5 @@
 ---
-title: Define (inline, constexpr)
+title: "Define (inline, constexpr)"
 tags: [C++, define, inline, constexpr]
 created: 2026-09-05
 modified: 2026-09-05

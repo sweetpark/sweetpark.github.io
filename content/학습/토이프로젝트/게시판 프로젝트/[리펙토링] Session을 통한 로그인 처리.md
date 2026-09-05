@@ -1,5 +1,5 @@
 ---
-title: [리펙토링] Session을 통한 로그인 처리
+title: "[리펙토링] Session을 통한 로그인 처리"
 tags: [프로젝트, 게시판 프로젝트]
 created: 2026-09-05
 modified: 2026-09-05

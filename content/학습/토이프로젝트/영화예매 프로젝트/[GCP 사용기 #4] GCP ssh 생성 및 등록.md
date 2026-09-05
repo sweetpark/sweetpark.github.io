@@ -1,5 +1,5 @@
 ---
-title: [GCP 사용기 #4] GCP ssh 생성 및 등록
+title: "[GCP 사용기 #4] GCP ssh 생성 및 등록"
 tags: [프로젝트, 영화예매 프로젝트]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,5 @@
 ---
-title: static_cast, dynamic_cast, const_cast, reinterpret_cast
+title: "static_cast, dynamic_cast, const_cast, reinterpret_cast"
 tags: [C++, 형변환, cast]
 created: 2026-09-05
 modified: 2026-09-05

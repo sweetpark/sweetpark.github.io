@@ -1,5 +1,5 @@
 ---
-title: 인터넷 통신과정 ( + IP, TCP/UDP, PORT, DNS )
+title: "인터넷 통신과정 ( + IP, TCP/UDP, PORT, DNS )"
 tags: [JAVA 기반 웹개발, HTTP]
 created: 2026-09-05
 modified: 2026-09-05

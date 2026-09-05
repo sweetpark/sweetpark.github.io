@@ -1,5 +1,5 @@
 ---
-title: [배포 #1] spring boot 빌드하기 (+ 설정정보)
+title: "[배포 #1] spring boot 빌드하기 (+ 설정정보)"
 tags: [프로젝트, 영화예매 프로젝트]
 created: 2026-09-05
 modified: 2026-09-05

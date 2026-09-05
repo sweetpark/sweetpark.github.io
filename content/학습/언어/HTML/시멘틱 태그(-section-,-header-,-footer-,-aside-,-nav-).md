@@ -1,5 +1,5 @@
 ---
-title: 시멘틱 태그(<section>,<header>,<footer>,<aside>,<nav>)
+title: "시멘틱 태그(<section>,<header>,<footer>,<aside>,<nav>)"
 tags: [프로그래밍 언어, HTML]
 created: 2026-09-05
 modified: 2026-09-05

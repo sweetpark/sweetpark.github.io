@@ -1,5 +1,5 @@
 ---
-title: Thymeleaf 기본
+title: "Thymeleaf 기본"
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

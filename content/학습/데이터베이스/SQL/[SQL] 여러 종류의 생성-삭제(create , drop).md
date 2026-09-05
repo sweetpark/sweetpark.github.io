@@ -1,5 +1,5 @@
 ---
-title: [SQL] 여러 종류의 생성/삭제(create , drop)
+title: "[SQL] 여러 종류의 생성/삭제(create , drop)"
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05
 modified: 2026-09-05

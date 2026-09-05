@@ -1,5 +1,5 @@
 ---
-title: static
+title: "static"
 tags: [C++, static]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,5 @@
 ---
-title: C++ string 라이브러리
+title: "C++ string 라이브러리"
 tags: [C++, string]
 created: 2026-09-05
 modified: 2026-09-05

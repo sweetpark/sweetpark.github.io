@@ -1,5 +1,5 @@
 ---
-title: Template (클래스 템플릿)
+title: "Template (클래스 템플릿)"
 tags: [C++, 템플릿, 클래스템플릿]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,5 @@
 ---
-title: 배열
+title: "배열"
 tags: [C++, 배열, 백준]
 created: 2026-09-05
 modified: 2026-09-05

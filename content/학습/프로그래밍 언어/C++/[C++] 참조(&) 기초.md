@@ -1,5 +1,5 @@
 ---
-title: 참조(&) 기초
+title: "참조(&) 기초"
 tags: [C++, 참조]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,5 @@
 ---
-title: 미디어 태그 (<audio>, <video>)
+title: "미디어 태그 (<audio>, <video>)"
 tags: [프로그래밍 언어, HTML]
 created: 2026-09-05
 modified: 2026-09-05

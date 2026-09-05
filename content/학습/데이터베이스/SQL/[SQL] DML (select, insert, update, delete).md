@@ -1,5 +1,5 @@
 ---
-title: [SQL] DML (select, insert, update, delete)
+title: "[SQL] DML (select, insert, update, delete)"
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05
 modified: 2026-09-05
