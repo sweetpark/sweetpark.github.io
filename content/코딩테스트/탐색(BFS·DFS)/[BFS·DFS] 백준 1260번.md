@@ -1,11 +1,11 @@
 ---
-title: "[BFS + DFS] 백준 1260번"
+title: "[BFS·DFS] 백준 1260번"
 tags: [개발 서적 리뷰, DoIt 알고리즘 코딩테스트]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
-# [BFS + DFS] 백준 1260번
+# [BFS·DFS] 백준 1260번
 
 ## 문제
 
