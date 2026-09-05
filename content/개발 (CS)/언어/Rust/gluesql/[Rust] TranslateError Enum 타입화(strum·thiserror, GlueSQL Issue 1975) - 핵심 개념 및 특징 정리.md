@@ -1,5 +1,5 @@
 ---
-title: "\"TranslateError Enum 타입화(strum·thiserror, GlueSQL #1975)\""
+title: "TranslateError Enum 타입화(strum·thiserror, GlueSQL #1975)"
 tags: [학습, 개발-CS, 언어, Rust, 에러처리, strum, thiserror, GlueSQL, 오픈소스아카데미, 트러블슈팅, "#1975", "#1981"]
 created: 2026-09-05
 modified: 2026-09-05

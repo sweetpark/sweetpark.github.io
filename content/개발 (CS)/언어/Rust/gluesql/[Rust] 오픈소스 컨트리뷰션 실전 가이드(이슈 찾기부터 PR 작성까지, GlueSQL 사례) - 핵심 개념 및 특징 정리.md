@@ -1,5 +1,5 @@
 ---
-title: "\"오픈소스 컨트리뷰션 실전 가이드(이슈 찾기~PR 작성, GlueSQL 사례)\""
+title: "오픈소스 컨트리뷰션 실전 가이드(이슈 찾기~PR 작성, GlueSQL 사례)"
 tags: [학습, 개발-CS, 언어, Rust, GlueSQL, 오픈소스아카데미, 오픈소스기여]
 created: 2026-09-05
 modified: 2026-09-05

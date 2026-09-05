@@ -1,5 +1,5 @@
 ---
-title: "\"[오픈소스] mybatis-sql-tuner-ai - 상세 분석 및 기술 가이드\""
+title: "[오픈소스] mybatis-sql-tuner-ai - 상세 분석 및 기술 가이드"
 tags: [학습, 오픈소스, Java, IntelliJ-Plugin, MyBatis, AI, SQL-Tuning]
 created: 2026-09-05
 modified: 2026-09-05

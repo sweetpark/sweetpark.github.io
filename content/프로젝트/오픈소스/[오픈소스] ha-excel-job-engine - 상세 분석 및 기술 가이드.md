@@ -1,5 +1,5 @@
 ---
-title: "\"[오픈소스] ha-excel-job-engine - 상세 분석 및 기술 가이드\""
+title: "[오픈소스] ha-excel-job-engine - 상세 분석 및 기술 가이드"
 tags: [학습, 오픈소스, Java, Spring-Boot, 분산시스템, Excel, High-Availability]
 created: 2026-09-05
 modified: 2026-09-05

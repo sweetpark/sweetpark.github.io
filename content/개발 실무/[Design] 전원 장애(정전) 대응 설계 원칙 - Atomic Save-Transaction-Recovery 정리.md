@@ -1,5 +1,5 @@
 ---
-title: "\"[Design] 전원 장애(정전) 대응 설계 원칙\""
+title: "[Design] 전원 장애(정전) 대응 설계 원칙"
 tags: [학습, 개발실무, Design]
 modified: 2026-09-05
 ---

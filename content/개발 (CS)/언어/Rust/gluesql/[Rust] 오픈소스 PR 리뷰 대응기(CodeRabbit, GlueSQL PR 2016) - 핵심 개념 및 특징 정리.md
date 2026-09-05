@@ -1,5 +1,5 @@
 ---
-title: "\"오픈소스 PR 리뷰 대응기(CodeRabbit, GlueSQL #2016)\""
+title: "오픈소스 PR 리뷰 대응기(CodeRabbit, GlueSQL #2016)"
 tags: [학습, 개발-CS, 언어, Rust, GlueSQL, 오픈소스아카데미, 코드리뷰, "#2016"]
 created: 2026-09-05
 modified: 2026-09-05

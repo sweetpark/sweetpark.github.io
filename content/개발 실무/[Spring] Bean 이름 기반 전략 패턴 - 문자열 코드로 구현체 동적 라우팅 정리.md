@@ -1,5 +1,5 @@
 ---
-title: "\"[Spring] Bean 이름 기반 전략 패턴\""
+title: "[Spring] Bean 이름 기반 전략 패턴"
 tags: [학습, 개발실무, Spring]
 modified: 2026-09-05
 ---

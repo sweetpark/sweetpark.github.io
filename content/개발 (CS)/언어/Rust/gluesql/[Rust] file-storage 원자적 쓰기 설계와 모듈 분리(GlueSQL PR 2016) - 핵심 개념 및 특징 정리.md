@@ -1,5 +1,5 @@
 ---
-title: "\"file-storage 원자적 쓰기 설계와 모듈 분리(GlueSQL #2016)\""
+title: "file-storage 원자적 쓰기 설계와 모듈 분리(GlueSQL #2016)"
 tags: [학습, 개발-CS, 언어, Rust, GlueSQL, 오픈소스아카데미, 파일시스템, 크래시안전성, "#2016"]
 created: 2026-09-05
 modified: 2026-09-05

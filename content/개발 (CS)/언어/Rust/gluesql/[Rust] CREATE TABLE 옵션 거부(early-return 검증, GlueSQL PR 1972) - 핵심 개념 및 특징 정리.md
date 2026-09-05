@@ -1,5 +1,5 @@
 ---
-title: "\"CREATE TABLE 옵션 거부(early-return 검증, GlueSQL #1972)\""
+title: "CREATE TABLE 옵션 거부(early-return 검증, GlueSQL #1972)"
 tags: [학습, 개발-CS, 언어, Rust, thiserror, GlueSQL, 오픈소스아카데미, "#1972"]
 created: 2026-09-05
 modified: 2026-09-05

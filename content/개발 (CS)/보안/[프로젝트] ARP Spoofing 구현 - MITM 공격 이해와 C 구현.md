@@ -1,5 +1,5 @@
 ---
-title: "\"[프로젝트] ARP Spoofing 구현 - MITM 공격 이해와 C 구현\""
+title: "[프로젝트] ARP Spoofing 구현 - MITM 공격 이해와 C 구현"
 tags: [학습, 보안, 네트워크, C, ARP-Spoofing]
 created: 2026-09-05
 modified: 2026-09-05

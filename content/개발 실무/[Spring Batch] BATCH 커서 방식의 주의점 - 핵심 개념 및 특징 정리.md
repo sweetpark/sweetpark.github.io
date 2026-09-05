@@ -1,5 +1,5 @@
 ---
-title: "\"[BATCH] 커서 방식의 주의점\""
+title: "[BATCH] 커서 방식의 주의점"
 tags: [학습, 개발실무, Batch]
 modified: 2026-09-05
 ---

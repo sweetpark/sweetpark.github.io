@@ -1,5 +1,5 @@
 ---
-title: "\"[Spring] 헤더 기반 커맨드 디스패치 패턴\""
+title: "[Spring] 헤더 기반 커맨드 디스패치 패턴"
 tags: [학습, 개발실무, Spring]
 modified: 2026-09-05
 ---

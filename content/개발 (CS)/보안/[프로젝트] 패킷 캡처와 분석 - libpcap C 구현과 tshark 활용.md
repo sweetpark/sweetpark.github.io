@@ -1,5 +1,5 @@
 ---
-title: "\"[프로젝트] 패킷 캡처와 분석 - libpcap C 구현과 tshark 활용\""
+title: "[프로젝트] 패킷 캡처와 분석 - libpcap C 구현과 tshark 활용"
 tags: [학습, 보안, 네트워크, C, 패킷분석, tshark]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,5 @@
 ---
-title: "\"[오픈소스] mini-apm-spring-boot-starter - 상세 분석 및 기술 가이드\""
+title: "[오픈소스] mini-apm-spring-boot-starter - 상세 분석 및 기술 가이드"
 tags: [학습, 오픈소스, Java, Spring-Boot, APM, Observability, Grafana]
 created: 2026-09-05
 modified: 2026-09-05

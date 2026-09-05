@@ -1,5 +1,5 @@
 ---
-title: "\"GlueSQL 프로젝트 구조와 필요 문법 개관\""
+title: "GlueSQL 프로젝트 구조와 필요 문법 개관"
 tags: [학습, 개발-CS, 언어, Rust, GlueSQL, 프로젝트구조, 오픈소스아카데미]
 created: 2026-09-05
 modified: 2026-09-05
