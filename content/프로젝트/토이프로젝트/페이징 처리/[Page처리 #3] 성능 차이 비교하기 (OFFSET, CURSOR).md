@@ -208,3 +208,8 @@ public Map<String, Object> findPageToCursor(Long lastIndex, int limit) {
 코드 정보
 
 [https://github.com/sweetpark/lab](https://github.com/sweetpark/lab)
+
+## 관련 문서
+
+- [(토이프로젝트) [Page 처리 #1] OFFSET 기반 페이징 처리 이해하기]([Page%20처리%20%231]%20OFFSET%20기반%20페이징%20처리%20이해하기.md) — 여기서 성능을 비교한 OFFSET 기반 페이징의 원리를 다루는 시리즈 1편
+- [(토이프로젝트) [Page 처리 #2] JPA 페이징 처리 이해하기 (+ OFFSET, Cursor 기반)]([Page%20처리%20%232]%20JPA%20페이징%20처리%20이해하기%20(+%20OFFSET,%20Cursor%20기반).md) — JPA Page/Slice 및 커서 기반 페이징 개념을 다루는 시리즈 2편

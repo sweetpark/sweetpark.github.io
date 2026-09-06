@@ -159,3 +159,7 @@ public void func(){
 
 *   **1번의 경우, SQLException의 예외정보까지 같이 나온다**
 *   2번의 경우, SQLException의 예외정보는 날아가고, RuntimeException 부분만 표시된다
+
+## 관련 문서
+
+- [(토이프로젝트) [예외처리 #1] 예외(Exception) 이해하기](../../../프로젝트/토이프로젝트/예외처리/[예외처리%20%231]%20예외(Exception)%20이해하기.md) — 본문의 Checked/Unchecked 예외 계층 개념을 실전 프로젝트 예외 처리 설계에 적용한 사례

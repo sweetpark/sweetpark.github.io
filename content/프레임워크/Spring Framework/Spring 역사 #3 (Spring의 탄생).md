@@ -242,3 +242,9 @@ public class Main {
 *   인터페이스를 안정적으로 설계해야한다. (인터페이스가 잘못되었을 경우 고쳐야할 부분들이 많다...)
 *   확장이 용이하게 설계 (ex 새로운 자동차가 추가되더라도 수정할 부분이 거의 없음)
 *   유연하고 변경이 용이해야함
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) Spring 역사 #1 (EJB)](Spring%20역사%20%231%20(EJB).md) — Spring 이전 세대인 EJB의 무겁고 컨테이너 종속적인 Bean 모델을 다루는 연작
+- [(학습/프레임워크/Spring Framework) Spring 역사 #2 (POJO)](Spring%20역사%20%232%20(POJO).md) — Spring이 지향하는 POJO 프로그래밍 개념을 다루는 연작
+- [(학습/프레임워크/Spring Framework) SOLID 규칙 적용 (+순수 자바 버전 , spring)](SOLID%20규칙%20적용%20(+순수%20자바%20버전%20,%20spring).md) — 이 문서에서 설명한 SOLID 5원칙을 MemberService/MemberRepository 예제 코드로 실제 구현해보는 실습 노트

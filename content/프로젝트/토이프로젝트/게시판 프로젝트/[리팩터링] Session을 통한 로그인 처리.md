@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # [리팩터링] Session을 통한 로그인 처리
 
+> [!NOTE] 실행 환경
+> 같은 폴더의 "[리팩터링] 게시판 프로젝트 아키텍처" 노트에 명시된 스택 기준 — Spring Boot 3.3.5, Java 17, H2 Database, Thymeleaf.
+
 ## 로그인 리팩터링
 
 기존 구조는 HttpSession의 존재 유무만 확인하여 로그인 처리를 진행하고, URL Mapping에서 로그인 아이디로 회원정보를 조회하는 과정에서 사용자가 변경되는 문제를 Interceptor로 방지하고 있었다.  
@@ -102,3 +105,11 @@ https://github.com/sweetpark/springBoard
 2) AES256 패스워드 암호화 적용완료 /board/auth/enc 확인  
 3) HandlerMethodArgumentResolver를 통해서 URL에 사용자id @Pathvariable을 제거하고 커스텀 어노테이션을 통해 사용자id를 추출할 수 있었음 (session 내부에 저장되어있던)  
 4) session내부에는 많은정보 담아두지 말기
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [리팩터링] 개발 요구사항 (게시판 프로젝트)]([리팩터링]%20개발%20요구사항%20(게시판%20프로젝트).md) — 개발 요구사항 문서에 명시된 로그인 기능을 세션 기반으로 리팩터링
+- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [기능구현#3] 로그인 기능]([기능구현#3]%20로그인%20기능.md) — 로그인 기능(Filter+Interceptor 인증)을 세션 저장소 방식으로 리팩터링
+- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [트러블 슈팅] 로그인 인증 관련 문제]([트러블%20슈팅]%20로그인%20인증%20관련%20문제.md) — 세션 기반 로그인 리팩터링 이후 Interceptor 인증 로직에서 발견된 버그를 다루는 문서
+- [(학습/프레임워크/Spring Framework) Session 사용법](../../../프레임워크/Spring%20Framework/Session%20사용법.md) — 세션 저장소를 이용한 로그인 처리가 다루는 HttpSession 개념을 설명하는 강의 노트
+- [(학습/프레임워크/Spring Framework) Servlet Filter](../../../프레임워크/Spring%20Framework/Servlet%20Filter.md) — 세션 기반 로그인 처리에서 사용된 Filter+Interceptor 조합 중 Filter 개념을 다루는 강의 노트

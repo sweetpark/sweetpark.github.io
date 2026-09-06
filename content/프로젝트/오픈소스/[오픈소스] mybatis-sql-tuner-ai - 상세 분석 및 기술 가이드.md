@@ -334,3 +334,8 @@ sequenceDiagram
 - 핵심 소스: [`SqlExtractor.java`](https://github.com/sweetpark/mybatis-sql-tuner-ai/blob/main/mybatis-sql-tuner-core/src/main/java/io/github/sweetpark/sqltuner/core/SqlExtractor.java) · [`JdbcAnalyzer.java`](https://github.com/sweetpark/mybatis-sql-tuner-ai/blob/main/mybatis-sql-tuner-core/src/main/java/io/github/sweetpark/sqltuner/core/JdbcAnalyzer.java) · [`PromptGenerator.java`](https://github.com/sweetpark/mybatis-sql-tuner-ai/blob/main/mybatis-sql-tuner-core/src/main/java/io/github/sweetpark/sqltuner/core/PromptGenerator.java) · [`AiChatClient.java`](https://github.com/sweetpark/mybatis-sql-tuner-ai/blob/main/mybatis-sql-tuner-intellij/src/main/java/io/github/sweetpark/sqltuner/intellij/service/AiChatClient.java)
 - 라이선스: Apache License 2.0
 - 관련 노트: [[MyBatis] MyBatis 동적 SQL 정적분석 - 핵심 개념 및 특징 정리](../../개발%20(CS)/데이터베이스/MyBatis/[MyBatis]%20MyBatis%20동적%20SQL%20정적분석%20-%20핵심%20개념%20및%20특징%20정리.md)
+
+## 관련 문서
+
+- [(오픈소스) 엔터프라이즈 코드의 오픈소스 마이그레이션 전략 (Playbook)]([오픈소스]%20엔터프라이즈%20코드의%20오픈소스%20마이그레이션%20전략%20(Playbook).md) — 이 프로젝트가 적용 대상으로 명시된, 100% 커버리지·Spotless·SpotBugs·CI 기반 오픈소스 전환 6단계 표준 플레이북
+- [[MyBatis] W3C DOM 기반 MyBatis 동적 쿼리 정적 분석과 AST 가짜 SQL 생성기 설계](../../개발%20(CS)/데이터베이스/MyBatis/[MyBatis]%20W3C%20DOM%20기반%20MyBatis%20동적%20쿼리%20정적%20분석과%20AST%20가짜%20SQL%20생성기%20설계.md) — 이 프로젝트의 SqlExtractor가 구현한 W3C DOM 순회 기반 동적 태그 스트리핑·가짜 SQL 합성 알고리즘을 상세히 분석한 자매 노트

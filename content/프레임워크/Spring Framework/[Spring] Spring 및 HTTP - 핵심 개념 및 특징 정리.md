@@ -10,6 +10,9 @@ modified: 2026-09-05
 > [!NOTE]
 > 스프링 부트 기반으로 컨트롤러/디스패처, HTTP 요청 방식(GET/POST/PUT/DELETE), 쿼리스트링·주소변수 매핑, Content-Type, 템플릿 엔진(mustache/jsp), 리다이렉트, 시큐리티(CSRF)·유효성 검사·세션까지 실습 흐름으로 정리한다.
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `@Valid`, `BindingResult`, Spring Security(CSRF) 등 표준 API만 사용되어 특정 버전은 확정하기 어렵다.
+
 ## 📌 개념
 
 ### chapter1
@@ -297,3 +300,7 @@ modified: 2026-09-05
 
 1. 프론트앤드에서 한번 거르고
 2. 유효성검사로 한번 더 거름
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) Validation (BindingResult, Validator) + @Validated](Validation%20(BindingResult,%20Validator)%20+%20@Validated.md) — 이 노트의 BindingResult/FieldError 기반 유효성 검사 코드를 이론적으로 상세히 다루는 노트

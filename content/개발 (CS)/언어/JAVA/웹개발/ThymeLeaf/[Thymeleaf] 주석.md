@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # [Thymeleaf] 주석
 
+Thymeleaf가 지원하는 세 가지 주석 방식을 정리한 노트다. 표준 HTML 주석(`<!-- -->`)은 렌더링 후에도 그대로 남고, Thymeleaf 파서 주석(`<!--/* */-->`)은 렌더링 시 완전히 제거되며, 프로토타입 주석(`<!--/*/ /*/-->`)은 반대로 일반 HTML로 열면 주석 처리되지만 Thymeleaf로 렌더링하면 내용이 노출된다는 점이 핵심 차이다.
+
+> [!NOTE] 실행 환경
+> `<html xmlns:th="http://www.thymeleaf.org">` 선언 외에 구체적인 Thymeleaf 버전을 특정할 근거는 없다. Tomcat/Spring Boot 등 Thymeleaf를 지원하는 서버 환경이 필요하며, 구체적인 버전은 명시되어 있지 않다.
+
 ## 표준 html 주석
 
 *   <!-- [내용] -->

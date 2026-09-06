@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # Servlet 응답 처리
 
+`HttpServletResponse`로 응답을 구성하는 세 가지 방식을 정리한 노트다. 상태 코드·헤더·쿠키 설정과 리다이렉트 같은 기본 사용법, `PrintWriter`로 텍스트/HTML 본문을 직접 작성하는 방식, 그리고 Jackson `ObjectMapper`로 객체를 JSON 문자열로 변환해 `application/json` 응답을 만드는 방식을 다룬다.
+
+> [!NOTE] 실행 환경
+> `@WebServlet` 어노테이션 기반 등록 방식이 사용되어 Servlet 3.0 이상을 전제로 한다. 구체적인 Servlet/Tomcat 버전은 코드상 명시되어 있지 않다.
+
 ## ServletResponse 기본 사용법
 
 *   기본적으로 response 헤더 설정 : setHeader("[field Name]", "[value]")

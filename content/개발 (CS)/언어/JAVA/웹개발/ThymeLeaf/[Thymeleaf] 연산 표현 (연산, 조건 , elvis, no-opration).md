@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # [Thymeleaf] 연산 표현 (연산, 조건 , elvis, no-opration)
 
+Thymeleaf 표현식 안에서 쓰는 비교 연산, 삼항 조건식, Elvis 연산자, no-operation(`_`)을 정리한 노트다. 핵심은 `>` 같은 HTML Entity 문자는 `&gt;`로 escape하지 않으면 그대로 문자로 출력되어버린다는 점, 그리고 Elvis(`${data}?:'기본값'`)와 no-operation(`${data}?: _`)이 값이 없을 때 각각 기본값 출력 또는 `th:text` 자체를 무시하는 방식으로 다르게 동작한다는 점이다.
+
+> [!NOTE] 실행 환경
+> `<html xmlns:th="http://www.thymeleaf.org">` 선언 외에 구체적인 Thymeleaf 버전을 특정할 근거는 없다. Tomcat/Spring Boot 등 Thymeleaf를 지원하는 서버 환경이 필요하며, 구체적인 버전은 명시되어 있지 않다.
+
 ## Thymeleaf 연산 표현
 
 *   Html Entity의 경우, & ; 를 하지 않으면 그대로 문자로 출력되는 것을 주의해야함

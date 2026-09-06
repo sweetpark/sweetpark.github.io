@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # [기능구현#5] AppConfig 구성
 
+> [!NOTE] 실행 환경
+> 같은 폴더의 "[리팩터링] 게시판 프로젝트 아키텍처" 노트에 명시된 스택 기준 — Spring Boot 3.3.5, Java 17, H2 Database, Thymeleaf.
+
 ## Repository 구성
 
 ```text
@@ -60,3 +63,8 @@ public class AppConfig implements WebMvcConfigurer {
 *   자동 Bean  VS 수동 Bean
     *   spring은 수동으로 구현한 것을 우선적으로 처리하기에, 수동 Bean이 등록이 되게 된다
     *   자동 Bean과 수동Bean을 동시에 작성해서 사용해도 큰 상관은 없지만, 확실한 구분을 위해서 수동으로 등록한 Bean이 있을경우 자동 Bean은 사용하지 않는 편이 좋다
+
+## 관련 문서
+
+- [(게시판 프로젝트) [리팩터링] 게시판 프로젝트 아키텍처]([리팩터링]%20게시판%20프로젝트%20아키텍처.md) — 이 AppConfig가 속한 게시판 프로젝트의 전체 아키텍처 개요
+- [(게시판 프로젝트) [기능구현#8] DataSource]([기능구현%238]%20DataSource.md) — AppConfig에서 수동 등록하는 BoardDBRepository/MemberDBRepository가 실제로 사용하는 DataSourceConfig(HikariCP) 구현 상세

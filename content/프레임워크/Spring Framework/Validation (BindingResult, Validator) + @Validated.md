@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # Validation (BindingResult, Validator) + @Validated
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `BindingResult`, `@Validated`, `MessageCodesResolver` 등 Spring MVC 표준 API만 사용되어 특정 버전은 확정하기 어렵다.
+
 Validation
 
 ## Validation 방법
@@ -235,3 +238,9 @@ public ... {
     ...
 }
 ```
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/유효성검사 (Validation)) [유효성검증 #1] Validator + BindingResult를 이용한 유효성 검증](../../프로젝트/토이프로젝트/유효성검사%20(Validation)/[유효성검증%20#1]%20Validator%20+%20BindingResult를%20이용한%20유효성%20검증.md) — Validator+BindingResult 기반 검증을 실전 프로젝트에 적용한 토이프로젝트 노트
+- [(학습/프레임워크/Spring Framework) Spring 및 HTTP - 핵심 개념 및 특징 정리]([Spring]%20Spring%20및%20HTTP%20-%20핵심%20개념%20및%20특징%20정리.md) — BindingResult/FieldError 기반 유효성 검사 코드를 실습 흐름으로 정리한 노트
+- [(학습/프레임워크/Spring Framework) Bean Validation](Bean%20Validation.md) — 이 노트의 BindingResult 검증 규율을 @NotBlank/@NotNull 등 애노테이션 기반으로 발전시킨 노트

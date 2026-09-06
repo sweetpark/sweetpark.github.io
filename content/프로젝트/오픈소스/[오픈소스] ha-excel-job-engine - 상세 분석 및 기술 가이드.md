@@ -539,3 +539,9 @@ CI(`ci.yml`)는 GitHub Actions에서 **Java 17 / 21 매트릭스**로 `./gradlew
 - 인터페이스/SPI 가이드: [`docs/INTERFACES.md`](https://github.com/sweetpark/ha-excel-job-engine/blob/main/docs/INTERFACES.md)
 - REST API 레퍼런스: [`docs/REST_API.md`](https://github.com/sweetpark/ha-excel-job-engine/blob/main/docs/REST_API.md)
 - 클라이언트 연동 가이드: [`docs/CLIENT_INTEGRATION_GUIDE.md`](https://github.com/sweetpark/ha-excel-job-engine/blob/main/docs/CLIENT_INTEGRATION_GUIDE.md)
+
+## 관련 문서
+
+- [(HTTP) 대용량 처리 비동기 Job 큐 설계 패턴 - 핵심 개념 및 특징 정리](../../개발%20실무/아키텍처·설계/[HTTP]%20대용량%20처리%20비동기%20Job%20큐%20설계%20패턴%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 프로젝트가 실제로 구현한 DB 기반 비동기 Job 큐 설계 패턴(CAS 선점, 재기동 복구, 취소, 멱등성)의 이론 정리
+- [(Performance) SXSSFWorkbook 대용량 엑셀 스트리밍과 동적 ZIP 분할 압축 설계 패턴](../../개발%20실무/백엔드·데이터처리/[Performance]%20SXSSFWorkbook%20대용량%20엑셀%20스트리밍과%20동적%20ZIP%20분할%20압축%20설계%20패턴.md) — 이 프로젝트가 구현한 SXSSFWorkbook 슬라이딩 윈도우·Cursor 스트리밍·청크 ZIP 분할 설계를 상세히 분석한 자매 노트
+- [(오픈소스) 엔터프라이즈 코드의 오픈소스 마이그레이션 전략 (Playbook)]([오픈소스]%20엔터프라이즈%20코드의%20오픈소스%20마이그레이션%20전략%20(Playbook).md) — 이 프로젝트가 적용 대상으로 명시된, 100% 커버리지·Spotless·SpotBugs·CI 기반 오픈소스 전환 6단계 표준 플레이북

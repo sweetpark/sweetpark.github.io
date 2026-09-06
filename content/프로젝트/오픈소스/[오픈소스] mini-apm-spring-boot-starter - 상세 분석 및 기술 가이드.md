@@ -633,4 +633,10 @@ Loki 기반 Alert Rule로 에러 로그 건수를 감지해 Slack에 전달하�
 - 아키텍처 문서: `docs/ARCHITECTURE.md`
 - 사용/설정 가이드: `docs/USAGE_GUIDE.md`
 - 샘플 앱: `examples/sample-app/README.md`
+
+## 관련 문서
+
+- [(오픈소스) 엔터프라이즈 코드의 오픈소스 마이그레이션 전략 (Playbook)]([오픈소스]%20엔터프라이즈%20코드의%20오픈소스%20마이그레이션%20전략%20(Playbook).md) — 이 프로젝트가 적용 대상으로 명시된, 100% 커버리지·Spotless·SpotBugs·CI 기반 오픈소스 전환 6단계 표준 플레이북
+- [(Security) 제로 디펜던시 개인정보 마스킹과 오류 핑거프린팅(SHA-256) 모니터링 설계](../../개발%20실무/네트워크·보안/[Security]%20제로%20디펜던시%20개인정보%20마스킹과%20오류%20핑거프린팅(SHA-256)%20모니터링%20설계.md) — 이 프로젝트의 SensitiveDataMasker(정규식 마스킹)·ErrorFingerprinter(SHA-256 해시) 구현을 상세히 분석한 자매 노트
+- [(APM) 분산 추적(Distributed Tracing)과 비동기 스레드 컨텍스트 전파 아키텍처 (TraceContext, Netty, Spring Batch)](../../개발%20(CS)/인프라/모니터링·네트워크/[APM]%20분산%20추적(Distributed%20Tracing)과%20비동기%20스레드%20컨텍스트%20전파%20아키텍처%20(TraceContext,%20Netty,%20Spring%20Batch).md) — 이 프로젝트의 TraceContextHolder 기반 Tomcat/Netty/Spring Batch 전 구간 트레이스 전파 설계를 상세히 분석한 자매 노트
 - 라이선스: Apache License 2.0

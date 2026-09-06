@@ -57,6 +57,9 @@ select count(*) from m where 학년=3;
 
 ### 오전과제
 
+> [!TIP] 스키마 및 DB 엔진 참고
+> 아래 예제는 `hm08`이라는 학생 테이블을 대상으로 한다(CREATE TABLE 문은 제공되지 않았으나, 사용된 컬럼으로 미루어 `num`은 학번(앞자리가 학년을 의미), `name`은 이름, `age`는 나이, `grade`는 학년으로 구성된 테이블로 추정된다). 이 노트는 태그에 명시된 대로 Oracle 실습 환경 기준이다.
+
 > [!NOTE]
 > 3학년을 모두 출력하시오
 > 
@@ -64,7 +67,7 @@ select count(*) from m where 학년=3;
 > 
 > from hm08
 > 
-> where substr(num, 1,1) =’3’
+> where substr(num, 1,1) ='3'
 > 
 > group by (x)
 > 
@@ -75,7 +78,7 @@ select count(*) from m where 학년=3;
 > 
 > 나이의 뒤에는 0을 붙여 출력해주세요.
 > 
-> select name, concat(substr(age,1,1), ‘0’) as age
+> select name, concat(substr(age,1,1), '0') as age
 > 
 > from hm08
 > 
@@ -138,6 +141,9 @@ select count(*) from m where 학년=3;
 >     1. select avg(age), max(age), sum(age), grade
 >     2. from hm08
 >     3. group by grade
+
+> [!TIP] 왜 "집계함수는 결과튜플이 1개"인가
+> COUNT/MAX/AVG 같은 집계함수는 여러 행을 하나의 값으로 압축(reduce)하는 연산이다. 그래서 집계값과 개별 행의 다른 컬럼(예: 위 3번 문제의 `name`)을 같은 SELECT에서 함께 조회할 수 없다. "2학년 중 최고 나이인 사람의 이름"을 구하려면 한 번의 쿼리로는 안 되고, 먼저 서브쿼리로 최고 나이(집계값 1개)를 구한 뒤 그 값과 일치하는 행을 다시 조회하는 2단계가 필요한 이유가 여기에 있다. 또한 6, 8번처럼 그룹화 이후의 집계값(`count(*)`, `avg(age)`)에 조건을 걸 때 `WHERE`가 아닌 `HAVING`을 쓰는 이유도 같은 맥락으로, 그룹이 만들어지기 전에는 아직 집계값 자체가 존재하지 않기 때문이다.
 
 > [!NOTE]
 > group by?

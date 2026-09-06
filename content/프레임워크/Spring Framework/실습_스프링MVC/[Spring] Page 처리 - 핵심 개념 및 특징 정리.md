@@ -10,6 +10,9 @@ modified: 2026-09-05
 > Spring Data의 `Pageable`을 이용한 페이징 처리 메모.
 > Onz(칵테일 플랫폼) 프로젝트에서 이관.
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `Pageable`/`PageRequest` 등 Spring Data Commons 표준 API만 사용되어 특정 Spring Boot/Spring Data 버전은 확정하기 어렵다.
+
 ## 🧱 기술 스택
 Spring Data JPA (`Pageable`, `PageRequest`)
 
@@ -30,3 +33,7 @@ List<Entity> results = result.getContent(); // list로 변환
 
 - spring에서 지원해주는 pageable
 - 결국, limit 과 offset 을 쿼리에 날림 ( limit 조회개수 , offset 은 시작 위치)
+
+## 관련 문서
+
+- [(Spring) JPA - 핵심 개념 및 특징 정리]([Spring]%20JPA%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 Onz 프로젝트에서 JPA 연관관계 매핑을 다루는 자매 노트

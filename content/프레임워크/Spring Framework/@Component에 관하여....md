@@ -7,7 +7,10 @@ modified: 2026-09-05
 
 # @Component에 관하여...
 
-@Component
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — import 구문이 생략되어 있고 @Component/@Autowired/@ComponentScan 등 Spring 공통 문법만 사용되어 특정 버전을 확정하기 어렵다. Servlet API를 직접 다루는 인접 노트(Cookie 사용법, Servlet Filter)와 작성 스타일이 유사한 것으로 보아 Spring Boot 2.x대 학습 자료로 추정.
+
+@Component는 클래스에 붙이면 별도로 @Configuration 클래스에서 @Bean으로 수동 등록하지 않아도 컴포넌트 스캔을 통해 스프링이 자동으로 빈으로 등록해주는 애노테이션이다. 매 클래스마다 수동으로 빈을 등록하는 번거로움과 등록 누락 실수를 줄이기 위해 사용한다.
 
 ### 컴포넌트 스캔
 
@@ -89,3 +92,7 @@ public class AppConfig {
 *   @Repository : @Component가 포함되어있음 + 데이터 접근 계층에서 사용
 *   @Configuration : @Component가 포함되어있음 + 스프링 설정정보에서 사용 (ex AppConfig.class )
     *   ex) AppConfig의 경우 basePackges를 사용하지 않고, Application실행 계층에 동일하게 위치시킴
+
+## 관련 문서
+
+- [(Spring) 회원 등급별 상품 할인 적용 - 핵심 개념 및 특징 정리](실습_스프링MVC/회원%20등급별%20상품%20할인%20적용/[Spring]%20회원%20등급별%20상품%20할인%20적용%20-%20핵심%20개념%20및%20특징%20정리.md) — 자동/수동 Bean 등록과 컴포넌트 스캔을 실제로 적용한 미니 프로젝트

@@ -330,3 +330,7 @@ if(!es.awaitTermination(10, SECONDS)) {
 📌 **close() (Java 19+)**
 
 > shutdown + 무한 대기 → 필요시 shutdownNow
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) JAVA 정리](../../../프레임워크/Spring%20Framework/[Java]%20JAVA%20정리%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 멀티스레딩/동시성 노트를 Java 고급 1편 요약으로 압축해 담은 통합 정리 노트

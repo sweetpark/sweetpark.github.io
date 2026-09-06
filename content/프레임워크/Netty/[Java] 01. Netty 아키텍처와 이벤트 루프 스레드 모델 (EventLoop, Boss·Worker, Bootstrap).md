@@ -10,6 +10,9 @@ modified: 2026-09-05
 > [!NOTE]
 > 고성능 비동기 이벤트 기반 네트워크 프레임워크인 **Netty**의 핵심 아키텍처와 **Reactor 스레드 모델(BossGroup / WorkerGroup)**, 그리고 실무 고성능 네트워크 서버의 `ServerBootstrap` 설정을 분석하여 정리한 학습 가이드입니다.
 
+> [!NOTE] 실행 환경
+> 코드에 등장하는 `NioEventLoopGroup`, `ServerBootstrap`, `ChannelOption`, `AdaptiveRecvByteBufAllocator`, `io.netty.channel.*` 패키지 구조로 볼 때 **Netty 4.x 계열** API로 추정됩니다(정확한 패치 버전은 원문에 명시되어 있지 않음). 코드에 `var`/레코드/패턴 매칭 등 JDK 버전을 특정할 문법적 단서가 없어 **JDK 버전은 명시되어 있지 않습니다**(전통적 익명 클래스 기반 콜백만 사용).
+
 ---
 
 ## 1. 전통적인 Socket I/O vs Netty 비동기 이벤트 기반 모델
@@ -178,4 +181,12 @@ public void onApplicationEvent(ContextClosedEvent event) {
 }
 ```
 
-- `shutdownGracefully()`는 신규 유입되는 연결을 즉시 거절하고, 이미 파이프라인에 대기 중인 패킷을 처리할 수 있는 유예 시간(Quiet Period)을 제공한 뒤 스레드를 안전하게 회수합니다.\n
+- `shutdownGracefully()`는 신규 유입되는 연결을 즉시 거절하고, 이미 파이프라인에 대기 중인 패킷을 처리할 수 있는 유예 시간(Quiet Period)을 제공한 뒤 스레드를 안전하게 회수합니다.
+
+## 관련 문서
+
+- [(학습/개발 (CS)/네트워크) Netty](../../개발%20(CS)/네트워크/[Java]%20Netty%20-%20핵심%20개념%20및%20특징%20정리.md) — 동일 프레임워크의 Discard/Echo 서버 기본 구조를 다루는 입문 버전 노트
+- [(학습/개발 실무/네트워크·보안/소켓통신) 소켓흐름](../../개발%20실무/네트워크·보안/소켓통신/[Java]%20소켓흐름%20-%20핵심%20개념%20및%20특징%20정리.md) — Thread-per-Connection 전통 소켓 모델과 NIO/Netty 채택 배경을 대비해서 보기 좋음
+- [(학습/프레임워크/Netty) [Java] 02. TCP 패킷 단편화와 프레임 디코딩 (ByteToMessageDecoder & Length-Field)]([Java]%2002.%20TCP%20패킷%20단편화와%20프레임%20디코딩%20(ByteToMessageDecoder%20&%20Length-Field).md) — 같은 서버 프로젝트에서 1번 파이프라인에 배치된 MessageDecoder의 프레이밍 구현을 다루는 연작
+- [(학습/프레임워크/Netty) [Java] 03. 채널 핸들러 라이프사이클과 실전 IoT 소켓 통신 패턴 (Session, BCD, HAProxy)]([Java]%2003.%20채널%20핸들러%20라이프사이클과%20실전%20IoT%20소켓%20통신%20패턴%20(Session,%20BCD,%20HAProxy).md) — 같은 서버 프로젝트의 MessageHandler 라이프사이클과 HAProxy 연동을 다루는 연작
+- [(학습/프레임워크/Netty) [Java] 04. Netty 소켓 파이프라인 SSL-TLS 적용과 mTLS 상호 인증 (SslHandler, KeyStore, SslContext)]([Java]%2004.%20Netty%20소켓%20파이프라인%20SSL-TLS%20적용과%20mTLS%20상호%20인증%20(SslHandler,%20KeyStore,%20SslContext).md) — 같은 ServerBootstrap 파이프라인에 SslHandler를 추가하는 후속편

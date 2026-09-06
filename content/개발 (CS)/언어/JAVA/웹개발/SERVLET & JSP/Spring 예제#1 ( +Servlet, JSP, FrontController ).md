@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # Spring 예제#1 ( +Servlet, JSP, FrontController )
 
+Servlet만으로 MVC를 구현할 때 생기는 중복(JSP 경로, forward 반복, Controller의 Servlet API 종속)을 없애기 위해 FrontController 패턴을 도입하는 예제다. 핵심은 모든 요청을 하나의 서블릿이 받아 URL에 맞는 `Controller`를 찾아 실행하고, 그 결과인 `ModelView`(뷰 이름 + 데이터 Map)를 `MyView`가 받아 JSP로 forward하는 구조다. 이 구조는 이후 Spring MVC의 DispatcherServlet·ModelAndView·ViewResolver 설계와 직접 대응된다.
+
+> [!NOTE] 실행 환경
+> `@WebServlet` 어노테이션 기반 등록 방식이 사용되어 Servlet 3.0 이상을 전제로 한다. 또한 JSTL taglib URI로 `http://java.sun.com/jsp/jstl/core`(javax 네임스페이스)를 사용하고 있어, Jakarta EE 9 이전의 javax.servlet 기반 환경으로 추정된다.
+
 회원 생성 및 조회 예제
 
 ## FrontController 목적

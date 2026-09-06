@@ -98,3 +98,10 @@ log.info("[INFO] 로그 내용");
 By default, Spring Boot logs only to the console and does not write log files. If you want to write log files in addition to the console output, you need to set a logging.file.name or logging.file.path property (for example, in your application.properties)
 
 docs.spring.io](https://docs.spring.io/spring-boot/reference/features/logging.html#features.logging.file-output)
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/로그) [Log #2] LogBack을 이용한 로그 설정]([Log%20#2]%20LogBack을%20이용한%20로그%20설정.md) — 로그 레벨과 파사드 패턴 개념을 다룬 후, LogBack 설정(logback-spring.xml)을 실습하는 후속 편
+- [(학습/개발 (CS)/CS 기초) Logback](../../../개발%20(CS)/CS%20기초/[Spring]%20Logback%20-%20핵심%20개념%20및%20특징%20정리.md) — 로그 레벨과 SLF4J 파사드 패턴을 다루는 CS 기초 노트와 거의 동일한 주제
+- [(학습/개발 실무/아키텍처·설계) [Design Pattern] 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선 (Proxy, Decorator, Strategy, Chain, Template, SPI, Visitor, Facade)](../../../개발%20실무/아키텍처·설계/[Design%20Pattern]%20실무%20프로젝트%20및%20오픈소스로%20체득하는%20GoF%20핵심%20디자인%20패턴%2010선%20(Proxy,%20Decorator,%20Strategy,%20Chain,%20Template,%20SPI,%20Visitor,%20Facade).md) — SLF4J의 파사드 패턴을 언급하는데, 이 문서의 2.4절에서 퍼사드 패턴을 자세히 다룸
+- [(학습/프레임워크/Spring Framework) Log 설정 및 Logging 사용](../../../프레임워크/Spring%20Framework/Log%20설정%20및%20Logging%20사용.md) — SLF4J/로그레벨 기본 개념을 Spring 관점에서 간단히 정리한 노트

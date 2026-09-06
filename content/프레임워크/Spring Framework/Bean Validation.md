@@ -224,3 +224,10 @@ public class ValidationItemApiController {
 *   bindingResult.getAllErrors()의 경우 모든 오류 메시지 관련 내용을 가지고 있음
     *   해당 부분에서 필요한 부분만 필터해서, RequestBody로 전달 가능
 *   Return 값으로 객체 전달 (form)
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/유효성검사 (Validation)) [유효성검증 #2] Bean Validation를 이용한 유효성 검증](../../프로젝트/토이프로젝트/유효성검사%20(Validation)/[유효성검증%20#2]%20Bean%20Validation를%20이용한%20유효성%20검증.md) — Bean Validation을 커스텀 @PasswordValidate 어노테이션으로 확장 적용한 토이프로젝트 노트
+- [(학습/프로젝트/토이프로젝트/유효성검사 (Validation)) [유효성검증 #3]  유효성 검증 아키텍처 설계](../../프로젝트/토이프로젝트/유효성검사%20(Validation)/[유효성검증%20#3]%20%20유효성%20검증%20아키텍처%20설계.md) — Bean Validation을 AOP 기반 아키텍처로 확장한 토이프로젝트 사례
+- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [기능구현#2] 스프링 검증 어노테이션 생성 (Spring bean validation)](../../프로젝트/토이프로젝트/게시판%20프로젝트/[기능구현#2]%20스프링%20검증%20어노테이션%20생성%20(Spring%20bean%20validation).md) — Bean Validation을 커스텀 어노테이션으로 확장 구현한 게시판 프로젝트 사례
+- [(학습/프레임워크/Spring Framework) Validation (BindingResult, Validator) + @Validated](Validation%20(BindingResult,%20Validator)%20+%20@Validated.md) — 이 노트가 따르는 BindingResult 기반 검증 규율(HashMap 방식 검증의 발전형인 Bean Validation의 전제가 되는) 이론을 다루는 노트

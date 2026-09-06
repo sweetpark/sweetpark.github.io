@@ -10,6 +10,9 @@ modified: 2026-09-05
 > [!NOTE]
 > JPA 엔티티 설계 시 주의점(연관관계 주인, 지연로딩, 컬렉션 초기화), 변경 감지(Dirty Checking) vs merge, DTO 활용 등 김영한 JPA 활용 강의를 정리한다.
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `em.persist()`/`em.merge()`, `@Transactional` 등 JPA·Spring 표준 API만 사용되어 특정 버전은 확정하기 어렵다.
+
 ## 📌 개념
 
 - 일대다 관계에서 연관관계의 주인은 “다” 쪽에 있다
@@ -118,3 +121,7 @@ private List<Order> orders = new ArrayList<>();
 - Server Side Validation 하는 방법
     - @Valid 없음  → BindingResult result 를 활용할 수 없음
     - 다른 방법을 강구해봐야함
+
+## 관련 문서
+
+- [(Spring) JPA - 핵심 개념 및 특징 정리](실습_스프링MVC/[Spring]%20JPA%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트의 연관관계 주인/Dirty Checking 이론을 Onz 프로젝트의 실제 엔티티 설계에 적용한 실습 노트

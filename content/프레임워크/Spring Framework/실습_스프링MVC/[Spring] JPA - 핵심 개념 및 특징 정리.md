@@ -10,6 +10,9 @@ modified: 2026-09-05
 > JPA 연관관계 매핑(`@ManyToOne`/`@OneToMany`)과 Mapping 테이블 처리 기준 정리.
 > Onz(칵테일 플랫폼) 프로젝트에서 이관.
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `@ManyToOne`/`@OneToMany`/`@JoinColumn` 등 JPA 표준 애노테이션만 사용되어 javax.persistence/jakarta.persistence 여부를 포함해 특정 버전은 확정하기 어렵다.
+
 ## ⚙️ 구현
 
 ### 연관관계 매핑
@@ -82,3 +85,8 @@ public class TasteDetail {
 ```
 
 ![image.png](assets/image.png)
+
+## 관련 문서
+
+- [(Spring) Page 처리 - 핵심 개념 및 특징 정리]([Spring]%20Page%20처리%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 Onz 프로젝트에서 Spring Data JPA의 Pageable 기반 페이징 처리를 다루는 자매 노트
+- [(학습/프레임워크/Spring Framework) JPA 활용 1편 - 핵심 개념 및 특징 정리](../[Spring]%20JPA%20활용%201편%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트가 실습으로 적용한 연관관계 주인/Dirty Checking/DTO 패턴 이론을 정리한 강의 노트

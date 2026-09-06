@@ -131,3 +131,10 @@ HTTP/1.1 400 Bad Request
 
 Spring Bean Validation을 활용하면 복잡한 로직 없이도 사용자 입력 검증을 손쉽게 적용할 수 있다. @NotBlank, @Pattern 등 기본 제공 어노테이션만으로 충분한 경우도 많지만, 직접 비즈니스에 맞는 커스텀 어노테이션을 만들어 사용하는 것도 매우 유용하다.
 다음 글에서는 유효성 검사를 더욱 체계적으로 관리하기 위해 Validator 인터페이스, @InitBinder, AOP와 어노테이션 기반 유효성 검사 확장 전략에 대해 소개할 예정이다.
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/유효성검사 (Validation)) [유효성검증 #1] Validator + BindingResult를 이용한 유효성 검증]([유효성검증%20#1]%20Validator%20+%20BindingResult를%20이용한%20유효성%20검증.md) — Validator+BindingResult를 이용한 검증 방식을 다루는 선행 편
+- [(학습/프로젝트/토이프로젝트/유효성검사 (Validation)) [유효성검증 #3]  유효성 검증 아키텍처 설계]([유효성검증%20#3]%20%20유효성%20검증%20아키텍처%20설계.md) — Bean Validation과 커스텀 Validation을 다룬 후, 이를 AOP로 결합하는 아키텍처 설계를 다루는 후속 편
+- [(학습/프레임워크/Spring Framework) Bean Validation](../../../프레임워크/Spring%20Framework/Bean%20Validation.md) — Bean Validation 어노테이션과 커스텀 Validator를 다루는 강의 노트와 동일한 주제
+- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [기능구현#2] 스프링 검증 어노테이션 생성 (Spring bean validation)](../게시판%20프로젝트/[기능구현#2]%20스프링%20검증%20어노테이션%20생성%20(Spring%20bean%20validation).md) — 게시판 프로젝트의 @ValidPassword 커스텀 검증 어노테이션 구현과 동일한 패턴을 다루는 사례

@@ -7,6 +7,8 @@ modified: 2026-09-05
 
 # Define (inline, constexpr)
 
+이 노트는 전처리기 매크로 `#define`의 사용법(상수 정의, 함수형 매크로, 조건부 컴파일)과 C++11 이후 이를 대체할 수 있는 `inline`/`constexpr`을 정리한다. `#define`은 간결하지만 타입 안정성이 없고 단순 텍스트 치환이라 부작용이 생길 수 있는 반면, `inline`은 함수 호출 오버헤드 없이 코드를 삽입하고 `constexpr`은 컴파일 타임에 값을 평가해 더 안전한 대안이 된다는 점이 핵심이다.
+
 Define ( + inline , constexpr)
 
 ## Define

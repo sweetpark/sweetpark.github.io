@@ -11,6 +11,9 @@ modified: 2026-09-05
 > IoT 디바이스나 금융 단말기와의 TCP 소켓 통신에서 패킷 도청(Eavesdropping) 및 중간자 공격(MITM)을 방어하기 위해 **Netty 파이프라인에 SSL/TLS 암호화 계층을 구축하는 실무 아키텍처**를 다룹니다.
 > 서버 인증(One-way TLS)과 양방향 상호 인증(Two-way mTLS), `SslContext` 팩토리 구현, 핸드셰이크 비동기 감지 패턴을 학습합니다.
 
+> [!NOTE] 실행 환경
+> `SslContextBuilder`(Netty 4.1부터 제공되는 API)와 `netty-tcnative-boringssl-static` 네이티브 바인딩 언급, TLSv1.2/1.3 지원으로 볼 때 **Netty 4.1.x 계열**로 추정됩니다(정확한 패치 버전 명시 없음). 코드에 `var`/레코드/패턴 매칭 등 JDK 버전을 특정할 문법적 단서가 없어 **JDK 버전은 명시되어 있지 않습니다**.
+
 ---
 
 ## 1. TCP 소켓 통신에서의 보안 위협과 TLS 아키텍처
@@ -208,4 +211,11 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
    - JDK 기본 SSL 엔진은 순수 자바 연산으로 동작하여 초당 암복호화 처리량에 한계가 있습니다.
    - 대규모 트래픽 환경에서는 OpenSSL / BoringSSL을 네이티브 JNI로 호출하는 `netty-tcnative-boringssl-static` 종속성을 추가하면 CPU 사용률을 30~50% 절감하고 처리량을 대폭 끌어올릴 수 있습니다.
 2. **세션 캐싱 (Session Resumption)**:
-   - 빈번하게 재접속하는 IoT 장비 환경에서는 TLS Session ID 또는 Session Ticket을 활성화하여 1-RTT(또는 0-RTT)로 빠른 핸드셰이크를 수행하도록 설정합니다.\n
+   - 빈번하게 재접속하는 IoT 장비 환경에서는 TLS Session ID 또는 Session Ticket을 활성화하여 1-RTT(또는 0-RTT)로 빠른 핸드셰이크를 수행하도록 설정합니다.
+
+## 관련 문서
+
+- [(학습/개발 실무/네트워크·보안) [Netty_TLS] Netty 파이프라인 SSL-TLS 적용](../../개발%20실무/네트워크·보안/[Netty_TLS]%20Netty%20파이프라인%20SSL-TLS%20적용%20-%20One-way%20TLS%20서버%20인증%20구성%20정리.md) — 동일 주제(One-way TLS vs mTLS)를 keytool 발급 절차와 SAN 검증 관점에서 보완하는 실무 노트
+- [(학습/프레임워크/Netty) [Java] 01. Netty 아키텍처와 이벤트 루프 스레드 모델 (EventLoop, Boss·Worker, Bootstrap)]([Java]%2001.%20Netty%20아키텍처와%20이벤트%20루프%20스레드%20모델%20(EventLoop,%20Boss·Worker,%20Bootstrap).md) — 이 SslHandler가 추가되는 대상인 ServerBootstrap 전체 파이프라인 구성을 다루는 연작
+- [(학습/프레임워크/Netty) [Java] 02. TCP 패킷 단편화와 프레임 디코딩 (ByteToMessageDecoder & Length-Field)]([Java]%2002.%20TCP%20패킷%20단편화와%20프레임%20디코딩%20(ByteToMessageDecoder%20&%20Length-Field).md) — SslHandler 바로 뒤에서 복호화된 평문을 프레임으로 슬라이싱하는 MessageDecoder를 다루는 연작
+- [(학습/프레임워크/Netty) [Java] 03. 채널 핸들러 라이프사이클과 실전 IoT 소켓 통신 패턴 (Session, BCD, HAProxy)]([Java]%2003.%20채널%20핸들러%20라이프사이클과%20실전%20IoT%20소켓%20통신%20패턴%20(Session,%20BCD,%20HAProxy).md) — SslHandshakeCompletionEvent를 처리하는 MessageHandler의 세션/라이프사이클 관리를 다루는 연작

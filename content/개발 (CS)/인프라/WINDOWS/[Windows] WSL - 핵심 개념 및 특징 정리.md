@@ -9,6 +9,8 @@ modified: 2026-09-05
 > [!NOTE]
 > Windows에서 WSL(Windows Subsystem for Linux) 설치 및 Ubuntu 실행 절차.
 
+WSL은 별도의 가상머신(VirtualBox/VMware)이나 듀얼 부팅 없이, Windows 안에서 리눅스 커널 호환 계층을 통해 리눅스 배포판을 바로 실행하는 기능이다. 전체 VM처럼 CPU/메모리를 고정 할당하지 않고 파일시스템도 Windows와 상호 접근이 가능해 가볍고, 개발 환경에서 리눅스 전용 도구(bash 스크립트, 리눅스 패키지 등)를 Windows를 벗어나지 않고 쓰고 싶을 때 실무적으로 많이 쓰인다.
+
 > [!CAUTION]
 > 계정 정보 — ID: `wooyeong` / PW: `***MASKED***` (테스트 계정 비밀번호, 보안상 마스킹 — 복원 금지)
 

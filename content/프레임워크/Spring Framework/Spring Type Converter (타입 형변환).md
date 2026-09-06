@@ -7,7 +7,10 @@ modified: 2026-09-05
 
 # Spring Type Converter (타입 형변환)
 
-spring type converter..
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `Converter<S, T>`, `WebMvcConfigurer#addFormatters` 등 Spring 표준 API만 사용되어 특정 버전 확정은 어려움.
+
+HTTP 요청 파라미터나 `@Value`로 읽어오는 프로퍼티 값은 기본적으로 문자열(String)로 들어오기 때문에, 이를 Integer·LocalDate·사용자 정의 객체 등 원하는 타입으로 변환하는 과정이 필요하다. Spring Type Converter는 이 문자열 ↔ 타입 간 변환을 표준화된 방식으로 처리해준다.
 
 ## 타입 변환 필요 예시
 
@@ -93,6 +96,8 @@ public class ConversionServiceTest {
 *   Converter를 만든 것을 Conversion을 이용해서 등록하고 손쉽게 사용할 수 있도록 하는 서비스
 *   @Configuration을 이용해서 등록
 
+DefaultConversionService를 직접 생성해서 쓰기보다 WebMvcConfigurer의 addFormatters()를 통해 등록하면, 스프링 MVC가 내부적으로 사용하는 conversionService에 자동으로 통합되어 @RequestParam, @ModelAttribute, @PathVariable 등 모든 파라미터 바인딩 시점에 컨버터가 일괄 적용된다.
+
 ```java
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
@@ -106,3 +111,7 @@ public class WebConfig implements WebMvcConfigurer {
      }
 }
 ```
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) Formatter (포맷터)](Formatter%20(포맷터).md) — 이 노트의 Converter를 문자열 표현 형식(Locale 등)까지 다루도록 확장한 심화 버전 노트

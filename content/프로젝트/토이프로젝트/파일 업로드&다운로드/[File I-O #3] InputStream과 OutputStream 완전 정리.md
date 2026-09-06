@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # [File I/O #3] InputStream과 OutputStream 완전 정리
 
+> [!NOTE] 실행 환경
+> 같은 폴더의 "[File I/O] 파일 라이브러리 이해하기" 노트에서 Java 17 기준으로 설명하고 있으나, 이 폴더에는 Spring Boot 버전이 별도로 명시되어 있지 않다.
+
 File I/O #3 — InputStream과 OutputStream 완전 정리
 
 * * *
@@ -106,3 +109,8 @@ os.close();
 - OutputStream: 바이트 단위 출력 처리 (쓰기)  
 - **BufferedStream**을 함께 사용하면 **성능이 향상**됩니다.  
 - **Resource로부터 InputStream**을 받아 처리할 수 있습니다.
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #2] Resource 구현체 완전 정리]([File%20I-O%20#2]%20Resource%20구현체%20완전%20정리.md) — Resource 구현체(UrlResource, ClassPathResource 등)를 자세히 다루는 선행 편
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #4] InputStreamReader & BufferedReader 완전 분석]([File%20I-O%20#4]%20InputStreamReader%20&%20BufferedReader%20완전%20분석.md) — InputStream/OutputStream을 다룬 후, InputStreamReader와 BufferedReader로 문자 단위 처리를 확장하는 후속 편

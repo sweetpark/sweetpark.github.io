@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # Thymeleaf 기본
 
+Thymeleaf 문법 전반을 한 번에 훑는 기초 노트다. 텍스트/객체/리스트/맵을 `th:text`로 출력하는 방법, `th:with`로 지역변수를 선언하는 방법, `@{...}` URL 표현식, 작은따옴표·`|...|` 리터럴 대체 문법, `th:each` 반복과 상태 변수(index, count 등), `th:if`/`th:unless`/`th:switch` 조건문, 그리고 파서 주석·프로토타입 주석까지 핵심 문법을 요약한다.
+
+> [!NOTE] 실행 환경
+> `<html xmlns:th="http://www.thymeleaf.org">` 선언만으로는 구체적인 Thymeleaf 버전을 특정할 근거가 없다. Spring Boot 프로젝트라면 thymeleaf-spring 연동 스타터가 필요하며, 구체적인 Thymeleaf/Spring Boot 버전은 문서에 명시되어 있지 않다.
+
 ## Thymeleaf 선언
 
 <html xmlns:th="http://www.thymeleaf.org">

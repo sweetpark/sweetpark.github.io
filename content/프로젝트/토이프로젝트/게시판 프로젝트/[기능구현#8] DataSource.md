@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # [기능구현#8] DataSource
 
+> [!NOTE] 실행 환경
+> 같은 폴더의 "[리팩터링] 게시판 프로젝트 아키텍처" 노트에 명시된 스택 기준 — Spring Boot 3.3.5, Java 17, H2 Database, Thymeleaf.
+
 ## DataSource 란?
 
 DataSource는 JDBC를 이용하여 DB를 연결시에 도와주는 객체이다.  
@@ -81,3 +84,8 @@ private void close(Connection con, Statement stmt, ResultSet rs){
 
 *   DataSource를 이용하여 성능이 얼마나 향상되는지 측정이 되질 않았다. (테스트 코드 작성을 통한 CRUD 확인)
 *   DataSource를 이용한 인터페이스 활용 대한 장점은 알겠지만, 이를 몇개를 활용해야하는지에 대한 궁금증이 해결되지 못했다
+
+## 관련 문서
+
+- [(게시판 프로젝트) [리팩터링] 게시판 프로젝트 아키텍처]([리팩터링]%20게시판%20프로젝트%20아키텍처.md) — 이 DataSource가 속한 게시판 프로젝트의 전체 아키텍처 개요
+- [(게시판 프로젝트) [기능구현#5] AppConfig 구성]([기능구현%235]%20AppConfig%20구성.md) — 이 DataSourceConfig를 생성자로 주입받아 BoardDBRepository/MemberDBRepository를 수동 Bean 등록하는 AppConfig 설계

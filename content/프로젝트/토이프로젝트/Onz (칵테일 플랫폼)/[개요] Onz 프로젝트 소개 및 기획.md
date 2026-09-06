@@ -124,3 +124,7 @@ modified: 2026-09-05
 - [[리팩토링] Stream·Generic·Lambda로 중복 코드 제거]
 - [트러블슈팅]
 - [API 레퍼런스]
+- [OAuth 소셜 로그인 설계 (code 기반 인증, Strategy+Factory)]([구현]%20OAuth%20소셜%20로그인%20설계%20(code%20기반%20인증,%20Strategy+Factory).md) — 이 기획에서 채택한 소셜 로그인(Google/Naver/Kakao/Apple) 인증 설계 문서
+- [Stream·Generic·Lambda로 중복 코드 제거]([리팩토링]%20Stream·Generic·Lambda로%20중복%20코드%20제거.md) — 칵테일 맛/재료/추천 데이터 처리 코드를 리팩토링한 기록
+- [트러블슈팅 - UTF8mb4 인코딩 이슈 및 개발 중 이슈 모음]([트러블슈팅]%20UTF8mb4%20인코딩%20이슈%20및%20개발%20중%20이슈%20모음.md) — 이 프로젝트 운영/개발 중 겪은 이슈와 해결 기록
+- [Onz API 레퍼런스]([API]%20Onz%20API%20레퍼런스.md) — 이 기획을 기반으로 구현된 API 엔드포인트 전체 목록

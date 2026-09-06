@@ -99,3 +99,8 @@ private List<Map<String, Object>> getResRecommends(List<MappingRecommend> recomm
 - **Lambda (`Function<T, Map<String,Object>>`)**: 타입별로 달라지는 "필드를 Map에 담는 방법"만 호출부에서 주입 — 공통 골격(순회+수집)과 가변 로직(필드 매핑)을 분리
 
 이 리팩토링 이전에는 Provider(Kakao/Naver/Google/Apple)별로 제각각이던 소셜 로그인 로직도 유사한 문제를 안고 있었는데, 그쪽은 Strategy + Factory 패턴으로 해결했다. 자세한 내용은 [[구현] OAuth 소셜 로그인 설계 (code 기반 인증, Strategy+Factory)] 문서 참고.
+
+## 관련 문서
+
+- [OAuth 소셜 로그인 설계 (code 기반 인증, Strategy+Factory)]([구현]%20OAuth%20소셜%20로그인%20설계%20(code%20기반%20인증,%20Strategy+Factory).md) — 유사한 Provider별 반복 로직 문제를 Strategy+Factory 패턴으로 해결한 문서
+- [Onz 프로젝트 소개 및 기획]([개요]%20Onz%20프로젝트%20소개%20및%20기획.md) — 이 리팩토링이 이루어진 Onz 프로젝트의 전체 기획

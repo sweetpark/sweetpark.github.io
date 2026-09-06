@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # [File I/O #6] File이외의 I/O Stream 정리 (Object, Audio, Piped 등)
 
+> [!NOTE] 실행 환경
+> 같은 폴더의 "[File I/O] 파일 라이브러리 이해하기" 노트에서 Java 17 기준으로 설명하고 있으나, 이 폴더에는 Spring Boot 버전이 별도로 명시되어 있지 않다.
+
 File I/O #6 — 고급 입출력 스트림 정리 (Object, Audio, Piped 등)
 
 * * *
@@ -194,3 +197,7 @@ channel.close();
 *   **#4** InputStreamReader & BufferedReader
 *   **#5** MultipartFile 업로드 처리
 *   **#6** File이외의 I/O Stream 정리 (Object, Audio, Piped 등)
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #5] MultiPartFile (Form데이터) 처리하기]([File%20I-O%20#5]%20MultiPartFile%20(Form데이터)%20처리하기.md) — File I/O 시리즈의 5번째 편(MultipartFile 처리)을 이어받아 나머지 I/O 스트림을 정리

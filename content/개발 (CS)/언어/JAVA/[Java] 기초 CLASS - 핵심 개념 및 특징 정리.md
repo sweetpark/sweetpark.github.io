@@ -7,8 +7,10 @@ modified: 2026-09-05
 
 # [기초] CLASS
 
-> [!NOTE]
-> Java 클래스 정의, this, static, 싱글톤(singleton) 기초.
+Java의 클래스 정의, `this` 키워드, `static`, 싱글톤(singleton) 패턴을 예제로 정리한 기초 노트다. 핵심은 `this`가 현재 인스턴스 자신을 가리키는 반면 `static`은 모든 인스턴스가 공유하는 클래스 변수/함수라는 차이이며, 이 `static` 성질을 이용해 생성자를 `private`으로 막고 `getInstance()`로만 인스턴스를 내주는 것이 싱글톤 패턴의 핵심이다.
+
+> [!NOTE] 실행 환경
+> 클래스, 생성자, `static` 등 특정 JDK 버전에 종속되지 않는 Java 기본 문법만 사용되어 별도 버전 명시가 필요하지 않다. 표준 JDK 컴파일 환경이면 재현 가능하다.
 
 ## 📌 개념
 

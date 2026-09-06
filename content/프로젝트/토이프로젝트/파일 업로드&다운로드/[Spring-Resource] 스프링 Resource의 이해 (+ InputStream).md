@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # [Spring-Resource] 스프링 Resource의 이해 (+ InputStream)
 
+> [!NOTE] 실행 환경
+> 같은 폴더의 "[File I/O] 파일 라이브러리 이해하기" 노트에서 Java 17 기준으로 설명하고 있으나, 이 폴더에는 Spring Boot 버전이 별도로 명시되어 있지 않다.
+
 * 요약 정보 *  
 [Resource]  
 - Resource는 인터페이스이다.  
@@ -268,3 +271,7 @@ docs.spring.io](https://docs.spring.io/spring-framework/reference/core/resources
 Java’s standard java.net.URL class and standard handlers for various URL prefixes, unfortunately, are not quite adequate enough for all access to low-level resources. For example, there is no standardized URL implementation that may be used to access a r
 
 docs.spring.io](https://docs.spring.io/spring-framework/reference/core/resources.html)
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #2] Resource 구현체 완전 정리]([File%20I-O%20#2]%20Resource%20구현체%20완전%20정리.md) — Resource 구현체를 집중적으로 정리한 File I/O 시리즈 #2편과 유사한 주제

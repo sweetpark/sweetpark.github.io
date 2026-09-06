@@ -6,6 +6,8 @@ modified: 2026-09-05
 
 # Rule Test
 
+MyBatis Mapper의 SQL 품질을 빌드 시점에 자동 검증하는 "Rule Test / Quality Gate" 설계 노트다. FAIL(빌드 차단)·WARN(로그 경고)·GUIDE(문서 권고) 3단계로 규칙 강제 수준을 나누고, SQL 실행 가능 여부·SQL Injection(`${}`)·트랜잭션 예외 삼킴 패턴을 Gradle 플러그인으로 자동 탐지하는 아키텍처와 실제 빌드 차단 사례를 담고 있다. 핵심은 "비즈니스 로직을 검증하는 단위테스트"가 아니라 "조용히 깨지는 구조적 문제를 조기에 잡는 안전망"이라는 관점이다.
+
 - Governence 테스트
     
     ---

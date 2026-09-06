@@ -158,3 +158,7 @@ struct ethhdr
 ## 📎 기타
 > [!IMPORTANT]
 > 확인 필요: "알아봐야 할 것" — `pcap_t *pcap_handle`, `addr.s_addr`가 무엇인지, `ntoa`, `pcap_pkthdr` (원문의 학습 TODO 목록, 미완료 상태로 보존).
+
+## 관련 문서
+
+- [(프로젝트) 패킷 캡처와 분석 - libpcap C 구현과 tshark 활용](../../프로젝트/보안/[프로젝트]%20패킷%20캡처와%20분석%20-%20libpcap%20C%20구현과%20tshark%20활용.md) — 이 함수 레퍼런스를 실제로 사용해 패킷 캡처 프로그램을 구현한 프로젝트 노트

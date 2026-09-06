@@ -159,3 +159,11 @@ RUNNING 상태에서 취소  → CANCEL_YN='Y' 플래그만 설정
 - 재시작 후에도 진행 상황을 잃지 않아야 함
 
 예: 대용량 리포트 생성, 대량 알림 발송, 배치성 데이터 이관 작업 등.
+
+## 관련 문서
+
+- [(오픈소스) ha-excel-job-engine - 상세 분석 및 기술 가이드](../../프로젝트/오픈소스/[오픈소스]%20ha-excel-job-engine%20-%20상세%20분석%20및%20기술%20가이드.md) — 이 문서의 비동기 Job 큐 설계 패턴(PENDING/RUNNING 상태 전이, CAS 기반 중복 방지, 협력적 취소)을 실제로 구현한 오픈소스 프로젝트
+- [(Performance) SXSSFWorkbook 대용량 엑셀 스트리밍과 동적 ZIP 분할 압축 설계 패턴](../백엔드·데이터처리/[Performance]%20SXSSFWorkbook%20대용량%20엑셀%20스트리밍과%20동적%20ZIP%20분할%20압축%20설계%20패턴.md) — 이 Job 큐의 large 워커가 실제로 실행하는 SXSSFWorkbook 스트리밍·청크 분할 설계
+- [(Architecture) 가상 스레드(Virtual Thread) 기반 고가용성 분산 배치 엔진 설계](../아키텍처·설계/[Architecture]%20가상%20스레드(Virtual%20Thread)%20기반%20고가용성%20분산%20배치%20엔진%20설계%20(Atomic%20CAS,%20이중%20큐,%20자가%20치유).md) — 이 문서의 CAS 선점·이중 큐·재기동 복구 설계를 실제 구현 상세(코드, 시퀀스 다이어그램) 수준까지 확장한 자매 노트
+- [(Design Pattern) 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선](../아키텍처·설계/[Design%20Pattern]%20실무%20프로젝트%20및%20오픈소스로%20체득하는%20GoF%20핵심%20디자인%20패턴%2010선%20(Proxy,%20Decorator,%20Strategy,%20Chain,%20Template,%20SPI,%20Visitor,%20Facade).md) — 4.2절 생산자-소비자 패턴 항목에서 이 Job 큐의 Producer-Consumer 구조를 디자인 패턴 관점에서 다룸
+- [(Design) 전원 장애(정전) 대응 설계 원칙 - Atomic Save-Transaction-Recovery 정리](../아키텍처·설계/[Design]%20전원%20장애(정전)%20대응%20설계%20원칙%20-%20Atomic%20Save-Transaction-Recovery%20정리.md) — 이 Job 큐의 재기동 복구·Disk 기반 Queue 설계가 실제로 구현하고 있는 범용 정전/비정상종료 대응 원칙

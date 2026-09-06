@@ -97,3 +97,7 @@ PriorityQueue<클래스명> 변수명 = new PriortyQueue<>();
     *   contains(값) : true / false
 *   공백 큐 확인
     *   isEmpty() : true / false
+
+---
+## 관련 문서
+- [(그리디) 백준 1715번](../../../코딩테스트/그리디/[그리디]%20백준%201715번.md) — PriorityQueue로 최소 비교 횟수를 구하는 실전 활용 예

@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # 예외처리 (web page)
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `WebServerFactoryCustomizer`, `FilterRegistrationBean`, `DispatcherType` 등 Servlet/Spring Boot 표준 API만 사용되어 특정 버전은 확정하기 어렵다.
+
 예외 페이지..
 
 ## 서블릿 예외처리
@@ -164,3 +167,8 @@ public class WebConfig implements WebMvcConfigurer {
      }
 }
 ```
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [기능구현#4] 예외처리](../../프로젝트/토이프로젝트/게시판%20프로젝트/[기능구현#4]%20예외처리.md) — ErrorPage 기반 예외처리를 게시판 프로젝트에 실전 적용한 사례
+- [(학습/프레임워크/Spring Framework) 예외처리 (API)](예외처리%20(API).md) — 동일한 MyCustomizer/ErrorPage 등록 코드를 REST API(JSON) 응답 관점에서 다루는 짝 노트

@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # [리팩터링] 결제요청 전 "더미 데이터" Redis로 관리하기
 
+> [!NOTE] 실행 환경
+> 같은 폴더의 "[GCP 사용기 #3] Spring boot 서버 구축" 노트에 명시된 스택 기준 — Spring Boot 3.3.5, Java 17, MariaDB (+ Redis 캐시 사용).
+
 ## 현재 결제데이터 흐름도..
 
 ```text

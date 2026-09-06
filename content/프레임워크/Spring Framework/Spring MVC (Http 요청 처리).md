@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # Spring MVC (Http 요청 처리)
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `@RequestBody`/`HttpEntity`/`ObjectMapper` 등 Spring MVC 표준 API만 사용되어 특정 버전은 확정하기 어렵다.
+
 ## HTTP 요청 파라미터 방법
 
 *   GET - 쿼리 파라미터
@@ -309,3 +312,7 @@ public class RequestBodyStringController{
     
 }
 ```
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) HTTP Message Converter](HTTP%20Message%20Converter.md) — 이 노트의 @RequestBody/HttpEntity 처리를 담당하는 HTTP 메시지 컨버터의 내부 동작을 다루는 노트

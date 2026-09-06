@@ -239,3 +239,9 @@ modified: 2026-09-05
         - 템플릿 엔진에서 따로 제공해주는 것을 이용해서 편리하게 값을 꺼내 쓸수 있음
 - WEB-INF 디렉토리 밑에 있는 jsp 는 클라이언트가 url로 호출할 수 없음
     - Controller에서 호출해야 view 가능
+
+## 관련 문서
+
+- [(학습/개발 (CS)/언어/JAVA/웹개발/SERVLET & JSP) Servlet 기초](../../개발 (CS)/언어/JAVA/웹개발/SERVLET%20&%20JSP/Servlet%20기초.md) — 이 노트의 "서블릿" 절에서 다룬 HttpServlet 상속·생명주기를 코드 예제로 더 상세히 다루는 노트
+- [(학습/개발 (CS)/언어/JAVA/웹개발/SERVLET & JSP) MVC 패턴 ( Servlet + JSP )](../../개발 (CS)/언어/JAVA/웹개발/SERVLET%20&%20JSP/MVC%20패턴%20(%20Servlet%20+%20JSP%20).md) — 이 노트의 "MVC ( Servlet + JSP )" 절을 실제 코드 구현으로 확장한 노트
+- [(학습/개발 (CS)/언어/JAVA/웹개발/SERVLET & JSP) JSP 이론 및 기초 문법](../../개발 (CS)/언어/JAVA/웹개발/SERVLET%20&%20JSP/JSP%20이론%20및%20기초%20문법.md) — 이 노트의 "JSP" 절에서 다룬 <% %>, <%= %> 문법을 더 상세히 다루는 노트

@@ -83,3 +83,4 @@ private int[] solution(int N, int[] stages) {
 ---
 ## 🔗 관련
 - [(Algorithm) 자료구조 - 핵심 개념 및 특징 정리](../템플릿/[Algorithm]%20자료구조%20-%20핵심%20개념%20및%20특징%20정리.md) — HashMap/정렬(Comparator) 참고
+- [(Algorithm) 60일 계획 - 핵심 개념 및 특징 정리](../기획/[Algorithm]%2060일%20계획%20-%20핵심%20개념%20및%20특징%20정리.md) — 1~20일차 학습 커리큘럼에서 참조하는 문제

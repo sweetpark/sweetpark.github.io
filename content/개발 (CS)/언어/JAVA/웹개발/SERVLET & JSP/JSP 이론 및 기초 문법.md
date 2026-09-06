@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # JSP 이론 및 기초 문법
 
+JSP(Java Server Page)의 개념과 동작 원리, 표준 문법을 정리한 이론 노트다. 핵심은 JSP 파일이 요청 시 Servlet(.java)으로 변환·컴파일되어 실행된다는 점이며, 이 때문에 JSP 안에서 request·response·session 같은 내장 객체를 바로 사용할 수 있다. 주석·지시어·표현식·스크립트 등 표준 문법과 jsp:include 같은 액션 태그, 그리고 스크립틀릿(`<% %>`) 안에서 자바 제어문을 쓰는 방법까지 다룬다.
+
+> [!NOTE] 실행 환경
+> 본 문서는 JSP 문법 이론 정리로 특정 버전을 명시하지 않는다. 표준 지시어(`<%@ page %>`, `<%@ taglib %>` 등)와 내장 객체(HttpServletRequest 등)는 여러 Servlet/JSP 스펙 버전에 걸쳐 공통이므로, 실습하려면 JSP를 지원하는 Servlet 컨테이너(Tomcat 등) 환경이 필요하다.
+
 1. JSP ?  
 2. JSP 구성 및 동작  
 3. JSP 문법
@@ -133,3 +138,7 @@ modified: 2026-09-05
   </body>
 </html>
 ```
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) MVC #1](../../../../../프레임워크/Spring%20Framework/[Spring]%20MVC%20%231%20-%20MVC%201.md) — 이 노트의 JSP 문법을 서블릿·MVC 적용까지 포함해 한 문서로 종합 정리한 강의 노트

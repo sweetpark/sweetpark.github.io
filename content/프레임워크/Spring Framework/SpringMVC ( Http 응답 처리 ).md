@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # SpringMVC ( Http 응답 처리 )
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `ResponseEntity`, `@ResponseBody`, `ModelAndView` 등 Spring MVC 표준 API만 사용되어 특정 버전 확정은 어려움.
+
 ## HTTP 응답 방법
 
 *   정적 리소스 
@@ -15,6 +18,8 @@ modified: 2026-09-05
 *   View Template
     *   src/main/resources/templates : 기본 뷰 템플릿 경로
 *   HTTP API , 메시지 바디에 직접 입력
+
+정적 리소스는 가공 없는 파일을 그대로 내려줄 때, View Template은 서버에서 HTML을 동적으로 렌더링해 내려줄 때, HTTP API는 JSON 등 데이터 자체를 응답해야 할 때 사용한다. 즉 무엇을 반환해야 하는지(고정 파일/렌더링된 화면/데이터)에 따라 셋 중 하나를 고른다.
 
 ## View Template  응답
 
@@ -33,6 +38,8 @@ src/main/resources/templates/response/hello.html
     *   Model을 이용해서 데이터 전달 + URL 문자열로 전달
     *   요청 URL 과 응답 URL 이름이 동일하면 생략 (권장 x -> 명시성이 떨어짐)
 *   @ResponseBody, HttpEntity를 사용하면 뷰템플릿이 아닌, HTTP 메시지 바디에 직접 응답 반환을 하는 것
+
+실무에서는 컨트롤러가 뷰 이름을 String으로 반환하는 방식이 가장 널리 쓰인다. ModelAndView를 직접 다루는 것보다 Model을 통한 데이터 전달과 반환값(뷰 이름)이 분리되어 코드가 간결하기 때문이다. 요청 URL과 응답 뷰 이름이 같다고 응답 지정을 생략하면 코드만 봐서는 어떤 뷰로 렌더링되는지 알 수 없어 명시성이 떨어지므로, 특별한 사정이 없다면 생략하지 않는 편이 권장된다.
 
 ```java
 @Controller
@@ -71,6 +78,8 @@ public class ResponseView{
     *   @ResponseBody 이용 (messageBody에 그대로 반환)
 *   추가 정보)
     *   class Level에 @RestController로 두면, 모든 method에 @ResponseBody 가 적용됨
+
+HttpServletResponse를 직접 다루는 방식은 서블릿 API에 코드가 종속되고 상태 코드·헤더 설정을 일일이 작성해야 해 번거롭다. ResponseEntity는 상태 코드와 헤더까지 함께 세밀하게 제어할 수 있어 API 응답을 정교하게 다뤄야 할 때 적합하고, @ResponseBody는 상태 코드 제어가 별도로 필요 없는 단순한 데이터 반환에 적합해 실무에서 가장 자주 쓰인다.
 
 ```java
 @Slf4j
@@ -118,3 +127,8 @@ public class ResponseBody{
      }
 }
 ```
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) HTTP Message Converter](HTTP%20Message%20Converter.md) — 이 노트의 @ResponseBody/ResponseEntity 처리를 담당하는 HTTP 메시지 컨버터의 내부 동작을 다루는 노트
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #3 (Dispatcher Servlet, View)](SPRING%20MVC%20구조%20%233%20(Dispatcher%20Servlet,%20View).md) — 이 노트의 View Template 응답 처리가 DispatcherServlet의 render() 단계에서 어떻게 동작하는지를 다루는 노트

@@ -10,6 +10,9 @@ modified: 2026-09-05
 > Servlet/Netty/Batch에 공통 적용되는 로깅 프레임워크에서 대용량 트래픽·파일 업로드·배치 대량 처리 시 발생할 수 있는 힙 메모리 폭발(OOM) 위험을 점검하고, 스트리밍/지연 평가 방식으로 리팩토링한 패턴. "Logging (최소 APM 구현)" 미니프로젝트에서 추출.
 > 관련 노트: [(MyBatis) Log 고도화 작업 - 핵심 개념 및 특징 정리](../../../개발 (CS)/인프라/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81%C2%B7%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/[MyBatis]%20Log%20%EA%B3%A0%EB%8F%84%ED%99%94%20%EC%9E%91%EC%97%85%20-%20%ED%95%B5%EC%8B%AC%20%EA%B0%9C%EB%85%90%20%EB%B0%8F%20%ED%8A%B9%EC%A7%95%20%EC%A0%95%EB%A6%AC.md)의 "대용량 파일 다운로드 시 ContentCachingResponseWrapper로 인한 OOM" 트러블슈팅 — 실무에서 다룬 유사 이슈이지만 이쪽은 **응답(Response)** 다운로드 시나리오이고, 이 노트는 **요청(Request) 대용량 업로드 + 응답 본문 파싱 + Batch ThreadLocal 누적** 3가지 별개 이슈를 다룬다.
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `ContentCachingRequestWrapper`, Jackson Streaming API 등 표준 API만 사용되어 특정 Spring/Jackson 버전은 확정하기 어렵다.
+
 ## ⚙️ 전체 구성 목표
 
 Servlet, Netty, Batch 등 실행 환경에 독립적인 통합 로깅 환경(Facade 패턴)에서, 요청/응답 본문과 SQL Trace를 중앙 집중식으로 기록하던 중 대용량 트래픽·큰 파일 업로드·배치 대량 데이터 처리 시 힙 메모리 폭발(OOM) 위험이 발견되었다. 전체 데이터를 한 번에 메모리에 올리는 방식에서 "스트리밍 및 지연 평가" 방식으로 전환이 필요했다.
@@ -44,3 +47,7 @@ Servlet, Netty, Batch 등 실행 환경에 독립적인 통합 로깅 환경(Fac
 
 - **비동기 로깅 적용**: 무거운 로깅 I/O 작업이 메인 비즈니스 로직(Netty Worker Thread 등)의 흐름을 막지 않도록 `logback-spring.xml`에 `AsyncAppender`를 구성(큐 사이즈 및 `neverBlock` 설정)
 - **Grafana / Loki 연동**: 깔끔하게 분리된 LogMarker(`[API_PROD]`, `[SLOW_SQL]` 등)를 활용해, LogQL로 특정 인터페이스의 응답 지연율이나 에러 발생 빈도를 시각화하는 대시보드 구축
+
+## 관련 문서
+
+- [(Spring Batch) 멀티스레드 로깅 - 핵심 개념 및 특징 정리]([Spring%20Batch]%20멀티스레드%20로깅%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 "Logging (최소 APM 구현)" 미니프로젝트에서 추출된 자매 노트(TaskDecorator·재진입 방지·Marker 필터 기법)

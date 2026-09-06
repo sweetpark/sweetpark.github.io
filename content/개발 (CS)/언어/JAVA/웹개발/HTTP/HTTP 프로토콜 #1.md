@@ -7,7 +7,7 @@ modified: 2026-09-05
 
 # HTTP 프로토콜 #1
 
-HTTP
+HTTP(HyperText Transfer Protocol)가 무엇인지, 요청-응답 구조와 무상태(stateless) 특성이 어떤 트레이드오프를 갖는지, 그리고 HTTP 메시지가 Start-Line·field-Line·message-body로 어떻게 구성되는지를 정리한 노트다. 핵심은 HTTP가 클라이언트-서버 구조의 무상태 프로토콜이라 서버 확장은 쉽지만, 매 요청마다 필요한 정보를 다시 보내야 한다는 점이다.
 
 ## HTTP 란?
 
@@ -89,3 +89,7 @@ Content-Length : 3423
 *   field Line
     *   Content-Type : message body 형태 및 인코딩정보
     *   Content-Length : message body의 길이
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) HTTP 이론 - 핵심 개념 및 특징 정리](../../../../../프레임워크/Spring%20Framework/[Spring]%20HTTP%20이론%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트의 HTTP 메시지 구조/Stateless 내용을 URI·헤더까지 포함해 한 문서로 종합 정리한 강의 노트

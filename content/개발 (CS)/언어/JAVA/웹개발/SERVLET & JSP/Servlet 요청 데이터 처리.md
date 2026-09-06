@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # Servlet 요청 데이터 처리
 
+Servlet에서 클라이언트 요청 데이터를 읽는 세 가지 방식을 정리한 노트다. GET의 쿼리 파라미터와 POST의 HTML Form(`application/x-www-form-urlencoded`)은 둘 다 `request.getParameter()` 계열 메서드로 동일하게 조회하며, HTTP API처럼 JSON/XML 본문을 그대로 받는 경우에는 `request.getInputStream()`으로 메시지 바디를 읽은 뒤 Jackson `ObjectMapper`로 변환해야 한다.
+
+> [!NOTE] 실행 환경
+> `@WebServlet` 어노테이션 기반 등록 방식이 사용되어 Servlet 3.0 이상을 전제로 한다. JSON 처리에는 Jackson `ObjectMapper`(Spring MVC가 기본 제공)가 사용되지만, 구체적인 Servlet/Jackson 버전은 코드상 명시되어 있지 않다.
+
 1. 쿼리 파라미터 (GET)  
 2. HTML Form (POST)  
 3. HTTP message body

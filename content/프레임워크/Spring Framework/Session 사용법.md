@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # Session 사용법
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `HttpSession`, `@SessionAttribute` 등 Servlet/Spring 표준 API만 사용되어 특정 버전은 확정하기 어렵다.
+
 session에 대하여...
 
 ## Session을 왜 사용하는가?
@@ -122,3 +125,8 @@ server.servlet.session.timeout="원하는 (초) 기록"
 *    session.getLastAccessedTime()
     *   session 마지막 접근 시간을 갱신하며, 서버시간에 맞추어서 세션을 만료 시켜도 됨
     *   session.invalidate() 를 사용하여 시간이 도래할경우 세션 만료 로직
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [리팩터링] Session을 통한 로그인 처리](../../프로젝트/토이프로젝트/게시판%20프로젝트/[리팩터링]%20Session을%20통한%20로그인%20처리.md) — Session을 이용한 로그인 처리를 실전 프로젝트에 적용한 사례
+- [(학습/프레임워크/Spring Framework) Cookie 사용법](Cookie%20사용법.md) — 이 노트가 "보안상 이슈로 Session을 채택"하게 된 이유인 Cookie의 위조 문제와 종류를 다루는 짝 노트

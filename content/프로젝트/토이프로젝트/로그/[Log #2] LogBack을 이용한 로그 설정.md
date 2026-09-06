@@ -242,3 +242,9 @@ logback.qos.ch](https://logback.qos.ch/manual/configuration.html)
 Starting with Log4j 2, the configuration file syntax has been considered part of the public API and has remained stable across significant version upgrades. The syntax of the configuration file changed between Log4j 1 and Log4j 2. Files in the Log4j 1 s
 
 logging.apache.org](https://logging.apache.org/log4j/2.x/manual/configuration.html)
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/로그) [Log #1] 로그 이해하기]([Log%20#1]%20로그%20이해하기.md) — 로그 이해하기(로그 레벨, 파사드 패턴)를 다루는 선행 편
+- [(학습/개발 (CS)/CS 기초) Logback](../../../개발%20(CS)/CS%20기초/[Spring]%20Logback%20-%20핵심%20개념%20및%20특징%20정리.md) — logback-spring.xml 설정(Appender, Rolling Policy 등)이 CS 기초 노트의 예제와 거의 동일
+- [(학습/프레임워크/Spring Framework) Log 설정 및 Logging 사용](../../../프레임워크/Spring%20Framework/Log%20설정%20및%20Logging%20사용.md) — 이 노트가 실습하는 Logback 설정의 배경이 되는 SLF4J/로그레벨 기본 개념을 정리한 노트

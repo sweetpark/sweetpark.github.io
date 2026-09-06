@@ -24,6 +24,8 @@ modified: 2026-09-05
 - message, international 적용 방법
 - `.properties` file 작성
 
+메시지 Bean으로 UI 텍스트를 코드에서 분리해두면, 문구 변경이나 다국어 지원이 필요할 때 소스 코드를 건드리지 않고 로케일별 프로퍼티 파일만 교체·추가하면 되므로 유지보수와 국제화 대응이 쉬워진다.
+
 ### 구현 이미지
 ![image.png](assets/image.png)
 
@@ -32,3 +34,7 @@ modified: 2026-09-05
 ### 참고
 - GitSource: [sweetpark/SpringThymeleaf (MessageInternational)](https://github.com/sweetpark/SpringThymeleaf/tree/MessageInternational)
 - 블로그: [gradualprecision.tistory.com/88](https://gradualprecision.tistory.com/88)
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) 메시지, 국제화](../../메시지,%20국제화.md) — MessageSource/LocaleResolver 이론을 정리한 기초 노트

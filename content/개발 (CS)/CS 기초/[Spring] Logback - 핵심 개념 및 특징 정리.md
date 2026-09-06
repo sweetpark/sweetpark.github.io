@@ -179,3 +179,8 @@ modified: 2026-09-05
 
 - [Logback 공식 설정 매뉴얼](https://logback.qos.ch/manual/configuration.html)
 - [Log4j2 공식 설정 매뉴얼](https://logging.apache.org/log4j/2.x/manual/configuration.html)
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/로그) [Log #1] 로그 이해하기](../../프로젝트/토이프로젝트/로그/[Log%20#1]%20로그%20이해하기.md) — 로그 이해하기를 다루는 토이프로젝트 노트와 거의 동일한 주제
+- [(학습/프로젝트/토이프로젝트/로그) [Log #2] LogBack을 이용한 로그 설정](../../프로젝트/토이프로젝트/로그/[Log%20#2]%20LogBack을%20이용한%20로그%20설정.md) — LogBack 설정을 실습한 토이프로젝트 노트와 예제 구성이 거의 동일

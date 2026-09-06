@@ -7,6 +7,8 @@ modified: 2026-09-05
 
 # [JAVA 기술면접] 라이브러리 활용
 
+"자바 표준 라이브러리 활용"을 묻는 기술면접 정리 노트다. java.base 모듈에 기본 포함된 java.lang/util/io/nio/net/security/math/time 같은 핵심 패키지가 무엇을 제공하는지부터, 제네릭(컴파일 타임 타입 체크), 멀티스레드(상태·제어·synchronized를 통한 경쟁상태 해결), 컬렉션 자료구조(List/Set, HashMap/TreeMap, ArrayList/LinkedList 등 선택 기준), 람다식과 스트림까지 실무에서 자주 쓰는 라이브러리 요소를 예제 코드와 함께 다룬다.
+
 ## java.base 모듈
 
 *   기본으로 가지고 있는 java 모듈

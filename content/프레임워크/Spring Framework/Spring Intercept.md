@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # Spring Intercept
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `HandlerInterceptor`, `WebMvcConfigurer` 등 Spring MVC 표준 API만 사용되어 특정 버전은 확정하기 어렵다.
+
 spring mvc Intercept...
 
 ## Intercept 란?
@@ -124,3 +127,7 @@ public class WebConfig implements WebMvcConfigurer {
 
 }
 ```
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) Servlet Filter](Servlet%20Filter.md) — 이 노트에서 "Servlet 필터와 유사한 역할"이라고 언급한 Servlet Filter 자체의 동작 방식을 다루는 노트

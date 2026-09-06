@@ -191,4 +191,11 @@ sequenceDiagram
     Worker->>Worker: 스트림 및 파일 핸들 정상 해제 후 루프 종료
 ```
 
-- **체크포인트(Check-point) 검사**: 1,000행 처리 주기 또는 ZIP 청크 경계마다 취소 플래그를 확인하여, 가장 안전한 시점에 생성 중이던 임시 리소스를 완전히 소거하고 작업을 정상적으로 종료한다.\n
+- **체크포인트(Check-point) 검사**: 1,000행 처리 주기 또는 ZIP 청크 경계마다 취소 플래그를 확인하여, 가장 안전한 시점에 생성 중이던 임시 리소스를 완전히 소거하고 작업을 정상적으로 종료한다.
+
+## 관련 문서
+
+- [(Performance) SXSSFWorkbook 대용량 엑셀 스트리밍과 동적 ZIP 분할 압축 설계 패턴](../백엔드·데이터처리/[Performance]%20SXSSFWorkbook%20대용량%20엑셀%20스트리밍과%20동적%20ZIP%20분할%20압축%20설계%20패턴.md) — 이 엔진의 large 워커가 실제로 수행하는 SXSSFWorkbook 스트리밍·청크 분할 구현 상세
+- [(HTTP) 대용량 처리 비동기 Job 큐 설계 패턴 - 핵심 개념 및 특징 정리](./[HTTP]%20대용량%20처리%20비동기%20Job%20큐%20설계%20패턴%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 엔진과 동일한 CAS 선점·이중 큐·재기동 복구 설계를 일반화된 패턴 관점에서 정리한 자매 노트
+- [(Design Pattern) 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선](./[Design%20Pattern]%20실무%20프로젝트%20및%20오픈소스로%20체득하는%20GoF%20핵심%20디자인%20패턴%2010선%20(Proxy,%20Decorator,%20Strategy,%20Chain,%20Template,%20SPI,%20Visitor,%20Facade).md) — 4.2절 생산자-소비자 패턴 항목에서 이 엔진의 Virtual Thread Worker Pool 구조를 디자인 패턴 관점에서 다룸
+- [(Design) 전원 장애(정전) 대응 설계 원칙 - Atomic Save-Transaction-Recovery 정리](./[Design]%20전원%20장애(정전)%20대응%20설계%20원칙%20-%20Atomic%20Save-Transaction-Recovery%20정리.md) — 이 엔진의 5절 자가 치유(Self-Healing) 파이프라인이 실제로 구현하고 있는 범용 정전/비정상종료 대응 원칙

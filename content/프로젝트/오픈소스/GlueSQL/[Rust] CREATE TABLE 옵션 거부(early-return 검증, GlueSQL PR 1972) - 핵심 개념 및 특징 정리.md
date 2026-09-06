@@ -80,3 +80,7 @@ UnsupportedCreateTableOption(&'static str),
 - [(Rust) TranslateError Enum 타입화(strum·thiserror, GlueSQL #1975) - 핵심 개념 및 특징 정리]([Rust]%20TranslateError%20Enum%20타입화%28strum·thiserror,%20GlueSQL%20Issue%201975%29%20-%20핵심%20개념%20및%20특징%20정리.md) — 여기서 쓴 문자열 기반 패턴이 반복되던 걸 정리한 후속 작업
 - [(Rust) GlueSQL 프로젝트 구조와 필요 문법 개관 - 핵심 개념 및 특징 정리]([Rust]%20GlueSQL%20프로젝트%20구조와%20필요%20문법%20개관%20-%20핵심%20개념%20및%20특징%20정리.md)
 - (Rust) 에러 처리(thiserror, Result, ? 연산자) - 핵심 개념 및 특징 정리
+
+## 관련 문서
+
+- [(Rust) 오픈소스 컨트리뷰션 실전 가이드(이슈 찾기부터 PR 작성까지, GlueSQL 사례) - 핵심 개념 및 특징 정리]([Rust]%20오픈소스%20컨트리뷰션%20실전%20가이드(이슈%20찾기부터%20PR%20작성까지,%20GlueSQL%20사례)%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 PR을 "버그 리포트형 이슈 + Summary/Test plan형 PR의 실제 예"로 인용하는 오픈소스 기여 가이드

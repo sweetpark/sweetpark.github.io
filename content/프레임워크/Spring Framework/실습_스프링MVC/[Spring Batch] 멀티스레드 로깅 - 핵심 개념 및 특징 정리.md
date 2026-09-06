@@ -10,6 +10,9 @@ modified: 2026-09-05
 > 공통 로깅 라이브러리(logging-starter)에서 Spring Batch 멀티스레드 환경의 TraceId 전파, MyBatis Interceptor의 중복 로깅 방지, Logback Marker 기반 로그 분리를 구현한 기록. "Logging (최소 APM 구현)" 미니프로젝트에서 추출.
 > 관련 노트: [(MyBatis) Log 고도화 작업 - 핵심 개념 및 특징 정리](../../../개발 (CS)/인프라/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81%C2%B7%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/[MyBatis]%20Log%20%EA%B3%A0%EB%8F%84%ED%99%94%20%EC%9E%91%EC%97%85%20-%20%ED%95%B5%EC%8B%AC%20%EA%B0%9C%EB%85%90%20%EB%B0%8F%20%ED%8A%B9%EC%A7%95%20%EC%A0%95%EB%A6%AC.md), [(MyBatis) Logging & MyBatis Quality Gate 통합 아 - 핵심 개념 및 특징 정리](../../../개발 (CS)/인프라/%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81%C2%B7%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/[MyBatis]%20Logging%20%26%20MyBatis%20Quality%20Gate%20%ED%86%B5%ED%95%A9%20%EC%95%84%20-%20%ED%95%B5%EC%8B%AC%20%EA%B0%9C%EB%85%90%20%EB%B0%8F%20%ED%8A%B9%EC%A7%95%20%EC%A0%95%EB%A6%AC.md) — 같은 문제의식(TraceId 전파, SQL 로깅)을 실무에서 다룬 별도 사례. 이 노트는 그와 겹치지 않는 TaskDecorator·재진입 방지·Marker 필터 3가지 기법에 집중한다.
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `TaskDecorator`, MyBatis `Interceptor`, Logback `Marker`/`Filter` 등 표준 API만 사용되어 특정 Spring Batch/MyBatis/Logback 버전은 확정하기 어렵다.
+
 ## ⚙️ 1. Spring Batch 멀티스레드 환경의 Context(TraceId) 전파
 
 **문제 상황**: Spring Batch에서 `TaskExecutor`(`ThreadPoolTaskExecutor`, `SimpleAsyncTaskExecutor` 등)를 사용해 멀티스레드(Multi-threaded Step)로 청크를 처리할 때, 부모 스레드의 `ThreadLocal` 컨텍스트(TraceId, SpanId 등)가 자식 스레드로 전달되지 않고 유실되는 현상이 발생한다.
@@ -39,3 +42,7 @@ modified: 2026-09-05
 - 커스텀 Filter를 `<filter>` 태그로 적용하여, 해당 프로젝트에서 정의한 Marker가 붙은 메트릭 로그만 `API_METRIC.log` 파일로 따로 라우팅
 
 **효과**: 라이브러리 사용자(사내 개발자들)는 복잡한 설정 없이 `logging-starter`만 추가하면 자동으로 비즈니스 로그와 메트릭 로그가 깔끔하게 분리되어 저장된다.
+
+## 관련 문서
+
+- [(Spring) 대용량 트래픽 로깅 메모리 누수(OOM) 방지 패턴 - 핵심 개념 및 특징 정리]([Spring]%20대용량%20트래픽%20로깅%20메모리%20누수(OOM)%20방지%20패턴%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 "Logging (최소 APM 구현)" 미니프로젝트에서 추출된 자매 노트(Request/Response 대용량 처리 시 OOM 방지 기법)

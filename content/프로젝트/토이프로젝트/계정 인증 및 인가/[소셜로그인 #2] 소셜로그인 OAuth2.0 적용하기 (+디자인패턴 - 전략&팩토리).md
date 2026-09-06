@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # [소셜로그인 #2] 소셜로그인 OAuth2.0 적용하기 (+디자인패턴 : 전략&팩토리)
 
+> [!NOTE] 실행 환경
+> 이 노트에 Spring/Java 버전이 직접 명시되어 있지는 않다. 다만 본문의 "소셜로그인 Spring Security Filter 이용하기" 예시 코드에서 `jakarta.servlet` 패키지(Spring Boot 3.x 계열의 네임스페이스)를 사용하므로, 참고용으로만 Spring Boot 3.x 기준일 가능성을 추정한다 (예시 코드 기준이며 프로젝트 실제 스택 확정 정보는 아님).
+
 ## 소셜로그인 FLOW
 
 ```text
@@ -245,3 +248,8 @@ public class CustomOAuth2LoginFilter extends AbstractAuthenticationProcessingFil
     }
 }
 ```
+
+## 관련 문서
+
+- [[소셜로그인 #1] 계정 인증 요청 방식 RestTemplate 이해하기]([소셜로그인%20%231]%20계정%20인증%20요청%20방식%20RestTemplate%20이해하기.md) — 이 글의 이전 편으로, 여기서 다루는 accessToken/사용자정보 요청에 쓰이는 RestTemplate의 기본 사용법을 다룸
+- [(프로젝트) OAuth 소셜 로그인 설계 (code 기반 인증, Strategy+Factory)](../Onz%20(칵테일%20플랫폼)/[구현]%20OAuth%20소셜%20로그인%20설계%20(code%20기반%20인증,%20Strategy+Factory).md) — 여기서 정리한 Strategy+Factory 패턴을 Onz 프로젝트에서 code 기반 인증 방식으로 확장 적용한 사례

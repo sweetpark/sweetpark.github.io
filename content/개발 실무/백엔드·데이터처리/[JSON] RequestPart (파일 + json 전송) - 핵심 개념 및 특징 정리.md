@@ -44,3 +44,7 @@ public ResponseEntity<?> upload(@RequestHeader(value = "sendDate", required = fa
 
 > [!NOTE]
 > octet-stream: 스트림 형태로 값을 전달하는 형태의 Content-Type.
+
+## 관련 문서
+
+- [(토이프로젝트) [File I/O #5] MultiPartFile (Form데이터) 처리하기](../../프로젝트/토이프로젝트/파일%20업로드&다운로드/[File%20I-O%20#5]%20MultiPartFile%20(Form데이터)%20처리하기.md) — MultipartFile을 단독으로 받는 처리 방식을 다루는 토이프로젝트 노트로, 이 문서의 파일+JSON 동시 전송(@RequestPart) 시나리오와 대비됨

@@ -576,3 +576,13 @@ modified: 2026-09-05
     - must-revalidate : 캐시 만료후 최초 조회시 Origin 서버에 검증
         - Origin 서버 접근 불가시 → 504 Error
     - Pragma : HTTP 1.0 하위 호환
+
+## 관련 문서
+
+- [(학습/개발 (CS)/언어/JAVA/웹개발/HTTP) 인터넷 통신과정 ( + IP, TCP-UDP, PORT, DNS )](../../개발 (CS)/언어/JAVA/웹개발/HTTP/인터넷%20통신과정%20(%20+%20IP,%20TCP-UDP,%20PORT,%20DNS%20).md) — 이 노트의 "인터넷 네트워크 정리" 절을 더 상세히 다루는 원본 노트
+- [(학습/개발 (CS)/언어/JAVA/웹개발/HTTP) URI, URL, URN](../../개발 (CS)/언어/JAVA/웹개발/HTTP/URI,%20URL,%20URN.md) — 이 노트의 "웹 브라우저 흐름과 URI" 절을 더 상세히 다루는 원본 노트
+- [(학습/개발 (CS)/언어/JAVA/웹개발/HTTP) HTTP 프로토콜 #1](../../개발 (CS)/언어/JAVA/웹개발/HTTP/HTTP%20프로토콜%20%231.md) — 이 노트의 HTTP 역할/Stateless/비연결성 절을 더 상세히 다루는 원본 노트
+- [(학습/개발 (CS)/언어/JAVA/웹개발/HTTP) HTTP 프로토콜 #2 ( Method )](../../개발 (CS)/언어/JAVA/웹개발/HTTP/HTTP%20프로토콜%20%232%20(%20Method%20).md) — 이 노트의 HTTP 메서드/URI 설계 절을 더 상세히 다루는 원본 노트
+- [(학습/개발 (CS)/언어/JAVA/웹개발/HTTP) HTTP 프로토콜#3 ( 상태코드 )](../../개발 (CS)/언어/JAVA/웹개발/HTTP/HTTP%20프로토콜%233%20(%20상태코드%20).md) — 이 노트의 HTTP 상태코드 절을 더 상세히 다루는 원본 노트
+- [(학습/개발 (CS)/언어/JAVA/웹개발/HTTP) HTTP 헤더 #1](../../개발 (CS)/언어/JAVA/웹개발/HTTP/HTTP%20헤더%20%231.md) — 이 노트의 "HTTP 헤더1 (일반헤더)" 절을 더 상세히 다루는 원본 노트
+- [(학습/개발 (CS)/언어/JAVA/웹개발/HTTP) HTTP 헤더 #2 ( Cache 와 조건부 헤더  )](../../개발 (CS)/언어/JAVA/웹개발/HTTP/HTTP%20헤더%20%232%20(%20Cache%20와%20조건부%20헤더%20%20).md) — 이 노트의 캐시/조건부 요청 절을 더 상세히 다루는 원본 노트

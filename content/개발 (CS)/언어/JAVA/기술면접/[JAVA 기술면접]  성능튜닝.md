@@ -7,6 +7,8 @@ modified: 2026-09-05
 
 # [JAVA 기술면접]  성능튜닝
 
+"자바 성능튜닝" 관련 기술면접 질문을 정리한 노트다. 성능은 결국 JVM이 코드를 어떻게 실행하고 메모리를 어떻게 관리하는지에서 나오므로, JVM 실행과정과 메모리 구조(Method Area/Heap/Stack/PC Register/Native Method Stack), GC 종류별 특성을 아는 것이 핵심이다. 여기에 String/StringBuilder/StringBuffer 선택과 불변 객체 설계처럼 애플리케이션 코드 레벨에서 성능·안정성에 영향을 주는 습관까지 함께 짚는다.
+
 ## 자바 애플리케이션, JVM 실행과정
 
 JVM 이란?  

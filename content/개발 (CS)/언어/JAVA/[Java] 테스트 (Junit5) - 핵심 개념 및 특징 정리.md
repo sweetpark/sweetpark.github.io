@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # 테스트 (Junit5)
 
+JUnit5 테스트에서 Mockito로 목(mock) 객체를 다루는 핵심 메서드(`when`, `any`, `thenAnswer`, `verify`)를 정리한 노트다. 핵심은 `when(...).thenReturn(...)`으로 특정 호출의 반환값을 스텁하고, `any()`로 인자 매칭을 느슨하게 하며, `thenAnswer()`로 호출 시점의 인자에 따라 동적으로 반환값을 계산하고, `verify()`로 특정 메서드가 정확히 몇 번 호출됐는지 검증한다는 점이다.
+
+> [!NOTE] 실행 환경
+> 코드에 구체적인 import 구문이나 JUnit5 애노테이션(`@Test`, `@ExtendWith` 등)이 명시되어 있지 않아 정확한 JUnit5/Mockito 버전을 특정할 근거는 없다. 실행하려면 JUnit5(Jupiter)와 Mockito 라이브러리 의존성이 필요하다.
+
 > [!NOTE]
 > Mockito의 `when`/`any`/`thenAnswer`/`verify` 사용법 정리.
 > Onz(칵테일 플랫폼) 프로젝트에서 이관.

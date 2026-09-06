@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # [Thymeleaf] 검증오류 (th:errors, th:errorclass)
 
+Thymeleaf에서 폼 검증 오류를 표시하는 `th:errors`, `th:errorclass`를 정리한 노트다. `#fields.hasErrors('속성')`으로 오류 유무를 확인해 `th:errors`가 메시지를 출력하고, `th:errorclass`는 오류 시 적용할 CSS 클래스를 지정하며 보통 둘을 함께 쓴다. 이 기능은 서버 쪽 Spring `BindingResult`가 채워주는 필드 오류 정보에 의존하므로, 컨트롤러의 검증 로직 작성이 함께 중요하다.
+
+> [!NOTE] 실행 환경
+> Controller 예제에서 `@PostMapping`, `@ModelAttribute`, `BindingResult`, Lombok `@Data`가 사용되고 있어 Spring MVC(4.3+, `@PostMapping` 도입 버전 이상) + thymeleaf-spring 연동 환경을 전제로 한다. 구체적인 Spring/Thymeleaf 버전은 명시되어 있지 않다.
+
 ## th:errors
 
 *   모델의 속성이 유효성 검사를 통과하지 못했을경우, html에 표현됨

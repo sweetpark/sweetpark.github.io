@@ -7,7 +7,10 @@ modified: 2026-09-05
 
 # HTTP 프로토콜 #2 ( Method )
 
-GET, POST, PUT, PATCH, DELETE
+HTTP의 대표 메서드(GET, POST, PUT, PATCH, DELETE)의 의미와 사용 시점, 그리고 멱등성(idempotent)·캐시 가능 여부 차이를 정리한 노트다. 핵심은 GET·PUT·DELETE는 여러 번 호출해도 결과가 같은 멱등 메서드인 반면 POST는 아니라는 점, 그리고 PUT은 리소스 전체를 대체(생략한 필드는 사라짐)하고 PATCH는 부분 수정만 반영한다는 차이다.
+
+> [!NOTE] 실행 환경
+> 본 문서는 특정 언어/프레임워크 버전에 종속되지 않는 HTTP 프로토콜 자체의 메서드 시맨틱을 다루며, 예시의 요청 라인은 HTTP/1.1 메시지 형식을 따른다.
 
 ## GET
 
@@ -105,3 +108,7 @@ HOST : www.naver.com
 *   GET / HEAD / POST / PATCH 캐시 가능
 *   실제로는 GET, HEAD 정도만 캐시로 이용
 *   POST, PATCH 는 구현이 어려움
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) HTTP 이론 - 핵심 개념 및 특징 정리](../../../../../프레임워크/Spring%20Framework/[Spring]%20HTTP%20이론%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트의 HTTP 메서드/URI 설계 내용을 상태코드·헤더까지 포함해 한 문서로 종합 정리한 강의 노트

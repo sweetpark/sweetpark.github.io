@@ -167,4 +167,9 @@ public void recordSql(String sqlId) {
     }
 }
 ```
-단일 HTTP 트랜잭션 내에서 동일한 Mapper ID 또는 Prepared SQL이 임계 횟수 이상 반복 실행되는 순간 즉시 `[N1_QUERY]` 경보를 발생시켜 운영 장애를 사전에 차단한다.\n
+단일 HTTP 트랜잭션 내에서 동일한 Mapper ID 또는 Prepared SQL이 임계 횟수 이상 반복 실행되는 순간 즉시 `[N1_QUERY]` 경보를 발생시켜 운영 장애를 사전에 차단한다.
+
+## 관련 문서
+
+- [(오픈소스) mini-apm-spring-boot-starter - 상세 분석 및 기술 가이드](../../프로젝트/오픈소스/[오픈소스]%20mini-apm-spring-boot-starter%20-%20상세%20분석%20및%20기술%20가이드.md) — 이 마스킹/핑거프린팅 설계가 포함된 오픈소스 APM Starter 프로젝트의 전체 상세 분석
+- [(Design Pattern) 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선 (Proxy, Decorator, Strategy, Chain, Template, SPI, Visitor, Facade)](../아키텍처·설계/[Design%20Pattern]%20실무%20프로젝트%20및%20오픈소스로%20체득하는%20GoF%20핵심%20디자인%20패턴%2010선%20(Proxy,%20Decorator,%20Strategy,%20Chain,%20Template,%20SPI,%20Visitor,%20Facade).md) — 3.3절 템플릿 메서드 패턴(`AbstractLogProcessor`)에서 뼈대만 다룬 마스킹/핑거프린팅 로직을 코드 레벨로 상세히 풀어낸 자매 노트

@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # Spring Bean (+ Bean Factory)
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `AnnotationConfigApplicationContext`, `BeanDefinition` 등 Spring 공통 API만 사용되어 특정 버전 확정은 어려움.
+
 Spring Bean
 
 ## Bean Factory
@@ -18,6 +21,8 @@ Spring Bean
     *   3. AnnotationConfigApplicationContext
 *   대부분 bean에 있어 Bean Factory 내부에 기능들이 존재
 *   Bean Factory 또는 기능을 상속받은 ApplicationContext를 "스프링 컨테이너"라고 일컫음
+
+실무에서는 BeanFactory를 직접 쓰기보다 이를 상속한 ApplicationContext를 사용한다. BeanFactory는 빈을 등록·조회하는 최소 기능만 제공하는 반면, ApplicationContext는 메시지소스를 이용한 국제화, 이벤트 발행, 환경변수(Environment) 처리 등 실무 애플리케이션에 필요한 부가 기능까지 함께 제공하기 때문이다.
 
 ## Bean 확인 메서드
 
@@ -78,6 +83,8 @@ public static void main(String [] args){
     *   DestoryMethodName : 빈의 생명주기가 끝나서 제거하기 직전에 호출되는 메서드 명
     *   Constructor arguments, Properties : 의존관계 주입에서 사용
 
+BeanDefinition이라는 공통 메타정보 포맷을 두는 이유는, XML 설정과 애노테이션(@Configuration) 기반 설정처럼 서로 다른 설정 방식을 스프링 컨테이너가 동일한 내부 표현으로 다루기 위해서다. 설정 방식이 무엇이든 결국 BeanDefinition으로 변환되므로, 컨테이너의 빈 생성·조회 로직은 설정 방식에 관계없이 동일하게 동작할 수 있다.
+
 ```java
 void beanDefenition() {
         
@@ -94,3 +101,8 @@ void beanDefenition() {
             
 }
 ```
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) Spring 컨테이너](Spring%20컨테이너.md) — BeanFactory를 구현하는 AnnotationConfigApplicationContext 등 실제 컨테이너 종류를 다루는 노트
+- [(학습/프레임워크/Spring Framework) JAVA 정리]([Java]%20JAVA%20정리%20-%20핵심%20개념%20및%20특징%20정리.md) — "DI의 본질(구성과 사용의 분리)"을 순수 자바 코드로 직접 구현해보며 BeanFactory가 자동화하는 조립 과정을 이해하는 노트

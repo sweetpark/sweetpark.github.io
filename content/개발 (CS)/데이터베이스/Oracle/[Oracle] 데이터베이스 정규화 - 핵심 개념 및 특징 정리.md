@@ -6,6 +6,11 @@ modified: 2026-09-05
 
 # 데이터베이스 정규화
 
+Oracle 실습 수업에서 정리한 노트로, 정규화를 하는 이유(무결성 보장, 이상현상 방지)와 요구사항→ERD→테이블 설계 흐름을 정리하고, 관리자·리뷰·상품·회원 테이블로 구성된 미니 프로젝트로 개체/도메인 무결성 위반 사례를 직접 검증한다.
+
+> [!TIP] DB 엔진
+> 아래 SQL은 Oracle 문법 기준이다 (`varchar2`, `number`). MySQL/PostgreSQL에서는 각각 `VARCHAR`, `VARCHAR`+`NUMERIC` 등으로 타입 표기가 다르다.
+
 ## 오전수업
 
 - 관계형 데이터베이스
@@ -59,10 +64,10 @@ create table Review_manage(
 //Reviwe 내용
 
 // Admin 기본 데이터
-insert into Admin values (‘1’, ‘1111’ , ‘seoul’, ‘admin_name1’, ‘010-1111-2222’);
-insert into Admin values (‘2’, ‘2222’ , ‘suwon’, ‘admin_name2’, ‘010-1212-2222’);
-insert into Admin values (‘3’, ‘3333’ , ‘busan’, ‘admin_name3’, ‘010-2222-3333’);
-insert into Admin values (‘4’, ‘4444’ , ‘gangwon’, ‘admin_name4’, ‘010-3333-4444’);
+insert into Admin values ('1', '1111' , 'seoul', 'admin_name1', '010-1111-2222');
+insert into Admin values ('2', '2222' , 'suwon', 'admin_name2', '010-1212-2222');
+insert into Admin values ('3', '3333' , 'busan', 'admin_name3', '010-2222-3333');
+insert into Admin values ('4', '4444' , 'gangwon', 'admin_name4', '010-3333-4444');
 
  //Product 데이터 
 insert into Product values(1, '손 세정제', '화장품', 20);
@@ -71,10 +76,10 @@ insert into Product values(3, '마요네즈', '식품', 30);
 insert into Product values(4, '캠핑 의자', '취미물품', 3);
 
 // User1
-insert into User1 values (‘test1’, ‘1111’, 25, ‘01011112222’, ‘seoul’,  ‘남자’);
-insert into User1 values (‘test2’, ‘2222’, 35, ‘01011113333’, ‘suwon’,  ‘여자’);
-insert into User1 values (‘test3’, ‘3333’, 21, ‘01044442222’, ‘seoul’,  ‘여자’);
-insert into User1 values (‘test4’, ‘4444’, 23, ‘01033332222’, ‘busan’,  ‘남자’);
+insert into User1 values ('test1', '1111', 25, '01011112222', 'seoul',  '남자');
+insert into User1 values ('test2', '2222', 35, '01011113333', 'suwon',  '여자');
+insert into User1 values ('test3', '3333', 21, '01044442222', 'seoul',  '여자');
+insert into User1 values ('test4', '4444', 23, '01033332222', 'busan',  '남자');
 
 //Review
 insert into review value('001', '정말 맛있어요', '1', 'test1');

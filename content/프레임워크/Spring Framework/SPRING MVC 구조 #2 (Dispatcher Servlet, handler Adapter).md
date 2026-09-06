@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # SPRING MVC 구조 #2 (Dispatcher Servlet, handler Adapter)
 
+> [!NOTE] 실행 환경
+> #1 문서와 동일한 DispatcherServlet 소스를 다루며, #1에서 확인된 jakarta 네임스페이스 근거에 따라 Spring 6.x(Spring Boot 3.x) 환경으로 추정된다.
+
 Dispatcher Servlet #2  
 - handler Adapter
 
@@ -117,3 +120,8 @@ mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
 *   찾은 adapter를 통해 handle() 메서드를 통해서 Controller를 실행하고, 그의 결과값을 ModelAndView 클래스로 반환하게 된다
 *   이후, 결과값인 ModelAndView를 이용하여 View의 전달하게 된다.
 *   View 처리 과정은 다음 문서에서 다룬다
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #1 (Dispatcher Servlet, handler mapping)](SPRING%20MVC%20구조%20%231%20(Dispatcher%20Servlet,%20handler%20mapping).md) — 이 HandlerAdapter를 찾기 전 단계인 getHandler() 매핑 과정을 다루는 연작
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #3 (Dispatcher Servlet, View)](SPRING%20MVC%20구조%20%233%20(Dispatcher%20Servlet,%20View).md) — 이 HandlerAdapter가 반환한 ModelAndView를 View로 렌더링하는 후속 과정

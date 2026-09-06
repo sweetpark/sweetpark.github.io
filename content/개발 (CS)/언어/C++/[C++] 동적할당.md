@@ -7,6 +7,8 @@ modified: 2026-09-05
 
 # 동적할당
 
+이 노트는 C++의 동적 메모리 할당 방법인 `malloc`/`free`, `new`/`delete`, `new[]`/`delete[]`를 다루고 마지막에 `malloc`과 `new`의 차이를 정리한다. `malloc`/`free`는 생성자·소멸자를 호출하지 않고 크기를 직접 지정하는 반면 `new`/`delete`는 타입 크기에 맞춰 생성자·소멸자까지 호출해주며, 힙 오버플로우·이중 해제(Double Free)·해제 후 사용(Use After Free) 같은 대표적인 위험을 예제로 짚는다.
+
 1. malloc / free              
 2. new / delete               
 3. new [] / delete[]         

@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # [File I/O #1] Java 파일 처리의 기본 개념 정리
 
+> [!NOTE] 실행 환경
+> 같은 폴더의 "[File I/O] 파일 라이브러리 이해하기" 노트에서 Java 17 기준으로 설명하고 있으나, 이 폴더에는 Spring Boot 버전이 별도로 명시되어 있지 않다.
+
 목차
 
 * * *
@@ -110,3 +113,8 @@ if (resource.exists()) {
 1. Resource로 위치확인   
 2. InputStream으로 읽기  
 3. OutputStream으로 쓰기
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #2] Resource 구현체 완전 정리]([File I-O #2] Resource 구현체 완전 정리.md) — Resource 개념을 이어받아 5가지 구현체(UrlResource, ClassPathResource 등)를 자세히 다루는 후속 편
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O] 파일 라이브러리 이해하기 (File, Files, Path, Paths)]([File I-O] 파일 라이브러리 이해하기 (File, Files, Path, Paths).md) — Resource/InputStream 기반 접근과 대비되는 java.io.File 및 NIO Path/Files API를 다루는 비교 문서

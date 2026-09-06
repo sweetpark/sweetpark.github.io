@@ -10,6 +10,9 @@ modified: 2026-09-05
 > [!NOTE]
 > 좋은 객체지향 설계(SOLID), IoC/DI 컨테이너, 스프링 빈 등록(컴포넌트 스캔), 의존관계 주입 방법, 싱글톤·프로토타입·웹 스코프, 빈 생명주기 콜백 등 김영한 스프링 핵심 원리를 정리한다.
 
+> [!NOTE] 실행 환경
+> 본문 코드에 `jakarta.annotation.PostConstruct`/`PreDestroy`, `jakarta.inject:jakarta.inject-api:2.0.1` 의존성이 등장하는 것으로 보아 Spring Boot 3.x(Spring 6.x, jakarta 네임스페이스) 환경으로 확인된다.
+
 ## 📌 개념
 
 ## 스프링 단축키
@@ -1037,3 +1040,8 @@ public class AllBeanTest {
         - 주의점
             - 싱글톤처럼 선언되어있지만, 요청마다 객체를 생성하는 것이기 때문에 주의해야한다.
             - @Scope는 정말 필요한 곳에서만 사용 ( 테스트하기가 어렵다 )
+
+## 관련 문서
+
+- [(Spring) 회원 등급별 상품 할인 적용 - 핵심 개념 및 특징 정리](실습_스프링MVC/회원%20등급별%20상품%20할인%20적용/[Spring]%20회원%20등급별%20상품%20할인%20적용%20-%20핵심%20개념%20및%20특징%20정리.md) — SOLID·IoC/DI·싱글톤 컨테이너 개념을 실제로 적용한 미니 프로젝트
+- [(학습/프레임워크/Spring Framework) 의존관계 자동 주입 방법](의존관계%20자동%20주입%20방법.md) — 같은 DiscountPolicy/AutoAppConfig 예제의 생성자·수정자·필드·일반메서드 주입 방식과 @Qualifier/@Primary 우선순위를 간결하게 정리한 노트

@@ -9,6 +9,11 @@ modified: 2026-09-05
 
 # 관계형데이터베이스 -테이블
 
+Oracle 첫 수업 노트로, 관계형 데이터베이스의 기본 용어(행/열/릴레이션/속성)와 제약조건(unique, not null, default, check)을 곁들인 `member` 테이블 생성 예제, 그리고 계좌관리·물품관리 테이블을 직접 설계하는 과제를 정리했다.
+
+> [!TIP] DB 엔진
+> 아래 SQL은 Oracle 문법 기준이다 (`varchar2`, `number`, `sequence ... nextval`, `timestamp default sysdate`). MySQL은 `VARCHAR`/`AUTO_INCREMENT`/`DEFAULT CURRENT_TIMESTAMP`로 표기가 다르다.
+
 ### 수업진행
 
 1. oracle : 자료받기

@@ -102,3 +102,8 @@ public class MainApp {
 
 *   Main 메서드에서 HelloService의 빈을 가지고와서 원하는 메서드를 호출함
 *   이로써, Spring은 POJO를 지키며 프로그래밍을 가능하게 만듬
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) Spring 역사 #1 (EJB)](Spring%20역사%20%231%20(EJB).md) — POJO 개념이 반발하고 있는 대상인 EJB의 무거운 컨테이너 종속 모델을 다루는 연작
+- [(학습/프레임워크/Spring Framework) Spring 역사 #3 (Spring의 탄생)](Spring%20역사%20%233%20(Spring의%20탄생).md) — POJO 지향을 실제로 구현한 Spring의 객체지향/SOLID 설계를 다루는 후속편

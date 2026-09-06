@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # Spring MVC ( @RequestMapping )
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `@RequestMapping`/`@GetMapping`/`@PathVariable` 등 Spring MVC 표준 애노테이션만 사용되어 특정 버전은 확정하기 어렵다.
+
 RequestMapping #1
 
 ## @RequestMapping
@@ -211,3 +214,7 @@ map.add("keyA", "value1");
 map.add("keyA", "value2");  
   
 List<String> values = map.get("keyA");
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #1 (Dispatcher Servlet, handler mapping)](SPRING%20MVC%20구조%20%231%20(Dispatcher%20Servlet,%20handler%20mapping).md) — 이 노트의 @RequestMapping이 등록되는 RequestMappingHandlerMapping의 내부 동작(DispatcherServlet)을 다루는 노트

@@ -10,6 +10,9 @@ modified: 2026-09-05
 > [!NOTE]
 > Netty의 `ChannelInboundHandlerAdapter` 수명 주기, 다이렉트 버퍼 메모리 누수 방지 기법(`ReferenceCountUtil`), BCD 날짜 포맷 파싱, L4 환경에서의 **HAProxy PROXY Protocol v1/v2 실제 IP 복원 파서 구현 원리**를 정리합니다. (고성능 소켓 통신 서버 아키텍처)
 
+> [!NOTE] 실행 환경
+> `ChannelInboundHandlerAdapter`, `ReferenceCountUtil`, `io.netty.util.*` API 형태로 볼 때 **Netty 4.x 계열**로 추정됩니다(정확한 패치 버전 명시 없음). 코드에 `var`/레코드/패턴 매칭 등 JDK 버전을 특정할 문법적 단서가 없어 **JDK 버전은 명시되어 있지 않습니다**.
+
 ---
 
 ## 1. ChannelInboundHandler 라이프사이클
@@ -186,4 +189,11 @@ private class ProxyDetector extends ByteToMessageDecoder {
 }
 ```
 
-- 첫 패킷에서 프록시 헤더를 소모한 뒤 `ctx.pipeline().remove(this)`로 파이프라인에서 자기 자신을 동적으로 제거하므로, 이후 지속되는 소켓 통신에서는 제로 오버헤드로 순수 비즈니스 패킷만 처리됩니다.\n
+- 첫 패킷에서 프록시 헤더를 소모한 뒤 `ctx.pipeline().remove(this)`로 파이프라인에서 자기 자신을 동적으로 제거하므로, 이후 지속되는 소켓 통신에서는 제로 오버헤드로 순수 비즈니스 패킷만 처리됩니다.
+
+## 관련 문서
+
+- [(학습/개발 (CS)/네트워크) Netty 파이프라인 예외흐름과 핸들러 배치 패턴](../../개발%20(CS)/네트워크/[CS]%20Netty%20파이프라인%20예외흐름과%20핸들러%20배치%20패턴%20-%20핵심%20개념%20및%20특징%20정리.md) — 동일 프로젝트의 MessageHandler를 대상으로 예외가 Head→Tail로만 흐르는 구조적 한계와 로깅 핸들러 배치 전략을 다룸
+- [(학습/프레임워크/Netty) [Java] 01. Netty 아키텍처와 이벤트 루프 스레드 모델 (EventLoop, Boss·Worker, Bootstrap)]([Java]%2001.%20Netty%20아키텍처와%20이벤트%20루프%20스레드%20모델%20(EventLoop,%20Boss·Worker,%20Bootstrap).md) — 같은 ServerBootstrap 파이프라인에 이 MessageHandler가 등록되는 전체 서버 아키텍처를 다루는 연작
+- [(학습/프레임워크/Netty) [Java] 02. TCP 패킷 단편화와 프레임 디코딩 (ByteToMessageDecoder & Length-Field)]([Java]%2002.%20TCP%20패킷%20단편화와%20프레임%20디코딩%20(ByteToMessageDecoder%20&%20Length-Field).md) — 이 MessageHandler로 완전한 프레임을 넘겨주는 전단 MessageDecoder를 다루는 연작
+- [(학습/프레임워크/Netty) [Java] 04. Netty 소켓 파이프라인 SSL-TLS 적용과 mTLS 상호 인증 (SslHandler, KeyStore, SslContext)]([Java]%2004.%20Netty%20소켓%20파이프라인%20SSL-TLS%20적용과%20mTLS%20상호%20인증%20(SslHandler,%20KeyStore,%20SslContext).md) — 이 MessageHandler에서 SslHandshakeCompletionEvent를 처리하는 TLS 계층을 다루는 연작

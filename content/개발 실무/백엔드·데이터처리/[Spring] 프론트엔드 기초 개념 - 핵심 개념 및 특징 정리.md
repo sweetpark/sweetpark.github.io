@@ -28,6 +28,9 @@ modified: 2026-09-05
     - Spring 태그 라이브러리 (`<spring:message>`, `<form:form>`, `<form:select>`, `<form:options>`)
 - **HTML 주석**: `<!-- 주석 -->` 사용법
 
+> [!NOTE] 왜 중요한가
+> JSTL/Spring 태그 라이브러리는 JSP 안에 `<% ... %>` 스크립틀릿으로 직접 자바 코드를 섞어 쓰는 대신 사용한다. 스크립틀릿을 남발하면 뷰(View)에 비즈니스 로직이 뒤섞여 유지보수가 어려워지므로, `<c:forEach>`/`<c:if>` 같은 태그로 뷰 로직을 선언적으로 표현해 MVC의 관심사 분리를 지키는 것이 목적이다.
+
 ### 추가로 학습하면 좋은 내용
 
 - **시멘틱 태그**: `<header>`, `<footer>`, `<nav>`, `<article>`, `<section>` 등 의미 있는 태그 사용
@@ -54,6 +57,9 @@ modified: 2026-09-05
     - `window.open()`으로 새 창 열기
     - `window.location`으로 페이지 이동 제어
 
+> [!NOTE] 왜 중요한가
+> AJAX(`$.ajax()`)는 페이지 전체를 다시 요청하지 않고 필요한 데이터만 비동기로 받아와 화면 일부만 갱신하기 위해 쓴다. 아래 예시 코드의 `#loadUsers` 클릭 핸들러처럼 서버 응답을 받은 뒤 `success` 콜백에서 DOM을 갱신하는 패턴은, 클릭할 때마다 전체 페이지를 새로고침하는 방식(예: `<a>` 링크 이동, 폼 제출)에 비해 화면 깜빡임과 불필요한 리소스(레이아웃/스타일/스크립트) 재로딩을 피할 수 있다는 점이 핵심이다.
+
 ### 추가 공부
 
 - **ES6+ 문법**: arrow function, template literals, destructuring, promises, async/await
@@ -76,6 +82,9 @@ modified: 2026-09-05
 | 스타일 변경 | .style.속성 = '값' | .css() |
 
 ## 💻 예시
+
+> [!NOTE] 왜 중요한가
+> 아래 예시 중 클로저(`createPet`) 부분이 특히 중요하다. `name`, `gender`는 `createPet` 함수가 끝나도 사라지지 않고 반환된 `pet` 객체의 메서드(`getName`, `setGender` 등)를 통해서만 접근·수정할 수 있는데, 이는 자바의 `private` 필드 + getter/setter 캡슐화와 유사한 효과를 자바스크립트에서 클래스 문법 없이도 얻기 위한 패턴이다. 외부에서 `name` 변수에 직접 접근할 방법이 없으므로 의도치 않은 값 변경을 막을 수 있다.
 
 ### JavaScript 예제
 
@@ -230,6 +239,9 @@ console.log(pet.getName());
 ```
 
 ### jQuery 예제
+
+> [!NOTE] 왜 중요한가
+> 모든 jQuery 코드가 `$(document).ready(function(){ ... })` 안에서 시작하는 이유는, `<script>`가 실행되는 시점에 아직 뒤쪽의 `<body>` 요소(`<button>`, `<p>` 등)가 DOM에 로드되지 않았을 수 있기 때문이다. `ready`로 감싸지 않으면 스크립트가 존재하지 않는 요소를 선택해 아무 동작도 하지 않는 버그로 이어진다.
 
 ```html
 <html>

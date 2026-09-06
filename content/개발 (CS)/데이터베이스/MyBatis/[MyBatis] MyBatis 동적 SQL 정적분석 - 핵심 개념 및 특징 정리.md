@@ -80,3 +80,8 @@ MyBatis DTD 스펙상 `<include>`의 `refid`가 가리킬 수 있는 대상은 �
 
 > [!NOTE]
 > 최종 결정: `<otherwise>`만 살리기.
+
+## 관련 문서
+
+- [(오픈소스) mybatis-sql-tuner-ai - 상세 분석 및 기술 가이드](../../../프로젝트/오픈소스/[오픈소스]%20mybatis-sql-tuner-ai%20-%20상세%20분석%20및%20기술%20가이드.md) — 이 정적분석 기법을 실제로 구현한 "Mybatis + AI (쿼리 분석 Tool)" 오픈소스 프로젝트의 상세 분석
+- [[MyBatis] W3C DOM 기반 MyBatis 동적 쿼리 정적 분석과 AST 가짜 SQL 생성기 설계]([MyBatis]%20W3C%20DOM%20기반%20MyBatis%20동적%20쿼리%20정적%20분석과%20AST%20가짜%20SQL%20생성기%20설계.md) — 같은 프로젝트의 `SqlExtractor` 구현 알고리즘을 W3C DOM 순회 관점에서 상세히 다루는 자매 노트

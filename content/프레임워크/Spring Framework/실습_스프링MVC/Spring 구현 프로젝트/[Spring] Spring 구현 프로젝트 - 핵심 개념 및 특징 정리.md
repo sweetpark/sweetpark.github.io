@@ -13,6 +13,9 @@ modified: 2026-09-05
 > [!NOTE]
 > 원문을 AI가 검토·보강함(사실 확인 권장) — 코드 블록 내 Notion 서식 잔여 기호(`**`)를 제거함.
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `HttpServletRequest`/`Response`, `@Controller`/`@RequestMapping` 등 범용 Servlet·Spring API만 사용되어 jakarta/javax 네임스페이스를 포함해 특정 버전은 확정하기 어렵다.
+
 ## 🧱 기술 스택
 - Servlet, JSP (View)
 - FrontController + Adapter 패턴
@@ -415,3 +418,7 @@ public class WebConfig implements WebMvcConfigurer {
     - Servlet + JSP MVC 적용 — [MVC 패턴 (Servlet + JSP)](https://gradualprecision.tistory.com/76)
     - FrontController 도입 — [Spring 예제#1 (+Servlet, JSP, FrontController)](https://gradualprecision.tistory.com/77)
     - FrontController + Adapter 패턴 적용 — [Spring 예제#2 (Adapter Handler, FrontController)](https://gradualprecision.tistory.com/78)
+
+## 관련 문서
+
+- [(Spring) Spring 프레임워크 제작 - 핵심 개념 및 특징 정리](../Spring%20프레임워크%20제작/[Spring]%20Spring%20프레임워크%20제작%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 Servlet→FrontController+Adapter 진행 과정을 다루는 축약된 초기 버전 노트

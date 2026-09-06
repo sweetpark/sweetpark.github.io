@@ -79,3 +79,7 @@ sequenceDiagram
 
 > [!NOTE]
 > `Socket`의 `getInputStream()`/`getOutputStream()`은 소켓 내부 스트림을 참조하는 객체를 반환한다. 이 스트림들은 소켓과 강하게 연결되어 있어, 스트림이 닫히면 소켓도 닫히도록 구현되어 있다.
+
+## 관련 문서
+
+- [(학습/프레임워크/Netty) [Java] 01. Netty 아키텍처와 이벤트 루프 스레드 모델 (EventLoop, Boss·Worker, Bootstrap)](../../../프레임워크/Netty/[Java]%2001.%20Netty%20아키텍처와%20이벤트%20루프%20스레드%20모델%20(EventLoop,%20Boss·Worker,%20Bootstrap).md) — Thread-per-Connection 모델의 한계와 Netty가 NIO로 이를 극복하는 Multi-Reactor 구조를 실무 서버 예시로 설명

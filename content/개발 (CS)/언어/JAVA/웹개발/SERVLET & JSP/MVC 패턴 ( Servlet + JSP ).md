@@ -7,7 +7,10 @@ modified: 2026-09-05
 
 # MVC 패턴 ( Servlet + JSP )
 
-MVC 패턴 적용
+Servlet과 JSP만으로 MVC 패턴을 적용하는 방법을 회원 등록/조회 예제로 정리한 노트다. 핵심은 Servlet을 Controller(요청 처리·비즈니스 로직), JSP를 View(렌더링), HttpServletRequest/Response를 Model(데이터 전달)로 역할을 나누고, JSP를 `/WEB-INF` 하위에 두어 클라이언트가 직접 접근하지 못하게 하는 것이다. 다만 반복적인 forward 코드와 컨트롤러 공통 처리의 부재라는 한계가 남는데, 이것이 이후 FrontController 패턴 도입의 배경이 된다.
+
+> [!NOTE] 실행 환경
+> 예제 코드에 `@WebServlet` 어노테이션 기반 등록이 사용되어 Servlet 3.0 이상 환경을 전제로 한다. 또한 JSTL taglib URI로 `http://java.sun.com/jsp/jstl/core`(javax 네임스페이스)를 사용하고 있어, Jakarta EE 9(Servlet 5.0, jakarta.* 패키지 전환) 이전의 javax.servlet 기반 환경으로 추정된다.
 
 ## MVC 패턴 적용
 
@@ -234,3 +237,7 @@ public class ListServlet extends HttpServlet{
 *    한계
     *   반복적인 코드 사용 ( JSP forward 관련 코드 )
     *   컨트롤러 공통 처리 부분의 어려움 ( servlet이 각 기능마다 따로 설계되어있고, 공통적으로 처리하는 부분이 존재하지 않음 -> JSP forward )
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) MVC #1](../../../../../프레임워크/Spring%20Framework/[Spring]%20MVC%20%231%20-%20MVC%201.md) — 이 노트의 MVC(Servlet+JSP) 적용 배경을 서블릿 역사·WAS 구성까지 포함해 한 문서로 종합 정리한 강의 노트

@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # [File I/O #4] InputStreamReader & BufferedReader 완전 분석
 
+> [!NOTE] 실행 환경
+> 같은 폴더의 "[File I/O] 파일 라이브러리 이해하기" 노트에서 Java 17 기준으로 설명하고 있으나, 이 폴더에는 Spring Boot 버전이 별도로 명시되어 있지 않다.
+
 File I/O #4 — InputStreamReader & BufferedReader 완전 분석
 
 * * *
@@ -83,3 +86,8 @@ try (BufferedReader reader = new BufferedReader(
 
 - **InputStreamReader**: 바이트 → 문자로 변환해줌  
 - **BufferedReader**: 문자 스트림을 줄 단위로 효율적으로 읽기
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #3] InputStream과 OutputStream 완전 정리]([File%20I-O%20#3]%20InputStream과%20OutputStream%20완전%20정리.md) — InputStream/OutputStream의 기본 개념을 다루는 선행 편
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #5] MultiPartFile (Form데이터) 처리하기]([File%20I-O%20#5]%20MultiPartFile%20(Form데이터)%20처리하기.md) — Resource+BufferedReader 패턴을 실전 예제인 MultipartFile 업로드 처리에 적용하는 후속 편

@@ -10,6 +10,13 @@ modified: 2026-09-05
 > **핵심 요약**  
 > 수십만~수백만 행의 대용량 데이터를 엑셀로 변환할 때 발생하는 **JVM OutOfMemoryError(OOM)를 원천 차단**하기 위해, **Apache POI SXSSFWorkbook 슬라이딩 윈도우**, **MyBatis Cursor 기반 비메모리 행 단위 스트리밍**, 그리고 단일 엑셀 시트 한계(1,048,576행)를 극복하기 위한 **동적 청크 분할 및 on-the-fly ZIP 압축 스트리밍 설계 패턴**을 분석한다.
 
+> [!NOTE] 실행 환경
+> 본문 코드는 특정 라이브러리 버전을 명시하지 않는다. 코드에 등장하는 API 시그니처로 미루어보면:
+> - **Apache POI**: `new SXSSFWorkbook(int windowSize)` 생성자와 `setCompressTempFiles(boolean)` 메서드는 POI 3.8 이상 ~ 최신 5.x까지 시그니처 변경 없이 유지되고 있어, 이 코드만으로는 정확한 마이너 버전을 특정할 수 없다.
+> - **MyBatis**: `Cursor<T>` 기반 스트리밍 조회(`SqlSession` + `fetchSize` 매퍼 속성)는 MyBatis 3.4 이상에서 안정적으로 지원되는 기능이며, 이 역시 정확한 버전 특정은 불가능하다.
+> - **Spring**: 본문 코드에는 Spring 관련 클래스나 애노테이션이 등장하지 않아(순수 Java + POI + MyBatis 조합), Spring/Spring Boot 버전을 코드로부터 추정할 근거가 없다.
+> 정확한 버전은 실제 프로젝트의 `pom.xml`/`build.gradle`을 확인해야 한다.
+
 ---
 
 ## 1. 대용량 엑셀 생성 시 JVM OOM 발생 원인
@@ -205,4 +212,12 @@ classDiagram
     StorageProvider <|.. GcpCloudStorageProvider
 ```
 
-- **Stateless 웹 계층 달성**: 서버 노드가 다운되거나 재기동되어도 스토리지의 파일 키(`ha_excel_job.file_path`)만 DB에 유지되면 어떤 노드에서도 무중단으로 다운로드를 제공할 수 있다.\n
+- **Stateless 웹 계층 달성**: 서버 노드가 다운되거나 재기동되어도 스토리지의 파일 키(`ha_excel_job.file_path`)만 DB에 유지되면 어떤 노드에서도 무중단으로 다운로드를 제공할 수 있다.
+
+## 관련 문서
+
+- [(오픈소스) ha-excel-job-engine - 상세 분석 및 기술 가이드](../../프로젝트/오픈소스/[오픈소스]%20ha-excel-job-engine%20-%20상세%20분석%20및%20기술%20가이드.md) — 이 SXSSFWorkbook 스트리밍·청크 분할·ZIP 패키징 설계가 실제로 구현되어 있는 오픈소스 프로젝트 본문
+- [(Web) 사내 관리자 포털(Admin Portal) RBAC 메뉴 권한 인가와 세션 감사 인터셉터 패턴](../아키텍처·설계/[Web]%20관리자%20포털%20RBAC%20메뉴%20권한%20인가와%20세션%20감사%20인터셉터%20패턴.md) — 관리자 포털의 대용량 엑셀 다운로드에서 짧게 언급된 SXSSFWorkbook 스트리밍 기법의 상세 구현 및 원리(역방향 링크)
+- [(HTTP) 대용량 처리 비동기 Job 큐 설계 패턴 - 핵심 개념 및 특징 정리](../아키텍처·설계/[HTTP]%20대용량%20처리%20비동기%20Job%20큐%20설계%20패턴%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 SXSSFWorkbook 스트리밍이 large/normal 큐로 분기되어 실행되는 상위 Job 큐 아키텍처
+- [(Architecture) 가상 스레드(Virtual Thread) 기반 고가용성 분산 배치 엔진 설계](../아키텍처·설계/[Architecture]%20가상%20스레드(Virtual%20Thread)%20기반%20고가용성%20분산%20배치%20엔진%20설계%20(Atomic%20CAS,%20이중%20큐,%20자가%20치유).md) — 이 SXSSFWorkbook 청크 생성·ZIP 패키징이 실제로 실행되는 이중 큐·가상 스레드 워커 아키텍처
+- [(Design Pattern) 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선](../아키텍처·설계/[Design%20Pattern]%20실무%20프로젝트%20및%20오픈소스로%20체득하는%20GoF%20핵심%20디자인%20패턴%2010선%20(Proxy,%20Decorator,%20Strategy,%20Chain,%20Template,%20SPI,%20Visitor,%20Facade).md) — 2.2절 데코레이터 패턴 항목에서 이 문서의 `ExcelStreamable` 스트리밍 인터페이스를 다룸

@@ -92,4 +92,8 @@ public class ActiveStepChain<T> implements StepChain<T> {
 2. **단위 테스트 (Unit Test) 극대화**:
    - 전체 결제 프로세스를 다 띄우지 않고도, 모의 Context를 주입하여 특정 Step 하나만 독립적으로 Mocking 및 단위 테스트할 수 있습니다.
 3. **유연한 파이프라인 조합**:
-   - 일반 카드결제, 간편결제(카카오/네이버페이), 가상계좌 등 결제 수단별로 필요한 Step 목록을 Spring Configuration에서 자유롭게 조합하여 재사용할 수 있습니다.\n
+   - 일반 카드결제, 간편결제(카카오/네이버페이), 가상계좌 등 결제 수단별로 필요한 Step 목록을 Spring Configuration에서 자유롭게 조합하여 재사용할 수 있습니다.
+
+## 관련 문서
+
+- [(Design Pattern) 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선](./[Design%20Pattern]%20실무%20프로젝트%20및%20오픈소스로%20체득하는%20GoF%20핵심%20디자인%20패턴%2010선%20(Proxy,%20Decorator,%20Strategy,%20Chain,%20Template,%20SPI,%20Visitor,%20Facade).md) — 3.2절에서 이 StepChain 구조를 책임 연쇄 패턴(Chain of Responsibility)의 실무 적용 사례로 다룸

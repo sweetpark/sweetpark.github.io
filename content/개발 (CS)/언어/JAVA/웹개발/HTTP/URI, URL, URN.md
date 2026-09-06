@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # URI, URL, URN
 
+URI, URL, URN의 관계와 각각의 스키마 문법을 정리한 노트다. 핵심은 URI가 URL과 URN을 포괄하는 상위 개념이고, URL은 리소스가 "어디에 있는지"(위치)로, URN은 리소스가 "무엇인지"(이름)로 식별한다는 차이다.
+
+> [!NOTE] 실행 환경
+> 본 문서는 특정 프로그래밍 언어/프레임워크에 종속되지 않는 URI 일반 문법을 다루며, 버전 정보가 필요하지 않다.
+
 1. URI  
 2. URL  
 3. URN
@@ -69,3 +74,7 @@ https://www.google.com:443/search?q=hello#getting-spring-info
 "urn:" <NID> ":" <NSS>  
   
 ex) urn:isbn:0451450523
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) HTTP 이론 - 핵심 개념 및 특징 정리](../../../../../프레임워크/Spring%20Framework/[Spring]%20HTTP%20이론%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트의 URI/URL/URN 내용을 HTTP 전체 흐름과 함께 종합 정리한 강의 노트

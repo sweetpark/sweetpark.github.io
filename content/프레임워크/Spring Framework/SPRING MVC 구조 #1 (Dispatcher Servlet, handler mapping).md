@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # SPRING MVC 구조 #1 (Dispatcher Servlet, handler mapping)
 
+> [!NOTE] 실행 환경
+> 상속 관계와 코드에 `jakarta.servlet.GenericServlet`/`HttpServlet` 네임스페이스가 등장하는 것으로 보아 Spring 6.x(Spring Boot 3.x, jakarta 네임스페이스) 환경으로 확인된다.
+
 Dispatcher Servlet #1  
 - handler mapping
 
@@ -137,3 +140,10 @@ protected HandlerExecutionChain getHandler(HttpServletRequest request) throws Ex
 
 *   Client의 Request의 첫번째 요청에 따른 처리 과정을 Handler Mapping 까지 진행해보았다
 *   Dispatcher는 전반적인 제어를 담당하며, handler Adapter를 통해 컨트롤러를 호출하고 처리하는 과정은 다음 문서에서 다룬다.
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #2 (Dispatcher Servlet, handler Adapter)](SPRING%20MVC%20구조%20%232%20(Dispatcher%20Servlet,%20handler%20Adapter).md) — getHandler()로 찾은 핸들러를 실행할 HandlerAdapter를 찾는 후속 과정
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #3 (Dispatcher Servlet, View)](SPRING%20MVC%20구조%20%233%20(Dispatcher%20Servlet,%20View).md) — doDispatch()의 마지막 단계인 View 렌더링 과정을 다루는 연작
+- [(학습/프레임워크/Spring Framework) Spring MVC ( @RequestMapping )](Spring%20MVC%20(%20@RequestMapping%20).md) — HandlerMapping이 실제로 매핑하는 @RequestMapping/@GetMapping/@PathVariable 사용법을 다루는 노트
+- [(학습/프레임워크/Spring Framework) JAVA 정리]([Java]%20JAVA%20정리%20-%20핵심%20개념%20및%20특징%20정리.md) — 리플렉션+애노테이션으로 미니 WAS(HandlerMapping→Dispatcher)를 직접 구현해보며 이 DispatcherServlet 구조의 원리를 이해하는 노트

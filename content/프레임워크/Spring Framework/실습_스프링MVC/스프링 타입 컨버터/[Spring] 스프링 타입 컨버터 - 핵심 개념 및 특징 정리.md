@@ -14,6 +14,9 @@ modified: 2026-09-05
 > [!NOTE]
 > 원문을 AI가 검토·보강함(사실 확인 권장).
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `Converter<S, T>`, `ConversionService`, `WebMvcConfigurer.addFormatters()` 등 Spring 표준 API만 사용되어 특정 버전은 확정하기 어렵다.
+
 ## 🧱 기술 스택
 - Spring `Converter<S, T>` 인터페이스, `ConversionService`
 - `WebMvcConfigurer.addFormatters()` (컨버터/포매터 등록)

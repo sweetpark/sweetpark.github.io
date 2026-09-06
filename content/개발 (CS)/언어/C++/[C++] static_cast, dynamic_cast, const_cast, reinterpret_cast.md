@@ -7,6 +7,8 @@ modified: 2026-09-05
 
 # static_cast, dynamic_cast, const_cast, reinterpret_cast
 
+이 노트는 C++의 네 가지 캐스팅 연산자 `static_cast`, `dynamic_cast`, `const_cast`, `reinterpret_cast`의 용도와 예제를 정리한다. `static_cast`는 C스타일 캐스팅보다 안전한 일반적인 타입 변환에, `dynamic_cast`는 RTTI를 이용해 실패 시 `nullptr`/`bad_cast`를 반환하는 안전한 다운캐스팅에, `const_cast`는 `const` 제거/추가에, `reinterpret_cast`는 가장 위험하지만 어떤 타입으로든 강제 변환이 가능한 경우에 사용한다.
+
 1. static_cast  
 2. dynamic_cast  
 3. const_cast  

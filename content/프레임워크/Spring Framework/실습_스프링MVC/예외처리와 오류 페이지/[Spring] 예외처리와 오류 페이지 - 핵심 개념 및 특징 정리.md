@@ -14,6 +14,9 @@ modified: 2026-09-05
 > [!NOTE]
 > 원문을 AI가 검토·보강함(사실 확인 권장) — 코드 예시의 `@Exception` 표기를 `@ExceptionHandler`로, Notion 서식 잔여 기호(`*`)를 제거함.
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `BasicErrorController`, `DispatcherType`, `@ExceptionHandler` 등 Spring Boot 표준 API만 사용되어 특정 버전은 확정하기 어렵다.
+
 ## 🧱 기술 스택
 - Servlet `DispatcherType`, `BasicErrorController`
 - Spring `HandlerExceptionResolver` (`ExceptionHandlerExceptionResolver`, `ResponseStatusExceptionResolver`, `DefaultHandlerExceptionResolver`)
@@ -119,3 +122,8 @@ modified: 2026-09-05
 
 ### 참고
 - 블로그: [gradualprecision.tistory.com/95](https://gradualprecision.tistory.com/95), [/96](https://gradualprecision.tistory.com/96)
+
+## 관련 문서
+
+- [(Spring) 공통 예외 처리 - 핵심 개념 및 특징 정리](../[Spring]%20공통%20예외%20처리%20-%20핵심%20개념%20및%20특징%20정리.md) — Onz 프로젝트에서 `@ExceptionHandler`/`@ControllerAdvice` 기반 공통 예외 처리를 다루는 자매 노트
+- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [기능구현#4] 예외처리](../../../../프로젝트/토이프로젝트/게시판%20프로젝트/[기능구현#4]%20예외처리.md) — 예외처리와 오류 페이지(ErrorPage) 패턴을 실전 프로젝트에 적용한 사례

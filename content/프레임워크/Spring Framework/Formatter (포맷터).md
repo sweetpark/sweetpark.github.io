@@ -7,7 +7,10 @@ modified: 2026-09-05
 
 # Formatter (포맷터)
 
-Formatter...
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `WebMvcConfigurer#addFormatters`, `@NumberFormat`/`@DateTimeFormat` 등 Spring MVC 표준 API만 사용되어 특정 버전 확정은 어려움.
+
+Converter는 타입 간 임의의 변환(문자↔객체, 숫자↔객체 등)을 자유롭게 처리할 수 있지만, 화면에 숫자를 "1,000"처럼 천 단위 콤마로 표시하거나 날짜를 특정 패턴 문자열로 표현하는 등 "문자열로/문자열에서"의 표현 형식을 다루는 문제에는 범용 API가 다소 번거롭다. Formatter는 이런 문자열 표현 변환에 특화된 Converter의 심화 버전이다.
 
 ## Formatter 란?
 
@@ -66,6 +69,7 @@ public class MyNumberFormatter implements Formatter<Number> {
 
 *   Convert 등록과 동일
 *   단, converter도 등록이 동일하기에 우선적으로 converter가 적용된다 ( 동일 기능에 있어서는 converter가 우선적용 )
+*   Spring의 내부 conversionService가 Formatter보다 Converter(GenericConverter)를 먼저 조회하도록 구현되어 있기 때문으로 알려져 있다 — 그래서 같은 타입 변환을 담당하는 Converter와 Formatter를 동시에 등록하면 Converter가 우선한다.
 
 ## 스프링이 제공하는 포맷터
 
@@ -105,3 +109,7 @@ public class FormatterController{
     }
 }
 ```
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) Spring Type Converter (타입 형변환)](Spring%20Type%20Converter%20(타입%20형변환).md) — 이 노트에서 "Converter의 심화 버전"이라고 언급한 Converter<S,T> 인터페이스 자체를 다루는 노트

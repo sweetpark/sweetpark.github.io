@@ -11,6 +11,11 @@ modified: 2026-09-05
 > 개인 미니프로젝트("Logging (최소 APM 구현)")에서 겹쳐 있던 3개 노트(Netty 파이프라인 이해 / Netty Handler 위치 / Netty Exception 전파)를 하나로 통합했다.
 >
 > 관련 노트: [(Java) Netty - 핵심 개념 및 특징 정리]([Java]%20Netty%20-%20핵심%20개념%20및%20특징%20정리.md) — Discard/Echo 서버 등 Netty 기본 구조
+> 관련 노트: [(학습/프레임워크/Netty) [Java] 02. TCP 패킷 단편화와 프레임 디코딩](../../프레임워크/Netty/[Java]%2002.%20TCP%20패킷%20단편화와%20프레임%20디코딩%20(ByteToMessageDecoder%20&%20Length-Field).md) — 동일 프로젝트의 MessageDecoder(ByteToMessageDecoder) 구현체
+> 관련 노트: [(학습/프레임워크/Netty) [Java] 03. 채널 핸들러 라이프사이클과 실전 IoT 소켓 통신 패턴](../../프레임워크/Netty/[Java]%2003.%20채널%20핸들러%20라이프사이클과%20실전%20IoT%20소켓%20통신%20패턴%20(Session,%20BCD,%20HAProxy).md) — 동일 프로젝트의 MessageHandler 예외 처리(exceptionCaught) 구현체
+
+> [!NOTE] 실행 환경
+> `ChannelDuplexHandler`, `@Sharable`, `ByteBufUtil.hexDump` 등 API 형태로 볼 때 **Netty 4.x 계열**로 추정됩니다(정확한 패치 버전 명시 없음). `safeToString()` 예시 코드의 `if (msg instanceof io.netty.buffer.ByteBuf buf)` 구문은 **패턴 매칭 instanceof**(JDK 16에서 정식 표준화, JEP 394)를 사용하므로, 이 코드는 최소 **JDK 16 이상**에서 작성/동작하는 것으로 추정됩니다.
 
 ## ⚙️ 개념
 

@@ -146,4 +146,9 @@ private static DocumentBuilderFactory createSecureFactory() throws ParserConfigu
     factory.setExpandEntityReferences(false);
     return factory;
 }
-```\n
+```
+
+## 관련 문서
+
+- [(오픈소스) mybatis-sql-tuner-ai - 상세 분석 및 기술 가이드](../../../프로젝트/오픈소스/[오픈소스]%20mybatis-sql-tuner-ai%20-%20상세%20분석%20및%20기술%20가이드.md) — 이 SqlExtractor/AST 가짜 SQL 생성기를 실제로 구현한 IntelliJ 플러그인 오픈소스 프로젝트의 상세 분석
+- [[MyBatis] MyBatis 동적 SQL 정적분석 - Include 캐싱과 choose 분기 처리]([MyBatis]%20MyBatis%20동적%20SQL%20정적분석%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 프로젝트의 `<include>` 2-Phase 캐싱, `<choose>` 분기 처리 의사결정을 정리한 자매 노트\n

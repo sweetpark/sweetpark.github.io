@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # 예외처리 (API)
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `WebServerFactoryCustomizer`, `BasicErrorController`, `@RestControllerAdvice` 등 Spring Boot 표준 API만 사용되어 특정 버전은 확정하기 어렵다.
+
 예외처리... HTTP API 응답
 
 ## 요약 정리
@@ -328,3 +331,7 @@ public class ExampleAdvice2 {}
 @ControllerAdvice(assignableTypes = {ControllerInterface.class, AbstractController.class})
 public class ExampleAdvice3 {}
 ```
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) 예외처리 (web page)](예외처리%20(web%20page).md) — 동일한 MyCustomizer/ErrorPage 등록 코드를 웹 페이지(HTML) 응답 관점에서 다루는 짝 노트

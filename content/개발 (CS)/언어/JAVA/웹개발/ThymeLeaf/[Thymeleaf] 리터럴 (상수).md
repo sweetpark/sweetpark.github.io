@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # [Thymeleaf] 리터럴 (상수)
 
+Thymeleaf 표현식 안에서 쓰는 리터럴(문자·숫자·boolean·null) 표기법을 정리한 노트다. 문자 리터럴은 원칙적으로 작은따옴표(`'`)로 감싸야 하고, 공백이 있으면 `+` 연산이나 리터럴 대체 문법(`|...|`)을 써야 한다는 점이 핵심이다.
+
+> [!NOTE] 실행 환경
+> `<html xmlns:th="http://www.thymeleaf.org">` 선언 외에 구체적인 Thymeleaf 버전을 특정할 근거는 없다. Spring MVC의 `model.addAttribute(...)`로 값을 전달하는 코드로 보아 Spring 연동 환경을 전제로 하며, 구체적인 버전은 명시되어 있지 않다.
+
 ## 리터럴
 
 *   소스 코드 상에 고정된 값을 의미

@@ -316,3 +316,13 @@ flowchart TD
    - `ha-excel-job-engine`의 `StorageProvider` 구조입니다. Local, NAS, AWS S3, Azure, GCP 등 스토리지 백엔드가 추가되더라도 기존 엑셀 생성 및 작업 스케줄링 코드는 단 한 줄도 수정하지 않고 새로운 `StorageProvider` 구현체만 추가하면 동작하도록 설계했습니다.
 3. **"책임 연쇄 패턴(Chain of Responsibility)의 장점은?"**  
    - 거대하고 복잡한 금융 결제 승인 프로세스(트랜잭션 엔진)나 네트워크 패킷 인코딩/디코딩(네트워크 소켓 게이트웨이 Netty)을 독립적인 단일 책임 클래스(`Step`, `Handler`)로 나누어, 결합도를 낮추고 각 단계별 단위 테스트와 실패 시의 즉각적인 체인 중단(Short-circuit)을 손쉽게 구현할 수 있었습니다.\n
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/로그) [Log #1] 로그 이해하기](../../프로젝트/토이프로젝트/로그/[Log%20#1]%20로그%20이해하기.md) — 2.4절 퍼사드 패턴의 실제 적용 사례로 SLF4J 로깅 파사드를 다루는 토이프로젝트 노트
+- [(Spring) 비즈니스 트랜잭션 파이프라인과 책임 연쇄 패턴 (Chain of Responsibility & StepChain)](./[Spring]%20비즈니스%20트랜잭션%20파이프라인과%20책임%20연쇄%20패턴%20(Chain%20of%20Responsibility%20&%20StepChain).md) — 3.2절 책임 연쇄 패턴에서 다루는 `StepChain` 결제 트랜잭션 파이프라인을 실제 코드 레벨로 상세히 풀어낸 자매 노트
+- [(Spring) Bean 이름 기반 전략 패턴 - 문자열 코드로 구현체 동적 라우팅 정리](./[Spring]%20Bean%20이름%20기반%20전략%20패턴%20-%20문자열%20코드로%20구현체%20동적%20라우팅%20정리.md) — 3.1절 전략 패턴의 "런타임 문자열 코드로 구현체 선택" 아이디어를 Bean 이름 조회 방식으로 구현한 사례
+- [(Performance) SXSSFWorkbook 대용량 엑셀 스트리밍과 동적 ZIP 분할 압축 설계 패턴](../백엔드·데이터처리/[Performance]%20SXSSFWorkbook%20대용량%20엑셀%20스트리밍과%20동적%20ZIP%20분할%20압축%20설계%20패턴.md) — 4.1절 SPI & 레지스트리 패턴(`ExcelDataProvider`)과 2.2절 데코레이터 패턴(`ExcelStreamable`)의 실제 구현체인 `ha-excel-job-engine` 엑셀 스트리밍 설계
+- [(HTTP) 대용량 처리 비동기 Job 큐 설계 패턴 - 핵심 개념 및 특징 정리](./[HTTP]%20대용량%20처리%20비동기%20Job%20큐%20설계%20패턴%20-%20핵심%20개념%20및%20특징%20정리.md) — 4.2절 생산자-소비자 패턴(`ExcelJobQueue` + Virtual Thread Worker Pool)을 큐 설계 관점에서 상세히 다루는 자매 노트
+- [(Architecture) 가상 스레드(Virtual Thread) 기반 고가용성 분산 배치 엔진 설계 (Atomic CAS, 이중 큐, 자가 치유)](./[Architecture]%20가상%20스레드(Virtual%20Thread)%20기반%20고가용성%20분산%20배치%20엔진%20설계%20(Atomic%20CAS,%20이중%20큐,%20자가%20치유).md) — 4.2절 생산자-소비자 패턴의 Virtual Thread Worker Pool을 CAS 기반 잡 선점과 자가 치유 관점까지 확장한 심화 아키텍처 노트
+- [(Security) 제로 디펜던시 개인정보 마스킹과 오류 핑거프린팅(SHA-256) 모니터링 설계](../네트워크·보안/[Security]%20제로%20디펜던시%20개인정보%20마스킹과%20오류%20핑거프린팅(SHA-256)%20모니터링%20설계.md) — 3.3절 템플릿 메서드 패턴(`AbstractLogProcessor`)에서 언급된 민감정보 마스킹과 SHA-256 에러 지문 생성 로직을 상세히 다루는 자매 노트

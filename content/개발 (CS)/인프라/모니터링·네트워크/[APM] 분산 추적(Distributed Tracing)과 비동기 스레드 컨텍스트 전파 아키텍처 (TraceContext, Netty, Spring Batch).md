@@ -198,4 +198,8 @@ boolean isBinary = contentType != null && (
 
 // 대용량 파일 업로드 시에는 Wrapper를 씌우지 않고 원본 스트림을 통과시켜 힙 폭증 방지
 HttpServletRequest requestToUse = isBinary ? request : new ContentCachingRequestWrapper(request);
-```\n
+```
+
+## 관련 문서
+
+- [(오픈소스) mini-apm-spring-boot-starter - 상세 분석 및 기술 가이드](../../../프로젝트/오픈소스/[오픈소스]%20mini-apm-spring-boot-starter%20-%20상세%20분석%20및%20기술%20가이드.md) — 이 TraceContext 전파 설계가 포함된 오픈소스 APM Starter 프로젝트의 전체 상세 분석\n

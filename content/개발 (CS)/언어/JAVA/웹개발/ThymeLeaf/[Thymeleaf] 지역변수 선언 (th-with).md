@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # [Thymeleaf] 지역변수 선언 (th:with)
 
+Thymeleaf `th:with`로 지역변수를 선언하는 방법을 정리한 노트다. `th:with="first=${users[0]}"`처럼 해당 태그(및 하위 태그) 범위에서만 유효한 변수를 만들어, 반복되는 표현식을 줄이고 가독성을 높이는 데 쓴다.
+
+> [!NOTE] 실행 환경
+> `<html xmlns:th="http://www.thymeleaf.org">` 선언 외에 구체적인 Thymeleaf 버전을 특정할 근거는 없다. Spring MVC의 `model.attribute(...)`로 값을 전달하는 코드로 보아 Spring 연동 환경을 전제로 하며, 구체적인 버전은 명시되어 있지 않다.
+
 ## 지역변수 선언
 
 public class User{  

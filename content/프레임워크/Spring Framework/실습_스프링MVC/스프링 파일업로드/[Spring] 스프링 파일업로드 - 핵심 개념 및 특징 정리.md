@@ -24,3 +24,8 @@ modified: 2026-09-05
 
 ### 참고
 - 블로그: [gradualprecision.tistory.com/99](https://gradualprecision.tistory.com/99)
+
+## 관련 문서
+
+- [(Spring Framework) 파일 업로드](../../파일%20업로드.md) — 파일 업로드/다운로드 구현 및 application.properties 설정을 다루는 일반 개념 노트
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #5] MultiPartFile (Form데이터) 처리하기](../../../../프로젝트/토이프로젝트/파일%20업로드&다운로드/[File%20I-O%20#5]%20MultiPartFile%20(Form데이터)%20처리하기.md) — MultipartFile을 이용한 실전 업로드 처리 예제(InputStream, BufferedReader, transferTo 등)를 다루는 토이프로젝트 노트

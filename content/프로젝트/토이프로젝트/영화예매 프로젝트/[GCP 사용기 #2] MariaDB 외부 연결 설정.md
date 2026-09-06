@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # [GCP 사용기 #2] MariaDB 외부 연결 설정
 
+> [!NOTE] 실행 환경
+> 같은 폴더의 "[GCP 사용기 #3] Spring boot 서버 구축" 노트에 명시된 스택 기준 — Spring Boot 3.3.5, Java 17, MariaDB.
+
 1. MariaDB 설정  
 2. GCP 클라우드 방화벽 설정  
 3. spring boot 설정
@@ -106,3 +109,7 @@ spring.datasource.username=root
 spring.datasource.password=[패스워드]
 spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 ```
+
+## 관련 문서
+
+- [[GCP 사용기 #3] Spring boot 서버 구축]([GCP%20사용기%20%233]%20Spring%20boot%20서버%20구축.md) — 같은 GCP 배포 시리즈의 다음 편으로, 여기서 연결한 MariaDB를 사용할 Spring Boot 서버를 GCP에 구축하는 과정

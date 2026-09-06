@@ -7,7 +7,10 @@ modified: 2026-09-05
 
 # HTTP 메서드 예시
 
-Method 활용
+HTTP에서 클라이언트가 서버로 데이터를 보내는 방법(쿼리 파라미터, message body)과 실제 활용 상황(정적/동적 데이터 조회, HTML Form, HTTP API)을 예시로 정리한 노트다. 핵심은 GET은 쿼리 파라미터를, POST·PUT·PATCH는 message body를 사용한다는 점과, API를 설계할 때 URL은 행위가 아닌 리소스(주체) 기준으로 정하고 행위 자체는 HTTP 메서드로 표현해야 한다는 원칙이다.
+
+> [!NOTE] 실행 환경
+> 본 문서는 특정 언어/프레임워크 버전에 종속되지 않는 HTTP 프로토콜 차원의 내용이다. 예시의 HTML Form과 JSON 요청은 표준 HTTP 메시지 형식을 따르며, 별도의 서버 구현체 버전을 요구하지 않는다.
 
 ## 데이터 전달 방법 (client -> server)
 

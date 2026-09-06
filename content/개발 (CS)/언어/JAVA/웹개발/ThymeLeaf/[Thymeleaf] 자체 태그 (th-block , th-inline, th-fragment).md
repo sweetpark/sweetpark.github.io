@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # [Thymeleaf] 자체 태그 (th:block , th:inline, th:fragment)
 
+Thymeleaf 고유 태그인 `th:block`, `th:inline`, `th:fragment`를 정리한 노트다. `th:block`은 렌더링에 자국을 남기지 않는 블록 단위 래퍼로 반복/조건 로직에 쓰이고, `th:inline="javascript"`는 변수를 JS로 안전하게 이스케이프·JSON 변환해주며, `th:fragment`로 정의한 공통 조각을 `th:insert`/`th:replace`로 불러와 파라미터까지 전달할 수 있다.
+
+> [!NOTE] 실행 환경
+> `~{fragment/fragmentTest :: fragmentTest}` 형태의 프래그먼트 표현식(`~{...}`)이 사용되고 있어 Thymeleaf 3.x 문법 기준으로 작성된 것으로 추정된다(해당 표현식 문법은 Thymeleaf 3.0에서 도입됨). 구체적인 마이너 버전과 Spring 연동 여부는 명시되어 있지 않다.
+
 1. th:block  
 2. th:inline  
 3. th:fragment

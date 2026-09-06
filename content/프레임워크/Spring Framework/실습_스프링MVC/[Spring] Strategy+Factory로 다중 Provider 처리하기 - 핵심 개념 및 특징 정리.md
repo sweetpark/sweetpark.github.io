@@ -10,6 +10,9 @@ modified: 2026-09-05
 > Kakao/Naver/Google/Apple 등 Provider별로 제각각인 로직(대표적으로 소셜 로그인)을 하나의 공통 인터페이스로 감싸고, 신규 Provider 추가 시 기존 코드를 건드리지 않도록 Strategy + Factory 패턴으로 분리하는 방법.
 > Onz(칵테일 플랫폼) 프로젝트의 "소셜로그인 디자인패턴" 노트와 "리펙토링" 노트의 "어댑터 패턴(소셜로그인)" 섹션(원문 표기는 "어댑터 패턴"이나 실제 구조는 Strategy+Factory)이 같은 내용을 다루고 있어 하나로 통합했다.
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — Spring Security 필터 체인, JWT 발급 등 표준 개념만 다루어 특정 버전은 확정하기 어렵다.
+
 ## 🧱 핵심 구조
 
 - **전략 패턴(Strategy)**: Provider(Kakao/Naver/Google/Apple)별로 인증 로직 인터페이스를 하나로 묶어 구현체를 각각 분리
@@ -141,3 +144,9 @@ Content-Type: application/json
 - RefreshToken 만료 정책 개선
 - Apple Private Key 주기적 Rotation
 - 테스트용 MockOAuthServer 추가
+
+## 관련 문서
+
+- [(Spring) 소셜로그인 전 과정 - 핵심 개념 및 특징 정리](소셜로그인%20전%20과정/[Spring]%20소셜로그인%20전%20과정%20-%20핵심%20개념%20및%20특징%20정리.md) — Spring Security 기반 소셜로그인 흐름 및 permitAll 트러블슈팅을 다루는 미니 프로젝트
+- [(Spring) 로그인 기능 - 핵심 개념 및 특징 정리]([Spring]%20로그인%20기능%20-%20핵심%20개념%20및%20특징%20정리.md) — 로그인 흐름과 세션/쿠키·JWT·Security 개념을 정리한 노트
+- [(프로젝트) OAuth 소셜 로그인 설계 (code 기반 인증, Strategy+Factory)](../../../프로젝트/토이프로젝트/Onz%20(칵테일%20플랫폼)/[구현]%20OAuth%20소셜%20로그인%20설계%20(code%20기반%20인증,%20Strategy+Factory).md) — 이 패턴을 Google/Naver/Kakao/Apple 4개 프로바이더의 code 기반 인증에 적용한 Onz 프로젝트 실제 설계 사례

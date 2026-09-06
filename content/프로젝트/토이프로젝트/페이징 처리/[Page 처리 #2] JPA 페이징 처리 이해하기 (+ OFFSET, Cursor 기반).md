@@ -121,3 +121,8 @@ ORDER BY t.id DESC
 LIMIT :pageSize;
 */
 ```
+
+## 관련 문서
+
+- [(토이프로젝트) [Page 처리 #1] OFFSET 기반 페이징 처리 이해하기]([Page%20처리%20%231]%20OFFSET%20기반%20페이징%20처리%20이해하기.md) — OFFSET 기반 페이징의 원리와 한계를 먼저 다루는 시리즈 1편
+- [(토이프로젝트) [Page처리 #3] 성능 차이 비교하기 (OFFSET, CURSOR)]([Page처리%20%233]%20성능%20차이%20비교하기%20(OFFSET,%20CURSOR).md) — 본문에서 다룬 JPA Page/Slice, 커서 기반 페이징을 실측 성능으로 비교하는 시리즈 3편

@@ -91,3 +91,8 @@ EJB (Enterprise Java Beans)
 [https://docs.oracle.com/cd/E24329_01/web.1211/e24972/examples.htm#EJBAD122](https://docs.oracle.com/cd/E24329_01/web.1211/e24972/examples.htm#EJBAD122 "oracle/document/EJB")
 
 Spring과 EJB는 상호 배타적인 상황이 아니므로, 주어진 문제에 있어 분산이 필요하거나 안정성을 높일때에 EJB도 고려할 수 있다.
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) Spring 역사 #2 (POJO)](Spring%20역사%20%232%20(POJO).md) — EJB처럼 프레임워크에 종속된 무거운 Bean 모델에 대한 반작용으로 POJO가 등장한 배경을 다루는 연작
+- [(학습/프레임워크/Spring Framework) Spring 역사 #3 (Spring의 탄생)](Spring%20역사%20%233%20(Spring의%20탄생).md) — EJB의 복잡함과 POJO 지향을 거쳐 Spring이 객체지향/SOLID 원칙으로 등장하는 과정을 다루는 연작

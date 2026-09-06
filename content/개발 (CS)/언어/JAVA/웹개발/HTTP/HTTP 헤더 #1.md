@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # HTTP 헤더 #1
 
+HTTP 헤더를 General/Request/Response/Representation(구 Entity) 헤더로 분류하고, 각 헤더가 담당하는 정보(콘텐츠 협상, 쿠키, 전송 방식, 표현 데이터 형식 등)를 정리한 노트다. 핵심은 Representation 헤더가 실제 전달되는 message body(Representation 본문)를 어떻게 해석해야 하는지 알려주는 메타데이터 역할을 한다는 점이다.
+
+> [!NOTE] 실행 환경
+> 본 문서는 특정 언어/프레임워크 버전에 종속되지 않는 HTTP 헤더 시맨틱을 다룬다.
+
 1. HTTP Header  
 2. HTTP Body
 
@@ -106,3 +111,7 @@ Content-Type: application/json; charset=UTF-8 <- Representation 헤더
 Content-Length: 15 <- Representation 헤더  
   
 {name : "test"} <- Representation 본문
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) HTTP 이론 - 핵심 개념 및 특징 정리](../../../../../프레임워크/Spring%20Framework/[Spring]%20HTTP%20이론%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트의 일반 헤더 내용을 메서드·상태코드까지 포함해 한 문서로 종합 정리한 강의 노트

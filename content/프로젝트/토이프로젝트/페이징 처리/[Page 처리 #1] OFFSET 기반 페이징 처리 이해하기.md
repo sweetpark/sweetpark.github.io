@@ -78,3 +78,8 @@ FROM member
 ORDER BY id DESC
 LIMIT #{pagePerCnt} OFFSET #{(currentPage - 1)* pagePerCnt};
 ```
+
+## 관련 문서
+
+- [(토이프로젝트) [Page 처리 #2] JPA 페이징 처리 이해하기 (+ OFFSET, Cursor 기반)]([Page%20처리%20%232]%20JPA%20페이징%20처리%20이해하기%20(+%20OFFSET,%20Cursor%20기반).md) — OFFSET 페이징 개념을 JPA(Pageable/Page/Slice, 커서 기반)로 확장하는 시리즈 2편
+- [(토이프로젝트) [Page처리 #3] 성능 차이 비교하기 (OFFSET, CURSOR)]([Page처리%20%233]%20성능%20차이%20비교하기%20(OFFSET,%20CURSOR).md) — 본문에서 다룬 OFFSET 기반 페이징의 한계를 실측 성능으로 검증하는 시리즈 3편

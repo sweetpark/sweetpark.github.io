@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # SPRING MVC 구조 #3 (Dispatcher Servlet, View)
 
+> [!NOTE] 실행 환경
+> #1 문서와 동일한 DispatcherServlet 소스를 다루며, #1에서 확인된 jakarta 네임스페이스 근거에 따라 Spring 6.x(Spring Boot 3.x) 환경으로 추정된다.
+
 Disptacher #3  
 - View Resolver  
 - View
@@ -122,3 +125,9 @@ public interface View {
 *   반환값으로 받은 ModelAndView의 저장 내용에 따라, 형식에 맞는 ViewResolver()를 통해 이름을 재지정하고, view 인터페이스의 Render() 메서드를 통해서 렌더링 시작
 *   모든 절차가 끝나면, 응답 메시지를 가지고 클라이언트에게 전달
 *   Spring 의 HTTP 처리 메커니즘 완료
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #1 (Dispatcher Servlet, handler mapping)](SPRING%20MVC%20구조%20%231%20(Dispatcher%20Servlet,%20handler%20mapping).md) — Dispatcher Servlet이 요청을 받아 handler를 찾는 최초 단계를 다루는 연작
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #2 (Dispatcher Servlet, handler Adapter)](SPRING%20MVC%20구조%20%232%20(Dispatcher%20Servlet,%20handler%20Adapter).md) — 이 render() 단계 직전에 컨트롤러를 실행해 ModelAndView를 만드는 HandlerAdapter 과정을 다루는 연작
+- [(학습/프레임워크/Spring Framework) SpringMVC ( Http 응답 처리 )](SpringMVC%20(%20Http%20응답%20처리%20).md) — render() 단계에서 이루어지는 View Template/ResponseEntity 응답 처리를 다루는 노트

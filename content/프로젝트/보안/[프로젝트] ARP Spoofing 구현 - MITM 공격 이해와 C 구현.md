@@ -399,3 +399,7 @@ int main(int argc, char **argv)
 - Victim ↔ Gateway 양방향 스푸핑을 각각 별도 스레드(`pthread`)로 분리해 동시에 처리한다.
 - ARP 패킷을 바이트 배열로 직접 구성한다(Ethernet 헤더 + ARP 헤더를 수동으로 조립).
 - `callback()`에서 캡처된 패킷의 출발지 MAC을 검사해 Victim ↔ Gateway 간 트래픽을 Attacker 경유로 릴레이한다.
+
+## 관련 문서
+
+- [(CS) ARP 프로토콜과 ARP Spoofing(MITM) 이론 - 핵심 개념 및 특징 정리](../../개발%20(CS)/네트워크/[CS]%20ARP%20프로토콜과%20ARP%20Spoofing(MITM)%20이론%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 프로젝트에서 이론 부분만 추출해 별도로 정리한 자매 노트

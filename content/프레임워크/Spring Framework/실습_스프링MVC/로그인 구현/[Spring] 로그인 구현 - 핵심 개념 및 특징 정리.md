@@ -11,6 +11,9 @@ modified: 2026-09-05
 > 쿠키/세션 기반 로그인 유지 구현 및 서블릿 필터 vs 스프링 인터셉터를 이용한 공통 관심사(인증) 처리
 > Spring 기초(김영한) 강의 실습 프로젝트에서 이관.
 
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — Servlet Filter/Spring Interceptor, `HttpServletRequest.getSession()` 등 표준 API만 사용되어 jakarta/javax 네임스페이스를 포함해 특정 버전은 확정하기 어렵다.
+
 ## 🧱 기술 스택
 - Servlet Filter, Spring Interceptor
 - HttpServletRequest 세션 (`request.getSession()`)
@@ -67,3 +70,10 @@ modified: 2026-09-05
 
 ### 참고
 - 블로그: [gradualprecision.tistory.com/91](https://gradualprecision.tistory.com/91), [/92](https://gradualprecision.tistory.com/92), [/93](https://gradualprecision.tistory.com/93), [/94](https://gradualprecision.tistory.com/94)
+
+## 관련 문서
+
+- [(Spring Framework) Servlet Filter](../../Servlet%20Filter.md) — 이 프로젝트에서 비교하는 서블릿 필터 vs 인터셉터 중 필터 쪽 개념을 상세히 다루는 노트
+- [(Spring Framework) Cookie 사용법](../../Cookie%20사용법.md) — 이 프로젝트의 쿠키 기반 로그인 유지 구현이 사용하는 쿠키 개념 정리
+- [(Spring) 로그인 기능 - 핵심 개념 및 특징 정리](../[Spring]%20로그인%20기능%20-%20핵심%20개념%20및%20특징%20정리.md) — 로그인 흐름과 세션/쿠키 주의점을 다루는 개념 노트, 이 프로젝트는 그 구현 사례
+- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [기능구현#3] 로그인 기능](../../../../프로젝트/토이프로젝트/게시판%20프로젝트/[기능구현#3]%20로그인%20기능.md) — Filter/Interceptor 기반 로그인 인증을 실전 프로젝트에 적용한 사례

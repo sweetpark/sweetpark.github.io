@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # [Thymeleaf] 템플릿 레이아웃
 
+Thymeleaf로 공통 레이아웃을 만들고 페이지마다 일부만 갈아 끼우는 템플릿 레이아웃 기법을 정리한 노트다. 레이아웃 쪽에서 `th:fragment="layout(title, content)"`로 틀을 정의해두고, 각 페이지는 `th:replace="~{layout/layoutMain :: layout(~{::title}, ~{::section})}"`처럼 자신의 `title`·`section` 태그 내용을 인자로 넘겨 레이아웃에 끼워 넣는 방식이 핵심이다.
+
+> [!NOTE] 실행 환경
+> `~{layout/layoutMain :: layout(~{::title}, ~{::section})}` 형태의 프래그먼트 표현식(`~{...}`, 파라미터 전달 포함)이 사용되고 있어 Thymeleaf 3.x 문법 기준으로 작성된 것으로 추정된다(해당 표현식 문법은 Thymeleaf 3.0에서 도입됨). 구체적인 마이너 버전은 명시되어 있지 않다.
+
 ## 템플릿 레이아웃
 
 *   레이아웃을 만들어서, 기본 틀을 만들고 재사용함으로써 코드의 중복과 유지보수성을 높인다

@@ -7,7 +7,10 @@ modified: 2026-09-05
 
 # Servlet Filter
 
-servlet filter...
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `javax.servlet.Filter`/`FilterConfig`를 직접 구현하고 `FilterRegistrationBean`으로 등록하는 방식으로 보아 Spring Boot 2.x대(javax.servlet) 학습 자료로 추정.
+
+Servlet Filter는 클라이언트 요청이 Controller에 도달하기 전, WAS 단계에서 요청/응답을 가로채 인증 확인·로깅 같은 공통 로직을 처리하는 서블릿 표준 기술이다. 인증되지 않은 사용자의 접근을 Controller 이전 단계에서 차단하고 싶을 때 주로 사용한다.
 
 ## Filter 사용 이유
 
@@ -121,3 +124,10 @@ public class MethodFilter#2 implements Filter{
      }
 }
 ```
+
+## 관련 문서
+
+- [(Spring) 로그인 구현 - 핵심 개념 및 특징 정리](실습_스프링MVC/로그인%20구현/[Spring]%20로그인%20구현%20-%20핵심%20개념%20및%20특징%20정리.md) — 서블릿 필터 vs 스프링 인터셉터를 실제로 비교 구현한 미니 프로젝트
+- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [기능구현#3] 로그인 기능](../../프로젝트/토이프로젝트/게시판%20프로젝트/[기능구현#3]%20로그인%20기능.md) — Filter를 1차 인증 로직에 실전 적용한 토이프로젝트 사례
+- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [리팩터링] Session을 통한 로그인 처리](../../프로젝트/토이프로젝트/게시판%20프로젝트/[리팩터링]%20Session을%20통한%20로그인%20처리.md) — Filter를 세션 기반 로그인 처리에 실전 적용한 사례
+- [(학습/프레임워크/Spring Framework) Spring Intercept](Spring%20Intercept.md) — 이 노트의 서블릿 필터 이후 동작하며 유사한 역할을 하는 HandlerInterceptor(preHandle/postHandle/afterCompletion)를 다루는 노트

@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # Spring 예제#2 ( Adapter Handler, FrontController )
 
+앞선 FrontController 예제가 하나의 `Controller` 인터페이스만 처리할 수 있다는 한계를 어댑터 패턴으로 해결하는 예제다. 핵심은 `MyHandlerAdapter` 인터페이스(supports/handle)를 두고, 핸들러 타입(Controller, Controller2 등)마다 전용 어댑터를 만들어 FrontController가 `getHandlerAdapter()`로 알맞은 어댑터를 찾아 위임하도록 하는 구조다. 이는 실제 Spring MVC의 `HandlerAdapter` 설계와 동일한 아이디어다.
+
+> [!NOTE] 실행 환경
+> `@WebServlet` 어노테이션 기반 등록 방식이 사용되어 Servlet 3.0 이상을 전제로 한다. 구체적인 Servlet/Tomcat 버전은 코드상 명시되어 있지 않다.
+
 Adapter handler
 
 ## Adapter Handler 사용이유

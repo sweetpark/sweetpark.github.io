@@ -124,3 +124,8 @@ Content-Type: application/json
 
 **다음 포스팅**에서는 보다 널리 쓰이는 방식인 `@NotNull`, `@Pattern` 등으로 대표되는 **Bean Validation**을 소개할 예정이다.  
 그 이후에는 Validator와 Bean Validation을 조합하고, **AOP 및 사용자 정의 어노테이션을 활용한 유효성 검사 아키텍처의 확장** 방법을 다룰 계획이다.
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/유효성검사 (Validation)) [유효성검증 #2] Bean Validation를 이용한 유효성 검증]([유효성검증%20#2]%20Bean%20Validation를%20이용한%20유효성%20검증.md) — Validator+BindingResult 방식에 이어 Bean Validation(어노테이션 기반) 검증을 다루는 후속 편
+- [(학습/프레임워크/Spring Framework) Validation (BindingResult, Validator) + @Validated](../../../프레임워크/Spring%20Framework/Validation%20(BindingResult,%20Validator)%20+%20@Validated.md) — Validator 인터페이스와 BindingResult를 이용한 검증 방식을 다루는 강의 노트와 동일한 주제

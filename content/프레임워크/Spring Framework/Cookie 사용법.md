@@ -7,7 +7,10 @@ modified: 2026-09-05
 
 # Cookie 사용법
 
-Cookie에 대하여...
+> [!NOTE] 실행 환경
+> 버전 명시 없음 — `HttpServletResponse`, `@CookieValue` 등 서블릿 API를 직접 다루는 방식으로 보아 Spring Boot 2.x대(javax.servlet) 학습 자료로 추정.
+
+Cookie는 Stateless한 HTTP 통신에서 클라이언트 측에 상태 정보를 저장해두고 요청마다 함께 전달함으로써, 로그인 유지·장바구니처럼 서버가 클라이언트를 식별해야 하는 기능을 구현할 때 사용하는 수단이다.
 
 ## Cookie 사용 이유
 
@@ -71,3 +74,8 @@ public String test(HttpServletResponse response){
 
 *   Cookie값의 경우, 개발자모드에서 임의로 값을 변경해서 보낼 수 있다 (* 위조)
 *   보안상의 큰 이슈로 인해, 쿠키 값의 경우 Random한 값을 사용하고 서버에 모든 내용이 저장된 형태를 사용하게 된다 (-> 세션)
+
+## 관련 문서
+
+- [(Spring) 로그인 구현 - 핵심 개념 및 특징 정리](실습_스프링MVC/로그인%20구현/[Spring]%20로그인%20구현%20-%20핵심%20개념%20및%20특징%20정리.md) — 쿠키 기반 로그인 유지를 실제로 구현한 미니 프로젝트
+- [(학습/프레임워크/Spring Framework) Session 사용법](Session%20사용법.md) — Cookie의 보안 문제(위조 가능)를 해결하기 위해 서버측에 상태를 저장하는 Session 방식을 다루는 짝 노트

@@ -6,6 +6,11 @@ modified: 2026-09-05
 
 # 인덱스, 키
 
+Oracle 실습 수업에서 정리한 인덱스·키·정규화 개념 노트다. 인덱스의 장단점과 기본키/외래키의 역할, 무결성 위반 사례를 다루고, 뒤이어 회원-자동차·맛집-댓글-메뉴 예제로 외래키 제약과 정규화를 직접 실습한다. 핵심은 "인덱스는 조회를 빠르게 하지만 남용하면 오히려 느려진다"는 것과, "기본키/외래키 조합이 개체 무결성·참조 무결성을 보장한다"는 두 가지다.
+
+> [!TIP] DB 엔진
+> 아래 예제는 Oracle SQL*Plus 기준이다. `varchar2`, `number`, `sysdate`, `sequence ... nextval` 은 모두 Oracle 전용 문법으로, MySQL은 `VARCHAR`/`AUTO_INCREMENT`/`NOW()`를, PostgreSQL은 `VARCHAR`/`SERIAL`/`NOW()`를 사용하는 등 표기가 다르다.
+
 > [!NOTE]
 > 릴레이션 ( 테이블 )
 > 

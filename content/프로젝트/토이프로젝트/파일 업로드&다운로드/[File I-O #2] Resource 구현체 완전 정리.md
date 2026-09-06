@@ -7,6 +7,9 @@ modified: 2026-09-05
 
 # [File I/O #2] Resource 구현체 완전 정리
 
+> [!NOTE] 실행 환경
+> 같은 폴더의 "[File I/O] 파일 라이브러리 이해하기" 노트에서 Java 17 기준으로 설명하고 있으나, 이 폴더에는 Spring Boot 버전이 별도로 명시되어 있지 않다.
+
 File I/O #2 — Resource 구현체 완전 정리
 
 * * *
@@ -109,3 +112,9 @@ InputStream is = resource.getInputStream();
 *   외부 API 파일 → UrlResource
 
 *   모든 Resource는 결국 `getInputStream()`으로 **InputStream으로 변환**해 파일 내용을 읽습니다.
+
+## 관련 문서
+
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #1] Java 파일 처리의 기본 개념 정리]([File%20I-O%20#1]%20Java%20파일%20처리의%20기본%20개념%20정리.md) — File I/O 시리즈의 기초 개념(Resource, InputStream, OutputStream)을 다루는 선행 편
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #3] InputStream과 OutputStream 완전 정리]([File%20I-O%20#3]%20InputStream과%20OutputStream%20완전%20정리.md) — Resource 구현체를 다룬 후, InputStream/OutputStream 자체를 자세히 정리하는 후속 편
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [Spring-Resource] 스프링 Resource의 이해 (+ InputStream)]([Spring-Resource]%20스프링%20Resource의%20이해%20(+%20InputStream).md) — 동일한 5가지 Resource 구현체를 다루는 유사 주제의 문서 (InputStream 구현체까지 확장하여 정리)

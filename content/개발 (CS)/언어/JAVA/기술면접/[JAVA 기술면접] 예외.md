@@ -7,6 +7,8 @@ modified: 2026-09-05
 
 # [JAVA 기술면접] 예외
 
+"자바 예외 처리"를 묻는 기술면접 정리 노트다. 핵심은 Error와 Exception의 구분, 그리고 Exception 안에서도 컴파일 시점에 체크되는 일반예외(Checked, 예: ClassNotFoundException)와 런타임에만 드러나는 런타임예외(Unchecked, 예: NullPointerException)의 차이를 아는 것이다. 여기에 try-catch-finally 처리, catch 블록은 하위 예외 클래스부터 순서대로 잡아야 한다는 점, throws로 예외를 호출부에 떠넘기는 방법, throw로 직접 예외를 발생시키는 방법까지 코드 예제로 정리한다.
+
 ## 예외와 예외클래스
 
 *   Error / Exception

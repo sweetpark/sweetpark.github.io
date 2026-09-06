@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # Servlet 기초
 
+Servlet이 무엇이고 어떻게 동작하는지 정리한 기초 노트다. 핵심은 Servlet이 웹 컨테이너(Tomcat 등) 위에서 동작하는 클래스 파일이며, `@WebServlet` 어노테이션으로 URL 패턴을 등록하고, 최초 요청 시에만 `init()`이 호출된 뒤 이후 요청은 같은 인스턴스의 `service()`가 처리한다는 점이다. Spring Boot에서는 `@ServletComponentScan`을 붙이면 내장 Tomcat 위에 Servlet을 그대로 등록해 사용할 수 있다.
+
+> [!NOTE] 실행 환경
+> `@WebServlet` 어노테이션 기반 등록 방식이 사용되어 Servlet 3.0 이상을 전제로 한다. Spring Boot 예제는 `@SpringBootApplication` + `@ServletComponentScan` 조합으로 내장 Tomcat 환경을 가정하며, 구체적인 Spring Boot/Tomcat 버전은 코드상 명시되어 있지 않다.
+
 ## Servlet ?
 
 *   Servlet은 웹서버의 요청 메서드에 따라서 응답을 만들기 위해서 사용하는 기술
@@ -56,3 +61,7 @@ public class TestServlet extends HttpServlet{
     }
 }
 ```
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) MVC #1](../../../../../프레임워크/Spring%20Framework/[Spring]%20MVC%20%231%20-%20MVC%201.md) — 이 노트의 서블릿 기초 개념을 WAS·멀티쓰레드·MVC 적용까지 포함해 한 문서로 종합 정리한 강의 노트

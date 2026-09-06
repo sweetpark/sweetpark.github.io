@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # [Thymeleaf] 속성, 반복, 조건 (th:*, th:each,th:if)
 
+Thymeleaf의 속성 덮어쓰기, 반복(`th:each`), 조건(`th:if`/`th:unless`/`th:switch`) 문법을 정리한 노트다. 기존 HTML 속성은 같은 이름의 `th:` 속성으로 덮어쓸 수 있고, `th:each="user, userStat : ${users}"`처럼 상태 변수(userStat)를 지정하면 index·count·size·even/odd·first/last·current 같은 반복 상태값을 함께 쓸 수 있다.
+
+> [!NOTE] 실행 환경
+> `<html xmlns:th="http://www.thymeleaf.org">` 선언 외에 구체적인 Thymeleaf 버전을 특정할 근거는 없다. Tomcat/Spring Boot 등 Thymeleaf를 지원하는 서버 환경이 필요하며, 구체적인 버전은 명시되어 있지 않다.
+
 ## 속성 덮어쓰기
 
 *   기존, html 속성을 th:~ 로 표현할경우 th로 설정한 값으로 대체된다

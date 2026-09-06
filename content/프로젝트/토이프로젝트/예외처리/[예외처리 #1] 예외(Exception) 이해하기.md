@@ -137,3 +137,9 @@ public class CustomException extends RuntimeException{
 *   java 1.7 이상부터는 try~catch 문 대신해서 , try~with~resources가 사용되는 추세이다
     *   catch를 잡게되면 프로그램이 종료되거나, 메서드가 로직 중간에 끝나기 때문에, I/O나 소켓등 로직 중간에 닫아주지 않으면 남게되는 리소스들을 정리할 수 있도록 도와주는 기능이다.
     *   (원래는 try~catch~finally 를 이용했지만, resources 도입으로 편하게 정리할 수 있게 되었다.)
+
+## 관련 문서
+
+- [(토이프로젝트) [예외처리 #2] 예외 적용하기]([예외처리%20%232]%20예외%20적용하기.md) — 본문에서 정리한 예외 개념을 `@RestControllerAdvice` 기반 실제 API 예외 처리로 적용하는 시리즈 2편
+- [(토이프로젝트) [Exception] DB 데이터접근 스프링 예외 변환기]([Exception]%20DB%20데이터접근%20스프링%20예외%20변환기.md) — 본문의 Checked/Unchecked 예외 변환 개념을 스프링 데이터 접근 예외 계층에 적용한 사례
+- [(언어) [JAVA] Exception(Checked 예외, UnChecked예외)](../../../개발%20(CS)/언어/JAVA/[JAVA]%20Exception(Checked%20예외,%20UnChecked예외).md) — Checked/Unchecked 예외의 계층 구조와 stack trace 처리를 코드 예시와 함께 더 깊이 정리한 문서

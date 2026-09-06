@@ -149,3 +149,7 @@ int sum = IntStream.rangeClosed(1, 8)
 
 - **CPU Bound(순수 연산)**: 병렬 스트림 효과가 잘 난다 (예: 대규모 계산)
 - **I/O Bound(DB/HTTP 호출)**: 공용 풀/외부 대기 때문에 역효과 가능 → 이 경우는 보통 **Executor(스레드풀) + 비동기 설계**가 더 예측 가능
+
+## 관련 문서
+
+- [(학습/프레임워크/Spring Framework) JAVA 정리](../../../프레임워크/Spring%20Framework/[Java]%20JAVA%20정리%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 람다/스트림/Optional 노트를 Java 고급 3편 요약으로 압축해 담은 통합 정리 노트

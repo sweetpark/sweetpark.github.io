@@ -6,6 +6,11 @@ modified: 2026-09-05
 
 # ERD , 정규형
 
+Oracle 실습 수업 노트로, 정규형(1~3정규형, BCNF)과 이상현상(삽입/삭제/수정)의 정의, ERD 구성요소(개체·관계·속성), 관계 카디널리티(1:1/1:N/N:M)에 따른 외래키 배치 규칙을 정리한다. 이어서 회원-물건-구매, 회원-서비스-신청, 회사-서비스 관계를 요구사항→ERD→테이블 명세서→SQL 순서로 실습하며 PK/FK 무결성을 검증한다.
+
+> [!TIP] DB 엔진
+> 아래 SQL은 Oracle 문법 기준이다 (`varchar2`, `number`, `timestamp default sysdate`). MySQL은 `VARCHAR`/`AUTO_INCREMENT`/`DEFAULT CURRENT_TIMESTAMP`로 표기가 다르다.
+
 ## 오전수업
 
 - 테이블 설계 → 데이터 중복 최소화 (이상 현상 (삽입 / 삭제 / 갱신 이상) 이 발생할 수 있다)

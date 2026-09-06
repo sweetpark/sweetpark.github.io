@@ -7,6 +7,11 @@ modified: 2026-09-05
 
 # [Thymeleaf] th:field, th:object
 
+Thymeleaf로 폼과 모델 객체를 바인딩하는 `th:object`, `th:field`를 정리한 노트다. `th:object`는 폼이 사용할 모델 객체(컨트롤러가 추가한 이름)를 지정하고, `th:field="*{속성명}"`은 그 객체를 기준으로 `id`·`name` 속성을 자동 생성해 폼 요소와 필드를 바인딩한다. `th:object` 없이도 `${...}`로 표현할 수 있지만, 함께 쓰는 방식이 권장된다.
+
+> [!NOTE] 실행 환경
+> `<html xmlns:th="http://www.thymeleaf.org">` 선언 외에 구체적인 Thymeleaf 버전을 특정할 근거는 없다. `th:object`/`th:field`는 Spring MVC의 폼 바인딩(커맨드 객체)과 연동되는 기능이라 thymeleaf-spring 의존성이 필요하며, 구체적인 버전은 명시되어 있지 않다.
+
 1. th:object  
 2. th:field
 

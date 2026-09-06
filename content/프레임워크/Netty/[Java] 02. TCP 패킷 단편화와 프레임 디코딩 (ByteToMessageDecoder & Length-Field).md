@@ -10,6 +10,9 @@ modified: 2026-09-05
 > [!NOTE]
 > TCP 스트림 기반 통신에서 반드시 발생하는 **패킷 단편화(Fragmentation)**와 **패킷 뭉침(Sticky Packets)** 문제를 Netty의 `ByteToMessageDecoder`를 활용하여 안전하게 프레임 단위로 슬라이싱 및 재조립하는 원리를 학습합니다. (고성능 네트워크 패킷 처리 패턴)
 
+> [!NOTE] 실행 환경
+> `io.netty.handler.codec.ByteToMessageDecoder`, `ChannelHandlerContext` API 형태로 볼 때 **Netty 4.x 계열**로 추정됩니다(정확한 패치 버전 명시 없음). 코드에 `var`/레코드/패턴 매칭 등 JDK 버전을 특정할 문법적 단서가 없어 **JDK 버전은 명시되어 있지 않습니다**.
+
 ---
 
 ## 1. TCP 스트림 통신의 본질적 문제
@@ -147,4 +150,11 @@ public class MessageDecoder extends ByteToMessageDecoder {
 
 ### 4.2 바이트 오더링 (Endianness)
 - 네트워크 전송 표준(Network Byte Order)은 **Big-Endian(빅엔디안: 상위 바이트가 먼저 옴)**입니다.
-- x86/ARM CPU(리틀엔디안)와 통신할 때 2바이트 short나 4바이트 int를 변환할 경우, 반드시 `ByteBuffer.order(ByteOrder.BIG_ENDIAN)` 또는 `ByteBuf.readShort()`를 사용하여 아키텍처 독립적인 파싱을 보장해야 합니다.\n
+- x86/ARM CPU(리틀엔디안)와 통신할 때 2바이트 short나 4바이트 int를 변환할 경우, 반드시 `ByteBuffer.order(ByteOrder.BIG_ENDIAN)` 또는 `ByteBuf.readShort()`를 사용하여 아키텍처 독립적인 파싱을 보장해야 합니다.
+
+## 관련 문서
+
+- [(학습/개발 (CS)/네트워크) Netty 파이프라인 예외흐름과 핸들러 배치 패턴](../../개발%20(CS)/네트워크/[CS]%20Netty%20파이프라인%20예외흐름과%20핸들러%20배치%20패턴%20-%20핵심%20개념%20및%20특징%20정리.md) — 동일 프로젝트의 MessageDecoder가 ByteToMessageDecoder(Inbound 전용)로서 파이프라인에서 왜 Outbound에서 skip되는지 설명
+- [(학습/프레임워크/Netty) [Java] 01. Netty 아키텍처와 이벤트 루프 스레드 모델 (EventLoop, Boss·Worker, Bootstrap)]([Java]%2001.%20Netty%20아키텍처와%20이벤트%20루프%20스레드%20모델%20(EventLoop,%20Boss·Worker,%20Bootstrap).md) — 같은 ServerBootstrap 파이프라인에 이 MessageDecoder가 등록되는 전체 서버 아키텍처를 다루는 연작
+- [(학습/프레임워크/Netty) [Java] 03. 채널 핸들러 라이프사이클과 실전 IoT 소켓 통신 패턴 (Session, BCD, HAProxy)]([Java]%2003.%20채널%20핸들러%20라이프사이클과%20실전%20IoT%20소켓%20통신%20패턴%20(Session,%20BCD,%20HAProxy).md) — 디코더가 생성한 완전한 프레임을 넘겨받는 후속 MessageHandler를 다루는 연작
+- [(학습/프레임워크/Netty) [Java] 04. Netty 소켓 파이프라인 SSL-TLS 적용과 mTLS 상호 인증 (SslHandler, KeyStore, SslContext)]([Java]%2004.%20Netty%20소켓%20파이프라인%20SSL-TLS%20적용과%20mTLS%20상호%20인증%20(SslHandler,%20KeyStore,%20SslContext).md) — 이 MessageDecoder 앞단에 SslHandler를 추가해 암호화 계층을 얹는 연작
