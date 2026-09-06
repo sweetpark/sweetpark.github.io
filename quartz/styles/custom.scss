@@ -104,3 +104,55 @@
     word-break: break-word;
   }
 }
+
+// =============================================================================
+// 그래프 뷰: 우측 로컬 상자는 숨기고 전체 그래프(Cmd+G) 및 툴바 버튼 연동
+// =============================================================================
+
+// 우측 사이드바 로컬 그래프 박스(점 1개짜리 상자) 완전히 숨김 처리
+.graph > h3,
+.graph > .graph-outer {
+  display: none !important;
+}
+
+.right.sidebar > .graph {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  border: none !important;
+}
+
+// 좌측 사이드바 툴바의 전체 그래프 버튼
+.toolbar-graph-btn {
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  background: none;
+  border: none;
+  width: 20px;
+  height: 32px;
+  margin: 0;
+  text-align: inherit;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: calc(50% - 9px);
+    fill: var(--darkgray);
+    stroke: var(--darkgray);
+    transition: fill 0.15s ease, stroke 0.15s ease, transform 0.15s ease;
+  }
+
+  &:hover svg {
+    fill: var(--secondary);
+    stroke: var(--secondary);
+    transform: scale(1.15);
+  }
+}
+
