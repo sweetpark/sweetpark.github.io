@@ -85,7 +85,7 @@ public class Test{
          
        @Autowired
        //여기서 Prototype이 싱글톤 생성시 같이 생성됨 (의존관계 주입)
-       public ClientBean(PrototypeBean prototypeBean) {
+       public SingletonBean(PrototypeBean prototypeBean) {
             this.prototypeBean = prototypeBean;
        }
        
@@ -103,6 +103,10 @@ public class Test{
          
         public void addCount() {
             count++;
+        }
+
+        public int getCount() {
+            return count;
         }
 
     }
@@ -153,6 +157,10 @@ public class Test{
          
         public void addCount() {
             count++;
+        }
+
+        public int getCount() {
+            return count;
         }
 
     }
@@ -213,6 +221,10 @@ public class Test{
             count++;
         }
 
+        public int getCount() {
+            return count;
+        }
+
     }
 }
 ```
@@ -232,7 +244,7 @@ public class TestExample{
 
     @Test
     public void testExample(){
-        AnnotaionConfigApplicationContext ac = new AnnotaionConfigApplicationContext(AppConfig.class);
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
         
         RequestBean requestBean = ac.getBean(RequestBean.class);
         System.out.println("Request Count up" + requestBean.incrementAndGet());
@@ -258,7 +270,7 @@ public class TestExample{
     
     
     static class RequestBean{
-         privage int count = 0;
+         private int count = 0;
          
          public int incrementAndGet(){
              count++;

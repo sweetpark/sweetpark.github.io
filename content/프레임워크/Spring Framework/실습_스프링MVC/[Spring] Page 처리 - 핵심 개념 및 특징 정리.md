@@ -22,13 +22,13 @@ Spring Data JPA (`Pageable`, `PageRequest`)
 
 ```java
 //repository
-Page<Entity> finaAll(Pageable page);
+Page<Entity> findAll(Pageable page);
 //service
 //PageRequest.of(현재페이지, 한 페이지 표시 개수)
 PageRequest pageRequest = PageRequest.of(1,10);
 Page<Entity> filterResult = repository.findAll(pageRequest);
 
-List<Entity> results = result.getContent(); // list로 변환
+List<Entity> results = filterResult.getContent(); // list로 변환
 ```
 
 - spring에서 지원해주는 pageable

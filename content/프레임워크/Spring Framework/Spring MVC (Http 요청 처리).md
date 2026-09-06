@@ -115,7 +115,7 @@ public class RequestBodyStringController{
     public void requestBodyString(HttpServletRequest request, HttpServletResponse response) throws IOException{
          
          ServletInputStream inputStream = request.getInputStream();
-         String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF-8);
+         String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
          
          log.info("messageBody={}", messageBody);
          response.getWriter().write("ok");
@@ -136,7 +136,7 @@ public class RequestBodyStringController{
     @PostMapping("/main/RequestV2")
     public void requestBodyStringV2(InputStream inputStream, Writer responseWriter) throws IOException{
          
-         String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF-8);
+         String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
          
          log.info("messageBody={}", messageBody);
          responseWriter.write("ok");
@@ -210,7 +210,7 @@ public class RequestBodyStringController{
     public void requestBodyString(HttpServletRequest request, HttpServletResponse response) throws IOException{
          
          ServletInputStream inputStream = request.getInputStream();
-         String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF-8);
+         String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
          
          log.info("messageBody={}", messageBody);
          

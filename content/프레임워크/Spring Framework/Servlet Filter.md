@@ -59,7 +59,7 @@ public class LogTest implements Filter{
     //init()...
     
     @Override
-    void doFilter(ServletRequest var1, ServletResponse var2, FilterChain var3) throws IOException, ServletException{
+    public void doFilter(ServletRequest var1, ServletResponse var2, FilterChain var3) throws IOException, ServletException{
     
         try{
             log.info("REQUEST");
@@ -72,16 +72,17 @@ public class LogTest implements Filter{
         }finally{
             log.info("RESPONSE");
         }
+    }
         
     @Override
-    //destory()...
+    //destroy()...
 }
 ```
 
 ## Servlet Filter 등록 방법
 
 *   Component 등록
-    *   요청 흐름 : HTTP요청 -> WAS -> MethodFilter#1 -> MethodFilter#2 -> Servlet -> Controller 
+    *   요청 흐름 : HTTP요청 -> WAS -> MethodFilter1 -> MethodFilter2 -> Servlet -> Controller 
     *   Component 등록으로 이용시, 스프링의 내정된 규칙에 따라 우선순위가 달라짐
     *   이런 부분을 보완하고자, @Order 애노테이션을 이용하여 우선순위를 지명해줌
     *   @WebFilter(urlPatterns="[URL]") 을 사용하여 적용하고 싶은 Filter 범위를 지정
@@ -90,38 +91,40 @@ public class LogTest implements Filter{
 @Component
 @Order(1)
 @WebFilter(urlPatterns="/*")
-public class MethodFilter#1 implements Filter{
+public class MethodFilter1 implements Filter{
     @Override
-    void doFilter()//..
-    
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        // ...
+    }
 }
 
 @Component
 @Order(2)
 @WebFilter(urlPatterns="/*")
-public class MethodFilter#2 implements Filter{
+public class MethodFilter2 implements Filter{
     @Override
-    void doFilter()//..
-    
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        // ...
+    }
 }
 ```
 
-*   Bean 등록 
+*   Bean 등록 
     *   .setFilter() 메서드를 이용하여 Filter 클래스를 추가
     *   .setOrder() 메서드를 이용하여 우선순위 선정
     *   .setUrlPatterns() 메서드를 이용하여 필터 적용 범위 설정
 
 ```java
 @Configuration
- public class WebConfig {
-     @Bean
-     public FilterRegistrationBean logFilter() {
-         FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
-         filterRegistrationBean.setFilter(new MethodFilter#1());
-         filterRegistrationBean.setOrder(new MethodFilter#1());
-         filterRegistrationBean.setUrlPatterns("/*");
-         return filterRegistrationBean;
-     }
+public class WebConfig {
+    @Bean
+    public FilterRegistrationBean<Filter> logFilter() {
+        FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
+        filterRegistrationBean.setFilter(new MethodFilter1());
+        filterRegistrationBean.setOrder(1);
+        filterRegistrationBean.addUrlPatterns("/*");
+        return filterRegistrationBean;
+    }
 }
 ```
 
