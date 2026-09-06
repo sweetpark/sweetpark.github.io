@@ -8,7 +8,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > Costel/Daelim 버전 WebClient(WebSocket 기반) 개발 정리 — SSL Handshake, netty 비동기 처리, 디자인패턴 적용, AES256 암호화 포함.
-> 실무(충전기 EV OCPP 연동)에서 이관. 원문에 있던 실제 파트너사 서버 IP·포트는 마스킹했다.
 
 ## 🖥️ 시스템/환경
 - Web Socket 사용

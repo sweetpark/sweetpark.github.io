@@ -8,7 +8,7 @@ modified: 2026-09-05
 
 > [!NOTE]
 > MyBatis 동적 쿼리(`<if>`, `<where>`, `<choose>` 등)를 정적 분석할 때 SAX 대신 DOM 파서를 선택한 이유와, JSqlParser 통과용 가짜 SQL(Dummy SQL)을 안전하게 조립하는 전략 정리.
-> "Mybatis + AI (쿼리 분석 Tool)" 미니프로젝트에서 이관. 같은 도구의 관련 기술 결정은 [(MyBatis) MyBatis 동적 SQL 정적분석 - 핵심 개념 및 특징 정리]([MyBatis]%20MyBatis%20동적%20SQL%20정적분석%20-%20핵심%20개념%20및%20특징%20정리.md) 참고.
+> 같은 도구의 관련 기술 결정은 [(MyBatis) MyBatis 동적 SQL 정적분석 - 핵심 개념 및 특징 정리]([MyBatis]%20MyBatis%20동적%20SQL%20정적분석%20-%20핵심%20개념%20및%20특징%20정리.md) 참고.
 
 ## ⚙️ 구현
 

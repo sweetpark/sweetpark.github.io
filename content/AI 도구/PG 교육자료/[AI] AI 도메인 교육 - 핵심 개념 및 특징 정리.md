@@ -85,7 +85,7 @@ PG(Payment Gateway) 도메인을 처음 접하는 신입/주니어 개발자를 
     - [5.3 망취소 (Network Cancellation)](about:blank#53-%EB%A7%9D%EC%B7%A8%EC%86%8C-network-cancellation)
     - [5.4 부분취소 처리 로직](about:blank#54-%EB%B6%80%EB%B6%84%EC%B7%A8%EC%86%8C-%EC%B2%98%EB%A6%AC-%EB%A1%9C%EC%A7%81)
     - [5.5 취소 유형 정리: 전취소 vs 후취소](about:blank#55-%EC%B7%A8%EC%86%8C-%EC%9C%A0%ED%98%95-%EC%A0%95%EB%A6%AC-%EC%A0%84%EC%B7%A8%EC%86%8C-vs-%ED%9B%84%EC%B7%A8%EC%86%8C)
-- [6장. 시스템 아키텍처 — 우리 회사 서버 구성](about:blank#6%EC%9E%A5-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98--%EC%9A%B0%EB%A6%AC-%ED%9A%8C%EC%82%AC-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%84%B1)
+- [6장. 시스템 아키텍처 — 결제 시스템 서버 구성](about:blank#6%EC%9E%A5-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98--%EA%B2%B0%EC%A0%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%84%B1)
     - [6.1 전체 서버 구성도](about:blank#61-%EC%A0%84%EC%B2%B4-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%84%B1%EB%8F%84)
     - [6.2 각 서버 상세 설명](about:blank#62-%EA%B0%81-%EC%84%9C%EB%B2%84-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85)
     - [6.3 배치 시스템 상세](about:blank#63-%EB%B0%B0%EC%B9%98-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%83%81%EC%84%B8)
@@ -990,10 +990,10 @@ stateDiagram-v2
 
 ---
 
-## 6장. 시스템 아키텍처 — 우리 회사 서버 구성
+## 6장. 시스템 아키텍처 — 결제 시스템 서버 구성
 
 > **핵심 요약**
-우리 회사의 결제 시스템은 내부망/외부망을 명확히 분리한 구조다.
+결제 시스템은 내부망/외부망을 명확히 분리한 구조다.
 BLD(승인 서버)는 Netty 기반으로 고성능 비동기 처리를 담당한다.
 Batch 서버는 Spring Batch + Quartz 조합으로 정산/빌링/알림 JOB을 관리한다.
 > 

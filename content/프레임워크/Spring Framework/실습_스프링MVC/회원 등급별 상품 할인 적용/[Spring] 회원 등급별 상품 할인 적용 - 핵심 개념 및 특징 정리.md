@@ -9,7 +9,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > AppConfig 기반 수동/자동 Bean 등록과 OCP·DIP, 싱글톤을 활용한 회원 등급별 상품 할인 미니 프로젝트
-> Spring 기초(김영한) 강의 실습 프로젝트에서 이관.
 
 > [!NOTE] 실행 환경
 > 버전 명시 없음 — `@ComponentScan` 등 Spring 공통 API만 사용되어 특정 버전은 확정하기 어렵다.

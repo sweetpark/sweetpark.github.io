@@ -14,7 +14,6 @@ JUnit5 테스트에서 Mockito로 목(mock) 객체를 다루는 핵심 메서드
 
 > [!NOTE]
 > Mockito의 `when`/`any`/`thenAnswer`/`verify` 사용법 정리.
-> Onz(칵테일 플랫폼) 프로젝트에서 이관.
 
 ## 🧱 기술 스택
 JUnit5, Mockito

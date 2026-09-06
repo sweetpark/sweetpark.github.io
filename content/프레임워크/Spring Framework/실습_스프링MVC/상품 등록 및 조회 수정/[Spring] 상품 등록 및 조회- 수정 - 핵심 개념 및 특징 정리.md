@@ -9,7 +9,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > Request Method(`@RequestParam`, `@ModelAttribute`)와 PRG 패턴을 이용한 상품 등록/조회/수정 미니 프로젝트
-> Spring 기초(김영한) 강의 실습 프로젝트에서 이관.
 
 > [!NOTE] 실행 환경
 > 버전 명시 없음 — `@RequestParam`/`@ModelAttribute`/`@PathVariable`, Thymeleaf 등 Spring MVC 표준 API만 사용되어 특정 버전은 확정하기 어렵다.

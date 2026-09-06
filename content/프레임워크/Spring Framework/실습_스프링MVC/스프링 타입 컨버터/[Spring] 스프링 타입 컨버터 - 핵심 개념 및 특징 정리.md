@@ -9,7 +9,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > `@RequestParam`/`@ModelAttribute`/`@PathVariable` 바인딩 시 동작하는 스프링 타입 컨버터(`Converter`, `ConversionService`) 정리
-> Spring 기초(김영한) 강의 실습 프로젝트에서 이관.
 
 > [!NOTE]
 > 원문을 AI가 검토·보강함(사실 확인 권장).

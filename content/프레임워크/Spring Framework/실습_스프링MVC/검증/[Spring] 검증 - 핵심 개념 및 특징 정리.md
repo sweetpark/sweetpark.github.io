@@ -9,7 +9,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > 상품 등록/수정 검증 구현 — @Validated, Bean Validation, Validator 구분
-> Spring 기초(김영한) 강의 실습 프로젝트에서 이관.
 
 > [!NOTE] 실행 환경
 > 버전 명시 없음 — `@Validated`, Bean Validation(JSR-380) 표준 애노테이션만 사용되어 특정 Spring Boot 버전은 확정하기 어렵다.

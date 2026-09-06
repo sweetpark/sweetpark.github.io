@@ -9,7 +9,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > Servlet + JSP 기반의 간단한 MVC 프레임워크를 직접 제작해보는 미니 프로젝트
-> Spring 기초(김영한) 강의 실습 프로젝트에서 이관.
 
 ## 🧱 기술 스택
 - Servlet

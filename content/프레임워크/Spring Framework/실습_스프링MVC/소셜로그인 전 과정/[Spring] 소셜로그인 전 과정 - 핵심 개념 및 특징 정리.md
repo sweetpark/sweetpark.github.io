@@ -8,7 +8,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > Spring Security 기반 소셜로그인 전체 흐름 정리 및 `permitAll()` 관련 트러블슈팅
-> Spring 기초(김영한) 강의 실습 프로젝트에서 이관.
 
 > [!NOTE] 실행 환경
 > 버전 명시 없음 — Spring Security의 `permitAll()`/필터 체인 개념만 다루어 특정 버전은 확정하기 어렵다.

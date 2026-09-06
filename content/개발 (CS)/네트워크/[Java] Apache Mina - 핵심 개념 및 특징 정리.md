@@ -9,7 +9,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > Apache Mina 필터 체인 구조 및 주요 Filter 정리.
-> 실무(충전기 EV 서버)에서 이관.
 
 ## 🖥️ 참고
 - Apache Mina guide: [https://mina.apache.org/mina-project/developer-guide.html](https://mina.apache.org/mina-project/developer-guide.html)

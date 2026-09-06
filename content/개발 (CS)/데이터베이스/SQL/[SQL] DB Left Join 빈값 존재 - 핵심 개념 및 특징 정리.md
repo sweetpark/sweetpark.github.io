@@ -8,7 +8,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > LEFT JOIN과 INNER JOIN의 결과 차이(빈값 처리) 정리 노트.
-> 실무에서 이관.
 
 ## 📌 개념
 

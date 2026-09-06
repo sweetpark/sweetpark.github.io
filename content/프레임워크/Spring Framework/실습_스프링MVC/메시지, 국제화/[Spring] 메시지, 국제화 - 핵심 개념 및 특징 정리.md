@@ -9,7 +9,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > 메시지 Bean 적용 및 국제화(i18n) — `.properties` 파일 기반 message/international 처리
-> Spring 기초(김영한) 강의 실습 프로젝트에서 이관.
 
 > [!NOTE]
 > 원문을 AI가 검토·보강함(사실 확인 권장).

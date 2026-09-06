@@ -8,7 +8,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > `@ExceptionHandler`/`@ControllerAdvice` 기반 공통 예외 처리 방식 비교 및 결론.
-> Onz(칵테일 플랫폼) 프로젝트에서 이관.
 
 > [!NOTE] 실행 환경
 > 버전 명시 없음 — `@ExceptionHandler`/`@ControllerAdvice` 등 Spring MVC 표준 애노테이션만 사용되어 특정 버전은 확정하기 어렵다.

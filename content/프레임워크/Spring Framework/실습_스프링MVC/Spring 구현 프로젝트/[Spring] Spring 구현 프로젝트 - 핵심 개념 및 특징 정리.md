@@ -8,7 +8,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > 순수 Servlet부터 FrontController + Adapter 패턴을 거쳐 Spring MVC(Dispatcher Servlet)에 이르는 과정을 단계별로 직접 구현하며 Spring의 내부 동작 원리를 이해하는 미니 프로젝트
-> Spring 기초(김영한) 강의 실습 프로젝트에서 이관.
 
 > [!NOTE]
 > 원문을 AI가 검토·보강함(사실 확인 권장) — 코드 블록 내 Notion 서식 잔여 기호(`**`)를 제거함.

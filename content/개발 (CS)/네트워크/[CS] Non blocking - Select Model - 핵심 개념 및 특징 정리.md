@@ -8,7 +8,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > PortScan 프로젝트에서 사용한 Non-blocking 소켓 설정과 `select()` 멀티플렉싱 모델(FD_SET/FD_ISSET) 학습 정리.
-> PortScan 미니프로젝트에서 이관.
 
 ## ⚙️ 구현
 

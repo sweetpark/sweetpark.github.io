@@ -8,7 +8,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > DBeaver 접속 이슈, MyBatis DB 연결 설정, SQL 작성 방법 정리.
-> 실무에서 이관.
 
 > [!TIP] DB 엔진
 > 아래 XML 예제의 `LIMIT 1`은 MySQL/MariaDB 전용 문법이다. Oracle이라면 `WHERE ROWNUM = 1` 또는 `FETCH FIRST 1 ROWS ONLY`를 사용해야 한다.

@@ -8,7 +8,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > Spring Data의 `Pageable`을 이용한 페이징 처리 메모.
-> Onz(칵테일 플랫폼) 프로젝트에서 이관.
 
 > [!NOTE] 실행 환경
 > 버전 명시 없음 — `Pageable`/`PageRequest` 등 Spring Data Commons 표준 API만 사용되어 특정 Spring Boot/Spring Data 버전은 확정하기 어렵다.

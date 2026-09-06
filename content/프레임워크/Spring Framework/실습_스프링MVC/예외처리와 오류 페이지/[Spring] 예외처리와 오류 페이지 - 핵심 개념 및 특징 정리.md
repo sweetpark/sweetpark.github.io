@@ -9,7 +9,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > 서블릿/스프링 부트의 예외 처리 흐름과 오류 페이지 매핑, `@ExceptionHandler`/`@ControllerAdvice` 정리
-> Spring 기초(김영한) 강의 실습 프로젝트에서 이관.
 
 > [!NOTE]
 > 원문을 AI가 검토·보강함(사실 확인 권장) — 코드 예시의 `@Exception` 표기를 `@ExceptionHandler`로, Notion 서식 잔여 기호(`*`)를 제거함.

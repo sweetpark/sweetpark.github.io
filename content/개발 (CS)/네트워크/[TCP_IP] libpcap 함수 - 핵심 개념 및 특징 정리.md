@@ -8,7 +8,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > libpcap 라이브러리의 주요 함수(pcap_is_swapped, pcap_lookupnet, pcap_lookupdev, pcap_datalink, pcap_open_live/offline, pcap_next, pcap_loop)와 TCP/IP/이더넷 헤더 구조체 레퍼런스.
-> P-CAP 패킷분석 미니프로젝트에서 이관.
 
 ## ⚙️ 구현
 

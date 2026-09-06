@@ -9,7 +9,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > 순수 서블릿(HttpServletRequest) 방식과 스프링 MultipartFile 방식의 파일 업로드 비교 정리
-> Spring 기초(김영한) 강의 실습 프로젝트에서 이관.
 
 > [!NOTE]
 > 원문을 AI가 검토·보강함(사실 확인 권장).

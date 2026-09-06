@@ -8,7 +8,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > JPA 연관관계 매핑(`@ManyToOne`/`@OneToMany`)과 Mapping 테이블 처리 기준 정리.
-> Onz(칵테일 플랫폼) 프로젝트에서 이관.
 
 > [!NOTE] 실행 환경
 > 버전 명시 없음 — `@ManyToOne`/`@OneToMany`/`@JoinColumn` 등 JPA 표준 애노테이션만 사용되어 javax.persistence/jakarta.persistence 여부를 포함해 특정 버전은 확정하기 어렵다.

@@ -9,7 +9,6 @@ modified: 2026-09-05
 
 > [!NOTE]
 > 쿠키/세션 기반 로그인 유지 구현 및 서블릿 필터 vs 스프링 인터셉터를 이용한 공통 관심사(인증) 처리
-> Spring 기초(김영한) 강의 실습 프로젝트에서 이관.
 
 > [!NOTE] 실행 환경
 > 버전 명시 없음 — Servlet Filter/Spring Interceptor, `HttpServletRequest.getSession()` 등 표준 API만 사용되어 jakarta/javax 네임스페이스를 포함해 특정 버전은 확정하기 어렵다.
