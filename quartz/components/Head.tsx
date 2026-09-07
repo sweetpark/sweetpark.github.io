@@ -135,8 +135,138 @@ export default (() => {
     toolbar.appendChild(wrapper);
   }
 
-  document.addEventListener("DOMContentLoaded", addGlobalGraphBtn);
-  document.addEventListener("nav", addGlobalGraphBtn);
+  var GC_HOST = "sweetpark.goatcounter.com";
+  var GC_TOKEN = "1amers33u00l37dt2f1uioim723p8ovxsyzfdb5lgyiqagmivc";
+
+  function updatePageViews() {
+    var contentMeta = document.querySelector(".content-meta");
+    if (!contentMeta) return;
+
+    var viewsBadge = contentMeta.querySelector(".page-views");
+    if (!viewsBadge) {
+      viewsBadge = document.createElement("span");
+      viewsBadge.className = "page-views";
+      viewsBadge.title = "페이지 조회수";
+      viewsBadge.innerHTML = '👀 <span class="gc-view-count">-</span>회';
+      contentMeta.appendChild(viewsBadge);
+    }
+
+    var countSpan = viewsBadge.querySelector(".gc-view-count");
+    var path = location.pathname;
+    var countUrl = "https://" + GC_HOST + "/counter/" + encodeURIComponent(path) + ".json";
+
+    fetch(countUrl)
+      .then(function(res) {
+        if (!res.ok) throw new Error("Status " + res.status);
+        return res.json();
+      })
+      .then(function(data) {
+        if (countSpan) {
+          countSpan.textContent = data.count || "0";
+        }
+      })
+      .catch(function() {
+        if (countSpan && countSpan.textContent === "-") {
+          countSpan.textContent = "0";
+        }
+      });
+  }
+
+  var POPULAR_CACHE_KEY = "gc_popular_posts_data";
+  var POPULAR_TIME_KEY = "gc_popular_posts_time";
+  var CACHE_TTL_MS = 30 * 60 * 1000;
+
+  function renderPopularPostsHtml(hits, container) {
+    if (!hits || hits.length === 0) {
+      container.innerHTML = '<div class="popular-empty">아직 집계된 조회수 데이터가 없습니다. 방문자가 유입되면 실시간으로 인기 글이 반영됩니다.</div>';
+      return;
+    }
+
+    var html = '<ul class="popular-ul">';
+    for (var i = 0; i < hits.length; i++) {
+      var hit = hits[i];
+      var rank = i + 1;
+      var rankClass = rank <= 3 ? "rank-top rank-" + rank : "rank-" + rank;
+      var title = hit.title || decodeURIComponent(hit.path.split("/").pop() || hit.path);
+      title = title.replace(/\\s*\\|\\s*차근차근정확하게$/, "");
+
+      html += '<li class="popular-li">' +
+        '<div class="section">' +
+          '<div class="desc">' +
+            '<span class="popular-rank ' + rankClass + '">' + rank + '</span>' +
+            '<a href="' + hit.path + '" class="internal">' + title + '</a>' +
+          '</div>' +
+          '<span class="popular-count">🔥 ' + Number(hit.count || 0).toLocaleString() + '회</span>' +
+        '</div>' +
+      '</li>';
+    }
+    html += '</ul>';
+    container.innerHTML = html;
+  }
+
+  function fetchAndRenderPopularPosts() {
+    var container = document.getElementById("popular-posts");
+    if (!container) return;
+
+    try {
+      var cachedTime = localStorage.getItem(POPULAR_TIME_KEY);
+      var cachedData = localStorage.getItem(POPULAR_CACHE_KEY);
+      if (cachedTime && cachedData && (Date.now() - parseInt(cachedTime, 10) < CACHE_TTL_MS)) {
+        var parsed = JSON.parse(cachedData);
+        renderPopularPostsHtml(parsed, container);
+        return;
+      }
+    } catch (e) {}
+
+    var apiUrl = "https://" + GC_HOST + "/api/v0/stats/hits?limit=20";
+    fetch(apiUrl, {
+      headers: {
+        "Authorization": "Bearer " + GC_TOKEN
+      }
+    })
+      .then(function(res) {
+        if (!res.ok) throw new Error("Status " + res.status);
+        return res.json();
+      })
+      .then(function(data) {
+        var rawHits = data.hits || [];
+        var filteredHits = rawHits.filter(function(h) {
+          if (!h.path || h.event) return false;
+          var p = h.path.trim().toLowerCase();
+          if (p === "/" || p === "/index" || p === "/index.html" || p === "/404") return false;
+          if (p.indexOf("/tags/") === 0 || p.indexOf("tags/") === 0) return false;
+          return true;
+        });
+
+        var topHits = filteredHits.slice(0, 6);
+
+        try {
+          localStorage.setItem(POPULAR_CACHE_KEY, JSON.stringify(topHits));
+          localStorage.setItem(POPULAR_TIME_KEY, Date.now().toString());
+        } catch (e) {}
+
+        renderPopularPostsHtml(topHits, container);
+      })
+      .catch(function() {
+        try {
+          var fallback = localStorage.getItem(POPULAR_CACHE_KEY);
+          if (fallback) {
+            renderPopularPostsHtml(JSON.parse(fallback), container);
+            return;
+          }
+        } catch (e) {}
+        container.innerHTML = '<div class="popular-empty">인기 글 데이터를 불러오는 중 일시적인 오류가 발생했습니다. 잠시 후 다시 확인해주세요.</div>';
+      });
+  }
+
+  function initPageEnhancements() {
+    addGlobalGraphBtn();
+    updatePageViews();
+    fetchAndRenderPopularPosts();
+  }
+
+  document.addEventListener("DOMContentLoaded", initPageEnhancements);
+  document.addEventListener("nav", initPageEnhancements);
 })();
 `,
           }}

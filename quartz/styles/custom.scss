@@ -156,3 +156,127 @@
   }
 }
 
+// =============================================================================
+// GoatCounter 조회수 및 인기 글 스타일
+// =============================================================================
+
+// 개별 글 본문 메타데이터 내 조회수 배지
+.content-meta .page-views {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: var(--darkgray);
+  font-variant-numeric: tabular-nums;
+
+  .gc-view-count {
+    font-weight: 600;
+    color: var(--secondary);
+  }
+}
+
+// 메인 페이지 인기 글 섹션
+.popular-posts {
+  margin: 1rem 0 2rem 0;
+
+  .popular-empty,
+  .popular-loading {
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    background-color: var(--lightgray);
+    color: var(--darkgray);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .popular-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .popular-li {
+      margin: 0;
+      padding: 0.6rem 0.9rem;
+      border-radius: 8px;
+      background-color: color-mix(in srgb, var(--lightgray) 45%, transparent);
+      border: 1px solid color-mix(in srgb, var(--lightgray) 80%, transparent);
+      transition: background-color 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+
+      &:hover {
+        background-color: var(--lightgray);
+        border-color: var(--gray);
+        transform: translateY(-1px);
+      }
+
+      .section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+
+        .desc {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          min-width: 0;
+
+          .popular-rank {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            background-color: var(--lightgray);
+            color: var(--darkgray);
+            flex-shrink: 0;
+
+            &.rank-1 {
+              background-color: #ff4757;
+              color: #ffffff;
+            }
+            &.rank-2 {
+              background-color: #ff7f50;
+              color: #ffffff;
+            }
+            &.rank-3 {
+              background-color: #ffa502;
+              color: #ffffff;
+            }
+          }
+
+          a.internal {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--dark);
+            text-decoration: none;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            transition: color 0.15s ease;
+
+            &:hover {
+              color: var(--secondary);
+              text-decoration: underline;
+            }
+          }
+        }
+
+        .popular-count {
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: var(--secondary);
+          white-space: nowrap;
+          flex-shrink: 0;
+          font-variant-numeric: tabular-nums;
+        }
+      }
+    }
+  }
+}
+
+

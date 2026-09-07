@@ -5,7 +5,8 @@ configuration:
   enableSPA: true
   enablePopovers: true
   analytics:
-    provider: null
+    provider: goatcounter
+    websiteId: sweetpark
   locale: ko-KR
   baseUrl: sweetpark.github.io
   ignorePatterns:
