@@ -1,7 +1,7 @@
 ---
 title: "[AI] 도메인 교육"
-tags: [학습, AI-도구, PG-교육자료, 자료, Claude]
-modified: 2026-09-05
+tags: 
+modified: 2026-09-07
 ---
 
 # [AI] 도메인 교육
