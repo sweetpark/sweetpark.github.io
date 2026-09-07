@@ -140,11 +140,29 @@ export default (() => {
 
   var HITS_MAP_KEY = "gc_hits_map";
   var HITS_TIME_KEY = "gc_hits_map_time";
-  var HITS_TTL_MS = 15 * 60 * 1000;
+  var HITS_TTL_MS = 60 * 1000; // 1분 (기존 15분)
 
   var POPULAR_CACHE_KEY = "gc_popular_posts_data";
   var POPULAR_TIME_KEY = "gc_popular_posts_time";
-  var CACHE_TTL_MS = 30 * 60 * 1000;
+  var CACHE_TTL_MS = 60 * 1000; // 1분 (기존 30분)
+
+  function isPageReload() {
+    try {
+      var nav = performance.getEntriesByType && performance.getEntriesByType("navigation");
+      if (nav && nav.length > 0) return nav[0].type === "reload";
+      return performance.navigation && performance.navigation.type === 1;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // 새로고침(F5) 시 로컬 캐시를 무효화하여 즉시 최신 통계 조회
+  if (isPageReload()) {
+    try {
+      localStorage.removeItem(HITS_TIME_KEY);
+      localStorage.removeItem(POPULAR_TIME_KEY);
+    } catch(e) {}
+  }
 
   function normalizePath(p) {
     if (!p) return "";
@@ -200,7 +218,7 @@ export default (() => {
       return;
     }
 
-    var apiUrl = "https://" + GC_HOST + "/api/v0/stats/hits?limit=100";
+    var apiUrl = "https://" + GC_HOST + "/api/v0/stats/hits?limit=500";
     pendingHitsFetch = fetch(apiUrl, {
       headers: {
         "Authorization": "Bearer " + GC_TOKEN
@@ -257,7 +275,10 @@ export default (() => {
 
     fetchStatsHits(function(map) {
       if (!applyCount(map)) {
-        var countUrl = "https://" + GC_HOST + "/counter/" + encodeURIComponent(location.pathname) + ".json";
+        if (countSpan && countSpan.textContent === "-") {
+          countSpan.textContent = "0";
+        }
+        var countUrl = "https://" + GC_HOST + "/counter/" + encodeURIComponent(decodeURIComponent(location.pathname)) + ".json";
         fetch(countUrl)
           .then(function(res) {
             if (!res.ok) throw new Error("Status " + res.status);
@@ -266,15 +287,9 @@ export default (() => {
           .then(function(data) {
             if (countSpan && data.count) {
               countSpan.textContent = data.count;
-            } else if (countSpan && countSpan.textContent === "-") {
-              countSpan.textContent = "0";
             }
           })
-          .catch(function() {
-            if (countSpan && countSpan.textContent === "-") {
-              countSpan.textContent = "0";
-            }
-          });
+          .catch(function() {});
       }
     });
   }
