@@ -45,6 +45,9 @@ jobs:
         run: npx quartz plugin install
       - name: Build Quartz
         run: npx quartz build
+      - name: Create robots.txt
+        run: |
+          printf "User-agent: *\nAllow: /\n\nSitemap: https://sweetpark.github.io/sitemap.xml\n" > public/robots.txt
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
