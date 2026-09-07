@@ -151,7 +151,10 @@ export default (() => {
     try {
       p = decodeURIComponent(p);
     } catch(e) {}
-    p = p.trim().replace(/\/+$/, "");
+    p = p.trim();
+    while (p.length > 1 && p.endsWith("/")) {
+      p = p.slice(0, -1);
+    }
     return p || "/";
   }
 
@@ -288,7 +291,7 @@ export default (() => {
       var rank = i + 1;
       var rankClass = rank <= 3 ? "rank-top rank-" + rank : "rank-" + rank;
       var title = hit.title || decodeURIComponent(hit.path.split("/").pop() || hit.path);
-      title = title.replace(/\\s*\\|\\s*차근차근정확하게$/, "");
+      title = title.replace(" | 차근차근정확하게", "").replace("| 차근차근정확하게", "");
 
       html += '<li class="popular-li">' +
         '<div class="section">' +
@@ -345,7 +348,11 @@ export default (() => {
     fetchAndRenderPopularPosts();
   }
 
-  document.addEventListener("DOMContentLoaded", initPageEnhancements);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPageEnhancements);
+  } else {
+    initPageEnhancements();
+  }
   document.addEventListener("nav", initPageEnhancements);
 })();
 `,
