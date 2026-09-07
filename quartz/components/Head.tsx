@@ -138,6 +138,89 @@ export default (() => {
   var GC_HOST = "sweetpark.goatcounter.com";
   var GC_TOKEN = "1amers33u00l37dt2f1uioim723p8ovxsyzfdb5lgyiqagmivc";
 
+  var HITS_MAP_KEY = "gc_hits_map";
+  var HITS_TIME_KEY = "gc_hits_map_time";
+  var HITS_TTL_MS = 15 * 60 * 1000;
+
+  var POPULAR_CACHE_KEY = "gc_popular_posts_data";
+  var POPULAR_TIME_KEY = "gc_popular_posts_time";
+  var CACHE_TTL_MS = 30 * 60 * 1000;
+
+  function normalizePath(p) {
+    if (!p) return "";
+    try {
+      p = decodeURIComponent(p);
+    } catch(e) {}
+    p = p.trim().replace(/\/+$/, "");
+    return p || "/";
+  }
+
+  function getHitsMapFromCache() {
+    try {
+      var time = localStorage.getItem(HITS_TIME_KEY);
+      var data = localStorage.getItem(HITS_MAP_KEY);
+      if (time && data && (Date.now() - parseInt(time, 10) < HITS_TTL_MS)) {
+        return JSON.parse(data);
+      }
+    } catch(e) {}
+    return null;
+  }
+
+  function saveHitsMap(hits) {
+    var map = {};
+    for (var i = 0; i < hits.length; i++) {
+      var h = hits[i];
+      if (h && h.path) {
+        map[normalizePath(h.path)] = Number(h.count || 0);
+        map[h.path] = Number(h.count || 0);
+      }
+    }
+    try {
+      localStorage.setItem(HITS_MAP_KEY, JSON.stringify(map));
+      localStorage.setItem(HITS_TIME_KEY, Date.now().toString());
+    } catch(e) {}
+    return map;
+  }
+
+  var pendingHitsFetch = null;
+  function fetchStatsHits(callback) {
+    var cached = getHitsMapFromCache();
+    if (cached) {
+      if (callback) callback(cached);
+      return;
+    }
+
+    if (pendingHitsFetch) {
+      pendingHitsFetch.then(function(res) {
+        if (callback) callback(res.map, res.rawHits);
+      });
+      return;
+    }
+
+    var apiUrl = "https://" + GC_HOST + "/api/v0/stats/hits?limit=100";
+    pendingHitsFetch = fetch(apiUrl, {
+      headers: {
+        "Authorization": "Bearer " + GC_TOKEN
+      }
+    })
+      .then(function(res) {
+        if (!res.ok) throw new Error("Status " + res.status);
+        return res.json();
+      })
+      .then(function(data) {
+        var rawHits = data.hits || [];
+        var map = saveHitsMap(rawHits);
+        pendingHitsFetch = null;
+        if (callback) callback(map, rawHits);
+        return { map: map, rawHits: rawHits };
+      })
+      .catch(function() {
+        pendingHitsFetch = null;
+        if (callback) callback(cached || {}, []);
+        return { map: cached || {}, rawHits: [] };
+      });
+  }
+
   function updatePageViews() {
     var contentMeta = document.querySelector(".content-meta");
     if (!contentMeta) return;
@@ -152,29 +235,46 @@ export default (() => {
     }
 
     var countSpan = viewsBadge.querySelector(".gc-view-count");
-    var path = location.pathname;
-    var countUrl = "https://" + GC_HOST + "/counter/" + encodeURIComponent(path) + ".json";
+    var currentNorm = normalizePath(location.pathname);
 
-    fetch(countUrl)
-      .then(function(res) {
-        if (!res.ok) throw new Error("Status " + res.status);
-        return res.json();
-      })
-      .then(function(data) {
-        if (countSpan) {
-          countSpan.textContent = data.count || "0";
-        }
-      })
-      .catch(function() {
-        if (countSpan && countSpan.textContent === "-") {
-          countSpan.textContent = "0";
-        }
-      });
+    function applyCount(map) {
+      if (!countSpan) return false;
+      var count = map[currentNorm] !== undefined ? map[currentNorm] : map[location.pathname];
+      if (count !== undefined) {
+        countSpan.textContent = Number(count).toLocaleString();
+        return true;
+      }
+      return false;
+    }
+
+    var cached = getHitsMapFromCache();
+    if (cached && applyCount(cached)) {
+      return;
+    }
+
+    fetchStatsHits(function(map) {
+      if (!applyCount(map)) {
+        var countUrl = "https://" + GC_HOST + "/counter/" + encodeURIComponent(location.pathname) + ".json";
+        fetch(countUrl)
+          .then(function(res) {
+            if (!res.ok) throw new Error("Status " + res.status);
+            return res.json();
+          })
+          .then(function(data) {
+            if (countSpan && data.count) {
+              countSpan.textContent = data.count;
+            } else if (countSpan && countSpan.textContent === "-") {
+              countSpan.textContent = "0";
+            }
+          })
+          .catch(function() {
+            if (countSpan && countSpan.textContent === "-") {
+              countSpan.textContent = "0";
+            }
+          });
+      }
+    });
   }
-
-  var POPULAR_CACHE_KEY = "gc_popular_posts_data";
-  var POPULAR_TIME_KEY = "gc_popular_posts_time";
-  var CACHE_TTL_MS = 30 * 60 * 1000;
 
   function renderPopularPostsHtml(hits, container) {
     if (!hits || hits.length === 0) {
@@ -218,45 +318,25 @@ export default (() => {
       }
     } catch (e) {}
 
-    var apiUrl = "https://" + GC_HOST + "/api/v0/stats/hits?limit=20";
-    fetch(apiUrl, {
-      headers: {
-        "Authorization": "Bearer " + GC_TOKEN
-      }
-    })
-      .then(function(res) {
-        if (!res.ok) throw new Error("Status " + res.status);
-        return res.json();
-      })
-      .then(function(data) {
-        var rawHits = data.hits || [];
-        var filteredHits = rawHits.filter(function(h) {
-          if (!h.path || h.event) return false;
-          var p = h.path.trim().toLowerCase();
-          if (p === "/" || p === "/index" || p === "/index.html" || p === "/404") return false;
-          if (p.indexOf("/tags/") === 0 || p.indexOf("tags/") === 0) return false;
-          return true;
-        });
-
-        var topHits = filteredHits.slice(0, 6);
-
-        try {
-          localStorage.setItem(POPULAR_CACHE_KEY, JSON.stringify(topHits));
-          localStorage.setItem(POPULAR_TIME_KEY, Date.now().toString());
-        } catch (e) {}
-
-        renderPopularPostsHtml(topHits, container);
-      })
-      .catch(function() {
-        try {
-          var fallback = localStorage.getItem(POPULAR_CACHE_KEY);
-          if (fallback) {
-            renderPopularPostsHtml(JSON.parse(fallback), container);
-            return;
-          }
-        } catch (e) {}
-        container.innerHTML = '<div class="popular-empty">인기 글 데이터를 불러오는 중 일시적인 오류가 발생했습니다. 잠시 후 다시 확인해주세요.</div>';
+    fetchStatsHits(function(map, rawHits) {
+      rawHits = rawHits || [];
+      var filteredHits = rawHits.filter(function(h) {
+        if (!h.path || h.event) return false;
+        var p = normalizePath(h.path).toLowerCase();
+        if (p === "/" || p === "/index" || p === "/index.html" || p === "/404") return false;
+        if (p.indexOf("/tags/") === 0 || p.indexOf("tags/") === 0) return false;
+        return true;
       });
+
+      var topHits = filteredHits.slice(0, 6);
+
+      try {
+        localStorage.setItem(POPULAR_CACHE_KEY, JSON.stringify(topHits));
+        localStorage.setItem(POPULAR_TIME_KEY, Date.now().toString());
+      } catch (e) {}
+
+      renderPopularPostsHtml(topHits, container);
+    });
   }
 
   function initPageEnhancements() {
