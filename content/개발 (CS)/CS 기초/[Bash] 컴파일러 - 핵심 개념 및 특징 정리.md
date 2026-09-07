@@ -15,7 +15,7 @@ modified: 2026-09-05
 
 ## 📌 개념
 
-![Untitled](assets/Untitled_1.png)
+![Untitled](/개발%20(CS)/CS%20기초/assets/Untitled_1.png)
 
 ### 컴파일 과정
 

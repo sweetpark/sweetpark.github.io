@@ -21,7 +21,7 @@ modified: 2026-09-05
 
 → static폴더 → application.yml
 
-![Untitled](assets/Untitled.png)
+![Untitled](/프레임워크/Spring%20Framework/assets/Untitled.png)
 
 - 컨트롤러란? (controller)
     - 로그인 요청 → login.java
@@ -35,7 +35,7 @@ modified: 2026-09-05
 > [!NOTE]
 > 도메인 : 범주를 지정해주는 것 (ex_ 여자 / 남자)
 
-![Untitled](assets/Untitled-1.png)
+![Untitled](/프레임워크/Spring%20Framework/assets/Untitled-1.png)
 
 1. 해당 controller로 구분해주는 일은 Dispatcher가 수행
 
@@ -46,7 +46,7 @@ modified: 2026-09-05
     - 웹서버는 DB에 SELECT, INSERT, UPDATE, DELETE 요청을 해서 응답
     - 클라이언트는 앤드포인트를 주어서 어떤 정보를 원하는지 알려주어야함
     
-    ![Untitled](assets/Untitled-2.png)
+    ![Untitled](/프레임워크/Spring%20Framework/assets/Untitled-2.png)
     
     1. GET(동사) - 데이터 요청
     2. POST(동사) - 데이터 전송
@@ -98,18 +98,18 @@ modified: 2026-09-05
     
     템플릿 엔진이란 html 파일에 java코드를 쓸 수 있는 친구들이다.
     
-    ![Untitled](assets/Untitled-3.png)
+    ![Untitled](/프레임워크/Spring%20Framework/assets/Untitled-3.png)
     
-    ![Untitled](assets/Untitled-4.png)
+    ![Untitled](/프레임워크/Spring%20Framework/assets/Untitled-4.png)
     
-    ![Untitled](assets/Untitled-5.png)
+    ![Untitled](/프레임워크/Spring%20Framework/assets/Untitled-5.png)
     
     > [!NOTE]
     > - 웹 서버 - 아파치
     > - WAS 서버 - 톰캣 (애플리케이션 서버) // 자바 코드를 해석 → index.html 파일로 생성
     > - 아파치, 톰캣 → 자바 해석 모듈
     
-    ![Untitled](assets/Untitled-6.png)
+    ![Untitled](/프레임워크/Spring%20Framework/assets/Untitled-6.png)
     
     > [!NOTE]
     > - 자바 코드가 없어지고 결과값만 출력함
@@ -146,11 +146,11 @@ modified: 2026-09-05
 
 - java 코드 사용가능 (동적인 파일 응답 가능) // src/main/java/web/~.java
 
-![Untitled](assets/Untitled-7.png)
+![Untitled](/프레임워크/Spring%20Framework/assets/Untitled-7.png)
 
 - e.jsp (src/view/webapp/WEB-INF/views/e.jsp)
 
-![Untitled](assets/Untitled-8.png)
+![Untitled](/프레임워크/Spring%20Framework/assets/Untitled-8.png)
 
 ---
 
@@ -161,7 +161,7 @@ modified: 2026-09-05
 > [!NOTE]
 > - 원하는 경로로 유도하는 것 = redirect
 
-![Untitled](assets/Untitled-9.png)
+![Untitled](/프레임워크/Spring%20Framework/assets/Untitled-9.png)
 
 요청 : /away ⇒ 응답 : /home 으로옴 (결국 /home의 코드를 재사용한 것)
 
@@ -180,7 +180,7 @@ modified: 2026-09-05
 
 - 경로 차단 가능 (security)
 
-![Untitled](assets/Untitled-10.png)
+![Untitled](/프레임워크/Spring%20Framework/assets/Untitled-10.png)
 
 ---
 
@@ -190,7 +190,7 @@ modified: 2026-09-05
 
 - 회원가입 진행시 원하는 URL로 가지 않는 경우 ⇒ Security 에서 막음 (CSRF 토큰검사)
 
-![Untitled](assets/Untitled-11.png)
+![Untitled](/프레임워크/Spring%20Framework/assets/Untitled-11.png)
 
 회원가입페이지 요청 → 페이지 응답(csrf 값을 넣음) → 작성 (csrf 포함) → csrf 검사 → 응답완료
 
@@ -290,7 +290,7 @@ modified: 2026-09-05
 
 - 영속화 ( data 값 update시 영속화를 이용해 DB에 저장
 
-![Untitled](assets/Untitled-12.png)
+![Untitled](/프레임워크/Spring%20Framework/assets/Untitled-12.png)
 
 ---
 

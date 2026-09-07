@@ -94,7 +94,7 @@ modified: 2026-09-05
 - E-R 다이어그램
     - 1:1 , 1:N , M:N 관계는 레이블로 표기
     
-    ![Untitled](assets/Untitled.png)
+    ![Untitled](/개발%20(CS)/데이터베이스/SQL/assets/Untitled.png)
     
 - 논리적 데이터 모델
     - 논리적 데이터모델로 표현된 데이터베이스의  논리적 구조가 바로 데이터베이스 schema(스키마)
@@ -121,7 +121,7 @@ modified: 2026-09-05
 - 관계 데이터 모델
     - 하나의 개체에 관한 데이터를 릴레이션 하나에 담아 데이터베이스에 저장
     
-    ![Untitled](assets/Untitled-1.png)
+    ![Untitled](/개발%20(CS)/데이터베이스/SQL/assets/Untitled-1.png)
     
     - 속성(⇒ 열 or Attribute 라고 부름)
     - 투플(⇒ 릴레이션의 행을 튜플이라 부름)
@@ -337,7 +337,7 @@ modified: 2026-09-05
     
     ⇒ 삽입 이상, 갱신 이상, 삭제 이상 발생
     
-    ![Untitled](assets/Untitled-2.png)
+    ![Untitled](/개발%20(CS)/데이터베이스/SQL/assets/Untitled-2.png)
     
 - 제 2 정규형
     - 기본키가 아닌 모든 속성이 기본키에 완전 함수 종속되어야함
@@ -349,7 +349,7 @@ modified: 2026-09-05
 
 ⇒ 삽입이상, 갱신 이상, 삭제 이상 발생
 
-![Untitled](assets/Untitled-3.png)
+![Untitled](/개발%20(CS)/데이터베이스/SQL/assets/Untitled-3.png)
 
 - 제 3 정규형
     - 기본키가 아닌 모든 속성이 기본키에 이행적 함수 종속이 되지 말아야함
@@ -361,13 +361,13 @@ modified: 2026-09-05
     
     ⇒ 후보키를 여러 개 가지고 있는 릴레이션의 경우 이상현상 발생할 수 있음
     
-    ![Untitled](assets/Untitled-4.png)
+    ![Untitled](/개발%20(CS)/데이터베이스/SQL/assets/Untitled-4.png)
     
 - 보이스/코드 정규형(BCNF)
     - 릴레이션의 함수 종속 관계에서 모든 결정자가 후보키가 되어야 함
     - 후보키 : 기본키가 될 수 있는 값 (고유값 및 NULL 불가, 중복 불가)
     
-    ![Untitled](assets/Untitled-5.png)
+    ![Untitled](/개발%20(CS)/데이터베이스/SQL/assets/Untitled-5.png)
     
 - 제 4 정규형
     - 릴레이션이 보이스/코드 정규형을 만족하면서, 다치 종속을 제거해야 만족

@@ -95,7 +95,7 @@ on delete set null
 
 - ERD
 
-![image.png](assets/image.png)
+![image.png](/개발%20(CS)/데이터베이스/Oracle/assets/image.png)
 
 - 테이블 명세서
 
@@ -159,7 +159,7 @@ foreign key (item_id) references item_tmp(id)
 | 서비스 | 서비스관리테이블 | 서비스에 필요한 정보들 저장 | 서비스번호 | 이름,설명,장소 | 1) 하나의 서비스는 여러명의 회원에게 제공된다 |
 - ERD
 
-![image.png](assets/image-1.png)
+![image.png](/개발%20(CS)/데이터베이스/Oracle/assets/image-1.png)
 
 - 테이블 명세서
 
@@ -355,7 +355,7 @@ constraint REF_service_FK foreign key (service_id) references service(id)
 | 서비스 | 서비스관리테이블 | 서비스에 필요한 정보들 저장 | 서비스번호 | 이름,설명,장소 | 1) 하나의 서비스는 하나의 회사에게 제공된다 |
 - ERD
 
-![image.png](assets/image-2.png)
+![image.png](/개발%20(CS)/데이터베이스/Oracle/assets/image-2.png)
 
 - 테이블명세서
 
@@ -513,7 +513,7 @@ insert into service2 values (4, 'humanIT', 'edu', 'suwon', 1);
 | 서비스 | 서비스관리테이블 | 서비스에 필요한 정보들 저장 | 서비스번호 | 이름,설명,장소 | 1) 하나의 서비스는 하나의 회사에게 제공된다 |
 - ERD
 
-![image.png](assets/image-3.png)
+![image.png](/개발%20(CS)/데이터베이스/Oracle/assets/image-3.png)
 
 - 테이블명세서
 

@@ -117,4 +117,4 @@ fg           " vim으로 되돌아오기
 
 예) `Ctrl + v` → `Ctrl + m` → `^M`
 
-![Untitled](assets/Untitled_1.png)
+![Untitled](/개발%20(CS)/인프라/Linux/assets/Untitled_1.png)

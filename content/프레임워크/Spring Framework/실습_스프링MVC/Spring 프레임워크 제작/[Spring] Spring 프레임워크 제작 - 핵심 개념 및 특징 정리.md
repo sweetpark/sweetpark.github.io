@@ -25,10 +25,10 @@ modified: 2026-09-05
 
 Servlet을 각 URL마다 여러 개 만들면 파라미터 처리·뷰 포워딩 같은 공통 로직이 서블릿마다 중복된다. 이를 막기 위해 하나의 FrontController가 모든 요청을 받아 적절한 핸들러로 위임하는 구조를 만들고, 핸들러마다 메서드 시그니처가 달라 FrontController가 직접 호출할 수 없는 문제는 Adapter 패턴으로 해결한다 — 이는 실제 Spring MVC의 DispatcherServlet과 HandlerAdapter가 쓰는 구조와 동일하며, 이 프로젝트는 그 원리를 직접 만들어보며 이해하는 것이 목적이다.
 
-![image.png](assets/image.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/Spring%20프레임워크%20제작/assets/image.png)
 
 ### 구현 이미지
-![image.png](assets/image-1.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/Spring%20프레임워크%20제작/assets/image-1.png)
 
 ### 참고
 - GitSource: [sweetpark/Servlet_Ex](https://github.com/sweetpark/Servlet_Ex)

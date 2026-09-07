@@ -23,7 +23,7 @@ modified: 2026-09-05
 
 - DB에 직접 접근하는 것을 방지하는 출입구 역할(허용된 사람만 접근 가능)
 
-![Untitled](assets/Untitled.png)
+![Untitled](/개발%20(CS)/인프라/인프라%20기초%20지식/assets/Untitled.png)
 
 동작 흐름:
 
@@ -35,13 +35,13 @@ modified: 2026-09-05
 - 데이터 정보를 사용할 수 있도록 만들어진 규격
 - 오픈 API / 비공개 API로 구분 (예: 기상청 API = 오픈 API)
 
-![Untitled](assets/Untitled-1.png)
+![Untitled](/개발%20(CS)/인프라/인프라%20기초%20지식/assets/Untitled-1.png)
 
 - API 사용 매뉴얼(예: 기상청 API)
     - 어떤 정보를 전달받기 위해 어떤 방식으로 요청해야 하는지
     - 응답 결과는 어떻게 이루어지는지에 대한 내용이 기재됨
 
-![Untitled](assets/Untitled-2.png)
+![Untitled](/개발%20(CS)/인프라/인프라%20기초%20지식/assets/Untitled-2.png)
 
 > [!NOTE]
 > 왜 오픈 API를 제공하는가? (매뉴얼 작성, 별도 규격 필요에도 불구하고)

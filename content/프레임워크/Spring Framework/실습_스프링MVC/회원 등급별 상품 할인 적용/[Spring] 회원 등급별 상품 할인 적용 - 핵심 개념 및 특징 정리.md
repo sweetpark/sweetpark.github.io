@@ -29,16 +29,16 @@ modified: 2026-09-05
 
 - 주문 도메인 클래스 다이어그램
 
-![image.png](assets/image.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/회원%20등급별%20상품%20할인%20적용/assets/image.png)
 
 ### 구현 이미지
 - 멤버 조회
 
-![image.png](assets/image-1.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/회원%20등급별%20상품%20할인%20적용/assets/image-1.png)
 
 - 주문 조회
 
-![image.png](assets/image-2.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/회원%20등급별%20상품%20할인%20적용/assets/image-2.png)
 
 ### 참고
 - GitSource: [sweetpark/SpringBasic](https://github.com/sweetpark/SpringBasic)

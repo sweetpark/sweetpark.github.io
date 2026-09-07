@@ -15,7 +15,7 @@ modified: 2026-09-05
 
 - **가비아**: 회원가입 → 로그인 → 도메인 구매 → Route 53 설정 후 네임서버 변경(관리 → 1·2·3·4차)
 
-![image.png](assets/image.png)
+![image.png](/개발%20(CS)/인프라/모니터링·네트워크/assets/image.png)
 
 - **AWS Route 53**: 호스팅 영역 생성
     - **NS 레코드**: 도메인의 호스팅 영역을 관리하는 네임서버(가비아 설정에 사용됨)
@@ -24,7 +24,7 @@ modified: 2026-09-05
 
 ### SSL/TLS Handshake
 
-![TEST.jpg](assets/TEST.jpg)
+![TEST.jpg](/개발%20(CS)/인프라/모니터링·네트워크/assets/TEST.jpg)
 
 - **Certbot의 역할** → 서버 인증서 자동화 툴
     - 서버에서 CA에 인증서를 요청할 때 사용할 공개키/개인키를 생성

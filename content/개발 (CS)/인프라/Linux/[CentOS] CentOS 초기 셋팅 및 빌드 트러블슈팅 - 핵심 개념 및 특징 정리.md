@@ -87,7 +87,7 @@ yum install net-tools epel-release subversion gcc glibc-devel
 3. 게스트 OS 내부에서 `/etc/sysconfig/network-scripts/ifcfg-ens*` 파일에 고정 IP 직접 기입(`BOOTPROTO=none`, `IPADDR=`, `NETMASK=`, `GATEWAY=`)
 4. 네트워크 서비스 재시작 또는 재부팅 후 `ifconfig`로 확인
 
-![network fixed IP 설정 예시](assets/centos-vmware-fixed-ip.png)
+![network fixed IP 설정 예시](/개발%20(CS)/인프라/Linux/assets/centos-vmware-fixed-ip.png)
 
 - 참고: [리눅스 CentOS 7 고정 IP 할당하기](https://ansan-survivor.tistory.com/305)
 

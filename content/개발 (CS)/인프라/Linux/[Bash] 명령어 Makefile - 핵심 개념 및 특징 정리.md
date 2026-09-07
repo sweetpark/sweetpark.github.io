@@ -14,7 +14,7 @@ modified: 2026-09-05
 
 ### 기본 구조
 
-![Untitled](assets/Untitled.png)
+![Untitled](/개발%20(CS)/인프라/Linux/assets/Untitled.png)
 
 Makefile 구성 요소:
 
@@ -87,9 +87,9 @@ gcc -o diary_exe main.o memo.o calendar.o
 
 ### 4. Makefile 이용
 
-![Untitled](assets/Untitled-1.png)
+![Untitled](/개발%20(CS)/인프라/Linux/assets/Untitled-1.png)
 
-![Untitled](assets/Untitled-2.png)
+![Untitled](/개발%20(CS)/인프라/Linux/assets/Untitled-2.png)
 
 ```bash
 make          # makefile 실행
@@ -98,7 +98,7 @@ make clean    # object 파일들과 diary_exe 제거
 
 ### 5. 매크로 활용
 
-![Untitled](assets/Untitled-3.png)
+![Untitled](/개발%20(CS)/인프라/Linux/assets/Untitled-3.png)
 
 ```makefile
 # 아래 두 줄은 동일한 표현

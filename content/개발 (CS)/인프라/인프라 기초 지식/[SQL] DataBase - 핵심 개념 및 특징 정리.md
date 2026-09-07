@@ -38,7 +38,7 @@ modified: 2026-09-05
 - WAS와 DB는 Scale Out이 될 경우 분리되어야 한다.
 - **스케일 아웃**: 접속된 서버의 대수를 늘려 처리 능력을 향상
 
-![Untitled](assets/Untitled_2.png)
+![Untitled](/개발%20(CS)/인프라/인프라%20기초%20지식/assets/Untitled_2.png)
 
 ### SQL 분류 (DDL / DML / DCL)
 

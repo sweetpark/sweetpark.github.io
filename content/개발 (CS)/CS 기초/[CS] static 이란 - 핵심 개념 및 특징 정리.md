@@ -21,7 +21,7 @@ modified: 2026-09-05
 - Global Static Area라는 메모리 공간에 저장되며, 이는 heap 과 stack 영역이 아니다
 - 프로그램 시작 시 할당되어 종료될 때까지 유지된다
 
-![Untitled](assets/Untitled_2.png)
+![Untitled](/개발%20(CS)/CS%20기초/assets/Untitled_2.png)
 
 *(Code Area - 코드가 담기는 공간)
 

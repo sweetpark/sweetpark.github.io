@@ -21,7 +21,7 @@ Spring (`@ExceptionHandler`, `@ControllerAdvice`, AOP)
 
 [exception 과정.drawio](assets/exception_%E1%84%80%E1%85%AA%E1%84%8C%E1%85%A5%E1%86%BC.drawio)
 
-![exception 과정.jpg](assets/exception_%EA%B3%BC%EC%A0%95.jpg)
+![exception 과정.jpg](/프레임워크/Spring%20Framework/실습_스프링MVC/assets/exception_과정.jpg)
 
 ### 공통예외처리
 

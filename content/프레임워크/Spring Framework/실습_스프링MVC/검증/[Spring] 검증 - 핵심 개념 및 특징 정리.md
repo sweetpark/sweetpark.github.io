@@ -38,14 +38,14 @@ modified: 2026-09-05
 타입 검증과 필드 검증을 구분한 이유는 발생 시점과 처리 방식이 다르기 때문이다. 타입 검증(가격/수량에 문자 입력)은 스프링이 데이터 바인딩 시점에 자동으로 typeMismatch 오류로 잡아내는 반면, 필드 검증(필수값, 범위)은 개발자가 @NotBlank·@Range 같은 애노테이션을 명시적으로 선언해야 검증된다. "가격 * 수량의 합" 같은 여러 필드에 걸친 복합 조건은 단일 필드 애노테이션으로 표현할 수 없어 별도의 글로벌 검증 로직으로 처리해야 하며, 등록과 수정에서 검증 규칙이 다른 이유(수정 시 수량 무제한 등)도 도메인 요구사항 자체가 등록/수정 시점마다 다르기 때문이다.
 
 ### 도메인 설계
-![image.png](assets/image.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/검증/assets/image.png)
 
-![image.png](assets/image-1.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/검증/assets/image-1.png)
 
 ### 구현 이미지
-![image.png](assets/image-2.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/검증/assets/image-2.png)
 
-![image.png](assets/image-3.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/검증/assets/image-3.png)
 
 ### 참고
 - GitSource: [sweetpark/SpringThymeleaf](https://github.com/sweetpark/SpringThymeleaf)

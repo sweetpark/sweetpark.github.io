@@ -46,7 +46,7 @@ modified: 2026-09-05
 - `Data → Segment → Datagram → Frame`
 - 위 과정을 데이터 캡슐화 과정이라고 함
 
-![Untitled](assets/Untitled.png)
+![Untitled](/개발%20(CS)/네트워크/assets/Untitled.png)
 
 **1계층 (물리계층)**
 
@@ -100,7 +100,7 @@ modified: 2026-09-05
 
 ### TCP/IP 4계층 (실제로 많이 사용)
 
-![Untitled](assets/Untitled-1.png)
+![Untitled](/개발%20(CS)/네트워크/assets/Untitled-1.png)
 
 **1계층 (Network Access Layer) - MAC 정보**
 
@@ -128,7 +128,7 @@ modified: 2026-09-05
 
 #### TCP 헤더 (20 byte) — 전송계층 (OSI 4계층, TCP/IP 3계층)
 
-![Untitled](assets/Untitled-2.png)
+![Untitled](/개발%20(CS)/네트워크/assets/Untitled-2.png)
 
 - Source Port [2 byte] : 출발지 포트 번호
 - Destination Port [2 byte] : 목적지 포트 번호
@@ -139,11 +139,11 @@ modified: 2026-09-05
 > [!NOTE]
 > 3-way-handshake
 >
-> ![Untitled](assets/Untitled-3.png)
+> ![Untitled](/개발%20(CS)/네트워크/assets/Untitled-3.png)
 
 #### UDP 헤더 (8 byte)
 
-![Untitled](assets/Untitled-4.png)
+![Untitled](/개발%20(CS)/네트워크/assets/Untitled-4.png)
 
 - 출발지 포트 [2 byte]
 - 목적지 포트 [2 byte]
@@ -151,7 +151,7 @@ modified: 2026-09-05
 
 #### IPv4 헤더 (20 byte) — 네트워크 계층 (OSI 3계층, TCP/IP 2계층)
 
-![Untitled](assets/Untitled-5.png)
+![Untitled](/개발%20(CS)/네트워크/assets/Untitled-5.png)
 
 - Version : ipv4
 - IHL (ip header length) : ip 헤더 길이
@@ -161,7 +161,7 @@ modified: 2026-09-05
 
 #### IPv6 헤더 (40 byte)
 
-![Untitled](assets/Untitled-6.png)
+![Untitled](/개발%20(CS)/네트워크/assets/Untitled-6.png)
 
 - Source Address [12 byte]
 - Destination Address [12 byte]
@@ -171,7 +171,7 @@ modified: 2026-09-05
 > [!NOTE]
 > IP 주소 → MAC 주소 변환
 
-![Untitled](assets/Untitled-7.png)
+![Untitled](/개발%20(CS)/네트워크/assets/Untitled-7.png)
 
 - Hardware type : 네트워크 유형 (ethernet은 0x0001로 설정)
 - protocol type : 프로토콜 정의 (ipv4 → 0x0800)
@@ -185,7 +185,7 @@ modified: 2026-09-05
 
 #### ICMP 헤더 (8 byte)
 
-![Untitled](assets/Untitled-8.png)
+![Untitled](/개발%20(CS)/네트워크/assets/Untitled-8.png)
 
 - type : 패킷 내에 어떠한 종류의 ICMP 메시지가 존재하는지 정의
     - 0 : Echo Reply (ICMP에 대한 응답)
@@ -198,7 +198,7 @@ modified: 2026-09-05
 > [!NOTE]
 > OSPF: 라우팅 프로토콜로서 최단 경로 우선 알고리즘 사용 (⇒ IP 헤더 + OSPF 공통 헤더)
 
-![Untitled](assets/Untitled-9.png)
+![Untitled](/개발%20(CS)/네트워크/assets/Untitled-9.png)
 
 - version : ospf 버전
 - type : 전송되는 메시지 종류
@@ -211,13 +211,13 @@ modified: 2026-09-05
 > [!NOTE]
 > MAC → IP 주소 변환
 
-![Untitled](assets/Untitled-10.png)
+![Untitled](/개발%20(CS)/네트워크/assets/Untitled-10.png)
 
 - ARP 프로토콜 구조를 그대로 따르지만, 필드값이 다르다
 
 #### 이더넷 헤더 (OSI 2계층, TCP/IP 1계층)
 
-![Untitled](assets/Untitled-11.png)
+![Untitled](/개발%20(CS)/네트워크/assets/Untitled-11.png)
 
 - preamble, SFD : 물리계층에 속함 (MAC 프레임에 포함 X)
 - MAC dst/src : 목적지/출발지 MAC 주소 (앞 24bit - 제조사 번호, 뒤 24bit - 랜카드 정보(일련번호))

@@ -28,12 +28,12 @@ modified: 2026-09-05
 
 상품등록 도메인
 
-![image.png](assets/image.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/상품%20등록%20및%20조회%20수정/assets/image.png)
 
 #### 구현 이미지
-![image.png](assets/image-1.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/상품%20등록%20및%20조회%20수정/assets/image-1.png)
 
-![image.png](assets/image-2.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/상품%20등록%20및%20조회%20수정/assets/image-2.png)
 
 #### 참고
 - GitSource: [sweetpark/ShopItemRegister](https://github.com/sweetpark/ShopItemRegister)
@@ -47,11 +47,11 @@ modified: 2026-09-05
 - thymeleaf
 
 #### 구현 이미지
-![image.png](assets/image-3.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/상품%20등록%20및%20조회%20수정/assets/image-3.png)
 
-![image.png](assets/image-4.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/상품%20등록%20및%20조회%20수정/assets/image-4.png)
 
-![image.png](assets/image-5.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/상품%20등록%20및%20조회%20수정/assets/image-5.png)
 
 #### 참고
 - GitSource: [sweetpark/SpringThymeleaf (ThymeleafUI)](https://github.com/sweetpark/SpringThymeleaf/tree/ThymeleafUI)

@@ -511,15 +511,15 @@ modified: 2026-09-05
             - 파티션 : 파티션1, 파티션2
             - 볼륨 : C드라이브, D드라이브, LVM(⇒ 파티션1 + 파티션2)
             
-            ![Untitled](assets/Untitled.png)
+            ![Untitled](/자격증/NCA/assets/Untitled.png)
             
         - 파일시스템 : 파일이 저장되어야하는 규약
         
-        ![Untitled](assets/Untitled-1.png)
+        ![Untitled](/자격증/NCA/assets/Untitled-1.png)
         
         - 클러스터 : 입출력 I/O의 효율성을 위해 데이터를 가공하는 단위
         
-        ![Untitled](assets/Untitled-2.png)
+        ![Untitled](/자격증/NCA/assets/Untitled-2.png)
         
     
     ---

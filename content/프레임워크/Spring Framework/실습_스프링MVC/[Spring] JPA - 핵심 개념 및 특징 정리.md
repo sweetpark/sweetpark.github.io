@@ -83,7 +83,7 @@ public class TasteDetail {
 //id값으로 들어감 (JPA가 내부적으로 객체로 반환하게 함)
 ```
 
-![image.png](assets/image.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/assets/image.png)
 
 ## 관련 문서
 

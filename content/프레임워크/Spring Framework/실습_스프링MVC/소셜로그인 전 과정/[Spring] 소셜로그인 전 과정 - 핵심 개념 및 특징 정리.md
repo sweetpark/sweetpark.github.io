@@ -18,7 +18,7 @@ modified: 2026-09-05
 ## ⚙️ 구현
 - [소셜로그인과정.drawio](assets/%EC%86%8C%EC%85%9C%EB%A1%9C%EA%B7%B8%EC%9D%B8%EA%B3%BC%EC%A0%95.drawio)
 
-![소셜로그인과정.jpg](assets/%EC%86%8C%EC%85%9C%EB%A1%9C%EA%B7%B8%EC%9D%B8%EA%B3%BC%EC%A0%95.jpg)
+![소셜로그인과정.jpg](/프레임워크/Spring%20Framework/실습_스프링MVC/소셜로그인%20전%20과정/assets/소셜로그인과정.jpg)
 
 ## 🔁 회고/배운 점
 

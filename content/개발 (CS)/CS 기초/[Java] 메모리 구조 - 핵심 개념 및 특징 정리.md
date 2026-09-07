@@ -15,7 +15,7 @@ modified: 2026-09-05
 
 ## 📌 개념
 
-![Untitled](assets/Untitled.png)
+![Untitled](/개발%20(CS)/CS%20기초/assets/Untitled.png)
 
 - **코드 영역 (Code / Text Area)**
     - 텍스트 영역이라고도 부름

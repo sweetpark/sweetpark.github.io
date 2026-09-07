@@ -13,7 +13,7 @@ modified: 2026-09-05
 
 ### Application Server
 
-![Untitled](assets/Untitled_1.png)
+![Untitled](/개발%20(CS)/인프라/인프라%20기초%20지식/assets/Untitled_1.png)
 
 - 서버 그 자체를 의미
 - 네트워크를 통해 서버와 End Point 간 통신을 할 수 있는 서버
@@ -27,7 +27,7 @@ modified: 2026-09-05
 
 ### Web Server
 
-![Untitled](assets/Untitled-1_1.png)
+![Untitled](/개발%20(CS)/인프라/인프라%20기초%20지식/assets/Untitled-1_1.png)
 
 - Web Server는 HTTP 프로토콜을 주로 처리하는 서버(단순한 문서 조회)
     - **Apache**: 정적 처리에 특화된 웹서버
@@ -44,9 +44,9 @@ modified: 2026-09-05
 
 ### Web Server와 Database 연동
 
-![Untitled](assets/Untitled-2_1.png)
+![Untitled](/개발%20(CS)/인프라/인프라%20기초%20지식/assets/Untitled-2_1.png)
 
-![Untitled](assets/Untitled-3.png)
+![Untitled](/개발%20(CS)/인프라/인프라%20기초%20지식/assets/Untitled-3.png)
 
 - **Web Server와 WAS를 같이 쓰는 이유**
     - WAS는 정적 처리를 할 때 부하가 심하게 걸림
@@ -58,7 +58,7 @@ modified: 2026-09-05
 > 1) 한 개의 WAS는 부하가 쉽게 걸리므로 여러 개의 WAS를 설치
 > 2) 여러 WAS에게 요청을 보낼 때 Web Server가 적절히 배분
 
-![Untitled](assets/Untitled-4.png)
+![Untitled](/개발%20(CS)/인프라/인프라%20기초%20지식/assets/Untitled-4.png)
 
 - Apache: 정적 처리에 특화된 웹서버
 - Tomcat: 동적 처리에 사용되는 Web Application Server
@@ -70,7 +70,7 @@ modified: 2026-09-05
     - 동적 데이터 → mypage (사용자에 따라 페이지가 달라짐, 데이터 가공 필요)
     - container(데이터 가공, 동적) → Web Server로 정적 데이터를 보냄
 
-![Untitled](assets/Untitled-5.png)
+![Untitled](/개발%20(CS)/인프라/인프라%20기초%20지식/assets/Untitled-5.png)
 
 - HTTP 프로토콜을 이용하는 Application Server
 - 문서 조회 및 전자상거래, 파일 공유 기능 사용 가능

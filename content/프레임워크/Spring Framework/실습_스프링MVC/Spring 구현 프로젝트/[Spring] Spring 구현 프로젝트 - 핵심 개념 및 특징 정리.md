@@ -33,15 +33,15 @@ modified: 2026-09-05
     - Spring에서 Servlet을 사용하는 구간
     - Spring에서 Adapter의 역할
 
-![image.png](assets/image.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/Spring%20구현%20프로젝트/assets/image.png)
 
 #### 구현 이미지
-![image.png](assets/image-1.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/Spring%20구현%20프로젝트/assets/image-1.png)
 
 ### 1. 순수 Servlet 요청 처리 방법
 - Response html 직접 작성
 
-![image.png](assets/image-2.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/Spring%20구현%20프로젝트/assets/image-2.png)
 
 - HttpServlet을 이용하여, Service를 오버로딩하여 요청에 대한 처리 응답을 작성한다
 - HttpServletRequest를 통해 요청을 받고, HttpServletResponse를 이용해서 응답을 실행
@@ -81,7 +81,7 @@ public class MemberSaveServlet extends HttpServlet {
 ### 2. Servlet View Render 방법
 - jsp 이용 (+ RequestDispatcher)
 
-![image.png](assets/image-3.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/Spring%20구현%20프로젝트/assets/image-3.png)
 
 - RequestDispatcher를 이용하여, 요구한 요청에 맞는 페이지를 리다이렉트해준다.
     - response.sendRedirect()를 이용할경우, 리다이렉트 이후 해당 url에 대해 브라우저가 재요청하기에 2번의 요청이 생길 수 있기에 RequestDispatcher를 이용하여 한번의 요청으로 처리할 수 있도록 구현
@@ -102,7 +102,7 @@ public class MvcMemberFormServlet extends HttpServlet {
 ### 3. Dispatcher Servlet이용
 - Handler Mapping을 통해, 원하는 Controller 호출
 
-![image.png](assets/image-4.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/Spring%20구현%20프로젝트/assets/image-4.png)
 
 #### 버전 1
 - UrlPattern을 이용해서, 요청 Url 필터링
@@ -274,7 +274,7 @@ public class FrontControllerServletV4 extends HttpServlet {
 - 인터페이스 활용
     - Adapater의 handle() / support() 메서드는 인터페이스에 있으므로 캐스팅을 통해서 구현체를 호출 할 수 있다 (따라서, 인터페이스가 없다면 효율적으로 구현할 수 없다)
 
-![image.png](assets/image-5.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/Spring%20구현%20프로젝트/assets/image-5.png)
 
 ```java
 @WebServlet(name="frontControllerServletV5", urlPatterns = "/front-controller/v5/*")
@@ -348,7 +348,7 @@ public class FrontControllerServletV5 extends HttpServlet {
 ### 4. Spring 이용
 - 어노테이션을 이용한 Controller호출
 
-![image.png](assets/image-6.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/Spring%20구현%20프로젝트/assets/image-6.png)
 
 - 어노테이션
     - @Controller : spring이 빈에 등록하여 Controller로서 인식

@@ -26,9 +26,9 @@ modified: 2026-09-05
 메시지 Bean으로 UI 텍스트를 코드에서 분리해두면, 문구 변경이나 다국어 지원이 필요할 때 소스 코드를 건드리지 않고 로케일별 프로퍼티 파일만 교체·추가하면 되므로 유지보수와 국제화 대응이 쉬워진다.
 
 ### 구현 이미지
-![image.png](assets/image.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/메시지,%20국제화/assets/image.png)
 
-![image.png](assets/image-1.png)
+![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/메시지,%20국제화/assets/image-1.png)
 
 ### 참고
 - GitSource: [sweetpark/SpringThymeleaf (MessageInternational)](https://github.com/sweetpark/SpringThymeleaf/tree/MessageInternational)

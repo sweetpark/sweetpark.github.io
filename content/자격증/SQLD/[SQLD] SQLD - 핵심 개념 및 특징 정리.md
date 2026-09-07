@@ -16,11 +16,11 @@ modified: 2026-09-05
 
 ---
 
-![Untitled](assets/Untitled.png)
+![Untitled](/자격증/SQLD/assets/Untitled.png)
 
 ㅣ
 
-![Untitled](assets/Untitled-1.png)
+![Untitled](/자격증/SQLD/assets/Untitled-1.png)
 
 - trigger → DML 정도 사용 가능
 
@@ -191,7 +191,7 @@ modified: 2026-09-05
     - 해당 컬럼 길이 구하기
         - 줄바꿈도 “1”로 생각
         
-        ![Untitled](assets/Untitled-2.png)
+        ![Untitled](/자격증/SQLD/assets/Untitled-2.png)
         
         ⇒ ROWNUM(1) = 3 / ROWNUM(2) = 5
         
@@ -340,11 +340,11 @@ modified: 2026-09-05
 
 - SELECT T1.OrderID, T1.CustomerID, T2.CustomerName, T3.ProductID, T3.Quantity, T4.ProductName, T4.Price as UnitPrice FROM Orders T1, Customers T2, OrderDetails T3, Products T4 where T1.CustomerID = T2.CustomerID And T1.OrderID = T3.OrderID AND T1.OrderID = 10248 AND T3.ProductID = T4.ProductID;
 
-![Untitled](assets/Untitled-3.png)
+![Untitled](/자격증/SQLD/assets/Untitled-3.png)
 
 - SELECT T1.OrderID, T1.CustomerID, T2.CustomerName, T3.ProductID, T3.Quantity, T4.ProductName, T4.Price as UnitPrice, (T4.Price*T3.Quantity) as TotalPrice FROM Orders T1, Customers T2, OrderDetails T3, Products T4 where T1.CustomerID = T2.CustomerID And T1.OrderID = T3.OrderID AND T1.OrderID = 10248 AND T3.ProductID = T4.ProductID;
 
-![Untitled](assets/Untitled-4.png)
+![Untitled](/자격증/SQLD/assets/Untitled-4.png)
 
 > [!NOTE]
 > as : 필드명 (별명) ⇒ 결과에 표시
