@@ -147,6 +147,51 @@ export default (() => {
   var POPULAR_TIME_KEY = "gc_popular_posts_time";
   var CACHE_TTL_MS = 60 * 1000; // 1분 (기존 30분)
 
+  var CATEGORY_META = {
+    "개발-(cs)": { icon: "💻", color: "#4a7fb5" },
+    "프레임워크": { icon: "🔧", color: "#5c9e6f" },
+    "개발-실무": { icon: "🛠️", color: "#d98c4a" },
+    "프로젝트": { icon: "🚀", color: "#8a6fc9" },
+    "코딩테스트": { icon: "🧩", color: "#d1555a" },
+    "자격증": { icon: "📜", color: "#d1b23a" },
+    "ai-도구": { icon: "🤖", color: "#3fada8" }
+  };
+  var DEFAULT_CATEGORY_META = { icon: "📄", color: "#9a9a9a" };
+
+  function categoryFromHref(href) {
+    try {
+      var url = new URL(href, location.href);
+      var parts = decodeURIComponent(url.pathname).split("/").filter(Boolean);
+      return parts[0] || "";
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function enhanceRecentNotesCards() {
+    var list = document.querySelector(".recent-notes .recent-ul");
+    if (!list) return;
+
+    var items = list.querySelectorAll(".recent-li");
+    for (var i = 0; i < items.length; i++) {
+      var li = items[i];
+      var link = li.querySelector(".desc a.internal");
+      if (!link) continue;
+
+      var category = categoryFromHref(link.getAttribute("href"));
+      var meta = CATEGORY_META[category] || DEFAULT_CATEGORY_META;
+      li.setAttribute("data-category", category);
+
+      if (!li.querySelector(".recent-card-icon")) {
+        var badge = document.createElement("div");
+        badge.className = "recent-card-icon";
+        badge.style.background = "linear-gradient(135deg, " + meta.color + "cc, " + meta.color + "55)";
+        badge.textContent = meta.icon;
+        li.insertBefore(badge, li.firstChild);
+      }
+    }
+  }
+
   function isPageReload() {
     try {
       var nav = performance.getEntriesByType && performance.getEntriesByType("navigation");
@@ -362,6 +407,7 @@ export default (() => {
     addGlobalGraphBtn();
     updatePageViews();
     fetchAndRenderPopularPosts();
+    enhanceRecentNotesCards();
   }
 
   if (document.readyState === "loading") {
