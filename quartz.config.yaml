@@ -213,7 +213,7 @@ plugins:
     enabled: true
     options:
       links:
-        About: ./About
+        About: /About
         GitHub: https://github.com/sweetpark
     layout:
       position: footer
