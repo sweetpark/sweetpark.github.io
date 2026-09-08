@@ -280,6 +280,7 @@ export default (() => {
     var siblings = Object.keys(indexData)
       .map(function(slug) { return indexData[slug]; })
       .filter(function(entry) {
+        if (entry.slug === "index" || entry.slug.slice(-6) === "/index") return false;
         var entryParts = entry.slug.split("/");
         entryParts.pop();
         return entryParts.join("/") === parentFolder;
