@@ -154,7 +154,8 @@ export default (() => {
     "프로젝트": { icon: "🚀", color: "#8a6fc9" },
     "코딩테스트": { icon: "🧩", color: "#d1555a" },
     "자격증": { icon: "📜", color: "#d1b23a" },
-    "ai-도구": { icon: "🤖", color: "#3fada8" }
+    "ai-도구": { icon: "🤖", color: "#3fada8" },
+    "도메인": { icon: "🌐", color: "#5aa5c0" }
   };
   var DEFAULT_CATEGORY_META = { icon: "📄", color: "#9a9a9a" };
 
