@@ -324,10 +324,14 @@ export default (() => {
     if (!isEligibleForPrevNext(slug)) return;
 
     var footer = document.querySelector(".page-footer");
-    if (!footer || footer.querySelector(".prev-next-nav")) return;
+    if (!footer) return;
     if (typeof fetchData === "undefined") return;
 
     fetchData.then(function(data) {
+      // 초기 로드 시 DOMContentLoaded와 "nav" 이벤트가 거의 동시에 발생해
+      // renderPrevNext()가 중복 호출될 수 있으므로, 비동기 콜백 안에서
+      // (삽입 직전) 다시 한번 중복 여부를 확인해야 경쟁 조건을 막을 수 있다.
+      if (footer.querySelector(".prev-next-nav")) return;
       var result = findPrevNext(data, slug);
       if (!result || (!result.prev && !result.next)) return;
       footer.insertBefore(renderPrevNextNav(result), footer.firstChild);
