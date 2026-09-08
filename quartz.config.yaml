@@ -193,10 +193,19 @@ plugins:
       priority: 5
       condition: not-index
   - source: "@quartz-community/comments"
-    enabled: false
+    enabled: true
     options:
       provider: giscus
-      options: {}
+      options:
+        repo: "sweetpark/sweetpark.github.io"
+        repoId: "R_kgDOUO0PxA"
+        category: "Announcements"
+        categoryId: "DIC_kwDOUO0PxM4DFJLd"
+        mapping: pathname
+        lightTheme: light
+        darkTheme: dark
+        reactionsEnabled: true
+        inputPosition: top
     layout:
       position: afterBody
       priority: 10
