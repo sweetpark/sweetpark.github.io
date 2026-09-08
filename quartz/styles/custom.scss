@@ -381,3 +381,53 @@
   }
 }
 
+// =============================================================================
+// Prev/Next 네비게이션
+// =============================================================================
+.prev-next-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 0 0 1.5rem 0;
+
+  .prev-next-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--lightgray);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--dark);
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+
+    &:hover {
+      border-color: var(--secondary);
+      background-color: var(--highlight);
+    }
+  }
+
+  .next-link {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .prev-next-label {
+    font-size: 0.75rem;
+    color: var(--darkgray);
+  }
+
+  .prev-next-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .prev-next-empty {
+    visibility: hidden;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+

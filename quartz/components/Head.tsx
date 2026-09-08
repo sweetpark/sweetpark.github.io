@@ -257,6 +257,82 @@ export default (() => {
     });
   }
 
+  function currentSlugFromLocation() {
+    var segments = decodeURIComponent(location.pathname).split("/").filter(Boolean);
+    return segments.join("/");
+  }
+
+  function isEligibleForPrevNext(slug) {
+    if (!slug) return false;
+    if (slug.indexOf("tags/") === 0) return false;
+    if (slug === "404") return false;
+    return true;
+  }
+
+  function findPrevNext(indexData, currentSlug) {
+    var currentEntry = indexData[currentSlug];
+    if (!currentEntry) return null;
+
+    var parts = currentSlug.split("/");
+    parts.pop();
+    var parentFolder = parts.join("/");
+
+    var siblings = Object.keys(indexData)
+      .map(function(slug) { return indexData[slug]; })
+      .filter(function(entry) {
+        var entryParts = entry.slug.split("/");
+        entryParts.pop();
+        return entryParts.join("/") === parentFolder;
+      })
+      .sort(function(a, b) {
+        return (a.title || "").localeCompare(b.title || "", "ko");
+      });
+
+    var idx = -1;
+    for (var i = 0; i < siblings.length; i++) {
+      if (siblings[i].slug === currentSlug) { idx = i; break; }
+    }
+    if (idx === -1 || siblings.length <= 1) return null;
+
+    return {
+      prev: idx > 0 ? siblings[idx - 1] : null,
+      next: idx < siblings.length - 1 ? siblings[idx + 1] : null
+    };
+  }
+
+  function renderPrevNextNav(result) {
+    var prevHtml = result.prev
+      ? '<a class="prev-next-link prev-link" href="/' + result.prev.slug + '">' +
+          '<span class="prev-next-label">← 이전 글</span>' +
+          '<span class="prev-next-title">' + result.prev.title + "</span></a>"
+      : '<span class="prev-next-link prev-next-empty"></span>';
+    var nextHtml = result.next
+      ? '<a class="prev-next-link next-link" href="/' + result.next.slug + '">' +
+          '<span class="prev-next-label">다음 글 →</span>' +
+          '<span class="prev-next-title">' + result.next.title + "</span></a>"
+      : '<span class="prev-next-link prev-next-empty"></span>';
+
+    var nav = document.createElement("nav");
+    nav.className = "prev-next-nav";
+    nav.innerHTML = prevHtml + nextHtml;
+    return nav;
+  }
+
+  function renderPrevNext() {
+    var slug = currentSlugFromLocation();
+    if (!isEligibleForPrevNext(slug)) return;
+
+    var footer = document.querySelector(".page-footer");
+    if (!footer || footer.querySelector(".prev-next-nav")) return;
+    if (typeof fetchData === "undefined") return;
+
+    fetchData.then(function(data) {
+      var result = findPrevNext(data, slug);
+      if (!result || (!result.prev && !result.next)) return;
+      footer.insertBefore(renderPrevNextNav(result), footer.firstChild);
+    }).catch(function() {});
+  }
+
   function isPageReload() {
     try {
       var nav = performance.getEntriesByType && performance.getEntriesByType("navigation");
@@ -475,6 +551,7 @@ export default (() => {
     enhanceRecentNotesCards();
     localizeReadingTime();
     renderTagCloud();
+    renderPrevNext();
   }
 
   if (document.readyState === "loading") {
