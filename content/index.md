@@ -21,4 +21,10 @@ title: 차근차근정확하게
 - [자격증](자격증) — 정보처리기사, SQLD, NCA 등 자격증 정리
 - [AI 도구](AI%20도구) — AI 도구 활용법과 에이전트 설정
 
+## 🏷️ 인기 태그
+
+<div id="tag-cloud" class="tag-cloud">
+  <div class="tag-cloud-loading">태그를 불러오는 중입니다...</div>
+</div>
+
 왼쪽 탐색기에서 폴더별로 둘러보시거나, 검색으로 원하는 주제를 찾아보세요.

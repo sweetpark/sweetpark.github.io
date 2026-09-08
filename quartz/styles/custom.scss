@@ -336,4 +336,48 @@
   }
 }
 
+// =============================================================================
+// 인기 태그 (태그클라우드)
+// =============================================================================
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 2rem 0;
+
+  .tag-cloud-empty,
+  .tag-cloud-loading {
+    color: var(--darkgray);
+    font-size: 0.9rem;
+  }
+
+  .tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    background-color: var(--lightgray);
+    color: var(--darkgray);
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+
+    &:hover {
+      background-color: var(--highlight);
+      color: var(--secondary);
+      transform: translateY(-1px);
+    }
+
+    .tag-pill-count {
+      font-size: 0.7rem;
+      opacity: 0.7;
+    }
+
+    &.tag-pill-4 { font-size: 1.05rem; font-weight: 700; color: var(--secondary); }
+    &.tag-pill-3 { font-size: 0.98rem; font-weight: 600; }
+    &.tag-pill-2 { font-size: 0.92rem; }
+    &.tag-pill-1 { font-size: 0.86rem; }
+    &.tag-pill-0 { font-size: 0.8rem; opacity: 0.85; }
+  }
+}
 

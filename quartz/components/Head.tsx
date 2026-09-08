@@ -207,6 +207,93 @@ export default (() => {
     }
   }
 
+  var CONTENT_INDEX_CACHE_KEY = "quartz_content_index_data";
+  var CONTENT_INDEX_TIME_KEY = "quartz_content_index_time";
+  var CONTENT_INDEX_TTL_MS = 5 * 60 * 1000; // 5분
+
+  var pendingContentIndexFetch = null;
+  function fetchContentIndex(callback) {
+    try {
+      var time = localStorage.getItem(CONTENT_INDEX_TIME_KEY);
+      var data = localStorage.getItem(CONTENT_INDEX_CACHE_KEY);
+      if (time && data && (Date.now() - parseInt(time, 10) < CONTENT_INDEX_TTL_MS)) {
+        callback(JSON.parse(data));
+        return;
+      }
+    } catch (e) {}
+
+    if (pendingContentIndexFetch) {
+      pendingContentIndexFetch.then(callback);
+      return;
+    }
+
+    pendingContentIndexFetch = fetch("/static/contentIndex.json")
+      .then(function(res) {
+        if (!res.ok) throw new Error("Status " + res.status);
+        return res.json();
+      })
+      .then(function(data) {
+        pendingContentIndexFetch = null;
+        try {
+          localStorage.setItem(CONTENT_INDEX_CACHE_KEY, JSON.stringify(data));
+          localStorage.setItem(CONTENT_INDEX_TIME_KEY, Date.now().toString());
+        } catch (e) {}
+        callback(data);
+        return data;
+      })
+      .catch(function() {
+        pendingContentIndexFetch = null;
+        callback({});
+      });
+  }
+
+  function computeTagFrequency(indexData) {
+    var freq = {};
+    var slugs = Object.keys(indexData);
+    for (var i = 0; i < slugs.length; i++) {
+      var tags = indexData[slugs[i]].tags || [];
+      for (var j = 0; j < tags.length; j++) {
+        freq[tags[j]] = (freq[tags[j]] || 0) + 1;
+      }
+    }
+    return freq;
+  }
+
+  function renderTagCloudHtml(freq, container) {
+    var entries = Object.keys(freq).map(function(tag) {
+      return { tag: tag, count: freq[tag] };
+    });
+    entries.sort(function(a, b) { return b.count - a.count; });
+    var top = entries.slice(0, 20);
+
+    if (top.length === 0) {
+      container.innerHTML = '<div class="tag-cloud-empty">아직 태그가 없습니다.</div>';
+      return;
+    }
+
+    var maxCount = top[0].count;
+    var minCount = top[top.length - 1].count;
+    var html = "";
+    for (var i = 0; i < top.length; i++) {
+      var item = top[i];
+      var ratio = maxCount === minCount ? 1 : (item.count - minCount) / (maxCount - minCount);
+      var tier = Math.min(4, Math.floor(ratio * 5));
+      html += '<a class="tag-pill tag-pill-' + tier + '" href="./tags/' + item.tag + '">' +
+        "#" + item.tag + ' <span class="tag-pill-count">' + item.count + "</span></a>";
+    }
+    container.innerHTML = html;
+  }
+
+  function renderTagCloud() {
+    var container = document.getElementById("tag-cloud");
+    if (!container) return;
+
+    fetchContentIndex(function(data) {
+      var freq = computeTagFrequency(data);
+      renderTagCloudHtml(freq, container);
+    });
+  }
+
   function isPageReload() {
     try {
       var nav = performance.getEntriesByType && performance.getEntriesByType("navigation");
@@ -424,6 +511,7 @@ export default (() => {
     fetchAndRenderPopularPosts();
     enhanceRecentNotesCards();
     localizeReadingTime();
+    renderTagCloud();
   }
 
   if (document.readyState === "loading") {
