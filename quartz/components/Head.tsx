@@ -207,46 +207,6 @@ export default (() => {
     }
   }
 
-  var CONTENT_INDEX_CACHE_KEY = "quartz_content_index_data";
-  var CONTENT_INDEX_TIME_KEY = "quartz_content_index_time";
-  var CONTENT_INDEX_TTL_MS = 5 * 60 * 1000; // 5분
-
-  var pendingContentIndexFetch = null;
-  function fetchContentIndex(callback) {
-    try {
-      var time = localStorage.getItem(CONTENT_INDEX_TIME_KEY);
-      var data = localStorage.getItem(CONTENT_INDEX_CACHE_KEY);
-      if (time && data && (Date.now() - parseInt(time, 10) < CONTENT_INDEX_TTL_MS)) {
-        callback(JSON.parse(data));
-        return;
-      }
-    } catch (e) {}
-
-    if (pendingContentIndexFetch) {
-      pendingContentIndexFetch.then(callback);
-      return;
-    }
-
-    pendingContentIndexFetch = fetch("/static/contentIndex.json")
-      .then(function(res) {
-        if (!res.ok) throw new Error("Status " + res.status);
-        return res.json();
-      })
-      .then(function(data) {
-        pendingContentIndexFetch = null;
-        try {
-          localStorage.setItem(CONTENT_INDEX_CACHE_KEY, JSON.stringify(data));
-          localStorage.setItem(CONTENT_INDEX_TIME_KEY, Date.now().toString());
-        } catch (e) {}
-        callback(data);
-        return data;
-      })
-      .catch(function() {
-        pendingContentIndexFetch = null;
-        callback({});
-      });
-  }
-
   function computeTagFrequency(indexData) {
     var freq = {};
     var slugs = Object.keys(indexData);
@@ -287,10 +247,13 @@ export default (() => {
   function renderTagCloud() {
     var container = document.getElementById("tag-cloud");
     if (!container) return;
+    if (typeof fetchData === "undefined") return;
 
-    fetchContentIndex(function(data) {
+    fetchData.then(function(data) {
       var freq = computeTagFrequency(data);
       renderTagCloudHtml(freq, container);
+    }).catch(function() {
+      container.innerHTML = '<div class="tag-cloud-empty">태그를 불러오지 못했습니다.</div>';
     });
   }
 
