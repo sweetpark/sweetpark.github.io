@@ -193,6 +193,20 @@ export default (() => {
     }
   }
 
+  function localizeReadingTime() {
+    var metaEls = document.querySelectorAll(".content-meta");
+    for (var i = 0; i < metaEls.length; i++) {
+      var spans = metaEls[i].querySelectorAll("span");
+      for (var j = 0; j < spans.length; j++) {
+        var span = spans[j];
+        var m = /^(\d+)\s+min read$/.exec(span.textContent.trim());
+        if (m) {
+          span.textContent = "🕒 " + m[1] + "분";
+        }
+      }
+    }
+  }
+
   function isPageReload() {
     try {
       var nav = performance.getEntriesByType && performance.getEntriesByType("navigation");
@@ -409,6 +423,7 @@ export default (() => {
     updatePageViews();
     fetchAndRenderPopularPosts();
     enhanceRecentNotesCards();
+    localizeReadingTime();
   }
 
   if (document.readyState === "loading") {
