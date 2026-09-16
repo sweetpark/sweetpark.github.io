@@ -83,8 +83,6 @@ public class TasteDetail {
 //id값으로 들어감 (JPA가 내부적으로 객체로 반환하게 함)
 ```
 
-![image.png](/프레임워크/Spring%20Framework/실습_스프링MVC/assets/image.png)
-
 ## 관련 문서
 
 - [(Spring) Page 처리 - 핵심 개념 및 특징 정리]([Spring]%20Page%20처리%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 Onz 프로젝트에서 Spring Data JPA의 Pageable 기반 페이징 처리를 다루는 자매 노트
