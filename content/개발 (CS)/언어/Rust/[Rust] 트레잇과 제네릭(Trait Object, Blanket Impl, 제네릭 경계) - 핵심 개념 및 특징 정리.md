@@ -2,7 +2,7 @@
 title: "트레잇과 제네릭(Trait Object, Blanket Impl, 제네릭 경계)"
 tags: [학습, 개발-CS, 언어, Rust, 트레잇, 제네릭, GlueSQL]
 created: 2026-09-05
-modified: 2026-09-05
+modified: 2026-09-20
 ---
 
 # 트레잇과 제네릭 (Trait Object, Blanket Impl, 제네릭 경계)
@@ -193,6 +193,36 @@ impl<S: StoreMut + IndexMut + AlterTable + Transaction + CustomFunction + Custom
 - `pub trait GStore: Store + Index + ... {}`: 슈퍼트레잇(supertrait) 문법 — `GStore`를 구현하려면 나열된 트레잇들을 모두 구현해야 함
 - `impl<S: ...> GStore for S {}`: **제네릭 타입 `S`에 대해 조건부로 자동 구현** → 이 조건(4개 트레잇)을 만족하는 모든 타입은 별도 코드 없이 `GStore`가 됨. 이를 "Blanket Implementation"이라 부름. 위에서 배운 `impl<T> Point<T>`와 문법 구조는 같지만, 대상이 `Point<T>`라는 구체 타입이 아니라 "조건을 만족하는 임의의 타입 `S`"라는 점이 다름
 
+### 오르판 규칙(Orphan Rule)과 커버 규칙(Coverage Rule) — Blanket Impl이 항상 되는 건 아니다
+
+바로 위 `impl<S: Store + Index + Metadata + CustomFunction> GStore for S {}`가 되는 이유는 `GStore`가 **이 크레이트가 정의한 트레잇**이기 때문이다. 트레잇과 타입이 둘 다 표준 라이브러리(외부) 것이면, 똑같은 모양의 코드라도 컴파일이 안 될 수 있다.
+
+```rust
+// Value는 core 크레이트의 로컬 타입. TryFrom과 Option은 둘 다 std(외부) 것
+impl<T> TryFrom<Value> for Option<T>
+where
+    T: TryFrom<Value, Error = ValueError>,
+{
+    type Error = ValueError;
+    fn try_from(v: Value) -> Result<Self> {
+        match v {
+            Value::Null => Ok(None),
+            v => T::try_from(v).map(Some),
+        }
+    }
+}
+```
+
+```
+error[E0210]: type parameter `T` must be covered by another type
+  when it appears before the first local type (`Value`)
+```
+
+- **오르판 규칙(orphan rule)**: `impl Trait for Type`을 쓰려면 `Trait`과 `Type` 둘 중 최소 하나는 반드시 "내 크레이트가 정의한 것(로컬 타입)"이어야 한다. 여기선 `Value`가 로컬 타입이라 이 조건 자체는 만족한다.
+- **커버 규칙(coverage rule, E0210)**: 오르판 규칙만으로는 부족해서 붙는 추가 제약 — trait의 제네릭 인자 목록에서 로컬 타입(`Value`)이 나오기 *전에* 등장하는 타입 파라미터는 전부 어떤 로컬 타입 안에 "감싸여(covered)" 있어야 한다. 위 코드는 `Self = Option<T>`가 문제다: `T`가 `Option<...>` 안에 있긴 하지만 `Option`은 로컬 타입이 아니라 std 타입이라 "가려짐(covered)"으로 인정되지 않아, `T`가 사실상 벌거벗은 채로 먼저 등장한 것으로 취급된다.
+- **왜 이런 규칙이 필요한가**: 이 규칙이 없으면 서로 다른 두 크레이트가 각자 "내 로컬 타입만 보면 문제없다"고 판단해 **같은 조합에 대해 서로 다른 impl**을 만들어버릴 수 있다(coherence 위반). 오르판+커버 규칙은 "이 impl이 유효한지"를 크레이트 하나만 보고도 컴파일러가 판단할 수 있게 보장하는 장치다.
+- **우회법**: 제네릭 blanket impl 대신, 매크로로 타입별 **구체(non-generic) impl**을 여러 개 찍어내면 우회할 수 있다 — 매크로가 전개된 뒤에는 `T`가 이미 `Decimal`, `i64` 같은 구체 타입으로 치환돼 있어서 애초에 "커버되지 않은 타입 파라미터"가 존재하지 않는다. ([매크로 노트]([Rust]%20매크로%28절차적%20매크로%20&%20macro_rules%21%29%20-%20핵심%20개념%20및%20특징%20정리.md)의 `try_from_owned_value!` 확장이 실전 예시)
+
 ### 제네릭 함수와 트레잇 경계 (Trait Bound)
 
 ```rust
@@ -236,6 +266,22 @@ where
 > - `dyn Trait` (동적 디스패치): 런타임에 어떤 타입인지 결정, 힙 할당(`Box`) 필요, 유연하지만 약간의 오버헤드
 > - `<T: Trait>` (정적 디스패치): 컴파일 타임에 타입 확정, 오버헤드 없음, 대신 함수마다 코드가 복제됨(모노모피제이션)
 > - GlueSQL은 `RowIter`(반환 타입이 저장소마다 달라짐)에는 `dyn`을, `Glue<T>`(저장소 하나로 고정)에는 제네릭을 사용해 두 방식을 상황에 맞게 혼용
+
+### `AsRef<T>`의 실제 정의 — 왜 "읽기 전용"으로 고정되는가
+
+`Sql: AsRef<str>`처럼 문자열 하나 받는 자리에 굳이 제네릭+트레잇 경계를 쓰는 이유는 "이미 갖고 있는 `String`이든 `&str`이든 그대로 넘길 수 있게" 하기 위함. 트레잇 자체 정의를 보면 왜 이게 "읽기 전용"으로 강제되는지 알 수 있음(rust-src 기준 `core/src/convert/mod.rs:220-224`):
+
+```rust
+pub trait AsRef<T: ?Sized> {
+    fn as_ref(&self) -> &T;
+}
+```
+
+- 메서드 시그니처가 `fn as_ref(&self) -> &T`뿐 — 즉 "나 자신을 불변으로 빌려서, `T`에 대한 불변 참조 하나를 돌려준다"는 능력만 정의되어 있음
+- `&mut T`를 돌려주는 시그니처가 트레잇 안에 아예 없으므로, `AsRef<str>`을 구현한 타입이 아무리 내부적으로 가변이더라도 `.as_ref()`를 통해서는 절대 값을 바꿀 수 없음 — "읽기 전용"은 규칙이 아니라 **타입 시그니처로 원천 차단된 것**
+- `String`은 `impl AsRef<str> for String { fn as_ref(&self) -> &str { self.as_str() } }`처럼 구현되어 있어서, `Sql: AsRef<str>` 경계 하나로 `String`, `&str`, `Box<str>` 등 여러 타입을 함수 내부에서 `sql.as_ref()` 한 줄로 동일하게 `&str`로 다룰 수 있음(굳이 `&str`로 타입을 고정하지 않아도 되는 유연함)
+
+C 비교: C라면 `const char *`를 받는 함수 하나로 충분(포인터는 이미 "값 하나를 참조"하는 방식이라 소유권 구분이 없음). Rust는 소유 타입(`String`)과 참조 타입(`&str`)이 서로 다른 타입이기 때문에, 이 둘을 모두 받아들이려면 `AsRef<str>` 같은 트레잇 경계로 "참조를 얻어올 수 있는 능력"만 요구하는 방식이 필요함.
 
 ## 🔗 참고
 

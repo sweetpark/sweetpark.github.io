@@ -2,7 +2,7 @@
 title: "소유권과 참조(Ownership & Borrowing)"
 tags: [학습, 개발-CS, 언어, Rust, 소유권, 참조, 메모리]
 created: 2026-09-05
-modified: 2026-09-05
+modified: 2026-09-20
 ---
 
 # 소유권과 참조 (Ownership & Borrowing)
@@ -171,6 +171,97 @@ Raw Pointer는 Rust의 안전성 보장(Null/Dangling/Data Race 방지)을 받�
 
 > [!NOTE]
 > "Rust에는 명시적 `return`이 없다?"는 표현식 기반 반환은 별도 노트로 분리했다 — [(Rust) 표현식과 문장(Expression vs Statement, 암묵적 반환) - 핵심 개념 및 특징 정리]([Rust]%20표현식과%20문장%28Expression%20vs%20Statement,%20암묵적%20반환%29%20-%20핵심%20개념%20및%20특징%20정리.md) 참고.
+
+### 7. `mut`과 `&mut`은 서로 다른 축이다
+
+가장 헷갈리기 쉬운 지점. **`mut`은 소유권과 아무 관련이 없다.**
+
+- **소유권 이동 여부** = `&`가 붙었느냐 안 붙었느냐
+- **수정 가능 여부** = `mut`이 붙었느냐 안 붙었느냐
+
+| | 소유권을 **가져감**(move) | 소유권을 **빌림**(borrow) |
+| --- | --- | --- |
+| **읽기만** | `x: T` | `x: &T` |
+| **수정 가능** | `mut x: T` | `x: &mut T` |
+
+`mut x: T`도 **소유권은 똑같이 가져간다.** 거기에 "가져온 값을 함수 안에서 수정/재대입도 하겠다"가 추가됐을 뿐이다. 따라서 `f(mut x: T)`에 값을 넘기면 호출한 쪽에서는 여전히 그 변수를 다시 쓸 수 없다(E0382).
+
+#### 파라미터의 `mut`은 호출자에게 보이지 않는다
+
+결정적 차이 — 아래 두 함수의 **타입 시그니처는 완전히 동일**하다.
+
+```rust
+fn f(x: String)     { }   // 타입: fn(String)
+fn f(mut x: String) { }   // 타입: fn(String)  ← 동일!
+```
+
+파라미터 위치의 `mut`은 타입의 일부가 아니라 **함수 내부의 지역 바인딩 속성**(패턴의 일부)이다. 호출하는 쪽은 `mut` 유무를 알 수도, 알 필요도 없다. 반면 `&mut`는 **타입 자체가 다르므로**(`String` vs `&mut String`) 호출부도 `f(&mut x)`로 바꿔야 한다.
+
+#### C와 비교
+
+| Rust | C 대응 | 설명 |
+| --- | --- | --- |
+| `x: T` | `T x` (값 전달) | 이동본을 받음. 원본은 못 씀 |
+| `mut x: T` | `T x` (값 전달) | 위와 **동일**. 함수 안에서 재대입만 추가 허용 |
+| `x: &T` | `const T *x` | 읽기 전용 포인터 |
+| `x: &mut T` | `T *x` | 쓰기 가능 포인터 (단, 동시에 하나만) |
+
+C는 기본이 가변이고 `const`로 막지만, **Rust는 기본이 불변이고 `mut`으로 푼다** — 방향이 반대다.
+
+#### `mut`이 나오는 3가지 자리
+
+```rust
+let mut glue = Glue::new(MemoryStorage::default());
+//  ^^^ (1) 지역 변수를 가변으로 선언
+basic(&mut glue);
+//    ^^^^ (2) 가변 참조를 만드는 연산
+batch(&mut glue);
+
+fn basic<T: GStore + GStoreMut + Planner>(glue: &mut Glue<T>) { ... }
+//                                              ^^^^ (3) 그 참조를 받는 타입
+```
+
+(1)이 없으면 (2)가 불가능하다 — **불변 변수에서는 가변 참조를 뽑을 수 없다**(`cannot borrow as mutable`). (1)과 (3)은 문법적으로 다른 `mut`이지만 (1)이 있어야 (2)(3)이 성립하는 관계다.
+
+> [!NOTE]
+> **실전 사례 (GlueSQL #2009 테스트 리팩터링)**
+> `fn basic<T>(mut glue: Glue<T>)` → `fn basic<T>(glue: &mut Glue<T>)`로 고친 적이 있다. 여기서 한 일은 `mut`을 뗀 게 아니라 **`&`를 붙인 것**이다.
+> 전자는 `basic(glue)` 호출 시 `Glue<T>`(= 스토리지를 소유한 DB 인스턴스) 소유권이 통째로 넘어가 버려서, 호출부에서 같은 `glue`로 다른 시나리오를 이어 돌릴 수 없었다. `&mut`로 바꾸자 소유권은 호출부가 계속 쥐고 각 헬퍼가 차례로 빌려 쓰게 되어, **DB 인스턴스 하나로 여러 테스트 시나리오를 순차 실행**할 수 있게 됐다(디스크 스토리지의 경우 파일도 하나만 열림). 대신 상태가 누적되므로 각 시나리오가 `DROP TABLE IF EXISTS`로 자기 앞가림을 해야 한다.
+
+### 8. `&mut self` — 메서드 리시버의 소유권은 `impl` 블록이 정한다
+
+```rust
+// core/src/glue.rs
+impl<T: GStore + GStoreMut + Planner> Glue<T> {
+    pub fn execute_with_params<Sql, I, P>(&mut self, sql: Sql, params: I) -> Result<Vec<Payload>>
+    where
+        Sql: AsRef<str>,
+        I: IntoIterator<Item = P>,
+        P: IntoParamLiteral,
+    {
+        // ...
+    }
+}
+```
+
+- `&mut self`는 `self: &mut Glue<T>`의 축약형 — 이 메서드를 호출하는 동안 `Glue<T>` 인스턴스를 **가변으로 빌린다**는 뜻(값을 통째로 옮겨가는 `self`, 불변으로 빌리는 `&self`와 구분됨)
+- `self`가 정확히 어떤 타입인지는 호출부를 보고 추론하는 게 아니라, **메서드가 정의된 `impl<T: ...> Glue<T> { ... }` 블록**이 결정함 — 이 블록 안에 선언된 모든 메서드의 `self`는 자동으로 `Glue<T>`(또는 그 참조)
+- C 비교: C에는 메서드가 없으므로 같은 걸 하려면 구조체 포인터를 첫 인자로 직접 넘김 — `Payload execute_with_params(Glue *self, const char *sql, ...)`. Rust의 `&mut self`는 이 "첫 인자 구조체 포인터"를 컴파일러가 `impl` 블록 문맥으로부터 자동으로 채워주는 문법 설탕에 가까움
+- 가변 참조는 §4(`Rust의 참조 vs C언어의 포인터`)의 "1개만 허용" 규칙을 그대로 따름 — `&mut self`로 빌린 동안에는 그 `Glue<T>`에 대한 다른 참조(`&self`든 `&mut self`든)를 동시에 만들 수 없음
+
+### 9. `Vec<T>` — 가변 길이 배열
+
+```rust
+let mut payloads = Vec::<Payload>::new();
+for p in parsed {
+    payloads.push(self.execute_stmt(&plan)?);
+}
+```
+
+- `Vec<T>`는 힙에 할당되는 가변 길이 배열. 내부적으로 `{ ptr: *mut T, len: usize, cap: usize }` 세 필드(64비트 환경에서 24바이트)로 구성 — 포인터, 현재 원소 개수, 할당된 용량
+- `.push()`로 원소를 추가하다 `len == cap`이 되면 내부적으로 더 큰 버퍼를 새로 할당하고 기존 값을 복사한 뒤 이전 버퍼를 해제(보통 용량을 2배로 늘림)
+- C 비교: 직접 구현하면 `T *ptr; size_t len; size_t cap;` 구조체를 만들고, 꽉 찰 때마다 `realloc(ptr, new_cap * sizeof(T))`을 손으로 호출해야 함. `Vec<T>`는 이 패턴을 표준 라이브러리가 대신 해주는 것 — 크기 관리, 재할당, 해제(`Drop`)까지 자동
+- `Vec::<Payload>::new()`처럼 turbofish(`::<T>`)로 타입을 명시하거나, 문맥상 추론 가능하면 `Vec::new()`만 써도 됨
 
 ## 🔗 참고
 
