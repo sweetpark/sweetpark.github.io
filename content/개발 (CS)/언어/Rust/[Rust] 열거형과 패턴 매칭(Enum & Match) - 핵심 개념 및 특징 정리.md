@@ -2,7 +2,7 @@
 title: "열거형과 패턴 매칭(Enum & Match)"
 tags: [학습, 개발-CS, 언어, Rust, 열거형, 패턴매칭, GlueSQL]
 created: 2026-09-05
-modified: 2026-09-05
+modified: 2026-09-20
 ---
 
 # 열거형과 패턴 매칭 (Enum & Match)
@@ -243,6 +243,69 @@ pub fn evaluate_eq(&self, other: &Value) -> Tribool {
 - `match (self, other)`: 두 값을 튜플로 묶어 **두 enum의 조합**에 대해 패턴 매칭 (Rust는 튜플도 패턴으로 분해 가능)
 - `(Null, _) | (_, Null)`: `|`로 여러 패턴을 OR 조건처럼 하나의 분기에 묶음
 - `_`: "나머지 모든 경우" — C의 `default`와 유사하지만 반드시 마지막에 두어 예외적으로 처리 안 된 조합을 잡아냄
+
+### `Payload` enum — 실행 결과를 나타내는 태그드 유니온
+
+```rust
+// core/src/executor/execute.rs
+pub enum Payload {
+    ShowColumns(Vec<(String, DataType)>),
+    Create,
+    Insert(usize),
+    Select { labels: Vec<String>, rows: Vec<Vec<Value>> },
+    SelectMap(Vec<BTreeMap<String, Value>>),
+    Delete(usize),
+    Update(usize),
+    DropTable(usize),
+    DropFunction,
+    AlterTable,
+    CreateIndex,
+    DropIndex,
+    StartTransaction,
+    Commit,
+    Rollback,
+    ShowVariable(PayloadVariable),
+}
+```
+
+`Glue::execute`가 SQL 문장 하나를 실행하고 나면 그 결과가 `CREATE`인지 `SELECT`인지에 따라 완전히 다른 모양의 데이터가 나와야 함 — `Create`/`DropFunction`처럼 데이터가 없는 variant도 있고, `Select { labels, rows }`처럼 필드 두 개짜리 variant도 있음. 이걸 하나의 타입으로 표현하는 것이 바로 "태그드 유니온"이고, Rust의 `enum`이 언어 차원에서 이를 지원함.
+
+#### C로 직접 설계해보는 메모리 레이아웃
+
+C에는 이런 "variant마다 다른 데이터" enum이 없으므로 `union` + 태그 필드를 손으로 조합해야 함. `Payload`를 C로 옮긴다면:
+
+```c
+typedef enum {
+    TAG_SHOW_COLUMNS, TAG_CREATE, TAG_INSERT, TAG_SELECT, TAG_SELECT_MAP,
+    TAG_DELETE, TAG_UPDATE, TAG_DROP_TABLE, TAG_DROP_FUNCTION, TAG_ALTER_TABLE,
+    TAG_CREATE_INDEX, TAG_DROP_INDEX, TAG_START_TRANSACTION, TAG_COMMIT,
+    TAG_ROLLBACK, TAG_SHOW_VARIABLE,
+} PayloadTag; // variant 16개 → 태그는 최소 4비트, 보통 int(4B)로 정렬
+
+typedef struct { RustVec labels; RustVec rows; } SelectPayload; // 48B 예시
+
+typedef struct {
+    PayloadTag tag;   // 4B (+ 정렬을 위해 4B 패딩)
+    union {
+        RustVec show_columns;   // 24B (ShowColumns)
+        size_t  insert_count;   // 8B  (Insert/Delete/Update/DropTable — 전부 같은 usize 필드 재사용)
+        SelectPayload select;   // 48B (Select) ← union 크기를 결정하는 가장 큰 variant
+        RustVec select_map;     // 24B (SelectMap)
+        PayloadVariable show_variable; // ShowVariable
+        // Create, DropFunction, AlterTable 등 0바이트 variant는 union에 필드가 없어도 됨
+    } data;
+} Payload;
+```
+
+설계 원칙:
+1. **union 크기 = 가장 큰 variant의 크기**로 고정(여기선 `Select`가 48B로 제일 커서 `data`는 48B). 나머지 variant는 이 공간을 "빌려 쓰되" 실제로 쓰는 바이트 수만큼만 유효함
+2. **태그(`tag`) 필드**는 variant 개수(16개)를 구분할 수 있으면 충분 — 이론상 1바이트(최대 256가지)로도 되지만, 정렬(alignment) 때문에 보통 4바이트(`int`)로 패딩됨
+3. **정렬(alignment)**: `union` 내부에서 가장 엄격한 정렬 요구를 가진 필드(보통 포인터, 8바이트 정렬)에 맞춰 전체 구조체가 정렬되고, 그 앞뒤로 컴파일러가 패딩을 채움
+4. **런타임에는 태그에 해당하는 필드 하나만 유효** — `tag == TAG_SELECT`일 때만 `data.select`를 읽어야 하고, 다른 필드를 읽으면 쓰레기 값(undefined behavior)을 읽는 것. 이 "지금 어떤 필드가 유효한지"를 사람이 태그를 보고 직접 판단하고 지켜야 하는 게 C `union`의 근본적인 위험
+
+Rust의 `enum` + `match`는 이 전체 패턴(태그 필드 + union + "태그에 맞는 필드만 읽기")을 언어가 대신 관리함:
+- 컴파일러가 태그와 union 레이아웃을 자동으로 생성(수동 `PayloadTag`/`union` 설계 불필요)
+- `match payload { Payload::Select { labels, rows } => ..., ... }`처럼 **패턴 매칭한 분기 안에서만** 해당 필드에 접근 가능 — 다른 variant의 필드를 실수로 읽는 코드는 애초에 컴파일되지 않음(C의 "태그 확인 깜빡함" 버그 클래스가 원천 차단)
 
 ## 일반적인 enum 사용 vs GlueSQL 스타일 enum 사용 — 비교 및 연습
 
