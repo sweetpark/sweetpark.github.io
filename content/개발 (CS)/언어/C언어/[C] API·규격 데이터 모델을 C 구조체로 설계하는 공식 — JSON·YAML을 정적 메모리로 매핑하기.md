@@ -1,8 +1,8 @@
 ---
 title: "API·규격 데이터 모델을 C 구조체로 설계하는 공식 — JSON·YAML을 정적 메모리로 매핑하기"
-tags: [학습, 개발-CS, 언어, C언어, 데이터모델, 구조체설계, API, 직렬화, 메모리패턴]
+tags: [학습, 개발-CS, 언어, C언어, 데이터모델, 구조체설계, API, 직렬화, 메모리패턴, 스택힙]
 created: 2026-09-18
-modified: 2026-09-18
+modified: 2026-09-22
 ---
 
 # API·규격 데이터 모델을 C 구조체로 설계하는 공식 — JSON·YAML을 정적 메모리로 매핑하기
@@ -520,6 +520,84 @@ pst_dst->pst_items = st_new_item_list.pst_items;  // 힙 주소 덮어쓰기!
 ```
 
 `pst_dst`가 원본 구조체의 주소를 가리키는 포인터이므로, `pst_dst->pst_items = ...` 로 힙 주소를 갈아 끼우면 **함수가 끝난 뒤에도 바깥의 원본 구조체 내용이 새 배열로 즉시 교체**된다.
+
+---
+
+### 3.5 [실무 원리] 스택 vs 힙, 언제 malloc을 해야 하는가 — 호출 체인 생존 범위 규칙
+
+> [!NOTE]
+> 지금까지의 예시는 전부 "`pst_items`는 힙에 malloc한다"는 결론만 보여줬다. 왜 스택이 아니라 힙이어야 하는지, 그 판단 기준을 일반화하면 아래와 같다.
+
+#### 판단 기준: "포인터가 자신을 만든 함수의 프레임을 이스케이프(escape)하는가?"
+
+`A() → B() → C()` 호출 체인이 있을 때:
+- B가 만든 데이터를 C로 넘기는 것 자체는 문제없다 — C가 실행되는 동안 B의 스택 프레임은 아직 살아있다.
+- 진짜 기준은 **B가 return한 뒤에도 그 데이터를 A가 써야 하는가**다.
+  - B의 스코프 안에서만 쓰고 버려진다 → **스택**으로 충분
+  - B가 끝난 뒤에도 A가 들고 있어야 한다(리스트에 매달리는 등) → **반드시 힙(`malloc`)**
+
+```
+데이터의 생명주기가
+  자신을 만든 함수(B)의 프레임 안에서 끝난다         → stack
+  자신을 만든 함수(B)가 리턴한 뒤에도 상위(A)가 써야 한다 → heap (malloc)
+```
+
+#### ❌ 잘못된 예 — 스택에 만든 리스트 원소를 상위로 흘려보냄
+
+```c
+/* B(): 한 줄 파싱 — 잘못된 버전 */
+void parse_line_BAD(st_field_t **pst_head, const char *line)
+{
+    st_field_t st_node;                 /* stack에 생성 */
+    parse_token(line, &st_node);        /* C() 호출 */
+
+    st_node.pst_next = *pst_head;
+    *pst_head = &st_node;               /* 스택 주소를 리스트에 연결! */
+}                                        /* B 리턴 -> st_node는 소멸 */
+
+/* A(): *pst_head를 순회하는 순간 이미 죽은 스택 프레임을 참조 -> UB */
+```
+
+`st_node`는 B의 스택 프레임에 있고, B가 리턴하면 그 프레임은 무효화된다. 하지만 `*pst_head`는 죽은 주소를 계속 가리키므로 A에서 순회하는 순간 undefined behavior다. 공식 ④에서 `pst_items`를 항상 `malloc`/`calloc`으로 채운 이유가 이것이다 — 리스트 원소는 부모 함수(A)가 처리를 끝낼 때까지 살아있어야 하는 데이터이기 때문이다.
+
+#### ✅ 올바른 예 — heap에 생성해서 B가 죽어도 유효
+
+```c
+/* B(): 한 줄 파싱 — 올바른 버전 */
+void parse_line_GOOD(st_field_t **pst_head, const char *line)
+{
+    st_field_t *pst_node = (st_field_t *)malloc(sizeof(st_field_t));  /* heap */
+    parse_token(line, pst_node);                                     /* C() 호출 */
+
+    pst_node->pst_next = *pst_head;
+    *pst_head = pst_node;
+}
+
+/* A(): 소유권자 — 사용이 끝나면 free 책임도 A가 진다 */
+```
+
+#### 참고: 스택이어도 되는 부분
+
+`C()` 안에서만 쓰고 리스트로 넘어가지 않는 임시 버퍼는 B가 살아있는 동안만 쓰이므로 스택으로 충분하다:
+
+```c
+void parse_token(const char *line, st_field_t *pst_out)
+{
+    char sz_buf[64];   /* C 안에서만 쓰는 임시 -> stack으로 충분 */
+    strncpy(sz_buf, line, sizeof(sz_buf));
+    sscanf(sz_buf, "%31[^=]=%d", pst_out->sz_name, &pst_out->n_value);
+}   /* sz_buf는 사라져도 무관 - 이미 pst_out에 값 복사가 끝났다 */
+```
+
+#### 정리
+
+| 데이터 | 생존 범위 | 배치 |
+| --- | --- | --- |
+| 리스트/배열 원소 (`pst_items`) | 만든 함수가 끝난 뒤에도 상위에서 순회·보관 | heap (`malloc`/`calloc`) |
+| 파싱 중 임시 버퍼 | 만든 함수 안에서만 쓰고 버림 | stack |
+| 함수 인자로 아래로만 전달되는 값 | 호출한 함수가 살아있는 동안만 필요 | stack이어도 무방 |
+
+이 원칙 하나로 공식 ④(`pst_items`)와 공식 ①(`sz_` 고정 버퍼)이 왜 다른 선택을 했는지 설명된다 — 전자는 부모 함수 종료 후에도 살아야 하는 데이터이고, 후자는 애초에 상위 구조체에 값으로 인라인되어 있어 이스케이프 문제 자체가 없다.
 
 ---
 
