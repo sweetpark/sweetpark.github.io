@@ -132,6 +132,22 @@ return isTrustedGroup(pwd->pw_gid) ? 1 : 0;
 
 **치환 규칙**: `getlogin()` 등 정적 버퍼 반환 함수는 `_r` 버전으로, 호출자 소유 버퍼·크기를 전달하고 실패를 반드시 처리.
 
+**`_r` 버전이 없는 경우**: 스레드 safe 한 함수가 제공되지 않으면 **lock(뮤텍스)으로 호출~사용 구간 전체를 직렬화**해야 한다. 정적 버퍼를 돌려주는 함수는 호출만 감싸면 부족하고, 반환 값을 지역 버퍼에 복사한 뒤에야 unlock 한다.
+
+```c
+static pthread_mutex_t login_lock = PTHREAD_MUTEX_INITIALIZER;
+
+char id[MAX];
+pthread_mutex_lock(&login_lock);
+char *p = getlogin();                            /* _r 버전 없음 → lock 안에서 호출 */
+if (p == NULL) { pthread_mutex_unlock(&login_lock); return 0; }
+strncpy(id, p, MAX - 1);  id[MAX - 1] = '\0';    /* 지역 버퍼로 복사 후 */
+pthread_mutex_unlock(&login_lock);               /* unlock (모든 경로에서) */
+```
+
+- 같은 함수를 호출하는 **모든 코드 경로가 동일한 lock** 을 써야 효과가 있다.
+- 모든 반환 경로(에러 포함)에서 unlock 하고, lock 보유 중 오래 걸리는 작업은 피한다.
+
 ---
 
 ## Part 7 미니 체크리스트
@@ -139,7 +155,7 @@ return isTrustedGroup(pwd->pw_gid) ? 1 : 0;
 - [ ] 보안 판정(신뢰 사이트 등)이 DNS lookup 결과에 의존하는가
 - [ ] `gets`/`vfork`/`_mbscpy`/`strcpy` 등 [위험함수 치환표](%5B시큐어코딩%5D%20부록%20—%20위험함수%20치환표·암호화%20기준표·PQC%20전환.md) 상의 함수가 신규 코드에 있는가
 - [ ] `chroot()` 뒤에 `chdir("/")` 가 반드시 따라오는가
-- [ ] 멀티스레드 환경에서 정적 버퍼를 반환하는 함수(`getlogin`, `strtok`, `ctime` 등)를 `_r` 버전 없이 쓰는가
+- [ ] 멀티스레드 환경에서 정적 버퍼를 반환하는 함수(`getlogin`, `strtok`, `ctime` 등)를 `_r` 버전 없이 쓰는가 (`_r` 버전이 없으면 lock 으로 호출~복사 구간을 보호했는가)
 
 ---
 
