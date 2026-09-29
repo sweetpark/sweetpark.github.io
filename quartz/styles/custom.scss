@@ -172,6 +172,11 @@ $leftPanelWidth: 280px;
       color: var(--secondary);
     }
   }
+
+  // 모바일 상단바는 가로 한 줄(제목·메뉴·검색) 구조라 카드가 끼면 레이아웃이 깨짐
+  @media all and ($mobile) {
+    display: none;
+  }
 }
 
 // =============================================================================
@@ -194,6 +199,12 @@ $leftPanelWidth: 280px;
     min-height: 200px;
     padding: 2.5rem 2rem;
     text-align: center;
+
+    @media all and ($mobile) {
+      min-height: 120px;
+      padding: 1.5rem 1rem;
+      gap: 0.6rem;
+    }
   }
 
   h1.article-title {
