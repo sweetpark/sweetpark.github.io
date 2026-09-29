@@ -110,32 +110,29 @@
 }
 
 @media all and ($desktop) {
-  // 우측 열을 없애 본문이 오른쪽까지 넓게 보이도록 함
+  // 평소: 우측 열은 여백(3rem)만 남기고 본문을 넓게. 열림: 목차 폭만큼 본문이 줄어듦
   .page > #quartz-body {
-    grid-template-columns: #{$sidePanelWidth} minmax(0, 1fr) 0;
+    grid-template-columns: #{$sidePanelWidth} minmax(0, 1fr) 3rem;
+    transition: grid-template-columns 0.25s ease;
+  }
+
+  body.toc-open .page > #quartz-body {
+    grid-template-columns: #{$sidePanelWidth} minmax(0, 1fr) 320px;
   }
 
   .page > #quartz-body .sidebar.right {
-    position: fixed;
-    top: 0;
-    right: 0;
     width: 320px;
-    height: 100vh;
     padding: 4.5rem 1.5rem 2rem 1.5rem;
-    overflow-y: auto;
-    background-color: var(--light);
-    border-left: 1px solid var(--lightgray);
-    z-index: 30;
-    transform: translateX(100%);
+    overflow: hidden auto;
     visibility: hidden;
-    transition: transform 0.25s ease, visibility 0s linear 0.25s;
+    opacity: 0;
+    transition: opacity 0.2s ease, visibility 0s linear 0.25s;
   }
 
   body.toc-open .page > #quartz-body .sidebar.right {
-    transform: translateX(0);
     visibility: visible;
-    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.12);
-    transition: transform 0.25s ease, visibility 0s;
+    opacity: 1;
+    transition: opacity 0.2s ease 0.1s, visibility 0s;
   }
 
   .toc-toggle-btn {
