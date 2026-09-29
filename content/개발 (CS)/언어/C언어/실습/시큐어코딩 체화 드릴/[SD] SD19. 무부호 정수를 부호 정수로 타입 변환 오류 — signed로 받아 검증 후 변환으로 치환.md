@@ -1,0 +1,215 @@
+---
+title: "SD19. 무부호 정수를 부호 정수로 타입 변환 오류 — signed로 받아 검증 후 변환으로 치환"
+tags: 
+created: 2026-09-28
+modified: 2026-09-28
+---
+
+# SD19. 무부호 정수를 부호 정수로 타입 변환 오류 — signed로 받아 검증 후 변환으로 치환
+
+> **원본 항목**: [Part 1-4. 정수·타입변환 계열 — 19. 무부호 정수를 부호 정수로 타입 변환 오류](../../시큐어코딩가이드/Part%201.%20입력데이터%20검증%20및%20표현/%5B시큐어코딩%5D%201-4.%20정수·타입변환%20계열.md#19-무부호-정수를-부호-정수로-타입-변환-오류-cwe-196) `CWE-196`
+> **repo 폴더**: `sd19_unsignedtosigned/` (`make D=sd19_unsignedtosigned T=main`)
+> **목표 시간**: 1회차 15분 / 2회차 9분 / **3회차 6분**
+> Part 1-4의 마지막 드릴. `-1`(에러 표시)이 `unsigned` 로 뒤집혀 `memcpy` 크기로 흘러가는, 가장 고전적인 "에러코드 → 크기값 오염" 패턴이다.
+
+---
+
+## 0. 이 드릴로 체화할 것
+
+```diff
+- unsigned size;
+- size = (unsigned)get_chunk_size(initialized, chunk_size);   /* -1 -> 4294967295 */
+- memcpy(dst, src, size);
++ int size = get_chunk_size(initialized, chunk_size);          /* signed로 받는다 */
++ if (size < 0) return -1;                                     /* 에러 여부 먼저 확인 */
++ memcpy(dst, src, (size_t)size);
+```
+
+크기·인덱스는 "부호 있는 채로 검증 → 검증 후 unsigned로 변환" 순서를 지키고, 비교 양쪽의 타입을 통일한다.
+
+---
+
+## 1. 취약 시나리오 — 변형 A: 초기화 여부에 따른 청크 복사
+
+> [!QUOTE] 요구사항서 (발췌)
+> "초기화됨" 상태일 때만 지정된 크기만큼 `src` 를 `dst` 로 복사한다.
+> - 초기화가 안 됐으면 크기 조회 함수는 에러(`-1`)를 반환한다.
+> - 에러 상태에서는 복사를 수행하면 안 된다.
+
+### 공격 입력표
+
+| `initialized` | Bad 결과 | 이유 |
+| :--- | :--- | :--- |
+| 1 (정상, 정상 크기) | 정상 복사 | 에러 없음 |
+| **0 (미초기화)** | **memcpy가 약 4GB 복사를 시도하며 크래시** | `get_chunk_size()` 가 반환한 `-1` 을 `unsigned` 로 받아 `4294967295` 가 된다 |
+
+### 회차별 변형
+
+| 회차 | 변형 | 요구사항 |
+| :--- | :--- | :--- |
+| **A (1회차)** | 초기화 여부에 따른 청크 복사 | 위 내용 |
+| **B (2회차)** | **파일 읽기 크기로 변형** | `read()` 가 실패 시 반환하는 `-1` 을 `size_t` 로 받아 버퍼 크기로 쓰는 흔한 실무 패턴으로 재현 |
+| **C (3회차)** | **비교 연산으로 변형** | `unsigned int userLevel` 과 `int SUPER_USER_LEVEL` 을 비교할 때 비교 양쪽의 타입을 통일하지 않으면 어떤 값에서 비교 결과가 뒤집히는지 직접 찾아본다 |
+
+---
+
+## 2. 제출물
+
+```text
+sd19_unsignedtosigned/src/chunk_copy.h
+sd19_unsignedtosigned/src/chunk_copy.c
+sd19_unsignedtosigned/test/test.c
+```
+
+### 시험 코드 — 이 형태를 고정한다
+
+```c
+#define _DEFAULT_SOURCE
+#include <stdio.h>
+#include <string.h>
+#include <sys/wait.h>
+#include <unistd.h>
+#include "chunk_copy.h"
+
+static int g_fail = 0;
+#define T_TRUE(cond, msg) \
+    do { if (!(cond)) { g_fail++; \
+        printf("  X %s:%d %s\n", __func__, __LINE__, msg); } } while (0)
+
+static int expect_crash(void (*fn)(void))
+{
+    pid_t pid = fork();
+    if (pid == 0) { fn(); _exit(0); }
+    int status = 0;
+    waitpid(pid, &status, 0);
+    if (WIFSIGNALED(status)) return 1;
+    if (WIFEXITED(status) && WEXITSTATUS(status) != 0) return 1;
+    return 0;
+}
+
+static char g_dst[16], g_src[16];
+static void call_bad(void) { chunk_copy_bad(g_dst, g_src, 0, 8); }
+
+static void test_bad_is_vulnerable(void)
+{
+    T_TRUE(expect_crash(call_bad) == 1,
+        "Bad는 초기화 실패(-1)가 거대한 unsigned 크기로 바뀌어 memcpy가 폭주해야 한다(취약점 재현)");
+}
+
+static void test_bad_normal(void)
+{
+    char dst[16], src[16] = "hello";
+    chunk_copy_bad(dst, src, 1, 6);
+    T_TRUE(strcmp(dst, "hello") == 0, "정상 초기화 상태는 크래시 없이 동작해야 한다");
+}
+
+static void test_good_blocks_wraparound(void)
+{
+    char dst[16], src[16];
+    T_TRUE(chunk_copy_good(dst, sizeof(dst), src, 0, 8) == -1,
+        "Good은 초기화 실패(-1)를 부호 있는 채로 확인해 거부해야 한다");
+}
+
+static void test_good_normal(void)
+{
+    char dst[16] = {0}, src[16] = "hello";
+    T_TRUE(chunk_copy_good(dst, sizeof(dst), src, 1, 6) == 0, "정상 초기화 상태는 성공해야 한다");
+    T_TRUE(strcmp(dst, "hello") == 0, "복사된 내용이 정확해야 한다");
+}
+
+int main(void)
+{
+    test_bad_is_vulnerable();
+    test_bad_normal();
+    test_good_blocks_wraparound();
+    test_good_normal();
+    printf(g_fail ? "FAIL %d\n" : "PASS\n", g_fail);
+    return g_fail ? 1 : 0;
+}
+```
+
+---
+
+## 3. 자가 채점표 (100점)
+
+| 항목 | 배점 | 체크 |
+| :--- | :--- | :--- |
+| `test_bad_is_vulnerable` 통과 | 25 | ☐ |
+| `test_good_blocks_wraparound` / `test_good_normal` 통과 | 30 | ☐ |
+| Good이 크기를 **먼저 `int` 로 받아 `< 0` 검사 후에만** `size_t` 로 변환한다 | 30 | ☐ |
+| `dst_size` 를 받아 대상 버퍼보다 큰 복사도 함께 막는다 | 10 | ☐ |
+| 목표 시간 내 | 5 | ☐ |
+
+---
+
+## 4. 자주 하는 실수
+
+| 실수 | 왜 문제인가 |
+| :--- | :--- |
+| `unsigned size = get_chunk_size(...)` 로 받은 뒤 `if (size == (unsigned)-1)` 로 검사 | 동작은 하지만 "부호 있는 채로 먼저 검증"이라는 원칙에서 벗어난 임기응변이다. 애초에 `int` 로 받으면 이런 매직 넘버 비교 자체가 필요 없다 |
+| 함수 리턴 타입은 고쳤지만 호출부에서 여전히 `unsigned` 변수에 대입 | 선언부만 바꾸고 호출부의 타입을 안 맞추면 암묵적 변환이 도로 일어난다. 호출부까지 한 세트로 확인한다 |
+| `dst_size` 검사 없이 `size < 0` 만 확인 | 크기가 양수여도 대상 버퍼보다 크면 여전히 오버플로우다. 이 드릴은 두 가지(부호·용량)를 모두 요구한다 |
+
+---
+
+## 5. 모범답안 (변형 A)
+
+> [!success]- 다 치고 나서 열 것 — `chunk_copy.h` / `chunk_copy.c`
+> **헤더 (`chunk_copy.h`)**
+> ```c
+> #ifndef CHUNK_COPY_H
+> #define CHUNK_COPY_H
+> #include <stddef.h>
+> int get_chunk_size(int initialized, int chunk_size);
+> void chunk_copy_bad(void *dst, const void *src, int initialized, int chunk_size);
+> int chunk_copy_good(void *dst, size_t dst_size, const void *src, int initialized, int chunk_size);
+> #endif
+> ```
+> **구현 (`chunk_copy.c`)**
+> ```c
+> #include <string.h>
+> #include "chunk_copy.h"
+>
+> int get_chunk_size(int initialized, int chunk_size)
+> {
+>     if (!initialized) return -1;
+>     return chunk_size;
+> }
+>
+> void chunk_copy_bad(void *dst, const void *src, int initialized, int chunk_size)
+> {
+>     unsigned size;
+>     size = (unsigned)get_chunk_size(initialized, chunk_size);
+>     memcpy(dst, src, size);
+> }
+>
+> int chunk_copy_good(void *dst, size_t dst_size, const void *src, int initialized, int chunk_size)
+> {
+>     int size = get_chunk_size(initialized, chunk_size);
+>     if (size < 0) return -1;
+>     if ((size_t)size > dst_size) return -1;
+>     memcpy(dst, src, (size_t)size);
+>     return 0;
+> }
+> ```
+>
+> **눈여겨볼 점**: `get_chunk_size` 자체는 **바뀌지 않는다** — 에러를 `-1` 로 표현하는 함수 자체는 정상적인 관용구다. 문제는 그 반환값을 **받는 쪽**의 타입이었다. SD17~19를 관통하는 교훈: 오류는 값을 만드는 곳이 아니라 **그 값을 다음 계산에 넘기는 지점**에서 막는다.
+
+---
+
+## 6. 회차 기록표
+
+| 회차 | 날짜 | 변형 | 걸린 시간 | 점수 | 막힌 지점 한 줄 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 |  | A (청크 복사) |  |  |  |
+| 2 |  | B (파일 읽기) |  |  |  |
+| 3 |  | C (비교 연산) |  |  |  |
+| 점검 (D+14) |  | 랜덤 |  |  |  |
+
+---
+
+## 관련 노트
+
+- [시큐어코딩 체화 드릴 목록](README.md)
+- [이전: SD18. 의도하지 않은 부호 확장](%5BSD%5D%20SD18.%20의도하지%20않은%20부호%20확장%20—%20원본%20타입으로%20직접%20검사하도록%20치환.md)
+- Part 1 전체(19개) 완료 — [다음: SD20. 부적절한 인가](%5BSD%5D%20SD20.%20부적절한%20인가%20—%20세션%20식별자%20대조로%20치환.md)

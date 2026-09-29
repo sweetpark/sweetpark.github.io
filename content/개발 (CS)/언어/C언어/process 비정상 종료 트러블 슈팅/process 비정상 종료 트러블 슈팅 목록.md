@@ -13,10 +13,10 @@ created: 2026-09-29
 
 | 순서 | 문서 | 다루는 것 |
 | :---: | --- | --- |
-| 1 | [1. 비정상 종료 시그널 종류](1.%20비정상%20종료%20시그널%20종류%20—%20SIGSEGV·SIGABRT·SIGBUS·SIGILL·SIGFPE%20개관.md) | 정상/비정상 종료 구분, `$?`의 `128+N` 규칙, 시그널 기본동작(disposition) 표 |
-| 2 | [2. 시그널별 원인 분석](2.%20시그널별%20원인%20분석%20—%20각%20시그널이%20실제로%20왜%20발생하는가.md) | SIGSEGV·SIGABRT·SIGBUS·SIGILL·SIGFPE가 각각 실제로 왜 발생하는지, 코드 패턴별 원인 |
-| 3 | [3. Core Dump 확인 방법](3.%20Core%20Dump%20확인%20방법%20—%20활성화·수집·gdb%20분석.md) | `ulimit`/`core_pattern`/systemd로 core 활성화, `coredumpctl`·`gdb`로 실제 분석 |
-| 4 | [4. 추가로 알아야 할 것들](4.%20추가로%20알아야%20할%20것들%20—%20dmesg·siginfo_t·ASan·예방%20도구.md) | dmesg 커널 로그, 자체 크래시 핸들러, ASan/Valgrind로 사전 예방, 컨테이너 함정, 체크리스트 |
+| 1 | [1. 비정상 종료 시그널 종류](%5B트러블슈팅%5D%201.%20비정상%20종료%20시그널%20종류%20—%20SIGSEGV·SIGABRT·SIGBUS·SIGILL·SIGFPE%20개관.md) | 정상/비정상 종료 구분, `$?`의 `128+N` 규칙, 시그널 기본동작(disposition) 표 |
+| 2 | [2. 시그널별 원인 분석](%5B트러블슈팅%5D%202.%20시그널별%20원인%20분석%20—%20각%20시그널이%20실제로%20왜%20발생하는가.md) | SIGSEGV·SIGABRT·SIGBUS·SIGILL·SIGFPE가 각각 실제로 왜 발생하는지, 코드 패턴별 원인 |
+| 3 | [3. Core Dump 확인 방법](%5B트러블슈팅%5D%203.%20Core%20Dump%20확인%20방법%20—%20활성화·수집·gdb%20분석.md) | `ulimit`/`core_pattern`/systemd로 core 활성화, `coredumpctl`·`gdb`로 실제 분석 |
+| 4 | [4. 추가로 알아야 할 것들](%5B트러블슈팅%5D%204.%20추가로%20알아야%20할%20것들%20—%20dmesg·siginfo_t·ASan·예방%20도구.md) | dmesg 커널 로그, 자체 크래시 핸들러, ASan/Valgrind로 사전 예방, 컨테이너 함정, 체크리스트 |
 
 ## 핵심 요약
 

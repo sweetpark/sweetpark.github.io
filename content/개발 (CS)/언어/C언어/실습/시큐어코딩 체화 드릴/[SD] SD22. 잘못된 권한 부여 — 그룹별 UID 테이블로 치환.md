@@ -1,0 +1,188 @@
+---
+title: "SD22. 잘못된 권한 부여 — 그룹별 UID 테이블로 치환"
+tags: 
+created: 2026-09-28
+modified: 2026-09-28
+---
+
+# SD22. 잘못된 권한 부여 — 그룹별 UID 테이블로 치환
+
+> **원본 항목**: [Part 2-1. 인가·권한 계열 — 3. 잘못된 권한 부여](../../시큐어코딩가이드/Part%202.%20보안기능/%5B시큐어코딩%5D%202-1.%20인가·권한%20계열.md#3-잘못된-권한-부여-cwe-266) `CWE-266`
+> **repo 폴더**: `sd22_privgrant/` (`make D=sd22_privgrant T=main`)
+> **목표 시간**: 1회차 12분 / 2회차 7분 / **3회차 5분**
+> 실제 `seteuid()` 는 보통 root 권한이 있어야 성공하므로, 이 드릴은 "**어떤 UID를 부여할지 결정하는 로직**"만 떼어서 검증한다(실제 `seteuid()` 호출은 SD23에서 다룬다).
+
+---
+
+## 0. 이 드릴로 체화할 것
+
+```diff
+- if (isCorrectUser) return 0;              /* 정상 유저이기만 하면 무조건 root(0) */
++ for (그룹별 테이블에서 group과 일치하는 항목을 찾는다)
++     return 테이블에_정의된_UID;
++ return -1;                                 /* 모르는 그룹은 권한 없음 */
+```
+
+"인증(누구인가)"과 "인가(무엇을 할 수 있는가)"는 별개다. 로그인 성공이 root 권한의 근거가 될 수 없다 — 권한은 항상 **그룹별 최소 유효 UID 테이블**에서 찾는다.
+
+---
+
+## 1. 취약 시나리오 — 변형 A: 로그인 성공 시 UID 결정
+
+> [!QUOTE] 요구사항서 (발췌)
+> 사용자의 그룹(관리자/일반/게스트)에 따라 부여할 UID를 결정한다.
+> - 관리자 그룹만 UID 0(root)을 받을 수 있다.
+> - 모르는 그룹은 어떤 권한도 받으면 안 된다.
+
+### 공격 입력표
+
+| 상황 | Bad 결과 | 이유 |
+| :--- | :--- | :--- |
+| 정상 로그인(그룹 무관) | **UID 0(root) 부여** | "정상 유저인지"만 확인하고 어떤 그룹인지는 안 본다 |
+| 게스트 그룹 정상 로그인(Good 대상) | 게스트 전용 UID | 그룹에 맞는 권한만 부여 |
+
+### 회차별 변형
+
+| 회차 | 변형 | 요구사항 |
+| :--- | :--- | :--- |
+| **A (1회차)** | 그룹별 UID 결정 | 위 내용 |
+| **B (2회차)** | **부서별 접근 등급** | UID 대신 "결재 등급"(1~5)을 그룹별 테이블에서 조회하는 형태로 변형 |
+| **C (3회차)** | **테이블에 없는 신규 그룹 추가 시 기본값 정책** | 새 그룹이 테이블에 없을 때 "기본값은 항상 최소 권한"이어야 한다는 원칙을 코드로 강제(테이블 순회 결과가 없으면 반드시 최소 권한 상수를 반환하도록 구조화) |
+
+---
+
+## 2. 제출물
+
+```text
+sd22_privgrant/src/uid_resolve.h
+sd22_privgrant/src/uid_resolve.c
+sd22_privgrant/test/test.c
+```
+
+### 시험 코드 — 이 형태를 고정한다
+
+```c
+#include <stdio.h>
+#include "uid_resolve.h"
+
+static int g_fail = 0;
+#define T_TRUE(cond, msg) \
+    do { if (!(cond)) { g_fail++; \
+        printf("  X %s:%d %s\n", __func__, __LINE__, msg); } } while (0)
+
+static void test_bad_is_vulnerable(void)
+{
+    T_TRUE(resolve_uid_bad(1) == 0,
+        "Bad는 정상 로그인만 하면 손님 계정도 root(0)를 받아야 한다(취약점 재현)");
+}
+
+static void test_bad_normal(void)
+{
+    T_TRUE(resolve_uid_bad(0) == -1, "인증 실패는 권한이 없어야 한다");
+}
+
+static void test_good_blocks_over_grant(void)
+{
+    T_TRUE(resolve_uid_good(GRP_GUEST) != 0, "Good은 게스트 그룹에 root(0)를 주면 안 된다");
+    T_TRUE(resolve_uid_good(GRP_UNKNOWN) == -1, "Good은 모르는 그룹은 권한 없음으로 처리해야 한다");
+}
+
+static void test_good_normal(void)
+{
+    T_TRUE(resolve_uid_good(GRP_ADMIN) == 0, "관리자 그룹만 root(0)를 받아야 한다");
+    T_TRUE(resolve_uid_good(GRP_NORMAL) == 1000, "일반 그룹은 일반 UID를 받아야 한다");
+}
+
+int main(void)
+{
+    test_bad_is_vulnerable();
+    test_bad_normal();
+    test_good_blocks_over_grant();
+    test_good_normal();
+    printf(g_fail ? "FAIL %d\n" : "PASS\n", g_fail);
+    return g_fail ? 1 : 0;
+}
+```
+
+---
+
+## 3. 자가 채점표 (100점)
+
+| 항목 | 배점 | 체크 |
+| :--- | :--- | :--- |
+| `test_bad_is_vulnerable` 통과 | 20 | ☐ |
+| `test_good_blocks_over_grant` 통과 | 30 | ☐ |
+| `test_good_normal` 통과 | 20 | ☐ |
+| UID 테이블이 `static const` 로 코드에 고정되어 있다(런타임 조작 불가) | 20 | ☐ |
+| 목표 시간 내 | 10 | ☐ |
+
+---
+
+## 4. 자주 하는 실수
+
+| 실수 | 왜 문제인가 |
+| :--- | :--- |
+| 테이블 순회 후 못 찾았을 때 기본값을 `0`(root)으로 둠 | "모르면 최소 권한"이 원칙이다. 실수로 기본값을 관대하게 잡으면 새로 추가되는 그룹이 전부 관리자가 되는 사고로 이어진다 |
+| `isCorrectUser` 하나로 인증과 인가를 동시에 처리하려 함 | Bad의 근본 결함이다. 인증 확인과 권한 조회는 **별개의 함수/단계**로 분리한다 |
+| 그룹 enum에 없는 값(정수 캐스팅 등)이 들어와도 대응 못 함 | `group_t` 는 enum이라 잘못된 정수가 들어오면 정의되지 않은 case가 될 수 있다 — 테이블에 없으면 무조건 거부하는 구조(`for` 루프 후 `return -1`)로 이런 상황도 커버된다 |
+
+---
+
+## 5. 모범답안 (변형 A)
+
+> [!success]- 다 치고 나서 열 것 — `uid_resolve.h` / `uid_resolve.c`
+> **헤더 (`uid_resolve.h`)**
+> ```c
+> #ifndef UID_RESOLVE_H
+> #define UID_RESOLVE_H
+> typedef enum { GRP_ADMIN, GRP_NORMAL, GRP_GUEST, GRP_UNKNOWN } group_t;
+> int resolve_uid_bad(int isCorrectUser);
+> int resolve_uid_good(group_t group);
+> #endif
+> ```
+> **구현 (`uid_resolve.c`)**
+> ```c
+> #include <stddef.h>
+> #include "uid_resolve.h"
+>
+> int resolve_uid_bad(int isCorrectUser)
+> {
+>     if (isCorrectUser) return 0;
+>     return -1;
+> }
+>
+> typedef struct { group_t grp; int uid; } grp_uid_t;
+> static const grp_uid_t TBL[] = {
+>     { GRP_ADMIN, 0 }, { GRP_NORMAL, 1000 }, { GRP_GUEST, 1001 },
+> };
+> #define TBL_SIZE (sizeof(TBL)/sizeof(TBL[0]))
+>
+> int resolve_uid_good(group_t group)
+> {
+>     size_t i;
+>     for (i = 0; i < TBL_SIZE; i++)
+>         if (TBL[i].grp == group) return TBL[i].uid;
+>     return -1;
+> }
+> ```
+>
+> **눈여겨볼 점**: `TBL` 에 `GRP_UNKNOWN` 항목이 **없다.** 화이트리스트에 "모르는 것"을 위한 행을 일부러 만들지 않는 것 자체가 "모르면 거부"를 코드 구조로 강제하는 방법이다.
+
+---
+
+## 6. 회차 기록표
+
+| 회차 | 날짜 | 변형 | 걸린 시간 | 점수 | 막힌 지점 한 줄 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 |  | A (UID 결정) |  |  |  |
+| 2 |  | B (결재 등급) |  |  |  |
+| 3 |  | C (기본값 정책) |  |  |  |
+| 점검 (D+14) |  | 랜덤 |  |  |  |
+
+---
+
+## 관련 노트
+
+- [시큐어코딩 체화 드릴 목록](README.md)
+- [이전: SD21. 중요 자원 잘못된 권한허용](%5BSD%5D%20SD21.%20중요한%20자원에%20대한%20잘못된%20권한허용%20—%20최소%20권한%20umask로%20치환.md)
+- [다음: SD23. 최소 권한 적용 위배](%5BSD%5D%20SD23.%20최소%20권한%20적용%20위배%20—%20즉시%20권한%20복귀로%20치환.md)

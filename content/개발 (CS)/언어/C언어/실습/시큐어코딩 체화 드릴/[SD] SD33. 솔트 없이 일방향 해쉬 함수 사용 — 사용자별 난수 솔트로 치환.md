@@ -1,0 +1,180 @@
+---
+title: "SD33. 솔트 없이 일방향 해쉬 함수 사용 — 사용자별 난수 솔트로 치환"
+tags: 
+created: 2026-09-28
+modified: 2026-09-28
+---
+
+# SD33. 솔트 없이 일방향 해쉬 함수 사용 — 사용자별 난수 솔트로 치환
+
+> **원본 항목**: [Part 2-3. 암호화 계열 — 14. 솔트 없이 일방향 해쉬 함수 사용](../../시큐어코딩가이드/Part%202.%20보안기능/%5B시큐어코딩%5D%202-3.%20암호화%20계열.md#14-솔트-없이-일방향-해쉬-함수-사용-cwe-759) `CWE-759`
+> **repo 폴더**: `sd33_nosalt/` (`make D=sd33_nosalt T=main`)
+> **목표 시간**: 1회차 12분 / 2회차 7분 / **3회차 5분**
+> SD32에서 "해시로 저장"까지는 왔다. 이 드릴은 그다음 함정 — **같은 패스워드는 항상 같은 해시**라는 사실 자체가 취약점이라는 걸 보여준다.
+
+---
+
+## 0. 이 드릴로 체화할 것
+
+```diff
+- unsigned hash_no_salt_bad(const char *pw) { return toy_hash(pw); }
++ unsigned hash_with_salt_good(const char *pw, unsigned salt) {
++     char buf[128];
++     snprintf(buf, sizeof(buf), "%u:%s", salt, pw);
++     return toy_hash(buf);
++ }
+```
+
+해시는 "되돌릴 수 없다"가 아니라 "미리 계산해 두면 찾을 수 있다"이다. 솔트가 사전 계산(레인보우 테이블)을 막는다.
+
+---
+
+## 1. 취약 시나리오 — 변형 A: 두 사용자의 동일 패스워드
+
+> [!QUOTE] 요구사항서 (발췌)
+> 여러 사용자의 패스워드를 해시로 저장한다.
+> - 서로 다른 사용자가 같은 패스워드를 쓰더라도, 저장된 해시값은 서로 달라야 한다.
+
+### 공격 입력표
+
+| 상황 | Bad 결과 | 이유 |
+| :--- | :--- | :--- |
+| alice, bob이 둘 다 `hunter2` 사용 | **완전히 같은 해시값** | 솔트가 없어 입력이 같으면 출력도 같다 — 레인보우 테이블 대조 한 번으로 둘 다 뚫린다 |
+| 같은 상황(Good, 서로 다른 솔트) | 서로 다른 해시값 | 사전 계산된 테이블이 무력화된다 |
+
+### 회차별 변형
+
+| 회차 | 변형 | 요구사항 |
+| :--- | :--- | :--- |
+| **A (1회차)** | 두 사용자의 동일 패스워드 | 위 내용 |
+| **B (2회차)** | **솔트를 해시값과 함께 저장** | "솔트는 비밀이 아니다"라는 원칙에 따라, 저장 레코드를 `{salt, hash}` 구조체로 만들어 검증 시 저장된 솔트를 그대로 재사용하는 흐름을 완성 |
+| **C (3회차)** | **반복 횟수(iteration) 개념 도입** | `toy_hash` 를 N번 연쇄로 적용하는 "반복" 개념을 추가해, 대량 추측 공격에 걸리는 시간을 늘리는 원리를 체감(PBKDF2의 핵심 아이디어) |
+
+---
+
+## 2. 제출물
+
+```text
+sd33_nosalt/src/salted_hash.h
+sd33_nosalt/src/salted_hash.c
+sd33_nosalt/test/test.c
+```
+
+### 시험 코드 — 이 형태를 고정한다
+
+```c
+#include <stdio.h>
+#include "salted_hash.h"
+
+static int g_fail = 0;
+#define T_TRUE(cond, msg) \
+    do { if (!(cond)) { g_fail++; \
+        printf("  X %s:%d %s\n", __func__, __LINE__, msg); } } while (0)
+
+static void test_bad_is_vulnerable(void)
+{
+    unsigned h1 = hash_no_salt_bad("hunter2");
+    unsigned h2 = hash_no_salt_bad("hunter2");
+    T_TRUE(h1 == h2,
+        "Bad는 두 사용자가 같은 패스워드를 쓰면 완전히 같은 해시가 나와야 한다(레인보우테이블 취약점 재현)");
+}
+
+static void test_good_blocks_precompute(void)
+{
+    unsigned h1 = hash_with_salt_good("hunter2", 111);
+    unsigned h2 = hash_with_salt_good("hunter2", 222);
+    T_TRUE(h1 != h2,
+        "Good은 같은 패스워드라도 솔트가 다르면 해시도 달라져야 한다(사전 계산 공격 무력화)");
+}
+
+static void test_good_normal(void)
+{
+    unsigned h1 = hash_with_salt_good("hunter2", 111);
+    unsigned h2 = hash_with_salt_good("hunter2", 111);
+    T_TRUE(h1 == h2, "같은 패스워드+같은 솔트는 항상 같은 해시가 나와야 한다(검증 가능해야 함)");
+}
+
+int main(void)
+{
+    test_bad_is_vulnerable();
+    test_good_blocks_precompute();
+    test_good_normal();
+    printf(g_fail ? "FAIL %d\n" : "PASS\n", g_fail);
+    return g_fail ? 1 : 0;
+}
+```
+
+---
+
+## 3. 자가 채점표 (100점)
+
+| 항목 | 배점 | 체크 |
+| :--- | :--- | :--- |
+| `test_bad_is_vulnerable` 통과 | 25 | ☐ |
+| `test_good_blocks_precompute` 통과 | 40 | ☐ |
+| `test_good_normal` 통과 — **재현 가능성 유지**(같은 입력+같은 솔트=같은 결과) | 25 | ☐ |
+| 목표 시간 내 | 10 | ☐ |
+
+---
+
+## 4. 자주 하는 실수
+
+| 실수 | 왜 문제인가 |
+| :--- | :--- |
+| `test_good_normal` 을 빼먹음 | 솔트를 섞었다고 해시 함수가 "무작위"가 되면 안 된다. 검증 시점에는 **같은 솔트로 같은 결과**가 나와야 로그인이 가능하다. 이 시험이 그걸 보증한다 |
+| 솔트를 매번 새로 생성해서 검증 시 다른 솔트를 사용 | 저장할 때 쓴 솔트를 검증할 때도 그대로 재사용해야 한다(변형 B에서 `{salt, hash}` 쌍 저장으로 해결) |
+| 솔트 값을 아주 좁은 범위(0~9)에서만 고름 | 후보가 적으면 솔트별로 레인보우 테이블을 10개만 만들면 되므로 방어 효과가 줄어든다. 실전에서는 128비트급 난수 솔트를 쓴다(SD35와 연결) |
+
+---
+
+## 5. 모범답안 (변형 A)
+
+> [!success]- 다 치고 나서 열 것 — `salted_hash.h` / `salted_hash.c`
+> ```c
+> #ifndef SALTED_HASH_H
+> #define SALTED_HASH_H
+> unsigned hash_no_salt_bad(const char *pw);
+> unsigned hash_with_salt_good(const char *pw, unsigned salt);
+> #endif
+> ```
+> ```c
+> #include <stdio.h>
+> #include "salted_hash.h"
+>
+> static unsigned toy_hash(const char *s)
+> {
+>     unsigned h = 5381;
+>     while (*s) h = ((h << 5) + h) + (unsigned char)(*s++);
+>     return h;
+> }
+>
+> unsigned hash_no_salt_bad(const char *pw) { return toy_hash(pw); }
+>
+> unsigned hash_with_salt_good(const char *pw, unsigned salt)
+> {
+>     char buf[128];
+>     snprintf(buf, sizeof(buf), "%u:%s", salt, pw);
+>     return toy_hash(buf);
+> }
+> ```
+>
+> **눈여겨볼 점**: `hash_with_salt_good` 은 해시 함수 자체(`toy_hash`)를 바꾸지 않았다 — **입력값 앞에 솔트를 붙였을 뿐**이다. 솔트는 알고리즘 교체가 아니라 "무엇을 해시하는가"를 바꾸는 문제라는 걸 이 한 줄이 보여준다.
+
+---
+
+## 6. 회차 기록표
+
+| 회차 | 날짜 | 변형 | 걸린 시간 | 점수 | 막힌 지점 한 줄 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 |  | A (두 사용자) |  |  |  |
+| 2 |  | B (솔트 저장) |  |  |  |
+| 3 |  | C (반복 횟수) |  |  |  |
+| 점검 (D+14) |  | 랜덤 |  |  |  |
+
+---
+
+## 관련 노트
+
+- [시큐어코딩 체화 드릴 목록](README.md)
+- [이전: SD32. 패스워드 평문 저장](%5BSD%5D%20SD32.%20패스워드%20평문%20저장%20—%20해시%20저장으로%20치환.md)
+- [다음: SD34. 부적절한 RSA 패딩](%5BSD%5D%20SD34.%20취약한%20암호화%20적절하지%20못한%20RSA%20패딩%20—%20OAEP%20패딩%20강제로%20치환.md)

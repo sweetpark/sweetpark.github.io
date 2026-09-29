@@ -1,0 +1,214 @@
+---
+title: "SD47. 스택 변수 주소 리턴 — 힙 할당 반환으로 치환"
+tags: 
+created: 2026-09-28
+modified: 2026-09-28
+---
+
+# SD47. 스택 변수 주소 리턴 — 힙 할당 반환으로 치환
+
+> **원본 항목**: [Part 5. 코드 오류 — 5. 스택 변수 주소 리턴](../../시큐어코딩가이드/%5B시큐어코딩%5D%20Part%205.%20코드%20오류.md#5-스택-변수-주소-리턴-cwe-562) `CWE-562`
+> **repo 폴더**: `sd47_stackret/` (`make D=sd47_stackret T=main`)
+> **목표 시간**: 1회차 12분 / 2회차 7분 / **3회차 5분**
+> **진짜 UB**를 ASan의 `stack-use-after-return` 검사로 그대로 잡아낸다. 단, 크래시를 재현하려면 **직접 바이트 역참조**(`p[0]`)로 확인해야 한다 — `printf("%s", p)` 처럼 라이브러리 내부 경로를 거치면 검사를 피해갈 수 있다는 것 자체가 이 드릴의 숨은 교훈이다.
+
+---
+
+## 0. 이 드릴로 체화할 것
+
+```diff
+  char *rpl(void) {
+      char p[10];
+      strcpy(p, "SECRET123");
+-     return p;                              /* 함수 종료 시 소멸되는 주소 */
++     char *buf = (char *)malloc(10);
++     if (!buf) return NULL;
++     memcpy(buf, p, 10);
++     return buf;                            /* 함수 종료 후에도 유효, 호출자가 free */
+  }
+```
+
+지역 배열은 함수가 끝나는 순간 사라지는 임시 좌표일 뿐이다. 그 주소를 밖으로 내보내는 순간, 받은 쪽은 이미 무효한 메모리를 붙들게 된다.
+
+---
+
+## 1. 취약 시나리오 — 변형 A: 임시 문자열 조립 함수
+
+> [!QUOTE] 요구사항서 (발췌)
+> 내부에서 조립한 문자열을 호출자에게 돌려준다.
+> - 호출자는 반환된 포인터를 함수 호출 이후에도 계속 읽을 수 있어야 한다.
+
+### 신뢰 경계
+
+| 값 | 출처 | 검증 없이 흘러가는 곳 |
+| :--- | :--- | :--- |
+| 함수가 반환하는 포인터 | 함수 내부의 지역 배열 주소 | 호출자가 함수 종료 이후에도 유효하다고 가정하고 읽는 지점 |
+
+### 공격 입력표
+
+| 상황 | Bad 결과 | 이유 |
+| :--- | :--- | :--- |
+| 반환된 포인터를 직접 역참조(`p[0]`) | **`stack-use-after-return`으로 크래시**(`expect_crash`가 감지) | 함수가 끝나며 그 스택 프레임은 이미 무효화됐다 — ASan이 "돌아온 뒤의 스택"을 별도 영역에 표시해두고 접근을 감시한다 |
+| 같은 반환값을 `printf("%s", p)` 처럼 라이브러리 경유로 읽음 | **크래시하지 않고 값이 그대로 보임**(예측 불가능한 우연) | glibc 내부 구현이 ASan이 계측한 검사 경로를 타지 않을 수 있다 — "크래시가 안 났다"가 "안전하다"는 뜻이 아니다 |
+| 같은 상황(Good) | 힙 메모리이므로 언제 읽어도 유효 | `malloc`으로 받은 메모리는 `free`하기 전까지 계속 존재한다 |
+
+### 회차별 변형
+
+| 회차 | 변형 | 요구사항 |
+| :--- | :--- | :--- |
+| **A (1회차)** | 임시 문자열 조립 함수(malloc 반환) | 위 내용 |
+| **B (2회차)** | **호출자 제공 버퍼 방식으로 변형** | `malloc` 대신 `void rpl_good_buf(char *out, size_t out_size)` 형태로 바꿔, 호출자가 미리 준비한 버퍼에 채워 넣는 또 다른 표준 치환 방식을 익힌다(이 방식은 `free` 책임 자체가 아예 사라진다) |
+| **C (3회차)** | **`static` 버퍼로 "고친" 척하는 함정** | `char p[10]`을 `static char p[10]`으로만 바꾼 버전을 만들어본다. 크래시는 사라지지만, 같은 함수를 연달아 두 번 호출하면 첫 번째 호출 결과가 두 번째 호출로 덮어써진다는 걸 직접 확인해 "크래시가 없다고 안전한 게 아니다"를 다시 한 번 체감한다 |
+
+---
+
+## 2. 제출물
+
+```text
+sd47_stackret/src/stackret.h
+sd47_stackret/src/stackret.c
+sd47_stackret/test/test.c
+```
+
+### 시험 코드 — 이 형태를 고정한다
+
+```c
+#define _DEFAULT_SOURCE
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <unistd.h>
+#include "stackret.h"
+
+static int g_fail = 0;
+#define T_TRUE(cond, msg) \
+    do { if (!(cond)) { g_fail++; \
+        printf("  X %s:%d %s\n", __func__, __LINE__, msg); } } while (0)
+
+static int expect_crash(void (*fn)(void))
+{
+    pid_t pid = fork();
+    if (pid == 0) { fn(); _exit(0); }
+    int status = 0;
+    waitpid(pid, &status, 0);
+    if (WIFSIGNALED(status)) return 1;
+    if (WIFEXITED(status) && WEXITSTATUS(status) != 0) return 1;
+    return 0;
+}
+
+static void call_bad(void)
+{
+    char *p = rpl_bad();
+    char c = p[0];             /* 한 바이트라도 직접 역참조해야 ASan이 감지한다 */
+    (void)c;
+}
+
+static void test_bad_is_vulnerable(void)
+{
+    T_TRUE(expect_crash(call_bad) == 1,
+        "Bad가 반환한 포인터를 역참조하면 stack-use-after-return으로 크래시해야 한다(취약점 재현)");
+}
+
+static void test_good_is_valid_after_return(void)
+{
+    char *g = rpl_good();
+    T_TRUE(g != NULL, "Good은 힙 할당에 성공해야 한다");
+    T_TRUE(strcmp(g, "SECRET123") == 0, "Good이 반환한 메모리는 함수 종료 후에도 내용이 그대로 유지돼야 한다");
+    free(g);
+}
+
+int main(void)
+{
+    test_bad_is_vulnerable();
+    test_good_is_valid_after_return();
+    printf(g_fail ? "FAIL %d\n" : "PASS\n", g_fail);
+    return g_fail ? 1 : 0;
+}
+```
+
+> [!WARNING] `rpl_bad`를 그대로 타이핑하면 컴파일이 안 될 수 있다
+> `return p;`(지역 배열 반환)는 clang이 `-Wreturn-stack-address`로 **컴파일 타임에 경고**하고, 이 프로젝트는 `-Werror`라 경고가 곧 빌드 실패다. [SD38](%5BSD%5D%20SD38.%20제대로%20제어되지%20않은%20재귀%20—%20깊이%20제한%20동반으로%20치환.md)에서 썼던 것과 같은 방식으로, `rpl_bad` 함수 앞뒤를 `#pragma clang diagnostic push` / `ignored "-Wreturn-stack-address"` / `pop`으로 감싸 "의도적으로 재현한 버그"라고 컴파일러에 알린다.
+
+> [!NOTE] 왜 직접 `p[0]`으로 읽어야 크래시가 나는가
+> `printf("%s", p)`나 `printf("%.*s", n, p)`처럼 문자열 전체를 한 번에 다루는 라이브러리 함수는 내부적으로 ASan이 계측하지 않은 최적화된 경로(SIMD 스캔 등)를 탈 수 있어, 실제로는 무효한 메모리를 읽고 있어도 검사망을 피해간다. 반면 `p[0]`처럼 컴파일러가 직접 생성한 단순 메모리 접근은 ASan이 심어둔 검사 코드를 반드시 통과한다. **"크래시가 재현이 안 됐다"가 "버그가 없다"의 증거가 아니라는 것** 자체가 이 항목의 핵심 위험이다.
+
+---
+
+## 3. 자가 채점표 (100점)
+
+| 항목 | 배점 | 체크 |
+| :--- | :--- | :--- |
+| `test_bad_is_vulnerable` 통과(실제 stack-use-after-return 감지) | 35 | ☐ |
+| `test_good_is_valid_after_return` 통과 | 35 | ☐ |
+| `rpl_bad`에 pragma로 경고를 억제하되 버그 자체는 그대로 유지했다 | 20 | ☐ |
+| 목표 시간 내 | 10 | ☐ |
+
+---
+
+## 4. 자주 하는 실수
+
+| 실수 | 왜 문제인가 |
+| :--- | :--- |
+| `p`를 `static char p[10]`으로 바꿔서 "고쳤다"고 생각 | 크래시는 사라지지만 함수가 재진입되거나 여러 스레드에서 동시에 불리면 이전 호출의 결과가 덮어써진다. 변형 C에서 직접 겪어봐야 하는 함정이다 |
+| Good에서 `malloc` 실패(`NULL`) 검사를 빼먹음 | 힙 할당도 실패할 수 있다. `if (!buf) return NULL;` 없이 바로 `memcpy`하면 NULL 포인터 역참조([SD43](%5BSD%5D%20SD43.%20널%20포인터%20역참조%20—%20반환값%20검사%20후%20사용으로%20치환.md))로 새로운 버그가 생긴다 |
+| Good이 반환한 메모리를 호출자가 `free`하지 않음 | 이 함수는 "힙에 할당해서 반환"하는 계약이므로 소유권이 호출자에게 넘어간다. `free`를 잊으면 이번엔 메모리 누수([SD44](%5BSD%5D%20SD44.%20부적절한%20자원%20해제%20—%20단일%20해제%20지점으로%20치환.md))가 된다 — 한 취약점을 고치다 다른 취약점을 만들지 않도록 계약을 명확히 하라 |
+
+---
+
+## 5. 모범답안 (변형 A)
+
+> [!success]- 다 치고 나서 열 것 — `stackret.h` / `stackret.c`
+> ```c
+> #ifndef STACKRET_H
+> #define STACKRET_H
+> char *rpl_bad(void);
+> char *rpl_good(void);
+> #endif
+> ```
+> ```c
+> #include <string.h>
+> #include <stdlib.h>
+> #include "stackret.h"
+>
+> #pragma clang diagnostic push
+> #pragma clang diagnostic ignored "-Wreturn-stack-address"
+> char *rpl_bad(void)
+> {
+>     char p[10];
+>     strcpy(p, "SECRET123");
+>     return p;                    /* 스택 지역 배열의 주소 반환 -- 함수 종료 시 소멸 */
+> }
+> #pragma clang diagnostic pop
+>
+> char *rpl_good(void)
+> {
+>     char p[10];
+>     char *buf = (char *)malloc(10);
+>     if (!buf) return NULL;
+>     strcpy(p, "SECRET123");
+>     memcpy(buf, p, 10);
+>     return buf;                  /* 힙에 있으므로 함수 종료 후에도 유효 -- 호출자가 free */
+> }
+> ```
+>
+> **눈여겨볼 점**: `rpl_good`은 여전히 지역 배열 `p`를 쓰지만, **반환하는 것은 `p`가 아니라 `buf`**(힙 주소)다. 지역 변수 자체를 없애는 게 핵심이 아니라, **"함수 밖으로 나가는 주소가 어디를 가리키는가"**가 핵심이라는 걸 이 한 줄 차이(`return p;` vs `return buf;`)로 체감한다.
+
+---
+
+## 6. 회차 기록표
+
+| 회차 | 날짜 | 변형 | 걸린 시간 | 점수 | 막힌 지점 한 줄 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 |  | A (malloc 반환) |  |  |  |
+| 2 |  | B (호출자 제공 버퍼) |  |  |  |
+| 3 |  | C (static 함정) |  |  |  |
+| 점검 (D+14) |  | 랜덤 |  |  |  |
+
+---
+
+## 관련 노트
+
+- [시큐어코딩 체화 드릴 목록](README.md)
+- [이전: SD46. 정수를 문자로 변환](%5BSD%5D%20SD46.%20정수를%20문자로%20변환%20—%20용도에%20맞는%20타입%20선언으로%20치환.md)
+- [다음: SD48. 매크로의 잘못된 사용](%5BSD%5D%20SD48.%20매크로의%20잘못된%20사용%20—%20짝%20매크로%20동반으로%20치환.md)

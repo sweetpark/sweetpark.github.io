@@ -1,0 +1,183 @@
+---
+title: "SD23. 최소 권한 적용 위배 — 즉시 권한 복귀로 치환"
+tags: 
+created: 2026-09-28
+modified: 2026-09-28
+---
+
+# SD23. 최소 권한 적용 위배 — 즉시 권한 복귀로 치환
+
+> **원본 항목**: [Part 2-1. 인가·권한 계열 — 4. 최소 권한 적용 위배](../../시큐어코딩가이드/Part%202.%20보안기능/%5B시큐어코딩%5D%202-1.%20인가·권한%20계열.md#4-최소-권한-적용-위배-cwe-272) `CWE-272`
+> **repo 폴더**: `sd23_privdrop/` (`make D=sd23_privdrop T=main`)
+> **목표 시간**: 1회차 10분 / 2회차 6분 / **3회차 4분**
+> Part 2-1 마지막 드릴. 실제 `seteuid()` 대신 "현재 유효 권한"을 흉내내는 전역 변수로 재현한다 — 원리(빌렸으면 갚는다)는 완전히 동일하다.
+
+---
+
+## 0. 이 드릴로 체화할 것
+
+```diff
+- g_current_priv = ROOT_UID;      /* 상승만 하고 되돌리지 않는다 */
++ int backup = g_current_priv;
++ g_current_priv = ROOT_UID;
++ /* ... 필요한 작업만 ... */
++ g_current_priv = backup;        /* 즉시 원래 권한으로 복귀 */
+```
+
+권한 상승은 "빌린 것"이다. 쓰자마자 즉시 반납한다.
+
+---
+
+## 1. 취약 시나리오 — 변형 A: 상승 후 미반납
+
+> [!QUOTE] 요구사항서 (발췌)
+> 특정 작업은 상위 권한(root)으로 수행해야 한다.
+> - 작업이 끝나면 반드시 원래 권한으로 돌아와야 한다.
+
+### 공격 입력표
+
+| 상황 | Bad 결과 | 이유 |
+| :--- | :--- | :--- |
+| `elevate_bad()` 호출 후 | **권한이 계속 root(0)로 남아있다** | 반납 코드가 아예 없다 |
+| `do_privileged_work_good()` 호출 후 | 원래 권한(1000)으로 복귀 | 작업 직후 즉시 반납 |
+
+### 회차별 변형
+
+| 회차 | 변형 | 요구사항 |
+| :--- | :--- | :--- |
+| **A (1회차)** | 상승 후 미반납 | 위 내용 |
+| **B (2회차)** | **예외 경로에서도 반납** | 작업 도중 "실패"가 발생하는 상황을 추가하고, 실패해도 반드시 원래 권한으로 복귀하는지 확인(early return이 있어도 반납 로직을 타야 한다) |
+| **C (3회차)** | **중첩 상승** | 이미 상승된 상태에서 한 번 더 상승을 요청하는 경우, 반납이 "최초 권한"으로 정확히 돌아가는지(중간값으로 잘못 복귀하지 않는지) 확인 |
+
+---
+
+## 2. 제출물
+
+```text
+sd23_privdrop/src/priv_ops.h
+sd23_privdrop/src/priv_ops.c
+sd23_privdrop/test/test.c
+```
+
+### 시험 코드 — 이 형태를 고정한다
+
+```c
+#include <stdio.h>
+#include "priv_ops.h"
+
+static int g_fail = 0;
+#define T_TRUE(cond, msg) \
+    do { if (!(cond)) { g_fail++; \
+        printf("  X %s:%d %s\n", __func__, __LINE__, msg); } } while (0)
+
+static void test_bad_is_vulnerable(void)
+{
+    reset_priv();
+    elevate_bad();
+    T_TRUE(get_current_priv() == 0,
+        "Bad는 권한 상승 후 계속 root(0) 상태로 남아있어야 한다(취약점 재현)");
+}
+
+static void test_good_restores_priv(void)
+{
+    reset_priv();
+    int before = get_current_priv();
+    do_privileged_work_good();
+    T_TRUE(get_current_priv() == before,
+        "Good은 작업이 끝나면 상승 전 권한으로 정확히 복귀해야 한다");
+}
+
+int main(void)
+{
+    test_bad_is_vulnerable();
+    test_good_restores_priv();
+    printf(g_fail ? "FAIL %d\n" : "PASS\n", g_fail);
+    return g_fail ? 1 : 0;
+}
+```
+
+> [!TIP] 왜 `reset_priv()` 가 필요한가
+> `g_current_priv` 는 전역 상태다. 한 시험이 남긴 상태가 다음 시험에 영향을 주지 않도록, 각 시험 맨 앞에서 알려진 값으로 되돌린다 — SD21의 `umask` 원복과 같은 이유다. **전역 상태를 건드리는 코드는 테스트에서도 반드시 격리한다.**
+
+---
+
+## 3. 자가 채점표 (100점)
+
+| 항목 | 배점 | 체크 |
+| :--- | :--- | :--- |
+| `test_bad_is_vulnerable` 통과 | 30 | ☐ |
+| `test_good_restores_priv` 통과 | 40 | ☐ |
+| Good의 반납이 **상승 직전 값을 백업**해서 복귀한다(상수 `NORMAL_UID` 를 하드코드하지 않는다) | 20 | ☐ |
+| 목표 시간 내 | 10 | ☐ |
+
+---
+
+## 4. 자주 하는 실수
+
+| 실수 | 왜 문제인가 |
+| :--- | :--- |
+| 복귀 값을 상수(`1000`)로 하드코드 | 변형 C(중첩 상승)처럼 "상승 전 값"이 항상 기본값이 아닐 수 있다. 반드시 **그 시점의 실제 값을 백업**해서 되돌려야 한다 |
+| 작업 중간에 `return` 이 있는데 그 경로엔 반납 코드가 없음 | 변형 B에서 드러나는 함정이다. 모든 종료 경로(정상+예외)에서 반납이 실행되어야 한다 — 자원 정리와 똑같은 원칙([SD44. 부적절한 자원 해제](%5BSD%5D%20SD44.%20부적절한%20자원%20해제%20—%20단일%20해제%20지점으로%20치환.md)와 같은 계열의 문제) |
+| 백업 변수를 지역이 아니라 전역으로 둠 | 여러 스레드/재귀 호출이 얽히면 백업값 자체가 덮인다. 백업은 반드시 **그 함수 호출의 지역 변수**로 둔다 |
+
+---
+
+## 5. 모범답안 (변형 A)
+
+> [!success]- 다 치고 나서 열 것 — `priv_ops.h` / `priv_ops.c`
+> **헤더 (`priv_ops.h`)**
+> ```c
+> #ifndef PRIV_OPS_H
+> #define PRIV_OPS_H
+> int get_current_priv(void);
+> void reset_priv(void);
+> void elevate_bad(void);
+> void do_privileged_work_good(void);
+> #endif
+> ```
+> **구현 (`priv_ops.c`)**
+> ```c
+> #include "priv_ops.h"
+>
+> #define NORMAL_UID 1000
+> #define ROOT_UID   0
+>
+> static int g_current_priv = NORMAL_UID;
+>
+> int get_current_priv(void) { return g_current_priv; }
+> void reset_priv(void) { g_current_priv = NORMAL_UID; }
+>
+> void elevate_bad(void)
+> {
+>     g_current_priv = ROOT_UID;
+> }
+>
+> void do_privileged_work_good(void)
+> {
+>     int backup = g_current_priv;
+>     g_current_priv = ROOT_UID;
+>     /* ... 필요한 작업만 이 구간에서 수행한다고 가정 ... */
+>     g_current_priv = backup;
+> }
+> ```
+>
+> **눈여겨볼 점**: `elevate_bad` 와 `do_privileged_work_good` 의 차이는 **딱 한 줄**(`g_current_priv = backup;`)이다. 권한 관리 결함은 대개 "복잡한 로직"이 아니라 "빠뜨린 한 줄"에서 생긴다는 걸 이 드릴이 가장 짧게 보여준다.
+
+---
+
+## 6. 회차 기록표
+
+| 회차 | 날짜 | 변형 | 걸린 시간 | 점수 | 막힌 지점 한 줄 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 |  | A (상승/미반납) |  |  |  |
+| 2 |  | B (예외 경로) |  |  |  |
+| 3 |  | C (중첩 상승) |  |  |  |
+| 점검 (D+14) |  | 랜덤 |  |  |  |
+
+---
+
+## 관련 노트
+
+- [시큐어코딩 체화 드릴 목록](README.md)
+- [이전: SD22. 잘못된 권한 부여](%5BSD%5D%20SD22.%20잘못된%20권한%20부여%20—%20그룹별%20UID%20테이블로%20치환.md)
+- Part 2-1 인가·권한 계열 4개 완료 — [다음: SD24. 하드코드된 패스워드](%5BSD%5D%20SD24.%20하드코드된%20패스워드%20—%20외부%20설정%20로드로%20치환.md)

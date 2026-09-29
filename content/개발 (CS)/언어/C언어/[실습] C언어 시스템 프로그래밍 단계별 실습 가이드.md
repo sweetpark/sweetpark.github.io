@@ -152,7 +152,7 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 2-1. 안전한 로깅 매크로 & 단일 출구(Single Exit) 에러 정리기
 * **파일 위치**: `stage2_robust/step1_logger.c`
 * **연계 학습 노트**:
-  * [[C] 매크로를 do-while(0)으로 감싸는 이유](../[C]%20매크로를%20do-while(0)%EC%9C%BC%EB%A1%9C%20%EA%B0%90%EC%82%B0%EB%8A%94%20%EC%9D%B4%EC%9C%A0%20%E2%80%94%20%EC%97%AC%EB%9F%AC%20%EB%AC%B8%EC%9E%A5%EC%9D%84%20%EC%95%88%EC%A0%84%ED%95%9C%20%ED%95%98%EB%82%98%EB%A1%9C%20%EB%AC%B6%EA%B8%B0.md)
+  * [[C] 매크로를 do-while(0)으로 감싸는 이유](../[C]%20매크로를%20do-while(0)%EC%9C%BC%EB%A1%9C%20%EA%B0%90%EC%8B%B8%EB%8A%94%20%EC%9D%B4%EC%9C%A0%20%E2%80%94%20%EC%97%AC%EB%9F%AC%20%EB%AC%B8%EC%9E%A5%EC%9D%84%20%EC%95%88%EC%A0%84%ED%95%9C%20%ED%95%98%EB%82%98%EB%A1%9C%20%EB%AC%B6%EA%B8%B0.md)
   * [[C] 가변 인자 함수 — stdarg.h로 나만의 printf 만들기](../[C]%20가변%20인자%20함수%20—%20stdarg.h로%20나만의%20printf%20만들기.md)
   * [[C] 실무 C 코드 관례와 UB 함정 정리 (1급: 생성/소멸 쌍, 단일출구 goto cleanup)](../[C]%20실무%20C%20코드%20관례와%20UB%20함정%20정리.md)
 * **구현 미션**:
