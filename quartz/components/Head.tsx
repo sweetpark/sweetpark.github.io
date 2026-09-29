@@ -549,8 +549,81 @@ export default (() => {
     });
   }
 
+  // 탐색기 폴더 옆에 하위 글 개수 "(N)" 표시 (티스토리 카테고리 스타일)
+  function updateExplorerCounts() {
+    var folders = document.querySelectorAll(".explorer-content .folder-container");
+    for (var i = 0; i < folders.length; i++) {
+      var container = folders[i];
+      var li = container.parentElement;
+      var button = container.querySelector(".folder-button");
+      if (!li || !button) continue;
+
+      var count = li.querySelectorAll("a.nav-file-title").length;
+      var badge = button.querySelector(".folder-count");
+      if (!badge) {
+        badge = document.createElement("span");
+        badge.className = "folder-count";
+        button.appendChild(badge);
+      }
+      var text = "(" + count + ")";
+      if (badge.textContent !== text) badge.textContent = text;
+    }
+  }
+
+  var explorerObserver = null;
+  function observeExplorer() {
+    var target = document.querySelector(".explorer-content");
+    if (!target) return;
+    if (explorerObserver) explorerObserver.disconnect();
+    explorerObserver = new MutationObserver(function() { updateExplorerCounts(); });
+    explorerObserver.observe(target, { childList: true, subtree: true });
+    updateExplorerCounts();
+  }
+
+  // 우측 목차 토글 버튼 (데스크톱: 평소엔 숨기고 아이콘 클릭 시 슬라이드로 표시)
+  function setTocOpen(open) {
+    document.body.classList.toggle("toc-open", open);
+    var btn = document.querySelector(".toc-toggle-btn");
+    if (btn) btn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  function setupTocToggle() {
+    var btn = document.querySelector(".toc-toggle-btn");
+    if (!btn) {
+      btn = document.createElement("button");
+      btn.className = "toc-toggle-btn";
+      btn.type = "button";
+      btn.setAttribute("aria-label", "목차 열기/닫기");
+      btn.setAttribute("title", "목차");
+      btn.setAttribute("aria-expanded", "false");
+      btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>';
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        setTocOpen(!document.body.classList.contains("toc-open"));
+      });
+      document.body.appendChild(btn);
+
+      document.addEventListener("click", function(e) {
+        if (!document.body.classList.contains("toc-open")) return;
+        var t = e.target;
+        if (t && t.closest && (t.closest(".right.sidebar") || t.closest(".toc-toggle-btn"))) return;
+        setTocOpen(false);
+      });
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") setTocOpen(false);
+      });
+    }
+
+    // 목차가 없는 페이지(홈, 폴더, 태그 등)에서는 버튼 숨김
+    var hasToc = !!document.querySelector(".right.sidebar .toc");
+    btn.style.display = hasToc ? "" : "none";
+    setTocOpen(false);
+  }
+
   function initPageEnhancements() {
     addGlobalGraphBtn();
+    observeExplorer();
+    setupTocToggle();
     updatePageViews();
     fetchAndRenderPopularPosts();
     enhanceRecentNotesCards();
