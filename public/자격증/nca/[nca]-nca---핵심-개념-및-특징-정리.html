@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr"><head><title>NCA</title><meta charset="utf-8"/><link rel="preload" href="../../index-b2b4d3bf.css" as="style"/><link rel="preload" href="../../prescript-2bfc6315.js" as="script"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="차근차근정확하게"/><meta property="og:title" content="NCA"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="NCA"/><meta name="twitter:description" content="NCA NOTE 네이버 클라우드 플랫폼(NCP) NCA 자격증 강의노트 — 클라우드 개념, 서버/스토리지/네트워크/DB, 모니터링·분석·보안 상품과 실습·트러블슈팅 정리(장별 구성)."/><meta property="og:description" content="NCA NOTE 네이버 클라우드 플랫폼(NCP) NCA 자격증 강의노트 — 클라우드 개념, 서버/스토리지/네트워크/DB, 모니터링·분석·보안 상품과 실습·트러블슈팅 정리(장별 구성)."/><meta property="og:image:alt" content="NCA NOTE 네이버 클라우드 플랫폼(NCP) NCA 자격증 강의노트 — 클라우드 개념, 서버/스토리지/네트워크/DB, 모니터링·분석·보안 상품과 실습·트러블슈팅 정리(장별 구성)."/><meta property="twitter:domain" content="sweetpark.github.io"/><meta property="og:url" content="https://sweetpark.github.io/자격증/nca/[nca]-nca---핵심-개념-및-특징-정리"/><meta property="twitter:url" content="https://sweetpark.github.io/자격증/nca/[nca]-nca---핵심-개념-및-특징-정리"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="NCA NOTE 네이버 클라우드 플랫폼(NCP) NCA 자격증 강의노트 — 클라우드 개념, 서버/스토리지/네트워크/DB, 모니터링·분석·보안 상품과 실습·트러블슈팅 정리(장별 구성)."/><meta name="generator" content="Quartz"/><link href="../../index-b2b4d3bf.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-735924e0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-589c1cea.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-bbc3f7c0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-2911f5d1.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-e427079e.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-caf7c009.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-53b25b2b.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-c93c6a44.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-8a06014f.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-77d6a441.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-6ee21cee.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-1ea6ad18.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-34bdfded.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-788c9ca3.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-642859cd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-4abc06bd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-274a3dfe.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-94cb6c84.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-58d5ff56.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-7262b5a7.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-a5c806d2.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-6bd36952.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-9857b007.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-d3a1a224.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript-2bfc6315.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted%20Grotesk%3Awght%40400%3B700&amp;family=Source%20Sans%20Pro%3Aital%2Cwght%400%2C400%3B0%2C600%3B1%2C400%3B1%2C600&amp;family=IBM%20Plex%20Mono%3Awght%40400%3B600&amp;display=swap"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://sweetpark.github.io/자격증/nca/[nca]-nca---핵심-개념-및-특징-정리-og-image.webp"/><meta property="og:image:url" content="https://sweetpark.github.io/자격증/nca/[nca]-nca---핵심-개념-및-특징-정리-og-image.webp"/><meta name="twitter:image" content="https://sweetpark.github.io/자격증/nca/[nca]-nca---핵심-개념-및-특징-정리-og-image.webp"/><meta property="og:image:type" content="image/webp"/><script>
+(function() {
+  function addGlobalGraphBtn() {
+    var toolbar = document.querySelector(".sidebar.left .flex-component");
+    if (!toolbar || toolbar.querySelector(".toolbar-graph-btn")) return;
+
+    var wrapper = document.createElement("div");
+    wrapper.style.cssText = "flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;";
+
+    var btn = document.createElement("button");
+    btn.className = "toolbar-graph-btn";
+    btn.setAttribute("aria-label", "전체 그래프 뷰 (Cmd+G)");
+    btn.setAttribute("title", "전체 그래프 뷰 (단축키: Cmd+G)");
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" fill="currentColor"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"/></svg>';
+
+    btn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      var existingIcon = document.querySelector(".graph .global-graph-icon");
+      if (existingIcon && existingIcon !== btn) {
+        existingIcon.click();
+        return;
+      }
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "g", metaKey: true, bubbles: true }));
+    });
+
+    wrapper.appendChild(btn);
+    toolbar.appendChild(wrapper);
+  }
+
+  document.addEventListener("DOMContentLoaded", addGlobalGraphBtn);
+  document.addEventListener("nav", addGlobalGraphBtn);
+})();
+</script></head><body data-slug="자격증/nca/[nca]-nca---핵심-개념-및-특징-정리" data-basepath><div id="quartz-root" class="page" data-frame="default"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../..">차근차근정확하게</a></h2><div class="mobile-only"><div class="spacer"></div></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 0.5rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button" aria-label="검색" aria-expanded="false"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>검색</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="검색어를 입력하세요" placeholder="검색어를 입력하세요"/><div class="search-layout" data-preview="true" data-field-priority="[&quot;title&quot;,&quot;content&quot;,&quot;tags&quot;]"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode" aria-label="다크 모드"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="다크 모드"><title>다크 모드</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="라이트 모드"><title>라이트 모드</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode" aria-label="리더 모드"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="리더 모드"><title>리더 모드</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer nav-files-container" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a2, b2) => {\n    if (!a2.isFolder &amp;&amp; !b2.isFolder || a2.isFolder &amp;&amp; b2.isFolder) {\n      return (a2.displayName || \&quot;\&quot;).localeCompare(b2.displayName || \&quot;\&quot;, void 0, {\n        numeric: true,\n        sensitivity: \&quot;base\&quot;\n      });\n    }\n    if (!a2.isFolder &amp;&amp; b2.isFolder) {\n      return 1;\n    }\n    return -1;\n  }&quot;,&quot;filterFn&quot;:&quot;(node) => node.slugSegment !== \&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;(node) => {\n    return node;\n  }&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-322" aria-label="탐색기"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>탐색기</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-322" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#" class="nav-file-title tree-item-self"></a></li></template><template id="template-folder"><li><div class="folder-container nav-folder-title tree-item-self"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon nav-folder-collapse-indicator collapse-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content tree-item-children"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../자격증/">자격증</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../자격증/nca/">NCA</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>NCA</a></div></nav><h1 class="article-title">NCA</h1><details class="note-properties metadata-container" open data-collapsed="false"><summary class="note-properties-header"><span class="note-properties-title">Properties</span><span class="note-properties-count">1</span></summary><table class="note-properties-table"><tbody><tr class="note-properties-row metadata-property"><td class="note-properties-key metadata-property-key">tags</td><td class="note-properties-value metadata-property-value"><span class="note-properties-tags"><a href="../../tags/학습" class="internal internal-link tag-link">학습</a><span class="note-properties-separator">, </span><a href="../../tags/자격증" class="internal internal-link tag-link">자격증</a><span class="note-properties-separator">, </span><a href="../../tags/nca" class="internal internal-link tag-link">nca</a></span></td></tr></tbody></table></details><p show-comma="true" class="content-meta"><time datetime="2026-09-04T15:00:00.000Z">2026년 9월 05일</time><span>31 min read</span></p></div></div><article class="popover-hint"><div class="markdown-preview-view markdown-rendered"><h1 id="nca">NCA<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#nca" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>NOTE</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>네이버 클라우드 플랫폼(NCP) NCA 자격증 강의노트 — 클라우드 개념, 서버/스토리지/네트워크/DB, 모니터링·분석·보안 상품과 실습·트러블슈팅 정리(장별 구성).</p>
+</div>
+</blockquote>
+<h2 id="-개념">📌 개념<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-개념" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h2 id="1장---cloud-컴퓨팅">1장 - Cloud 컴퓨팅<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1장---cloud-컴퓨팅" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>
+<p>플랫폼 형태 제공</p>
+</li>
+<li>
+<p><strong>장점</strong></p>
+<ul>
+<li>legacy 인프라 : 정액제</li>
+<li>종량제 요금(네이버클라우드 - 쓴만큼 비용 증가)</li>
+<li>CAPEX → OPEX 대체</li>
+<li>지속적인 기술 혁신 및 적용</li>
+<li>소규모일 경우 투자비용 감소</li>
+<li>빠른 프로비저닝 및 유연한 확장 (몇분만에 서버 확보 → 손쉽게 확장가능)</li>
+<li>클라우드 업체가 다양한 지원(보안, 유지보수 등)</li>
+</ul>
+</li>
+<li>
+<p><strong>클라우드 컴퓨팅 유형</strong></p>
+<ul>
+<li>Iaas : 서버 - 네트워크 - 스토리지</li>
+<li>컨테이너 플랫폼</li>
+<li>SAS : 완제품 형태로 제공 → 어플리케이션, 솔루션을 서비스 형태로 사용</li>
+</ul>
+</li>
+<li>
+<p><strong>네이버 클라우드 플랫폼</strong></p>
+<ul>
+<li>첨단 테크놀로지와 비즈니스 노하우 결합</li>
+<li>네트워크 망이 구축되어있음</li>
+<li>첨단 인공지능 기술 클라우드 상품 출시 → 클로바, 파파고, 네이버 지도 등등 기능 이용 가능</li>
+<li>네이버 클라우드 보안 인증으로 증명된 안정성</li>
+<li>웹 기반 관리 도구 → 네이버 클라우드 홈페이지 (친화적인 인터페이스)</li>
+<li>글로벌 메이저급 인프라 품질</li>
+<li>24시간 365일 사용자 지원 (기술지원)</li>
+<li>BtoB : 기업과 기업 → 개인도 이용가능하도록 넓힘</li>
+</ul>
+</li>
+<li>
+<p><strong>클라우드 관리 콘솔</strong></p>
+<ul>
+<li>대시보드 → 인프라 구성 가능</li>
+<li>직관적인 인터페이스</li>
+<li>사용자 친화적인 → UI / UX</li>
+<li>컴퓨트(서버) , 스토리지 , 네트워크 /  글로벌, 하이브리드
+<ul>
+<li>서버 : VM , SSD, VDS, GPU서버, Bare Metal Server 등등 → OS제공 (CentOS, window, Ubuntu 등등)</li>
+</ul>
+</li>
+<li>데이터베이스 , Analytics(분석도구 - 로그), Media(VOD,이미지 서버, 라이브 방송 플랫폼 생성 가능 등등), Game(게임팟-게임에 이용가능한 로그온 서비스, 게임 모듈들 제공)
+<ul>
+<li>데이터베이스 : 스토리지 관리(성능포함)→ 네이버클라우드 쪽에서 관리, 데이터 사이즈 상관없이 부족할경우 자동으로 늘어남</li>
+<li>서비스, 어플리케이션 상품군 : API 제공(클로바, 파파고 등), 개발툴(dev Tools), Biz Application(기업에서 사용하는 SAAS : 회계, 결제시스템, 인사회계시스템 등등)
+<ul>
+<li>AI service : OCR, 파파고, 클로바 등 기능 이용 가능(기능을 이용하여 새로운 것을 만들 수 있음)</li>
+</ul>
+</li>
+<li>관리, 보안 상품군 : 관리 상품 (모니터링, 로그 기록, 그룹으로 관리, 하위 계정 관리)
+<ul>
+<li>보안 상품군 : 보안관제, 보안시스템 구축 완성 (방화벽(ACG), Safer 시리즈, Check )</li>
+</ul>
+</li>
+<li>글로벌 리전 : 독일, 싱가포르,홍콩, 한국, 일본, 미국서부 → 전용회선 제공</li>
+<li>하이브리드 클라우드 호스팅 : legacy 인프라(기존 서버들)과 결합 가능</li>
+<li>멀티존 구성 : 데이터 센터간의 이중화 구성이 가능 (한국만 가능) → 백업 가능</li>
+<li>보안존 : CPU존(특정 규약 및 특정 규제 등을 위한 특징적인 것을 보안할 수 있도록 물리적으로 보안 가능) → 외부망과 차단 (기존 방화벽과 동일한 기능 제공)</li>
+</ul>
+</li>
+</ul>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>NOTE</p></div>
+                  
+                </div>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>퀴즈 → ZONE에 종속적이지 않은 것 : loadeBalance</p>
+</blockquote>
+<h2 id="2장">2장<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2장" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>
+<p><strong>전가상화</strong> : 전체를 가상화하는 방법 (하드웨어 : CPU MEM DISK 모두 가상화) → OS 동작 바로 가능 (오버헤드 주의)</p>
+</li>
+<li>
+<p><strong>반가상화</strong> : VM이 직접 DEVIcE에 명령어를 날림</p>
+<ul>
+<li>HYPER Visor (GEN, KVM, HYPER -V, VMWARE)
+<ul>
+<li>Type 1 : 하드웨어 → 하이퍼 바이저 → OS</li>
+<li>Type 2 : 하드웨어 → OS → 하이퍼바이저 → OS (기존 컴퓨터에서 vm을 올리는 방법)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>서버특징</strong></p>
+<ul>
+<li>CPU : vCPU 단위로 할당, 멀티코어, 스펙변경 가능(scale in or out), over commit 허용(vCPU할당 허용)</li>
+<li>MEM : GB단로 할당, Over Commit 허용 안함( 온전히 다 사용 가능), 스펙변경 가능</li>
+<li>HDD : OS영역이 기본 할당(50 ~100 GB 할당) , OS영역은 용량 확장이나 축소 불가, SSD타입과 HDD타입으로 구분</li>
+<li>GPU : GPU단위로 할당, Pass Through 방식 제공, 최대 2장까지 제공</li>
+<li>Network : 10Gbps(physical) , 1Gbps(logical), 500Mbps ~ 1Gbps제공 (Rx + Tx ⇒ 들어오고 나가는 네트워크 → 들어오는거 500Mbps 나가는거 500Mbps 합쳐서 1Gbps)</li>
+</ul>
+</li>
+<li>
+<p><strong>서버타입</strong></p>
+<ul>
+<li>Micro ⇒ CentOs, Ubuntu → 서버 내의 특성에 맞게만 스펙변경 가능 (windows → 일정 스펙이상만 윈도우 제공)</li>
+<li>GPU는 하드웨어 스펙 변경 불가능 (자동으로 할당 됨)</li>
+<li>VDS → 하이퍼바이저 위에 하나의 VM만 존재(I/O병합을 회피하기 위해서 -여러 VM을 쓰면 충돌이 일어날 수 있어서)</li>
+<li>CPU intensive : 대용량 서버, 빠른 작업을 위해 제공 (고속 기능)</li>
+<li>Local Disk : DISK 제공 (CentOs, Ubuntu)</li>
+</ul>
+</li>
+<li>
+<p><strong>마이크로 서버</strong></p>
+<ul>
+<li>해외리전 제공 x (한국에서만 제공)</li>
+<li>추가 디스크 사용 불가</li>
+<li>테스트 용도로 적당
+<ul>
+<li>compact type</li>
+<li>standard type</li>
+<li>high memory type : 대용량 메모리가 필요한 경우</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>VDS Server</strong></p>
+<ul>
+<li>하이퍼 바이저 위에 VM하나만 올림 (I/O 병합을 피하기 위해서)</li>
+</ul>
+</li>
+<li>
+<p><strong>Bare Metal Server</strong></p>
+<ul>
+<li>하드웨어 자원 그대로 사용 (하이퍼바이저 사용x)</li>
+<li>RAID5, RAID10 지원</li>
+<li>core 수( ⇒8) : OracleDB가 지원하는 최대 코어수</li>
+<li>core수(⇒4 ) : MSSQL 이 사용 하는 코어 수</li>
+</ul>
+</li>
+<li>
+<p><strong>GPU Server</strong></p>
+<ul>
+<li>vCPU와 메모리는 고정된 개수 (추가할수는 있음)</li>
+</ul>
+</li>
+<li>
+<p>실습 (35분)</p>
+</li>
+<li>
+<p>리눅스 기반</p>
+<ul>
+<li>계정 생성 : useradd 유저이름</li>
+<li>root 접근권한 설정 (/etc/ssh)
+<ul>
+<li>vi sshd_config → permitRootLogin (no)</li>
+<li>ssh 데몬 재기동 : systemctl restart sshd</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3장---서버-스펙-변경">3장 - 서버 스펙 변경<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3장---서버-스펙-변경" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>동일한 서버 타입에 한하여 CPU, Memory 스펙 변경 가능</li>
+<li>내서버이미지를 통해 다른 타입의 서버 생성 가능 (standard → micro)
+<ul>
+<li>내서버 이미지 : 서버의 현재상태를 이미지로 생성</li>
+</ul>
+</li>
+<li>유사 서버 생성 : 선택한 서버와 동일한 스펙의 서버 생성시 사용 (서버이름만 변경가능)
+<ul>
+<li>유사서버는 서버가 온라인 상태여도 만들 수 있음</li>
+</ul>
+</li>
+<li>스토리지 생성 : 10GB ~ 2TB , 15개까지 추가 가능 (1개는 OS용 디스크) , 용량 증설 가능(단, 용량을 줄일수는 없다)</li>
+<li>반납보호 설정(네이버에서는 서버 복원을 지원하지 않음), 상세모니터링, 네트워크 모니터링 설정, 서버이름변경(실제 서버명이 변경되지는 않음)
+<ul>
+<li>win → 내컴퓨터 / linux → /etc/hostname 에서 서버이름 변경 가능 (실제 서버 이름)</li>
+</ul>
+</li>
+<li>인증키 변경 : 서버 생성시 주는 인증키(.pem) → 초기 비밀번호를 몰랐을 때 사용하는 인증방법</li>
+</ul>
+<h3 id="max-iops-스토리지-추가">MAX IOPS (스토리지 추가)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#max-iops-스토리지-추가" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>스토리지 추가당 MAX IOPS 수가 달라짐 (1GB 당 40iops 증가)</li>
+<li>최대 20000</li>
+</ul>
+<hr/>
+<h3 id="25분--3장--실습해보기">(25분 -3장) =⇒ 실습해보기<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#25분--3장--실습해보기" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>스토리지 적용 (su - ) (1. 공간확보(파티션-fDISK), 2. 포맷(mkfs or ntfs), 3. 마운트(mount))</p>
+<ol>
+<li>mkdir /disk1</li>
+<li>mkdir /lvm</li>
+<li>fdisk /dev/xvdb(디바이스 이름) : 파티션 작업</li>
+<li>mkfs.ext4 /dev/xvdb1</li>
+<li>mount /dev/xvdb /disk1 : disk1에 /dev/xvdb1 을 추가</li>
+</ol>
+<p>피지컬 볼륨 : pvcreate</p>
+<p>논리 볼륨 : vgcreate</p>
+<hr/>
+<h2 id="4장---20분-실습">4장 - 20분 실습!!<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4장---20분-실습" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>모니터링</strong>
+<ul>
+<li>서버</li>
+<li>네트워크</li>
+</ul>
+</li>
+<li><strong>내서버 이미지</strong>
+<ul>
+<li>서버의 모든 스토리지를 이미지로 생성</li>
+<li>서버타입 변경 가능 (본래 서버타입은 가능한 것만 가능했음)</li>
+<li>packer ⇒ 템플릿을 이용한 서버 이미지 생성
+<ul>
+<li>1단계 : script 생성</li>
+<li>2단계 : 이미지 서버 생성</li>
+</ul>
+</li>
+<li>스토리지
+<ul>
+<li>OS영역 설치</li>
+<li>10GB ~ 2TB</li>
+<li>스토리지 단위로 스냅샷 생성 (온라인 상태에서 스냅샷 생성가능)</li>
+<li>스토리지 이동
+<ul>
+<li>스토리지 연결해제</li>
+<li>스토리지 서버 연결(서버 이동)</li>
+<li>마운트만 해주면 됨 (포맷과 파티션은 나뉘어져 있음)</li>
+<li>일반사용자의 패스워드는 변경되지 않음</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>public IP : 공인 IP 할당
+<ul>
+<li>외부에서 서버 접속방법
+<ul>
+<li>공인IP</li>
+<li>포트 포워딩</li>
+<li>VPN</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>init script : 서버 생성시 1회에 한하여 실행 (linux → shell)
+<ul>
+<li>#!/bin/bash ⇒ script</li>
+</ul>
+</li>
+<li>ACG : 플랫폼 방화벽
+<ul>
+<li>하나의 서버 최대 5개 ACG 가능</li>
+<li>최대 100개 룰(규칙)을 설정 가능</li>
+<li>inbound 트래픽에 대해 룰 설정</li>
+<li>서버간 맵핑 정보 변경 불가능</li>
+</ul>
+</li>
+<li>서버 이미지 빌더 (실습내용 다시 보기)
+<ul>
+<li>script 필요</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="5장">5장<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5장" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>private subnet</strong> ( 나만의 서브넷 네트워크를 할당해줌 - eth1)
+<ul>
+<li>서버 네트워크 특징
+<ul>
+<li>서버에 NIC는 1개만 생성 (eth0)</li>
+<li>IP Alias 허용하지 않음</li>
+<li>추가 NIC 허용하지 않음</li>
+</ul>
+</li>
+<li>private subnet : 192.168. 대역사용 , 서브넷마스크 : 255.255.255.0
+<ul>
+<li>ACG가 적용안됨 (IP Alias 해당안됨 → 여러개 네트워크 생성 가능)</li>
+<li>여러개의 네트워크 설정 가능</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>secure zone</strong>
+<ul>
+<li>격리시켜야하는 것과 모니터링이 필요한 것</li>
+<li>외부 인터넷 통신 불가</li>
+<li>플랫폼 내부의 허용된 서버와의 통신만 가능 (일반 zone과의 연결은 가능 - 설정해줘야함)</li>
+<li>기존 방화벽가 동일하게 방화벽 적용 (inbound + outbound)</li>
+<li>로그 저장 기능 존재</li>
+</ul>
+</li>
+<li>실습 - 12분 (private subnet)
+<ul>
+<li>네트워크 인터페이스 설정 (내부 서버와의 연결)</li>
+<li>관리콘솔과 서버 내부에서 동일하게 설정해줘야함 (관리 콘솔에서 한다해서 서버에 적용되는 것이 아님)</li>
+<li>명령어 - ifup (인터페이스 On)</li>
+</ul>
+</li>
+<li>secure zone (실습)
+<ul>
+<li>secure zone에 서버 생성 (서버 생성시 선택)</li>
+<li>rule 설정 (허용 / 차단)</li>
+<li>inbound / outbound (방화벽 설정)</li>
+<li>source IP / Destination IP 설정 가능</li>
+</ul>
+</li>
+</ul>
+<h2 id="6장">6장<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6장" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>스토리지</strong>
+<ul>
+<li>
+<p><strong>RAID 0</strong> : 데이터 분산배치 (I/O속도 증가)</p>
+</li>
+<li>
+<p><strong>RAID 1</strong> : Mirror 방식</p>
+</li>
+<li>
+<p><strong>RAID 5</strong> : 데이터 분산 (패리티 이용)</p>
+</li>
+<li>
+<p><strong>RAID 10</strong> : RAID 1+ RAID 0 장점 이용</p>
+</li>
+<li>
+<p><strong>Block Storage</strong></p>
+<ul>
+<li>BLock 단위로 데이터를 쪼갬</li>
+<li>OS 필요</li>
+<li>용량 제한 존재</li>
+<li>SSD/HDD 제공</li>
+<li>10GB ~ 2TB</li>
+<li>16개의 볼륨 가능 (디스크 추가)</li>
+<li>용량 증가 가능</li>
+</ul>
+</li>
+<li>
+<p><strong>object Stroge</strong></p>
+<ul>
+<li>분산시스템</li>
+<li>object 파일 단위로 저장</li>
+<li>데이터 용량 증가 가능 (대용량에 적합)</li>
+<li>파일 스토리지 (무제한 파일 저장 스토리지, 비정형데이터 안전하게 저장 가능)</li>
+<li>아마존과 호환됨</li>
+<li>권한 관리 가능</li>
+</ul>
+</li>
+<li>
+<p><strong>NAS</strong></p>
+<ul>
+<li>다수의 VM 공유 가능한 네트워크 볼륨 디바이스</li>
+<li>500GB~ 1TB 생성 가능 (100GB 단위로 용량 증감 가능)</li>
+<li>NFS(linux)/CIFS(window) 프로토콜 제공</li>
+<li>스냅샷 기능 제공 (데이터 복구 가능)</li>
+<li>VM 사설 IP등록을 통해 타 계정 VM간 공유 사용 가능</li>
+</ul>
+</li>
+<li>
+<p><strong>Archive stroage</strong> (사용자 백업)</p>
+<ul>
+<li>백업 아카이빙 데이터 저장 주 목적 (읽고 쓰는데 속도가 느리다)</li>
+<li>콘솔, API(swift,s3),CLI,SDK 를 이용하여 데이터 관리 가능</li>
+<li>데이터 최소 보관기간없이 사용 가능</li>
+<li>SUb Account 연동을 통한 권한 관리 기능 제공</li>
+</ul>
+</li>
+<li>
+<p><strong>Backup</strong></p>
+<ul>
+<li>백업지원</li>
+<li>네이버가 백업 지원 ( → 네이버가 보장함)</li>
+<li>DBMS를 골라서 네이버에 요청</li>
+<li>백업 수행 주기로 8가지 옵션 제공</li>
+<li>최대 24주까지 백업 파일 보관 가능</li>
+<li>백업결과를 일 단위 결과 리포트로 전달</li>
+</ul>
+</li>
+<li>
+<p><strong>DATA telepoter</strong> (하드웨어 장비)</p>
+<ul>
+<li>하드디스크  약 100TB</li>
+<li>legacy 데이터를 클라우드로 데이터 이전시 사용</li>
+<li>대용량 데이터를 보안적(스토리지 암호화, DATA Erasing 등)으로 이동할 수 있도록 지원해주는 서비스</li>
+</ul>
+</li>
+<li>
+<p>Block , Nas, Backup, object, Archive,DATA teleporter → 네이버 제공 스토리지</p>
+</li>
+<li>
+<p>snapshot : 스토리지 이미지 생성 가능 (볼륨사이즈 변경 불가능)</p>
+</li>
+<li>
+<p>실습(30분) -스토리지</p>
+<ul>
+<li>S3 Browser 이용</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="7장">7장<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7장" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>
+<p>네트워크 상품</p>
+</li>
+<li>
+<p><strong>TCP /IP</strong></p>
+<ol>
+<li>데이터 layer</li>
+<li>network layer : IP 정보(ipv4, ipv6 , ARP, RARP)</li>
+<li>전송 계층 : TCP/ UDP</li>
+<li>application 계층</li>
+</ol>
+</li>
+<li>
+<p><strong>IP헤더</strong></p>
+<ul>
+<li>Source Address / Destination Address</li>
+</ul>
+</li>
+<li>
+<p><strong>Tcp 헤더</strong></p>
+<ul>
+<li>Source Address / Destination Address</li>
+<li>urgent pointer : 연결 상태</li>
+</ul>
+</li>
+<li>
+<p><strong>CIDR</strong> (클래스 inter -Domain Routing) : 32bit, 255.255.255.255 최대값</p>
+<ul>
+<li>클래스 A,B,C,D,E (네트워크 클래스 구분)</li>
+</ul>
+</li>
+<li>
+<p><strong>classless routing</strong> : 클래스 구분없이 비트 단위롤 주소를 부여하는 체계</p>
+</li>
+<li>
+<p><strong>ARP</strong> : IP주소에 해당하는 MAC주소 얻음</p>
+</li>
+<li>
+<p><strong>Well known port</strong> : 1024이하 포트 (이미 설정되어 있는 포트)</p>
+<ul>
+<li>해당 포트가 열려있는지 확인하는 방법 : 포트 스캐닝</li>
+</ul>
+</li>
+<li>
+<p><strong>LoadBalance</strong> (여러개의 서버가 효율적으로 일할 수 있도록 밸런싱 조절해주는 역할)</p>
+<ul>
+<li>NAT</li>
+<li>DR</li>
+<li>PROXY : client &lt;> proxy &lt;> server 전달 (client와 서비스 사이에서 연결해주는 중계기 역할)</li>
+<li>네이버클라우드 플랫폼 로드밸런스 헬스 분석(가용서버 분산 가동 해주는 역할)</li>
+<li>접속정보로 도메인 정보를 제공</li>
+<li>포트별 멀티 바인딩은 지원하지 않음</li>
+<li>18080 ~ 18095, 65131, 64000, 3389, 22 포트 사용 불가능</li>
+</ul>
+</li>
+<li>
+<p><strong>DNS</strong></p>
+<ul>
+<li>도메인에 대해 IP로 변환하는 서비스</li>
+<li>DNS에 등록하는데 최대 15분 소요</li>
+<li>다양한 레코드 지원</li>
+<li>입력가능항목 : 레코드명, 레코드 타입, TTL, 레코드 값</li>
+</ul>
+</li>
+<li>
+<p><strong>NAT Gateway</strong></p>
+<ul>
+<li>외부로 나갈때 공인IP로 이용</li>
+<li>내부망은 서로 다르게 설정 되어있지만 나갈때는 동일한 공인IP이용</li>
+</ul>
+</li>
+<li>
+<p><strong>GRM</strong></p>
+<ul>
+<li>DNS 기반으로 로드밸런싱</li>
+<li>지역별 트래픽 분산 (글로벌환경)</li>
+</ul>
+</li>
+<li>
+<p><strong>CDN</strong></p>
+<ul>
+<li>컨텐츠를 빠르고 안정적으로 전송</li>
+</ul>
+</li>
+<li>
+<p><strong>IPsec VPN</strong></p>
+<ul>
+<li>사설 네트웍 연결을 위한 망연계 VPN</li>
+<li>고객VPN 과 NCP VPN 장비간 터널링 제공</li>
+<li>최대 30Mbps 제공</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<ul>
+<li>
+<p><strong>MEDIA</strong></p>
+<ul>
+<li>LIVE Station : 트랜스코딩을 통해 여러 화질로 송출
+<ul>
+<li>스트림 상태를 볼 수 있는 모니터링 기능 제공</li>
+<li>타임머신 기능으로 놓치지 않는 라이브 방송 서비스 구현 가능</li>
+<li>CDN 연동을 통해 안정적인 송출 가능</li>
+</ul>
+</li>
+<li>VOD 스트리밍 플랫폼
+<ul>
+<li>object stroage에 영상 저장 후 스트리밍 서버시스 제공</li>
+<li>CDN 연동</li>
+</ul>
+</li>
+<li>VOD Transcoder
+<ul>
+<li>대규모 동영상 파일 변환 서비스</li>
+<li>원본파일을 다양한 디바이스에 맞게 인코딩</li>
+<li>LT의 저장된 영상 이용 가능</li>
+</ul>
+</li>
+<li>Image Optimizer
+<ul>
+<li>이미지를 다양한 사이즈로 변환</li>
+<li>input (image) → outpu(URL) 송출</li>
+<li>얼굴인식 기능, 워터마크 삽입 기능제공</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>실습 (7장 2부)</p>
+<ul>
+<li>로드밸런스 (1분)</li>
+<li>VPN(22분)</li>
+</ul>
+</li>
+</ul>
+<h2 id="8장">8장<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8장" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>
+<p><strong>완전관리형 데이터 베이스</strong></p>
+<ul>
+<li>이중화기능 (관리를 해줌)</li>
+<li>자동화된 하루 한번 백업기능 (최대 30일 보관) ⇒ 복원 기능 제공</li>
+<li>Read 확장 -5대까지 확장 가능(읽기 부하 분산 가능)</li>
+<li>데이터 10GB ~ 6TB (10gb 단위)까지 자동 확장 기능 ⇒ Mysql(포트 3306)</li>
+<li>데이터 100GB ~ 2TB (10gB 단위)  ⇒MSSQL (포트 1433)</li>
+<li>cluster 대신 백업 기능 제공 ⇒ redis 방식⇒ (포트 6379 )</li>
+</ul>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>NOTE</p></div>
+                  
+                </div>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>클러스터 : 여러대의 컴퓨터가 연결되어 하나의 시스템을 동작하는 컴퓨터들의 집합</p>
+</blockquote>
+<pre><code>(업사이즈만 가능(증설)) - 7개항목
+
+- secure zone 내에 생성 가능
+</code></pre>
+<ul>
+<li>
+<p><strong>설치형 데이터베이스</strong></p>
+</li>
+<li>
+<p><strong>master DB / Active Master DB</strong></p>
+</li>
+</ul>
+<p>데이터 베이스 실습(15분)</p>
+<h2 id="9장">9장<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#9장" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>management</strong> (관리 툴) -지표확인 툴
+<ul>
+<li>
+<p>자체 모니터링 기술 서비스 제공 → 안전성 확대</p>
+<ul>
+<li>무료 (모니터링) → 기본모니터링, 상세모니터가능, 이벤트 경보 설정 가능</li>
+<li>대시보드로 표현</li>
+<li>장애관리 프로세스 운용</li>
+</ul>
+</li>
+<li>
+<p><strong>Sub Account</strong> : 서버 관련 모든 할일 설정 가능</p>
+<ul>
+<li>master account : 모든 권한이 있기에 위험함</li>
+<li>sub account : 권한을 조금 낮추어 필요한 권한만 제공
+<ul>
+<li>대시보드 제공 (그룹수 ,정책수 등등)</li>
+<li>권한 설정 가능 (policy(정책) 이용)</li>
+<li>그룹을 통해 권한 제공 및 맵핑</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>wms</strong></p>
+<ul>
+<li>웹사이트 모니터링 서비스</li>
+<li>virtual 테스트(기본테스트) , senario테스트 (특정페이지 로그인 및 다양한 활동으로 테스트)</li>
+<li>load time , service Health , Today Event, Senario, File Requests, error log, waterfall(→ 실제 기능 수행 시간 측정) 기능 제공</li>
+<li>모니터링 주기 설정 가능</li>
+<li>알림 대상자 설정 가능</li>
+<li>필터링 기능 제공 → wms에서만 드러날 수 있는 문제를 걸러줌</li>
+</ul>
+</li>
+<li>
+<p><strong>network Traiffc Monitoring</strong></p>
+<ul>
+<li>최근 발생한 네트워크 트래픽을 확인 가능</li>
+<li>트래픽 정보 차트 확인</li>
+<li>private subnet에서 발생한 네트워크 트래픽은 측정되지 않음</li>
+<li>7개 default chart 제공(기본)</li>
+<li>export 기능 제공</li>
+</ul>
+</li>
+<li>
+<p><strong>cloud activity tracer</strong></p>
+<ul>
+<li>서버 이용한 사람의 history를 기록함</li>
+<li>100GB(최대) 데이터 30일간 보관 (⇒ CLA정책을 따라감)</li>
+</ul>
+</li>
+<li>
+<p><strong>resource manager</strong></p>
+<ul>
+<li>리소스 관리 및 검색</li>
+<li>리소스 조회 기능 제공</li>
+</ul>
+</li>
+<li>
+<p><strong>cloud insight</strong> (통합 지표)</p>
+<ul>
+<li>통합적인 지표 표현</li>
+<li>유지보수 일정 관리</li>
+<li>event 관리</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="10장">10장<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#10장" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Analytics</strong> (데이터 분석 도구)
+<ul>
+<li>CLA : 다양한 로그들을 한곳에 모아 저장 및 분석</li>
+<li>RUA : 웹사이트에 접속하는 사용자의 성능정보를 수집 및 분석</li>
+<li>ELSA : 애플리케이션 로그를 빠르게 저장 및 분석</li>
+<li>Cloud Hadoop : 오픈소스 기반 완전 관리형 클라우드 분석 서비스 (빅데이터 분석 서비스)</li>
+<li>Cloud Search : 클라우드 기반으로 검색 서비스 구현 (네이버 검색엔진 못지 않은 기능 제공)</li>
+<li>Elasticsearch Service</li>
+<li>Data Analytics Service : 웹사이트 방문하는 고객의 행동을 분석 (어떤것을 주로 눌르는지, 이동하는지 등등)</li>
+</ul>
+</li>
+<li><strong>CLA</strong> (cloud Log Analytics)
+<ul>
+<li>최대 100GB , 최대 보관 30일 (꽉차면 30GB 삭제)</li>
+<li>로그 다운로드 기능 제공</li>
+<li>로그 수집 서버 설정 가능 (특정 ap(어플리케이션)의 로그를 따로 보관하고 싶을때)</li>
+<li>로그 검색기능 제공 (검색 기간은 30일이 최대)</li>
+<li>실습(11분)</li>
+</ul>
+</li>
+<li><strong>RUA</strong> (Real User Analytics)
+<ul>
+<li>브라우저 로드 타임 (웹사이트 켜지는 시간)</li>
+<li>PV , 브라우저 로드 타임순으로 랭킹되는 페이지 보여줌</li>
+<li>특정 웹사이트의 로드 시간을 보는 분석툴 (일본,미국,한국 등 에서의 차이)</li>
+</ul>
+</li>
+<li><strong>ELSA</strong> (애플리케이션 로그 분석 서비스)
+<ul>
+<li>애플리케이션 로그정보 취합</li>
+</ul>
+</li>
+<li><strong>cloud Hadoop</strong>
+<ul>
+<li>빅데이터를 빠르게 처리하는 분석서비스</li>
+<li>비정형 데이터를 이용 (ex_ 크롤링 정보 , 사용자에 따른 정보 등)</li>
+<li>object storage 이용 가능</li>
+<li>작업자노드 → 실제 분석하는 중추 역할(cpu,mem)</li>
+</ul>
+</li>
+<li><strong>cloud search</strong>
+<ul>
+<li>실제로 사용자가 쓴 문서를 분석해서, 연관검색어 및 관련 옵션등을 제공한다.</li>
+<li>문서를 먼저 업로드 해야함</li>
+</ul>
+</li>
+<li><strong>Elasticsearch</strong>
+<ul>
+<li>1대의 매니저노드 + 3개이상의 데이터 노드 구성 (최소 4대 ~ 최대 10대까지 추가가능- 데이터노드)</li>
+<li>Elasticsearch kibana 연계 → 데이터 시각화 가능</li>
+</ul>
+</li>
+</ul>
+<h2 id="11장---trouble-shooting">11장 - trouble shooting<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#11장---trouble-shooting" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>
+<p><strong>컴퓨팅 파워</strong></p>
+<ul>
+<li>IO Wait 이 발생하는 시점 → 서비스 품질 떨어지기 시작</li>
+<li>SWAP을 사용하는 경우 메모리 증설해야함</li>
+<li>관련 명령어 : sar, ps, top</li>
+</ul>
+</li>
+<li>
+<p><strong>네트워크</strong></p>
+<ul>
+<li>서버의 경우 전송 속도 500MB 기준으로 서버 대수 산정 (최대 500MB이기 때문에 더 많은 양이 필요할 경우 서버를 추가해야함)</li>
+<li>ping → icmp 연결 되어있어야함
+<ul>
+<li>내부망 ping은 ACG(방화벽)가 관여안하므로 연결이 됨</li>
+<li>포트 80 = http</li>
+<li>ipsec VPN ⇒ private 서버 내에 들어가 있으므로 ACG 영향을 안받음</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>성능측정</strong></p>
+<ul>
+<li>
+<p>웹서비스</p>
+<ul>
+<li>wms : 에러페이지가 있는지, 홈페이지 로드가 잘 되는지 확인</li>
+<li>ngrinder : 웹사이트가 동접 몇명까지 버틸 수 있을까 확인 가능</li>
+<li>pinpoint  : 병목확인 가능</li>
+<li>AB(아파치베스) : 오픈소스
+<ul>
+<li>YUM install httpd-tools : AB 설치</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Mysql (하드웨어 성능 측정)</p>
+<ul>
+<li>percona TPCC</li>
+<li>sysbench</li>
+<li>Apache Jmeter</li>
+</ul>
+<hr/>
+<p>(DB)</p>
+<ul>
+<li>DB Dashboard</li>
+<li>OS Dashboard</li>
+<li>DB Logs</li>
+<li>Query TimeLine : 어느 시간때에 어느 쿼리가 나왔는지 확인 가능</li>
+</ul>
+</li>
+<li>
+<p>Mssql(DB)</p>
+<ul>
+<li>DB Dashboard</li>
+<li>Performance</li>
+<li>DB Logs</li>
+</ul>
+</li>
+</ul>
+<p>명령어 (20분~)</p>
+<ul>
+<li>linux → sar (cpu사용률, 메모리, 네트워크 등 조회 가능)</li>
+<li>ping : ICMP를 이용 (방화벽에 의해 막혀있는지 확인 가능)</li>
+<li>nmap : 포트 스캔용 툴 (포트가 잘 살아있는지 확인)</li>
+</ul>
+<p>추가로 찾아본 내용</p>
+<ul>
+<li><strong>SSH</strong>
+<ul>
+<li>last -f /var/log/btmp : (ssh) 로그인 시도 횟수 확인 가능</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<ul>
+<li><strong>netstat -an |more</strong>
+<ul>
+<li>연결되어있는 포트 확인 가능
+<ul>
+<li>LISTENING : 포트 열려있는 상태</li>
+<li>ESTABLISHED : 연결되어 있는 상태</li>
+<li>TIME_WAIT : 연결은 끊어졌으나, 소켓은 열려있는 상태</li>
+<li>CLOSED : 연결 종료</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<ul>
+<li><strong>BLOCK Stroage VS Object Storage</strong>
+<ul>
+<li>Block Storage : 기존에 저장하던 방식 (HDD,SSD)과 동일</li>
+<li>Object Storage : 데이터 그대로 저장하는 방식 (key값을 이용하여 색인(고유식별)작업 가능)</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<ul>
+<li><strong>session VS cookie</strong>
+<ul>
+<li>
+<p>차이점 : 저장위치의 차이 (session : 서버에 저장, cookie : 로컬 PC에 저장)</p>
+</li>
+<li>
+<p>쿠키와 세션 사용 이유 : 정보 저장 (Ex_ 페이지를 넘길때마다 로그인해야함)</p>
+<ul>
+<li>HTTP프로토콜은 이전 통신의 기록을 저장하지 않음 (=Stateless protocol)</li>
+</ul>
+<p>→ 쿠키와 세션이 필요</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<ul>
+<li><strong>Slave DB</strong>
+<ul>
+<li>
+<p>MYSQL 에서 사용하는 “Master DB”, “Slave DB”</p>
+<ul>
+<li>Master DB : 데이터 생성,삭제,수정 하는 부분 담당</li>
+<li>Slave DB : 생성,삭제,수정이 이루어진 데이터를 저장함 (Data Select에서 사용- 읽기 전용)</li>
+</ul>
+<p>→ Slave DB가 여러개가 존재하면 읽기부하가 감소됨 (빠르게 읽어올수 있기 때문에)</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<ul>
+<li>
+<p><strong>LVM</strong> (물리적인 디스크를 논리적으로 나누거나 통합해서 사용하기위한 것)</p>
+<ul>
+<li>
+<p>디스크 (실제 물리적 장치) > 파티션(디스크를 논리적으로 나누거나 통합) > 볼륨</p>
+<ul>
+<li>디스크 : 실제 물리적 장치</li>
+<li>파티션 : 디스크를 논리적으로 나누거나 통합</li>
+<li>볼륨 : 파티션마다 한개를 가지거나, 여러 파티션을 하나로 묶거나</li>
+</ul>
+<p>ex)</p>
+<ul>
+<li>디스크 : HDD, SDD</li>
+<li>파티션 : 파티션1, 파티션2</li>
+<li>볼륨 : C드라이브, D드라이브, LVM(⇒ 파티션1 + 파티션2)</li>
+</ul>
+<p><img src="../../assets/untitled.png" alt="Untitled"/></p>
+</li>
+<li>
+<p>파일시스템 : 파일이 저장되어야하는 규약</p>
+</li>
+</ul>
+<p><img src="../../assets/untitled-1.png" alt="Untitled"/></p>
+<ul>
+<li>클러스터 : 입출력 I/O의 효율성을 위해 데이터를 가공하는 단위</li>
+</ul>
+<p><img src="../../assets/untitled-2.png" alt="Untitled"/></p>
+</li>
+</ul>
+<hr/>
+<ul>
+<li><strong>CNAME</strong></li>
+</ul>
+<p>DNS : 도메인 네임 서비스, 문자의 주소 → ip주소 변환</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>naver.com</th><th>192.168.0.1</th></tr></thead><tbody><tr><td>dev.plusblog.co.kr</td><td>172.17.0.1</td></tr><tr><td>devlop.plusblog.co.kr</td><td>dev.plusblog.co.kr</td></tr></tbody></table></div>
+<p>A레코드 : 문자 주소 → ip주소 변환</p>
+<p>CNAME : <a href="http://devlop.plusblog.co.kr/" class="external external-link">devlop.plusblog.co.kr<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> →  <a href="http://dev.plusblog.co.kr" class="external external-link">dev.plusblog.co.kr<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> / ip주소가 아닌 문자로의 주소로 변환 (별명?)</p>
+<ul>
+<li><strong>CNAME 장점</strong>
+<ul>
+<li>IP는 자주 변하기 때문에 A레코드 방식은 일일이 다 수정해줘야한다.</li>
+<li>하지만, CNAME 구조는 마지막 IP주소 변환 하는 행의 IP만 수정하면 되기 때문에 효율적임</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<ul>
+<li><strong>Proxy</strong>
+<ul>
+<li>대신해주는 역할 (중계기)</li>
+<li>Client IP를 알 수있음 (→ 로그를 제대로 받을 수 있음 ( 블랙리스트 방지))</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<ul>
+<li><strong>Cluster</strong>
+<ul>
+<li>여러대의 컴퓨터들이 연결되어 하나의 시스템처럼 동작하는 컴퓨터들의 집합을 의미</li>
+<li>클러스터 = 노드들의 집합</li>
+<li>elastic search : 분산 시스템
+<ul>
+<li>노드 : 분산시스템에서 작동하는 하나의 엘라스틱 서치 엔진을 의미</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<ul>
+<li>
+<p><strong>로드밸런서 좋은 참고자료</strong></p>
+<p><a href="https://nesoy.github.io/articles/2018-06/Load-Balancer" class="external external-link">로드 밸런서(Load Balancer)란?<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+</li>
+</ul>
+</li>
+</ul></div></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>그래프 뷰</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc"><button type="button" class="toc-header" aria-controls="toc-318" aria-expanded="true"><h3>목차</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-0" class="toc-content overflow"><li class="depth-0"><a href="#nca" data-for="nca">NCA</a></li><li class="depth-1"><a href="#-개념" data-for="-개념">📌 개념</a></li><li class="depth-1"><a href="#1장---cloud-컴퓨팅" data-for="1장---cloud-컴퓨팅">1장 - Cloud 컴퓨팅</a></li><li class="depth-1"><a href="#2장" data-for="2장">2장</a></li><li class="depth-1"><a href="#3장---서버-스펙-변경" data-for="3장---서버-스펙-변경">3장 - 서버 스펙 변경</a></li><li class="depth-2"><a href="#max-iops-스토리지-추가" data-for="max-iops-스토리지-추가">MAX IOPS (스토리지 추가)</a></li><li class="depth-2"><a href="#25분--3장--실습해보기" data-for="25분--3장--실습해보기">(25분 -3장) =⇒ 실습해보기</a></li><li class="depth-1"><a href="#4장---20분-실습" data-for="4장---20분-실습">4장 - 20분 실습!!</a></li><li class="depth-1"><a href="#5장" data-for="5장">5장</a></li><li class="depth-1"><a href="#6장" data-for="6장">6장</a></li><li class="depth-1"><a href="#7장" data-for="7장">7장</a></li><li class="depth-1"><a href="#8장" data-for="8장">8장</a></li><li class="depth-1"><a href="#9장" data-for="9장">9장</a></li><li class="depth-1"><a href="#10장" data-for="10장">10장</a></li><li class="depth-1"><a href="#11장---trouble-shooting" data-for="11장---trouble-shooting">11장 - trouble shooting</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>백링크</h3><ul id="list-0" class="overflow"><li><a href="../../자격증/nca/nca-목록" class="internal">NCA (네이버 클라우드) — 개요</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v5.0.0</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script src="../../static/resource-after-e13fffa1.js" type="application/javascript" data-persist="true"></script><script src="../../static/resource-after-8b336f9a.js" type="application/javascript" data-persist="true"></script><script src="../../static/resource-after-baba652b.js" type="application/javascript" data-persist="true"></script><script src="../../static/resource-after-5eb75950.js" type="module" data-persist="true"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../postscript-9114441b.js" type="module" data-persist="true"></script></html>

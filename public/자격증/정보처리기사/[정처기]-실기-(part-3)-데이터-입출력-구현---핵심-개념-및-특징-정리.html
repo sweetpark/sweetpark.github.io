@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr"><head><title>[실기] (PART 3) 데이터 입출력 구현</title><meta charset="utf-8"/><link rel="preload" href="../../index-b2b4d3bf.css" as="style"/><link rel="preload" href="../../prescript-2bfc6315.js" as="script"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="차근차근정확하게"/><meta property="og:title" content="[실기] (PART 3) 데이터 입출력 구현"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="[실기] (PART 3) 데이터 입출력 구현"/><meta name="twitter:description" content="[실기] (PART 3) 데이터 입출력 구현 NOTE 정보처리기사 실기 PART 3 — 데이터 모델, 데이터베이스 설계, 정규화, 트랜잭션 등 데이터 입출력 구현 핵심 정리."/><meta property="og:description" content="[실기] (PART 3) 데이터 입출력 구현 NOTE 정보처리기사 실기 PART 3 — 데이터 모델, 데이터베이스 설계, 정규화, 트랜잭션 등 데이터 입출력 구현 핵심 정리."/><meta property="og:image:alt" content="[실기] (PART 3) 데이터 입출력 구현 NOTE 정보처리기사 실기 PART 3 — 데이터 모델, 데이터베이스 설계, 정규화, 트랜잭션 등 데이터 입출력 구현 핵심 정리."/><meta property="twitter:domain" content="sweetpark.github.io"/><meta property="og:url" content="https://sweetpark.github.io/자격증/정보처리기사/[정처기]-실기-(part-3)-데이터-입출력-구현---핵심-개념-및-특징-정리"/><meta property="twitter:url" content="https://sweetpark.github.io/자격증/정보처리기사/[정처기]-실기-(part-3)-데이터-입출력-구현---핵심-개념-및-특징-정리"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="[실기] (PART 3) 데이터 입출력 구현 NOTE 정보처리기사 실기 PART 3 — 데이터 모델, 데이터베이스 설계, 정규화, 트랜잭션 등 데이터 입출력 구현 핵심 정리."/><meta name="generator" content="Quartz"/><link href="../../index-b2b4d3bf.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-735924e0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-589c1cea.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-bbc3f7c0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-2911f5d1.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-e427079e.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-caf7c009.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-53b25b2b.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-c93c6a44.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-8a06014f.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-77d6a441.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-6ee21cee.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-1ea6ad18.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-34bdfded.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-788c9ca3.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-642859cd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-4abc06bd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-274a3dfe.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-94cb6c84.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-58d5ff56.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-7262b5a7.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-a5c806d2.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-6bd36952.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-9857b007.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-d3a1a224.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript-2bfc6315.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted%20Grotesk%3Awght%40400%3B700&amp;family=Source%20Sans%20Pro%3Aital%2Cwght%400%2C400%3B0%2C600%3B1%2C400%3B1%2C600&amp;family=IBM%20Plex%20Mono%3Awght%40400%3B600&amp;display=swap"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://sweetpark.github.io/자격증/정보처리기사/[정처기]-실기-(part-3)-데이터-입출력-구현---핵심-개념-및-특징-정리-og-image.webp"/><meta property="og:image:url" content="https://sweetpark.github.io/자격증/정보처리기사/[정처기]-실기-(part-3)-데이터-입출력-구현---핵심-개념-및-특징-정리-og-image.webp"/><meta name="twitter:image" content="https://sweetpark.github.io/자격증/정보처리기사/[정처기]-실기-(part-3)-데이터-입출력-구현---핵심-개념-및-특징-정리-og-image.webp"/><meta property="og:image:type" content="image/webp"/><script>
+(function() {
+  function addGlobalGraphBtn() {
+    var toolbar = document.querySelector(".sidebar.left .flex-component");
+    if (!toolbar || toolbar.querySelector(".toolbar-graph-btn")) return;
+
+    var wrapper = document.createElement("div");
+    wrapper.style.cssText = "flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;";
+
+    var btn = document.createElement("button");
+    btn.className = "toolbar-graph-btn";
+    btn.setAttribute("aria-label", "전체 그래프 뷰 (Cmd+G)");
+    btn.setAttribute("title", "전체 그래프 뷰 (단축키: Cmd+G)");
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" fill="currentColor"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"/></svg>';
+
+    btn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      var existingIcon = document.querySelector(".graph .global-graph-icon");
+      if (existingIcon && existingIcon !== btn) {
+        existingIcon.click();
+        return;
+      }
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "g", metaKey: true, bubbles: true }));
+    });
+
+    wrapper.appendChild(btn);
+    toolbar.appendChild(wrapper);
+  }
+
+  document.addEventListener("DOMContentLoaded", addGlobalGraphBtn);
+  document.addEventListener("nav", addGlobalGraphBtn);
+})();
+</script></head><body data-slug="자격증/정보처리기사/[정처기]-실기-(part-3)-데이터-입출력-구현---핵심-개념-및-특징-정리" data-basepath><div id="quartz-root" class="page" data-frame="default"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../..">차근차근정확하게</a></h2><div class="mobile-only"><div class="spacer"></div></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 0.5rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button" aria-label="검색" aria-expanded="false"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>검색</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="검색어를 입력하세요" placeholder="검색어를 입력하세요"/><div class="search-layout" data-preview="true" data-field-priority="[&quot;title&quot;,&quot;content&quot;,&quot;tags&quot;]"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode" aria-label="다크 모드"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="다크 모드"><title>다크 모드</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="라이트 모드"><title>라이트 모드</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode" aria-label="리더 모드"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="리더 모드"><title>리더 모드</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer nav-files-container" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a2, b2) => {\n    if (!a2.isFolder &amp;&amp; !b2.isFolder || a2.isFolder &amp;&amp; b2.isFolder) {\n      return (a2.displayName || \&quot;\&quot;).localeCompare(b2.displayName || \&quot;\&quot;, void 0, {\n        numeric: true,\n        sensitivity: \&quot;base\&quot;\n      });\n    }\n    if (!a2.isFolder &amp;&amp; b2.isFolder) {\n      return 1;\n    }\n    return -1;\n  }&quot;,&quot;filterFn&quot;:&quot;(node) => node.slugSegment !== \&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;(node) => {\n    return node;\n  }&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-336" aria-label="탐색기"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>탐색기</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-336" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#" class="nav-file-title tree-item-self"></a></li></template><template id="template-folder"><li><div class="folder-container nav-folder-title tree-item-self"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon nav-folder-collapse-indicator collapse-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content tree-item-children"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../자격증/">자격증</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../자격증/정보처리기사/">정보처리기사</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>[실기] (PART 3) 데이터 입출력 구현</a></div></nav><h1 class="article-title">[실기] (PART 3) 데이터 입출력 구현</h1><details class="note-properties metadata-container" open data-collapsed="false"><summary class="note-properties-header"><span class="note-properties-title">Properties</span><span class="note-properties-count">1</span></summary><table class="note-properties-table"><tbody><tr class="note-properties-row metadata-property"><td class="note-properties-key metadata-property-key">tags</td><td class="note-properties-value metadata-property-value"><span class="note-properties-tags"><a href="../../tags/학습" class="internal internal-link tag-link">학습</a><span class="note-properties-separator">, </span><a href="../../tags/자격증" class="internal internal-link tag-link">자격증</a><span class="note-properties-separator">, </span><a href="../../tags/정보처리기사" class="internal internal-link tag-link">정보처리기사</a></span></td></tr></tbody></table></details><p show-comma="true" class="content-meta"><time datetime="2026-09-04T15:00:00.000Z">2026년 9월 05일</time><span>9 min read</span></p></div></div><article class="popover-hint"><div class="markdown-preview-view markdown-rendered"><h1 id="실기-part-3-데이터-입출력-구현">[실기] (PART 3) 데이터 입출력 구현<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#실기-part-3-데이터-입출력-구현" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>NOTE</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>정보처리기사 실기 PART 3 — 데이터 모델, 데이터베이스 설계, 정규화, 트랜잭션 등 데이터 입출력 구현 핵심 정리.</p>
+</div>
+</blockquote>
+<h2 id="-개념">📌 개념<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-개념" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>
+<p>데이터 모델 표시요소</p>
+<ul>
+<li>연산 : 실제 데이터 처리 작업에 대한 명세</li>
+<li>구조 : 데이터베이스에 표현될 대상</li>
+<li>제약조건 : 실제 데이터의 논리적인 제약 조건</li>
+</ul>
+</li>
+<li>
+<p>데이터 모델 절차</p>
+<ul>
+<li>개념적 설계 : 현실세계에 대한 인식을 추상적 개념적으로 표현 , ERD (개체 관계 다이어그램)</li>
+<li>논리적 설계 : 정규화를 수행, 스키마의 평가 및 정제</li>
+<li>물리적 설계 : 데이터베이스 저장구조로 변환, 반정규화 수행</li>
+</ul>
+</li>
+<li>
+<p>논리적 데이터 모델링 종류</p>
+<ul>
+<li>관계 데이터 모델</li>
+<li>계층 데이터 모델</li>
+<li>네트워크 데이터 모델</li>
+</ul>
+</li>
+<li>
+<p>관계 대수</p>
+<ul>
+<li>일반 집합 연산자
+<ul>
+<li>합집합</li>
+<li>교집합 : R과 S에 속하는 모든 튜플</li>
+<li>차집합 : R에 존재하고 S에 미 존재하는 튜플</li>
+<li>카티션 프로젝트 : 모든 튜플 연결</li>
+</ul>
+</li>
+<li>순수 관계 연산자
+<ul>
+<li>셀렉트 : 릴레이션 R에서 조건을 만족하는 튜플 반환</li>
+<li>프로젝트(파이) : 주어진 속성들의 값으로만 구성</li>
+<li>조인 : 공통속성을 이용해 두 튜플들을 연결함</li>
+<li>디비전 : 릴레이션 S의 모든 튜플과 관련있는 R의 튜플 반환</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>관계해석</p>
+<ul>
+<li>비절차적 언어 (튜플관계해석과 도메인 관계 해석)</li>
+</ul>
+</li>
+<li>
+<p>논리데이터모델 속성</p>
+<ul>
+<li>개체</li>
+<li>속성</li>
+<li>관계</li>
+</ul>
+</li>
+<li>
+<p>데이터베이스 이상현상</p>
+<ul>
+<li>삽입이상, 삭제이상, 갱신이상</li>
+</ul>
+</li>
+<li>
+<p>정규화 단계</p>
+<ul>
+<li>원부이결다조</li>
+</ul>
+</li>
+<li>
+<p>함수 종속</p>
+<ul>
+<li>함수 종속 종류
+<ul>
+<li>부분 함수 종속 : 기본키가 복합키일 경우 기본키를 구성하는 속성</li>
+<li>완전 함수 종속 : x→ y 관계가 있을 떄 y는 x의 전체속성에 대해 종속</li>
+<li>이행 함수 종속 : x→y, y→z , x→z</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>반정규화</p>
+<ul>
+<li>중복,통합,분리을 통한 성능향상과 개발 운영 단순화</li>
+</ul>
+</li>
+<li>
+<p>반정규화 기법</p>
+<ul>
+<li>테이블 병합</li>
+<li>테이블 분할</li>
+<li>중복 테이블 추가</li>
+<li>컬럼 중복화</li>
+<li>중복관계 추가</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<ul>
+<li>물리적 데이터 모델링
+<ul>
+<li>논리모델을 적용하고자 하는 기술에 맞도록 상세화함</li>
+</ul>
+</li>
+<li>데이터베이스 무결성 종류
+<ul>
+<li>개체무결성 : 기본키는 유일하며, NULL값 불가능</li>
+<li>참조 무결성 : 외래키 → 기본 키 값이나 NULL이어야함</li>
+<li>속성 무결성 : 기본값, NULL여부, 도메인이 지정된 규칙을 준수</li>
+<li>사용자 정의 무결성 : 사용자의 의미적 요구사항 준수</li>
+<li>키 무결성 : 한 릴레이션에 같은 키값 불가능</li>
+</ul>
+</li>
+<li>키
+<ul>
+<li>기본키</li>
+<li>대체키 : 후보키 중 기본키 선택되지 않은 키</li>
+<li>후보키 : 튜플을 구분하는 기준이 되는 칼럼</li>
+<li>슈퍼키 : 유일성 만족, 최소성 만족x</li>
+<li>외래키 : 참조 데이터 무결성</li>
+</ul>
+</li>
+<li>인덱스
+<ul>
+<li>검색연산의 최적화 (빠르게 조회)</li>
+</ul>
+</li>
+<li>파티션 유형(파티션 기법)
+<ul>
+<li>범위 분할 (range partition) : 연속적인 숫자나, 날짜로 분할</li>
+<li>해시 분할 (hash partition) : 해시 함수 값에 의한 파티셔닝 기법</li>
+<li>리스트 분할 (list partition0 : 명시적 제어가 가능 ex) 한국,일본,중국 → 아시아</li>
+<li>컴포지트 분할 (composite partition) : 파티션중 2개 이상 결합</li>
+<li>라운드로빈 : 회전하면서 새로운 행을 파티션에 할당</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<ul>
+<li>데이터베이스 개념
+<ul>
+<li>데이터베이스는 다수의 인원, 시스템 또는 프로그램이 사용할 목적으로 통합하여 관리되는 데이터 집합</li>
+<li>데이터베이스 정의
+<ul>
+<li>통합된 데이터 : 자료의 중복을 제외</li>
+<li>저장된 데이터 : 저장된 데이터</li>
+<li>운영 데이터 : 조직의 업무를 수행하는데 필요한 데이터</li>
+<li>공용 데이터 : 여러 어플리케이션이 공동으로 사용하는 데이터</li>
+</ul>
+</li>
+<li>데이터베이스 특징
+<ul>
+<li>실시간 접근성</li>
+<li>계속적인 변화 : 새로운 데이터 삽입, 삭제, 갱신으로 항상 최신상태 유지</li>
+<li>동시 공용 : 다수의 사용자 사용</li>
+<li>내용 참조 : 사용자가 요구하는 데이터 내용으로 데이터를 찾음</li>
+</ul>
+</li>
+<li>파일시스템
+<ul>
+<li>파일에 이름을 부여하고 그것들을 어디에 위치하여하는지 등을 정리한 뒤 데이터를 관리하는 방식
+<ul>
+<li>파일시스템 종류
+<ul>
+<li>ISAM : 인덱스, 색인부에 기록되어 저장되어있음</li>
+<li>VSAM : 가상, 대형 운영체제에서 사용</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>데이터베이스 종류
+<ul>
+<li>관계형 데이터 베이스</li>
+<li>계층형 데이터베이스 - 상하 종속적 관계, 이로 인해 변화에 유연하게 대응 불가ex) IMS, System2000</li>
+<li>네트워크 데이터베이스 - ex) IDS, IDMS</li>
+</ul>
+</li>
+<li>DBMS 유형
+<ul>
+<li>키-값 DBMS : Get, Put, Delete 제공</li>
+<li>컬럼 기반 데이터 저장 DBMS : 구글의 Bigtable 기반</li>
+<li>문서저장 DBMS : XML, JSON 과 같이 구조화된 데이터 타입, 복잡한 계층 표현 가능</li>
+<li>그래프 DBMS : 온톨로지, 시멘틱 웹 활용</li>
+</ul>
+</li>
+<li>DBMS특징
+<ul>
+<li>데이터 무결성</li>
+<li>데이터 일관성</li>
+<li>데이터 회복성</li>
+<li>데이터 보안성</li>
+<li>데이터 효율성</li>
+</ul>
+</li>
+<li>빅데이터
+<ul>
+<li>수십 페타바이트 크기의 비정형 데이터</li>
+</ul>
+</li>
+<li>빅데이터 특징
+<ul>
+<li>데이터의 양, 다양성, 속도</li>
+</ul>
+</li>
+<li>빅데이터 수집, 저장, 처리 기술
+<ul>
+<li>비정형/반정형 수집 : ex) chuckwa, flume, scribe</li>
+<li>정형 데이터 수집 : ex) ETL, FTP, 스쿱, 하이호</li>
+<li>분산데이터 저장/처리 : ex) HDFS(데이터 집합처리), 맵리듀스(구글에서 데이터처리를 위해 개발)</li>
+<li>분산데이터베이스 : HBase</li>
+</ul>
+</li>
+<li>NoSql
+<ul>
+<li>스키마 필요x</li>
+<li>조인 연산 불가</li>
+<li>수평적 확장</li>
+</ul>
+</li>
+<li>Nosql 특징
+<ul>
+<li>Basically available : 언제든지 접근 가능 (가용성 중시)</li>
+<li>Soft-State : 노드의 상태는 외부의 정보를 통해 결정, 특정 시점 일관성 보장 x</li>
+<li>Eventually Consistency : 데이터 일관성 유지</li>
+</ul>
+</li>
+<li>데이터마이닝
+<ul>
+<li>통계적 규칙이나 패턴을 찾아냄</li>
+</ul>
+</li>
+<li>데이터마이닝 주요 기법
+<ul>
+<li>분류 규칙 : 과거 데이터로부터 특성을 찾아 분류모형을 만듬</li>
+<li>연관 규칙 : 데이터안에 항목들간의 종속관계를 찾음</li>
+<li>연속 규칙 : 시간 관련 규칙 + 연관 규칙</li>
+<li>데이터 군집화 : 소그룹 분할</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>그래프 뷰</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc"><button type="button" class="toc-header" aria-controls="toc-332" aria-expanded="true"><h3>목차</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-0" class="toc-content overflow"><li class="depth-0"><a href="#실기-part-3-데이터-입출력-구현" data-for="실기-part-3-데이터-입출력-구현">[실기] (PART 3) 데이터 입출력 구현</a></li><li class="depth-1"><a href="#-개념" data-for="-개념">📌 개념</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>백링크</h3><ul id="list-0" class="overflow"><li><a href="../../자격증/정보처리기사/정보처리기사-목록" class="internal">정보처리기사 — 개요</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v5.0.0</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script src="../../static/resource-after-e13fffa1.js" type="application/javascript" data-persist="true"></script><script src="../../static/resource-after-8b336f9a.js" type="application/javascript" data-persist="true"></script><script src="../../static/resource-after-baba652b.js" type="application/javascript" data-persist="true"></script><script src="../../static/resource-after-5eb75950.js" type="module" data-persist="true"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../postscript-9114441b.js" type="module" data-persist="true"></script></html>

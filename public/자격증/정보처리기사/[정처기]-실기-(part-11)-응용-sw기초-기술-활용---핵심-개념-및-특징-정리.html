@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr"><head><title>[실기] (PART 11) 응용 SW기초 기술 활용</title><meta charset="utf-8"/><link rel="preload" href="../../index-b2b4d3bf.css" as="style"/><link rel="preload" href="../../prescript-2bfc6315.js" as="script"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="차근차근정확하게"/><meta property="og:title" content="[실기] (PART 11) 응용 SW기초 기술 활용"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="[실기] (PART 11) 응용 SW기초 기술 활용"/><meta name="twitter:description" content="[실기] (PART 11) 응용 SW기초 기술 활용 NOTE 정보처리기사 실기 PART 11 — 운영체제, 네트워크, 데이터베이스 등 응용 SW 기초 기술 핵심 정리."/><meta property="og:description" content="[실기] (PART 11) 응용 SW기초 기술 활용 NOTE 정보처리기사 실기 PART 11 — 운영체제, 네트워크, 데이터베이스 등 응용 SW 기초 기술 핵심 정리."/><meta property="og:image:alt" content="[실기] (PART 11) 응용 SW기초 기술 활용 NOTE 정보처리기사 실기 PART 11 — 운영체제, 네트워크, 데이터베이스 등 응용 SW 기초 기술 핵심 정리."/><meta property="twitter:domain" content="sweetpark.github.io"/><meta property="og:url" content="https://sweetpark.github.io/자격증/정보처리기사/[정처기]-실기-(part-11)-응용-sw기초-기술-활용---핵심-개념-및-특징-정리"/><meta property="twitter:url" content="https://sweetpark.github.io/자격증/정보처리기사/[정처기]-실기-(part-11)-응용-sw기초-기술-활용---핵심-개념-및-특징-정리"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="[실기] (PART 11) 응용 SW기초 기술 활용 NOTE 정보처리기사 실기 PART 11 — 운영체제, 네트워크, 데이터베이스 등 응용 SW 기초 기술 핵심 정리."/><meta name="generator" content="Quartz"/><link href="../../index-b2b4d3bf.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-735924e0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-589c1cea.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-bbc3f7c0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-2911f5d1.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-e427079e.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-caf7c009.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-53b25b2b.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-c93c6a44.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-8a06014f.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-77d6a441.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-6ee21cee.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-1ea6ad18.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-34bdfded.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-788c9ca3.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-642859cd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-4abc06bd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-274a3dfe.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-94cb6c84.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-58d5ff56.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-7262b5a7.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-a5c806d2.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-6bd36952.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-9857b007.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-d3a1a224.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript-2bfc6315.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted%20Grotesk%3Awght%40400%3B700&amp;family=Source%20Sans%20Pro%3Aital%2Cwght%400%2C400%3B0%2C600%3B1%2C400%3B1%2C600&amp;family=IBM%20Plex%20Mono%3Awght%40400%3B600&amp;display=swap"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://sweetpark.github.io/자격증/정보처리기사/[정처기]-실기-(part-11)-응용-sw기초-기술-활용---핵심-개념-및-특징-정리-og-image.webp"/><meta property="og:image:url" content="https://sweetpark.github.io/자격증/정보처리기사/[정처기]-실기-(part-11)-응용-sw기초-기술-활용---핵심-개념-및-특징-정리-og-image.webp"/><meta name="twitter:image" content="https://sweetpark.github.io/자격증/정보처리기사/[정처기]-실기-(part-11)-응용-sw기초-기술-활용---핵심-개념-및-특징-정리-og-image.webp"/><meta property="og:image:type" content="image/webp"/><script>
+(function() {
+  function addGlobalGraphBtn() {
+    var toolbar = document.querySelector(".sidebar.left .flex-component");
+    if (!toolbar || toolbar.querySelector(".toolbar-graph-btn")) return;
+
+    var wrapper = document.createElement("div");
+    wrapper.style.cssText = "flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;";
+
+    var btn = document.createElement("button");
+    btn.className = "toolbar-graph-btn";
+    btn.setAttribute("aria-label", "전체 그래프 뷰 (Cmd+G)");
+    btn.setAttribute("title", "전체 그래프 뷰 (단축키: Cmd+G)");
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" fill="currentColor"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"/></svg>';
+
+    btn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      var existingIcon = document.querySelector(".graph .global-graph-icon");
+      if (existingIcon && existingIcon !== btn) {
+        existingIcon.click();
+        return;
+      }
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "g", metaKey: true, bubbles: true }));
+    });
+
+    wrapper.appendChild(btn);
+    toolbar.appendChild(wrapper);
+  }
+
+  document.addEventListener("DOMContentLoaded", addGlobalGraphBtn);
+  document.addEventListener("nav", addGlobalGraphBtn);
+})();
+</script></head><body data-slug="자격증/정보처리기사/[정처기]-실기-(part-11)-응용-sw기초-기술-활용---핵심-개념-및-특징-정리" data-basepath><div id="quartz-root" class="page" data-frame="default"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../..">차근차근정확하게</a></h2><div class="mobile-only"><div class="spacer"></div></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 0.5rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button" aria-label="검색" aria-expanded="false"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>검색</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="검색어를 입력하세요" placeholder="검색어를 입력하세요"/><div class="search-layout" data-preview="true" data-field-priority="[&quot;title&quot;,&quot;content&quot;,&quot;tags&quot;]"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode" aria-label="다크 모드"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="다크 모드"><title>다크 모드</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="라이트 모드"><title>라이트 모드</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode" aria-label="리더 모드"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="리더 모드"><title>리더 모드</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer nav-files-container" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a2, b2) => {\n    if (!a2.isFolder &amp;&amp; !b2.isFolder || a2.isFolder &amp;&amp; b2.isFolder) {\n      return (a2.displayName || \&quot;\&quot;).localeCompare(b2.displayName || \&quot;\&quot;, void 0, {\n        numeric: true,\n        sensitivity: \&quot;base\&quot;\n      });\n    }\n    if (!a2.isFolder &amp;&amp; b2.isFolder) {\n      return 1;\n    }\n    return -1;\n  }&quot;,&quot;filterFn&quot;:&quot;(node) => node.slugSegment !== \&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;(node) => {\n    return node;\n  }&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-333" aria-label="탐색기"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>탐색기</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-333" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#" class="nav-file-title tree-item-self"></a></li></template><template id="template-folder"><li><div class="folder-container nav-folder-title tree-item-self"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon nav-folder-collapse-indicator collapse-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content tree-item-children"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../자격증/">자격증</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../자격증/정보처리기사/">정보처리기사</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>[실기] (PART 11) 응용 SW기초 기술 활용</a></div></nav><h1 class="article-title">[실기] (PART 11) 응용 SW기초 기술 활용</h1><details class="note-properties metadata-container" open data-collapsed="false"><summary class="note-properties-header"><span class="note-properties-title">Properties</span><span class="note-properties-count">1</span></summary><table class="note-properties-table"><tbody><tr class="note-properties-row metadata-property"><td class="note-properties-key metadata-property-key">tags</td><td class="note-properties-value metadata-property-value"><span class="note-properties-tags"><a href="../../tags/학습" class="internal internal-link tag-link">학습</a><span class="note-properties-separator">, </span><a href="../../tags/자격증" class="internal internal-link tag-link">자격증</a><span class="note-properties-separator">, </span><a href="../../tags/정보처리기사" class="internal internal-link tag-link">정보처리기사</a></span></td></tr></tbody></table></details><p show-comma="true" class="content-meta"><time datetime="2026-09-04T15:00:00.000Z">2026년 9월 05일</time><span>16 min read</span></p></div></div><article class="popover-hint"><div class="markdown-preview-view markdown-rendered"><h1 id="실기-part-11-응용-sw기초-기술-활용">[실기] (PART 11) 응용 SW기초 기술 활용<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#실기-part-11-응용-sw기초-기술-활용" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>NOTE</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>정보처리기사 실기 PART 11 — 운영체제, 네트워크, 데이터베이스 등 응용 SW 기초 기술 핵심 정리.</p>
+</div>
+</blockquote>
+<h2 id="-개념">📌 개념<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-개념" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>
+<p>운영체제</p>
+<ul>
+<li>하드웨어를 쉽게 이용할 수 있도록 인터페이스를 제공</li>
+</ul>
+</li>
+<li>
+<p>운영체제 특징</p>
+<ul>
+<li>사용자 편리성</li>
+<li>인터페이스 기능 담당</li>
+<li>스케줄링 담당</li>
+<li>자원 관리</li>
+<li>제어 기능</li>
+</ul>
+</li>
+<li>
+<p>운영체제 종류</p>
+<ul>
+<li>윈도우 : MS-DOS 멀티태스킹, GUI 환경</li>
+<li>유닉스 : 90% C언어 구현, 벨 연구소</li>
+<li>리눅스 : 오픈 소스 기반 운영체제</li>
+<li>맥 : 애플</li>
+<li>안드로이드 : 휴대용 장치</li>
+</ul>
+</li>
+<li>
+<p>운영체제 핵심 기능</p>
+<ul>
+<li>메모리관리</li>
+<li>프로세스 관리</li>
+</ul>
+</li>
+<li>
+<p>메모리 관리 기법</p>
+<ul>
+<li>반입기법 : 반입 시기 결정</li>
+<li>배치기법 : 어느 위치에 저장</li>
+<li>교체기법 : 어떤 프로세스를 제거</li>
+<li>할당기법 : 어떤 방법으로 할당</li>
+</ul>
+<hr/>
+<ul>
+<li>상세내용
+<ul>
+<li>메모리 배치기법
+<ul>
+<li>최초적합</li>
+<li>최적적합</li>
+<li>최악적합</li>
+</ul>
+</li>
+<li>메모리할당기법
+<ul>
+<li>연속할당기법 : 주기억장치 공간내 인접되게 연속</li>
+<li>분산할당기법 : 하나의 프로세스를 여러개로 나누어 저장</li>
+</ul>
+</li>
+<li>교체기법
+<ul>
+<li>FIFO</li>
+<li>LRU : 가장 오랫동안 사용 안한 페이지 교체</li>
+<li>LFU : 참조 횟수가 가장 적은 페이지 교체</li>
+<li>OPT : 오랫동안 사용하지 않을 페이지 교체( 체크)</li>
+<li>NUR : 최근에 사용하지 않은 페이지 교체 (체크)</li>
+<li>SCR : 가장 오랫동안 있는 페이지중 자주 사용되는 페이지 교체 방지</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>메모리 단편화</p>
+<ul>
+<li>내부단편화 : 적재후 남은 공간</li>
+<li>외부단편화 : 할당된 크기가 프로세스 크기보다 작아서 사용 못하는 공간</li>
+</ul>
+</li>
+<li>
+<p>페이징 기법의 문제점</p>
+<ul>
+<li>스레싱 : 페이지 교체하는데 시간을 더 많이 씀</li>
+</ul>
+<p>⇒ 해결방법 : 워킹세트 (빈번한 페이지 주기억장치에 상주)</p>
+</li>
+<li>
+<p>지역성</p>
+<ul>
+<li>시간 지역성 : 최근 사용되었던 기억장소 집중적 액세스</li>
+<li>공간 지역성 : 참조된 메모리 근처 액세스</li>
+<li>순차 지역성  : 데이터가 순차적으로 액세스</li>
+</ul>
+</li>
+<li>
+<p>프로세스상태</p>
+<ul>
+<li>생성 → 준비 → 실행 → 대기 → 완료</li>
+<li>준비 → 실행 : 디스패치</li>
+<li>실행 → 준비 : 타이머 런 아웃(할당시간초과)</li>
+<li>실행 → 대기 : 블록 (입출력 발생)</li>
+<li>대기 → 준비 : 웨이크업</li>
+</ul>
+</li>
+<li>
+<p>선점형 스케줄링</p>
+<ul>
+<li>라운드로빈 : 같은 크기의 CPU 할당</li>
+<li>SRT : 가장 짧은 시간이 소요되는 프로세스 먼저 수행</li>
+<li>다단계 큐 : 여러개 큐</li>
+<li>다단계 피드백 큐 : FIFO + 라운드로빈</li>
+</ul>
+</li>
+<li>
+<p>비선점형</p>
+<ul>
+<li>우선순위</li>
+<li>기한부 : 기한 내에 완료</li>
+<li>SJF : 가장 짧은 작업부터 수행, 기아현상 발생</li>
+<li>FCFS : FIFO알고리즘</li>
+<li>HRN : 현재 응답률이 가장 높은 것 선택, 기아현상 해결 (HRN 우선순위 = (대기시간+서비스시간)/서비스시간</li>
+</ul>
+</li>
+<li>
+<p>교착상태 발생조건</p>
+<ul>
+<li>상호배제 : 배타적 점유</li>
+<li>점유와 대기 : 점유하고 있으면 또다른 자원 요청하여 대기상태</li>
+<li>비선점 : 오직 점유한 프로세스만 해제 가능함</li>
+<li>환형대기 : 하나의 원형을 구성</li>
+</ul>
+</li>
+<li>
+<p>교착상태 해결방법</p>
+<ul>
+<li>예방 : 점유 자원 해제 후 새 자원 요청</li>
+<li>회피 : 은행가 알고리즘</li>
+<li>발견 : 시스템 상태를 감시, 교착상태 검사</li>
+<li>복구 : 교착상태가 없어질때까지 프로세스 kill</li>
+</ul>
+</li>
+<li>
+<p>디스크 스케줄링 종류</p>
+<ul>
+<li>FCFS : FIFO</li>
+<li>SSTF : 탐색거리가 가장 짧은 것부터</li>
+<li>SCAN : 한쪽으로 끝까지 이동후 다시 역으로 돌아옴</li>
+<li>C-SCAN : 바깥쪽에서 안쪽으로 움직이면서 짧은 탐색거리</li>
+<li>N-STEP SCAN : 진행중에 들어온 요청은 모아두었다가, 나중에 반대로 돌아가면서 처리</li>
+<li>LOOK : 한쪽 방향으로 가다 요청이 없으면 반대로 돌아감</li>
+<li>SLTF : 회전지연시간을 최적화</li>
+</ul>
+</li>
+<li>
+<p>가상화 기술요소</p>
+<ul>
+<li>컴퓨팅 가상화 : 리소스를 가상화 (ex_ 하이퍼바이저)</li>
+<li>스토리지 가상화 : 분산파일시스템</li>
+<li>I/O가상화 : 미들웨어 계층 (ex_ 가상 네트워크 인터페이스 카드)</li>
+<li>도커</li>
+<li>분산처리 기술</li>
+<li>네트워크 가상화 기술 : 가상 네트워크 지원</li>
+</ul>
+</li>
+<li>
+<p>클라우드 컴퓨팅 유형</p>
+<ul>
+<li>인프라형 서비스 (IAAS)</li>
+<li>플랫폼형 서비스 (PAAS)</li>
+<li>소프트웨어형 서비스 (SAAS)</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<ul>
+<li>
+<p>네트워크</p>
+<ul>
+<li>WAN</li>
+<li>LAN</li>
+</ul>
+</li>
+<li>
+<p>OSI 7계층</p>
+<ul>
+<li>응용 계층 : 응용서비스 연결</li>
+<li>표현계층 : 암/복호화, 압축</li>
+<li>세션 계층 :연결접속, 동기제어</li>
+<li>전송계층 : 신뢰성 통신</li>
+<li>네트워크 계층 : 최적화된 경로 제공</li>
+<li>데이터링크 계층 : 전송 오류 제어</li>
+<li>물리계층 : 0과 1비트 정보 변환</li>
+</ul>
+</li>
+<li>
+<p>원거리 통신망 연결 기술 (WAN)</p>
+<ul>
+<li>전용 회선 방식 : 점대점 방식</li>
+<li>회선 교환 방식 : 물리적 전용선을 활용 (동일 경로로 전달)</li>
+<li>패킷 교환 방식 : X.25, 프레임릴레이에 사용</li>
+</ul>
+</li>
+<li>
+<p>전송매체 접속제어(반이중 방식)</p>
+<ul>
+<li>CSMA/CD : 현재 채널이 사용중인지 체크후 사용 안하면 전송</li>
+<li>CSMA/CA : 현재 채널이 사용중인지 체크후 비어있으면 임의시간을 기다린후 전송</li>
+</ul>
+</li>
+<li>
+<p>프로토콜의 3요소</p>
+<ul>
+<li>구문 : 데이터형식, 코딩, 신호레벨 등을 규정</li>
+<li>의미 : 조정과 에러처리위한 규정</li>
+<li>타이밍 : 속도조절</li>
+</ul>
+</li>
+<li>
+<p>데이터링크 계층 프로토콜 (2계층)</p>
+<ul>
+<li>HDLC : 동기식 비트 중심 데이터링크프로토콜</li>
+<li>프레임 릴레이 : 데이터 프레임들의 중계기능과 다중화 기능만 수행</li>
+<li>PPP :  두 통신 노드 직접적인 연결</li>
+<li>ATM : 53바이트 셀 단위로 전달하는 비동기식 시분할 다중화 방식 (패킷)</li>
+</ul>
+</li>
+<li>
+<p>데이터링크 계층 오류제어 (2계층)</p>
+<ul>
+<li>전진 오류 수정(FEC) : 해밍코드 방식과 상승코드 방식</li>
+<li>후진 오류 수정(BEC) : 패리티 검사, CRC, 블록합 검사</li>
+</ul>
+</li>
+<li>
+<p>데이터링크 자동 반복 요청방식 종류 (2계층)</p>
+<ul>
+<li>stop-and-wait ARQ 방식 : 한 개 프레임 전송 후 응답 대기</li>
+<li>Go back N ARQ 방식 : 여러개 프레임 전송 NAK을 수신하게 되면, 오류인 지점부터 다시 보냄</li>
+<li>Selective Reapeat ARQ : 에러가 발생한 프레임만 재전송</li>
+</ul>
+</li>
+<li>
+<p>네트워크 계층 프로토콜 (3계층)</p>
+<ul>
+<li>IP</li>
+<li>ARP</li>
+<li>RARP</li>
+<li>ICMP</li>
+<li>IGMP</li>
+<li>라우팅 프로토콜</li>
+</ul>
+</li>
+<li>
+<p>서브넷팅 종류</p>
+<ul>
+<li>FLSM : 서브넷 길이 고정적 사용</li>
+<li>VLSM : 서브넷 길이 가변적 사용</li>
+</ul>
+</li>
+<li>
+<p>라우팅 프로토콜 (3계층)</p>
+<ul>
+<li>IGP (내부 라우팅 프로토콜) : RIP, IGRP, OSPF, EIGRP</li>
+<li>EGP (외부 라우팅 프로토콜) : BGP</li>
+</ul>
+<hr/>
+<ul>
+<li>상세내용
+<ul>
+<li>IGP
+<ul>
+<li>RIP : 15홉 제한, UDP 사용, 벨만포드알고리즘 사용</li>
+<li>OSPF : 링크상태알고리즘, 다익스트라알고리즘</li>
+</ul>
+</li>
+<li>EGP
+<ul>
+<li>BGP : 경로 벡터 알고리즘 사용</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>라우팅 알고리즘 유형</p>
+<ul>
+<li>거리벡터알고리즘 : 벨만 포드 알고리즘</li>
+<li>링크상태알고리즘 : 다익스트라 알고리즘 사용</li>
+</ul>
+</li>
+<li>
+<p>세션 계층 프로토콜(4계층)</p>
+<ul>
+<li>RPC : 원격 프로시저 호출</li>
+<li>NetBIOS : 응용계층의 애플리케이션 프로그램에게 API 제공</li>
+</ul>
+</li>
+<li>
+<p>표현 계층 프로토콜 (6계층)</p>
+<ul>
+<li>JPEG, MPEG</li>
+</ul>
+</li>
+<li>
+<p>응용 계층 프로토콜(7계층)</p>
+<ul>
+<li>HTTP, FTP, SMTP, POP3, IMAP</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<ul>
+<li>네트워크 전달방식
+<ul>
+<li>패킷 교환 방식 : X.25, 프레임 릴레이, ATM(비동기 전송모드)
+<ul>
+<li>데이터그램 방식 : 독립적 전송</li>
+<li>가상회선 방식 :  통신경로를 미리 설정하여 전송</li>
+</ul>
+</li>
+<li>서킷 교환 방식 : 영상, 비디오</li>
+</ul>
+</li>
+<li>네트워크 구조
+<ul>
+<li>애드 혹 네트워크 : 긴급 구조, 긴급회의, 전쟁터에서의 군사 네트워크</li>
+</ul>
+</li>
+<li>네트워크 설치구조
+<ul>
+<li>버스형</li>
+<li>트리형</li>
+<li>링형</li>
+<li>성형(star)</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<ul>
+<li>신기술 용어
+<ul>
+<li>네트워크 관련 신기술 용어
+<ul>
+<li>SDN : 네트워크 제어부 ,전달부 분리</li>
+<li>NFV : 범용 하드웨어 + 가상화 기술</li>
+<li>WI-SUN : 스마트 그리드와 연결 (무선 네트워크 효율적 사용)</li>
+<li>NFC : 비접촉식 무선 통신 기술</li>
+<li>스몰 셀 : 좁은 커버리지를 가지는 소형 기지국</li>
+<li>블루투스 : 10m이내 근거리 디바이스간 통신 지원</li>
+<li>Zing : 키오스크에 갖다 대면 원하는 데이터 바로 가져옴</li>
+<li>BcN : 끊김없이 안전하게 이용</li>
+<li>C-V2X : 도로 등 인프라가 구축된 사물과 정보 교환할 수 있는 통신 기술</li>
+<li>메시 네트워크 : 기존 무선 랜의 극복, 그물 모양 네트워크</li>
+<li>UWB : 낮은 전력을 사용하여 데이터전송</li>
+<li>UsN : 환경 정보 탐지</li>
+<li>WBAN : 신체 접촉 근거리 무선 네트워크</li>
+<li>NDN : IP 주소 대신 Data 이름을 활용</li>
+<li>네트워크 슬라이싱 : 5G 핵심기술</li>
+<li>NOMA : 비직교 다중 접속 기술</li>
+<li>MEC : 모바일 코어 망의 혼잡 완화</li>
+<li>사물인터넷</li>
+<li>MQTT : 경량 메시지</li>
+<li>COAP : M2M사이에서 송수신을 비동기적 전송</li>
+<li>Zigbee : 저전력, 저속, 저비용의 근거리 무선통신</li>
+<li>스마트 그리드 : 에너지 이용효율 극대화</li>
+</ul>
+</li>
+<li>소프트웨어 관련 신기술 용어
+<ul>
+<li>인공지능</li>
+<li>기계학습</li>
+<li>가상현실(VR) : 실제와 유사하지만 실제가 아닌</li>
+<li>증강현실(AR) : 실제로 존재하는 환경</li>
+<li>혼합현실(MR) : 물리적 환경과 가상환경을 혼합</li>
+<li>블록체인 : 분산데이터베이스 형태로 데이터 기록리스트인 블록을 연결</li>
+<li>BaaS : 블록체인 개발환경을 클라우드로 서비스</li>
+<li>CPS : 실시간으로 물리적 요소들을 제어</li>
+<li>디지털 트윈 : 실제 물리적 자산 대신 가상화</li>
+<li>서비스 지향 아키텍처 (SOA)</li>
+<li>메시업 : 서로 다른 웹 콘텐츠를 조합</li>
+<li>그레이 웨어 : 합법적 프로그램이면서 사용자를 귀찮게 함</li>
+<li>텐서플로 : 기계학습 오픈소스</li>
+<li>파스타 : NIA 주도로 개발된 개방형 클라우드 컴퓨팅 플랫폼</li>
+<li>메타버스 : 가상, 초월과세계,우주 합성어
+<ul>
+<li>SDS : 물리적 디스크 드라이브를 가상화 기술을 적용하여 논리적인 스토리지</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>인프라 신기술 용어
+<ul>
+<li>SDDC : 모든 하드웨어가 가상화</li>
+<li>HACMP : 공유 디스크를 중심으로 클러스터링으로 연결</li>
+<li>도커</li>
+<li>하이퍼바이저</li>
+<li>쿠버네티스</li>
+<li>서버리스 컴퓨팅 : MSA,Baas,Faas와 같이 서버 없는것과 같이 처리하는 컴퓨팅기술</li>
+</ul>
+</li>
+<li>DB관련 신기술 용어
+<ul>
+<li>하둡 : 분산 컴퓨팅 플랫폼</li>
+<li>HDFS : 대용량 파일을 분산된서버에 저장하고 빠르게 처리</li>
+<li>맵리듀스 : 하둡으로 대표되는 소프트웨어 프레임워크</li>
+<li>스쿱 : RDBMS에서 HDFS로 데이터 수집</li>
+<li>NOSQL : 조인연산 불가, 수평적 확산</li>
+<li>다크데이터 : 분석에 활용되지는 않는 다량의 데이터</li>
+<li>데이터 마이닝 : 일정한 패턴 찾기</li>
+<li>데이터 웨어하우스 : 데이터베이스에 축적된 데이터를 공통형식으로 변환</li>
+<li>데이터 마트 : 데이터 웨어하우스에서 데이터를 꺼내 사용자에게 제공</li>
+<li>메타데이터 : 일련의 데이터를 정의하고 설명해주는 데이터</li>
+<li>디지털아카이빙 : 장기간 관리</li>
+<li>마이데이터 : 정보 주체 중심의 데이터 활용체계</li>
+<li>스크래파이 : 크롤링하여 구조화된 데이터 수집 (파이썬기반)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>그래프 뷰</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc"><button type="button" class="toc-header" aria-controls="toc-329" aria-expanded="true"><h3>목차</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-0" class="toc-content overflow"><li class="depth-0"><a href="#실기-part-11-응용-sw기초-기술-활용" data-for="실기-part-11-응용-sw기초-기술-활용">[실기] (PART 11) 응용 SW기초 기술 활용</a></li><li class="depth-1"><a href="#-개념" data-for="-개념">📌 개념</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>백링크</h3><ul id="list-0" class="overflow"><li><a href="../../자격증/정보처리기사/정보처리기사-목록" class="internal">정보처리기사 — 개요</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v5.0.0</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script src="../../static/resource-after-e13fffa1.js" type="application/javascript" data-persist="true"></script><script src="../../static/resource-after-8b336f9a.js" type="application/javascript" data-persist="true"></script><script src="../../static/resource-after-baba652b.js" type="application/javascript" data-persist="true"></script><script src="../../static/resource-after-5eb75950.js" type="module" data-persist="true"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../postscript-9114441b.js" type="module" data-persist="true"></script></html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr"><head><title>[Design Pattern] 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선 (Proxy, Decorator, Strategy, Chain, Template, SPI, Visitor, Facade)</title><meta charset="utf-8"/><link rel="preload" href="../../index-b2b4d3bf.css" as="style"/><link rel="preload" href="../../prescript-2bfc6315.js" as="script"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="차근차근정확하게"/><meta property="og:title" content="[Design Pattern] 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선 (Proxy, Decorator, Strategy, Chain, Template, SPI, Visitor, Facade)"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="[Design Pattern] 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선 (Proxy, Decorator, Strategy, Chain, Template, SPI, Visitor, Facade)"/><meta name="twitter:description" content="[Design Pattern] 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선 핵심 요약 교과서적인 예제(동물/도형/계산기)가 아니라, 실제 운영 중인 실무 대규모 분산 및 네트워크 배치 시스템(실무 시스템)과 오픈소스 프레임워크(ha-excel-job-engine, mini-apm-spring-boot-starter, mybatis-sql-tuner-ai)의 실제 코드베이스에 녹아있는 10대 핵심 디자인 패턴의 설계 의도, 문제 해결 방식, 그리고 구현 메커니즘을 총정리한다."/><meta property="og:description" content="[Design Pattern] 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선 핵심 요약 교과서적인 예제(동물/도형/계산기)가 아니라, 실제 운영 중인 실무 대규모 분산 및 네트워크 배치 시스템(실무 시스템)과 오픈소스 프레임워크(ha-excel-job-engine, mini-apm-spring-boot-starter, mybatis-sql-tuner-ai)의 실제 코드베이스에 녹아있는 10대 핵심 디자인 패턴의 설계 의도, 문제 해결 방식, 그리고 구현 메커니즘을 총정리한다."/><meta property="og:image:alt" content="[Design Pattern] 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선 핵심 요약 교과서적인 예제(동물/도형/계산기)가 아니라, 실제 운영 중인 실무 대규모 분산 및 네트워크 배치 시스템(실무 시스템)과 오픈소스 프레임워크(ha-excel-job-engine, mini-apm-spring-boot-starter, mybatis-sql-tuner-ai)의 실제 코드베이스에 녹아있는 10대 핵심 디자인 패턴의 설계 의도, 문제 해결 방식, 그리고 구현 메커니즘을 총정리한다."/><meta property="twitter:domain" content="sweetpark.github.io"/><meta property="og:url" content="https://sweetpark.github.io/개발-실무/아키텍처·설계/[design-pattern]-실무-프로젝트-및-오픈소스로-체득하는-gof-핵심-디자인-패턴-10선-(proxy,-decorator,-strategy,-chain,-template,-spi,-visitor,-facade)"/><meta property="twitter:url" content="https://sweetpark.github.io/개발-실무/아키텍처·설계/[design-pattern]-실무-프로젝트-및-오픈소스로-체득하는-gof-핵심-디자인-패턴-10선-(proxy,-decorator,-strategy,-chain,-template,-spi,-visitor,-facade)"/><link rel="icon" href="../../static/icon.png"/><meta name="description" content="[Design Pattern] 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선 핵심 요약 교과서적인 예제(동물/도형/계산기)가 아니라, 실제 운영 중인 실무 대규모 분산 및 네트워크 배치 시스템(실무 시스템)과 오픈소스 프레임워크(ha-excel-job-engine, mini-apm-spring-boot-starter, mybatis-sql-tuner-ai)의 실제 코드베이스에 녹아있는 10대 핵심 디자인 패턴의 설계 의도, 문제 해결 방식, 그리고 구현 메커니즘을 총정리한다."/><meta name="generator" content="Quartz"/><link href="../../index-b2b4d3bf.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-735924e0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-589c1cea.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-bbc3f7c0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-2911f5d1.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-e427079e.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-caf7c009.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-53b25b2b.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-c93c6a44.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-8a06014f.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-77d6a441.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-6ee21cee.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-1ea6ad18.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-34bdfded.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-788c9ca3.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-642859cd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-4abc06bd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-274a3dfe.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-94cb6c84.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-58d5ff56.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../component-7262b5a7.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-a5c806d2.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-6bd36952.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-9857b007.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../static/resource-style-d3a1a224.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../prescript-2bfc6315.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../static/contentIndex.json").then(data => data.json())</script><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted%20Grotesk%3Awght%40400%3B700&amp;family=Source%20Sans%20Pro%3Aital%2Cwght%400%2C400%3B0%2C600%3B1%2C400%3B1%2C600&amp;family=IBM%20Plex%20Mono%3Awght%40400%3B600&amp;display=swap"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://sweetpark.github.io/개발-실무/아키텍처·설계/[design-pattern]-실무-프로젝트-및-오픈소스로-체득하는-gof-핵심-디자인-패턴-10선-(proxy,-decorator,-strategy,-chain,-template,-spi,-visitor,-facade)-og-image.webp"/><meta property="og:image:url" content="https://sweetpark.github.io/개발-실무/아키텍처·설계/[design-pattern]-실무-프로젝트-및-오픈소스로-체득하는-gof-핵심-디자인-패턴-10선-(proxy,-decorator,-strategy,-chain,-template,-spi,-visitor,-facade)-og-image.webp"/><meta name="twitter:image" content="https://sweetpark.github.io/개발-실무/아키텍처·설계/[design-pattern]-실무-프로젝트-및-오픈소스로-체득하는-gof-핵심-디자인-패턴-10선-(proxy,-decorator,-strategy,-chain,-template,-spi,-visitor,-facade)-og-image.webp"/><meta property="og:image:type" content="image/webp"/><script>
+(function() {
+  function addGlobalGraphBtn() {
+    var toolbar = document.querySelector(".sidebar.left .flex-component");
+    if (!toolbar || toolbar.querySelector(".toolbar-graph-btn")) return;
+
+    var wrapper = document.createElement("div");
+    wrapper.style.cssText = "flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;";
+
+    var btn = document.createElement("button");
+    btn.className = "toolbar-graph-btn";
+    btn.setAttribute("aria-label", "전체 그래프 뷰 (Cmd+G)");
+    btn.setAttribute("title", "전체 그래프 뷰 (단축키: Cmd+G)");
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" fill="currentColor"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"/></svg>';
+
+    btn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      var existingIcon = document.querySelector(".graph .global-graph-icon");
+      if (existingIcon && existingIcon !== btn) {
+        existingIcon.click();
+        return;
+      }
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "g", metaKey: true, bubbles: true }));
+    });
+
+    wrapper.appendChild(btn);
+    toolbar.appendChild(wrapper);
+  }
+
+  document.addEventListener("DOMContentLoaded", addGlobalGraphBtn);
+  document.addEventListener("nav", addGlobalGraphBtn);
+})();
+</script></head><body data-slug="개발-실무/아키텍처·설계/[design-pattern]-실무-프로젝트-및-오픈소스로-체득하는-gof-핵심-디자인-패턴-10선-(proxy,-decorator,-strategy,-chain,-template,-spi,-visitor,-facade)" data-basepath><div id="quartz-root" class="page" data-frame="default"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../..">차근차근정확하게</a></h2><div class="mobile-only"><div class="spacer"></div></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 0.5rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button" aria-label="검색" aria-expanded="false"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>검색</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="검색어를 입력하세요" placeholder="검색어를 입력하세요"/><div class="search-layout" data-preview="true" data-field-priority="[&quot;title&quot;,&quot;content&quot;,&quot;tags&quot;]"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode" aria-label="다크 모드"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="다크 모드"><title>다크 모드</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="라이트 모드"><title>라이트 모드</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode" aria-label="리더 모드"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="리더 모드"><title>리더 모드</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer nav-files-container" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a2, b2) => {\n    if (!a2.isFolder &amp;&amp; !b2.isFolder || a2.isFolder &amp;&amp; b2.isFolder) {\n      return (a2.displayName || \&quot;\&quot;).localeCompare(b2.displayName || \&quot;\&quot;, void 0, {\n        numeric: true,\n        sensitivity: \&quot;base\&quot;\n      });\n    }\n    if (!a2.isFolder &amp;&amp; b2.isFolder) {\n      return 1;\n    }\n    return -1;\n  }&quot;,&quot;filterFn&quot;:&quot;(node) => node.slugSegment !== \&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;(node) => {\n    return node;\n  }&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-306" aria-label="탐색기"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>탐색기</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-306" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#" class="nav-file-title tree-item-self"></a></li></template><template id="template-folder"><li><div class="folder-container nav-folder-title tree-item-self"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon nav-folder-collapse-indicator collapse-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content tree-item-children"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../개발-실무/">개발 실무</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../개발-실무/아키텍처·설계/">아키텍처·설계</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>[Design Pattern] 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선 (Proxy, Decorator, Strategy, Chain, Template, SPI, Visitor, Facade)</a></div></nav><h1 class="article-title">[Design Pattern] 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선 (Proxy, Decorator, Strategy, Chain, Template, SPI, Visitor, Facade)</h1><details class="note-properties metadata-container" open data-collapsed="false"><summary class="note-properties-header"><span class="note-properties-title">Properties</span><span class="note-properties-count">1</span></summary><table class="note-properties-table"><tbody><tr class="note-properties-row metadata-property"><td class="note-properties-key metadata-property-key">tags</td><td class="note-properties-value metadata-property-value"><span class="note-properties-tags"><a href="../../tags/학습" class="internal internal-link tag-link">학습</a><span class="note-properties-separator">, </span><a href="../../tags/개발실무" class="internal internal-link tag-link">개발실무</a><span class="note-properties-separator">, </span><a href="../../tags/디자인패턴" class="internal internal-link tag-link">디자인패턴</a><span class="note-properties-separator">, </span><a href="../../tags/gof" class="internal internal-link tag-link">gof</a><span class="note-properties-separator">, </span><a href="../../tags/proxy" class="internal internal-link tag-link">proxy</a><span class="note-properties-separator">, </span><a href="../../tags/decorator" class="internal internal-link tag-link">decorator</a><span class="note-properties-separator">, </span><a href="../../tags/strategy" class="internal internal-link tag-link">strategy</a><span class="note-properties-separator">, </span><a href="../../tags/chainofresponsibility" class="internal internal-link tag-link">chainofresponsibility</a><span class="note-properties-separator">, </span><a href="../../tags/templatemethod" class="internal internal-link tag-link">templatemethod</a><span class="note-properties-separator">, </span><a href="../../tags/visitor" class="internal internal-link tag-link">visitor</a><span class="note-properties-separator">, </span><a href="../../tags/facade" class="internal internal-link tag-link">facade</a></span></td></tr></tbody></table></details><p show-comma="true" class="content-meta"><time datetime="2026-09-04T15:00:00.000Z">2026년 9월 05일</time><span>21 min read</span></p></div></div><article class="popover-hint"><div class="markdown-preview-view markdown-rendered"><h1 id="design-pattern-실무-프로젝트-및-오픈소스로-체득하는-gof-핵심-디자인-패턴-10선">[Design Pattern] 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#design-pattern-실무-프로젝트-및-오픈소스로-체득하는-gof-핵심-디자인-패턴-10선" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote>
+<p><strong>핵심 요약</strong><br/>
+교과서적인 예제(동물/도형/계산기)가 아니라, 실제 운영 중인 <strong>실무 대규모 분산 및 네트워크 배치 시스템</strong>(실무 시스템)과 <strong>오픈소스 프레임워크</strong>(<code>ha-excel-job-engine</code>, <code>mini-apm-spring-boot-starter</code>, <code>mybatis-sql-tuner-ai</code>)의 실제 코드베이스에 녹아있는 <strong>10대 핵심 디자인 패턴</strong>의 설계 의도, 문제 해결 방식, 그리고 구현 메커니즘을 총정리한다.</p>
+</blockquote>
+<hr/>
+<h2 id="1-패턴-매핑-요약표">1. 패턴 매핑 요약표<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-패턴-매핑-요약표" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">분류</th><th style="text-align:left;">패턴</th><th style="text-align:left;">적용 프로젝트 및 핵심 클래스</th><th style="text-align:left;">해결한 엔지니어링 문제</th></tr></thead><tbody><tr><td style="text-align:left;"><strong>구조 (Structural)</strong></td><td style="text-align:left;"><strong>Proxy (프록시)</strong></td><td style="text-align:left;"><code>mini-apm</code>: <code>ApmProxyDataSource</code>, <code>ApmProxyPreparedStatement</code></td><td style="text-align:left;">비즈니스 코드 침작 없이 JDBC 레벨에서 SQL 실행 시간 측정, 파라미터 캡처, N+1 탐지</td></tr><tr><td style="text-align:left;"><strong>구조 (Structural)</strong></td><td style="text-align:left;"><strong>Decorator (데코레이터)</strong></td><td style="text-align:left;"><code>mini-apm</code>: <code>ContentCachingRequestWrapper</code>, <code>LoggingTaskDecorator</code><br/><code>ha-excel</code>: <code>ExcelStreamable</code></td><td style="text-align:left;">단발성 <code>InputStream</code>에 캐싱 기능 부가, 비동기 <code>Runnable</code>에 스레드 컨텍스트 전파 부가</td></tr><tr><td style="text-align:left;"><strong>행위 (Behavioral)</strong></td><td style="text-align:left;"><strong>Strategy (전략)</strong></td><td style="text-align:left;"><code>ha-excel</code>: <code>StorageProvider</code> (Local, NAS, S3, Azure, GCP)<br/>트랜잭션 엔진: 결제 수단/PG사별 승인 알고리즘</td><td style="text-align:left;">런타임에 동적으로 스토리지 저장 및 결제 처리 알고리즘을 교체하고 OCP 달성</td></tr><tr><td style="text-align:left;"><strong>행위 (Behavioral)</strong></td><td style="text-align:left;"><strong>Chain of Responsibility (책임 연쇄)</strong></td><td style="text-align:left;">네트워크 소켓 게이트웨이 / Netty: <code>ChannelPipeline</code><br/>트랜잭션 엔진: <code>StepChain</code> (결제 트랜잭션 파이프라인)<br/>Servlet: <code>FilterChain</code></td><td style="text-align:left;">복잡한 단일 트랜잭션을 독립적인 검증/처리/통보 스텝으로 분리하고 결합도 제거</td></tr><tr><td style="text-align:left;"><strong>행위 (Behavioral)</strong></td><td style="text-align:left;"><strong>Template Method (템플릿 메서드)</strong></td><td style="text-align:left;"><code>mini-apm</code>: <code>AbstractLogProcessor</code><br/><code>ha-excel</code>: <code>AbstractStorageProvider</code></td><td style="text-align:left;">공통 로그 가공/마스킹/Loki 마커 조립 알고리즘 뼈대를 정의하고 런타임별 세부 처리 위임</td></tr><tr><td style="text-align:left;"><strong>생성/구조</strong></td><td style="text-align:left;"><strong>SPI &amp; Registry (서비스 제공자 &amp; 레지스트리)</strong></td><td style="text-align:left;"><code>ha-excel</code>: <code>ExcelDataProvider</code> + <code>ExcelDataRegistry</code><br/><code>mybatis-sql-tuner</code>: <code>SqlSnippetRegistry</code></td><td style="text-align:left;">컴포넌트 자동 스캔 및 O(1) 매핑 레지스트리 구축으로 무제한 플러그인 확장성 확보</td></tr><tr><td style="text-align:left;"><strong>구조 (Structural)</strong></td><td style="text-align:left;"><strong>Adapter (어댑터)</strong></td><td style="text-align:left;"><code>ha-excel</code>: <code>agGridAdapter</code><br/><code>mybatis-sql-tuner</code>: <code>JdbcAnalyzer</code> 멀티 DB EXPLAIN 어댑터</td><td style="text-align:left;">외부 라이브러리(AG Grid, 이기종 RDBMS EXPLAIN 포맷)의 인터페이스를 내부 규격에 맞게 변환</td></tr><tr><td style="text-align:left;"><strong>행위 (Behavioral)</strong></td><td style="text-align:left;"><strong>Visitor (방문자)</strong></td><td style="text-align:left;"><code>mybatis-sql-tuner</code>: JSqlParser <code>TablesNamesFinder</code><br/>W3C DOM AST 순회 엔진</td><td style="text-align:left;">문법 트리(SQL AST, XML DOM) 구조를 수정하지 않고 새로운 검증/추출 알고리즘 추가</td></tr><tr><td style="text-align:left;"><strong>구조 (Structural)</strong></td><td style="text-align:left;"><strong>Facade (퍼사드)</strong></td><td style="text-align:left;"><code>mybatis-sql-tuner</code>: <code>PromptGenerator</code><br/><code>ha-excel</code>: <code>ExcelJobManager</code></td><td style="text-align:left;">다수의 복잡한 하위 서브시스템(DOM 파서, EXPLAIN 인스펙터, 메타데이터 수집)을 단순한 단일 진입점으로 은닉</td></tr><tr><td style="text-align:left;"><strong>동시성/아키텍처</strong></td><td style="text-align:left;"><strong>Producer-Consumer (생산자-소비자)</strong></td><td style="text-align:left;"><code>ha-excel</code>: <code>ExcelJobQueue</code> + Virtual Thread Worker Pool</td><td style="text-align:left;">대용량 I/O 요청을 웹 스레드에서 분리하여 큐잉하고 경량 워커 풀에서 비동기 소비</td></tr></tbody></table></div>
+<hr/>
+<h2 id="2-구조-패턴-structural-patterns">2. 구조 패턴 (Structural Patterns)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-구조-패턴-structural-patterns" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-프록시-패턴-proxy-pattern">2.1 프록시 패턴 (Proxy Pattern)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-프록시-패턴-proxy-pattern" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>적용 사례</strong>: <code>mini-apm-spring-boot-starter</code> (<code>ApmProxyDataSource</code>, <code>ApmProxyPreparedStatement</code>)</li>
+<li><strong>문제 상황</strong>:<br/>
+JPA/Hibernate 환경에서 실행되는 실제 완성형 SQL, 쿼리 수행 시간, N+1 쿼리 발생 여부를 감시해야 한다. 하지만 엔티티 매니저나 Repository 코드를 일일이 수정할 수는 없다(Non-Invasive 원칙).</li>
+<li><strong>해결 구조</strong>:<br/>
+Spring Boot 기동 시 <code>BeanPostProcessor</code>를 이용해 실제 <code>DataSource</code>를 <code>ApmProxyDataSource</code>로 감싼다. 커넥션이 생성되고 <code>prepareStatement()</code>가 호출될 때 실제 <code>PreparedStatement</code> 대신 <code>ApmProxyPreparedStatement</code>를 반환하여 실행 시점을 가로챈다.</li>
+</ul>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;classDiagram\n    class DataSource {\n        &lt;&lt;interface>>\n        +getConnection() Connection\n    }\n    class HikariDataSource {\n        +getConnection() Connection\n    }\n    class ApmProxyDataSource {\n        -DataSource target\n        +getConnection() Connection\n    }\n    class ApmProxyPreparedStatement {\n        -PreparedStatement delegate\n        -SqlTraceContextHolder context\n        +executeQuery() ResultSet\n    }\n\n    DataSource &lt;|.. HikariDataSource\n    DataSource &lt;|.. ApmProxyDataSource\n    ApmProxyDataSource --> HikariDataSource : 위임 (Delegate)\n    ApmProxyDataSource ..> ApmProxyPreparedStatement : 생성&quot;">classDiagram
+    class DataSource {
+        &lt;&lt;interface>>
+        +getConnection() Connection
+    }
+    class HikariDataSource {
+        +getConnection() Connection
+    }
+    class ApmProxyDataSource {
+        -DataSource target
+        +getConnection() Connection
+    }
+    class ApmProxyPreparedStatement {
+        -PreparedStatement delegate
+        -SqlTraceContextHolder context
+        +executeQuery() ResultSet
+    }
+
+    DataSource &lt;|.. HikariDataSource
+    DataSource &lt;|.. ApmProxyDataSource
+    ApmProxyDataSource --> HikariDataSource : 위임 (Delegate)
+    ApmProxyDataSource ..> ApmProxyPreparedStatement : 생성
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="java" data-theme="github-light github-dark"><code data-language="java" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">// ApmProxyPreparedStatement.java: 프록시를 통한 실행 시간 측정 및 N+1 감지</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">@</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">Override</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">public</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="keyword"> ResultSet </span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">executeQuery</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">() throws SQLException {</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">    long</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="normal"> start </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="normal"> System.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">currentTimeMillis</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">();</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">    try</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> {</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">        return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="normal"> delegate.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">executeQuery</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">();</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">    } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">finally</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> {</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">        long</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="normal"> elapsed </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="normal"> System.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">currentTimeMillis</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">() </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> start;</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function">        recordSqlMetrics</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">.preparedSql, elapsed);</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">    }</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">}</span></span></code></pre></figure>
+<hr/>
+<h3 id="22-데코레이터-패턴-decorator-pattern">2.2 데코레이터 패턴 (Decorator Pattern)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-데코레이터-패턴-decorator-pattern" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>적용 사례</strong>:
+<ol>
+<li><code>mini-apm</code>: <code>ContentCachingRequestWrapper</code></li>
+<li><code>mini-apm</code>: <code>LoggingTaskDecorator</code></li>
+<li><code>ha-excel</code>: <code>ExcelStreamable</code></li>
+</ol>
+</li>
+<li><strong>Proxy vs Decorator 차이</strong>:
+<ul>
+<li><strong>프록시</strong>: 대상 객체의 <strong>접근 제어, 로깅, 지연 로딩, 보안 검사</strong> 등 흐름을 가로채는 것이 목적 (인터페이스 형태 유지).</li>
+<li><strong>데코레이터</strong>: 대상 객체에 <strong>동적으로 새로운 책임(기능, 버퍼링, 컨텍스트)을 덧붙이는 것</strong>이 목적.</li>
+</ul>
+</li>
+<li><strong>해결 구조</strong>:<br/>
+Servlet의 <code>HttpServletRequest</code>는 <code>InputStream</code>을 한 번만 읽을 수 있는 단발성 스트림이다. Controller가 바디를 읽기 전에 APM 로거가 읽어버리면 Controller가 빈 바디를 받게 된다.<br/>
+따라서 내부 바이트 배열에 읽은 데이터를 누적 보관하는 <strong>캐싱 데코레이터</strong>(<code>ContentCachingRequestWrapper</code>)로 감싸 여러 번 읽을 수 있는 책임을 동적으로 부가한다.</li>
+</ul>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    REQ[\&quot;원본 HttpServletRequest&lt;br/>(1회용 InputStream)\&quot;] --> DECORATOR[\&quot;ContentCachingRequestWrapper&lt;br/>(바이트 배열 메모리 버퍼 부가)\&quot;]\n    DECORATOR --> LOG[\&quot;APM Logger (1회 읽기)\&quot;]\n    DECORATOR --> CTRL[\&quot;Spring Controller (2회 재읽기 성공)\&quot;]&quot;">flowchart LR
+    REQ[&quot;원본 HttpServletRequest&lt;br/>(1회용 InputStream)&quot;] --> DECORATOR[&quot;ContentCachingRequestWrapper&lt;br/>(바이트 배열 메모리 버퍼 부가)&quot;]
+    DECORATOR --> LOG[&quot;APM Logger (1회 읽기)&quot;]
+    DECORATOR --> CTRL[&quot;Spring Controller (2회 재읽기 성공)&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<hr/>
+<h3 id="23-어댑터-패턴-adapter-pattern">2.3 어댑터 패턴 (Adapter Pattern)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-어댑터-패턴-adapter-pattern" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>적용 사례</strong>:
+<ol>
+<li><code>ha-excel-job-engine</code>: <code>agGridAdapter</code> (Frontend)</li>
+<li><code>mybatis-sql-tuner-ai</code>: <code>JdbcAnalyzer</code> 멀티 DB 어댑터</li>
+</ol>
+</li>
+<li><strong>문제 상황</strong>:<br/>
+클라이언트 UI(React AG Grid)의 컬럼 정의 규격(<code>ColDef[]</code>)과 백엔드 엑셀 엔진이 요구하는 규격(<code>ExcelColumnDef[]</code>)이 서로 속성명이 다르다 (<code>field</code> vs <code>key</code>, <code>headerName</code> vs <code>name</code>).</li>
+<li><strong>해결 구조</strong>:<br/>
+AG Grid의 속성을 엑셀 엔진 규격으로 변환하는 어댑터 함수를 제공하여, 기존 프론트엔드 그리드 코드를 단 한 줄도 수정하지 않고 그대로 다운로드 API에 전달할 수 있게 한다.</li>
+</ul>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    AG[\&quot;AG Grid ColDef[]&lt;br/>{ field: 'amt', headerName: '금액' }\&quot;] --> ADAPTER[\&quot;adaptAgGridColumns() 어댑터\&quot;]\n    ADAPTER --> BE[\&quot;ExcelColumnDef[]&lt;br/>{ key: 'amt', name: '금액', excelFormat: 'krw' }\&quot;]\n    BE --> ENGINE[\&quot;ha-excel-job-engine\&quot;]&quot;">flowchart LR
+    AG[&quot;AG Grid ColDef[]&lt;br/>{ field: 'amt', headerName: '금액' }&quot;] --> ADAPTER[&quot;adaptAgGridColumns() 어댑터&quot;]
+    ADAPTER --> BE[&quot;ExcelColumnDef[]&lt;br/>{ key: 'amt', name: '금액', excelFormat: 'krw' }&quot;]
+    BE --> ENGINE[&quot;ha-excel-job-engine&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<hr/>
+<h3 id="24-퍼사드-패턴-facade-pattern">2.4 퍼사드 패턴 (Facade Pattern)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#24-퍼사드-패턴-facade-pattern" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>적용 사례</strong>:
+<ol>
+<li><code>mybatis-sql-tuner-ai</code>: <code>PromptGenerator</code></li>
+<li><code>ha-excel-job-engine</code>: <code>ExcelJobManager</code></li>
+</ol>
+</li>
+<li><strong>문제 상황</strong>:<br/>
+SQL 튜닝 리포트를 생성하려면 1) 매퍼 XML DOM 파싱, 2) fakeSql 조립, 3) JDBC EXPLAIN 실행, 4) JSqlParser 테이블 추출, 5) DatabaseMetaData 인덱스 수집, 6) 트랜잭션 격리수준 조회가 모두 순서대로 맞물려야 한다. UI나 서비스 레이어가 이 모든 하위 클래스를 직접 제어하면 결합도가 극도로 높아진다.</li>
+<li><strong>해결 구조</strong>:<br/>
+<code>PromptGenerator</code>라는 <strong>단일 퍼사드 클래스</strong>를 두어 복잡한 하위 서브시스템을 은닉하고, 외부에는 <code>generatePrompt(connection, queryId, mapperPath, mapperBaseDir)</code> 단 하나의 심플한 진입점만 제공한다.</li>
+</ul>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TD\n    CLIENT[\&quot;SqlTunerService (클라이언트)\&quot;] --> FACADE[\&quot;PromptGenerator (퍼사드)\&quot;]\n    \n    subgraph Subsystems[\&quot;복잡한 내부 서브시스템\&quot;]\n        FACADE --> S1[\&quot;SqlExtractor (DOM 파싱)\&quot;]\n        FACADE --> S2[\&quot;SqlSnippetRegistry (인클루드)\&quot;]\n        FACADE --> S3[\&quot;JdbcAnalyzer (EXPLAIN)\&quot;]\n        FACADE --> S4[\&quot;TablesNamesFinder (AST 분석)\&quot;]\n        FACADE --> S5[\&quot;DatabaseMetaData (인덱스/컬럼)\&quot;]\n    end&quot;">flowchart TD
+    CLIENT[&quot;SqlTunerService (클라이언트)&quot;] --> FACADE[&quot;PromptGenerator (퍼사드)&quot;]
+    
+    subgraph Subsystems[&quot;복잡한 내부 서브시스템&quot;]
+        FACADE --> S1[&quot;SqlExtractor (DOM 파싱)&quot;]
+        FACADE --> S2[&quot;SqlSnippetRegistry (인클루드)&quot;]
+        FACADE --> S3[&quot;JdbcAnalyzer (EXPLAIN)&quot;]
+        FACADE --> S4[&quot;TablesNamesFinder (AST 분석)&quot;]
+        FACADE --> S5[&quot;DatabaseMetaData (인덱스/컬럼)&quot;]
+    end
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<hr/>
+<h2 id="3-행위-패턴-behavioral-patterns">3. 행위 패턴 (Behavioral Patterns)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-행위-패턴-behavioral-patterns" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="31-전략-패턴-strategy-pattern">3.1 전략 패턴 (Strategy Pattern)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-전략-패턴-strategy-pattern" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>적용 사례</strong>: <code>ha-excel-job-engine</code> (<code>StorageProvider</code> 인터페이스 및 6대 구현체)</li>
+<li><strong>문제 상황</strong>:<br/>
+완료된 엑셀 파일을 저장하는 위치는 온프레미스(로컬 디스크, NAS), AWS(S3), 네이버클라우드(NCP), Azure(Blob), GCP(GCS) 등 인프라 환경마다 완전히 다르다. 환경이 바뀔 때마다 엑셀 생성 코드를 <code>if-else</code>로 분기할 수는 없다.</li>
+<li><strong>해결 구조</strong>:<br/>
+<code>StorageProvider</code> 인터페이스로 파일 저장/조회/삭제 알고리즘을 추상화하고, Spring Boot의 <code>@ConditionalOnProperty</code> 또는 설정값(<code>ha-excel.storage-type</code>)에 따라 실행 시점에 적절한 전략 구현체를 DI 컨테이너에 주입한다.</li>
+</ul>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;classDiagram\n    class StorageProvider {\n        &lt;&lt;interface>>\n        +storeFile(Path source, String key) String\n        +getResource(String key) StorageResource\n        +delete(String key) void\n    }\n    class LocalDiskStorageProvider { +storeFile() }\n    class NasStorageProvider { +storeFile() }\n    class AwsS3StorageProvider { +storeFile() }\n    class AzureBlobStorageProvider { +storeFile() }\n    class GcpCloudStorageProvider { +storeFile() }\n\n    StorageProvider &lt;|.. LocalDiskStorageProvider\n    StorageProvider &lt;|.. NasStorageProvider\n    StorageProvider &lt;|.. AwsS3StorageProvider\n    StorageProvider &lt;|.. AzureBlobStorageProvider\n    StorageProvider &lt;|.. GcpCloudStorageProvider\n\n    class ExcelWorkerService {\n        -StorageProvider storageProvider\n        +executeJob()\n    }\n    ExcelWorkerService --> StorageProvider : 전략 위임&quot;">classDiagram
+    class StorageProvider {
+        &lt;&lt;interface>>
+        +storeFile(Path source, String key) String
+        +getResource(String key) StorageResource
+        +delete(String key) void
+    }
+    class LocalDiskStorageProvider { +storeFile() }
+    class NasStorageProvider { +storeFile() }
+    class AwsS3StorageProvider { +storeFile() }
+    class AzureBlobStorageProvider { +storeFile() }
+    class GcpCloudStorageProvider { +storeFile() }
+
+    StorageProvider &lt;|.. LocalDiskStorageProvider
+    StorageProvider &lt;|.. NasStorageProvider
+    StorageProvider &lt;|.. AwsS3StorageProvider
+    StorageProvider &lt;|.. AzureBlobStorageProvider
+    StorageProvider &lt;|.. GcpCloudStorageProvider
+
+    class ExcelWorkerService {
+        -StorageProvider storageProvider
+        +executeJob()
+    }
+    ExcelWorkerService --> StorageProvider : 전략 위임
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<hr/>
+<h3 id="32-책임-연쇄-패턴-chain-of-responsibility-pattern">3.2 책임 연쇄 패턴 (Chain of Responsibility Pattern)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-책임-연쇄-패턴-chain-of-responsibility-pattern" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>적용 사례</strong>:
+<ol>
+<li>Netty 소켓 통신 (<code>ChannelPipeline</code>)</li>
+<li>다단계 비즈니스 파이프라인 (<code>StepChain</code>)</li>
+</ol>
+</li>
+<li><strong>문제 상황</strong>:<br/>
+금융 결제 승인 요청은 1) 전문 규격 검증 -> 2) 회원 상태 검증 -> 3) 잔액 및 한도 조회 -> 4) 원장 차감 -> 5) 대외 PG 통신 -> 6) 결과 통보 등 여러 단계로 구성된다. 이를 거대한 하나의 메서드에 절차지향으로 작성하면 유지보수가 불가능하고 중간 에러 롤백 처리가 엉킨다.</li>
+<li><strong>해결 구조</strong>:<br/>
+각 단계를 독립적인 <code>Step</code> 인터페이스 구현체로 분리하고, 이를 파이프라인(<code>StepChain</code>) 형태로 연결한다. 각 스텝은 자신의 책임을 완수하면 다음 체인으로 넘기고, 실패 시 즉시 체인을 중단(Short-circuit)하고 보상 트랜잭션을 실행한다.</li>
+</ul>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart LR\n    REQ[\&quot;결제 요청 전문\&quot;] --> S1[\&quot;FormatCheckStep&lt;br/>(전문 포맷 검증)\&quot;]\n    S1 -->|Pass| S2[\&quot;AuthValidationStep&lt;br/>(가맹점/회원 검증)\&quot;]\n    S2 -->|Pass| S3[\&quot;BalanceCheckStep&lt;br/>(잔액/한도 확인)\&quot;]\n    S3 -->|Pass| S4[\&quot;LedgerDeductStep&lt;br/>(원장 원자적 차감)\&quot;]\n    S4 -->|Pass| S5[\&quot;PgRelayStep&lt;br/>(대외 기관 승인 연동)\&quot;]\n    \n    S2 -.->|실패: 한도초과| ERR[\&quot;체인 중단 &amp; 롤백 통보\&quot;]&quot;">flowchart LR
+    REQ[&quot;결제 요청 전문&quot;] --> S1[&quot;FormatCheckStep&lt;br/>(전문 포맷 검증)&quot;]
+    S1 -->|Pass| S2[&quot;AuthValidationStep&lt;br/>(가맹점/회원 검증)&quot;]
+    S2 -->|Pass| S3[&quot;BalanceCheckStep&lt;br/>(잔액/한도 확인)&quot;]
+    S3 -->|Pass| S4[&quot;LedgerDeductStep&lt;br/>(원장 원자적 차감)&quot;]
+    S4 -->|Pass| S5[&quot;PgRelayStep&lt;br/>(대외 기관 승인 연동)&quot;]
+    
+    S2 -.->|실패: 한도초과| ERR[&quot;체인 중단 &amp; 롤백 통보&quot;]
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<hr/>
+<h3 id="33-템플릿-메서드-패턴-template-method-pattern">3.3 템플릿 메서드 패턴 (Template Method Pattern)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-템플릿-메서드-패턴-template-method-pattern" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>적용 사례</strong>: <code>mini-apm-spring-boot-starter</code> (<code>AbstractLogProcessor</code>와 하위 프로세서들)</li>
+<li><strong>문제 상황</strong>:<br/>
+서블릿 HTTP 요청, Netty TCP 패킷, Spring Batch 스텝 로깅은 데이터 소스는 다르지만 <strong>1) 에러 여부 판정, 2) 민감정보 마스킹, 3) SHA-256 에러 지문 생성, 4) logfmt 포맷 조립, 5) Loki 출력</strong>이라는 전체 로깅 알고리즘의 골격은 100% 동일하다.</li>
+<li><strong>해결 구조</strong>:<br/>
+최상위 추상 클래스 <code>AbstractLogProcessor</code>에서 <code>process()</code> 메서드를 <code>final</code>로 선언하여 알고리즘 뼈대를 고정하고, 각 런타임별로 달라지는 부분(요청 바디 추출, 상태 코드 추출)만 <code>protected abstract</code> 훅 메서드로 하위 클래스에 위임한다.</li>
+</ul>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;classDiagram\n    class AbstractLogProcessor {\n        +process(Context ctx) void\n        #extractPayload(Context ctx)* String\n        #getStatusCode(Context ctx)* int\n        -maskSensitiveData(String raw) String\n        -generateFingerprint(Throwable ex) String\n    }\n    class ServletLogProcessor {\n        #extractPayload(Context ctx) String\n        #getStatusCode(Context ctx) int\n    }\n    class NettyLogProcessor {\n        #extractPayload(Context ctx) String\n        #getStatusCode(Context ctx) int\n    }\n    class BatchLogProcessor {\n        #extractPayload(Context ctx) String\n        #getStatusCode(Context ctx) int\n    }\n\n    AbstractLogProcessor &lt;|-- ServletLogProcessor\n    AbstractLogProcessor &lt;|-- NettyLogProcessor\n    AbstractLogProcessor &lt;|-- BatchLogProcessor&quot;">classDiagram
+    class AbstractLogProcessor {
+        +process(Context ctx) void
+        #extractPayload(Context ctx)* String
+        #getStatusCode(Context ctx)* int
+        -maskSensitiveData(String raw) String
+        -generateFingerprint(Throwable ex) String
+    }
+    class ServletLogProcessor {
+        #extractPayload(Context ctx) String
+        #getStatusCode(Context ctx) int
+    }
+    class NettyLogProcessor {
+        #extractPayload(Context ctx) String
+        #getStatusCode(Context ctx) int
+    }
+    class BatchLogProcessor {
+        #extractPayload(Context ctx) String
+        #getStatusCode(Context ctx) int
+    }
+
+    AbstractLogProcessor &lt;|-- ServletLogProcessor
+    AbstractLogProcessor &lt;|-- NettyLogProcessor
+    AbstractLogProcessor &lt;|-- BatchLogProcessor
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<hr/>
+<h3 id="34-방문자-패턴-visitor-pattern">3.4 방문자 패턴 (Visitor Pattern)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#34-방문자-패턴-visitor-pattern" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>적용 사례</strong>: <code>mybatis-sql-tuner-ai</code> (JSqlParser <code>TablesNamesFinder</code>, W3C DOM AST 분석)</li>
+<li><strong>문제 상황</strong>:<br/>
+SQL 문장에는 <code>Select</code>, <code>Insert</code>, <code>Update</code>, <code>Delete</code>뿐 아니라 수많은 하위 서브쿼리, <code>JOIN</code>, <code>UNION</code>, <code>WITH</code> 절이 복잡한 트리(AST)로 중첩되어 있다. SQL 문법 객체 구조를 훼손하지 않으면서 “물리 테이블명 목록 추출”이라는 알고리즘만 깔끔하게 분리하고 싶다.</li>
+<li><strong>해결 구조</strong>:<br/>
+JSqlParser의 <code>StatementVisitor</code>, <code>SelectVisitor</code>를 구현한 <code>TablesNamesFinder</code> 객체를 AST 트리에 주입(<code>statement.accept(visitor)</code>)한다. 트리를 순회하면서 테이블 노드를 만날 때마다 <code>visit(Table table)</code> 메서드가 호출되어 테이블명을 <code>Set&lt;String></code>에 누적한다.</li>
+</ul>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;sequenceDiagram\n    participant Tree as SQL AST (Select Statement)\n    participant Visitor as TablesNamesFinder (방문자)\n    participant Join as Join AST Node\n    participant Tbl as Table AST Node\n\n    Tree->>Visitor: accept(visitor)\n    Visitor->>Join: join.accept(visitor)\n    Join->>Tbl: table.accept(visitor)\n    Tbl->>Visitor: visit(this)\n    Visitor->>Visitor: tables.add(table.getName())&quot;">sequenceDiagram
+    participant Tree as SQL AST (Select Statement)
+    participant Visitor as TablesNamesFinder (방문자)
+    participant Join as Join AST Node
+    participant Tbl as Table AST Node
+
+    Tree->>Visitor: accept(visitor)
+    Visitor->>Join: join.accept(visitor)
+    Join->>Tbl: table.accept(visitor)
+    Tbl->>Visitor: visit(this)
+    Visitor->>Visitor: tables.add(table.getName())
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<hr/>
+<h2 id="4-생성-및-아키텍처-패턴-creational--architectural">4. 생성 및 아키텍처 패턴 (Creational &amp; Architectural)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-생성-및-아키텍처-패턴-creational--architectural" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="41-spi--레지스트리-패턴-service-provider-interface--registry">4.1 SPI &amp; 레지스트리 패턴 (Service Provider Interface &amp; Registry)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#41-spi--레지스트리-패턴-service-provider-interface--registry" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>적용 사례</strong>:
+<ol>
+<li><code>ha-excel-job-engine</code>: <code>ExcelDataProvider</code> &amp; <code>ExcelDataRegistry</code></li>
+<li><code>mybatis-sql-tuner-ai</code>: <code>SqlSnippetRegistry</code></li>
+</ol>
+</li>
+<li><strong>구현 메커니즘</strong>:<br/>
+라이브러리 jar는 어떤 업무(<code>bizNm</code>)가 들어올지 사전에 알 수 없다.
+<ol>
+<li>라이브러리는 <code>ExcelDataProvider</code> SPI를 선언한다.</li>
+<li>비즈니스 개발자는 자신의 서비스에 <code>@Component</code>로 <code>ExcelDataProvider</code>를 구현한다.</li>
+<li><code>ExcelDataRegistry</code>는 Spring의 <code>List&lt;ExcelDataProvider></code> 주입 기능을 이용해 모든 구현체 빈을 기동 시 자동으로 수집하여 <code>Map&lt;String, ExcelDataProvider></code>에 등록한다.</li>
+<li>클라이언트가 <code>POST /api/excel/orderReport</code>를 호출하면 URL 경로의 <code>orderReport</code> 키로 O(1)에 해당 구현체를 찾아 실행한다.</li>
+</ol>
+</li>
+</ul>
+<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;flowchart TD\n    subgraph Library[\&quot;ha-excel 라이브러리 코어\&quot;]\n        SPI[\&quot;ExcelDataProvider (SPI 인터페이스)\&quot;]\n        REG[\&quot;ExcelDataRegistry (구현체 레지스트리 맵)\&quot;]\n    end\n\n    subgraph App[\&quot;사용자 비즈니스 애플리케이션\&quot;]\n        B1[\&quot;OrderExcelProvider (@Component)\&quot;]\n        B2[\&quot;PaymentExcelProvider (@Component)\&quot;]\n        B3[\&quot;SettlementExcelProvider (@Component)\&quot;]\n    end\n\n    SPI -. \&quot;구현 (Implements)\&quot; .- B1\n    SPI -. \&quot;구현\&quot; .- B2\n    SPI -. \&quot;구현\&quot; .- B3\n\n    B1 -- \&quot;Spring 자동 빈 수집\&quot; --> REG\n    B2 -- \&quot;Spring 자동 빈 수집\&quot; --> REG\n    B3 -- \&quot;Spring 자동 빈 수집\&quot; --> REG&quot;">flowchart TD
+    subgraph Library[&quot;ha-excel 라이브러리 코어&quot;]
+        SPI[&quot;ExcelDataProvider (SPI 인터페이스)&quot;]
+        REG[&quot;ExcelDataRegistry (구현체 레지스트리 맵)&quot;]
+    end
+
+    subgraph App[&quot;사용자 비즈니스 애플리케이션&quot;]
+        B1[&quot;OrderExcelProvider (@Component)&quot;]
+        B2[&quot;PaymentExcelProvider (@Component)&quot;]
+        B3[&quot;SettlementExcelProvider (@Component)&quot;]
+    end
+
+    SPI -. &quot;구현 (Implements)&quot; .- B1
+    SPI -. &quot;구현&quot; .- B2
+    SPI -. &quot;구현&quot; .- B3
+
+    B1 -- &quot;Spring 자동 빈 수집&quot; --> REG
+    B2 -- &quot;Spring 자동 빈 수집&quot; --> REG
+    B3 -- &quot;Spring 자동 빈 수집&quot; --> REG
+</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<hr/>
+<h3 id="42-생산자-소비자-패턴-producer-consumer-pattern">4.2 생산자-소비자 패턴 (Producer-Consumer Pattern)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#42-생산자-소비자-패턴-producer-consumer-pattern" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>적용 사례</strong>: <code>ha-excel-job-engine</code> (<code>ExcelController</code> + <code>ExcelJobQueue</code> + Virtual Thread Workers)</li>
+<li><strong>구현 메커니즘</strong>:
+<ul>
+<li><strong>생산자(Producer)</strong>: 클라이언트의 HTTP 요청을 받는 Tomcat 스레드는 DB에 <code>PENDING</code> 레코드를 저장하고 인메모리 블로킹 큐(<code>normalJobQueue</code>)에 푸시한 뒤, 즉시 <code>202 Accepted</code> 응답을 반환하고 클라이언트 연결을 해제한다.</li>
+<li><strong>소비자(Consumer)</strong>: 백그라운드에서 상시 대기 중인 Java 21 가상 스레드 워커 풀이 <code>queue.take()</code>로 작업을 꺼내어 무거운 엑셀 생성 및 클라우드 업로드를 비동기로 처리한다.</li>
+<li><strong>결과</strong>: 아무리 무거운 엑셀 요청 수천 건이 쏟아져도 웹 컨테이너의 Request Worker 스레드는 결코 블로킹되거나 고갈되지 않는다.</li>
+</ul>
+</li>
+</ul>
+<hr/>
+<h2 id="5-핵심-요약-및-면접-대비-포인트">5. 핵심 요약 및 면접 대비 포인트<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-핵심-요약-및-면접-대비-포인트" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li><strong>“프록시(Proxy)와 데코레이터(Decorator)의 차이를 실무 경험에 빗대어 설명해보세요.”</strong>
+<ul>
+<li>프록시는 <strong>접근 제어와 부가 기능 가로채기</strong>가 목적입니다. <code>mini-apm</code>에서 <code>DataSource</code>를 프록시(<code>ApmProxyDataSource</code>)로 감싸 비즈니스 코드 침작 없이 SQL 실행 시간과 N+1을 모니터링한 것이 대표적입니다.</li>
+<li>데코레이터는 **기존 객체의 기능 확장(책임 부가)**이 목적입니다. Servlet의 1회용 <code>InputStream</code>을 여러 번 읽을 수 있도록 바이트 캐싱 기능을 덧댄 <code>ContentCachingRequestWrapper</code>나, 비동기 스레드 풀에 트레이스 컨텍스트 전파 책임을 덧댄 <code>LoggingTaskDecorator</code>가 대표적입니다.</li>
+</ul>
+</li>
+<li><strong>“전략 패턴(Strategy Pattern)을 활용해 OCP(개방-폐쇄 원칙)를 달성한 사례는?”</strong>
+<ul>
+<li><code>ha-excel-job-engine</code>의 <code>StorageProvider</code> 구조입니다. Local, NAS, AWS S3, Azure, GCP 등 스토리지 백엔드가 추가되더라도 기존 엑셀 생성 및 작업 스케줄링 코드는 단 한 줄도 수정하지 않고 새로운 <code>StorageProvider</code> 구현체만 추가하면 동작하도록 설계했습니다.</li>
+</ul>
+</li>
+<li><strong>“책임 연쇄 패턴(Chain of Responsibility)의 장점은?”</strong>
+<ul>
+<li>거대하고 복잡한 금융 결제 승인 프로세스(트랜잭션 엔진)나 네트워크 패킷 인코딩/디코딩(네트워크 소켓 게이트웨이 Netty)을 독립적인 단일 책임 클래스(<code>Step</code>, <code>Handler</code>)로 나누어, 결합도를 낮추고 각 단계별 단위 테스트와 실패 시의 즉각적인 체인 중단(Short-circuit)을 손쉽게 구현할 수 있었습니다.\n</li>
+</ul>
+</li>
+</ol>
+<h2 id="관련-문서">관련 문서<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#관련-문서" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><a href="../.././../프로젝트/토이프로젝트/로그/[log-#1-로그-이해하기md" class="internal internal-link alias" data-slug="프로젝트/토이프로젝트/로그/[log-">(학습/프로젝트/토이프로젝트/로그) [Log #1] 로그 이해하기</a> — 2.4절 퍼사드 패턴의 실제 적용 사례로 SLF4J 로깅 파사드를 다루는 토이프로젝트 노트</li>
+<li><a href="../../개발-실무/아키텍처·설계/[spring]-비즈니스-트랜잭션-파이프라인과-책임-연쇄-패턴-(chain-of-responsibility--and--stepchain)" class="internal internal-link alias" data-slug="개발-실무/아키텍처·설계/[spring]-비즈니스-트랜잭션-파이프라인과-책임-연쇄-패턴-(chain-of-responsibility--and--stepchain)">(Spring) 비즈니스 트랜잭션 파이프라인과 책임 연쇄 패턴 (Chain of Responsibility &amp; StepChain)</a> — 3.2절 책임 연쇄 패턴에서 다루는 <code>StepChain</code> 결제 트랜잭션 파이프라인을 실제 코드 레벨로 상세히 풀어낸 자매 노트</li>
+<li><a href="../../개발-실무/아키텍처·설계/[spring]-bean-이름-기반-전략-패턴---문자열-코드로-구현체-동적-라우팅-정리" class="internal internal-link alias" data-slug="개발-실무/아키텍처·설계/[spring]-bean-이름-기반-전략-패턴---문자열-코드로-구현체-동적-라우팅-정리">(Spring) Bean 이름 기반 전략 패턴 - 문자열 코드로 구현체 동적 라우팅 정리</a> — 3.1절 전략 패턴의 “런타임 문자열 코드로 구현체 선택” 아이디어를 Bean 이름 조회 방식으로 구현한 사례</li>
+<li><a href="../.././백엔드·데이터처리/[performance]-sxssfworkbook-대용량-엑셀-스트리밍과-동적-zip-분할-압축-설계-패턴" class="internal internal-link alias" data-slug="백엔드·데이터처리/[performance]-sxssfworkbook-대용량-엑셀-스트리밍과-동적-zip-분할-압축-설계-패턴">(Performance) SXSSFWorkbook 대용량 엑셀 스트리밍과 동적 ZIP 분할 압축 설계 패턴</a> — 4.1절 SPI &amp; 레지스트리 패턴(<code>ExcelDataProvider</code>)과 2.2절 데코레이터 패턴(<code>ExcelStreamable</code>)의 실제 구현체인 <code>ha-excel-job-engine</code> 엑셀 스트리밍 설계</li>
+<li><a href="../../개발-실무/아키텍처·설계/[http]-대용량-처리-비동기-job-큐-설계-패턴---핵심-개념-및-특징-정리" class="internal internal-link alias" data-slug="개발-실무/아키텍처·설계/[http]-대용량-처리-비동기-job-큐-설계-패턴---핵심-개념-및-특징-정리">(HTTP) 대용량 처리 비동기 Job 큐 설계 패턴 - 핵심 개념 및 특징 정리</a> — 4.2절 생산자-소비자 패턴(<code>ExcelJobQueue</code> + Virtual Thread Worker Pool)을 큐 설계 관점에서 상세히 다루는 자매 노트</li>
+<li><a href="../../개발-실무/아키텍처·설계/[architecture]-가상-스레드(virtual-thread)-기반-고가용성-분산-배치-엔진-설계-(atomic-cas,-이중-큐,-자가-치유)" class="internal internal-link alias" data-slug="개발-실무/아키텍처·설계/[architecture]-가상-스레드(virtual-thread)-기반-고가용성-분산-배치-엔진-설계-(atomic-cas,-이중-큐,-자가-치유)">(Architecture) 가상 스레드(Virtual Thread) 기반 고가용성 분산 배치 엔진 설계 (Atomic CAS, 이중 큐, 자가 치유)</a> — 4.2절 생산자-소비자 패턴의 Virtual Thread Worker Pool을 CAS 기반 잡 선점과 자가 치유 관점까지 확장한 심화 아키텍처 노트</li>
+<li><a href="../.././네트워크·보안/[security]-제로-디펜던시-개인정보-마스킹과-오류-핑거프린팅(sha-256)-모니터링-설계" class="internal internal-link alias" data-slug="네트워크·보안/[security]-제로-디펜던시-개인정보-마스킹과-오류-핑거프린팅(sha-256)-모니터링-설계">(Security) 제로 디펜던시 개인정보 마스킹과 오류 핑거프린팅(SHA-256) 모니터링 설계</a> — 3.3절 템플릿 메서드 패턴(<code>AbstractLogProcessor</code>)에서 언급된 민감정보 마스킹과 SHA-256 에러 지문 생성 로직을 상세히 다루는 자매 노트</li>
+</ul></div></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>그래프 뷰</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc"><button type="button" class="toc-header" aria-controls="toc-302" aria-expanded="true"><h3>목차</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-0" class="toc-content overflow"><li class="depth-0"><a href="#design-pattern-실무-프로젝트-및-오픈소스로-체득하는-gof-핵심-디자인-패턴-10선" data-for="design-pattern-실무-프로젝트-및-오픈소스로-체득하는-gof-핵심-디자인-패턴-10선">[Design Pattern] 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선</a></li><li class="depth-1"><a href="#1-패턴-매핑-요약표" data-for="1-패턴-매핑-요약표">1. 패턴 매핑 요약표</a></li><li class="depth-1"><a href="#2-구조-패턴-structural-patterns" data-for="2-구조-패턴-structural-patterns">2. 구조 패턴 (Structural Patterns)</a></li><li class="depth-2"><a href="#21-프록시-패턴-proxy-pattern" data-for="21-프록시-패턴-proxy-pattern">2.1 프록시 패턴 (Proxy Pattern)</a></li><li class="depth-2"><a href="#22-데코레이터-패턴-decorator-pattern" data-for="22-데코레이터-패턴-decorator-pattern">2.2 데코레이터 패턴 (Decorator Pattern)</a></li><li class="depth-2"><a href="#23-어댑터-패턴-adapter-pattern" data-for="23-어댑터-패턴-adapter-pattern">2.3 어댑터 패턴 (Adapter Pattern)</a></li><li class="depth-2"><a href="#24-퍼사드-패턴-facade-pattern" data-for="24-퍼사드-패턴-facade-pattern">2.4 퍼사드 패턴 (Facade Pattern)</a></li><li class="depth-1"><a href="#3-행위-패턴-behavioral-patterns" data-for="3-행위-패턴-behavioral-patterns">3. 행위 패턴 (Behavioral Patterns)</a></li><li class="depth-2"><a href="#31-전략-패턴-strategy-pattern" data-for="31-전략-패턴-strategy-pattern">3.1 전략 패턴 (Strategy Pattern)</a></li><li class="depth-2"><a href="#32-책임-연쇄-패턴-chain-of-responsibility-pattern" data-for="32-책임-연쇄-패턴-chain-of-responsibility-pattern">3.2 책임 연쇄 패턴 (Chain of Responsibility Pattern)</a></li><li class="depth-2"><a href="#33-템플릿-메서드-패턴-template-method-pattern" data-for="33-템플릿-메서드-패턴-template-method-pattern">3.3 템플릿 메서드 패턴 (Template Method Pattern)</a></li><li class="depth-2"><a href="#34-방문자-패턴-visitor-pattern" data-for="34-방문자-패턴-visitor-pattern">3.4 방문자 패턴 (Visitor Pattern)</a></li><li class="depth-1"><a href="#4-생성-및-아키텍처-패턴-creational--architectural" data-for="4-생성-및-아키텍처-패턴-creational--architectural">4. 생성 및 아키텍처 패턴 (Creational &amp; Architectural)</a></li><li class="depth-2"><a href="#41-spi--레지스트리-패턴-service-provider-interface--registry" data-for="41-spi--레지스트리-패턴-service-provider-interface--registry">4.1 SPI &amp; 레지스트리 패턴 (Service Provider Interface &amp; Registry)</a></li><li class="depth-2"><a href="#42-생산자-소비자-패턴-producer-consumer-pattern" data-for="42-생산자-소비자-패턴-producer-consumer-pattern">4.2 생산자-소비자 패턴 (Producer-Consumer Pattern)</a></li><li class="depth-1"><a href="#5-핵심-요약-및-면접-대비-포인트" data-for="5-핵심-요약-및-면접-대비-포인트">5. 핵심 요약 및 면접 대비 포인트</a></li><li class="depth-1"><a href="#관련-문서" data-for="관련-문서">관련 문서</a></li><li class="overflow-end"></li></ul></div><div class="backlinks"><h3>백링크</h3><ul id="list-0" class="overflow"><li><a href="../../개발-실무/아키텍처·설계/[architecture]-가상-스레드(virtual-thread)-기반-고가용성-분산-배치-엔진-설계-(atomic-cas,-이중-큐,-자가-치유)" class="internal">[Architecture] 가상 스레드(Virtual Thread) 기반 고가용성 분산 배치 엔진 설계 (Atomic CAS, 이중 큐, 자가 치유)</a></li><li><a href="../../개발-실무/아키텍처·설계/[spring]-bean-이름-기반-전략-패턴---문자열-코드로-구현체-동적-라우팅-정리" class="internal">[Spring] Bean 이름 기반 전략 패턴</a></li><li><a href="../../개발-실무/아키텍처·설계/[spring]-비즈니스-트랜잭션-파이프라인과-책임-연쇄-패턴-(chain-of-responsibility--and--stepchain)" class="internal">[Spring] 비즈니스 트랜잭션 파이프라인과 책임 연쇄 패턴 (Chain of Responsibility &amp; StepChain)</a></li><li><a href="../../프로젝트/토이프로젝트/로그/[log-1]-로그-이해하기" class="internal">[Log #1] 로그 이해하기</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v5.0.0</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script src="../../static/resource-after-e13fffa1.js" type="application/javascript" data-persist="true"></script><script src="../../static/resource-after-8b336f9a.js" type="application/javascript" data-persist="true"></script><script src="../../static/resource-after-baba652b.js" type="application/javascript" data-persist="true"></script><script src="../../static/resource-after-5eb75950.js" type="module" data-persist="true"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../postscript-9114441b.js" type="module" data-persist="true"></script></html>

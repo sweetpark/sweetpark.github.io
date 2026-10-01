@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr"><head><title>[기초] SQL</title><meta charset="utf-8"/><link rel="preload" href="../../../index-b2b4d3bf.css" as="style"/><link rel="preload" href="../../../prescript-2bfc6315.js" as="script"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted Grotesk:wght@400;700&amp;family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="차근차근정확하게"/><meta property="og:title" content="[기초] SQL"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="[기초] SQL"/><meta name="twitter:description" content="[기초] SQL NOTE MySQL 기준 SQL 기초 총정리. DB/DBMS 개념부터 SELECT/INSERT/UPDATE/DELETE, JOIN, 스토어드 프로시저·함수, 제약조건, 뷰, 인덱스(균형 트리), 커서, 트리거까지 문법 예시와 함께 정리한다."/><meta property="og:description" content="[기초] SQL NOTE MySQL 기준 SQL 기초 총정리. DB/DBMS 개념부터 SELECT/INSERT/UPDATE/DELETE, JOIN, 스토어드 프로시저·함수, 제약조건, 뷰, 인덱스(균형 트리), 커서, 트리거까지 문법 예시와 함께 정리한다."/><meta property="og:image:alt" content="[기초] SQL NOTE MySQL 기준 SQL 기초 총정리. DB/DBMS 개념부터 SELECT/INSERT/UPDATE/DELETE, JOIN, 스토어드 프로시저·함수, 제약조건, 뷰, 인덱스(균형 트리), 커서, 트리거까지 문법 예시와 함께 정리한다."/><meta property="twitter:domain" content="sweetpark.github.io"/><meta property="og:url" content="https://sweetpark.github.io/개발-(cs)/데이터베이스/sql/[sql]-기초-sql---핵심-개념-및-특징-정리"/><meta property="twitter:url" content="https://sweetpark.github.io/개발-(cs)/데이터베이스/sql/[sql]-기초-sql---핵심-개념-및-특징-정리"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="[기초] SQL NOTE MySQL 기준 SQL 기초 총정리. DB/DBMS 개념부터 SELECT/INSERT/UPDATE/DELETE, JOIN, 스토어드 프로시저·함수, 제약조건, 뷰, 인덱스(균형 트리), 커서, 트리거까지 문법 예시와 함께 정리한다."/><meta name="generator" content="Quartz"/><link href="../../../index-b2b4d3bf.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-735924e0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-589c1cea.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-bbc3f7c0.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-2911f5d1.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-e427079e.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-caf7c009.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-53b25b2b.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-c93c6a44.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-8a06014f.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-77d6a441.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-6ee21cee.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-1ea6ad18.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-34bdfded.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-788c9ca3.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-642859cd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-4abc06bd.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-274a3dfe.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-94cb6c84.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-58d5ff56.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../component-7262b5a7.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../static/resource-style-a5c806d2.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../static/resource-style-6bd36952.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../static/resource-style-9857b007.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="../../../static/resource-style-d3a1a224.css" rel="stylesheet" type="text/css" data-persist="true"/><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" data-persist="true"/><script src="../../../prescript-2bfc6315.js" type="application/javascript" data-persist="true"></script><script type="application/javascript" data-persist="true">const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted%20Grotesk%3Awght%40400%3B700&amp;family=Source%20Sans%20Pro%3Aital%2Cwght%400%2C400%3B0%2C600%3B1%2C400%3B1%2C600&amp;family=IBM%20Plex%20Mono%3Awght%40400%3B600&amp;display=swap"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image" content="https://sweetpark.github.io/개발-(cs)/데이터베이스/sql/[sql]-기초-sql---핵심-개념-및-특징-정리-og-image.webp"/><meta property="og:image:url" content="https://sweetpark.github.io/개발-(cs)/데이터베이스/sql/[sql]-기초-sql---핵심-개념-및-특징-정리-og-image.webp"/><meta name="twitter:image" content="https://sweetpark.github.io/개발-(cs)/데이터베이스/sql/[sql]-기초-sql---핵심-개념-및-특징-정리-og-image.webp"/><meta property="og:image:type" content="image/webp"/><script>
+(function() {
+  function addGlobalGraphBtn() {
+    var toolbar = document.querySelector(".sidebar.left .flex-component");
+    if (!toolbar || toolbar.querySelector(".toolbar-graph-btn")) return;
+
+    var wrapper = document.createElement("div");
+    wrapper.style.cssText = "flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;";
+
+    var btn = document.createElement("button");
+    btn.className = "toolbar-graph-btn";
+    btn.setAttribute("aria-label", "전체 그래프 뷰 (Cmd+G)");
+    btn.setAttribute("title", "전체 그래프 뷰 (단축키: Cmd+G)");
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" fill="currentColor"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"/></svg>';
+
+    btn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      var existingIcon = document.querySelector(".graph .global-graph-icon");
+      if (existingIcon && existingIcon !== btn) {
+        existingIcon.click();
+        return;
+      }
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: "g", metaKey: true, bubbles: true }));
+    });
+
+    wrapper.appendChild(btn);
+    toolbar.appendChild(wrapper);
+  }
+
+  document.addEventListener("DOMContentLoaded", addGlobalGraphBtn);
+  document.addEventListener("nav", addGlobalGraphBtn);
+})();
+</script></head><body data-slug="개발-(cs)/데이터베이스/sql/[sql]-기초-sql---핵심-개념-및-특징-정리" data-basepath><div id="quartz-root" class="page" data-frame="default"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">차근차근정확하게</a></h2><div class="mobile-only"><div class="spacer"></div></div><div class="flex-component" style="flex-direction: row; flex-wrap: nowrap; gap: 0.5rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button" aria-label="검색" aria-expanded="false"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg><p>검색</p></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="검색어를 입력하세요" placeholder="검색어를 입력하세요"/><div class="search-layout" data-preview="true" data-field-priority="[&quot;title&quot;,&quot;content&quot;,&quot;tags&quot;]"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode" aria-label="다크 모드"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="다크 모드"><title>다크 모드</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="라이트 모드"><title>라이트 모드</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="readermode" aria-label="리더 모드"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="readerIcon" fill="currentColor" stroke="currentColor" stroke-width="0.2" stroke-linecap="round" stroke-linejoin="round" width="64px" height="64px" viewBox="0 0 24 24" aria-label="리더 모드"><title>리더 모드</title><g transform="translate(-1.8, -1.8) scale(1.15, 1.2)"><path d="M8.9891247,2.5 C10.1384702,2.5 11.2209868,2.96705384 12.0049645,3.76669482 C12.7883914,2.96705384 13.8709081,2.5 15.0202536,2.5 L18.7549359,2.5 C19.1691495,2.5 19.5049359,2.83578644 19.5049359,3.25 L19.5046891,4.004 L21.2546891,4.00457396 C21.6343849,4.00457396 21.9481801,4.28672784 21.9978425,4.6528034 L22.0046891,4.75457396 L22.0046891,20.25 C22.0046891,20.6296958 21.7225353,20.943491 21.3564597,20.9931534 L21.2546891,21 L2.75468914,21 C2.37499337,21 2.06119817,20.7178461 2.01153575,20.3517706 L2.00468914,20.25 L2.00468914,4.75457396 C2.00468914,4.37487819 2.28684302,4.061083 2.65291858,4.01142057 L2.75468914,4.00457396 L4.50368914,4.004 L4.50444233,3.25 C4.50444233,2.87030423 4.78659621,2.55650904 5.15267177,2.50684662 L5.25444233,2.5 L8.9891247,2.5 Z M4.50368914,5.504 L3.50468914,5.504 L3.50468914,19.5 L10.9478955,19.4998273 C10.4513189,18.9207296 9.73864328,18.5588115 8.96709342,18.5065584 L8.77307039,18.5 L5.25444233,18.5 C4.87474657,18.5 4.56095137,18.2178461 4.51128895,17.8517706 L4.50444233,17.75 L4.50368914,5.504 Z M19.5049359,17.75 C19.5049359,18.1642136 19.1691495,18.5 18.7549359,18.5 L15.2363079,18.5 C14.3910149,18.5 13.5994408,18.8724714 13.0614828,19.4998273 L20.5046891,19.5 L20.5046891,5.504 L19.5046891,5.504 L19.5049359,17.75 Z M18.0059359,3.999 L15.0202536,4 L14.8259077,4.00692283 C13.9889509,4.06666544 13.2254227,4.50975805 12.7549359,5.212 L12.7549359,17.777 L12.7782651,17.7601316 C13.4923805,17.2719483 14.3447024,17 15.2363079,17 L18.0059359,16.999 L18.0056891,4.798 L18.0033792,4.75457396 L18.0056891,4.71 L18.0059359,3.999 Z M8.9891247,4 L6.00368914,3.999 L6.00599909,4.75457396 L6.00599909,4.75457396 L6.00368914,4.783 L6.00368914,16.999 L8.77307039,17 C9.57551536,17 10.3461406,17.2202781 11.0128313,17.6202194 L11.2536891,17.776 L11.2536891,5.211 C10.8200889,4.56369974 10.1361548,4.13636104 9.37521067,4.02745763 L9.18347055,4.00692283 L8.9891247,4 Z"></path></g></svg></button></div></div><div class="explorer nav-files-container" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a2, b2) => {\n    if (!a2.isFolder &amp;&amp; !b2.isFolder || a2.isFolder &amp;&amp; b2.isFolder) {\n      return (a2.displayName || \&quot;\&quot;).localeCompare(b2.displayName || \&quot;\&quot;, void 0, {\n        numeric: true,\n        sensitivity: \&quot;base\&quot;\n      });\n    }\n    if (!a2.isFolder &amp;&amp; b2.isFolder) {\n      return 1;\n    }\n    return -1;\n  }&quot;,&quot;filterFn&quot;:&quot;(node) => node.slugSegment !== \&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;(node) => {\n    return node;\n  }&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-84" aria-label="탐색기"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>탐색기</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div id="explorer-84" class="explorer-content" aria-expanded="false" role="group"><ul class="explorer-ul overflow" id="list-0"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#" class="nav-file-title tree-item-self"></a></li></template><template id="template-folder"><li><div class="folder-container nav-folder-title tree-item-self"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon nav-folder-collapse-indicator collapse-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content tree-item-children"></ul></div></li></template></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../개발-(cs)/">개발 (CS)</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../개발-(cs)/데이터베이스/">데이터베이스</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../개발-(cs)/데이터베이스/sql/">SQL</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>[기초] SQL</a></div></nav><h1 class="article-title">[기초] SQL</h1><details class="note-properties metadata-container" open data-collapsed="false"><summary class="note-properties-header"><span class="note-properties-title">Properties</span><span class="note-properties-count">1</span></summary><table class="note-properties-table"><tbody><tr class="note-properties-row metadata-property"><td class="note-properties-key metadata-property-key">tags</td><td class="note-properties-value metadata-property-value"><span class="note-properties-tags"><a href="../../../tags/학습" class="internal internal-link tag-link">학습</a><span class="note-properties-separator">, </span><a href="../../../tags/개발-cs" class="internal internal-link tag-link">개발-cs</a><span class="note-properties-separator">, </span><a href="../../../tags/데이터베이스" class="internal internal-link tag-link">데이터베이스</a><span class="note-properties-separator">, </span><a href="../../../tags/개발" class="internal internal-link tag-link">개발</a><span class="note-properties-separator">, </span><a href="../../../tags/sql" class="internal internal-link tag-link">sql</a><span class="note-properties-separator">, </span><a href="../../../tags/mysql" class="internal internal-link tag-link">mysql</a><span class="note-properties-separator">, </span><a href="../../../tags/인덱스" class="internal internal-link tag-link">인덱스</a><span class="note-properties-separator">, </span><a href="../../../tags/뷰" class="internal internal-link tag-link">뷰</a><span class="note-properties-separator">, </span><a href="../../../tags/프로시저" class="internal internal-link tag-link">프로시저</a><span class="note-properties-separator">, </span><a href="../../../tags/트리거" class="internal internal-link tag-link">트리거</a></span></td></tr></tbody></table></details><p show-comma="true" class="content-meta"><time datetime="2026-09-04T15:00:00.000Z">2026년 9월 05일</time><span>16 min read</span></p></div></div><article class="popover-hint"><div class="markdown-preview-view markdown-rendered"><h1 id="기초-sql">[기초] SQL<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#기초-sql" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>NOTE</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>MySQL 기준 SQL 기초 총정리. DB/DBMS 개념부터 SELECT/INSERT/UPDATE/DELETE, JOIN, 스토어드 프로시저·함수, 제약조건, 뷰, 인덱스(균형 트리), 커서, 트리거까지 문법 예시와 함께 정리한다.</p>
+</div>
+</blockquote>
+<h2 id="-개념">📌 개념<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#-개념" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="데이터베이스와-dbms">데이터베이스와 DBMS<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#데이터베이스와-dbms" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>데이터베이스 : 카카오톡 메세지, 인스타 등록한 사진, 버스/지하철에서 찍은 교통카드 등의 데이터를 모아 두는 것 (= 데이터의 집합)</li>
+<li>DBMS : 데이터베이스를 관리하는 소프트웨어
+<ul>
+<li>데이터베이스 여러 개(=대용량) 관리 가능</li>
+<li>공유가 가능하다</li>
+<li>DBMS 종류 : MySQL, MariaDB, Oracle 등</li>
+</ul>
+</li>
+<li>MySQL 고유 포트 : 3306</li>
+<li>MySQL Workbench : MySQL 서버에 접속해주는 프로그램</li>
+</ul>
+<h3 id="기초-이론">기초 이론<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#기초-이론" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>데이터베이스 모델링
+<ul>
+<li>현실세계에서 일어나는 일을 데이터로 만드는 설계도</li>
+<li>데이터의 테이블을 만드는 과정</li>
+<li>예) 데이터베이스 ⇒ 폴더, 테이블 ⇒ 파일</li>
+</ul>
+</li>
+<li>데이터베이스 구성도
+<ul>
+<li>행의 개수 = 데이터의 개수</li>
+<li>기본키의 조건 (열 : 1개 지정)
+<ol>
+<li>null 불가</li>
+<li>중복 불가</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>테이블 외의 것들
+<ul>
+<li>인덱스 : 데이터를 조회할 때 빠르게 해주는 역할</li>
+<li>뷰 : select문의 출력물을 보여줌 (보안상에 사용)</li>
+<li>스토어드 프로시저 : 프로그래밍 기능을 할 수 있게 도와준다
+<ul>
+<li>저장 프로시저 → call을 이용하여 간단하게 select 가능 (= 약간의 매크로 기능)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="기본-dml">기본 DML<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#기본-dml" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>SELECT 문</strong>
+<ul>
+<li>데이터를 읽는 것</li>
+<li>select 문법 순서가 바뀌면 안 됨 (예: where이 from보다 먼저 나오면 안 됨)</li>
+<li>내용이 변경되지는 않음</li>
+</ul>
+</li>
+<li><strong>INSERT 문</strong> : 데이터를 추가</li>
+<li><strong>UPDATE 문</strong> : 데이터를 수정</li>
+<li><strong>DELETE 문</strong> : 데이터를 삭제</li>
+</ul>
+<h3 id="join">JOIN<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#join" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>테이블 간의 연결</li>
+<li>내부 연결 (두 개의 테이블에 공통된 행만 결과 출력)
+<ul>
+<li>1:N : 기본키(PK)와 외래키(FK)로 이어져 있음</li>
+<li>예) 회원 테이블 → 구매 테이블 : 하나의 회원이 여러 물품을 구매할 수 있음</li>
+</ul>
+</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">SELECT</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> &lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">열 목록</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">></span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">FROM</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> &lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">첫 번째 테이블</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">></span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     INNER JOIN</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> &lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">두 번째 테이블</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">></span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     ON</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> &lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">조인될 조건</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">></span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[WHERE 검색 조건]</span></span></code></pre></figure>
+<ul>
+<li>외부 연결 (공통된 행이 아니어도 결과 출력됨)
+<ul>
+<li>1:N 가능</li>
+</ul>
+</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">SELECT</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> &lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">열 목록</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">></span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">FROM</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> &lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">첫 번째 테이블(LEFT 테이블)</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">></span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">     &lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">LEFT | RIGHT | FULL</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">></span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> OUTER</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> JOIN</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> &lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">두 번째 테이블(RIGHT 테이블)</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">></span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">ON</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> &lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">조인될 조건</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">></span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[WHERE 검색 조건];</span></span></code></pre></figure>
+<ul>
+<li>기타 조인(CROSS JOIN) : 내용의 의미는 없지만 그냥 연결시켜 줌 (⇒ 대용량 선택할 때 이용)</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">SELECT</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> *</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">FROM</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 테이블</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     CROSS JOIN</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 테이블;</span></span></code></pre></figure>
+<ul>
+<li>
+<p>⇒ ON 구문 없음</p>
+</li>
+<li>
+<p>⇒ 결과의 내용은 의미가 없다</p>
+</li>
+<li>
+<p>self 조인 : 자기 자신을 조인함</p>
+</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">SELECT</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> &lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">열 목록</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">></span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">FROM</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> &lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">테이블</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 별칭 A</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     INNER JOIN</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> &lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">테이블</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 별칭 B</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     ON</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> &lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">조인될 조건</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">></span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[WHERE 검색 조건]</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">-- 별칭 A, 별칭 B는 같은 테이블인데 이름만 다르게 씀</span></span></code></pre></figure>
+<ul>
+<li>예) 직속상관의 데이터를 출력하고 싶음 (같은 테이블 안에 존재)</li>
+</ul>
+<h3 id="mysql-프로그래밍">MySQL 프로그래밍<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mysql-프로그래밍" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">DELIMITER $$</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CREATE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> PROCEDURE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> 스토어드_프로시저_이름()</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">BEGIN</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">     -- (이 부분에 SQL 프로그래밍 코딩)</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">END</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> $$</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">DELIMITER ;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CALL</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation"> 스토어드_프로시저_이름();</span></span></code></pre></figure>
+<ol>
+<li>
+<p>조건문</p>
+<ul>
+<li>CASE 문 (조건문)</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CASE</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">    WHEN</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 조건1 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">THEN</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        SQL문장들1</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">    WHEN</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 조건2 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">THEN</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        SQL문장들2</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">    WHEN</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 조건3 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">THEN</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        SQL문장들3</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">END</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> CASE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span></code></pre></figure>
+<ul>
+<li>IF 문</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">IF</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> &lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">조건식</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">></span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> THEN</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    SQL문장들</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">END</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> IF</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span></code></pre></figure>
+</li>
+<li>
+<p>반복문</p>
+<ul>
+<li>WHILE 문</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">WHILE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (조건식) DO</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">    SET</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 조건식</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">END</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> WHILE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span></code></pre></figure>
+<ul>
+<li><code>ITERATE</code>(continue 역할) / <code>LEAVE</code>(break 역할)</li>
+</ul>
+</li>
+<li>
+<p>동적 SQL (21강 20분)</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">USE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> market_db;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">PREPARE myQuery </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">FROM</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> 'SELECT * FROM member WHERE mem_id = &quot;BLK&quot;'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">EXECUTE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> myQuery;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">DEALLOCATE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> PREPARE myQuery;</span></span></code></pre></figure>
+<ul>
+<li><code>SET @curDATE = CURRENT_TIMESTAMP();</code> — 현재 날짜와 시간</li>
+</ul>
+</li>
+</ol>
+<h3 id="테이블-만들기">테이블 만들기<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#테이블-만들기" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>GUI 환경
+<ol>
+<li>DB 생성 (create DB)</li>
+<li>DB 선택 (GUI 더블클릭 or use DB)</li>
+<li>테이블 (오른쪽 마우스) → 테이블 create (GUI 환경)</li>
+</ol>
+<ul>
+<li>테이블 만들기(GUI)에서 AI → 자동 증가</li>
+</ul>
+</li>
+<li>PK(기본키) + FK(외래키) ⇒ 1:N
+<ul>
+<li>기본키 : 필수로 들어 있어야 함 (1)</li>
+<li>외래키 : 중복 가능 (필수 아님) (N)</li>
+</ul>
+</li>
+<li>SQL 구문 이용</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CREATE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> TABLE</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function"> sample_table</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (변수명(열) 자료형);</span></span></code></pre></figure>
+<h3 id="제약조건-13장">제약조건 (13장)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#제약조건-13장" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>
+<p>제약조건이란? : 데이터 무결성을 지키기 위해 제한하는 조건 (중복 방지)</p>
+</li>
+<li>
+<p>제약조건 종류</p>
+<ul>
+<li>primary key(기본키) : 데이터를 구별할 수 있는 식별 키
+<ul>
+<li>값 중복 불가</li>
+<li>null 입력 불가</li>
+<li>클러스터형 인덱스가 생성됨</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Primary Key 방식 3가지</p>
+</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">-- 방식 1: 컬럼 정의에 PRIMARY KEY 명시</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">USE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> naver_db;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">DROP</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> TABLE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> IF</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> EXISTS</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> buy, member;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CREATE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> TABLE</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function"> member</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">( mem_id     </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CHAR</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">8</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">NOT NULL</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> PRIMARY KEY</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  mem_name   </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">VARCHAR</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">10</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">NOT NULL</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  height     </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">TINYINT</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> UNSIGNED </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">NULL</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">-- 방식 2: 컬럼 정의 후 PRIMARY KEY 절</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CREATE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> TABLE</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function"> member</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">( mem_id    </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CHAR</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">8</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">NOT NULL</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  mem_name  </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">VARCHAR</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">10</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">NOT NULL</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  height    </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">TINYINT</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> UNSIGNED </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">NULL</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">  PRIMARY KEY</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (mem_id)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">-- 방식 3: ALTER TABLE로 기본키 추가</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CREATE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> TABLE</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function"> member</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">( mem_id   </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CHAR</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">8</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">NOT NULL</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  mem_name </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">VARCHAR</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">10</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">NOT NULL</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  height   </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">TINYINT</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> UNSIGNED </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">NULL</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">ALTER</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> TABLE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> member</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">      ADD</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> CONSTRAINT</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">      PRIMARY KEY</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (mem_id);</span></span></code></pre></figure>
+<ul>
+<li>foreign key(외래키)란? 데이터의 무결성을 가지게 해준다
+<ul>
+<li>예) 회원 테이블에 있어야 구매 테이블에 입력 가능</li>
+<li>1:N 관계</li>
+<li>PK(기본키), FK(외래키) : 기본키는 Update 및 Delete 불가 (데이터 무결성 보장)</li>
+<li>on delete cascade / on update cascade : 기본키 update 및 delete 가능 (외래키 연결 시)</li>
+</ul>
+</li>
+<li>unique 란?
+<ul>
+<li>기본키와 유사하다 (⇒ 중복되지 않는 유일한 값 입력)</li>
+</ul>
+</li>
+<li>check 란?
+<ul>
+<li>입력되는 데이터를 점검하는 기능 (조건 안의 값만 입력 가능)</li>
+<li>데이터 무결성 추가</li>
+</ul>
+</li>
+<li>default 란?
+<ul>
+<li>데이터를 입력하지 않으면 자동으로 들어가는 기본 값</li>
+</ul>
+</li>
+<li>null 값 허용
+<ul>
+<li>null : 데이터가 빈칸이어도 상관없음</li>
+<li>not null : 데이터가 빈칸이면 안 됨</li>
+</ul>
+</li>
+</ul>
+<h3 id="뷰-14장">뷰 (14장)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#뷰-14장" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>뷰 ⇒ 가상의 테이블 (테이블의 내용이 보임)</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CREATE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> VIEW</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function"> 뷰_이름</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">AS</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     SELECT</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 문;</span></span></code></pre></figure>
+<ul>
+<li>뷰를 테이블로 생각해도 됨</li>
+<li>view 테이블은 “v_이름”으로 지정하는 것이 좋음 (실무에서도 사용)</li>
+<li>뷰를 사용하는 이유
+<ul>
+<li>보안에 도움이 됨 (예: 회원 테이블의 필요한 정보만 출력, 주민등록·주소지 등 숨기기 가능)</li>
+</ul>
+</li>
+<li>뷰의 사용
+<ul>
+<li><code>DESCRIBE 뷰이름</code> : 뷰 정보 출력</li>
+<li><code>DROP 뷰이름</code> : 뷰 삭제</li>
+<li>ALTER 구문 : 수정</li>
+</ul>
+</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">ALTER</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> VIEW</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> v_이름</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">AS</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     SELECT</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator"> *</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> FROM</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> member </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">WHERE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> height </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">>=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> 167</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     WITH</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> CHECK</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> OPTION</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span></code></pre></figure>
+<ul>
+<li>view를 통해 insert는 가능하나, 원래 테이블의 not null 조건이 있는 열이 없는 view일 경우 insert가 안 될 수 있음</li>
+</ul>
+<h3 id="인덱스-15장">인덱스 (15장)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#인덱스-15장" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>인덱스란?
+<ul>
+<li>필수는 아님</li>
+<li>데이터를 빠르게 찾는 데 도움</li>
+<li>하지만 인덱스를 무분별하게 사용할 경우 더 늦게 찾아질 수 있음</li>
+</ul>
+</li>
+<li>인덱스 종류
+<ul>
+<li>클러스터형 인덱스 (= 영어사전, 데이터 순서에 변화, 기본키)
+<ul>
+<li>정렬됨</li>
+<li>예) 영어사전처럼 저장 (a-z | 0-9 순서대로 인덱스가 되어 있음)</li>
+</ul>
+</li>
+<li>보조 인덱스 (= 일반 책 뒤의 찾아보기 페이지, 데이터 순서 변화 없음, unique 키)
+<ul>
+<li>입력된 순서대로 저장</li>
+<li>정렬되지 않음</li>
+<li>인덱스 페이지가 생길 뿐 내용의 변화는 없다</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>자동으로 생성되는 인덱스
+<ul>
+<li>클러스터형 인덱스 : 기본키(primary)가 영어 사전처럼 순서대로 select 됨 (자동으로 인덱스)
+<ul>
+<li>key name : primary ⇒ 클러스터형 인덱스</li>
+<li>unique로 지정 ⇒ 보조 인덱스로 생성</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>NOTE</p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li>클러스터형 인덱스 : 한 개만 가능 (= primary)</li>
+<li>보조 인덱스 : 여러 개 가능</li>
+</ul>
+</div>
+</blockquote>
+<pre><code>- non_unique : 유일하지 않다 (1 : true, 0 : false)
+    - 예) 0일 경우 ⇒ 유일하지 않은 게 아니다 (= 유일함)
+</code></pre>
+<h3 id="균형-트리-16장">균형 트리 (16장)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#균형-트리-16장" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>균형 트리의 개념
+<ul>
+<li>노드 존재 안 함 ⇒ 모든 페이지를 찾아서 읽어야 함</li>
+<li>노드 존재 ⇒ 루트 노드(부모), 리프 노드(자식)
+<ul>
+<li>빠르게 찾을 수 있음 (루트 노드를 통해 목적지로 이동) = SELECT</li>
+<li>INSERT, UPDATE, DELETE는 느릴 수 있음 (페이지 분할로 인해 느려짐)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>NOTE</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>페이지 분할</p>
+<ul>
+<li>공간 부족으로 인해 데이터가 밀릴 경우 새로운 페이지가 생성됨</li>
+<li>페이지 분할로 새로운 페이지가 생길 시 많은 리소스 사용</li>
+</ul>
+</div>
+</blockquote>
+<ul>
+<li>클러스터형 인덱스
+<ul>
+<li>기본키 지정 시 기본키 기준으로 정렬됨</li>
+</ul>
+</li>
+<li>보조 인덱스
+<ul>
+<li>unique 키를 지정할 경우 데이터 페이지는 그대로 유지</li>
+<li>인덱스 페이지가 새로 생성 (⇒ 구성 : 루트 노드, 리프 노드 생성됨)</li>
+</ul>
+</li>
+<li>클러스터형 인덱스 vs 보조 인덱스
+<ul>
+<li>클러스터형 인덱스가 평균적으로 조금 더 빠름</li>
+</ul>
+</li>
+</ul>
+<h3 id="인덱스-활용-17장">인덱스 활용 (17장)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#인덱스-활용-17장" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>인덱스 생성</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CREATE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [UNIQUE] </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">INDEX</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 인덱스_이름</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">   ON</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 테이블_이름 (열_이름) [ASC | DESC];</span></span></code></pre></figure>
+<ul>
+<li>
+<p>UNIQUE ⇒ 중복 불가</p>
+</li>
+<li>
+<p>인덱스 제거</p>
+</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">DROP</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> INDEX</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> idx_테이블명_인덱스적용열 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">ON</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 테이블명;</span></span></code></pre></figure>
+<ul>
+<li>인덱스 출력</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">SHOW </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">INDEX</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> FROM</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 테이블명;</span></span></code></pre></figure>
+<ul>
+<li>인덱스 상세 출력</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">SHOW </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">TABLE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> STATUS</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> LIKE</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> '테이블명'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">-- index_length → 인덱스 크기</span></span></code></pre></figure>
+<ul>
+<li>인덱스 적용</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">ANALYZE </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">TABLE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 테이블명;</span></span></code></pre></figure>
+<ul>
+<li>
+<p>중요도</p>
+<ul>
+<li><code>SELECT 열이름 FROM 테이블명 WHERE 조건</code></li>
+<li>WHERE 조건에서 인덱스 사용</li>
+<li>SELECT 열 이름에서는 인덱스가 사용 안 됨</li>
+</ul>
+</li>
+<li>
+<p>인덱스 열은 가공(= 연산)을 하면 인덱스 적용이 안 됨</p>
+<ul>
+<li>예) <code>mem_num * 2 >= 14</code></li>
+</ul>
+</li>
+<li>
+<p>인덱스 삭제</p>
+</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">-- 기본키 삭제</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">ALTER</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> TABLE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 테이블명</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">      DROP</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> PRIMARY KEY</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">-- 외래키 삭제</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">ALTER</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> TABLE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 테이블명</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">      DROP</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> FOREIGN KEY</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 열이름;</span></span></code></pre></figure>
+<ul>
+<li>외래키 이름 조회</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">SELECT</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> table_name, constraint_name</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">FROM</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value"> information_schema</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">referential_constraints</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">WHERE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> constraint_schema </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> 'db명'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span></code></pre></figure>
+<h3 id="스토어드-프로시저-18장">스토어드 프로시저 (18장)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#스토어드-프로시저-18장" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>프로시저 만들기</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">DELIMITER $$</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CREATE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> PROCEDURE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 프로시저_이름 (</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">IN</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 또는 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">OUT</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 매개변수)</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">BEGIN</span></span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">    -- 프로그래밍 코드</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">END</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> $$</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">DELIMITER ;</span></span></code></pre></figure>
+<ul>
+<li>프로시저 실행</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CALL</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 프로시저_이름;</span></span></code></pre></figure>
+<ul>
+<li>입력 매개변수
+<ul>
+<li>여러 개를 사용해도 상관없음</li>
+</ul>
+</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">IN</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 입력_매개변수_이름 데이터_형식</span></span></code></pre></figure>
+<ul>
+<li>입력 매개변수 사용</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CALL</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 입력_매개변수_이름(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string">'매개변수 값'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span></code></pre></figure>
+<ul>
+<li>출력 매개변수 (⇒ return 이라 생각하면 쉬움)</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">OUT</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 출력_매개변수_이름 데이터_형식</span></span></code></pre></figure>
+<ul>
+<li>출력 매개변수 사용</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CALL</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 출력_매개변수_이름(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string">'매개변수 값'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, @출력_매개변수);</span></span></code></pre></figure>
+<h3 id="스토어드-함수와-커서-19장">스토어드 함수와 커서 (19장)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#스토어드-함수와-커서-19장" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>변수 이름 설정</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">DECLARE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 변수이름 데이터형식;</span></span></code></pre></figure>
+<ul>
+<li>사용자 지정 함수 (스토어드 함수)</li>
+<li>커서
+<ul>
+<li>한 행씩 처리하는 방법</li>
+</ul>
+</li>
+<li>커서 작동 순서
+<ol>
+<li>커서 선언하기</li>
+<li>반복 조건 선언하기</li>
+<li>커서 열기</li>
+<li>데이터 가져오기 (반복)</li>
+<li>데이터 처리하기 (반복)</li>
+<li>커서 닫기</li>
+</ol>
+</li>
+<li>커서 단계별 실습</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">-- 행의 끝 변수 설정</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">DECLARE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> endOfRow </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">BOOLEAN</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> DEFAULT</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> FALSE;</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">-- 행의 끝 도달 핸들러</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">DECLARE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> CONTINUE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> HANDLER</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">        FOR</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> NOT</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> FOUND </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">SET</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> endOfRow </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> TRUE;</span></span></code></pre></figure>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">-- 반복 행 빠져나가기</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">IF</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> endOfRow </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">THEN</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">     LEAVE cursor_loop;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">END</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> IF</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span></code></pre></figure>
+<ul>
+<li>FETCH : 한 행씩 읽어오는 것</li>
+</ul>
+<h3 id="트리거-20장">트리거 (20장)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#트리거-20장" class="internal internal-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>트리거 : INSERT, UPDATE, DELETE 문이 발생하면 실행되는 코드</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">DELIMITER $$</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CREATE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> TRIGGER</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function"> 트리거이름</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     AFTER</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> DELETE</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">            -- delete 실행 시 트리거 사용</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     ON</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 트리거를_붙일_테이블이름</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     FOR</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> EACH </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">ROW</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">            -- 각 행마다 실행</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">BEGIN</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     SET</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> @msg </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="operator">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string"> '가수 그룹이 삭제됨'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">END</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> $$</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">DELIMITER ;</span></span></code></pre></figure>
+<ul>
+<li>트리거 활용</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CREATE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> TABLE</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function"> singer</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">SELECT</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> mem_id, mem_name, mem_number, addr </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">FROM</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> member);</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">DROP</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> TABLE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> IF</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> EXISTS</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> backup_singer;</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CREATE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> TABLE</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function"> backup_singer</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">( mem_id      </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CHAR</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">8</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">NOT NULL</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  mem_name    </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">VARCHAR</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">10</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">NOT NULL</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  mem_number  </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">INT</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> NOT NULL</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  addr        </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CHAR</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">NOT NULL</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  modType     </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CHAR</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">),      </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">-- 변경된 타입. '수정' 또는 '삭제'</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  modDate     </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">DATE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,         </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">-- 변경된 날짜</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  modUser     </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">VARCHAR</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">30</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)   </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">-- 변경한 사용자</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">);</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">DROP</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> TRIGGER</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> IF</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> EXISTS</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> singer_updateTrg;</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">DELIMITER $$</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">CREATE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> TRIGGER</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;" data-token-type="function"> singer_updateTrg</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">  -- 트리거 이름</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     AFTER</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> UPDATE</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">                -- 변경 후에 작동하도록 지정</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     ON</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> singer                   </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">-- 트리거를 부착할 테이블</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     FOR</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> EACH </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">ROW</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">BEGIN</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">     INSERT INTO</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> backup_singer </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">VALUES</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">( </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">OLD</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">mem_id</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">OLD</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">mem_name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">OLD</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">mem_number</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">,</span></span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">     OLD</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="value">addr</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;" data-token-type="string">'수정'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;" data-token-type="punctuation">, CURDATE(), </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;" data-token-type="function">CURRENT_USER</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">() );</span></span>
+<span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">END</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> $$</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">DELIMITER ;</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;" data-token-type="comment">-- OLD(MySQL 예약어) ⇒ 변경 전의 값이 저장됨</span></span></code></pre></figure>
+<ul>
+<li>테이블 데이터 삭제</li>
+</ul>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="sql" data-theme="github-light github-dark"><code data-language="sql" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword">TRUNCATE</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;" data-token-type="keyword"> TABLE</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> 테이블명;</span></span></code></pre></figure>
+<ul>
+<li>TRUNCATE 는 트리거가 실행되지 않음</li>
+</ul></div></article><hr/><div class="page-footer"></div></div><div class="right sidebar"><div class="graph"><h3>그래프 뷰</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="toc"><button type="button" class="toc-header" aria-controls="toc-83" aria-expanded="true"><h3>목차</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><ul id="list-0" class="toc-content overflow"><li class="depth-0"><a href="#기초-sql" data-for="기초-sql">[기초] SQL</a></li><li class="depth-1"><a href="#-개념" data-for="-개념">📌 개념</a></li><li class="depth-2"><a href="#데이터베이스와-dbms" data-for="데이터베이스와-dbms">데이터베이스와 DBMS</a></li><li class="depth-2"><a href="#기초-이론" data-for="기초-이론">기초 이론</a></li><li class="depth-2"><a href="#기본-dml" data-for="기본-dml">기본 DML</a></li><li class="depth-2"><a href="#join" data-for="join">JOIN</a></li><li class="depth-2"><a href="#mysql-프로그래밍" data-for="mysql-프로그래밍">MySQL 프로그래밍</a></li><li class="depth-2"><a href="#테이블-만들기" data-for="테이블-만들기">테이블 만들기</a></li><li class="depth-2"><a href="#제약조건-13장" data-for="제약조건-13장">제약조건 (13장)</a></li><li class="depth-2"><a href="#뷰-14장" data-for="뷰-14장">뷰 (14장)</a></li><li class="depth-2"><a href="#인덱스-15장" data-for="인덱스-15장">인덱스 (15장)</a></li><li class="depth-2"><a href="#균형-트리-16장" data-for="균형-트리-16장">균형 트리 (16장)</a></li><li class="depth-2"><a href="#인덱스-활용-17장" data-for="인덱스-활용-17장">인덱스 활용 (17장)</a></li><li class="depth-2"><a href="#스토어드-프로시저-18장" data-for="스토어드-프로시저-18장">스토어드 프로시저 (18장)</a></li><li class="depth-2"><a href="#스토어드-함수와-커서-19장" data-for="스토어드-함수와-커서-19장">스토어드 함수와 커서 (19장)</a></li><li class="depth-2"><a href="#트리거-20장" data-for="트리거-20장">트리거 (20장)</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v5.0.0</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script src="../../../static/resource-after-e13fffa1.js" type="application/javascript" data-persist="true"></script><script src="../../../static/resource-after-8b336f9a.js" type="application/javascript" data-persist="true"></script><script src="../../../static/resource-after-baba652b.js" type="application/javascript" data-persist="true"></script><script src="../../../static/resource-after-5eb75950.js" type="module" data-persist="true"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript" data-persist="true"></script><script src="../../../postscript-9114441b.js" type="module" data-persist="true"></script></html>
