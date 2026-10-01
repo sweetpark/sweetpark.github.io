@@ -191,5 +191,5 @@ void *worker_thread_main(void *pv_arg)
 
 ## 관련 문서
 - [[C] 정수를 void 포인터 인자에 실어 보내기 — intptr_t 캐스팅 관용구]([C]%20정수를%20void%20포인터%20인자에%20실어%20보내기%20—%20intptr_t%20캐스팅%20관용구.md)
-- [[C] 배열 기반 원형 큐(Ring Buffer) — front·back 인덱스로 만드는 큐]([C]%20배열%20기반%20원형%20큐(Ring%20Buffer)%20—%20front·back%20인덱스로%20만드는%20큐.md)
+- [[C] 배열 기반 원형 큐(Ring Buffer) — front·back 인덱스로 만드는 큐]([C]%20배열%20기반%20원형%20큐%28Ring%20Buffer%29%20—%20front·back%20인덱스로%20만드는%20큐.md)
 - [[C] pthread_create에 구조체 포인터 넘기기 — void 포인터와 이중포인터 정리]([C]%20pthread_create에%20구조체%20포인터%20넘기기%20—%20void%20포인터와%20이중포인터%20정리.md)

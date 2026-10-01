@@ -334,4 +334,4 @@ public class ExampleAdvice3 {}
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) 예외처리 (web page)](예외처리%20(web%20page).md) — 동일한 MyCustomizer/ErrorPage 등록 코드를 웹 페이지(HTML) 응답 관점에서 다루는 짝 노트
+- [(학습/프레임워크/Spring Framework) 예외처리 (web page)](예외처리%20%28web%20page%29.md) — 동일한 MyCustomizer/ErrorPage 등록 코드를 웹 페이지(HTML) 응답 관점에서 다루는 짝 노트

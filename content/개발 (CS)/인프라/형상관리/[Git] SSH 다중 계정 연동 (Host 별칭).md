@@ -101,4 +101,4 @@ git clone git@b.example.com:team/project.git
 
 ## 관련 문서
 
-- [공유 계정에서 커밋 계정 분리하기 (user.name·user.email)]([Git]%20공유%20계정에서%20커밋%20계정%20분리하기%20(user.name·user.email).md)
+- [공유 계정에서 커밋 계정 분리하기 (user.name·user.email)]([Git]%20공유%20계정에서%20커밋%20계정%20분리하기%20%28user.name·user.email%29.md)

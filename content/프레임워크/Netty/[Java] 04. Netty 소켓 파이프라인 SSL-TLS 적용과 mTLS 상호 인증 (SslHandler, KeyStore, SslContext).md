@@ -216,6 +216,6 @@ public class MessageHandler extends ChannelInboundHandlerAdapter {
 ## 관련 문서
 
 - [(학습/개발 실무/네트워크·보안) [Netty_TLS] Netty 파이프라인 SSL-TLS 적용](../../개발%20실무/네트워크·보안/[Netty_TLS]%20Netty%20파이프라인%20SSL-TLS%20적용%20-%20One-way%20TLS%20서버%20인증%20구성%20정리.md) — 동일 주제(One-way TLS vs mTLS)를 keytool 발급 절차와 SAN 검증 관점에서 보완하는 실무 노트
-- [(학습/프레임워크/Netty) [Java] 01. Netty 아키텍처와 이벤트 루프 스레드 모델 (EventLoop, Boss·Worker, Bootstrap)]([Java]%2001.%20Netty%20아키텍처와%20이벤트%20루프%20스레드%20모델%20(EventLoop,%20Boss·Worker,%20Bootstrap).md) — 이 SslHandler가 추가되는 대상인 ServerBootstrap 전체 파이프라인 구성을 다루는 연작
-- [(학습/프레임워크/Netty) [Java] 02. TCP 패킷 단편화와 프레임 디코딩 (ByteToMessageDecoder & Length-Field)]([Java]%2002.%20TCP%20패킷%20단편화와%20프레임%20디코딩%20(ByteToMessageDecoder%20&%20Length-Field).md) — SslHandler 바로 뒤에서 복호화된 평문을 프레임으로 슬라이싱하는 MessageDecoder를 다루는 연작
-- [(학습/프레임워크/Netty) [Java] 03. 채널 핸들러 라이프사이클과 실전 IoT 소켓 통신 패턴 (Session, BCD, HAProxy)]([Java]%2003.%20채널%20핸들러%20라이프사이클과%20실전%20IoT%20소켓%20통신%20패턴%20(Session,%20BCD,%20HAProxy).md) — SslHandshakeCompletionEvent를 처리하는 MessageHandler의 세션/라이프사이클 관리를 다루는 연작
+- [(학습/프레임워크/Netty) [Java] 01. Netty 아키텍처와 이벤트 루프 스레드 모델 (EventLoop, Boss·Worker, Bootstrap)]([Java]%2001.%20Netty%20아키텍처와%20이벤트%20루프%20스레드%20모델%20%28EventLoop,%20Boss·Worker,%20Bootstrap%29.md) — 이 SslHandler가 추가되는 대상인 ServerBootstrap 전체 파이프라인 구성을 다루는 연작
+- [(학습/프레임워크/Netty) [Java] 02. TCP 패킷 단편화와 프레임 디코딩 (ByteToMessageDecoder & Length-Field)]([Java]%2002.%20TCP%20패킷%20단편화와%20프레임%20디코딩%20%28ByteToMessageDecoder%20&%20Length-Field%29.md) — SslHandler 바로 뒤에서 복호화된 평문을 프레임으로 슬라이싱하는 MessageDecoder를 다루는 연작
+- [(학습/프레임워크/Netty) [Java] 03. 채널 핸들러 라이프사이클과 실전 IoT 소켓 통신 패턴 (Session, BCD, HAProxy)]([Java]%2003.%20채널%20핸들러%20라이프사이클과%20실전%20IoT%20소켓%20통신%20패턴%20%28Session,%20BCD,%20HAProxy%29.md) — SslHandshakeCompletionEvent를 처리하는 MessageHandler의 세션/라이프사이클 관리를 다루는 연작

@@ -242,6 +242,6 @@ modified: 2026-09-05
 
 ## 관련 문서
 
-- [(학습/개발 (CS)/언어/JAVA/웹개발/SERVLET & JSP) Servlet 기초](../../개발 (CS)/언어/JAVA/웹개발/SERVLET%20&%20JSP/Servlet%20기초.md) — 이 노트의 "서블릿" 절에서 다룬 HttpServlet 상속·생명주기를 코드 예제로 더 상세히 다루는 노트
-- [(학습/개발 (CS)/언어/JAVA/웹개발/SERVLET & JSP) MVC 패턴 ( Servlet + JSP )](../../개발 (CS)/언어/JAVA/웹개발/SERVLET%20&%20JSP/MVC%20패턴%20(%20Servlet%20+%20JSP%20).md) — 이 노트의 "MVC ( Servlet + JSP )" 절을 실제 코드 구현으로 확장한 노트
-- [(학습/개발 (CS)/언어/JAVA/웹개발/SERVLET & JSP) JSP 이론 및 기초 문법](../../개발 (CS)/언어/JAVA/웹개발/SERVLET%20&%20JSP/JSP%20이론%20및%20기초%20문법.md) — 이 노트의 "JSP" 절에서 다룬 <% %>, <%= %> 문법을 더 상세히 다루는 노트
+- [(학습/개발 (CS)/언어/JAVA/웹개발/SERVLET & JSP) Servlet 기초](../../개발%20%28CS%29/언어/JAVA/웹개발/SERVLET%20&%20JSP/Servlet%20기초.md) — 이 노트의 "서블릿" 절에서 다룬 HttpServlet 상속·생명주기를 코드 예제로 더 상세히 다루는 노트
+- [(학습/개발 (CS)/언어/JAVA/웹개발/SERVLET & JSP) MVC 패턴 ( Servlet + JSP )](../../개발%20%28CS%29/언어/JAVA/웹개발/SERVLET%20&%20JSP/MVC%20패턴%20%28%20Servlet%20+%20JSP%20%29.md) — 이 노트의 "MVC ( Servlet + JSP )" 절을 실제 코드 구현으로 확장한 노트
+- [(학습/개발 (CS)/언어/JAVA/웹개발/SERVLET & JSP) JSP 이론 및 기초 문법](../../개발%20%28CS%29/언어/JAVA/웹개발/SERVLET%20&%20JSP/JSP%20이론%20및%20기초%20문법.md) — 이 노트의 "JSP" 절에서 다룬 <% %>, <%= %> 문법을 더 상세히 다루는 노트

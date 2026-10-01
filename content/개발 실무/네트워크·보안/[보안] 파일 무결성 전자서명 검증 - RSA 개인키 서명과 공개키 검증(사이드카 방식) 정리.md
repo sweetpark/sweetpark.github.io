@@ -43,4 +43,4 @@ modified: 2026-09-05
 
 ## 관련 문서
 
-- [(Netty_TLS) Netty 파이프라인 SSL-TLS 적용 - One-way TLS 서버 인증 구성 정리](./[Netty_TLS]%20Netty%20파이프라인%20SSL-TLS%20적용%20-%20One-way%20TLS%20서버%20인증%20구성%20정리.md) — 이 문서의 "키 발급 시 SAN 불필요" 항목이 직접 비교하는 TLS 서버 인증서 발급 절차(SAN 필요)를 다루는 자매 노트
+- [(Netty_TLS) Netty 파이프라인 SSL-TLS 적용 - One-way TLS 서버 인증 구성 정리]([Netty_TLS]%20Netty%20파이프라인%20SSL-TLS%20적용%20-%20One-way%20TLS%20서버%20인증%20구성%20정리.md) — 이 문서의 "키 발급 시 SAN 불필요" 항목이 직접 비교하는 TLS 서버 인증서 발급 절차(SAN 필요)를 다루는 자매 노트

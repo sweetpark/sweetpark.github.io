@@ -94,5 +94,5 @@ Program received signal SIGINT, Interrupt.
 
 ## 관련 문서
 
-- [낯선 C 코드베이스 분석 순서 (방법론)]([Method]%20낯선%20C%20코드베이스%20분석%20순서%20(방법론).md)
+- [낯선 C 코드베이스 분석 순서 (방법론)]([Method]%20낯선%20C%20코드베이스%20분석%20순서%20%28방법론%29.md)
 - [ctags·cscope 실전 설정과 활용]([Tool]%20ctags·cscope%20실전%20설정과%20활용.md)

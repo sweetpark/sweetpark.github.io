@@ -55,4 +55,4 @@ public class ProcessManager {
 
 ## 관련 문서
 
-- [(Design Pattern) 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선](./[Design%20Pattern]%20실무%20프로젝트%20및%20오픈소스로%20체득하는%20GoF%20핵심%20디자인%20패턴%2010선%20(Proxy,%20Decorator,%20Strategy,%20Chain,%20Template,%20SPI,%20Visitor,%20Facade).md) — 3.1절 전략 패턴(Strategy Pattern) 항목에서 다루는 "결제 수단/PG사별 승인 알고리즘" 동적 라우팅과 같은 발상(런타임 문자열 코드로 구현체 선택)
+- [(Design Pattern) 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선]([Design%20Pattern]%20실무%20프로젝트%20및%20오픈소스로%20체득하는%20GoF%20핵심%20디자인%20패턴%2010선%20%28Proxy,%20Decorator,%20Strategy,%20Chain,%20Template,%20SPI,%20Visitor,%20Facade%29.md) — 3.1절 전략 패턴(Strategy Pattern) 항목에서 다루는 "결제 수단/PG사별 승인 알고리즘" 동적 라우팅과 같은 발상(런타임 문자열 코드로 구현체 선택)

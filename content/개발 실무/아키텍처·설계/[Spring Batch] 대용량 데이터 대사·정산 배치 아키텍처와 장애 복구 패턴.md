@@ -124,6 +124,6 @@ public class TransactionReconcileJobConfig {
 
 ## 관련 문서
 
-- [(BATCH) 커서 방식의 주의점 - 핵심 개념 및 특징 정리](./[Spring%20Batch]%20BATCH%20커서%20방식의%20주의점%20-%20핵심%20개념%20및%20특징%20정리.md) — 3절 Reader 선택(Cursor vs Paging)에서 다루는 동일한 선택 기준을 요약한 자매 노트
-- [(Design) 전원 장애(정전) 대응 설계 원칙 - Atomic Save-Transaction-Recovery 정리](./[Design]%20전원%20장애(정전)%20대응%20설계%20원칙%20-%20Atomic%20Save-Transaction-Recovery%20정리.md) — 4.2절 배치 재실행 멱등성 설계가 따르는 "시작 시 Recovery" 등 정전/비정상 종료 대응 범용 원칙
+- [(BATCH) 커서 방식의 주의점 - 핵심 개념 및 특징 정리]([Spring%20Batch]%20BATCH%20커서%20방식의%20주의점%20-%20핵심%20개념%20및%20특징%20정리.md) — 3절 Reader 선택(Cursor vs Paging)에서 다루는 동일한 선택 기준을 요약한 자매 노트
+- [(Design) 전원 장애(정전) 대응 설계 원칙 - Atomic Save-Transaction-Recovery 정리]([Design]%20전원%20장애%28정전%29%20대응%20설계%20원칙%20-%20Atomic%20Save-Transaction-Recovery%20정리.md) — 4.2절 배치 재실행 멱등성 설계가 따르는 "시작 시 Recovery" 등 정전/비정상 종료 대응 범용 원칙
 - [Stateless 서비스 + Connection 값객체 패턴 - 핵심 개념 및 특징 정리](../네트워크·보안/[SFTP]%20Stateless%20서비스%20+%20Connection%20값객체%20패턴%20-%20핵심%20개념%20및%20특징%20정리.md) — 1절 대외 파일 수집 단계(SFTP 파일 수신)에서 쓰이는 무상태 서비스 + 값객체 연결 관리 패턴

@@ -108,4 +108,6 @@ sscanf(payload, "%31[^|]|%d|%15s", field_a, &field_b, field_c);
 
 ## 관련 문서
 
-- [비트플래그(Bit Flag) 연산]([C]%20비트플래그(Bit%20Flag)%20연산.md)
+- [비트플래그(Bit Flag) 연산]([C]%20비트플래그%28Bit%20Flag%29%20연산.md)
+- [가변 인자 함수 — stdarg.h로 나만의 printf 만들기]([C]%20가변%20인자%20함수%20—%20stdarg.h로%20나만의%20printf%20만들기.md)
+- [퍼센트 인코딩(URL Encoding) — 문자를 %XX로 바꾸고 되돌리기]([C]%20퍼센트%20인코딩%28URL%20Encoding%29%20—%20문자를%20%25XX로%20바꾸고%20되돌리기.md)

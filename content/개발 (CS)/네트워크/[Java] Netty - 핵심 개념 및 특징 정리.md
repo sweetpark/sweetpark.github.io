@@ -97,4 +97,4 @@ public class TimeServerHandler extends ChannelInboundHandlerAdapter {
 
 ## 관련 문서
 
-- [(학습/프레임워크/Netty) [Java] 01. Netty 아키텍처와 이벤트 루프 스레드 모델 (EventLoop, Boss·Worker, Bootstrap)](../../프레임워크/Netty/[Java]%2001.%20Netty%20아키텍처와%20이벤트%20루프%20스레드%20모델%20(EventLoop,%20Boss·Worker,%20Bootstrap).md) — Discard/Echo 서버 기본 구조를 실전 ServerBootstrap 소켓 옵션 최적화 수준까지 확장한 심화 노트
+- [(학습/프레임워크/Netty) [Java] 01. Netty 아키텍처와 이벤트 루프 스레드 모델 (EventLoop, Boss·Worker, Bootstrap)](../../프레임워크/Netty/[Java]%2001.%20Netty%20아키텍처와%20이벤트%20루프%20스레드%20모델%20%28EventLoop,%20Boss·Worker,%20Bootstrap%29.md) — Discard/Echo 서버 기본 구조를 실전 ServerBootstrap 소켓 옵션 최적화 수준까지 확장한 심화 노트

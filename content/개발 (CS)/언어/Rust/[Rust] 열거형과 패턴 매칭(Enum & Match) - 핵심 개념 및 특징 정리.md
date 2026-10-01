@@ -36,7 +36,7 @@ enum Message {
 }
 ```
 
-C의 `enum`은 정수 상수 이름의 집합일 뿐이라 `Message` 같은 구조를 표현하려면 `union` + 태그 필드를 직접 조합해야 한다(→ [Union, Typedef, Struct 노트](../C%EC%96%B8%EC%96%B4/[Lang]%20Union,%20Typedef,%20Struct%20%EA%B5%AC%EC%A1%B0%20%EB%B0%8F%20%ED%99%9C%EC%9A%A9.md)의 Tagged Union이 바로 그 수작업 버전). Rust는 이걸 `enum` 하나로 컴파일러가 안전하게 보장해준다 — 한 시점에는 정확히 하나의 variant만 존재하고, 그 variant에 맞는 데이터만 꺼낼 수 있음이 타입 시스템으로 강제됨.
+C의 `enum`은 정수 상수 이름의 집합일 뿐이라 `Message` 같은 구조를 표현하려면 `union` + 태그 필드를 직접 조합해야 한다(→ [Union, Typedef, Struct 노트](../C언어/[Lang]%20Union,%20Typedef,%20Struct%20구조%20및%20활용.md)의 Tagged Union이 바로 그 수작업 버전). Rust는 이걸 `enum` 하나로 컴파일러가 안전하게 보장해준다 — 한 시점에는 정확히 하나의 variant만 존재하고, 그 variant에 맞는 데이터만 꺼낼 수 있음이 타입 시스템으로 강제됨.
 
 > [!NOTE]
 > `:`, `->`, `=>`, `=` 같은 기호 구분과 `String` vs `&str`은 별도 노트로 분리했다 — [(Rust) 기호 완전정리(콜론·화살표·등호, String vs str) - 핵심 개념 및 특징 정리]([Rust]%20기호%20완전정리%28콜론·화살표·등호,%20String%20vs%20str%29%20-%20핵심%20개념%20및%20특징%20정리.md) 참고.
@@ -395,5 +395,5 @@ fn main() {
 
 - [Rust 6장 - Enums and Pattern Matching](https://doc.rust-kr.org/ch06-00-enums.html)
 - [GlueSQL - ast.rs](https://github.com/gluesql/gluesql/blob/main/core/src/ast.rs)
-- [(Rust) GlueSQL 프로젝트 구조와 필요 문법 개관 - 핵심 개념 및 특징 정리](../../../%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/GlueSQL/1.%20[Rust]%20GlueSQL%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B5%AC%EC%A1%B0%EC%99%80%20%ED%95%84%EC%9A%94%20%EB%AC%B8%EB%B2%95%20%EA%B0%9C%EA%B4%80%20-%20%ED%95%B5%EC%8B%AC%20%EA%B0%9C%EB%85%90%20%EB%B0%8F%20%ED%8A%B9%EC%A7%95%20%EC%A0%95%EB%A6%AC.md)
-- [(Lang) Union, Typedef, Struct 구조 및 활용](../C%EC%96%B8%EC%96%B4/[Lang]%20Union,%20Typedef,%20Struct%20%EA%B5%AC%EC%A1%B0%20%EB%B0%8F%20%ED%99%9C%EC%9A%A9.md) — C의 Tagged Union과 Rust enum 비교
+- [(Rust) GlueSQL 프로젝트 구조와 필요 문법 개관 - 핵심 개념 및 특징 정리](../../../프로젝트/오픈소스/GlueSQL/1.%20[Rust]%20GlueSQL%20프로젝트%20구조와%20필요%20문법%20개관%20-%20핵심%20개념%20및%20특징%20정리.md)
+- [(Lang) Union, Typedef, Struct 구조 및 활용](../C언어/[Lang]%20Union,%20Typedef,%20Struct%20구조%20및%20활용.md) — C의 Tagged Union과 Rust enum 비교

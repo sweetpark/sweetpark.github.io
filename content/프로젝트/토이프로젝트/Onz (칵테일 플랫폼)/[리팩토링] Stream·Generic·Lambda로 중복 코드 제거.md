@@ -102,5 +102,5 @@ private List<Map<String, Object>> getResRecommends(List<MappingRecommend> recomm
 
 ## 관련 문서
 
-- [OAuth 소셜 로그인 설계 (code 기반 인증, Strategy+Factory)]([구현]%20OAuth%20소셜%20로그인%20설계%20(code%20기반%20인증,%20Strategy+Factory).md) — 유사한 Provider별 반복 로직 문제를 Strategy+Factory 패턴으로 해결한 문서
+- [OAuth 소셜 로그인 설계 (code 기반 인증, Strategy+Factory)]([구현]%20OAuth%20소셜%20로그인%20설계%20%28code%20기반%20인증,%20Strategy+Factory%29.md) — 유사한 Provider별 반복 로직 문제를 Strategy+Factory 패턴으로 해결한 문서
 - [Onz 프로젝트 소개 및 기획]([개요]%20Onz%20프로젝트%20소개%20및%20기획.md) — 이 리팩토링이 이루어진 Onz 프로젝트의 전체 기획

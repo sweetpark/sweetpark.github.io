@@ -128,7 +128,7 @@ System.out.println("파일 저장 완료: " + targetFile.getAbsolutePath());
 
 ## 관련 문서
 
-- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #4] InputStreamReader & BufferedReader 완전 분석]([File%20I-O%20#4]%20InputStreamReader%20&%20BufferedReader%20완전%20분석.md) — InputStreamReader/BufferedReader를 이용해 MultipartFile의 내용을 줄 단위로 읽는 방법을 다룸
-- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #6] File이외의 I/O Stream 정리 (Object, Audio, Piped 등)]([File%20I-O%20#6]%20File이외의%20I-O%20Stream%20정리%20(Object,%20Audio,%20Piped%20등).md) — MultipartFile 업로드 처리를 다룬 후, ObjectInputStream 등 그 외 I/O 스트림들을 정리하는 시리즈 마지막 편
-- [(개발실무) @RequestPart (파일 + json 전송)](../../../개발%20실무/백엔드·데이터처리/[JSON]%20RequestPart%20(파일%20+%20json%20전송)%20-%20핵심%20개념%20및%20특징%20정리.md) — 파일 단독 전송이 아닌 파일+JSON 동시 전송 시 @RequestPart/ObjectMapper로 처리하는 방법을 다루는 자매 노트
+- (학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #4] InputStreamReader & BufferedReader 완전 분석 — InputStreamReader/BufferedReader를 이용해 MultipartFile의 내용을 줄 단위로 읽는 방법을 다룸
+- (학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #6] File이외의 I/O Stream 정리 (Object, Audio, Piped 등) — MultipartFile 업로드 처리를 다룬 후, ObjectInputStream 등 그 외 I/O 스트림들을 정리하는 시리즈 마지막 편
+- [(개발실무) @RequestPart (파일 + json 전송)](../../../개발%20실무/백엔드·데이터처리/[JSON]%20RequestPart%20%28파일%20+%20json%20전송%29%20-%20핵심%20개념%20및%20특징%20정리.md) — 파일 단독 전송이 아닌 파일+JSON 동시 전송 시 @RequestPart/ObjectMapper로 처리하는 방법을 다루는 자매 노트
 - [(학습/프레임워크/Spring Framework/실습_스프링MVC/스프링 파일업로드) 스프링 파일업로드](../../../프레임워크/Spring%20Framework/실습_스프링MVC/스프링%20파일업로드/[Spring]%20스프링%20파일업로드%20-%20핵심%20개념%20및%20특징%20정리.md) — MultipartFile 처리 방식을 다루는 토이프로젝트 노트로, Servlet Part와 Spring MultipartFile을 비교하는 강의 노트와 연결됨

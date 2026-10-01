@@ -89,5 +89,5 @@ public interface HttpMessageConverter<T> {
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) Spring MVC (Http 요청 처리)](Spring%20MVC%20(Http%20요청%20처리).md) — @RequestBody/HttpEntity로 이 노트의 메시지 컨버터가 요청을 읽는 과정을 다루는 노트
-- [(학습/프레임워크/Spring Framework) SpringMVC ( Http 응답 처리 )](SpringMVC%20(%20Http%20응답%20처리%20).md) — @ResponseBody/ResponseEntity로 이 노트의 메시지 컨버터가 응답을 쓰는 과정을 다루는 노트
+- [(학습/프레임워크/Spring Framework) Spring MVC (Http 요청 처리)](Spring%20MVC%20%28Http%20요청%20처리%29.md) — @RequestBody/HttpEntity로 이 노트의 메시지 컨버터가 요청을 읽는 과정을 다루는 노트
+- [(학습/프레임워크/Spring Framework) SpringMVC ( Http 응답 처리 )](SpringMVC%20%28%20Http%20응답%20처리%20%29.md) — @ResponseBody/ResponseEntity로 이 노트의 메시지 컨버터가 응답을 쓰는 과정을 다루는 노트

@@ -31,7 +31,7 @@ modified: 2026-09-16
 
 셋 다 이름이 `*get`으로 시작하고, **key(정수) 하나로 자원을 식별**한다는 공통 패턴을 가집니다. 세부 내용은:
 
-- 메시지 큐 → [메시지 큐 API]([OS]%20메시지%20큐%20API%20(msgget·msgsnd·msgrcv·msgctl).md)
+- 메시지 큐 → [메시지 큐 API]([OS]%20메시지%20큐%20API%20%28msgget·msgsnd·msgrcv·msgctl%29.md)
 - 키 생성 방식 → [ftok과 IPC 키 생성]([OS]%20ftok과%20IPC%20키%20생성.md)
 - 세마포어 → [세마포어와 동시성 제어]([OS]%20세마포어와%20동시성%20제어.md)
 
@@ -44,7 +44,7 @@ modified: 2026-09-16
 System V = 유닉스 버전 이름. System V IPC = 그 버전에서 나온 프로세스 간 통신 방식 3종(메시지 큐 / 세마포어 / 공유메모리) 세트.
 
 ## 관련 문서
-- [메시지 큐 API]([OS]%20메시지%20큐%20API%20(msgget·msgsnd·msgrcv·msgctl).md)
+- [메시지 큐 API]([OS]%20메시지%20큐%20API%20%28msgget·msgsnd·msgrcv·msgctl%29.md)
 - [ftok과 IPC 키 생성]([OS]%20ftok과%20IPC%20키%20생성.md)
 - [세마포어와 동시성 제어]([OS]%20세마포어와%20동시성%20제어.md)
 - [IPC와 스레드 메모리 공유 비교]([OS]%20IPC와%20스레드%20메모리%20공유%20비교.md)

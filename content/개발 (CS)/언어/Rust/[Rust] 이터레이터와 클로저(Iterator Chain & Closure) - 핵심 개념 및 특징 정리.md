@@ -2,7 +2,7 @@
 title: "이터레이터와 클로저(Iterator Chain & Closure)"
 tags: [학습, 개발-CS, 언어, Rust, 이터레이터, 클로저, GlueSQL]
 created: 2026-09-05
-modified: 2026-09-05
+modified: 2026-09-16
 ---
 
 # 이터레이터와 클로저 (Iterator Chain & Closure)
@@ -110,7 +110,32 @@ Ok(Evaluated::Value(Cow::Owned(Value::Bool(matched ^ negated))))
 > - 각 단계(`filter_map`, `flat_map`, `collect`)의 이름 자체가 "무엇을 하는지"를 설명해 가독성이 높음
 > - 에러가 섞인 컬렉션을 다룰 때 `collect::<Result<...>>()` 같은 관용구로 에러 처리 보일러플레이트를 줄일 수 있음
 
+### "모아서 처리" vs "받는 대로 처리" — 언제 `.collect()`로 먼저 모으면 안 되는가
+
+지금까지 본 예제는 전부 "먼저 다 모은 뒤 처리"(`.collect::<Result<Vec<_>>>()?`)가 자연스러운 경우였다. 하지만 각 항목을 처리한 **부수효과(side effect)가 다음 항목의 처리 결과에 영향을 줘야 한다면**, 먼저 모으는 방식은 오히려 버그가 된다.
+
+```rust
+// 안티패턴: 전체를 먼저 plan(계획)하고 나서야 실행 시작
+let statements: Vec<_> = parse(sql)?.map(|p| plan(p)).collect::<Result<Vec<_>>>()?;
+for statement in &statements {
+    execute(statement)?; // 이 시점엔 이미 모든 statement의 planning이 끝난 뒤
+}
+```
+
+`CREATE TABLE S; SELECT * FROM S;`처럼 뒤 문장이 앞 문장의 결과(스키마)를 전제로 하는 경우, `.collect()`로 전부 모으는 시점엔 앞 문장이 아직 실행되지 않았으므로 두 번째 문장의 `plan()`이 "테이블 S가 없다"고 잘못 판단해버린다.
+
+```rust
+// 올바른 패턴: 하나 plan하고 바로 실행 → 다음 반복이 그 결과를 봄
+for p in parse(sql)? {
+    let statement = plan(p)?;
+    execute(&statement)?; // 다음 for 반복의 plan()이 이 실행 결과를 볼 수 있음
+}
+```
+
+- `for` 루프는 이터레이터를 **한 번에 하나씩, 즉시** 소비한다 — `.collect()`처럼 전체를 순회해서 모으는 중간 단계가 없다.
+- "여러 스텝을 한 번에 실행하는 것"과 "하나씩 나눠 실행하는 것"의 결과가 같아야 하는 배치(batch) 처리에서는, 이렇게 **plan과 execute를 한 항목 단위로 묶어 반복**해야 순서 의존성이 깨지지 않는다.
+
 ## 🔗 참고
 
 - [GlueSQL - core/src/executor](https://github.com/gluesql/gluesql/tree/main/core/src/executor)
-- [(Rust) GlueSQL 프로젝트 구조와 필요 문법 개관 - 핵심 개념 및 특징 정리](../../../%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4/GlueSQL/1.%20[Rust]%20GlueSQL%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B5%AC%EC%A1%B0%EC%99%80%20%ED%95%84%EC%9A%94%20%EB%AC%B8%EB%B2%95%20%EA%B0%9C%EA%B4%80%20-%20%ED%95%B5%EC%8B%AC%20%EA%B0%9C%EB%85%90%20%EB%B0%8F%20%ED%8A%B9%EC%A7%95%20%EC%A0%95%EB%A6%AC.md)
+- [(Rust) GlueSQL 프로젝트 구조와 필요 문법 개관 - 핵심 개념 및 특징 정리](../../../프로젝트/오픈소스/GlueSQL/1.%20[Rust]%20GlueSQL%20프로젝트%20구조와%20필요%20문법%20개관%20-%20핵심%20개념%20및%20특징%20정리.md)

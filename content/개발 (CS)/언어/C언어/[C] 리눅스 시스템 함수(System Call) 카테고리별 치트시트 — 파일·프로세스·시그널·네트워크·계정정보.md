@@ -49,7 +49,7 @@ system("pause");     /* Windows: cmd.exe */
 | `getpid()` / `getppid()` | `<unistd.h>` | 현재 PID / 부모 PID 조회 |
 | `setsid()` | `<unistd.h>` | 새 세션의 리더가 되어 제어 터미널과 분리(데몬화 1단계) |
 
-`fork`+`exec`+`waitpid` 조합과 데몬화(포크·`setsid`·표준 입출력 재배치) 전체 흐름은 [4. 데몬 골격 — 순수 POSIX main 초기화·시그널·스레드·폴링루프](c코드%20템플릿/%5B템플릿%5D%204.%20데몬%20골격%20—%20순수%20POSIX%20main%20초기화·시그널·스레드·폴링루프.md)에 실전 코드로 정리돼 있다.
+`fork`+`exec`+`waitpid` 조합과 데몬화(포크·`setsid`·표준 입출력 재배치) 전체 흐름은 [4. 데몬 골격 — 순수 POSIX main 초기화·시그널·스레드·폴링루프](c코드%20템플릿/[템플릿]%204.%20데몬%20골격%20—%20순수%20POSIX%20main%20초기화·시그널·스레드·폴링루프.md)에 실전 코드로 정리돼 있다.
 
 ## 3. 메모리 제어
 
@@ -60,7 +60,7 @@ system("pause");     /* Windows: cmd.exe */
 | `mprotect()` | `<sys/mman.h>` | 매핑된 영역의 읽기/쓰기/실행 권한 변경 |
 | `brk()` / `sbrk()` | `<unistd.h>` | 힙 영역 크기 조절 — `malloc`이 내부적으로 쓰는 저수준 함수 |
 
-일반 `malloc`보다 정렬·페이지 경계가 중요한 상황은 [메모리 정렬(Memory Alignment)과 aligned_alloc]([C]%20메모리%20정렬(Memory%20Alignment)과%20aligned_alloc%20—%20CPU%20워드%20경계와%20안전한%20할당%20래퍼.md)에서 다룬다.
+일반 `malloc`보다 정렬·페이지 경계가 중요한 상황은 [메모리 정렬(Memory Alignment)과 aligned_alloc]([C]%20메모리%20정렬%28Memory%20Alignment%29과%20aligned_alloc%20—%20CPU%20워드%20경계와%20안전한%20할당%20래퍼.md)에서 다룬다.
 
 ## 4. 시그널 제어
 
@@ -72,7 +72,7 @@ system("pause");     /* Windows: cmd.exe */
 | `alarm()` | `<unistd.h>` | 지정한 초 뒤 `SIGALRM` 발생 |
 | `sigprocmask()` | `<signal.h>` | 특정 시그널을 일시적으로 블록/해제 |
 
-핸들러 안에서는 `malloc`/`free`/`printf` 등을 부르면 안 되고(async-signal-safe 함수만 허용), 플래그 하나만 `volatile sig_atomic_t`로 건드린 뒤 메인 루프가 그걸 주기적으로 확인하는 패턴이 표준이다 — [실무 C 코드 관례와 UB 함정 정리]([C]%20실무%20C%20코드%20관례와%20UB%20함정%20정리.md)의 A4, 실제 `sigaction` 등록 코드는 [4. 데몬 골격](c코드%20템플릿/%5B템플릿%5D%204.%20데몬%20골격%20—%20순수%20POSIX%20main%20초기화·시그널·스레드·폴링루프.md) 참고.
+핸들러 안에서는 `malloc`/`free`/`printf` 등을 부르면 안 되고(async-signal-safe 함수만 허용), 플래그 하나만 `volatile sig_atomic_t`로 건드린 뒤 메인 루프가 그걸 주기적으로 확인하는 패턴이 표준이다 — [실무 C 코드 관례와 UB 함정 정리]([C]%20실무%20C%20코드%20관례와%20UB%20함정%20정리.md)의 A4, 실제 `sigaction` 등록 코드는 [4. 데몬 골격](c코드%20템플릿/[템플릿]%204.%20데몬%20골격%20—%20순수%20POSIX%20main%20초기화·시그널·스레드·폴링루프.md) 참고.
 
 ## 5. 네트워크 및 IPC
 
@@ -86,7 +86,7 @@ system("pause");     /* Windows: cmd.exe */
 | `send()` / `recv()` | `<sys/socket.h>` | 소켓 데이터 송수신 |
 | `select()` / `poll()` / `epoll_*()` | `<sys/select.h>` 등 | 여러 fd를 동시에 감시 |
 
-소켓 통신 기본기는 [(TCP_IP) Socket 통신 - 핵심 개념 및 특징 정리]([TCP_IP]%20Socket%20통신%20-%20핵심%20개념%20및%20특징%20정리.md), fd가 몇 개일 때 무엇을 쓸지는 [select()]([C]%20select()%20—%20여러%20입력과%20타임아웃%20함께%20기다리기.md)·[epoll]([C]%20epoll%20—%20fd가%20많아질%20때의%20대안.md)에서 비교한다.
+소켓 통신 기본기는 [(TCP_IP) Socket 통신 - 핵심 개념 및 특징 정리]([TCP_IP]%20Socket%20통신%20-%20핵심%20개념%20및%20특징%20정리.md), fd가 몇 개일 때 무엇을 쓸지는 [select()]([C]%20select%28%29%20—%20여러%20입력과%20타임아웃%20함께%20기다리기.md)·[epoll]([C]%20epoll%20—%20fd가%20많아질%20때의%20대안.md)에서 비교한다.
 
 ## 6. 시간 및 지연
 
@@ -164,7 +164,7 @@ if (getlogin_r(username, sizeof(username)) == 0) {
 
 - [동적 할당 소유권 — caller free vs callee create·destroy 쌍]([C]%20동적%20할당%20소유권%20—%20caller%20free%20vs%20callee%20create·destroy%20쌍.md) — `getlogin_r()`이 따르는 "caller가 버퍼를 준비하는" 패턴의 근거
 - [실무 C 코드 관례와 UB 함정 정리]([C]%20실무%20C%20코드%20관례와%20UB%20함정%20정리.md) — 반환값 체크, `EAGAIN`, 시그널 플래그 타입 등 시스템 콜을 쓸 때 지켜야 할 관례
-- [select() — 여러 입력과 타임아웃 함께 기다리기]([C]%20select()%20—%20여러%20입력과%20타임아웃%20함께%20기다리기.md)
+- [select() — 여러 입력과 타임아웃 함께 기다리기]([C]%20select%28%29%20—%20여러%20입력과%20타임아웃%20함께%20기다리기.md)
 - [epoll — fd가 많아질 때의 대안]([C]%20epoll%20—%20fd가%20많아질%20때의%20대안.md)
 - [(TCP_IP) Socket 통신 - 핵심 개념 및 특징 정리]([TCP_IP]%20Socket%20통신%20-%20핵심%20개념%20및%20특징%20정리.md)
-- [4. 데몬 골격 — 순수 POSIX main 초기화·시그널·스레드·폴링루프](c코드%20템플릿/%5B템플릿%5D%204.%20데몬%20골격%20—%20순수%20POSIX%20main%20초기화·시그널·스레드·폴링루프.md)
+- [4. 데몬 골격 — 순수 POSIX main 초기화·시그널·스레드·폴링루프](c코드%20템플릿/[템플릿]%204.%20데몬%20골격%20—%20순수%20POSIX%20main%20초기화·시그널·스레드·폴링루프.md)

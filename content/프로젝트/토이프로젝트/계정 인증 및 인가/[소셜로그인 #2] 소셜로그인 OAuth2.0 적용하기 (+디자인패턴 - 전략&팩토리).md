@@ -251,5 +251,5 @@ public class CustomOAuth2LoginFilter extends AbstractAuthenticationProcessingFil
 
 ## 관련 문서
 
-- [[소셜로그인 #1] 계정 인증 요청 방식 RestTemplate 이해하기]([소셜로그인%20%231]%20계정%20인증%20요청%20방식%20RestTemplate%20이해하기.md) — 이 글의 이전 편으로, 여기서 다루는 accessToken/사용자정보 요청에 쓰이는 RestTemplate의 기본 사용법을 다룸
-- [(프로젝트) OAuth 소셜 로그인 설계 (code 기반 인증, Strategy+Factory)](../Onz%20(칵테일%20플랫폼)/[구현]%20OAuth%20소셜%20로그인%20설계%20(code%20기반%20인증,%20Strategy+Factory).md) — 여기서 정리한 Strategy+Factory 패턴을 Onz 프로젝트에서 code 기반 인증 방식으로 확장 적용한 사례
+- [[소셜로그인 #1] 계정 인증 요청 방식 RestTemplate 이해하기]([소셜로그인%20#1]%20계정%20인증%20요청%20방식%20RestTemplate%20이해하기.md) — 이 글의 이전 편으로, 여기서 다루는 accessToken/사용자정보 요청에 쓰이는 RestTemplate의 기본 사용법을 다룸
+- [(프로젝트) OAuth 소셜 로그인 설계 (code 기반 인증, Strategy+Factory)](../Onz%20%28칵테일%20플랫폼%29/[구현]%20OAuth%20소셜%20로그인%20설계%20%28code%20기반%20인증,%20Strategy+Factory%29.md) — 여기서 정리한 Strategy+Factory 패턴을 Onz 프로젝트에서 code 기반 인증 방식으로 확장 적용한 사례

@@ -8,7 +8,7 @@ modified: 2026-09-05
 
 > [!NOTE]
 > Linux/POSIX 환경에서 멀티스레드로 포트/네트워크를 스캔할 때 쓰는 `pthread` 기본 API 정리. "PortScan" 미니프로젝트 기획 문서에서 추출.
-> 관련 노트(Windows 계열): [(Windows) Win32 멀티스레드 API (_beginthreadex) - Win32 멀티스레드 API (beginthreadex)](../%EC%9D%B8%ED%94%84%EB%9D%BC/WINDOWS/[Windows]%20Win32%20%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20API%20(_beginthreadex)%20-%20Win32%20%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C%20API%20(beginthreadex).md)
+> 관련 노트(Windows 계열): [(Windows) Win32 멀티스레드 API (_beginthreadex) - Win32 멀티스레드 API (beginthreadex)](../인프라/WINDOWS/[Windows]%20Win32%20멀티스레드%20API%20%28_beginthreadex%29%20-%20Win32%20멀티스레드%20API%20%28beginthreadex%29.md)
 
 ## ⚙️ pthread API
 

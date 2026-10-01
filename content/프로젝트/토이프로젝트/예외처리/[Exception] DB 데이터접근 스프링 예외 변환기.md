@@ -168,5 +168,5 @@ public interface SQLExceptionTranslator {
 
 ## 관련 문서
 
-- [(토이프로젝트) [예외처리 #1] 예외(Exception) 이해하기]([예외처리%20%231]%20예외(Exception)%20이해하기.md) — 본문에서 활용한 Checked→Unchecked 예외 변환 개념을 기본부터 정리하는 시리즈 1편
-- [(토이프로젝트) [예외처리 #2] 예외 적용하기]([예외처리%20%232]%20예외%20적용하기.md) — 같은 프로젝트에서 `@RestControllerAdvice` 기반 API 공통 예외 처리를 다루는 2편
+- [(토이프로젝트) [예외처리 #1] 예외(Exception) 이해하기]([예외처리%20#1]%20예외%28Exception%29%20이해하기.md) — 본문에서 활용한 Checked→Unchecked 예외 변환 개념을 기본부터 정리하는 시리즈 1편
+- [(토이프로젝트) [예외처리 #2] 예외 적용하기]([예외처리%20#2]%20예외%20적용하기.md) — 같은 프로젝트에서 `@RestControllerAdvice` 기반 API 공통 예외 처리를 다루는 2편

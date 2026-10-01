@@ -290,6 +290,6 @@ pthread_attr_destroy(&attr);       /* 또는 pthread_join(th, ...) */
 ## 관련 노트
 
 - [시큐어코딩가이드 목록](시큐어코딩가이드%20목록.md)
-- [Part 4. 에러 처리](%5B시큐어코딩%5D%20Part%204.%20에러%20처리.md)
-- [Part 6. 캡슐화](%5B시큐어코딩%5D%20Part%206.%20캡슐화.md)
-- [동적 할당 소유권 — caller free vs callee create·destroy 쌍](../%5BC%5D%20동적%20할당%20소유권%20—%20caller%20free%20vs%20callee%20create·destroy%20쌍.md)
+- [Part 4. 에러 처리]([시큐어코딩]%20Part%204.%20에러%20처리.md)
+- [Part 6. 캡슐화]([시큐어코딩]%20Part%206.%20캡슐화.md)
+- [동적 할당 소유권 — caller free vs callee create·destroy 쌍](../[C]%20동적%20할당%20소유권%20—%20caller%20free%20vs%20callee%20create·destroy%20쌍.md)

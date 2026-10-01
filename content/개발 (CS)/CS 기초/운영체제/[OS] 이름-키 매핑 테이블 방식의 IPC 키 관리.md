@@ -40,7 +40,7 @@ TEAMB_SERVER MSGQ    e610    0
 | --- | --- | --- |
 | 1. 이름 | `TEAMB_SERVER` | 프로세스/모듈 식별자. 코드에서 `#define IPC_SERVER "TEAMB_SERVER"`처럼 문자열로 정의해 오픈/키조회 함수에 그대로 넘김 |
 | 2. 타입 | `MSGQ` / `NULL` | IPC 오브젝트 종류. `MSGQ`는 메시지 큐를 생성. `NULL`은 큐를 만들지 않는 엔트리 |
-| 3. KEY | `ea10`, `e510` | `msgget()`에 넘어가는 실제 IPC 키(16진수 정수). [메시지 큐 API]([OS]%20메시지%20큐%20API%20(msgget·msgsnd·msgrcv·msgctl).md)에서 본 큐 생성 키이자, 메시지 헤더의 src/dst 주소로도 재사용됨 |
+| 3. KEY | `ea10`, `e510` | `msgget()`에 넘어가는 실제 IPC 키(16진수 정수). [메시지 큐 API]([OS]%20메시지%20큐%20API%20%28msgget·msgsnd·msgrcv·msgctl%29.md)에서 본 큐 생성 키이자, 메시지 헤더의 src/dst 주소로도 재사용됨 |
 | 4. FLAG | `0` | 예약 필드이거나 상태 조회 명령 관련 초기값으로 쓰이는 경우가 있음(구체 의미는 문서화가 안 된 필드로 남는 경우도 흔하다) |
 
 ## 2. KEY 대역이 그룹별로 나뉘는 패턴
@@ -65,6 +65,6 @@ TEAMB_SERVER MSGQ    e610    0
 
 ## 관련 문서
 
-- [System V IPC 개념]([OS]%20System%20V%20IPC%20개념%20(메시지%20큐·세마포어·공유메모리).md)
-- [메시지 큐 API]([OS]%20메시지%20큐%20API%20(msgget·msgsnd·msgrcv·msgctl).md)
+- [System V IPC 개념]([OS]%20System%20V%20IPC%20개념%20%28메시지%20큐·세마포어·공유메모리%29.md)
+- [메시지 큐 API]([OS]%20메시지%20큐%20API%20%28msgget·msgsnd·msgrcv·msgctl%29.md)
 - [ftok과 IPC 키 생성]([OS]%20ftok과%20IPC%20키%20생성.md)
