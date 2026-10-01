@@ -14,14 +14,14 @@ modified: 2026-09-19
 
 ---
 
-> [!TIP] 템플릿을 손에 붙이려면 → [템플릿 체화 드릴](템플릿%20체화%20드릴/템플릿%20체화%20드릴%20목록.md)
+> [!TIP] 템플릿을 손에 붙이려면 → [템플릿 체화 드릴](개발%20%28CS%29/언어/C언어/실습/템플릿%20체화%20드릴/템플릿%20체화%20드릴%20목록.md)
 > 이 가이드는 **개념 노트를 동작시켜 보는** 실습이다.
 > 반면 `템플릿 체화 드릴/` 은 **요구사항 한 장 → 표 3장 → 코드** 절차를 **3회차씩 반복**해
-> [c코드 템플릿](../c코드%20템플릿/c코드%20템플릿%20목록.md)의 뼈대를 손에 붙이는 드릴이다.
+> [c코드 골격](개발%20%28CS%29/언어/C언어/c코드%20골격/c코드%20골격%20목록.md)의 뼈대를 손에 붙이는 드릴이다.
 > **개념이 흔들리면 이 문서, 손이 안 움직이면 드릴.**
 >
-> 같은 방식으로 [시큐어코딩가이드](../시큐어코딩가이드/시큐어코딩가이드%20목록.md)의 Bad→Good 치환을 손에 붙이는 드릴은
-> → [시큐어코딩 체화 드릴](시큐어코딩%20체화%20드릴/README.md) — 뚫린 코드를 실제로 빌드해 취약점을 관찰한 뒤 고쳐 쓴다.
+> 같은 방식으로 [시큐어코딩가이드](개발%20%28CS%29/언어/C언어/시큐어코딩가이드/시큐어코딩가이드%20목록.md)의 Bad→Good 치환을 손에 붙이는 드릴은
+> → [시큐어코딩 체화 드릴](개발%20%28CS%29/언어/C언어/실습/시큐어코딩%20체화%20드릴/README.md) — 뚫린 코드를 실제로 빌드해 취약점을 관찰한 뒤 고쳐 쓴다.
 
 ## 🗺️ 전체 실습 아키텍처
 
@@ -100,9 +100,9 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 1-1. 바이트 순서(Endianness) 변환 및 인터넷 체크섬 계산기
 * **파일 위치**: `stage1_lowlevel/step1_endian_checksum.c`
 * **연계 학습 노트**:
-  * [[Lang] 정수형 크기(uint16_t)와 비트·바이트 메모리 저장 원리](../[Lang]%20정수형%20크기(uint16_t)와%20비트·바이트%20메모리%20저장%20원리.md)
-  * [[C] 엔디안(바이트 순서)과 인터넷 체크섬](../[C]%20엔디안(바이트%20순서)과%20인터넷%20체크섬%20—%20LSB·MSB와%20htons를%20직접%20만들어보기.md)
-  * [[Lang] Union, Typedef, Struct 구조 및 활용](../[Lang]%20Union,%20Typedef,%20Struct%20구조%20및%20활용.md)
+  * [[Lang] 정수형 크기(uint16_t)와 비트·바이트 메모리 저장 원리](개발%20%28CS%29/언어/C언어/[Lang]%20정수형%20크기%28uint16_t%29와%20비트·바이트%20메모리%20저장%20원리.md)
+  * [[C] 엔디안(바이트 순서)과 인터넷 체크섬](개발%20%28CS%29/언어/C언어/[C]%20엔디안%28바이트%20순서%29과%20인터넷%20체크섬%20—%20LSB·MSB와%20htons를%20직접%20만들어보기.md)
+  * [[Lang] Union, Typedef, Struct 구조 및 활용](개발%20%28CS%29/언어/C언어/[Lang]%20Union,%20Typedef,%20Struct%20구조%20및%20활용.md)
 * **구현 미션**:
   1. `union`을 활용하여 시스템이 리틀 엔디안인지 빅 엔디안인지 판별하는 함수 `is_little_endian()` 작성.
   2. 시스템 라이브러리(`htons`, `ntohs`) 대신 비트 시프트(`<<`, `>>`)와 마스킹(`&`)만으로 동작하는 `my_htons()`, `my_ntohs()`, `my_htonl()`, `my_ntohl()` 구현.
@@ -116,8 +116,8 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 1-2. 비트 플래그 연산 및 비트 필드 패킹(Bit Packing)
 * **파일 위치**: `stage1_lowlevel/step2_bit_packing.c`
 * **연계 학습 노트**:
-  * [[C] 비트플래그(Bit Flag) 연산](../[C]%20비트플래그(Bit%20Flag)%20연산.md)
-  * [[C] 시프트로 여러 필드를 하나의 정수에 조합하기 — 필드 패킹](../[C]%20시프트로%20여러%20필드를%20하나의%20정수에%20조합하기%20—%20필드%20패킹.md)
+  * [[C] 비트플래그(Bit Flag) 연산](개발%20%28CS%29/언어/C언어/[C]%20비트플래그%28Bit%20Flag%29%20연산.md)
+  * [[C] 시프트로 여러 필드를 하나의 정수에 조합하기 — 필드 패킹](개발%20%28CS%29/언어/C언어/[C]%20시프트로%20여러%20필드를%20하나의%20정수에%20조합하기%20—%20필드%20패킹.md)
 * **구현 미션**:
   1. 다음 비트 플래그 enum 정의:
      * `FLAG_COMPRESSED = 1 << 0` (0x01)
@@ -137,8 +137,8 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 1-3. 메모리 정렬(Alignment)과 1바이트 패킹 구조체
 * **파일 위치**: `stage1_lowlevel/step3_alignment.c`
 * **연계 학습 노트**:
-  * [[CS] C언어 교육 (구조체 패딩 및 pragma pack)](../[CS]%20C언어%20교육.md)
-  * [[C] 메모리 정렬과 aligned_alloc](../[C]%20메모리%20정렬(Memory%20Alignment)과%20aligned_alloc%20—%20CPU%20워드%20경계와%20안전한%20할당%20래퍼.md)
+  * [[CS] C언어 교육 (구조체 패딩 및 pragma pack)](개발%20%28CS%29/언어/C언어/[CS]%20C언어%20교육.md)
+  * [[C] 메모리 정렬과 aligned_alloc](개발%20%28CS%29/언어/C언어/[C]%20메모리%20정렬%28Memory%20Alignment%29과%20aligned_alloc%20—%20CPU%20워드%20경계와%20안전한%20할당%20래퍼.md)
 * **구현 미션**:
   1. 동일한 멤버(`uint8_t`, `uint32_t`, `uint16_t`, `char[5]`)를 갖는 두 구조체 정의:
      * `struct DefaultHeader` (컴파일러 기본 정렬)
@@ -155,9 +155,9 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 2-1. 안전한 로깅 매크로 & 단일 출구(Single Exit) 에러 정리기
 * **파일 위치**: `stage2_robust/step1_logger.c`
 * **연계 학습 노트**:
-  * [[C] 매크로를 do-while(0)으로 감싸는 이유](../[C]%20매크로를%20do-while(0)%EC%9C%BC%EB%A1%9C%20%EA%B0%90%EC%82%B0%EB%8A%94%20%EC%9D%B4%EC%9C%A0%20%E2%80%94%20%EC%97%AC%EB%9F%AC%20%EB%AC%B8%EC%9E%A5%EC%9D%84%20%EC%95%88%EC%A0%84%ED%95%9C%20%ED%95%98%EB%82%98%EB%A1%9C%20%EB%AC%B6%EA%B8%B0.md)
-  * [[C] 가변 인자 함수 — stdarg.h로 나만의 printf 만들기](../[C]%20가변%20인자%20함수%20—%20stdarg.h로%20나만의%20printf%20만들기.md)
-  * [[C] 실무 C 코드 관례와 UB 함정 정리 (1급: 생성/소멸 쌍, 단일출구 goto cleanup)](../[C]%20실무%20C%20코드%20관례와%20UB%20함정%20정리.md)
+  * [[C] 매크로를 do-while(0)으로 감싸는 이유](개발%20%28CS%29/언어/C언어/[C]%20매크로를%20do-while%280%29으로%20감싸는%20이유%20—%20여러%20문장을%20안전한%20하나로%20묶기.md)
+  * [[C] 가변 인자 함수 — stdarg.h로 나만의 printf 만들기](개발%20%28CS%29/언어/C언어/[C]%20가변%20인자%20함수%20—%20stdarg.h로%20나만의%20printf%20만들기.md)
+  * [[C] 실무 C 코드 관례와 UB 함정 정리 (1급: 생성/소멸 쌍, 단일출구 goto cleanup)](개발%20%28CS%29/언어/C언어/[C]%20실무%20C%20코드%20관례와%20UB%20함정%20정리.md)
 * **구현 미션**:
   1. `do { ... } while(0)` 기반 `LOG_INFO(fmt, ...)`, `LOG_WARN(fmt, ...)`, `LOG_ERROR(fmt, ...)` 매크로 구현.
   2. `vsnprintf`를 활용하여 `[YYYY-MM-DD HH:MM:SS] [LEVEL] [file.c:line] 메시지` 형식 출력 함수 `log_write()` 구현.
@@ -170,10 +170,10 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 2-2. 안전한 프로토콜 문자열 파서 & URL 퍼센트 디코더
 * **파일 위치**: `stage2_robust/step2_parser.c`
 * **연계 학습 노트**:
-  * [[C] 문자열 배열 재대입과 복사 — strncpy·snprintf·sscanf 비교](../[C]%20문자열%20배열%20재대입과%20복사%20—%20strncpy·snprintf·sscanf%20비교.md)
-  * [[C] 문자열 비교와 strcasecmp](../[C]%20문자열%20비교와%20strcasecmp%20%E2%80%94%20strcmp%20%EC%B0%A8%EC%9D%B4,%20%EB%8C%80%EC%86%8C%EB%AC%B8%EC%9E%90%20%EB%AC%B4%EC%8B%9C%20%EB%B0%8F%20%EC%BB%B4%ED%8C%8C%EC%9D%BC%EB%9F%AC%20%EC%86%8D%EC%84%B1%20%ED%95%B4%EB%8F%85.md)
-  * [[Lang] strtok_r과 sscanf 문자열 파싱 원리 및 &save 동작 분석](../[Lang]%20strtok_r과%20sscanf%20문자열%20파싱%20원리%20및%20&save%20동작%20분석.md)
-  * [[C] 퍼센트 인코딩(URL Encoding)](../[C]%20퍼센트%20인코딩(URL%20Encoding)%20—%20문자를%20%25XX로%20바꾸고%20되돌리기.md)
+  * [[C] 문자열 배열 재대입과 복사 — strncpy·snprintf·sscanf 비교](개발%20%28CS%29/언어/C언어/[C]%20문자열%20배열%20재대입과%20복사%20—%20strncpy·snprintf·sscanf%20비교.md)
+  * [[C] 문자열 비교와 strcasecmp](개발%20%28CS%29/언어/C언어/[C]%20문자열%20비교와%20strcasecmp%20—%20strcmp%20차이,%20대소문자%20무시%20및%20컴파일러%20속성%20해독.md)
+  * [[Lang] strtok_r과 sscanf 문자열 파싱 원리 및 &save 동작 분석](개발%20%28CS%29/언어/C언어/[Lang]%20strtok_r과%20sscanf%20문자열%20파싱%20원리%20및%20&save%20동작%20분석.md)
+  * [[C] 퍼센트 인코딩(URL Encoding)](개발%20%28CS%29/언어/C언어/[C]%20퍼센트%20인코딩%28URL%20Encoding%29%20—%20문자를%20%25XX로%20바꾸고%20되돌리기.md)
 * **구현 미션**:
   1. `POST /submit?user=alice%20kim&action=run HTTP/1.1` 문자열 파싱:
      * `sscanf(..., "%15s %255s %15s", ...)` 너비 지정자를 사용해 버퍼 오버플로 방어.
@@ -188,8 +188,8 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 2-3. 동적 2차원 문자열 리스트 관리자 (`char**`)
 * **파일 위치**: `stage2_robust/step3_str_list.c`
 * **연계 학습 노트**:
-  * [[C] 개수 필드 + 포인터의 포인터 — 동적 문자열 배열 만들고 해제하기](../[C]%20개수%20필드%20+%20포인터의%20포인터%20—%20동적%20문자열%20배열%20만들고%20해제하기.md)
-  * [[CS] C언어 교육 (Caller vs Callee 동적할당 원칙)](../[CS]%20C언어%20교육.md)
+  * [[C] 개수 필드 + 포인터의 포인터 — 동적 문자열 배열 만들고 해제하기](개발%20%28CS%29/언어/C언어/[C]%20개수%20필드%20+%20포인터의%20포인터%20—%20동적%20문자열%20배열%20만들고%20해제하기.md)
+  * [[CS] C언어 교육 (Caller vs Callee 동적할당 원칙)](개발%20%28CS%29/언어/C언어/[CS]%20C언어%20교육.md)
 * **구현 미션**:
   1. 문자열 리스트 구조체 정의:
      ```c
@@ -213,10 +213,10 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 3-1. 불투명 포인터(Opaque Pointer) & 공개/코어 분리
 * **파일 위치**: `stage3_architecture/ring_buffer.h`, `stage3_architecture/ring_buffer.c`
 * **연계 학습 노트**:
-  * [[C] 불투명 포인터(Opaque Pointer)](../[C]%20불투명%20포인터(Opaque%20Pointer)%20—%20헤더는%20선언만,%20구현은%20숨기기.md)
-  * [[C] 공개 래퍼(Wrapper)와 내부 코어(Core) 분리 패턴](../[C]%20공개%20래퍼(Wrapper)와%20내부%20코어(Core)%20분리%20패턴%20—%20언더스코어(__)%20관행과%20C%20표준%20예약어.md)
-  * [[C] extern과 static — 링키지와 다중 파일 공유](../[C]%20extern과%20static%20—%20링키지와%20다중%20파일%20공유.md)
-  * [[C] 배열 기반 원형 큐(Ring Buffer)](../[C]%20배열%20기반%20원형%20큐(Ring%20Buffer)%20—%20front·back%20인덱스로%20만드는%20큐.md)
+  * [[C] 불투명 포인터(Opaque Pointer)](개발%20%28CS%29/언어/C언어/[C]%20불투명%20포인터%28Opaque%20Pointer%29%20—%20헤더는%20선언만,%20구현은%20숨기기.md)
+  * [[C] 공개 래퍼(Wrapper)와 내부 코어(Core) 분리 패턴](개발%20%28CS%29/언어/C언어/[C]%20공개%20래퍼%28Wrapper%29와%20내부%20코어%28Core%29%20분리%20패턴%20—%20언더스코어%28__%29%20관행과%20C%20표준%20예약어.md)
+  * [[C] extern과 static — 링키지와 다중 파일 공유](개발%20%28CS%29/언어/C언어/[C]%20extern과%20static%20—%20링키지와%20다중%20파일%20공유.md)
+  * [[C] 배열 기반 원형 큐(Ring Buffer)](개발%20%28CS%29/언어/C언어/[C]%20배열%20기반%20원형%20큐%28Ring%20Buffer%29%20—%20front·back%20인덱스로%20만드는%20큐.md)
 * **구현 미션**:
   1. `ring_buffer.h`에는 불완전 타입 `typedef struct RingBuffer RingBuffer;`와 함수 프로토타입만 노출.
   2. `ring_buffer.c` 내부에 구조체 멤버(`buffer`, `capacity`, `head`, `tail`, `count`, `mutex`) 정의.
@@ -229,8 +229,8 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 3-2. 가변 길이 구조체(Struct Hack) 기반 가변 패킷 컨테이너
 * **파일 위치**: `stage3_architecture/struct_hack.c`
 * **연계 학습 노트**:
-  * [[C] 가변 길이 구조체(Struct Hack)와 필러 필드](../[C]%20가변%20길이%20구조체(Struct%20Hack)와%20필러%20필드%20—%20헤더%20뒤에%20매달리는%20가변%20payload.md)
-  * [[C] API·규격 데이터 모델을 C 구조체로 설계하는 공식](../[C]%20API·규격%20데이터%20모델을%20C%20구조체로%20설계하는%20공식%20—%20JSON·YAML을%20정적%20메모리로%20매핑하기.md)
+  * [[C] 가변 길이 구조체(Struct Hack)와 필러 필드](개발%20%28CS%29/언어/C언어/[C]%20가변%20길이%20구조체%28Struct%20Hack%29와%20필러%20필드%20—%20헤더%20뒤에%20매달리는%20가변%20payload.md)
+  * [[C] API·규격 데이터 모델을 C 구조체로 설계하는 공식](개발%20%28CS%29/언어/C언어/[C]%20API·규격%20데이터%20모델을%20C%20구조체로%20설계하는%20공식%20—%20JSON·YAML을%20정적%20메모리로%20매핑하기.md)
 * **구현 미션**:
   1. C99 유연 배열 멤버(Flexible Array Member) 구조체 정의:
      ```c
@@ -251,7 +251,7 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 3-3. 함수 포인터 디스패치 테이블 (Command Handler)
 * **파일 위치**: `stage3_architecture/dispatcher.c`
 * **연계 학습 노트**:
-  * [[C] 함수 포인터와 디스패치 테이블 — switch 대신 테이블로 분기하기](../[C]%20함수%20포인터와%20디스패치%20테이블%20—%20switch%20대신%20테이블로%20분기하기.md)
+  * [[C] 함수 포인터와 디스패치 테이블 — switch 대신 테이블로 분기하기](개발%20%28CS%29/언어/C언어/[C]%20함수%20포인터와%20디스패치%20테이블%20—%20switch%20대신%20테이블로%20분기하기.md)
 * **구현 미션**:
   1. 핸들러 함수 포인터 타입 정의: `typedef int (*CommandHandler)(const Packet *pkt);`
   2. 명령 코드와 함수 포인터를 매핑한 디스패치 테이블 구조체 배열 작성:
@@ -273,9 +273,9 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 4-1. 바이너리 트랜잭션 저널 로거 & 파일 락(File Locking)
 * **파일 위치**: `stage4_persistence/journal_logger.c`
 * **연계 학습 노트**:
-  * [[CS] 01. 파일 I_O 구조, 콘솔 입출력 및 버퍼링](../파일입출력/[CS]%2001.%20파일%20I_O%20구조,%20콘솔%20입출력%20및%20버퍼링.md)
-  * [[CS] 02. 파일 락, 오픈 모드 주의사항 및 바이너리_텍스트 처리](../파일입출력/[CS]%2002.%20파일%20락,%20오픈%20모드%20주의사항%20및%20바이너리_텍스트%20처리.md)
-  * [[CS]03. fseek 파일 포인터 제어와 fopen_fclose 자원 관리](../파일입출력/[CS]03.%20fseek%20파일%20포인터%20제어와%20fopen_fclose%20자원%20관리.md)
+  * [[CS] 01. 파일 I_O 구조, 콘솔 입출력 및 버퍼링](개발%20%28CS%29/언어/C언어/파일입출력/[CS]%2001.%20파일%20I_O%20구조,%20콘솔%20입출력%20및%20버퍼링.md)
+  * [[CS] 02. 파일 락, 오픈 모드 주의사항 및 바이너리_텍스트 처리](개발%20%28CS%29/언어/C언어/파일입출력/[CS]%2002.%20파일%20락,%20오픈%20모드%20주의사항%20및%20바이너리_텍스트%20처리.md)
+  * [[CS]03. fseek 파일 포인터 제어와 fopen_fclose 자원 관리](개발%20%28CS%29/언어/C언어/파일입출력/[CS]03.%20fseek%20파일%20포인터%20제어와%20fopen_fclose%20자원%20관리.md)
 * **구현 미션**:
   1. 고정 크기 트랜잭션 레코드 구조체(`TxRecord`: 타임스탬프, 트랜잭션ID, 상태코드, 금액) 바이너리 기록.
   2. `fcntl()` 또는 `flock()`을 사용해 파일에 쓰기 락(`F_WRLCK`)을 획득한 후 `fwrite()` 및 `fflush()` 수행.
@@ -288,7 +288,7 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 4-2. 2038년 문제 대응 및 정적 분석(Coverity) 호환 타이머
 * **파일 위치**: `stage4_persistence/safe_timer.c`
 * **연계 학습 노트**:
-  * [[C] 64비트 time_t와 32비트 int 변환 — 2038년 문제와 Coverity 정적 분석 대응](../[C]%2064비트%20time_t와%2032비트%20int%20변환%20—%202038년%20문제와%20Coverity%20정적%20분석%20대응.md)
+  * [[C] 64비트 time_t와 32비트 int 변환 — 2038년 문제와 Coverity 정적 분석 대응](개발%20%28CS%29/언어/C언어/[C]%2064비트%20time_t와%2032비트%20int%20변환%20—%202038년%20문제와%20Coverity%20정적%20분석%20대응.md)
 * **구현 미션**:
   1. 64비트 `time_t` 값을 32비트 정수 시스템에 전달하거나 연산할 때 발생하는 Y2038 오버플로를 방지하는 모듈러 연산(`% INT_MAX`) 구현.
   2. Coverity High 등급 결함(정수 절삭 경고)을 방지하는 안전한 경과 시간(Elapsed Delta) 계산 함수 작성:
@@ -305,9 +305,9 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 5-1. `pthread` 인자 전달(`intptr_t`) & C11 Atomic 무락 통계 카운터
 * **파일 위치**: `stage5_concurrency/worker_sharding.c`
 * **연계 학습 노트**:
-  * [[C] pthread_create에 구조체 포인터 넘기기](../[C]%20pthread_create에%20구조체%20포인터%20넘기기%20—%20void%20포인터와%20이중포인터%20정리.md)
-  * [[C] 정수를 void 포인터 인자에 실어 보내기 — intptr_t 캐스팅 관용구](../[C]%20정수를%20void%20포인터%20인자에%20실어%20보내기%20—%20intptr_t%20캐스팅%20관용구.md)
-  * [[C] 락 없는 카운터 — GCC 원자적 연산 빌트인과 C11 atomic](../[C]%20락%20없는%20카운터%20—%20GCC%20원자적%20연산%20빌트인과%20C11%20atomic.md)
+  * [[C] pthread_create에 구조체 포인터 넘기기](개발%20%28CS%29/언어/C언어/[C]%20pthread_create에%20구조체%20포인터%20넘기기%20—%20void%20포인터와%20이중포인터%20정리.md)
+  * [[C] 정수를 void 포인터 인자에 실어 보내기 — intptr_t 캐스팅 관용구](개발%20%28CS%29/언어/C언어/[C]%20정수를%20void%20포인터%20인자에%20실어%20보내기%20—%20intptr_t%20캐스팅%20관용구.md)
+  * [[C] 락 없는 카운터 — GCC 원자적 연산 빌트인과 C11 atomic](개발%20%28CS%29/언어/C언어/[C]%20락%20없는%20카운터%20—%20GCC%20원자적%20연산%20빌트인과%20C11%20atomic.md)
 * **구현 미션**:
   1. 스레드 생성 시 `(void *)(intptr_t)i` 캐스팅으로 워커 인덱스를 전달하여 루프 변수 공유로 인한 Race Condition 차단.
   2. 글로벌 통계 변수(총 패킷 수, 실패 수)를 뮤텍스 없이 C11 `stdatomic.h`의 `atomic_fetch_add_explicit()`으로 원자적 업데이트.
@@ -319,7 +319,7 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 5-2. 비동기 요청 타임아웃 감시 (Check-in / Check-out 타이머)
 * **파일 위치**: `stage5_concurrency/timeout_watcher.c`
 * **연계 학습 노트**:
-  * [[C] 비동기 요청-응답의 타임아웃 감시 — Check-in과 Check-out 타이머 패턴](../[C]%20비동기%20요청-응답의%20타임아웃%20감시%20—%20Check-in과%20Check-out%20타이머%20패턴.md)
+  * [[C] 비동기 요청-응답의 타임아웃 감시 — Check-in과 Check-out 타이머 패턴](개발%20%28CS%29/언어/C언어/[C]%20비동기%20요청-응답의%20타임아웃%20감시%20—%20Check-in과%20Check-out%20타이머%20패턴.md)
 * **구현 미션**:
   1. 요청 슬롯 배열(`TimerSlot slots[MAX_SLOTS]`) 정의 (상태: EMPTY, PENDING, EXPIRED).
   2. `check_in(uint32_t req_id, uint32_t timeout_ms)`: 요청 등록.
@@ -333,7 +333,7 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 5-3. 세션 해시 샤딩 워커 큐 (Lock Contention 제거)
 * **파일 위치**: `stage5_concurrency/worker_sharding.c`
 * **연계 학습 노트**:
-  * [[C] 스레드별 전용 큐와 해시 샤딩 — 락 경합 없는 고성능 워커 패턴](../[C]%20스레드별%20전용%20큐와%20해시%20샤딩%20—%20락%20경합%20없는%20고성능%20워커%20패턴.md)
+  * [[C] 스레드별 전용 큐와 해시 샤딩 — 락 경합 없는 고성능 워커 패턴](개발%20%28CS%29/언어/C언어/[C]%20스레드별%20전용%20큐와%20해시%20샤딩%20—%20락%20경합%20없는%20고성능%20워커%20패턴.md)
 * **구현 미션**:
   1. N개의 워커 스레드마다 독립된 전용 큐(Stage 3의 Ring Buffer) 할당.
   2. 수신된 작업의 `session_id`를 해싱(`hash(session_id) % N`)하여 해당 워커의 전용 큐에만 인큐(Enqueue).
@@ -346,10 +346,10 @@ clang -Wall -Wextra -Werror -pedantic -std=c11 -g -fsanitize=address,undefined <
 ### Step 5-4. 소켓 통신 & I/O 멀티플렉싱 이벤트 서버 (`select` / `epoll`)
 * **파일 위치**: `stage5_concurrency/event_server.c`
 * **연계 학습 노트**:
-  * [[TCP_IP] Socket 통신 - 핵심 개념 및 특징 정리](../[TCP_IP]%20Socket%20통신%20-%20핵심%20개념%20및%20특징%20정리.md)
-  * [[C] select() — 여러 입력과 타임아웃 함께 기다리기](../[C]%20select()%20—%20여러%20입력과%20타임아웃%20함께%20기다리기.md)
-  * [[C] epoll — fd가 많아질 때의 대안](../[C]%20epoll%20—%20fd가%20많아질%20때의%20대안.md)
-  * [컴파일러: Mac 전용 GDB 컴파일_(LLDB, Clang)](../컴파일러/[Compile]%20Mac%20전용%20GDB%20컴파일_(LLDB,%20Clang).md)
+  * [[TCP_IP] Socket 통신 - 핵심 개념 및 특징 정리](개발%20%28CS%29/언어/C언어/[TCP_IP]%20Socket%20통신%20-%20핵심%20개념%20및%20특징%20정리.md)
+  * [[C] select() — 여러 입력과 타임아웃 함께 기다리기](개발%20%28CS%29/언어/C언어/[C]%20select%28%29%20—%20여러%20입력과%20타임아웃%20함께%20기다리기.md)
+  * [[C] epoll — fd가 많아질 때의 대안](개발%20%28CS%29/언어/C언어/[C]%20epoll%20—%20fd가%20많아질%20때의%20대안.md)
+  * [컴파일러: Mac 전용 GDB 컴파일_(LLDB, Clang)](개발%20%28CS%29/언어/C언어/컴파일러/[Compile]%20Mac%20전용%20GDB%20컴파일_%28LLDB,%20Clang%29.md)
 * **구현 미션**:
   1. POSIX 논블로킹(Non-blocking) TCP 소켓 서버 생성 (`socket()`, `bind()`, `listen()`).
   2. `select()` (또는 리눅스 `epoll` / macOS `kqueue`)를 사용하여 다중 클라이언트 동시 접속 처리.

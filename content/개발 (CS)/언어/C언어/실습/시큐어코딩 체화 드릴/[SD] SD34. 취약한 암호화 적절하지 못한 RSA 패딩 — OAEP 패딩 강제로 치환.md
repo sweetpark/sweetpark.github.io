@@ -1,0 +1,157 @@
+---
+title: "SD34. 취약한 암호화 적절하지 못한 RSA 패딩 — OAEP 패딩 강제로 치환"
+tags: 
+created: 2026-09-28
+modified: 2026-09-28
+---
+
+# SD34. 취약한 암호화: 적절하지 못한 RSA 패딩 — OAEP 패딩 강제로 치환
+
+> **원본 항목**: [Part 2-3. 암호화 계열 — 15. 취약한 암호화: 적절하지 못한 RSA 패딩](개발%20%28CS%29/언어/C언어/시큐어코딩가이드/Part%202.%20보안기능/[시큐어코딩]%202-3.%20암호화%20계열.md#15-취약한-암호화-적절하지-못한-rsa-패딩-cwe-325) `CWE-325`
+> **repo 폴더**: `sd34_rsapad/` (`make D=sd34_rsapad T=main`)
+> **목표 시간**: 1회차 8분 / 2회차 5분 / **3회차 3분**
+> Part 2-3에서 SD30과 함께 가장 짧은 드릴 — enum 값 하나만 걸러내면 된다. 짧다고 가볍게 보지 말고, "왜 이 하나가 그렇게 치명적인가"를 설명할 수 있어야 통과다.
+
+---
+
+## 0. 이 드릴로 체화할 것
+
+```diff
+- int is_safe_padding_bad(padding_t p) { (void)p; return 1; }        /* PAD_NONE도 허용 */
++ int is_safe_padding_good(padding_t p) { return p != PAD_NONE; }     /* 패딩 없는 RSA만 거부 */
+```
+
+RSA는 "알고리즘"이 아니라 "알고리즘 + 패딩"이 한 세트다. `NO_PADDING`은 사실상 암호화하지 않은 것과 같다.
+
+---
+
+## 1. 취약 시나리오 — 변형 A: RSA 패딩 모드 게이트
+
+> [!QUOTE] 요구사항서 (발췌)
+> RSA 암호화에 사용할 패딩 모드를 검증한다.
+> - 패딩 없음(NO_PADDING)은 절대 허용하면 안 된다.
+> - OAEP, PKCS1 패딩은 허용한다.
+
+### 공격 입력표
+
+| 패딩 모드 | Bad 결과 | 이유 |
+| :--- | :--- | :--- |
+| `PAD_OAEP` (정상) | 허용 | 안전한 패딩 |
+| `PAD_NONE` | **허용됨(취약)** | 교과서적 RSA는 결정적이라 같은 평문이 같은 암호문을 만들고, 선택 암호문 공격에 취약하다 |
+
+### 회차별 변형
+
+| 회차 | 변형 | 요구사항 |
+| :--- | :--- | :--- |
+| **A (1회차)** | RSA 암호화 패딩 게이트 | 위 내용 |
+| **B (2회차)** | **서명용 패딩 게이트** | 암호화가 아니라 서명(PSS vs PKCS1v1.5)용 패딩 검증으로 변형 |
+| **C (3회차)** | **패딩 모드별 최소 RSA 키 길이까지 결합** | SD30(키 길이)과 결합해, "OAEP + 2048비트 이상"처럼 두 조건을 함께 검증하는 함수로 확장 |
+
+---
+
+## 2. 제출물
+
+```text
+sd34_rsapad/src/padding_check.h
+sd34_rsapad/src/padding_check.c
+sd34_rsapad/test/test.c
+```
+
+### 시험 코드 — 이 형태를 고정한다
+
+```c
+#include <stdio.h>
+#include "padding_check.h"
+
+static int g_fail = 0;
+#define T_TRUE(cond, msg) \
+    do { if (!(cond)) { g_fail++; \
+        printf("  X %s:%d %s\n", __func__, __LINE__, msg); } } while (0)
+
+static void test_bad_is_vulnerable(void)
+{
+    T_TRUE(is_safe_padding_bad(PAD_NONE) == 1,
+        "Bad는 패딩 없는(NO_PADDING) RSA도 그대로 허용해야 한다(취약점 재현)");
+}
+
+static void test_good_blocks_no_padding(void)
+{
+    T_TRUE(is_safe_padding_good(PAD_NONE) == 0, "Good은 패딩 없는 RSA를 거부해야 한다");
+}
+
+static void test_good_allows_safe_padding(void)
+{
+    T_TRUE(is_safe_padding_good(PAD_OAEP) == 1, "Good은 OAEP 패딩을 허용해야 한다");
+    T_TRUE(is_safe_padding_good(PAD_PKCS1) == 1, "Good은 PKCS1 패딩도 허용해야 한다");
+}
+
+int main(void)
+{
+    test_bad_is_vulnerable();
+    test_good_blocks_no_padding();
+    test_good_allows_safe_padding();
+    printf(g_fail ? "FAIL %d\n" : "PASS\n", g_fail);
+    return g_fail ? 1 : 0;
+}
+```
+
+---
+
+## 3. 자가 채점표 (100점)
+
+| 항목 | 배점 | 체크 |
+| :--- | :--- | :--- |
+| `test_bad_is_vulnerable` 통과 | 25 | ☐ |
+| `test_good_blocks_no_padding` 통과 | 40 | ☐ |
+| `test_good_allows_safe_padding` 통과 | 25 | ☐ |
+| "왜 NO_PADDING이 위험한가"를 한 문장으로 설명할 수 있다 | 10 | ☐ |
+
+---
+
+## 4. 자주 하는 실수
+
+| 실수 | 왜 문제인가 |
+| :--- | :--- |
+| `p == PAD_OAEP` 로만 허용(화이트리스트가 너무 좁음) | PKCS1도 안전한 패딩이다. "안전하지 않은 것만 콕 집어 거부"가 이 항목의 요구사항이다 — 안전한 옵션이 늘어나도 코드를 안 고쳐도 되게 설계한다 |
+| enum 대신 문자열로 패딩을 표현해서 오타에 취약 | `padding_t` 처럼 enum을 쓰면 컴파일러가 오타를 잡아준다. 이런 유한한 선택지는 문자열보다 enum이 안전하다 |
+
+---
+
+## 5. 모범답안 (변형 A)
+
+> [!success]- 다 치고 나서 열 것 — `padding_check.h` / `padding_check.c`
+> ```c
+> #ifndef PADDING_CHECK_H
+> #define PADDING_CHECK_H
+> typedef enum { PAD_NONE, PAD_OAEP, PAD_PKCS1 } padding_t;
+> int is_safe_padding_bad(padding_t p);
+> int is_safe_padding_good(padding_t p);
+> #endif
+> ```
+> ```c
+> #include "padding_check.h"
+>
+> int is_safe_padding_bad(padding_t p) { (void)p; return 1; }
+> int is_safe_padding_good(padding_t p) { return p != PAD_NONE; }
+> ```
+>
+> **눈여겨볼 점**: `is_safe_padding_good` 은 "안전한 것 목록"이 아니라 **"위험한 것 하나"** 만 걸러낸다. 안전한 패딩 옵션이 표준에 추가되어도(예: 미래의 새 패딩 방식) 이 코드는 고칠 필요가 없다 — 위험 요소가 단 하나뿐이라는 걸 알 때는 화이트리스트보다 이 방식이 더 유지보수하기 쉽다.
+
+---
+
+## 6. 회차 기록표
+
+| 회차 | 날짜 | 변형 | 걸린 시간 | 점수 | 막힌 지점 한 줄 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 |  | A (암호화 패딩) |  |  |  |
+| 2 |  | B (서명 패딩) |  |  |  |
+| 3 |  | C (키 길이 결합) |  |  |  |
+| 점검 (D+14) |  | 랜덤 |  |  |  |
+
+---
+
+## 관련 노트
+
+- [시큐어코딩 체화 드릴 목록](개발%20%28CS%29/언어/C언어/실습/시큐어코딩%20체화%20드릴/README.md)
+- [이전: SD33. 솔트 없는 일방향 해쉬](개발%20%28CS%29/언어/C언어/실습/시큐어코딩%20체화%20드릴/[SD]%20SD33.%20솔트%20없이%20일방향%20해쉬%20함수%20사용%20—%20사용자별%20난수%20솔트로%20치환.md)
+- [다음: SD35. 하드코드된 솔트](개발%20%28CS%29/언어/C언어/실습/시큐어코딩%20체화%20드릴/[SD]%20SD35.%20취약한%20암호화%20해쉬함수%20하드코드된%20솔트%20—%20호출마다%20새%20솔트로%20치환.md)

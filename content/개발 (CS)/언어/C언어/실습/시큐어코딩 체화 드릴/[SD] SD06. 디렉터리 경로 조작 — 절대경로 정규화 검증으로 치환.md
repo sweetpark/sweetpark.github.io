@@ -1,0 +1,255 @@
+---
+title: "SD06. 디렉터리 경로 조작 — 절대경로 정규화 검증으로 치환"
+tags: 
+created: 2026-09-28
+modified: 2026-09-28
+---
+
+# SD06. 디렉터리 경로 조작 — 절대경로 정규화 검증으로 치환
+
+> **원본 항목**: [Part 1-1. 삽입 계열 — 6. 디렉터리 경로 조작](개발%20%28CS%29/언어/C언어/시큐어코딩가이드/Part%201.%20입력데이터%20검증%20및%20표현/[시큐어코딩]%201-1.%20삽입%28Injection%29%20계열.md#6-디렉터리-경로-조작-cwe-222336) `CWE-22/23/36`
+> **repo 폴더**: `sd06_pathtraversal/` (`make D=sd06_pathtraversal T=main`)
+> **목표 시간**: 1회차 20분 / 2회차 12분 / **3회차 8분**
+> 이 드릴은 mock이 아니라 **실제 파일시스템**(임시 디렉토리)에서 진짜로 sandbox 밖 파일을 읽어낸다 — 여기 계열 중 가장 실감나는 재현이다.
+
+---
+
+## 0. 이 드릴로 체화할 것
+
+```diff
+- snprintf(out, out_size, "%s/%s", sandbox_root, rName);   /* 문자열 결합만, 정규화 없음 */
++ snprintf(joined, sizeof(joined), "%s/%s", sandbox_root, rName);
++ realpath(sandbox_root, real_sandbox);
++ realpath(joined, real_target);                            /* 절대경로로 정규화 */
++ if (접두어 비교 실패) return -1;                            /* sandbox 밖이면 거부 */
+```
+
+경로는 "문자열 조합 후"가 아니라 **"정규화(절대경로 변환) 후"** 검사한다. `..` 문자열만 걸러내는 방식으로는 인코딩 우회를 못 막는다.
+
+---
+
+## 1. 취약 시나리오 — 변형 A: 리포트 파일 조회
+
+> [!QUOTE] 요구사항서 (발췌)
+> `sandbox_root` 디렉터리 안의 파일만 조회를 허용한다.
+> - 파일명(`rName`)은 사용자가 지정한다.
+> - `sandbox_root` 밖의 파일에는 어떤 경우에도 접근할 수 없어야 한다.
+> - 존재하지 않는 파일 요청은 실패로 처리한다.
+
+### 신뢰 경계
+
+| 값 | 출처 | 검증 없이 흘러가는 곳 |
+| :--- | :--- | :--- |
+| `rName` | 외부(요청 파라미터) | 파일 열기 경로 |
+
+### 공격 입력표
+
+| 입력(`rName`) | Bad 결과 | 이유 |
+| :--- | :--- | :--- |
+| `report1.txt` (정상) | sandbox 안의 파일 내용 | 정상 동작 |
+| `../secret.txt` | **sandbox 밖 `secret.txt` 의 실제 내용을 읽어낸다** | 문자열을 그대로 이어붙여 상위 디렉터리로 빠져나간다 |
+
+### 회차별 변형
+
+| 회차 | 변형 | 요구사항 |
+| :--- | :--- | :--- |
+| **A (1회차)** | 리포트 파일 조회 | 위 내용 |
+| **B (2회차)** | **업로드 파일 삭제** | `unlink()` 로 sandbox 안의 업로드 파일을 지우는 기능. "삭제"라서 Bad의 결과가 훨씬 치명적임을 체감 |
+| **C (3회차)** | **심볼릭 링크가 섞인 sandbox** | sandbox 안에 sandbox 밖을 가리키는 심볼릭 링크가 있을 때도 Good이 막는지 확인(`realpath` 는 심볼릭 링크까지 풀어서 정규화하므로 원래 막혀야 한다 — 직접 링크를 만들어 검증) |
+
+---
+
+## 2. 제출물
+
+```text
+sd06_pathtraversal/src/path_guard.h
+sd06_pathtraversal/src/path_guard.c
+sd06_pathtraversal/test/test.c
+```
+
+> [!WARNING] `_DEFAULT_SOURCE` 매크로를 빼먹지 말 것
+> `realpath()` 와 `mkdtemp()` 는 POSIX 확장 함수라, repo Makefile의 `-std=c11 -pedantic` 아래에서는 **파일 맨 위, 첫 `#include` 보다 먼저** `#define _DEFAULT_SOURCE` 를 적어야 컴파일된다. 이 매크로가 없으면 "implicit function declaration" 에러가 난다.
+
+### 시험 코드 — 이 형태를 고정한다
+
+```c
+#define _DEFAULT_SOURCE
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <limits.h>
+#include "path_guard.h"
+
+static int g_fail = 0;
+#define T_TRUE(cond, msg) \
+    do { if (!(cond)) { g_fail++; \
+        printf("  X %s:%d %s\n", __func__, __LINE__, msg); } } while (0)
+
+static void write_file(const char *path, const char *content)
+{
+    FILE *f = fopen(path, "w");
+    if (f) { fputs(content, f); fclose(f); }
+}
+
+static int read_file(const char *path, char *buf, size_t n)
+{
+    FILE *f = fopen(path, "r");
+    size_t r;
+    if (!f) return -1;
+    r = fread(buf, 1, n - 1, f);
+    buf[r] = '\0';
+    fclose(f);
+    return 0;
+}
+
+int main(void)
+{
+    char base[]    = "/tmp/sd06_XXXXXX";
+    char sandbox[PATH_MAX], secret[PATH_MAX], report1[PATH_MAX];
+    char bad_path[PATH_MAX], good_path[PATH_MAX];
+    char content[128];
+
+    if (mkdtemp(base) == NULL) { perror("mkdtemp"); return 1; }
+    snprintf(sandbox, sizeof(sandbox), "%s/sandbox", base);
+    snprintf(secret,  sizeof(secret),  "%s/secret.txt", base);       /* sandbox 바깥 */
+    snprintf(report1, sizeof(report1), "%s/report1.txt", sandbox);   /* sandbox 안 */
+
+    mkdir(sandbox, 0700);
+    write_file(secret,  "TOP-SECRET");
+    write_file(report1, "public report");
+
+    if (resolve_report_path_bad(sandbox, "../secret.txt", bad_path, sizeof(bad_path)) != NULL) {
+        read_file(bad_path, content, sizeof(content));
+        T_TRUE(strcmp(content, "TOP-SECRET") == 0,
+            "Bad는 ../secret.txt 로 sandbox 밖 파일을 실제로 읽어내야 한다(취약점 재현)");
+    } else {
+        g_fail++; printf("  X Bad 경로 조합 자체가 실패함(테스트 설계 오류)\n");
+    }
+
+    if (resolve_report_path_bad(sandbox, "report1.txt", bad_path, sizeof(bad_path)) != NULL) {
+        read_file(bad_path, content, sizeof(content));
+        T_TRUE(strcmp(content, "public report") == 0, "Bad도 정상 파일은 읽어야 한다");
+    }
+
+    T_TRUE(resolve_report_path_good(sandbox, "../secret.txt", good_path, sizeof(good_path)) == -1,
+        "Good은 sandbox 밖 경로를 거부해야 한다");
+
+    if (resolve_report_path_good(sandbox, "report1.txt", good_path, sizeof(good_path)) == 0) {
+        read_file(good_path, content, sizeof(content));
+        T_TRUE(strcmp(content, "public report") == 0, "Good도 정상 파일은 읽어야 한다");
+    } else {
+        g_fail++; printf("  X Good이 정상 파일명까지 막아버림(과잉 차단)\n");
+    }
+
+    remove(secret); remove(report1); rmdir(sandbox); rmdir(base);
+
+    printf(g_fail ? "FAIL %d\n" : "PASS\n", g_fail);
+    return g_fail ? 1 : 0;
+}
+```
+
+---
+
+## 3. 자가 채점표 (100점)
+
+| 항목 | 배점 | 체크 |
+| :--- | :--- | :--- |
+| Bad가 실제로 secret.txt 내용을 읽어낸다(취약점 재현) | 20 | ☐ |
+| Good이 `../secret.txt` 를 거부한다 | 25 | ☐ |
+| Good이 정상 파일(`report1.txt`)은 그대로 읽는다(과잉 차단 없음) | 20 | ☐ |
+| `realpath()` 로 **양쪽 다**(sandbox, 목표 경로) 정규화한다 | 15 | ☐ |
+| 접두어 비교 뒤 **다음 문자가 `/` 또는 `\0`인지**까지 확인한다 | 15 | ☐ |
+| 목표 시간 내 | 5 | ☐ |
+
+---
+
+## 4. 자주 하는 실수
+
+| 실수 | 왜 문제인가 |
+| :--- | :--- |
+| `..` 문자열만 `strstr` 로 검사하고 넘어감 | `%2e%2e%2f`(URL 인코딩)나 `....//` 같은 변형에 뚫린다. 반드시 **정규화 후** 비교해야 한다 |
+| 접두어 비교만 하고 다음 문자를 안 봄 | `/tmp/sandbox` 와 `/tmp/sandbox2` 는 `strncmp` 접두어 비교로는 구분이 안 된다 — `sandbox2` 도 `sandbox` 로 시작하기 때문이다 |
+| `realpath()` 반환값(`NULL`)을 확인 안 함 | 대상 파일이 없으면 `realpath` 가 실패한다. 이 실패를 "sandbox 안"으로 오판하면 안 된다 |
+| `_DEFAULT_SOURCE` 를 빼먹고 빌드 에러로 몇 분을 허비 | 이 프로젝트 Makefile은 `-std=c11 -pedantic` 이라 POSIX 확장 함수가 기본적으로 숨어 있다 |
+
+---
+
+## 5. 모범답안 (변형 A)
+
+> [!success]- 다 치고 나서 열 것 — `path_guard.h` / `path_guard.c`
+> **헤더 (`path_guard.h`)**
+> ```c
+> #ifndef PATH_GUARD_H
+> #define PATH_GUARD_H
+> #include <stddef.h>
+> char *resolve_report_path_bad(const char *sandbox_root, const char *rName,
+>                                char *out, size_t out_size);
+> int resolve_report_path_good(const char *sandbox_root, const char *rName,
+>                               char *out, size_t out_size);
+> #endif
+> ```
+> **구현 (`path_guard.c`)**
+> ```c
+> #define _DEFAULT_SOURCE
+> #include <stdio.h>
+> #include <string.h>
+> #include <stdlib.h>
+> #include <limits.h>
+> #include "path_guard.h"
+>
+> char *resolve_report_path_bad(const char *sandbox_root, const char *rName,
+>                                char *out, size_t out_size)
+> {
+>     if (strlen(sandbox_root) + 1 + strlen(rName) + 1 > out_size) return NULL;
+>     snprintf(out, out_size, "%s/%s", sandbox_root, rName);
+>     return out;
+> }
+>
+> int resolve_report_path_good(const char *sandbox_root, const char *rName,
+>                               char *out, size_t out_size)
+> {
+>     char joined[PATH_MAX];
+>     char real_sandbox[PATH_MAX];
+>     char real_target[PATH_MAX];
+>     size_t sandbox_len;
+>
+>     if (snprintf(joined, sizeof(joined), "%s/%s", sandbox_root, rName)
+>         >= (int)sizeof(joined)) return -1;
+>
+>     if (realpath(sandbox_root, real_sandbox) == NULL) return -1;
+>     if (realpath(joined, real_target) == NULL) return -1;
+>
+>     sandbox_len = strlen(real_sandbox);
+>     if (strncmp(real_target, real_sandbox, sandbox_len) != 0 ||
+>         (real_target[sandbox_len] != '/' && real_target[sandbox_len] != '\0')) {
+>         return -1;
+>     }
+>
+>     if (out_size <= strlen(real_target)) return -1;
+>     snprintf(out, out_size, "%s", real_target);
+>     return 0;
+> }
+> ```
+>
+> **눈여겨볼 점**: `real_target[sandbox_len] != '/' && ... != '\0'` 이 한 줄이 이 드릴의 전부다. 정규화만 하고 이 검사를 빼먹으면 `/tmp/xxx/sandbox-evil` 같은 형제 디렉터리가 `sandbox` 접두어를 통과해버린다.
+
+---
+
+## 6. 회차 기록표
+
+| 회차 | 날짜 | 변형 | 걸린 시간 | 점수 | 막힌 지점 한 줄 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 |  | A (조회) |  |  |  |
+| 2 |  | B (삭제) |  |  |  |
+| 3 |  | C (심볼릭 링크) |  |  |  |
+| 점검 (D+14) |  | 랜덤 |  |  |  |
+
+---
+
+## 관련 노트
+
+- [시큐어코딩 체화 드릴 목록](개발%20%28CS%29/언어/C언어/실습/시큐어코딩%20체화%20드릴/README.md)
+- [이전: SD05. LDAP 삽입](개발%20%28CS%29/언어/C언어/실습/시큐어코딩%20체화%20드릴/[SD]%20SD05.%20LDAP%20삽입%20—%20영숫자%20화이트리스트로%20치환.md)
+- [다음: SD07. LDAP 처리](개발%20%28CS%29/언어/C언어/실습/시큐어코딩%20체화%20드릴/[SD]%20SD07.%20LDAP%20처리%20—%20베이스%20DN%20상수%20고정으로%20치환.md)

@@ -1,0 +1,207 @@
+---
+title: "SD14. 범위 초과해서 읽기 — 길이 동반 전달로 치환"
+tags: 
+created: 2026-09-28
+modified: 2026-09-28
+---
+
+# SD14. 범위 초과해서 읽기 — 길이 동반 전달로 치환
+
+> **원본 항목**: [Part 1-3. 메모리 경계 계열 — 14. 범위 초과해서 읽기](개발%20%28CS%29/언어/C언어/시큐어코딩가이드/Part%201.%20입력데이터%20검증%20및%20표현/[시큐어코딩]%201-3.%20메모리%20경계%20계열.md#14-범위-초과해서-읽기-cwe-125) `CWE-125`
+> **repo 폴더**: `sd14_readoverflow/` (`make D=sd14_readoverflow T=main`)
+> **목표 시간**: 1회차 12분 / 2회차 7분 / **3회차 5분**
+> SD11~13은 전부 "쓰기(write)" 오버플로우였다. 이 항목은 **"읽기(read)"** 오버플로우다 — 겉보기에는 크래시하지 않고 조용히 넘어갈 수도 있어서 더 위험하다는 걸 체감한다.
+
+---
+
+## 0. 이 드릴로 체화할 것
+
+```diff
+- return arr[idx];                                    /* 상한 검사 없음 */
++ if (idx < 0 || (size_t)idx >= size) return -1;       /* 배열과 "길이"를 항상 같이 받는다 */
++ *out = arr[idx];
+```
+
+배열 포인터를 넘길 때는 반드시 길이도 함께 넘긴다. "포인터 단독 전달"이 out-of-bounds read의 근본 원인이다.
+
+---
+
+## 1. 취약 시나리오 — 변형 A: 배열 인덱스 조회
+
+> [!QUOTE] 요구사항서 (발췌)
+> 정수 배열과 인덱스를 받아 해당 위치의 값을 반환한다.
+> - 인덱스가 배열 크기를 벗어나면 안전하게 실패 처리해야 한다.
+
+### 공격 입력표
+
+| `idx` (배열 크기 3) | Bad 결과 | 이유 |
+| :--- | :--- | :--- |
+| 2 (정상) | 정상 값 반환 | 유효 인덱스(0~2) |
+| 5 (범위 초과) | **힙 버퍼 오버리드로 크래시** | 배열 뒤 힙 메모리를 읽는다 — 다른 데이터·포인터 값이 새어나갈 수 있다 |
+
+### 회차별 변형
+
+| 회차 | 변형 | 요구사항 |
+| :--- | :--- | :--- |
+| **A (1회차)** | 정수 배열 조회 | 위 내용 |
+| **B (2회차)** | **문자열 배열(`char*[]`) 조회** | 범위를 넘으면 포인터 값 자체가 유출될 수 있다는 점(ASLR 무력화로 이어지는 이유)을 노트에 적어본다 |
+| **C (3회차)** | **2차원 배열(행렬) 조회** | `data[row][col]` 형태에서 `row`, `col` **양쪽 모두** 범위를 검사해야 하는 이유를 확인 |
+
+---
+
+## 2. 제출물
+
+```text
+sd14_readoverflow/src/arr_read.h
+sd14_readoverflow/src/arr_read.c
+sd14_readoverflow/test/test.c
+```
+
+### 시험 코드 — 이 형태를 고정한다
+
+```c
+#define _DEFAULT_SOURCE
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <unistd.h>
+#include "arr_read.h"
+
+static int g_fail = 0;
+#define T_TRUE(cond, msg) \
+    do { if (!(cond)) { g_fail++; \
+        printf("  X %s:%d %s\n", __func__, __LINE__, msg); } } while (0)
+
+static int expect_crash(void (*fn)(void))
+{
+    pid_t pid = fork();
+    if (pid == 0) { fn(); _exit(0); }
+    int status = 0;
+    waitpid(pid, &status, 0);
+    if (WIFSIGNALED(status)) return 1;
+    if (WIFEXITED(status) && WEXITSTATUS(status) != 0) return 1;
+    return 0;
+}
+
+static int *g_arr;
+static int g_idx;
+static void call_bad(void) { (void)read_at_index_bad(g_arr, g_idx); }
+
+static void test_bad_is_vulnerable(void)
+{
+    int *arr = malloc(3 * sizeof(int));
+    arr[0] = 1; arr[1] = 2; arr[2] = 3;
+    g_arr = arr; g_idx = 5;
+    T_TRUE(expect_crash(call_bad) == 1,
+        "Bad는 배열 경계를 넘는 인덱스를 읽으면 크래시해야 한다(취약점 재현)");
+    free(arr);
+}
+
+static void test_bad_normal(void)
+{
+    int *arr = malloc(3 * sizeof(int));
+    arr[0] = 1; arr[1] = 2; arr[2] = 3;
+    g_arr = arr; g_idx = 2;
+    T_TRUE(expect_crash(call_bad) == 0, "유효 인덱스는 크래시 없이 정상 동작해야 한다");
+    free(arr);
+}
+
+static void test_good_blocks_overread(void)
+{
+    int arr[3] = {1, 2, 3};
+    int out;
+    T_TRUE(read_at_index_good(arr, 3, 5, &out) == -1, "Good은 범위 밖 인덱스를 거부해야 한다");
+}
+
+static void test_good_normal(void)
+{
+    int arr[3] = {1, 2, 3};
+    int out;
+    T_TRUE(read_at_index_good(arr, 3, 2, &out) == 0, "정상 인덱스는 성공해야 한다");
+    T_TRUE(out == 3, "읽은 값이 정확해야 한다");
+}
+
+int main(void)
+{
+    test_bad_is_vulnerable();
+    test_bad_normal();
+    test_good_blocks_overread();
+    test_good_normal();
+    printf(g_fail ? "FAIL %d\n" : "PASS\n", g_fail);
+    return g_fail ? 1 : 0;
+}
+```
+
+---
+
+## 3. 자가 채점표 (100점)
+
+| 항목 | 배점 | 체크 |
+| :--- | :--- | :--- |
+| `test_bad_is_vulnerable` 통과 | 25 | ☐ |
+| `test_good_blocks_overread` / `test_good_normal` 통과 | 30 | ☐ |
+| `read_at_index_good` 시그니처에 **배열 크기(`size`) 인자**가 있다 | 25 | ☐ |
+| 반환값(`out`)이 아니라 **함수 리턴값**으로 성공/실패를 알린다(값과 에러코드를 분리) | 15 | ☐ |
+| 목표 시간 내 | 5 | ☐ |
+
+---
+
+## 4. 자주 하는 실수
+
+| 실수 | 왜 문제인가 |
+| :--- | :--- |
+| "읽기"라서 검사를 생략해도 된다고 생각함 | 읽기 오버플로우는 크래시가 없을 때도 있다(매핑된 페이지라면). 대신 세션 토큰·키 같은 민감정보가 반환값에 실려 유출된다 — 쓰기보다 더 늦게 발견된다 |
+| 함수가 값과 에러를 같은 채널로 반환(`int read_at_index(...)` 하나로 값과 -1 에러를 겸용) | 정상 값이 우연히 `-1` 일 때 구분이 안 된다. 이 드릴처럼 리턴값은 상태 전용, 실제 값은 출력 인자(`*out`)로 분리하는 습관을 들인다 |
+| `size` 를 `int` 로 받아서 음수 크기가 들어올 가능성을 열어둠 | 배열 크기는 개념적으로 음수일 수 없다. `size_t` 로 받아 타입 자체가 음수를 표현 못 하게 한다 |
+
+---
+
+## 5. 모범답안 (변형 A)
+
+> [!success]- 다 치고 나서 열 것 — `arr_read.h` / `arr_read.c`
+> **헤더 (`arr_read.h`)**
+> ```c
+> #ifndef ARR_READ_H
+> #define ARR_READ_H
+> #include <stddef.h>
+> int read_at_index_bad(const int *arr, int idx);
+> int read_at_index_good(const int *arr, size_t size, int idx, int *out);
+> #endif
+> ```
+> **구현 (`arr_read.c`)**
+> ```c
+> #include "arr_read.h"
+>
+> int read_at_index_bad(const int *arr, int idx)
+> {
+>     return arr[idx];
+> }
+>
+> int read_at_index_good(const int *arr, size_t size, int idx, int *out)
+> {
+>     if (idx < 0 || (size_t)idx >= size) return -1;
+>     *out = arr[idx];
+>     return 0;
+> }
+> ```
+>
+> **눈여겨볼 점**: `read_at_index_bad` 는 인자가 2개, `read_at_index_good` 은 4개다. 늘어난 두 개(`size`, `int *out`)가 이 항목이 요구하는 방어 그 자체다 — **길이를 동반**하고, **값과 상태를 분리**한다.
+
+---
+
+## 6. 회차 기록표
+
+| 회차 | 날짜 | 변형 | 걸린 시간 | 점수 | 막힌 지점 한 줄 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 |  | A (정수 배열) |  |  |  |
+| 2 |  | B (문자열 배열) |  |  |  |
+| 3 |  | C (2차원 배열) |  |  |  |
+| 점검 (D+14) |  | 랜덤 |  |  |  |
+
+---
+
+## 관련 노트
+
+- [시큐어코딩 체화 드릴 목록](개발%20%28CS%29/언어/C언어/실습/시큐어코딩%20체화%20드릴/README.md)
+- [이전: SD13. 버퍼 시작 지점 이전에 쓰기](개발%20%28CS%29/언어/C언어/실습/시큐어코딩%20체화%20드릴/[SD]%20SD13.%20버퍼%20시작%20지점%20이전에%20쓰기%20—%20하한%20검사로%20치환.md)
+- [다음: SD15. 검사되지 않은 배열 인덱싱](개발%20%28CS%29/언어/C언어/실습/시큐어코딩%20체화%20드릴/[SD]%20SD15.%20검사되지%20않은%20배열%20인덱싱%20—%20하한·상한%20동시%20검사로%20치환.md)
