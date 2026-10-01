@@ -96,4 +96,4 @@ public class ActiveStepChain<T> implements StepChain<T> {
 
 ## 관련 문서
 
-- [(Design Pattern) 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선]([Design%20Pattern]%20실무%20프로젝트%20및%20오픈소스로%20체득하는%20GoF%20핵심%20디자인%20패턴%2010선%20%28Proxy,%20Decorator,%20Strategy,%20Chain,%20Template,%20SPI,%20Visitor,%20Facade%29.md) — 3.2절에서 이 StepChain 구조를 책임 연쇄 패턴(Chain of Responsibility)의 실무 적용 사례로 다룸
+- [(Design Pattern) 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선](개발%20실무/아키텍처·설계/[Design%20Pattern]%20실무%20프로젝트%20및%20오픈소스로%20체득하는%20GoF%20핵심%20디자인%20패턴%2010선%20%28Proxy,%20Decorator,%20Strategy,%20Chain,%20Template,%20SPI,%20Visitor,%20Facade%29.md) — 3.2절에서 이 StepChain 구조를 책임 연쇄 패턴(Chain of Responsibility)의 실무 적용 사례로 다룸

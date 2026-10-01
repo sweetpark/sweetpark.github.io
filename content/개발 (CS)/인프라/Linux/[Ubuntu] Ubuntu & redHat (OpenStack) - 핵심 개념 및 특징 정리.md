@@ -119,4 +119,4 @@ FORCE=yes ./stack.sh
 ## 🔗 참고
 - 위 "참고자료" 절 참조.
 - `ADMIN_PASSWORD=password` / `ADMIN_PASSWORD=secret`는 DevStack 공식 예제에서 흔히 쓰이는 튜토리얼용 예시 값으로, 실제 운영 자격증명이 아님.
-- 개념 요약: [(Ubuntu) devstack (OpenStack) - 핵심 개념 및 특징 정리]([Ubuntu]%20devstack%20%28OpenStack%29%20-%20핵심%20개념%20및%20특징%20정리.md)
+- 개념 요약: [(Ubuntu) devstack (OpenStack) - 핵심 개념 및 특징 정리](개발%20%28CS%29/인프라/Linux/[Ubuntu]%20devstack%20%28OpenStack%29%20-%20핵심%20개념%20및%20특징%20정리.md)

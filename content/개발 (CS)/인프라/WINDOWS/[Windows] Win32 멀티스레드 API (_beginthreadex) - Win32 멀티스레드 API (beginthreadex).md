@@ -8,7 +8,7 @@ modified: 2026-09-05
 
 > [!NOTE]
 > Windows 환경에서 C로 멀티스레드를 구현할 때 쓰는 `_beginthreadex`와 관련 Win32 자료형 정리. "PortScan" 미니프로젝트에서 추출.
-> 관련 노트(POSIX 계열): [(Windows) pthread 멀티스레드 API 레퍼런스 - 핵심 개념 및 특징 정리](../../네트워크/[Windows]%20pthread%20멀티스레드%20API%20레퍼런스%20-%20핵심%20개념%20및%20특징%20정리.md)
+> 관련 노트(POSIX 계열): [(Windows) pthread 멀티스레드 API 레퍼런스 - 핵심 개념 및 특징 정리](개발%20%28CS%29/네트워크/[Windows]%20pthread%20멀티스레드%20API%20레퍼런스%20-%20핵심%20개념%20및%20특징%20정리.md)
 
 ## ⚙️ Win32 자료형 정리
 

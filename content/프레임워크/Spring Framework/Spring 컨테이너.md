@@ -69,5 +69,5 @@ public static void main(String []args){
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) 싱글톤 컨테이너](싱글톤%20컨테이너.md) — Spring 컨테이너가 빈을 싱글톤으로 관리하면서 발생하는 문제와 해결책을 다루는 후속 노트
-- [(학습/프레임워크/Spring Framework) Spring Bean (+ Bean Factory)](Spring%20Bean%20%28+%20Bean%20Factory%29.md) — 이 노트에서 다루는 ApplicationContext의 상위 인터페이스인 BeanFactory와 BeanDefinition 메타데이터를 다루는 노트
+- [(학습/프레임워크/Spring Framework) 싱글톤 컨테이너](프레임워크/Spring%20Framework/싱글톤%20컨테이너.md) — Spring 컨테이너가 빈을 싱글톤으로 관리하면서 발생하는 문제와 해결책을 다루는 후속 노트
+- [(학습/프레임워크/Spring Framework) Spring Bean (+ Bean Factory)](프레임워크/Spring%20Framework/Spring%20Bean%20%28+%20Bean%20Factory%29.md) — 이 노트에서 다루는 ApplicationContext의 상위 인터페이스인 BeanFactory와 BeanDefinition 메타데이터를 다루는 노트

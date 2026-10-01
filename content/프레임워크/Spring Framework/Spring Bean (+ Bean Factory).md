@@ -104,5 +104,5 @@ void beanDefenition() {
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) Spring 컨테이너](Spring%20컨테이너.md) — BeanFactory를 구현하는 AnnotationConfigApplicationContext 등 실제 컨테이너 종류를 다루는 노트
-- [(학습/프레임워크/Spring Framework) JAVA 정리]([Java]%20JAVA%20정리%20-%20핵심%20개념%20및%20특징%20정리.md) — "DI의 본질(구성과 사용의 분리)"을 순수 자바 코드로 직접 구현해보며 BeanFactory가 자동화하는 조립 과정을 이해하는 노트
+- [(학습/프레임워크/Spring Framework) Spring 컨테이너](프레임워크/Spring%20Framework/Spring%20컨테이너.md) — BeanFactory를 구현하는 AnnotationConfigApplicationContext 등 실제 컨테이너 종류를 다루는 노트
+- [(학습/프레임워크/Spring Framework) JAVA 정리](프레임워크/Spring%20Framework/[Java]%20JAVA%20정리%20-%20핵심%20개념%20및%20특징%20정리.md) — "DI의 본질(구성과 사용의 분리)"을 순수 자바 코드로 직접 구현해보며 BeanFactory가 자동화하는 조립 과정을 이해하는 노트

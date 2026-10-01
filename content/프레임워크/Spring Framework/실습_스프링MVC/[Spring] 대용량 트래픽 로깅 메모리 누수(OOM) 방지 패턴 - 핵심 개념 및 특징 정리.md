@@ -8,7 +8,7 @@ modified: 2026-09-05
 
 > [!NOTE]
 > Servlet/Netty/Batch에 공통 적용되는 로깅 프레임워크에서 대용량 트래픽·파일 업로드·배치 대량 처리 시 발생할 수 있는 힙 메모리 폭발(OOM) 위험을 점검하고, 스트리밍/지연 평가 방식으로 리팩토링한 패턴. "Logging (최소 APM 구현)" 미니프로젝트에서 추출.
-> 관련 노트: [(MyBatis) Log 고도화 작업 - 핵심 개념 및 특징 정리](../../../개발%20%28CS%29/인프라/모니터링·네트워크/[MyBatis]%20Log%20고도화%20작업%20-%20핵심%20개념%20및%20특징%20정리.md)의 "대용량 파일 다운로드 시 ContentCachingResponseWrapper로 인한 OOM" 트러블슈팅 — 실무에서 다룬 유사 이슈이지만 이쪽은 **응답(Response)** 다운로드 시나리오이고, 이 노트는 **요청(Request) 대용량 업로드 + 응답 본문 파싱 + Batch ThreadLocal 누적** 3가지 별개 이슈를 다룬다.
+> 관련 노트: [(MyBatis) Log 고도화 작업 - 핵심 개념 및 특징 정리](개발%20%28CS%29/인프라/모니터링·네트워크/[MyBatis]%20Log%20고도화%20작업%20-%20핵심%20개념%20및%20특징%20정리.md)의 "대용량 파일 다운로드 시 ContentCachingResponseWrapper로 인한 OOM" 트러블슈팅 — 실무에서 다룬 유사 이슈이지만 이쪽은 **응답(Response)** 다운로드 시나리오이고, 이 노트는 **요청(Request) 대용량 업로드 + 응답 본문 파싱 + Batch ThreadLocal 누적** 3가지 별개 이슈를 다룬다.
 
 > [!NOTE] 실행 환경
 > 버전 명시 없음 — `ContentCachingRequestWrapper`, Jackson Streaming API 등 표준 API만 사용되어 특정 Spring/Jackson 버전은 확정하기 어렵다.
@@ -50,4 +50,4 @@ Servlet, Netty, Batch 등 실행 환경에 독립적인 통합 로깅 환경(Fac
 
 ## 관련 문서
 
-- [(Spring Batch) 멀티스레드 로깅 - 핵심 개념 및 특징 정리]([Spring%20Batch]%20멀티스레드%20로깅%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 "Logging (최소 APM 구현)" 미니프로젝트에서 추출된 자매 노트(TaskDecorator·재진입 방지·Marker 필터 기법)
+- [(Spring Batch) 멀티스레드 로깅 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/[Spring%20Batch]%20멀티스레드%20로깅%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 "Logging (최소 APM 구현)" 미니프로젝트에서 추출된 자매 노트(TaskDecorator·재진입 방지·Marker 필터 기법)

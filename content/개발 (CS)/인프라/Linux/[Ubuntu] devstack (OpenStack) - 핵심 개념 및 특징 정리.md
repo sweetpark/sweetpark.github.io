@@ -17,4 +17,4 @@ modified: 2026-09-05
 ## 🔗 참고
 - [오픈스택 연구하기: Devstack으로 오픈스택 빠르게 설치하기](https://delightwook.tistory.com/40)
 - [devstack (공식 저장소)](https://opendev.org/openstack/devstack)
-- 실제 설치 절차: [(Ubuntu) Ubuntu & redHat (OpenStack) - 핵심 개념 및 특징 정리]([Ubuntu]%20Ubuntu%20&%20redHat%20%28OpenStack%29%20-%20핵심%20개념%20및%20특징%20정리.md)
+- 실제 설치 절차: [(Ubuntu) Ubuntu & redHat (OpenStack) - 핵심 개념 및 특징 정리](개발%20%28CS%29/인프라/Linux/[Ubuntu]%20Ubuntu%20&%20redHat%20%28OpenStack%29%20-%20핵심%20개념%20및%20특징%20정리.md)

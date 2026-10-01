@@ -185,8 +185,8 @@ public void onApplicationEvent(ContextClosedEvent event) {
 
 ## 관련 문서
 
-- [(학습/개발 (CS)/네트워크) Netty](../../개발%20%28CS%29/네트워크/[Java]%20Netty%20-%20핵심%20개념%20및%20특징%20정리.md) — 동일 프레임워크의 Discard/Echo 서버 기본 구조를 다루는 입문 버전 노트
-- [(학습/개발 실무/네트워크·보안/소켓통신) 소켓흐름](../../개발%20실무/네트워크·보안/소켓통신/[Java]%20소켓흐름%20-%20핵심%20개념%20및%20특징%20정리.md) — Thread-per-Connection 전통 소켓 모델과 NIO/Netty 채택 배경을 대비해서 보기 좋음
-- [(학습/프레임워크/Netty) [Java] 02. TCP 패킷 단편화와 프레임 디코딩 (ByteToMessageDecoder & Length-Field)]([Java]%2002.%20TCP%20패킷%20단편화와%20프레임%20디코딩%20%28ByteToMessageDecoder%20&%20Length-Field%29.md) — 같은 서버 프로젝트에서 1번 파이프라인에 배치된 MessageDecoder의 프레이밍 구현을 다루는 연작
-- [(학습/프레임워크/Netty) [Java] 03. 채널 핸들러 라이프사이클과 실전 IoT 소켓 통신 패턴 (Session, BCD, HAProxy)]([Java]%2003.%20채널%20핸들러%20라이프사이클과%20실전%20IoT%20소켓%20통신%20패턴%20%28Session,%20BCD,%20HAProxy%29.md) — 같은 서버 프로젝트의 MessageHandler 라이프사이클과 HAProxy 연동을 다루는 연작
-- [(학습/프레임워크/Netty) [Java] 04. Netty 소켓 파이프라인 SSL-TLS 적용과 mTLS 상호 인증 (SslHandler, KeyStore, SslContext)]([Java]%2004.%20Netty%20소켓%20파이프라인%20SSL-TLS%20적용과%20mTLS%20상호%20인증%20%28SslHandler,%20KeyStore,%20SslContext%29.md) — 같은 ServerBootstrap 파이프라인에 SslHandler를 추가하는 후속편
+- [(학습/개발 (CS)/네트워크) Netty](개발%20%28CS%29/네트워크/[Java]%20Netty%20-%20핵심%20개념%20및%20특징%20정리.md) — 동일 프레임워크의 Discard/Echo 서버 기본 구조를 다루는 입문 버전 노트
+- [(학습/개발 실무/네트워크·보안/소켓통신) 소켓흐름](개발%20실무/네트워크·보안/소켓통신/[Java]%20소켓흐름%20-%20핵심%20개념%20및%20특징%20정리.md) — Thread-per-Connection 전통 소켓 모델과 NIO/Netty 채택 배경을 대비해서 보기 좋음
+- [(학습/프레임워크/Netty) [Java] 02. TCP 패킷 단편화와 프레임 디코딩 (ByteToMessageDecoder & Length-Field)](프레임워크/Netty/[Java]%2002.%20TCP%20패킷%20단편화와%20프레임%20디코딩%20%28ByteToMessageDecoder%20&%20Length-Field%29.md) — 같은 서버 프로젝트에서 1번 파이프라인에 배치된 MessageDecoder의 프레이밍 구현을 다루는 연작
+- [(학습/프레임워크/Netty) [Java] 03. 채널 핸들러 라이프사이클과 실전 IoT 소켓 통신 패턴 (Session, BCD, HAProxy)](프레임워크/Netty/[Java]%2003.%20채널%20핸들러%20라이프사이클과%20실전%20IoT%20소켓%20통신%20패턴%20%28Session,%20BCD,%20HAProxy%29.md) — 같은 서버 프로젝트의 MessageHandler 라이프사이클과 HAProxy 연동을 다루는 연작
+- [(학습/프레임워크/Netty) [Java] 04. Netty 소켓 파이프라인 SSL-TLS 적용과 mTLS 상호 인증 (SslHandler, KeyStore, SslContext)](프레임워크/Netty/[Java]%2004.%20Netty%20소켓%20파이프라인%20SSL-TLS%20적용과%20mTLS%20상호%20인증%20%28SslHandler,%20KeyStore,%20SslContext%29.md) — 같은 ServerBootstrap 파이프라인에 SslHandler를 추가하는 후속편

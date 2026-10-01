@@ -154,7 +154,7 @@ public class MessageDecoder extends ByteToMessageDecoder {
 
 ## 관련 문서
 
-- [(학습/개발 (CS)/네트워크) Netty 파이프라인 예외흐름과 핸들러 배치 패턴](../../개발%20%28CS%29/네트워크/[CS]%20Netty%20파이프라인%20예외흐름과%20핸들러%20배치%20패턴%20-%20핵심%20개념%20및%20특징%20정리.md) — 동일 프로젝트의 MessageDecoder가 ByteToMessageDecoder(Inbound 전용)로서 파이프라인에서 왜 Outbound에서 skip되는지 설명
-- [(학습/프레임워크/Netty) [Java] 01. Netty 아키텍처와 이벤트 루프 스레드 모델 (EventLoop, Boss·Worker, Bootstrap)]([Java]%2001.%20Netty%20아키텍처와%20이벤트%20루프%20스레드%20모델%20%28EventLoop,%20Boss·Worker,%20Bootstrap%29.md) — 같은 ServerBootstrap 파이프라인에 이 MessageDecoder가 등록되는 전체 서버 아키텍처를 다루는 연작
-- [(학습/프레임워크/Netty) [Java] 03. 채널 핸들러 라이프사이클과 실전 IoT 소켓 통신 패턴 (Session, BCD, HAProxy)]([Java]%2003.%20채널%20핸들러%20라이프사이클과%20실전%20IoT%20소켓%20통신%20패턴%20%28Session,%20BCD,%20HAProxy%29.md) — 디코더가 생성한 완전한 프레임을 넘겨받는 후속 MessageHandler를 다루는 연작
-- [(학습/프레임워크/Netty) [Java] 04. Netty 소켓 파이프라인 SSL-TLS 적용과 mTLS 상호 인증 (SslHandler, KeyStore, SslContext)]([Java]%2004.%20Netty%20소켓%20파이프라인%20SSL-TLS%20적용과%20mTLS%20상호%20인증%20%28SslHandler,%20KeyStore,%20SslContext%29.md) — 이 MessageDecoder 앞단에 SslHandler를 추가해 암호화 계층을 얹는 연작
+- [(학습/개발 (CS)/네트워크) Netty 파이프라인 예외흐름과 핸들러 배치 패턴](개발%20%28CS%29/네트워크/[CS]%20Netty%20파이프라인%20예외흐름과%20핸들러%20배치%20패턴%20-%20핵심%20개념%20및%20특징%20정리.md) — 동일 프로젝트의 MessageDecoder가 ByteToMessageDecoder(Inbound 전용)로서 파이프라인에서 왜 Outbound에서 skip되는지 설명
+- [(학습/프레임워크/Netty) [Java] 01. Netty 아키텍처와 이벤트 루프 스레드 모델 (EventLoop, Boss·Worker, Bootstrap)](프레임워크/Netty/[Java]%2001.%20Netty%20아키텍처와%20이벤트%20루프%20스레드%20모델%20%28EventLoop,%20Boss·Worker,%20Bootstrap%29.md) — 같은 ServerBootstrap 파이프라인에 이 MessageDecoder가 등록되는 전체 서버 아키텍처를 다루는 연작
+- [(학습/프레임워크/Netty) [Java] 03. 채널 핸들러 라이프사이클과 실전 IoT 소켓 통신 패턴 (Session, BCD, HAProxy)](프레임워크/Netty/[Java]%2003.%20채널%20핸들러%20라이프사이클과%20실전%20IoT%20소켓%20통신%20패턴%20%28Session,%20BCD,%20HAProxy%29.md) — 디코더가 생성한 완전한 프레임을 넘겨받는 후속 MessageHandler를 다루는 연작
+- [(학습/프레임워크/Netty) [Java] 04. Netty 소켓 파이프라인 SSL-TLS 적용과 mTLS 상호 인증 (SslHandler, KeyStore, SslContext)](프레임워크/Netty/[Java]%2004.%20Netty%20소켓%20파이프라인%20SSL-TLS%20적용과%20mTLS%20상호%20인증%20%28SslHandler,%20KeyStore,%20SslContext%29.md) — 이 MessageDecoder 앞단에 SslHandler를 추가해 암호화 계층을 얹는 연작

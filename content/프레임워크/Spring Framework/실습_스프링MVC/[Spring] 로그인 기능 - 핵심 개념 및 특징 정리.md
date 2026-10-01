@@ -45,7 +45,7 @@ FilterChainProxy가 중요한 이유는, Spring Security의 인증·인가·CSRF
 
 ## 관련 문서
 
-- [(Spring) 로그인 구현 - 핵심 개념 및 특징 정리](로그인%20구현/[Spring]%20로그인%20구현%20-%20핵심%20개념%20및%20특징%20정리.md) — 쿠키/세션 기반 로그인 유지 및 필터·인터셉터 구현 사례
-- [(Spring) 소셜로그인 전 과정 - 핵심 개념 및 특징 정리](소셜로그인%20전%20과정/[Spring]%20소셜로그인%20전%20과정%20-%20핵심%20개념%20및%20특징%20정리.md) — Spring Security 기반 소셜로그인 구현 사례
-- [(Spring) Strategy+Factory로 다중 Provider 처리하기 - 핵심 개념 및 특징 정리]([Spring]%20Strategy+Factory로%20다중%20Provider%20처리하기%20-%20핵심%20개념%20및%20특징%20정리.md) — JWT·Spring Security 기반 로그인 인증 구조를 다루는 실무 사례
+- [(Spring) 로그인 구현 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/로그인%20구현/[Spring]%20로그인%20구현%20-%20핵심%20개념%20및%20특징%20정리.md) — 쿠키/세션 기반 로그인 유지 및 필터·인터셉터 구현 사례
+- [(Spring) 소셜로그인 전 과정 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/소셜로그인%20전%20과정/[Spring]%20소셜로그인%20전%20과정%20-%20핵심%20개념%20및%20특징%20정리.md) — Spring Security 기반 소셜로그인 구현 사례
+- [(Spring) Strategy+Factory로 다중 Provider 처리하기 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/[Spring]%20Strategy+Factory로%20다중%20Provider%20처리하기%20-%20핵심%20개념%20및%20특징%20정리.md) — JWT·Spring Security 기반 로그인 인증 구조를 다루는 실무 사례
 - (학습/프로젝트/토이프로젝트/게시판 프로젝트) [기능구현#3] 로그인 기능 — JWT vs Session 트레이드오프를 실전 프로젝트 관점에서 다룬 사례

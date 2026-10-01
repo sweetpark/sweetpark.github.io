@@ -39,4 +39,4 @@ Servlet을 각 URL마다 여러 개 만들면 파라미터 처리·뷰 포워딩
 
 ## 관련 문서
 
-- [(Spring) Spring 구현 프로젝트 - 핵심 개념 및 특징 정리](../Spring%20구현%20프로젝트/[Spring]%20Spring%20구현%20프로젝트%20-%20핵심%20개념%20및%20특징%20정리.md) — 동일한 FrontController+Adapter 진행 과정을 순수 Servlet부터 Spring MVC까지 더 상세한 버전별 코드로 다루는 후속 노트
+- [(Spring) Spring 구현 프로젝트 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/Spring%20구현%20프로젝트/[Spring]%20Spring%20구현%20프로젝트%20-%20핵심%20개념%20및%20특징%20정리.md) — 동일한 FrontController+Adapter 진행 과정을 순수 Servlet부터 Spring MVC까지 더 상세한 버전별 코드로 다루는 후속 노트

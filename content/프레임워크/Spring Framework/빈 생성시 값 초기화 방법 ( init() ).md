@@ -112,4 +112,4 @@ public class TestBean{
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) Bean ( @Scope , Provider )](Bean%20%28%20@Scope%20,%20Provider%20%29.md) — 동일한 스프링 빈 생명주기(컨테이너 생성→DI→초기화 콜백)를 스코프 관점에서 보충 설명하는 노트
+- [(학습/프레임워크/Spring Framework) Bean ( @Scope , Provider )](프레임워크/Spring%20Framework/Bean%20%28%20@Scope%20,%20Provider%20%29.md) — 동일한 스프링 빈 생명주기(컨테이너 생성→DI→초기화 콜백)를 스코프 관점에서 보충 설명하는 노트

@@ -10,7 +10,7 @@ modified: 2026-09-05
 > Spring + MyBatis 서버의 로그를 "코드 위치 기준" 산발적 로그에서 "요청 흐름(trace) 기준"
 > 로그로 재설계하고, Loki + Grafana로 가시화한 뒤, 사내 공용 `logging-starter` 라이브러리로
 > 배포하기까지의 작업 기록. 상위 설계 배경(왜 유료 APM 대신 Loki를 택했는지 등)은
-> [Logging & MyBatis Quality Gate 통합 아키텍처]([MyBatis]%20Logging%20&%20MyBatis%20Quality%20Gate%20통합%20아%20-%20핵심%20개념%20및%20특징%20정리.md) 참고.
+> [Logging & MyBatis Quality Gate 통합 아키텍처](개발%20%28CS%29/인프라/모니터링·네트워크/[MyBatis]%20Logging%20&%20MyBatis%20Quality%20Gate%20통합%20아%20-%20핵심%20개념%20및%20특징%20정리.md) 참고.
 
 ## 개요 (문제 → 접근 → 결과)
 
@@ -181,7 +181,7 @@ PROD 로그는 개인정보/민감정보가 섞일 수 있는 body를 그대로 
 
 ## 4. Grafana + Loki 가시화
 
-로그 키워드 `[API_PROD]`를 기준으로 LogQL을 작성해 대시보드를 구성했다. 실제 운영에 적용한 쿼리는 `{app="IMS 또는 MMS", env="prod"}` 라벨을 기준으로 하며, 대표 패턴은 다음과 같다(전체 LogQL 문법 정리는 [LogQL 쿼리 문법 정리]([Spring]%20LogQL%20쿼리%20문법%20정리%20%28필터·집계·rate·pattern%29%20-%20핵심%20개념%20및%20특징%20정리.md) 참고).
+로그 키워드 `[API_PROD]`를 기준으로 LogQL을 작성해 대시보드를 구성했다. 실제 운영에 적용한 쿼리는 `{app="IMS 또는 MMS", env="prod"}` 라벨을 기준으로 하며, 대표 패턴은 다음과 같다(전체 LogQL 문법 정리는 [LogQL 쿼리 문법 정리](개발%20%28CS%29/인프라/모니터링·네트워크/[Spring]%20LogQL%20쿼리%20문법%20정리%20%28필터·집계·rate·pattern%29%20-%20핵심%20개념%20및%20특징%20정리.md) 참고).
 
 ```
 # 전체 평균 API 응답시간 (Stat / Time series)

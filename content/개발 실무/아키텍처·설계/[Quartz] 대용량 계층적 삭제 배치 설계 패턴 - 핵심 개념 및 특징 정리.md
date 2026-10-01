@@ -89,4 +89,4 @@ CompositeItemWriter
 ```
 
 ## 🔗 관련
-- [(Spring Batch) BATCH 커서 방식의 주의점 - 핵심 개념 및 특징 정리]([Spring%20Batch]%20BATCH%20커서%20방식의%20주의점%20-%20핵심%20개념%20및%20특징%20정리.md)
+- [(Spring Batch) BATCH 커서 방식의 주의점 - 핵심 개념 및 특징 정리](개발%20실무/아키텍처·설계/[Spring%20Batch]%20BATCH%20커서%20방식의%20주의점%20-%20핵심%20개념%20및%20특징%20정리.md)

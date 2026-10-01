@@ -85,5 +85,5 @@ public class TasteDetail {
 
 ## 관련 문서
 
-- [(Spring) Page 처리 - 핵심 개념 및 특징 정리]([Spring]%20Page%20처리%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 Onz 프로젝트에서 Spring Data JPA의 Pageable 기반 페이징 처리를 다루는 자매 노트
-- [(학습/프레임워크/Spring Framework) JPA 활용 1편 - 핵심 개념 및 특징 정리](../[Spring]%20JPA%20활용%201편%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트가 실습으로 적용한 연관관계 주인/Dirty Checking/DTO 패턴 이론을 정리한 강의 노트
+- [(Spring) Page 처리 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/[Spring]%20Page%20처리%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 Onz 프로젝트에서 Spring Data JPA의 Pageable 기반 페이징 처리를 다루는 자매 노트
+- [(학습/프레임워크/Spring Framework) JPA 활용 1편 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/[Spring]%20JPA%20활용%201편%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트가 실습으로 적용한 연관관계 주인/Dirty Checking/DTO 패턴 이론을 정리한 강의 노트

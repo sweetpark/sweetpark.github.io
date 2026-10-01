@@ -149,5 +149,5 @@ WHERE a.role_id = #{roleId}
 
 ## 관련 문서
 
-- [(개발실무) RBAC 메뉴 트리 설계 — soft-delete와 upsert-revive](../표준·컨벤션/[개발실무]%20RBAC%20메뉴%20트리%20설계%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 메뉴/권한 매핑(TB_MENU·매핑 테이블) RBAC 구조를, 여기서는 인가·감사 관점에서 다루고 저 노트는 마스터-매핑 CRUD 정합성 관점에서 다룸
-- [(Performance) SXSSFWorkbook 대용량 엑셀 스트리밍과 동적 ZIP 분할 압축 설계 패턴](../백엔드·데이터처리/[Performance]%20SXSSFWorkbook%20대용량%20엑셀%20스트리밍과%20동적%20ZIP%20분할%20압축%20설계%20패턴.md) — 여기서 짧게 언급한 SXSSFWorkbook 스트리밍 기법의 상세 구현 및 원리
+- [(개발실무) RBAC 메뉴 트리 설계 — soft-delete와 upsert-revive](개발%20실무/표준·컨벤션/[개발실무]%20RBAC%20메뉴%20트리%20설계%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 메뉴/권한 매핑(TB_MENU·매핑 테이블) RBAC 구조를, 여기서는 인가·감사 관점에서 다루고 저 노트는 마스터-매핑 CRUD 정합성 관점에서 다룸
+- [(Performance) SXSSFWorkbook 대용량 엑셀 스트리밍과 동적 ZIP 분할 압축 설계 패턴](개발%20실무/백엔드·데이터처리/[Performance]%20SXSSFWorkbook%20대용량%20엑셀%20스트리밍과%20동적%20ZIP%20분할%20압축%20설계%20패턴.md) — 여기서 짧게 언급한 SXSSFWorkbook 스트리밍 기법의 상세 구현 및 원리

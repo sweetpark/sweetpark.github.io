@@ -66,4 +66,4 @@ public interface Collection<E> extends Iterable<E>{
 
 ---
 ## 관련 문서
-- [(큐) 백준 2164번](../../../코딩테스트/큐/[큐]%20백준%202164번.md) — LinkedList 기반 Queue(add/poll)로 카드 문제를 푸는 실전 활용 예
+- [(큐) 백준 2164번](코딩테스트/큐/[큐]%20백준%202164번.md) — LinkedList 기반 Queue(add/poll)로 카드 문제를 푸는 실전 활용 예

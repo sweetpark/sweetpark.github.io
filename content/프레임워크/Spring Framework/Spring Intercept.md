@@ -130,4 +130,4 @@ public class WebConfig implements WebMvcConfigurer {
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) Servlet Filter](Servlet%20Filter.md) — 이 노트에서 "Servlet 필터와 유사한 역할"이라고 언급한 Servlet Filter 자체의 동작 방식을 다루는 노트
+- [(학습/프레임워크/Spring Framework) Servlet Filter](프레임워크/Spring%20Framework/Servlet%20Filter.md) — 이 노트에서 "Servlet 필터와 유사한 역할"이라고 언급한 Servlet Filter 자체의 동작 방식을 다루는 노트

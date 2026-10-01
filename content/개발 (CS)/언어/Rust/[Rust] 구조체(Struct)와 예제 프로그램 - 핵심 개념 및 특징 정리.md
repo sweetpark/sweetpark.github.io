@@ -98,7 +98,7 @@ fn main() {
 - `&mut self`: 가변 대여 — 값을 수정
 - `self`: 소유권 자체를 가져옴 — 주로 인스턴스를 변환/소비하고 새 값을 반환하는 메서드에 사용
 - 같은 구조체에 대해 `impl` 블록을 여러 번 나눠 작성해도 됨 (기능별로 분리 가능)
-- `impl Trait for Struct` 형태(트레잇 구현)는 이 `impl`과 문법은 비슷하지만 별개 개념 → [트레잇과 제네릭 노트]([Rust]%20트레잇과%20제네릭%28Trait%20Object,%20Blanket%20Impl,%20제네릭%20경계%29%20-%20핵심%20개념%20및%20특징%20정리.md) 참고
+- `impl Trait for Struct` 형태(트레잇 구현)는 이 `impl`과 문법은 비슷하지만 별개 개념 → [트레잇과 제네릭 노트](개발%20%28CS%29/언어/Rust/[Rust]%20트레잇과%20제네릭%28Trait%20Object,%20Blanket%20Impl,%20제네릭%20경계%29%20-%20핵심%20개념%20및%20특징%20정리.md) 참고
 
 ### 생성자처럼 쓰는 연관 함수 — `new()` 관례
 
@@ -193,7 +193,7 @@ fn area(rectangle: &Rectangle) -> u32 {
 **핵심 개선사항**
 
 - 필드에 `width`, `height`라는 명확한 이름을 부여 → 가독성 및 의도 전달력 향상
-- 함수에는 `&Rectangle` (불변 참조)로 전달 → `main`이 `rect1`의 소유권을 계속 유지하면서 `area` 함수를 호출 가능 ([소유권과 참조]([Rust]%20소유권과%20참조%28Ownership%20&%20Borrowing%29%20-%20핵심%20개념%20및%20특징%20정리.md) 문서의 대여(Borrow) 개념과 동일)
+- 함수에는 `&Rectangle` (불변 참조)로 전달 → `main`이 `rect1`의 소유권을 계속 유지하면서 `area` 함수를 호출 가능 ([소유권과 참조](개발%20%28CS%29/언어/Rust/[Rust]%20소유권과%20참조%28Ownership%20&%20Borrowing%29%20-%20핵심%20개념%20및%20특징%20정리.md) 문서의 대여(Borrow) 개념과 동일)
 
 | 방식 | 장점 | 단점 |
 | --- | --- | --- |
@@ -312,5 +312,5 @@ fn main() {
 ## 🔗 참고
 
 - [Rust 5.2장 - An Example Program Using Structs](https://doc.rust-kr.org/ch05-02-example-structs.html)
-- [(Rust) 소유권과 참조(Ownership & Borrowing) - 핵심 개념 및 특징 정리]([Rust]%20소유권과%20참조%28Ownership%20&%20Borrowing%29%20-%20핵심%20개념%20및%20특징%20정리.md)
-- [(Rust) 트레잇과 제네릭(Trait Object, Blanket Impl, 제네릭 경계) - 핵심 개념 및 특징 정리]([Rust]%20트레잇과%20제네릭%28Trait%20Object,%20Blanket%20Impl,%20제네릭%20경계%29%20-%20핵심%20개념%20및%20특징%20정리.md)
+- [(Rust) 소유권과 참조(Ownership & Borrowing) - 핵심 개념 및 특징 정리](개발%20%28CS%29/언어/Rust/[Rust]%20소유권과%20참조%28Ownership%20&%20Borrowing%29%20-%20핵심%20개념%20및%20특징%20정리.md)
+- [(Rust) 트레잇과 제네릭(Trait Object, Blanket Impl, 제네릭 경계) - 핵심 개념 및 특징 정리](개발%20%28CS%29/언어/Rust/[Rust]%20트레잇과%20제네릭%28Trait%20Object,%20Blanket%20Impl,%20제네릭%20경계%29%20-%20핵심%20개념%20및%20특징%20정리.md)

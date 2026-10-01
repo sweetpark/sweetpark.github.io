@@ -112,4 +112,4 @@ public class FormatterController{
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) Spring Type Converter (타입 형변환)](Spring%20Type%20Converter%20%28타입%20형변환%29.md) — 이 노트에서 "Converter의 심화 버전"이라고 언급한 Converter<S,T> 인터페이스 자체를 다루는 노트
+- [(학습/프레임워크/Spring Framework) Spring Type Converter (타입 형변환)](프레임워크/Spring%20Framework/Spring%20Type%20Converter%20%28타입%20형변환%29.md) — 이 노트에서 "Converter의 심화 버전"이라고 언급한 Converter<S,T> 인터페이스 자체를 다루는 노트

@@ -253,7 +253,7 @@ impl FromGlueRow for User {
 
 ## derive 매크로 심화 — GlueSQL #1975 작업에서 배운 것
 
-`TranslateError`의 옵션 enum들(`InsertOption` 등)을 `#[derive(Display, Debug, Clone, Copy, Serialize, PartialEq, Eq)]`로 만들면서, 위 개념들만으로는 안 보이던 몇 가지가 실전에서 드러났다. (전체 구현 맥락은 [TranslateError Enum 타입화 노트](../../../프로젝트/오픈소스/GlueSQL/4.%20[Rust]%20TranslateError%20Enum%20타입화%28strum·thiserror,%20GlueSQL%20Issue%201975%29%20-%20핵심%20개념%20및%20특징%20정리.md) 참고)
+`TranslateError`의 옵션 enum들(`InsertOption` 등)을 `#[derive(Display, Debug, Clone, Copy, Serialize, PartialEq, Eq)]`로 만들면서, 위 개념들만으로는 안 보이던 몇 가지가 실전에서 드러났다. (전체 구현 맥락은 [TranslateError Enum 타입화 노트](프로젝트/오픈소스/GlueSQL/4.%20[Rust]%20TranslateError%20Enum%20타입화%28strum·thiserror,%20GlueSQL%20Issue%201975%29%20-%20핵심%20개념%20및%20특징%20정리.md) 참고)
 
 ### derive를 여러 개 나열하면 — 트레잇마다 독립적인 `impl` 블록이 따로 생김
 
@@ -331,6 +331,6 @@ serialize_via_display!(CreateTableOption, InsertOption, /* ...나머지 5개 */)
 
 - [Rust 19장 - Macros](https://doc.rust-kr.org/ch19-06-macros.html)
 - [GlueSQL - macros/src/lib.rs](https://github.com/gluesql/gluesql/blob/main/macros/src/lib.rs)
-- [(Rust) GlueSQL 프로젝트 구조와 필요 문법 개관 - 핵심 개념 및 특징 정리](../../../프로젝트/오픈소스/GlueSQL/1.%20[Rust]%20GlueSQL%20프로젝트%20구조와%20필요%20문법%20개관%20-%20핵심%20개념%20및%20특징%20정리.md)
-- [(Rust) TranslateError Enum 타입화(strum·thiserror, GlueSQL Issue 1975) - 핵심 개념 및 특징 정리](../../../프로젝트/오픈소스/GlueSQL/4.%20[Rust]%20TranslateError%20Enum%20타입화%28strum·thiserror,%20GlueSQL%20Issue%201975%29%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 심화 내용의 실전 배경
-- [(Rust) 에러 처리(thiserror, Result, ? 연산자) - 핵심 개념 및 특징 정리]([Rust]%20에러%20처리%28thiserror,%20Result,%20？%20연산자%29%20-%20핵심%20개념%20및%20특징%20정리.md)
+- [(Rust) GlueSQL 프로젝트 구조와 필요 문법 개관 - 핵심 개념 및 특징 정리](프로젝트/오픈소스/GlueSQL/1.%20[Rust]%20GlueSQL%20프로젝트%20구조와%20필요%20문법%20개관%20-%20핵심%20개념%20및%20특징%20정리.md)
+- [(Rust) TranslateError Enum 타입화(strum·thiserror, GlueSQL Issue 1975) - 핵심 개념 및 특징 정리](프로젝트/오픈소스/GlueSQL/4.%20[Rust]%20TranslateError%20Enum%20타입화%28strum·thiserror,%20GlueSQL%20Issue%201975%29%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 심화 내용의 실전 배경
+- [(Rust) 에러 처리(thiserror, Result, ? 연산자) - 핵심 개념 및 특징 정리](개발%20%28CS%29/언어/Rust/[Rust]%20에러%20처리%28thiserror,%20Result,%20？%20연산자%29%20-%20핵심%20개념%20및%20특징%20정리.md)

@@ -136,5 +136,5 @@ Spring Bean Validation을 활용하면 복잡한 로직 없이도 사용자 입�
 
 - (학습/프로젝트/토이프로젝트/유효성검사 (Validation)) [유효성검증 #1] Validator + BindingResult를 이용한 유효성 검증 — Validator+BindingResult를 이용한 검증 방식을 다루는 선행 편
 - (학습/프로젝트/토이프로젝트/유효성검사 (Validation)) [유효성검증 #3]  유효성 검증 아키텍처 설계 — Bean Validation과 커스텀 Validation을 다룬 후, 이를 AOP로 결합하는 아키텍처 설계를 다루는 후속 편
-- [(학습/프레임워크/Spring Framework) Bean Validation](../../../프레임워크/Spring%20Framework/Bean%20Validation.md) — Bean Validation 어노테이션과 커스텀 Validator를 다루는 강의 노트와 동일한 주제
+- [(학습/프레임워크/Spring Framework) Bean Validation](프레임워크/Spring%20Framework/Bean%20Validation.md) — Bean Validation 어노테이션과 커스텀 Validator를 다루는 강의 노트와 동일한 주제
 - (학습/프로젝트/토이프로젝트/게시판 프로젝트) [기능구현#2] 스프링 검증 어노테이션 생성 (Spring bean validation) — 게시판 프로젝트의 @ValidPassword 커스텀 검증 어노테이션 구현과 동일한 패턴을 다루는 사례

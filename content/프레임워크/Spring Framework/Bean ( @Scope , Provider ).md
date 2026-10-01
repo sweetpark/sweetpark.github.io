@@ -286,4 +286,4 @@ public class TestExample{
 ## 관련 문서
 
 - [(학습/프레임워크/Spring Framework) 빈 생성시 값 초기화 방법 ( init() )](빈%20생성시%20값%20초기화%20방법%20(%20init()%20).md) — 이 노트에서 다루는 빈 생명주기의 초기화/소멸 콜백 부분을 상세히 다루는 노트
-- [(학습/프레임워크/Spring Framework) 싱글톤 컨테이너](싱글톤%20컨테이너.md) — 이 노트가 다루는 @Scope(prototype/web scope)가 필요한 이유인 싱글톤 컨테이너의 상태 관리 문제를 다루는 노트
+- [(학습/프레임워크/Spring Framework) 싱글톤 컨테이너](프레임워크/Spring%20Framework/싱글톤%20컨테이너.md) — 이 노트가 다루는 @Scope(prototype/web scope)가 필요한 이유인 싱글톤 컨테이너의 상태 관리 문제를 다루는 노트

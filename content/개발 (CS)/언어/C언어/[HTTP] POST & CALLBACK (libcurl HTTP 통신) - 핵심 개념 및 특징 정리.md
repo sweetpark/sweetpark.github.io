@@ -279,4 +279,4 @@ curl_easy_cleanup(3) for the curl handle.
 - 참고: [Ubuntu Manpage: curl_formadd - add a section to a multipart/formdata HTTP POST](https://manpages.ubuntu.com/manpages/jammy/man3/curl_formadd.3.html)
 
 ## 🔗 참고
-- 소켓 레벨 통신 기초는 [(TCP_IP) Socket 통신 - 핵심 개념 및 특징 정리]([TCP_IP]%20Socket%20통신%20-%20핵심%20개념%20및%20특징%20정리.md) 문서 참고.
+- 소켓 레벨 통신 기초는 [(TCP_IP) Socket 통신 - 핵심 개념 및 특징 정리](개발%20%28CS%29/언어/C언어/[TCP_IP]%20Socket%20통신%20-%20핵심%20개념%20및%20특징%20정리.md) 문서 참고.

@@ -35,4 +35,4 @@ List<Entity> results = filterResult.getContent(); // list로 변환
 
 ## 관련 문서
 
-- [(Spring) JPA - 핵심 개념 및 특징 정리]([Spring]%20JPA%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 Onz 프로젝트에서 JPA 연관관계 매핑을 다루는 자매 노트
+- [(Spring) JPA - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/[Spring]%20JPA%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 Onz 프로젝트에서 JPA 연관관계 매핑을 다루는 자매 노트

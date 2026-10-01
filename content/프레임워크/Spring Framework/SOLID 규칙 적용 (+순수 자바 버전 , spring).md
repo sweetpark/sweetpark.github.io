@@ -219,4 +219,4 @@ public static void main(String []args){
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) Spring 역사 #3 (Spring의 탄생)](Spring%20역사%20#3%20%28Spring의%20탄생%29.md) — 이 실습 코드가 구현하는 SOLID 5원칙 이론과 객체지향 배경 설명
+- [(학습/프레임워크/Spring Framework) Spring 역사 #3 (Spring의 탄생)](프레임워크/Spring%20Framework/Spring%20역사%20#3%20%28Spring의%20탄생%29.md) — 이 실습 코드가 구현하는 SOLID 5원칙 이론과 객체지향 배경 설명

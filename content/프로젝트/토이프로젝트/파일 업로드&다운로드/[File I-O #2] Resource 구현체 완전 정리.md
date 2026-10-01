@@ -117,4 +117,4 @@ InputStream is = resource.getInputStream();
 
 - (학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #1] Java 파일 처리의 기본 개념 정리 — File I/O 시리즈의 기초 개념(Resource, InputStream, OutputStream)을 다루는 선행 편
 - (학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #3] InputStream과 OutputStream 완전 정리 — Resource 구현체를 다룬 후, InputStream/OutputStream 자체를 자세히 정리하는 후속 편
-- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [Spring-Resource] 스프링 Resource의 이해 (+ InputStream)]([Spring-Resource]%20스프링%20Resource의%20이해%20%28+%20InputStream%29.md) — 동일한 5가지 Resource 구현체를 다루는 유사 주제의 문서 (InputStream 구현체까지 확장하여 정리)
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [Spring-Resource] 스프링 Resource의 이해 (+ InputStream)](프로젝트/토이프로젝트/파일%20업로드&다운로드/[Spring-Resource]%20스프링%20Resource의%20이해%20%28+%20InputStream%29.md) — 동일한 5가지 Resource 구현체를 다루는 유사 주제의 문서 (InputStream 구현체까지 확장하여 정리)

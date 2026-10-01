@@ -36,4 +36,4 @@ modified: 2026-09-05
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) 메시지, 국제화](../../메시지,%20국제화.md) — MessageSource/LocaleResolver 이론을 정리한 기초 노트
+- [(학습/프레임워크/Spring Framework) 메시지, 국제화](프레임워크/Spring%20Framework/메시지,%20국제화.md) — MessageSource/LocaleResolver 이론을 정리한 기초 노트

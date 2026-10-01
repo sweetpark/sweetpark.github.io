@@ -161,6 +161,6 @@ subprojects {
 
 ## 관련 문서
 
-- [(오픈소스) mybatis-sql-tuner-ai - 상세 분석 및 기술 가이드]([오픈소스]%20mybatis-sql-tuner-ai%20-%20상세%20분석%20및%20기술%20가이드.md) — 이 플레이북을 실제로 적용해 퍼블릭 오픈소스로 전환한 IntelliJ 플러그인 프로젝트
-- [(오픈소스) mini-apm-spring-boot-starter - 상세 분석 및 기술 가이드]([오픈소스]%20mini-apm-spring-boot-starter%20-%20상세%20분석%20및%20기술%20가이드.md) — 이 플레이북을 실제로 적용해 퍼블릭 오픈소스로 전환한 Spring Boot APM Starter 프로젝트
-- [(오픈소스) ha-excel-job-engine - 상세 분석 및 기술 가이드]([오픈소스]%20ha-excel-job-engine%20-%20상세%20분석%20및%20기술%20가이드.md) — 이 플레이북을 실제로 적용해 퍼블릭 오픈소스로 전환한 대용량 엑셀 export 엔진 프로젝트
+- [(오픈소스) mybatis-sql-tuner-ai - 상세 분석 및 기술 가이드](프로젝트/오픈소스/[오픈소스]%20mybatis-sql-tuner-ai%20-%20상세%20분석%20및%20기술%20가이드.md) — 이 플레이북을 실제로 적용해 퍼블릭 오픈소스로 전환한 IntelliJ 플러그인 프로젝트
+- [(오픈소스) mini-apm-spring-boot-starter - 상세 분석 및 기술 가이드](프로젝트/오픈소스/[오픈소스]%20mini-apm-spring-boot-starter%20-%20상세%20분석%20및%20기술%20가이드.md) — 이 플레이북을 실제로 적용해 퍼블릭 오픈소스로 전환한 Spring Boot APM Starter 프로젝트
+- [(오픈소스) ha-excel-job-engine - 상세 분석 및 기술 가이드](프로젝트/오픈소스/[오픈소스]%20ha-excel-job-engine%20-%20상세%20분석%20및%20기술%20가이드.md) — 이 플레이북을 실제로 적용해 퍼블릭 오픈소스로 전환한 대용량 엑셀 export 엔진 프로젝트

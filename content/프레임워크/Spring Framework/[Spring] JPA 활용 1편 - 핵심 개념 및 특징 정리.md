@@ -124,4 +124,4 @@ private List<Order> orders = new ArrayList<>();
 
 ## 관련 문서
 
-- [(Spring) JPA - 핵심 개념 및 특징 정리](실습_스프링MVC/[Spring]%20JPA%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트의 연관관계 주인/Dirty Checking 이론을 Onz 프로젝트의 실제 엔티티 설계에 적용한 실습 노트
+- [(Spring) JPA - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/[Spring]%20JPA%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트의 연관관계 주인/Dirty Checking 이론을 Onz 프로젝트의 실제 엔티티 설계에 적용한 실습 노트

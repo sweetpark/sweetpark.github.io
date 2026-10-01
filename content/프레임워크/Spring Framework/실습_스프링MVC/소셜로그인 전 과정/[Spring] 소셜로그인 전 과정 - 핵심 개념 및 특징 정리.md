@@ -31,5 +31,5 @@ modified: 2026-09-05
 
 ## 관련 문서
 
-- [(Spring) 로그인 기능 - 핵심 개념 및 특징 정리](../[Spring]%20로그인%20기능%20-%20핵심%20개념%20및%20특징%20정리.md) — 로그인 흐름과 세션/쿠키·Security 주의점을 다루는 개념 노트
-- [(Spring) Strategy+Factory로 다중 Provider 처리하기 - 핵심 개념 및 특징 정리](../[Spring]%20Strategy+Factory로%20다중%20Provider%20처리하기%20-%20핵심%20개념%20및%20특징%20정리.md) — Kakao/Naver/Google/Apple 등 Provider별 소셜로그인 로직을 Strategy+Factory로 구조화한 실무 사례
+- [(Spring) 로그인 기능 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/[Spring]%20로그인%20기능%20-%20핵심%20개념%20및%20특징%20정리.md) — 로그인 흐름과 세션/쿠키·Security 주의점을 다루는 개념 노트
+- [(Spring) Strategy+Factory로 다중 Provider 처리하기 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/[Spring]%20Strategy+Factory로%20다중%20Provider%20처리하기%20-%20핵심%20개념%20및%20특징%20정리.md) — Kakao/Naver/Google/Apple 등 Provider별 소셜로그인 로직을 Strategy+Factory로 구조화한 실무 사례

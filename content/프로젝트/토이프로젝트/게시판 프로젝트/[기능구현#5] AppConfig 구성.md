@@ -66,5 +66,5 @@ public class AppConfig implements WebMvcConfigurer {
 
 ## 관련 문서
 
-- [(게시판 프로젝트) [리팩터링] 게시판 프로젝트 아키텍처]([리팩터링]%20게시판%20프로젝트%20아키텍처.md) — 이 AppConfig가 속한 게시판 프로젝트의 전체 아키텍처 개요
-- [(게시판 프로젝트) [기능구현#8] DataSource]([기능구현#8]%20DataSource.md) — AppConfig에서 수동 등록하는 BoardDBRepository/MemberDBRepository가 실제로 사용하는 DataSourceConfig(HikariCP) 구현 상세
+- [(게시판 프로젝트) [리팩터링] 게시판 프로젝트 아키텍처](프로젝트/토이프로젝트/게시판%20프로젝트/[리팩터링]%20게시판%20프로젝트%20아키텍처.md) — 이 AppConfig가 속한 게시판 프로젝트의 전체 아키텍처 개요
+- [(게시판 프로젝트) [기능구현#8] DataSource](프로젝트/토이프로젝트/게시판%20프로젝트/[기능구현#8]%20DataSource.md) — AppConfig에서 수동 등록하는 BoardDBRepository/MemberDBRepository가 실제로 사용하는 DataSourceConfig(HikariCP) 구현 상세

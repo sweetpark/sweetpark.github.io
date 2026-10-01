@@ -136,7 +136,7 @@ static inline int safe_strcasecmp(const char *s1, const char *s2)
 ---
 
 ## 관련 문서
-- [문자열 배열 재대입과 복사 — strncpy·snprintf·sscanf 비교]([C]%20문자열%20배열%20재대입과%20복사%20—%20strncpy·snprintf·sscanf%20비교.md)
-- [snprintf와 sscanf — 문자열 조립과 파싱의 차이]([C]%20snprintf와%20sscanf%20—%20문자열%20조립과%20파싱의%20차이.md)
-- [실무 C 코드 관례와 UB 함정 정리]([C]%20실무%20C%20코드%20관례와%20UB%20함정%20정리.md)
-- [메모리 정렬(Memory Alignment)과 aligned_alloc — CPU 워드 경계와 안전한 할당 래퍼]([C]%20메모리%20정렬%28Memory%20Alignment%29과%20aligned_alloc%20—%20CPU%20워드%20경계와%20안전한%20할당%20래퍼.md)
+- [문자열 배열 재대입과 복사 — strncpy·snprintf·sscanf 비교](개발%20%28CS%29/언어/C언어/[C]%20문자열%20배열%20재대입과%20복사%20—%20strncpy·snprintf·sscanf%20비교.md)
+- [snprintf와 sscanf — 문자열 조립과 파싱의 차이](개발%20%28CS%29/언어/C언어/[C]%20snprintf와%20sscanf%20—%20문자열%20조립과%20파싱의%20차이.md)
+- [실무 C 코드 관례와 UB 함정 정리](개발%20%28CS%29/언어/C언어/[C]%20실무%20C%20코드%20관례와%20UB%20함정%20정리.md)
+- [메모리 정렬(Memory Alignment)과 aligned_alloc — CPU 워드 경계와 안전한 할당 래퍼](개발%20%28CS%29/언어/C언어/[C]%20메모리%20정렬%28Memory%20Alignment%29과%20aligned_alloc%20—%20CPU%20워드%20경계와%20안전한%20할당%20래퍼.md)

@@ -65,4 +65,4 @@ modified: 2026-09-05
 ## 🔗 참고
 
 - [joinc - Mutex](https://www.joinc.co.kr/w/Site/Thread/Beginning/Mutex)
-- [엔디안(바이트 순서)과 인터넷 체크섬 — LSB·MSB와 htons를 직접 만들어보기]([C]%20엔디안%28바이트%20순서%29과%20인터넷%20체크섬%20—%20LSB·MSB와%20htons를%20직접%20만들어보기.md)
+- [엔디안(바이트 순서)과 인터넷 체크섬 — LSB·MSB와 htons를 직접 만들어보기](개발%20%28CS%29/언어/C언어/[C]%20엔디안%28바이트%20순서%29과%20인터넷%20체크섬%20—%20LSB·MSB와%20htons를%20직접%20만들어보기.md)

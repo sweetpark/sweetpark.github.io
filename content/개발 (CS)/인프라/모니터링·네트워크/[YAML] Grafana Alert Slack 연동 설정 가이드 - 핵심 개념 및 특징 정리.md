@@ -8,7 +8,7 @@ modified: 2026-09-05
 
 > [!NOTE]
 > Grafana Loki 기반 에러 로그를 감지해 Slack으로 알림을 보내는 Alert Rule/Contact Point/Notification Policy 설정 절차. "Logging (최소 APM 구현)" 미니프로젝트에서 추출.
-> 관련 노트: [(MyBatis) Log 고도화 작업 - 핵심 개념 및 특징 정리]([MyBatis]%20Log%20고도화%20작업%20-%20핵심%20개념%20및%20특징%20정리.md)의 Grafana Alert 섹션 — 실무에서는 메일 채널로 알림을 보냈다(SLOW Query/Exception/응답지연 메일 발송). 이 노트는 Slack 채널 연동에 특화된 절차를 다룬다.
+> 관련 노트: [(MyBatis) Log 고도화 작업 - 핵심 개념 및 특징 정리](개발%20%28CS%29/인프라/모니터링·네트워크/[MyBatis]%20Log%20고도화%20작업%20-%20핵심%20개념%20및%20특징%20정리.md)의 Grafana Alert 섹션 — 실무에서는 메일 채널로 알림을 보냈다(SLOW Query/Exception/응답지연 메일 발송). 이 노트는 Slack 채널 연동에 특화된 절차를 다룬다.
 
 ## ⚙️ 1. Slack Webhook URL 발급
 

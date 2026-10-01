@@ -245,6 +245,6 @@ public class Main {
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) Spring 역사 #1 (EJB)](Spring%20역사%20#1%20%28EJB%29.md) — Spring 이전 세대인 EJB의 무겁고 컨테이너 종속적인 Bean 모델을 다루는 연작
-- [(학습/프레임워크/Spring Framework) Spring 역사 #2 (POJO)](Spring%20역사%20#2%20%28POJO%29.md) — Spring이 지향하는 POJO 프로그래밍 개념을 다루는 연작
-- [(학습/프레임워크/Spring Framework) SOLID 규칙 적용 (+순수 자바 버전 , spring)](SOLID%20규칙%20적용%20%28+순수%20자바%20버전%20,%20spring%29.md) — 이 문서에서 설명한 SOLID 5원칙을 MemberService/MemberRepository 예제 코드로 실제 구현해보는 실습 노트
+- [(학습/프레임워크/Spring Framework) Spring 역사 #1 (EJB)](프레임워크/Spring%20Framework/Spring%20역사%20#1%20%28EJB%29.md) — Spring 이전 세대인 EJB의 무겁고 컨테이너 종속적인 Bean 모델을 다루는 연작
+- [(학습/프레임워크/Spring Framework) Spring 역사 #2 (POJO)](프레임워크/Spring%20Framework/Spring%20역사%20#2%20%28POJO%29.md) — Spring이 지향하는 POJO 프로그래밍 개념을 다루는 연작
+- [(학습/프레임워크/Spring Framework) SOLID 규칙 적용 (+순수 자바 버전 , spring)](프레임워크/Spring%20Framework/SOLID%20규칙%20적용%20%28+순수%20자바%20버전%20,%20spring%29.md) — 이 문서에서 설명한 SOLID 5원칙을 MemberService/MemberRepository 예제 코드로 실제 구현해보는 실습 노트
