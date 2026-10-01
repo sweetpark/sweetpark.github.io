@@ -8,7 +8,7 @@ modified: 2026-09-05
 
 > [!NOTE]
 > Grafana Loki의 LogQL 문법 요소(라인 필터, 라벨 집계, 속도 함수, 필드 추출)를 운영 대시보드 관점에서 정리. "Logging (최소 APM 구현)" 미니프로젝트의 대시보드 리뉴얼에서 추출.
-> 관련 노트: [(MyBatis) Log 고도화 작업 - 핵심 개념 및 특징 정리]([MyBatis]%20Log%20고도화%20작업%20-%20핵심%20개념%20및%20특징%20정리.md) — `avg_over_time`/`count_over_time` + `| regexp` 조합의 확정 LogQL 쿼리 모음이 이미 정리되어 있다(실무 사례). 이 노트는 그와 겹치지 않는 `rate()`, `sum by`, `pattern`(vs `regexp`), `topk`, `quantile_over_time` 문법 요소에 집중한다.
+> 관련 노트: [(MyBatis) Log 고도화 작업 - 핵심 개념 및 특징 정리](개발%20%28CS%29/인프라/모니터링·네트워크/[MyBatis]%20Log%20고도화%20작업%20-%20핵심%20개념%20및%20특징%20정리.md) — `avg_over_time`/`count_over_time` + `| regexp` 조합의 확정 LogQL 쿼리 모음이 이미 정리되어 있다(실무 사례). 이 노트는 그와 겹치지 않는 `rate()`, `sum by`, `pattern`(vs `regexp`), `topk`, `quantile_over_time` 문법 요소에 집중한다.
 
 ## ⚙️ 라인 필터 (`|=`, `|~`)
 

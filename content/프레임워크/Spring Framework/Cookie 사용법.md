@@ -77,5 +77,5 @@ public String test(HttpServletResponse response){
 
 ## 관련 문서
 
-- [(Spring) 로그인 구현 - 핵심 개념 및 특징 정리](실습_스프링MVC/로그인%20구현/[Spring]%20로그인%20구현%20-%20핵심%20개념%20및%20특징%20정리.md) — 쿠키 기반 로그인 유지를 실제로 구현한 미니 프로젝트
-- [(학습/프레임워크/Spring Framework) Session 사용법](Session%20사용법.md) — Cookie의 보안 문제(위조 가능)를 해결하기 위해 서버측에 상태를 저장하는 Session 방식을 다루는 짝 노트
+- [(Spring) 로그인 구현 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/로그인%20구현/[Spring]%20로그인%20구현%20-%20핵심%20개념%20및%20특징%20정리.md) — 쿠키 기반 로그인 유지를 실제로 구현한 미니 프로젝트
+- [(학습/프레임워크/Spring Framework) Session 사용법](프레임워크/Spring%20Framework/Session%20사용법.md) — Cookie의 보안 문제(위조 가능)를 해결하기 위해 서버측에 상태를 저장하는 Session 방식을 다루는 짝 노트

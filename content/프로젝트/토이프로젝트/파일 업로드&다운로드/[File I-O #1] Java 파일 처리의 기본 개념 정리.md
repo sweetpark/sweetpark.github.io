@@ -116,5 +116,5 @@ if (resource.exists()) {
 
 ## 관련 문서
 
-- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #2] Resource 구현체 완전 정리]([File I-O #2] Resource 구현체 완전 정리.md) — Resource 개념을 이어받아 5가지 구현체(UrlResource, ClassPathResource 등)를 자세히 다루는 후속 편
-- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O] 파일 라이브러리 이해하기 (File, Files, Path, Paths)]([File I-O] 파일 라이브러리 이해하기 (File, Files, Path, Paths).md) — Resource/InputStream 기반 접근과 대비되는 java.io.File 및 NIO Path/Files API를 다루는 비교 문서
+- (학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #2] Resource 구현체 완전 정리 — Resource 개념을 이어받아 5가지 구현체(UrlResource, ClassPathResource 등)를 자세히 다루는 후속 편
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O] 파일 라이브러리 이해하기 (File, Files, Path, Paths)](프로젝트/토이프로젝트/파일%20업로드&다운로드/[File%20I-O]%20파일%20라이브러리%20이해하기%20%28File,%20Files,%20Path,%20Paths%29.md) — Resource/InputStream 기반 접근과 대비되는 java.io.File 및 NIO Path/Files API를 다루는 비교 문서

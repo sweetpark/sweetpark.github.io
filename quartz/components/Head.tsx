@@ -549,8 +549,188 @@ export default (() => {
     });
   }
 
+  // 탐색기 폴더 옆에 하위 글 개수 "(N)" 표시 (티스토리 카테고리 스타일)
+  function updateExplorerCounts() {
+    var folders = document.querySelectorAll(".explorer-content .folder-container");
+    for (var i = 0; i < folders.length; i++) {
+      var container = folders[i];
+      var li = container.parentElement;
+      var button = container.querySelector(".folder-button");
+      if (!li || !button) continue;
+
+      var count = li.querySelectorAll("a.nav-file-title").length;
+      var badge = button.querySelector(".folder-count");
+      if (!badge) {
+        badge = document.createElement("span");
+        badge.className = "folder-count";
+        button.appendChild(badge);
+      }
+      var text = "(" + count + ")";
+      if (badge.textContent !== text) badge.textContent = text;
+    }
+  }
+
+  var explorerObserver = null;
+  function observeExplorer() {
+    var target = document.querySelector(".explorer-content");
+    if (!target) return;
+    if (explorerObserver) explorerObserver.disconnect();
+    explorerObserver = new MutationObserver(function() { updateExplorerCounts(); });
+    explorerObserver.observe(target, { childList: true, subtree: true });
+    updateExplorerCounts();
+  }
+
+  // 우측 목차 토글 버튼 (데스크톱: 평소엔 숨기고 아이콘 클릭 시 슬라이드로 표시)
+  function setTocOpen(open) {
+    document.body.classList.toggle("toc-open", open);
+    var btn = document.querySelector(".toc-toggle-btn");
+    if (btn) btn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  function setupTocToggle() {
+    var btn = document.querySelector(".toc-toggle-btn");
+    if (!btn) {
+      btn = document.createElement("button");
+      btn.className = "toc-toggle-btn";
+      btn.type = "button";
+      btn.setAttribute("aria-label", "목차 열기/닫기");
+      btn.setAttribute("title", "목차");
+      btn.setAttribute("aria-expanded", "false");
+      btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>';
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        setTocOpen(!document.body.classList.contains("toc-open"));
+      });
+      document.body.appendChild(btn);
+
+      document.addEventListener("click", function(e) {
+        if (!document.body.classList.contains("toc-open")) return;
+        var t = e.target;
+        if (t && t.closest && (t.closest(".right.sidebar") || t.closest(".toc-toggle-btn"))) return;
+        setTocOpen(false);
+      });
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") setTocOpen(false);
+      });
+    }
+
+    // 목차가 없는 페이지(홈, 폴더, 태그 등)에서는 버튼 숨김
+    var hasToc = !!document.querySelector(".right.sidebar .toc");
+    btn.style.display = hasToc ? "" : "none";
+    setTocOpen(false);
+  }
+
+  // 좌측 사이드바 프로필 카드 (블로그 이름 아래)
+  function addProfileCard() {
+    var title = document.querySelector(".left.sidebar .page-title");
+    if (!title || document.querySelector(".profile-card")) return;
+
+    var card = document.createElement("div");
+    card.className = "profile-card";
+    card.innerHTML =
+      '<img class="profile-avatar" src="https://github.com/sweetpark.png?size=200" alt="sweetpark 프로필" width="100" height="100">' +
+      '<div class="profile-name">sweetpark</div>' +
+      '<div class="profile-desc">차근차근 정확하게 정리하는 개발 기록</div>' +
+      '<a class="profile-link" href="https://github.com/sweetpark" target="_blank" rel="noopener">' +
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="16" height="16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>' +
+      "<span>GitHub Repo</span></a>";
+    title.parentNode.insertBefore(card, title.nextSibling);
+  }
+
+  // 글 상단 제목을 배경 배너(히어로) 섹션으로 구성
+  function buildPostHero() {
+    var header = document.querySelector(".page-header .popover-hint");
+    if (!header || header.querySelector(".post-hero")) return;
+    var h1 = header.querySelector("h1.article-title");
+    var meta = header.querySelector(".content-meta");
+    if (!h1 || !meta) return;
+
+    var category = categoryFromHref(location.href);
+    var color = (CATEGORY_META[category] || DEFAULT_CATEGORY_META).color;
+    var crumbs = header.querySelectorAll(".breadcrumb-element a");
+    var categoryName = crumbs.length > 1 ? crumbs[1].textContent : "";
+
+    var hero = document.createElement("section");
+    hero.className = "post-hero";
+    hero.style.setProperty("--hero-color", color);
+
+    var inner = document.createElement("div");
+    inner.className = "post-hero-inner";
+    hero.appendChild(inner);
+    header.insertBefore(hero, h1);
+    inner.appendChild(h1);
+    inner.appendChild(meta);
+
+    if (categoryName) {
+      var cat = document.createElement("span");
+      cat.className = "post-hero-category";
+      cat.textContent = categoryName;
+      meta.insertBefore(cat, meta.firstChild);
+    }
+  }
+
+  // 스크롤로 제목 배너가 사라지면 상단에 제목 고정 바 표시
+  function getStickyBar() {
+    var bar = document.querySelector(".post-sticky-bar");
+    if (!bar) {
+      bar = document.createElement("div");
+      bar.className = "post-sticky-bar";
+      bar.setAttribute("role", "button");
+      bar.setAttribute("tabindex", "0");
+      bar.setAttribute("title", "맨 위로");
+      bar.innerHTML = '<span class="post-sticky-title"></span>';
+      var toTop = function() { window.scrollTo({ top: 0, behavior: "smooth" }); };
+      bar.addEventListener("click", toTop);
+      bar.addEventListener("keydown", function(e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toTop(); }
+      });
+      document.body.appendChild(bar);
+    }
+    return bar;
+  }
+
+  function updateStickyBar() {
+    var bar = document.querySelector(".post-sticky-bar");
+    var hero = document.querySelector(".post-hero");
+    if (!bar) return;
+    if (!hero) {
+      bar.classList.remove("visible");
+      return;
+    }
+    var center = document.querySelector(".center");
+    if (center) {
+      var rect = center.getBoundingClientRect();
+      bar.style.left = rect.left + "px";
+      bar.style.width = rect.width + "px";
+    }
+    bar.classList.toggle("visible", hero.getBoundingClientRect().bottom < 0);
+  }
+
+  var stickyBarBound = false;
+  function setupStickyBar() {
+    var hero = document.querySelector(".post-hero");
+    var h1 = hero && hero.querySelector("h1.article-title");
+    if (!hero || !h1) {
+      updateStickyBar();
+      return;
+    }
+    var bar = getStickyBar();
+    bar.querySelector(".post-sticky-title").textContent = h1.textContent;
+    if (!stickyBarBound) {
+      stickyBarBound = true;
+      window.addEventListener("scroll", updateStickyBar, { passive: true });
+      window.addEventListener("resize", updateStickyBar);
+    }
+    updateStickyBar();
+  }
+
   function initPageEnhancements() {
     addGlobalGraphBtn();
+    addProfileCard();
+    buildPostHero();
+    setupStickyBar();
+    observeExplorer();
+    setupTocToggle();
     updatePageViews();
     fetchAndRenderPopularPosts();
     enhanceRecentNotesCards();

@@ -143,7 +143,7 @@ protected HandlerExecutionChain getHandler(HttpServletRequest request) throws Ex
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #2 (Dispatcher Servlet, handler Adapter)](SPRING%20MVC%20구조%20%232%20(Dispatcher%20Servlet,%20handler%20Adapter).md) — getHandler()로 찾은 핸들러를 실행할 HandlerAdapter를 찾는 후속 과정
-- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #3 (Dispatcher Servlet, View)](SPRING%20MVC%20구조%20%233%20(Dispatcher%20Servlet,%20View).md) — doDispatch()의 마지막 단계인 View 렌더링 과정을 다루는 연작
-- [(학습/프레임워크/Spring Framework) Spring MVC ( @RequestMapping )](Spring%20MVC%20(%20@RequestMapping%20).md) — HandlerMapping이 실제로 매핑하는 @RequestMapping/@GetMapping/@PathVariable 사용법을 다루는 노트
-- [(학습/프레임워크/Spring Framework) JAVA 정리]([Java]%20JAVA%20정리%20-%20핵심%20개념%20및%20특징%20정리.md) — 리플렉션+애노테이션으로 미니 WAS(HandlerMapping→Dispatcher)를 직접 구현해보며 이 DispatcherServlet 구조의 원리를 이해하는 노트
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #2 (Dispatcher Servlet, handler Adapter)](프레임워크/Spring%20Framework/SPRING%20MVC%20구조%20#2%20%28Dispatcher%20Servlet,%20handler%20Adapter%29.md) — getHandler()로 찾은 핸들러를 실행할 HandlerAdapter를 찾는 후속 과정
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #3 (Dispatcher Servlet, View)](프레임워크/Spring%20Framework/SPRING%20MVC%20구조%20#3%20%28Dispatcher%20Servlet,%20View%29.md) — doDispatch()의 마지막 단계인 View 렌더링 과정을 다루는 연작
+- [(학습/프레임워크/Spring Framework) Spring MVC ( @RequestMapping )](프레임워크/Spring%20Framework/Spring%20MVC%20%28%20@RequestMapping%20%29.md) — HandlerMapping이 실제로 매핑하는 @RequestMapping/@GetMapping/@PathVariable 사용법을 다루는 노트
+- [(학습/프레임워크/Spring Framework) JAVA 정리](프레임워크/Spring%20Framework/[Java]%20JAVA%20정리%20-%20핵심%20개념%20및%20특징%20정리.md) — 리플렉션+애노테이션으로 미니 WAS(HandlerMapping→Dispatcher)를 직접 구현해보며 이 DispatcherServlet 구조의 원리를 이해하는 노트

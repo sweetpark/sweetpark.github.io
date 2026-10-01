@@ -147,6 +147,6 @@ Content-Type: application/json
 
 ## 관련 문서
 
-- [(Spring) 소셜로그인 전 과정 - 핵심 개념 및 특징 정리](소셜로그인%20전%20과정/[Spring]%20소셜로그인%20전%20과정%20-%20핵심%20개념%20및%20특징%20정리.md) — Spring Security 기반 소셜로그인 흐름 및 permitAll 트러블슈팅을 다루는 미니 프로젝트
-- [(Spring) 로그인 기능 - 핵심 개념 및 특징 정리]([Spring]%20로그인%20기능%20-%20핵심%20개념%20및%20특징%20정리.md) — 로그인 흐름과 세션/쿠키·JWT·Security 개념을 정리한 노트
-- [(프로젝트) OAuth 소셜 로그인 설계 (code 기반 인증, Strategy+Factory)](../../../프로젝트/토이프로젝트/Onz%20(칵테일%20플랫폼)/[구현]%20OAuth%20소셜%20로그인%20설계%20(code%20기반%20인증,%20Strategy+Factory).md) — 이 패턴을 Google/Naver/Kakao/Apple 4개 프로바이더의 code 기반 인증에 적용한 Onz 프로젝트 실제 설계 사례
+- [(Spring) 소셜로그인 전 과정 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/소셜로그인%20전%20과정/[Spring]%20소셜로그인%20전%20과정%20-%20핵심%20개념%20및%20특징%20정리.md) — Spring Security 기반 소셜로그인 흐름 및 permitAll 트러블슈팅을 다루는 미니 프로젝트
+- [(Spring) 로그인 기능 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/[Spring]%20로그인%20기능%20-%20핵심%20개념%20및%20특징%20정리.md) — 로그인 흐름과 세션/쿠키·JWT·Security 개념을 정리한 노트
+- [(프로젝트) OAuth 소셜 로그인 설계 (code 기반 인증, Strategy+Factory)](프로젝트/토이프로젝트/Onz%20%28칵테일%20플랫폼%29/[구현]%20OAuth%20소셜%20로그인%20설계%20%28code%20기반%20인증,%20Strategy+Factory%29.md) — 이 패턴을 Google/Naver/Kakao/Apple 4개 프로바이더의 code 기반 인증에 적용한 Onz 프로젝트 실제 설계 사례

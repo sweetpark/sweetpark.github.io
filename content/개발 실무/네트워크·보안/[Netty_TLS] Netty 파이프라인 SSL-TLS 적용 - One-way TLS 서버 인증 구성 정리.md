@@ -44,5 +44,5 @@ modified: 2026-09-05
 
 ## 관련 문서
 
-- [(학습/프레임워크/Netty) [Java] 04. Netty 소켓 파이프라인 SSL-TLS 적용과 mTLS 상호 인증 (SslHandler, KeyStore, SslContext)](../../프레임워크/Netty/[Java]%2004.%20Netty%20소켓%20파이프라인%20SSL-TLS%20적용과%20mTLS%20상호%20인증%20(SslHandler,%20KeyStore,%20SslContext).md) — SslContextFactory 코드 구현과 mTLS(ClientAuth.REQUIRE) 확장까지 다루는 심화 노트
-- [(보안) 파일 무결성 전자서명 검증 - RSA 개인키 서명과 공개키 검증(사이드카 방식) 정리](./[보안]%20파일%20무결성%20전자서명%20검증%20-%20RSA%20개인키%20서명과%20공개키%20검증(사이드카%20방식)%20정리.md) — "키 발급 시 SAN 불필요" 항목에서 이 TLS 서버 인증서(SAN 필요) 발급 절차와 대비되는 자매 노트
+- [(학습/프레임워크/Netty) [Java] 04. Netty 소켓 파이프라인 SSL-TLS 적용과 mTLS 상호 인증 (SslHandler, KeyStore, SslContext)](프레임워크/Netty/[Java]%2004.%20Netty%20소켓%20파이프라인%20SSL-TLS%20적용과%20mTLS%20상호%20인증%20%28SslHandler,%20KeyStore,%20SslContext%29.md) — SslContextFactory 코드 구현과 mTLS(ClientAuth.REQUIRE) 확장까지 다루는 심화 노트
+- [(보안) 파일 무결성 전자서명 검증 - RSA 개인키 서명과 공개키 검증(사이드카 방식) 정리](개발%20실무/네트워크·보안/[보안]%20파일%20무결성%20전자서명%20검증%20-%20RSA%20개인키%20서명과%20공개키%20검증%28사이드카%20방식%29%20정리.md) — "키 발급 시 SAN 불필요" 항목에서 이 TLS 서버 인증서(SAN 필요) 발급 절차와 대비되는 자매 노트

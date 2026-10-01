@@ -170,6 +170,6 @@ JAR VS WAR
 
 ## 관련 문서
 
-- [[GCP 사용기 #3] Spring boot 서버 구축]([GCP%20사용기%20%233]%20Spring%20boot%20서버%20구축.md) — 이 글에서 다룬 JAR 빌드 결과물을 GCP 서버에 systemd 서비스로 배포하는 후속 과정
-- [[배포 #1] GitHub Actions를 이용한 배포 (CI/CD 파이프라인 , 무중단배포 X)](../배포/[배포%20%231]%20GitHub%20Actions를%20이용한%20배포%20(CI-CD%20파이프라인%20,%20무중단배포%20X).md) — 같은 "배포" 넘버링 시리즈의 다른 편으로, Docker+GitHub Actions 기반의 또 다른 배포 방식을 다룸
-- [(Tomcat) Application WebServer ( + WAS ) - 핵심 개념 및 특징 정리](../../../개발%20(CS)/인프라/인프라%20기초%20지식/[Tomcat]%20Application%20WebServer%20(%20+%20WAS%20)%20-%20핵심%20개념%20및%20특징%20정리.md) — WAR 파일이 왜 WAS(웹서버) 위에서 실행되어야 하는지에 대한 개념적 배경
+- [[GCP 사용기 #3] Spring boot 서버 구축](프로젝트/토이프로젝트/영화예매%20프로젝트/[GCP%20사용기%20#3]%20Spring%20boot%20서버%20구축.md) — 이 글에서 다룬 JAR 빌드 결과물을 GCP 서버에 systemd 서비스로 배포하는 후속 과정
+- [[배포 #1] GitHub Actions를 이용한 배포 (CI/CD 파이프라인 , 무중단배포 X)](프로젝트/토이프로젝트/배포/[배포%20#1]%20GitHub%20Actions를%20이용한%20배포%20%28CI-CD%20파이프라인%20,%20무중단배포%20X%29.md) — 같은 "배포" 넘버링 시리즈의 다른 편으로, Docker+GitHub Actions 기반의 또 다른 배포 방식을 다룸
+- [(Tomcat) Application WebServer ( + WAS ) - 핵심 개념 및 특징 정리](개발%20%28CS%29/인프라/인프라%20기초%20지식/[Tomcat]%20Application%20WebServer%20%28%20+%20WAS%20%29%20-%20핵심%20개념%20및%20특징%20정리.md) — WAR 파일이 왜 WAS(웹서버) 위에서 실행되어야 하는지에 대한 개념적 배경

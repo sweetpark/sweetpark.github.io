@@ -114,4 +114,4 @@ public class WebConfig implements WebMvcConfigurer {
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) Formatter (포맷터)](Formatter%20(포맷터).md) — 이 노트의 Converter를 문자열 표현 형식(Locale 등)까지 다루도록 확장한 심화 버전 노트
+- [(학습/프레임워크/Spring Framework) Formatter (포맷터)](프레임워크/Spring%20Framework/Formatter%20%28포맷터%29.md) — 이 노트의 Converter를 문자열 표현 형식(Locale 등)까지 다루도록 확장한 심화 버전 노트

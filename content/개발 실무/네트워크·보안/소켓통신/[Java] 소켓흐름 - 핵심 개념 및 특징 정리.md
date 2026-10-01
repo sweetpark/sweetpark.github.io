@@ -82,4 +82,4 @@ sequenceDiagram
 
 ## 관련 문서
 
-- [(학습/프레임워크/Netty) [Java] 01. Netty 아키텍처와 이벤트 루프 스레드 모델 (EventLoop, Boss·Worker, Bootstrap)](../../../프레임워크/Netty/[Java]%2001.%20Netty%20아키텍처와%20이벤트%20루프%20스레드%20모델%20(EventLoop,%20Boss·Worker,%20Bootstrap).md) — Thread-per-Connection 모델의 한계와 Netty가 NIO로 이를 극복하는 Multi-Reactor 구조를 실무 서버 예시로 설명
+- [(학습/프레임워크/Netty) [Java] 01. Netty 아키텍처와 이벤트 루프 스레드 모델 (EventLoop, Boss·Worker, Bootstrap)](프레임워크/Netty/[Java]%2001.%20Netty%20아키텍처와%20이벤트%20루프%20스레드%20모델%20%28EventLoop,%20Boss·Worker,%20Bootstrap%29.md) — Thread-per-Connection 모델의 한계와 Netty가 NIO로 이를 극복하는 Multi-Reactor 구조를 실무 서버 예시로 설명

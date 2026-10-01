@@ -130,7 +130,7 @@ public class WebConfig {
 
 ## 관련 문서
 
-- [(Spring) 로그인 구현 - 핵심 개념 및 특징 정리](실습_스프링MVC/로그인%20구현/[Spring]%20로그인%20구현%20-%20핵심%20개념%20및%20특징%20정리.md) — 서블릿 필터 vs 스프링 인터셉터를 실제로 비교 구현한 미니 프로젝트
-- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [기능구현#3] 로그인 기능](../../프로젝트/토이프로젝트/게시판%20프로젝트/[기능구현#3]%20로그인%20기능.md) — Filter를 1차 인증 로직에 실전 적용한 토이프로젝트 사례
-- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [리팩터링] Session을 통한 로그인 처리](../../프로젝트/토이프로젝트/게시판%20프로젝트/[리팩터링]%20Session을%20통한%20로그인%20처리.md) — Filter를 세션 기반 로그인 처리에 실전 적용한 사례
-- [(학습/프레임워크/Spring Framework) Spring Intercept](Spring%20Intercept.md) — 이 노트의 서블릿 필터 이후 동작하며 유사한 역할을 하는 HandlerInterceptor(preHandle/postHandle/afterCompletion)를 다루는 노트
+- [(Spring) 로그인 구현 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/로그인%20구현/[Spring]%20로그인%20구현%20-%20핵심%20개념%20및%20특징%20정리.md) — 서블릿 필터 vs 스프링 인터셉터를 실제로 비교 구현한 미니 프로젝트
+- (학습/프로젝트/토이프로젝트/게시판 프로젝트) [기능구현#3] 로그인 기능 — Filter를 1차 인증 로직에 실전 적용한 토이프로젝트 사례
+- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [리팩터링] Session을 통한 로그인 처리](프로젝트/토이프로젝트/게시판%20프로젝트/[리팩터링]%20Session을%20통한%20로그인%20처리.md) — Filter를 세션 기반 로그인 처리에 실전 적용한 사례
+- [(학습/프레임워크/Spring Framework) Spring Intercept](프레임워크/Spring%20Framework/Spring%20Intercept.md) — 이 노트의 서블릿 필터 이후 동작하며 유사한 역할을 하는 HandlerInterceptor(preHandle/postHandle/afterCompletion)를 다루는 노트

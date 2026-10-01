@@ -8,7 +8,7 @@ modified: 2026-09-05
 
 > [!NOTE]
 > MyBatis SQL 정적 분석 툴("Mybatis + AI (쿼리 분석 Tool)" 미니프로젝트)에서 내린 두 가지 기술 결정: `<include refid>` 태그를 OOM 없이 빠르게 해석하는 2-Phase 파싱 전략과, `<choose>` 분기를 합쳤을 때 EXPLAIN 실행계획이 왜곡되는 문제의 해법.
-> 관련 노트: [(MyBatis) SAX vs DOM Parser - 핵심 개념 및 특징 정리]([MyBatis]%20SAX%20vs%20DOM%20Parser%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 툴의 파서 선택 배경
+> 관련 노트: [(MyBatis) SAX vs DOM Parser - 핵심 개념 및 특징 정리](개발%20%28CS%29/데이터베이스/MyBatis/[MyBatis]%20SAX%20vs%20DOM%20Parser%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 툴의 파서 선택 배경
 
 ## ⚙️ 1. `<include>` 태그 파싱 최적화 — `<sql>` 조각 캐싱 2-Phase 전략
 
@@ -83,5 +83,5 @@ MyBatis DTD 스펙상 `<include>`의 `refid`가 가리킬 수 있는 대상은 �
 
 ## 관련 문서
 
-- [(오픈소스) mybatis-sql-tuner-ai - 상세 분석 및 기술 가이드](../../../프로젝트/오픈소스/[오픈소스]%20mybatis-sql-tuner-ai%20-%20상세%20분석%20및%20기술%20가이드.md) — 이 정적분석 기법을 실제로 구현한 "Mybatis + AI (쿼리 분석 Tool)" 오픈소스 프로젝트의 상세 분석
-- [[MyBatis] W3C DOM 기반 MyBatis 동적 쿼리 정적 분석과 AST 가짜 SQL 생성기 설계]([MyBatis]%20W3C%20DOM%20기반%20MyBatis%20동적%20쿼리%20정적%20분석과%20AST%20가짜%20SQL%20생성기%20설계.md) — 같은 프로젝트의 `SqlExtractor` 구현 알고리즘을 W3C DOM 순회 관점에서 상세히 다루는 자매 노트
+- [(오픈소스) mybatis-sql-tuner-ai - 상세 분석 및 기술 가이드](프로젝트/오픈소스/[오픈소스]%20mybatis-sql-tuner-ai%20-%20상세%20분석%20및%20기술%20가이드.md) — 이 정적분석 기법을 실제로 구현한 "Mybatis + AI (쿼리 분석 Tool)" 오픈소스 프로젝트의 상세 분석
+- [[MyBatis] W3C DOM 기반 MyBatis 동적 쿼리 정적 분석과 AST 가짜 SQL 생성기 설계](개발%20%28CS%29/데이터베이스/MyBatis/[MyBatis]%20W3C%20DOM%20기반%20MyBatis%20동적%20쿼리%20정적%20분석과%20AST%20가짜%20SQL%20생성기%20설계.md) — 같은 프로젝트의 `SqlExtractor` 구현 알고리즘을 W3C DOM 순회 관점에서 상세히 다루는 자매 노트

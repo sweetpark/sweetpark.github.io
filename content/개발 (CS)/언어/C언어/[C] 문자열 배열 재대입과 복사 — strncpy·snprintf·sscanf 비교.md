@@ -62,7 +62,7 @@ buffer[sizeof(buffer) - 1] = '\0';         /* strncpy는 n을 다 썼을 때 널
 snprintf(buffer, sizeof(buffer), "%s", str);
 ```
 
-- [[C] snprintf와 sscanf — 문자열 조립과 파싱의 차이]([C]%20snprintf와%20sscanf%20—%20문자열%20조립과%20파싱의%20차이.md)에서 정리했듯, `snprintf`는 `size`를 넘으면 잘라내되(size가 0이 아닌 한) **항상 널 종료를 보장**한다.
+- [[C] snprintf와 sscanf — 문자열 조립과 파싱의 차이](개발%20%28CS%29/언어/C언어/[C]%20snprintf와%20sscanf%20—%20문자열%20조립과%20파싱의%20차이.md)에서 정리했듯, `snprintf`는 `size`를 넘으면 잘라내되(size가 0이 아닌 한) **항상 널 종료를 보장**한다.
 - `str`이 `buffer`보다 짧거나 같으면 `strncpy(buffer, str, sizeof(buffer)-1); buffer[sizeof(buffer)-1]='\0';`와 결과가 동일하다. 다만 `snprintf`가 널 종료를 자동으로 챙겨줘서 실수할 여지가 적다 — 단순 복사 용도면 `snprintf`가 더 안전한 선택.
 
 ### 2.3 sscanf — "복사"가 아니라 "파싱"이라 의미가 다르다
@@ -86,5 +86,5 @@ sscanf(str, "%9s", buffer);      /* buffer[10]이면 최대 9자 + 널 = 10, 안
 
 ## 관련 문서
 
-- [[C] snprintf와 sscanf — 문자열 조립과 파싱의 차이]([C]%20snprintf와%20sscanf%20—%20문자열%20조립과%20파싱의%20차이.md)
-- [[C] 실무 C 코드 관례와 UB 함정 정리]([C]%20실무%20C%20코드%20관례와%20UB%20함정%20정리.md)
+- [[C] snprintf와 sscanf — 문자열 조립과 파싱의 차이](개발%20%28CS%29/언어/C언어/[C]%20snprintf와%20sscanf%20—%20문자열%20조립과%20파싱의%20차이.md)
+- [[C] 실무 C 코드 관례와 UB 함정 정리](개발%20%28CS%29/언어/C언어/[C]%20실무%20C%20코드%20관례와%20UB%20함정%20정리.md)

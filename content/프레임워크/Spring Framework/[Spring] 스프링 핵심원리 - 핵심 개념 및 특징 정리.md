@@ -1043,5 +1043,5 @@ public class AllBeanTest {
 
 ## 관련 문서
 
-- [(Spring) 회원 등급별 상품 할인 적용 - 핵심 개념 및 특징 정리](실습_스프링MVC/회원%20등급별%20상품%20할인%20적용/[Spring]%20회원%20등급별%20상품%20할인%20적용%20-%20핵심%20개념%20및%20특징%20정리.md) — SOLID·IoC/DI·싱글톤 컨테이너 개념을 실제로 적용한 미니 프로젝트
-- [(학습/프레임워크/Spring Framework) 의존관계 자동 주입 방법](의존관계%20자동%20주입%20방법.md) — 같은 DiscountPolicy/AutoAppConfig 예제의 생성자·수정자·필드·일반메서드 주입 방식과 @Qualifier/@Primary 우선순위를 간결하게 정리한 노트
+- [(Spring) 회원 등급별 상품 할인 적용 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/회원%20등급별%20상품%20할인%20적용/[Spring]%20회원%20등급별%20상품%20할인%20적용%20-%20핵심%20개념%20및%20특징%20정리.md) — SOLID·IoC/DI·싱글톤 컨테이너 개념을 실제로 적용한 미니 프로젝트
+- [(학습/프레임워크/Spring Framework) 의존관계 자동 주입 방법](프레임워크/Spring%20Framework/의존관계%20자동%20주입%20방법.md) — 같은 DiscountPolicy/AutoAppConfig 예제의 생성자·수정자·필드·일반메서드 주입 방식과 @Qualifier/@Primary 우선순위를 간결하게 정리한 노트

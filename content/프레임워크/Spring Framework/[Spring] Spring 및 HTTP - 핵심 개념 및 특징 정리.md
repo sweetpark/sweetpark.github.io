@@ -303,4 +303,4 @@ modified: 2026-09-05
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) Validation (BindingResult, Validator) + @Validated](Validation%20(BindingResult,%20Validator)%20+%20@Validated.md) — 이 노트의 BindingResult/FieldError 기반 유효성 검사 코드를 이론적으로 상세히 다루는 노트
+- [(학습/프레임워크/Spring Framework) Validation (BindingResult, Validator) + @Validated](프레임워크/Spring%20Framework/Validation%20%28BindingResult,%20Validator%29%20+%20@Validated.md) — 이 노트의 BindingResult/FieldError 기반 유효성 검사 코드를 이론적으로 상세히 다루는 노트

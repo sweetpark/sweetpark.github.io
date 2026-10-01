@@ -170,7 +170,7 @@ println!("{}", p_ref.x); // 10 (컴파일러가 (*p_ref).x 로 자동 역참조)
 Raw Pointer는 Rust의 안전성 보장(Null/Dangling/Data Race 방지)을 받지 않으므로, 역참조 시 반드시 `unsafe` 블록이 필요하다.
 
 > [!NOTE]
-> "Rust에는 명시적 `return`이 없다?"는 표현식 기반 반환은 별도 노트로 분리했다 — [(Rust) 표현식과 문장(Expression vs Statement, 암묵적 반환) - 핵심 개념 및 특징 정리]([Rust]%20표현식과%20문장%28Expression%20vs%20Statement,%20암묵적%20반환%29%20-%20핵심%20개념%20및%20특징%20정리.md) 참고.
+> "Rust에는 명시적 `return`이 없다?"는 표현식 기반 반환은 별도 노트로 분리했다 — [(Rust) 표현식과 문장(Expression vs Statement, 암묵적 반환) - 핵심 개념 및 특징 정리](개발%20%28CS%29/언어/Rust/[Rust]%20표현식과%20문장%28Expression%20vs%20Statement,%20암묵적%20반환%29%20-%20핵심%20개념%20및%20특징%20정리.md) 참고.
 
 ### 7. `mut`과 `&mut`은 서로 다른 축이다
 

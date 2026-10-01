@@ -315,4 +315,4 @@ public class RequestBodyStringController{
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) HTTP Message Converter](HTTP%20Message%20Converter.md) — 이 노트의 @RequestBody/HttpEntity 처리를 담당하는 HTTP 메시지 컨버터의 내부 동작을 다루는 노트
+- [(학습/프레임워크/Spring Framework) HTTP Message Converter](프레임워크/Spring%20Framework/HTTP%20Message%20Converter.md) — 이 노트의 @RequestBody/HttpEntity 처리를 담당하는 HTTP 메시지 컨버터의 내부 동작을 다루는 노트

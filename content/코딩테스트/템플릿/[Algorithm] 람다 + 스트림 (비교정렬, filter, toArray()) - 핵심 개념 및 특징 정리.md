@@ -130,5 +130,5 @@ List<Song> result = songs.stream()
 
 ---
 ## 🔗 참고
-- [(Algorithm) 자료구조 - 핵심 개념 및 특징 정리]([Algorithm]%20자료구조%20-%20핵심%20개념%20및%20특징%20정리.md) — HashMap 정렬(Comparator), Stream 변환 참고
-- [(Algorithm) 시간복잡도 - 핵심 개념 및 특징 정리]([Algorithm]%20시간복잡도%20-%20핵심%20개념%20및%20특징%20정리.md) — 정렬/스트림 연산 복잡도
+- [(Algorithm) 자료구조 - 핵심 개념 및 특징 정리](코딩테스트/템플릿/[Algorithm]%20자료구조%20-%20핵심%20개념%20및%20특징%20정리.md) — HashMap 정렬(Comparator), Stream 변환 참고
+- [(Algorithm) 시간복잡도 - 핵심 개념 및 특징 정리](코딩테스트/템플릿/[Algorithm]%20시간복잡도%20-%20핵심%20개념%20및%20특징%20정리.md) — 정렬/스트림 연산 복잡도

@@ -11,8 +11,8 @@ modified: 2026-09-05
 > 작업이지만, 하나의 "Build Time 품질 검증 + Run Time 관측" 체계로 묶어 설계했다. 이 노트는 그 통합
 > 설계에서 나온 의사결정만 정리한 것으로, 각 모듈의 세부 구현/트러블슈팅/LogQL은 아래 노트에 있다.
 >
-> - [(MyBatis) Log 고도화 작업 - 핵심 개념 및 특징 정리]([MyBatis]%20Log%20고도화%20작업%20-%20핵심%20개념%20및%20특징%20정리.md) — logging-starter, Filter/MyBatis Interceptor 기반 트레이스, Grafana+Loki 대시보드
-> - [(MyBatis) Rule Test - 핵심 개념 및 특징 정리](../../%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4/MyBatis/[MyBatis]%20Rule%20Test%20-%20%ED%95%B5%EC%8B%AC%20%EA%B0%9C%EB%85%90%20%EB%B0%8F%20%ED%8A%B9%EC%A7%95%20%EC%A0%95%EB%A6%AC.md) — rule-core/rule-plugin 기반 MyBatis Quality Gate
+> - [(MyBatis) Log 고도화 작업 - 핵심 개념 및 특징 정리](개발%20%28CS%29/인프라/모니터링·네트워크/[MyBatis]%20Log%20고도화%20작업%20-%20핵심%20개념%20및%20특징%20정리.md) — logging-starter, Filter/MyBatis Interceptor 기반 트레이스, Grafana+Loki 대시보드
+> - [(MyBatis) Rule Test - 핵심 개념 및 특징 정리](개발%20%28CS%29/데이터베이스/MyBatis/[MyBatis]%20Rule%20Test%20-%20핵심%20개념%20및%20특징%20정리.md) — rule-core/rule-plugin 기반 MyBatis Quality Gate
 
 ## 1. 통합의 배경
 
@@ -115,5 +115,5 @@ Slow Query가 어떤 요청 맥락에서 발생했는지를 추적하고 싶었�
 
 이 통합은 단순한 로깅 개선이나 테스트 추가가 아니라, **"개발 품질을 시스템이 보장하고, 운영 문제를
 로그로 선제 대응하는 환경"**을 하나의 아키텍처로 엮은 것이다. 각 모듈의 세부 구현은
-[(MyBatis) Log 고도화 작업 - 핵심 개념 및 특징 정리]([MyBatis]%20Log%20고도화%20작업%20-%20핵심%20개념%20및%20특징%20정리.md)과
-[(MyBatis) Rule Test - 핵심 개념 및 특징 정리](../../%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4/MyBatis/[MyBatis]%20Rule%20Test%20-%20%ED%95%B5%EC%8B%AC%20%EA%B0%9C%EB%85%90%20%EB%B0%8F%20%ED%8A%B9%EC%A7%95%20%EC%A0%95%EB%A6%AC.md)에서 확인할 수 있다.
+[(MyBatis) Log 고도화 작업 - 핵심 개념 및 특징 정리](개발%20%28CS%29/인프라/모니터링·네트워크/[MyBatis]%20Log%20고도화%20작업%20-%20핵심%20개념%20및%20특징%20정리.md)과
+[(MyBatis) Rule Test - 핵심 개념 및 특징 정리](개발%20%28CS%29/데이터베이스/MyBatis/[MyBatis]%20Rule%20Test%20-%20핵심%20개념%20및%20특징%20정리.md)에서 확인할 수 있다.

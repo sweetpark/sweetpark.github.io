@@ -227,6 +227,6 @@ Closes #2009
 
 ## 관련 문서
 
-- [(Rust) 오픈소스 컨트리뷰션 실전 가이드(이슈 찾기부터 PR 작성까지, GlueSQL 사례)](GlueSQL/2.%20[Rust]%20오픈소스%20컨트리뷰션%20실전%20가이드%28이슈%20찾기부터%20PR%20작성까지,%20GlueSQL%20사례%29%20-%20핵심%20개념%20및%20특징%20정리.md)
-- [(Rust) 오픈소스 PR 리뷰 대응기(CodeRabbit, GlueSQL #2016)](GlueSQL/7.%20[Rust]%20오픈소스%20PR%20리뷰%20대응기%28CodeRabbit,%20GlueSQL%20PR%202016%29%20-%20핵심%20개념%20및%20특징%20정리.md)
-- [(Rust) Glue::execute 배치 planning 수정 계획(GlueSQL #2009)](GlueSQL/11.%20[Rust]%20Glue%20execute%20배치%20planning%20수정%20계획%28소유권·제네릭경계,%20GlueSQL%20Issue%202009%29%20-%20핵심%20개념%20및%20특징%20정리.md)
+- [(Rust) 오픈소스 컨트리뷰션 실전 가이드(이슈 찾기부터 PR 작성까지, GlueSQL 사례)](프로젝트/오픈소스/GlueSQL/2.%20[Rust]%20오픈소스%20컨트리뷰션%20실전%20가이드%28이슈%20찾기부터%20PR%20작성까지,%20GlueSQL%20사례%29%20-%20핵심%20개념%20및%20특징%20정리.md)
+- [(Rust) 오픈소스 PR 리뷰 대응기(CodeRabbit, GlueSQL #2016)](프로젝트/오픈소스/GlueSQL/7.%20[Rust]%20오픈소스%20PR%20리뷰%20대응기%28CodeRabbit,%20GlueSQL%20PR%202016%29%20-%20핵심%20개념%20및%20특징%20정리.md)
+- [(Rust) Glue::execute 배치 planning 수정 계획(GlueSQL #2009)](프로젝트/오픈소스/GlueSQL/11.%20[Rust]%20Glue%20execute%20배치%20planning%20수정%20계획%28소유권·제네릭경계,%20GlueSQL%20Issue%202009%29%20-%20핵심%20개념%20및%20특징%20정리.md)

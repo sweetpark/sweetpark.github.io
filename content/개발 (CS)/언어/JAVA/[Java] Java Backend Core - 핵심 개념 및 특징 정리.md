@@ -250,4 +250,4 @@ MemberController controller =
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) JAVA 정리](../../../프레임워크/Spring%20Framework/[Java]%20JAVA%20정리%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 I/O·네트워크·미니 WAS 노트를 Java 고급 2편 요약으로 압축해 담은 통합 정리 노트
+- [(학습/프레임워크/Spring Framework) JAVA 정리](프레임워크/Spring%20Framework/[Java]%20JAVA%20정리%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 I/O·네트워크·미니 WAS 노트를 Java 고급 2편 요약으로 압축해 담은 통합 정리 노트

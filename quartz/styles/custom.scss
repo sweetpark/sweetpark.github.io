@@ -94,6 +94,280 @@
 }
 
 // =============================================================================
+// 레이아웃 여백 축소: 좌측 열 폭, 상단 여백 (Quartz 기본값 350px / 6rem)
+// =============================================================================
+$leftPanelWidth: 280px;
+
+.page > #quartz-body {
+  @media all and ($tablet) {
+    grid-template-columns: #{$leftPanelWidth} minmax(0, 1fr);
+  }
+
+  .sidebar {
+    padding-top: 2rem;
+  }
+
+  @media all and not ($mobile) {
+    .sidebar.left {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  .page-header {
+    margin-top: 2rem;
+  }
+
+  @media all and ($mobile) {
+    .page-header {
+      margin-top: 0;
+    }
+  }
+}
+
+// =============================================================================
+// 좌측 사이드바 프로필 카드
+// =============================================================================
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0 0.75rem 0;
+  text-align: center;
+  flex-shrink: 0;
+
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--lightgray);
+    background-color: var(--lightgray);
+  }
+
+  .profile-name {
+    margin-top: 0.4rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+  }
+
+  .profile-desc {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.35;
+  }
+
+  .profile-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--darkgray);
+
+    &:hover {
+      color: var(--secondary);
+    }
+  }
+
+  // 모바일 상단바는 가로 한 줄(제목·메뉴·검색) 구조라 카드가 끼면 레이아웃이 깨짐
+  @media all and ($mobile) {
+    display: none;
+  }
+}
+
+// =============================================================================
+// 글 상단 제목 배너 (히어로 섹션)
+// =============================================================================
+.post-hero {
+  margin: 0.5rem 0 1.25rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.6)),
+    linear-gradient(135deg, var(--hero-color, #4a7fb5), color-mix(in srgb, var(--hero-color, #4a7fb5) 35%, #000));
+
+  .post-hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    min-height: 200px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+
+    @media all and ($mobile) {
+      min-height: 120px;
+      padding: 1.5rem 1rem;
+      gap: 0.6rem;
+    }
+  }
+
+  h1.article-title {
+    margin: 0;
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1.3;
+    word-break: keep-all;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+
+    @media all and ($mobile) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .content-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem 0.9rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+
+    // 기본 메타 스타일의 항목 뒤 쉼표 제거 (배너에서는 gap으로 구분)
+    > *::after {
+      content: none !important;
+    }
+
+    span,
+    time,
+    .page-views,
+    .page-views .gc-view-count {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .post-hero-category {
+      font-weight: 600;
+      padding: 0.1rem 0.6rem;
+      border-radius: 999px;
+      background-color: rgba(255, 255, 255, 0.18);
+      color: #fff;
+    }
+  }
+}
+
+// 스크롤 시 상단에 고정되는 제목 바 (본문 열 위치/폭은 JS가 지정)
+.post-sticky-bar {
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 4rem;
+  background-color: color-mix(in srgb, var(--light) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--lightgray);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
+  }
+
+  .post-sticky-title {
+    overflow: hidden;
+    max-width: 100%;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  @media all and ($mobile) {
+    padding: 0 1rem;
+  }
+}
+
+// 폴더(카테고리) 옆 글 개수 "(N)"
+.explorer-content .folder-button .folder-count {
+  margin-left: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--gray);
+  font-variant-numeric: tabular-nums;
+}
+
+// =============================================================================
+// 우측 사이드바(목차): 데스크톱에서는 숨겨 두고 아이콘 클릭 시 슬라이드로 표시
+// =============================================================================
+.toc-toggle-btn {
+  display: none;
+}
+
+@media all and ($desktop) {
+  // 평소: 우측 열은 여백(3rem)만 남기고 본문을 넓게. 열림: 목차 폭만큼 본문이 줄어듦
+  .page > #quartz-body {
+    grid-template-columns: #{$leftPanelWidth} minmax(0, 1fr) 3rem;
+    transition: grid-template-columns 0.25s ease;
+  }
+
+  body.toc-open .page > #quartz-body {
+    grid-template-columns: #{$leftPanelWidth} minmax(0, 1fr) 320px;
+  }
+
+  .page > #quartz-body .sidebar.right {
+    width: 320px;
+    padding: 4.5rem 1.5rem 2rem 1.5rem;
+    overflow: hidden auto;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease, visibility 0s linear 0.25s;
+  }
+
+  body.toc-open .page > #quartz-body .sidebar.right {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s ease 0.1s, visibility 0s;
+  }
+
+  .toc-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border: 1px solid var(--lightgray);
+    border-radius: 8px;
+    background-color: var(--light);
+    color: var(--darkgray);
+    cursor: pointer;
+    z-index: 31;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover,
+    body.toc-open & {
+      background-color: var(--highlight);
+      color: var(--secondary);
+      border-color: var(--secondary);
+    }
+  }
+}
+
+// =============================================================================
 // 우측 목차 (Table of Contents) 가독성 정돈
 // =============================================================================
 .toc {

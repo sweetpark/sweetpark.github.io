@@ -208,4 +208,4 @@ public void invokeFromContext() throws Exception {
 
 ## 관련 문서
 
-- [(Spring) Spring Framework - 핵심 개념 및 특징 정리](../../../개발%20실무/백엔드·데이터처리/[Spring]%20Spring%20Framework%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 예외 처리·자기호출 트랜잭션 트랩에 더해 CGLIB final 메서드 무효화 사례와 프로그래밍 방식 트랜잭션 대안을 다루는 후속 노트
+- [(Spring) Spring Framework - 핵심 개념 및 특징 정리](개발%20실무/백엔드·데이터처리/[Spring]%20Spring%20Framework%20-%20핵심%20개념%20및%20특징%20정리.md) — 같은 예외 처리·자기호출 트랜잭션 트랩에 더해 CGLIB final 메서드 무효화 사례와 프로그래밍 방식 트랜잭션 대안을 다루는 후속 노트

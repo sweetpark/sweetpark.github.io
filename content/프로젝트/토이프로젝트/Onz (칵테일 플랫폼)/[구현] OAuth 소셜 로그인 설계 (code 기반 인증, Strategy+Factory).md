@@ -106,8 +106,8 @@ Kakao/Naver/Google/Apple마다 로그인 요청 URL, accessToken 교환 방식, 
 
 ## 관련 문서
 
-- [Onz API 레퍼런스]([API]%20Onz%20API%20레퍼런스.md) — 이 설계를 기반으로 실제 구현된 `/api/auth/social-login`, `/api/auth/signup` 엔드포인트의 세부 요청/응답 스펙
-- [Onz 프로젝트 소개 및 기획]([개요]%20Onz%20프로젝트%20소개%20및%20기획.md) — 이 인증 설계가 적용된 Onz 프로젝트의 전체 기획 배경
-- [Stream·Generic·Lambda로 중복 코드 제거]([리팩토링]%20Stream·Generic·Lambda로%20중복%20코드%20제거.md) — 이 문서의 Provider별 반복 로직 문제를 Strategy+Factory로 해결한 것처럼, 유사한 반복 코드 문제를 Stream/Generic/Lambda로 해결한 리팩토링 사례
-- [[소셜로그인 #2] 소셜로그인 OAuth2.0 적용하기 (+디자인패턴 : 전략&팩토리)](../계정%20인증%20및%20인가/[소셜로그인%20%232]%20소셜로그인%20OAuth2.0%20적용하기%20(+디자인패턴%20-%20전략&팩토리).md) — Strategy+Factory 패턴을 처음 적용했던 다른 토이프로젝트의 소셜로그인 구현 글
-- [(Spring) Strategy+Factory로 다중 Provider 처리하기 - 핵심 개념 및 특징 정리](../../../프레임워크/Spring%20Framework/실습_스프링MVC/[Spring]%20Strategy+Factory로%20다중%20Provider%20처리하기%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 설계에서 사용한 Strategy+Factory 패턴을 일반화하여 정리한 문서
+- [Onz API 레퍼런스](프로젝트/토이프로젝트/Onz%20%28칵테일%20플랫폼%29/[API]%20Onz%20API%20레퍼런스.md) — 이 설계를 기반으로 실제 구현된 `/api/auth/social-login`, `/api/auth/signup` 엔드포인트의 세부 요청/응답 스펙
+- [Onz 프로젝트 소개 및 기획](프로젝트/토이프로젝트/Onz%20%28칵테일%20플랫폼%29/[개요]%20Onz%20프로젝트%20소개%20및%20기획.md) — 이 인증 설계가 적용된 Onz 프로젝트의 전체 기획 배경
+- [Stream·Generic·Lambda로 중복 코드 제거](프로젝트/토이프로젝트/Onz%20%28칵테일%20플랫폼%29/[리팩토링]%20Stream·Generic·Lambda로%20중복%20코드%20제거.md) — 이 문서의 Provider별 반복 로직 문제를 Strategy+Factory로 해결한 것처럼, 유사한 반복 코드 문제를 Stream/Generic/Lambda로 해결한 리팩토링 사례
+- [[소셜로그인 #2] 소셜로그인 OAuth2.0 적용하기 (+디자인패턴 : 전략&팩토리)](프로젝트/토이프로젝트/계정%20인증%20및%20인가/[소셜로그인%20#2]%20소셜로그인%20OAuth2.0%20적용하기%20%28+디자인패턴%20-%20전략&팩토리%29.md) — Strategy+Factory 패턴을 처음 적용했던 다른 토이프로젝트의 소셜로그인 구현 글
+- [(Spring) Strategy+Factory로 다중 Provider 처리하기 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/실습_스프링MVC/[Spring]%20Strategy+Factory로%20다중%20Provider%20처리하기%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 설계에서 사용한 Strategy+Factory 패턴을 일반화하여 정리한 문서

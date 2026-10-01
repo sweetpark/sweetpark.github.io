@@ -111,4 +111,4 @@ HOST : www.naver.com
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) HTTP 이론 - 핵심 개념 및 특징 정리](../../../../../프레임워크/Spring%20Framework/[Spring]%20HTTP%20이론%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트의 HTTP 메서드/URI 설계 내용을 상태코드·헤더까지 포함해 한 문서로 종합 정리한 강의 노트
+- [(학습/프레임워크/Spring Framework) HTTP 이론 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/[Spring]%20HTTP%20이론%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트의 HTTP 메서드/URI 설계 내용을 상태코드·헤더까지 포함해 한 문서로 종합 정리한 강의 노트

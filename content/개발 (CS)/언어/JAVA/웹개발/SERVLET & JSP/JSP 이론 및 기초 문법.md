@@ -141,4 +141,4 @@ JSP(Java Server Page)의 개념과 동작 원리, 표준 문법을 정리한 이
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) MVC #1](../../../../../프레임워크/Spring%20Framework/[Spring]%20MVC%20%231%20-%20MVC%201.md) — 이 노트의 JSP 문법을 서블릿·MVC 적용까지 포함해 한 문서로 종합 정리한 강의 노트
+- [(학습/프레임워크/Spring Framework) MVC #1](프레임워크/Spring%20Framework/[Spring]%20MVC%20#1%20-%20MVC%201.md) — 이 노트의 JSP 문법을 서블릿·MVC 적용까지 포함해 한 문서로 종합 정리한 강의 노트

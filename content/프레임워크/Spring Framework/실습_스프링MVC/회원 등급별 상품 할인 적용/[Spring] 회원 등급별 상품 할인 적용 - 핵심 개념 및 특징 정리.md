@@ -50,5 +50,5 @@ modified: 2026-09-05
 
 ## 관련 문서
 
-- [(Spring Framework) 스프링 핵심원리 - 핵심 개념 및 특징 정리](../../[Spring]%20스프링%20핵심원리%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 프로젝트가 구현하는 SOLID·IoC/DI·싱글톤 컨테이너 개념을 정리한 노트
-- [(Spring Framework) @Component에 관하여...](../../@Component에%20관하여....md) — 이 프로젝트의 자동/수동 Bean 등록·컴포넌트 스캔 구현이 기반하는 개념 노트
+- [(Spring Framework) 스프링 핵심원리 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/[Spring]%20스프링%20핵심원리%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 프로젝트가 구현하는 SOLID·IoC/DI·싱글톤 컨테이너 개념을 정리한 노트
+- [(Spring Framework) @Component에 관하여...](프레임워크/Spring%20Framework/@Component에%20관하여....md) — 이 프로젝트의 자동/수동 Bean 등록·컴포넌트 스캔 구현이 기반하는 개념 노트
