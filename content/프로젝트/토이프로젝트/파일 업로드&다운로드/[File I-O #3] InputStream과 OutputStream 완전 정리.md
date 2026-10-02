@@ -112,5 +112,5 @@ os.close();
 
 ## 관련 문서
 
-- (학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #2] Resource 구현체 완전 정리 — Resource 구현체(UrlResource, ClassPathResource 등)를 자세히 다루는 선행 편
-- (학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #4] InputStreamReader & BufferedReader 완전 분석 — InputStream/OutputStream을 다룬 후, InputStreamReader와 BufferedReader로 문자 단위 처리를 확장하는 후속 편
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #2] Resource 구현체 완전 정리](프로젝트/토이프로젝트/파일%20업로드&다운로드/[File%20I-O%20%232]%20Resource%20구현체%20완전%20정리.md) — Resource 구현체(UrlResource, ClassPathResource 등)를 자세히 다루는 선행 편
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #4] InputStreamReader & BufferedReader 완전 분석](프로젝트/토이프로젝트/파일%20업로드&다운로드/[File%20I-O%20%234]%20InputStreamReader%20&%20BufferedReader%20완전%20분석.md) — InputStream/OutputStream을 다룬 후, InputStreamReader와 BufferedReader로 문자 단위 처리를 확장하는 후속 편

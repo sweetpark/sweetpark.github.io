@@ -64,4 +64,4 @@ public class TestServlet extends HttpServlet{
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) MVC #1](프레임워크/Spring%20Framework/MVC%20구조/[Spring]%20MVC%20#1%20-%20MVC%201.md) — 이 노트의 서블릿 기초 개념을 WAS·멀티쓰레드·MVC 적용까지 포함해 한 문서로 종합 정리한 강의 노트
+- [(학습/프레임워크/Spring Framework) MVC #1](프레임워크/Spring%20Framework/MVC%20구조/[Spring]%20MVC%20%231%20-%20MVC%201.md) — 이 노트의 서블릿 기초 개념을 WAS·멀티쓰레드·MVC 적용까지 포함해 한 문서로 종합 정리한 강의 노트

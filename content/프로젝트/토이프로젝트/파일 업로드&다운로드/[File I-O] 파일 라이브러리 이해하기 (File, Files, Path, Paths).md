@@ -153,4 +153,4 @@ docs.oracle.com](https://docs.oracle.com/javase/tutorial/essential/io/)
 
 ## 관련 문서
 
-- (학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #1] Java 파일 처리의 기본 개념 정리 — Resource/InputStream 기반의 파일 처리 기본 개념을 다루는 File I/O 시리즈 #1편
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #1] Java 파일 처리의 기본 개념 정리](프로젝트/토이프로젝트/파일%20업로드&다운로드/[File%20I-O%20%231]%20Java%20파일%20처리의%20기본%20개념%20정리.md) — Resource/InputStream 기반의 파일 처리 기본 개념을 다루는 File I/O 시리즈 #1편

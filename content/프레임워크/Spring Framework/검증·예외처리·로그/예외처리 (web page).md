@@ -170,5 +170,5 @@ public class WebConfig implements WebMvcConfigurer {
 
 ## 관련 문서
 
-- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [기능구현#4] 예외처리](프로젝트/토이프로젝트/게시판%20프로젝트/[기능구현#4]%20예외처리.md) — ErrorPage 기반 예외처리를 게시판 프로젝트에 실전 적용한 사례
+- [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [기능구현#4] 예외처리](프로젝트/토이프로젝트/게시판%20프로젝트/[기능구현%234]%20예외처리.md) — ErrorPage 기반 예외처리를 게시판 프로젝트에 실전 적용한 사례
 - [(학습/프레임워크/Spring Framework) 예외처리 (API)](프레임워크/Spring%20Framework/검증·예외처리·로그/예외처리%20%28API%29.md) — 동일한 MyCustomizer/ErrorPage 등록 코드를 REST API(JSON) 응답 관점에서 다루는 짝 노트

@@ -123,5 +123,5 @@ mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #1 (Dispatcher Servlet, handler mapping)](프레임워크/Spring%20Framework/MVC%20구조/SPRING%20MVC%20구조%20#1%20%28Dispatcher%20Servlet,%20handler%20mapping%29.md) — 이 HandlerAdapter를 찾기 전 단계인 getHandler() 매핑 과정을 다루는 연작
-- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #3 (Dispatcher Servlet, View)](프레임워크/Spring%20Framework/MVC%20구조/SPRING%20MVC%20구조%20#3%20%28Dispatcher%20Servlet,%20View%29.md) — 이 HandlerAdapter가 반환한 ModelAndView를 View로 렌더링하는 후속 과정
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #1 (Dispatcher Servlet, handler mapping)](프레임워크/Spring%20Framework/MVC%20구조/SPRING%20MVC%20구조%20%231%20%28Dispatcher%20Servlet,%20handler%20mapping%29.md) — 이 HandlerAdapter를 찾기 전 단계인 getHandler() 매핑 과정을 다루는 연작
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #3 (Dispatcher Servlet, View)](프레임워크/Spring%20Framework/MVC%20구조/SPRING%20MVC%20구조%20%233%20%28Dispatcher%20Servlet,%20View%29.md) — 이 HandlerAdapter가 반환한 ModelAndView를 View로 렌더링하는 후속 과정

@@ -89,5 +89,5 @@ try (BufferedReader reader = new BufferedReader(
 
 ## 관련 문서
 
-- (학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #3] InputStream과 OutputStream 완전 정리 — InputStream/OutputStream의 기본 개념을 다루는 선행 편
-- (학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #5] MultiPartFile (Form데이터) 처리하기 — Resource+BufferedReader 패턴을 실전 예제인 MultipartFile 업로드 처리에 적용하는 후속 편
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #3] InputStream과 OutputStream 완전 정리](프로젝트/토이프로젝트/파일%20업로드&다운로드/[File%20I-O%20%233]%20InputStream과%20OutputStream%20완전%20정리.md) — InputStream/OutputStream의 기본 개념을 다루는 선행 편
+- [(학습/프로젝트/토이프로젝트/파일 업로드&다운로드) [File I/O #5] MultiPartFile (Form데이터) 처리하기](프로젝트/토이프로젝트/파일%20업로드&다운로드/[File%20I-O%20%235]%20MultiPartFile%20%28Form데이터%29%20처리하기.md) — Resource+BufferedReader 패턴을 실전 예제인 MultipartFile 업로드 처리에 적용하는 후속 편

@@ -88,4 +88,4 @@ private void close(Connection con, Statement stmt, ResultSet rs){
 ## 관련 문서
 
 - [(게시판 프로젝트) [리팩터링] 게시판 프로젝트 아키텍처](프로젝트/토이프로젝트/게시판%20프로젝트/[리팩터링]%20게시판%20프로젝트%20아키텍처.md) — 이 DataSource가 속한 게시판 프로젝트의 전체 아키텍처 개요
-- [(게시판 프로젝트) [기능구현#5] AppConfig 구성](프로젝트/토이프로젝트/게시판%20프로젝트/[기능구현#5]%20AppConfig%20구성.md) — 이 DataSourceConfig를 생성자로 주입받아 BoardDBRepository/MemberDBRepository를 수동 Bean 등록하는 AppConfig 설계
+- [(게시판 프로젝트) [기능구현#5] AppConfig 구성](프로젝트/토이프로젝트/게시판%20프로젝트/[기능구현%235]%20AppConfig%20구성.md) — 이 DataSourceConfig를 생성자로 주입받아 BoardDBRepository/MemberDBRepository를 수동 Bean 등록하는 AppConfig 설계

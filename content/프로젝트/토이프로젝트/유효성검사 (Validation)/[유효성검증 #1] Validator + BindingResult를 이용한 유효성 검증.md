@@ -127,5 +127,5 @@ Content-Type: application/json
 
 ## 관련 문서
 
-- (학습/프로젝트/토이프로젝트/유효성검사 (Validation)) [유효성검증 #2] Bean Validation를 이용한 유효성 검증 — Validator+BindingResult 방식에 이어 Bean Validation(어노테이션 기반) 검증을 다루는 후속 편
+- [(학습/프로젝트/토이프로젝트/유효성검사 (Validation)) [유효성검증 #2] Bean Validation를 이용한 유효성 검증](프로젝트/토이프로젝트/유효성검사%20%28Validation%29/[유효성검증%20%232]%20Bean%20Validation를%20이용한%20유효성%20검증.md) — Validator+BindingResult 방식에 이어 Bean Validation(어노테이션 기반) 검증을 다루는 후속 편
 - [(학습/프레임워크/Spring Framework) Validation (BindingResult, Validator) + @Validated](프레임워크/Spring%20Framework/검증·예외처리·로그/Validation%20%28BindingResult,%20Validator%29%20+%20@Validated.md) — Validator 인터페이스와 BindingResult를 이용한 검증 방식을 다루는 강의 노트와 동일한 주제

@@ -217,4 +217,4 @@ List<String> values = map.get("keyA");
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #1 (Dispatcher Servlet, handler mapping)](프레임워크/Spring%20Framework/MVC%20구조/SPRING%20MVC%20구조%20#1%20%28Dispatcher%20Servlet,%20handler%20mapping%29.md) — 이 노트의 @RequestMapping이 등록되는 RequestMappingHandlerMapping의 내부 동작(DispatcherServlet)을 다루는 노트
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #1 (Dispatcher Servlet, handler mapping)](프레임워크/Spring%20Framework/MVC%20구조/SPRING%20MVC%20구조%20%231%20%28Dispatcher%20Servlet,%20handler%20mapping%29.md) — 이 노트의 @RequestMapping이 등록되는 RequestMappingHandlerMapping의 내부 동작(DispatcherServlet)을 다루는 노트
