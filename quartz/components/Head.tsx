@@ -528,13 +528,28 @@ export default (() => {
       }
     } catch (e) {}
 
-    fetchStatsHits(function(map, rawHits) {
-      rawHits = rawHits || [];
+    // 파일명 변경/이동으로 GoatCounter에 남은 옛 경로는 404가 되므로,
+    // 현재 사이트(contentIndex)에 실제로 존재하는 slug만 인기 글 후보로 삼는다.
+    var existingSlugs = Promise.resolve(null);
+    if (typeof fetchData !== "undefined") {
+      existingSlugs = fetchData.then(function(data) {
+        var set = {};
+        Object.keys(data).forEach(function(k) { set[k.toLowerCase()] = true; });
+        return set;
+      }).catch(function() { return null; });
+    }
+
+    Promise.all([new Promise(function(resolve) {
+      fetchStatsHits(function(map, rawHits) { resolve(rawHits || []); });
+    }), existingSlugs]).then(function(res) {
+      var rawHits = res[0];
+      var slugSet = res[1];
       var filteredHits = rawHits.filter(function(h) {
         if (!h.path || h.event) return false;
         var p = normalizePath(h.path).toLowerCase();
         if (p === "/" || p === "/index" || p === "/index.html" || p === "/404") return false;
         if (p.indexOf("/tags/") === 0 || p.indexOf("tags/") === 0) return false;
+        if (slugSet && !slugSet[p.slice(1)]) return false;
         return true;
       });
 
