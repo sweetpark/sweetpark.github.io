@@ -132,7 +132,7 @@ int main()
 
 [NEW []]  
   
-[Type]* [포인터이름] = new [Type] [[개수]];  
+`[Type]* [포인터이름] = new [Type] [[개수]];`  
 ex) Monster* pointer = new Monster [5];  
   
 [DELETE []]  

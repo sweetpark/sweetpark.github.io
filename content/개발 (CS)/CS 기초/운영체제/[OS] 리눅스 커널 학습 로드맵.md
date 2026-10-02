@@ -76,7 +76,7 @@ flowchart TD
 ### Phase 2. 핵심 서브시스템 개념 및 철학 습득 (Theory Foundation)
 
 > **목표**: Robert Love의 책을 통해 리눅스 커널의 핵심 서브시스템 동작 원리를 C 코드 관점에서 이해한다.  
-> 🔗 **주요 교재**: [Linux Kernel Development 3rd Edition (LKD)](https://github.com/jyfc/ebook/blob/master/03_operating_system/Linux.Kernel.Development.3rd.Edition.pdf) (로컬 백업: [attachments/Linux.Kernel.Development.3rd.Edition.pdf](attachments/Linux.Kernel.Development.3rd.Edition.pdf))
+> 🔗 **주요 교재**: [Linux Kernel Development 3rd Edition (LKD)](https://github.com/jyfc/ebook/blob/master/03_operating_system/Linux.Kernel.Development.3rd.Edition.pdf) (로컬 백업: attachments/Linux.Kernel.Development.3rd.Edition.pdf)
 
 > [!WARNING]
 > 이 책은 **커널 2.6.34 기준(2010년)**으로 집필되어 개념·철학을 익히기엔 최고지만, 세부 구현은 현재(2026년 기준 최신 LTS v6.12/v6.18, 메인라인 v7.2)와 다른 부분이 있습니다. 대표적으로 **Ch.4의 CFS 스케줄러는 커널 6.6부터 EEVDF(Earliest Eligible Virtual Deadline First)로 교체**되었습니다. 책은 "왜 이런 설계를 했는가"를 배우는 용도로 삼고, 세부 구현은 Phase 4의 최신 소스 코드로 반드시 교차 확인하세요. GitHub 개인 리포지토리 원본은 저작권 이슈로 예고 없이 삭제될 수 있어 vault 내 `attachments/`에 백업본을 함께 보관합니다.
