@@ -140,6 +140,6 @@ public class CustomException extends RuntimeException{
 
 ## 관련 문서
 
-- [(토이프로젝트) [예외처리 #2] 예외 적용하기](프로젝트/토이프로젝트/예외처리/[예외처리%20%232]%20예외%20적용하기.md) — 본문에서 정리한 예외 개념을 `@RestControllerAdvice` 기반 실제 API 예외 처리로 적용하는 시리즈 2편
+- [(토이프로젝트) [예외처리 #2] 예외 적용하기](프로젝트/토이프로젝트/예외처리/[예외처리%202]%20예외%20적용하기.md) — 본문에서 정리한 예외 개념을 `@RestControllerAdvice` 기반 실제 API 예외 처리로 적용하는 시리즈 2편
 - [(토이프로젝트) [Exception] DB 데이터접근 스프링 예외 변환기](프로젝트/토이프로젝트/예외처리/[Exception]%20DB%20데이터접근%20스프링%20예외%20변환기.md) — 본문의 Checked/Unchecked 예외 변환 개념을 스프링 데이터 접근 예외 계층에 적용한 사례
 - [(언어) [JAVA] Exception(Checked 예외, UnChecked예외)](개발%20%28CS%29/언어/JAVA/중급·핵심%20정리/[JAVA]%20Exception%28Checked%20예외,%20UnChecked예외%29.md) — Checked/Unchecked 예외의 계층 구조와 stack trace 처리를 코드 예시와 함께 더 깊이 정리한 문서

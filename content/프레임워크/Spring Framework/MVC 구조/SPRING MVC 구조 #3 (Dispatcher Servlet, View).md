@@ -128,6 +128,6 @@ public interface View {
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #1 (Dispatcher Servlet, handler mapping)](프레임워크/Spring%20Framework/MVC%20구조/SPRING%20MVC%20구조%20%231%20%28Dispatcher%20Servlet,%20handler%20mapping%29.md) — Dispatcher Servlet이 요청을 받아 handler를 찾는 최초 단계를 다루는 연작
-- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #2 (Dispatcher Servlet, handler Adapter)](프레임워크/Spring%20Framework/MVC%20구조/SPRING%20MVC%20구조%20%232%20%28Dispatcher%20Servlet,%20handler%20Adapter%29.md) — 이 render() 단계 직전에 컨트롤러를 실행해 ModelAndView를 만드는 HandlerAdapter 과정을 다루는 연작
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #1 (Dispatcher Servlet, handler mapping)](프레임워크/Spring%20Framework/MVC%20구조/SPRING%20MVC%20구조%201%20%28Dispatcher%20Servlet,%20handler%20mapping%29.md) — Dispatcher Servlet이 요청을 받아 handler를 찾는 최초 단계를 다루는 연작
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #2 (Dispatcher Servlet, handler Adapter)](프레임워크/Spring%20Framework/MVC%20구조/SPRING%20MVC%20구조%202%20%28Dispatcher%20Servlet,%20handler%20Adapter%29.md) — 이 render() 단계 직전에 컨트롤러를 실행해 ModelAndView를 만드는 HandlerAdapter 과정을 다루는 연작
 - [(학습/프레임워크/Spring Framework) SpringMVC ( Http 응답 처리 )](프레임워크/Spring%20Framework/MVC%20구조/SpringMVC%20%28%20Http%20응답%20처리%20%29.md) — render() 단계에서 이루어지는 View Template/ResponseEntity 응답 처리를 다루는 노트

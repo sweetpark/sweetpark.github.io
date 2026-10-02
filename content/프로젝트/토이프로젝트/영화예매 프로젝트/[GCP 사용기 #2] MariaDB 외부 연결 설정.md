@@ -112,4 +112,4 @@ spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
 
 ## 관련 문서
 
-- [[GCP 사용기 #3] Spring boot 서버 구축](프로젝트/토이프로젝트/영화예매%20프로젝트/[GCP%20사용기%20%233]%20Spring%20boot%20서버%20구축.md) — 같은 GCP 배포 시리즈의 다음 편으로, 여기서 연결한 MariaDB를 사용할 Spring Boot 서버를 GCP에 구축하는 과정
+- [[GCP 사용기 #3] Spring boot 서버 구축](프로젝트/토이프로젝트/영화예매%20프로젝트/[GCP%20사용기%203]%20Spring%20boot%20서버%20구축.md) — 같은 GCP 배포 시리즈의 다음 편으로, 여기서 연결한 MariaDB를 사용할 Spring Boot 서버를 GCP에 구축하는 과정

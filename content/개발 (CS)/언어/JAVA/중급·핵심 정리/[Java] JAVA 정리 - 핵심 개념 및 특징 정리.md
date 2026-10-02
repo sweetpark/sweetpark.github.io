@@ -1299,7 +1299,7 @@ int sum = IntStream.rangeClosed(1, 8)
 - [(학습/개발 (CS)/언어/JAVA) ☕ Java Deep Dive](개발%20%28CS%29/언어/JAVA/동시성·IO·락/[Java]%20Java%20Deep%20Dive%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트의 "Java 고급 1편" 요약이 원본으로 삼은 멀티스레딩/동시성 상세 노트
 - [(학습/개발 (CS)/언어/JAVA) ☕ Java Backend Core](개발%20%28CS%29/언어/JAVA/동시성·IO·락/[Java]%20Java%20Backend%20Core%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트의 "Java 고급 2편" 요약이 원본으로 삼은 I/O·네트워크·미니 WAS 상세 노트
 - [(학습/개발 (CS)/언어/JAVA) ☕ [Modern Java] 자바 함수형 프로그래밍 & 스트림 마스터](개발%20%28CS%29/언어/JAVA/중급·핵심%20정리/[Java]%20Modern%20Java%20자바%20함수형%20프로그래밍%20&%20스트림%20마스%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트의 "Java 고급 3편" 요약이 원본으로 삼은 람다/스트림/Optional 상세 노트
-- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #1 (Dispatcher Servlet, handler mapping)](프레임워크/Spring%20Framework/MVC%20구조/SPRING%20MVC%20구조%20%231%20%28Dispatcher%20Servlet,%20handler%20mapping%29.md) — 이 노트의 "미니 WAS 아키텍처(HandlerMapping→Dispatcher→Controller)" 실습을 실제 Spring의 DispatcherServlet 구조로 확장해서 보는 노트
+- [(학습/프레임워크/Spring Framework) SPRING MVC 구조 #1 (Dispatcher Servlet, handler mapping)](프레임워크/Spring%20Framework/MVC%20구조/SPRING%20MVC%20구조%201%20%28Dispatcher%20Servlet,%20handler%20mapping%29.md) — 이 노트의 "미니 WAS 아키텍처(HandlerMapping→Dispatcher→Controller)" 실습을 실제 Spring의 DispatcherServlet 구조로 확장해서 보는 노트
 - [(학습/프레임워크/Spring Framework) Spring Bean (+ Bean Factory)](프레임워크/Spring%20Framework/컨테이너·Bean·DI/Spring%20Bean%20%28+%20Bean%20Factory%29.md) — 이 노트의 "DI의 본질(구성과 사용의 분리)" 수작업 예제를 실제 Spring의 BeanFactory/DI 컨테이너 구현으로 이어서 보는 노트
 
 ---

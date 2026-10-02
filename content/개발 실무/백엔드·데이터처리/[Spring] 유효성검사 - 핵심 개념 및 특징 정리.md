@@ -36,4 +36,4 @@ modified: 2026-09-05
 
 ## 관련 문서
 
-- [(토이프로젝트) [유효성검증 #3] 유효성 검증 아키텍처 설계](프로젝트/토이프로젝트/유효성검사%20%28Validation%29/[유효성검증%20%233]%20%20유효성%20검증%20아키텍처%20설계.md) — @CheckValidation/@CustomValidate + AOP + ValidateFactory 구조를 도식과 함께 상세히 다루는 토이프로젝트 노트
+- [(토이프로젝트) [유효성검증 #3] 유효성 검증 아키텍처 설계](프로젝트/토이프로젝트/유효성검사%20%28Validation%29/[유효성검증%203]%20%20유효성%20검증%20아키텍처%20설계.md) — @CheckValidation/@CustomValidate + AOP + ValidateFactory 구조를 도식과 함께 상세히 다루는 토이프로젝트 노트
