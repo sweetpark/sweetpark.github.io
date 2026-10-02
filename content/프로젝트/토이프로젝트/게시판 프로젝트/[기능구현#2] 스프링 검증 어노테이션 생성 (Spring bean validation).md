@@ -147,4 +147,4 @@ public class memberUpdateForm {
 ## 관련 문서
 
 - (학습/프로젝트/토이프로젝트/유효성검사 (Validation)) [유효성검증 #2] Bean Validation를 이용한 유효성 검증 — 동일한 커스텀 비밀번호 검증 어노테이션(@ValidPassword/@PasswordValidate) + ConstraintValidator 패턴을 다루는 유사 사례
-- [(학습/프레임워크/Spring Framework) Bean Validation](프레임워크/Spring%20Framework/Bean%20Validation.md) — 커스텀 Bean Validation 어노테이션(@ValidPassword)을 구현한 사례로, Bean Validation 개념을 실전 적용
+- [(학습/프레임워크/Spring Framework) Bean Validation](프레임워크/Spring%20Framework/검증·예외처리·로그/Bean%20Validation.md) — 커스텀 Bean Validation 어노테이션(@ValidPassword)을 구현한 사례로, Bean Validation 개념을 실전 적용

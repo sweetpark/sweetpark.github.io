@@ -36,7 +36,7 @@ enum Message {
 }
 ```
 
-C의 `enum`은 정수 상수 이름의 집합일 뿐이라 `Message` 같은 구조를 표현하려면 `union` + 태그 필드를 직접 조합해야 한다(→ [Union, Typedef, Struct 노트](개발%20%28CS%29/언어/C언어/[Lang]%20Union,%20Typedef,%20Struct%20구조%20및%20활용.md)의 Tagged Union이 바로 그 수작업 버전). Rust는 이걸 `enum` 하나로 컴파일러가 안전하게 보장해준다 — 한 시점에는 정확히 하나의 variant만 존재하고, 그 variant에 맞는 데이터만 꺼낼 수 있음이 타입 시스템으로 강제됨.
+C의 `enum`은 정수 상수 이름의 집합일 뿐이라 `Message` 같은 구조를 표현하려면 `union` + 태그 필드를 직접 조합해야 한다(→ [Union, Typedef, Struct 노트](개발%20%28CS%29/언어/C언어/기초%20문법/[Lang]%20Union,%20Typedef,%20Struct%20구조%20및%20활용.md)의 Tagged Union이 바로 그 수작업 버전). Rust는 이걸 `enum` 하나로 컴파일러가 안전하게 보장해준다 — 한 시점에는 정확히 하나의 variant만 존재하고, 그 variant에 맞는 데이터만 꺼낼 수 있음이 타입 시스템으로 강제됨.
 
 > [!NOTE]
 > `:`, `->`, `=>`, `=` 같은 기호 구분과 `String` vs `&str`은 별도 노트로 분리했다 — [(Rust) 기호 완전정리(콜론·화살표·등호, String vs str) - 핵심 개념 및 특징 정리](개발%20%28CS%29/언어/Rust/[Rust]%20기호%20완전정리%28콜론·화살표·등호,%20String%20vs%20str%29%20-%20핵심%20개념%20및%20특징%20정리.md) 참고.
@@ -396,4 +396,4 @@ fn main() {
 - [Rust 6장 - Enums and Pattern Matching](https://doc.rust-kr.org/ch06-00-enums.html)
 - [GlueSQL - ast.rs](https://github.com/gluesql/gluesql/blob/main/core/src/ast.rs)
 - [(Rust) GlueSQL 프로젝트 구조와 필요 문법 개관 - 핵심 개념 및 특징 정리](프로젝트/오픈소스/GlueSQL/1.%20[Rust]%20GlueSQL%20프로젝트%20구조와%20필요%20문법%20개관%20-%20핵심%20개념%20및%20특징%20정리.md)
-- [(Lang) Union, Typedef, Struct 구조 및 활용](개발%20%28CS%29/언어/C언어/[Lang]%20Union,%20Typedef,%20Struct%20구조%20및%20활용.md) — C의 Tagged Union과 Rust enum 비교
+- [(Lang) Union, Typedef, Struct 구조 및 활용](개발%20%28CS%29/언어/C언어/기초%20문법/[Lang]%20Union,%20Typedef,%20Struct%20구조%20및%20활용.md) — C의 Tagged Union과 Rust enum 비교

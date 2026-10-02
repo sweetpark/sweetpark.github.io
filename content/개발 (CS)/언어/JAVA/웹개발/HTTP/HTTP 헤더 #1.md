@@ -114,4 +114,4 @@ Content-Length: 15 <- Representation 헤더
 
 ## 관련 문서
 
-- [(학습/프레임워크/Spring Framework) HTTP 이론 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/[Spring]%20HTTP%20이론%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트의 일반 헤더 내용을 메서드·상태코드까지 포함해 한 문서로 종합 정리한 강의 노트
+- [(학습/프레임워크/Spring Framework) HTTP 이론 - 핵심 개념 및 특징 정리](프레임워크/Spring%20Framework/HTTP·메시지%20변환/[Spring]%20HTTP%20이론%20-%20핵심%20개념%20및%20특징%20정리.md) — 이 노트의 일반 헤더 내용을 메서드·상태코드까지 포함해 한 문서로 종합 정리한 강의 노트

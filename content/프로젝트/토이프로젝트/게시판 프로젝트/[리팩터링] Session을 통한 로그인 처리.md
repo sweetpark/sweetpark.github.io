@@ -111,5 +111,5 @@ https://github.com/sweetpark/springBoard
 - [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [리팩터링] 개발 요구사항 (게시판 프로젝트)](프로젝트/토이프로젝트/게시판%20프로젝트/[리팩터링]%20개발%20요구사항%20%28게시판%20프로젝트%29.md) — 개발 요구사항 문서에 명시된 로그인 기능을 세션 기반으로 리팩터링
 - (학습/프로젝트/토이프로젝트/게시판 프로젝트) [기능구현#3] 로그인 기능 — 로그인 기능(Filter+Interceptor 인증)을 세션 저장소 방식으로 리팩터링
 - [(학습/프로젝트/토이프로젝트/게시판 프로젝트) [트러블 슈팅] 로그인 인증 관련 문제](프로젝트/토이프로젝트/게시판%20프로젝트/[트러블%20슈팅]%20로그인%20인증%20관련%20문제.md) — 세션 기반 로그인 리팩터링 이후 Interceptor 인증 로직에서 발견된 버그를 다루는 문서
-- [(학습/프레임워크/Spring Framework) Session 사용법](프레임워크/Spring%20Framework/Session%20사용법.md) — 세션 저장소를 이용한 로그인 처리가 다루는 HttpSession 개념을 설명하는 강의 노트
-- [(학습/프레임워크/Spring Framework) Servlet Filter](프레임워크/Spring%20Framework/Servlet%20Filter.md) — 세션 기반 로그인 처리에서 사용된 Filter+Interceptor 조합 중 Filter 개념을 다루는 강의 노트
+- [(학습/프레임워크/Spring Framework) Session 사용법](프레임워크/Spring%20Framework/웹%20기술%20%28Filter·세션·업로드%29/Session%20사용법.md) — 세션 저장소를 이용한 로그인 처리가 다루는 HttpSession 개념을 설명하는 강의 노트
+- [(학습/프레임워크/Spring Framework) Servlet Filter](프레임워크/Spring%20Framework/웹%20기술%20%28Filter·세션·업로드%29/Servlet%20Filter.md) — 세션 기반 로그인 처리에서 사용된 Filter+Interceptor 조합 중 Filter 개념을 다루는 강의 노트
