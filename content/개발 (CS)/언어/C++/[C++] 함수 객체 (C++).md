@@ -1,0 +1,50 @@
+---
+title: "함수 객체 (C++)"
+tags: [C++, 함수객체]
+created: 2026-09-05
+modified: 2026-09-05
+---
+
+# 함수 객체 (C++)
+
+이 노트는 C++ 함수 객체(Functor)의 형태와 특징을 정리한다. 함수 객체는 `operator()`를 오버로딩해 클래스 인스턴스를 함수처럼 호출할 수 있게 만든 것으로, 일반 함수 포인터와 달리 다양한 반환/인자 형태를 여러 개 오버로딩할 수 있고 멤버 변수로 상태값을 저장할 수 있다는 점이 핵심 장점이다.
+
+1. 함수객체 형태  
+2. 함수객체 특징
+
+## 함수 객체 형태
+
+```cpp
+//class [함수객체이름]
+class Functor
+{
+public:
+
+    //[반환타입] oprator()([인자],..) { //TODO }
+
+    void operator()()
+    { cout << "test" << endl; }
+   
+    bool operator()(int num)
+   { _value = num; return true; }
+
+public:
+    int _value = 0; // 상태 저장
+}
+
+int main()
+{
+    Functor func; // 인스턴스 생성
+    func(); // void operator()() 호출
+
+    bool ret = func(10); // bool operator(int num)() 호출 (_value 상태값 저장)
+}
+```
+
+*   클래스와 동일하다
+*   연산자 오버로딩을 통해서 클래스가 함수로서 사용할 수 있도록 한다.
+
+## 함수 객체 특징
+
+*   연산자 오버로딩을 통해 여러종류의 반환타입, 인자타입 및 개수를 생성할 수 있다.
+*   상태값을 가질 수 있다 ( ex) _value )
