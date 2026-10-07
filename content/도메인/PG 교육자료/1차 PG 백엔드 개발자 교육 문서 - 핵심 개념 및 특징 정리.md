@@ -18,15 +18,15 @@ modified: 2026-09-07
 
 ## 목차
 
-- [0장. 결제 Life-Cycle 전체 조감도](about:blank#0%EC%9E%A5-%EA%B2%B0%EC%A0%9C-life-cycle-%EC%A0%84%EC%B2%B4-%EC%A1%B0%EA%B0%90%EB%8F%84-%EC%9E%85%EB%AC%B8)
-- [1장. 결제의 역사와 VAN 연동 아키텍처](about:blank#1%EC%9E%A5-%EA%B2%B0%EC%A0%9C%EC%9D%98-%EC%97%AD%EC%82%AC%EC%99%80-van-%EC%97%B0%EB%8F%99-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%9E%85%EB%AC%B8)
-- [2장. 카드사 구조와 1차 PG의 역할](about:blank#2%EC%9E%A5-%EC%B9%B4%EB%93%9C%EC%82%AC-%EA%B5%AC%EC%A1%B0%EC%99%80-1%EC%B0%A8-pg%EC%9D%98-%EC%97%AD%ED%95%A0-%EC%9E%85%EB%AC%B8)
-- [3장. 10대 결제 수단 상세 연동 구조](about:blank#3%EC%9E%A5-10%EB%8C%80-%EA%B2%B0%EC%A0%9C-%EC%88%98%EB%8B%A8-%EC%83%81%EC%84%B8-%EC%97%B0%EB%8F%99-%EA%B5%AC%EC%A1%B0-%EC%A4%91%EA%B8%89)
-- [4장. 대외 제공 API 설계](about:blank#4%EC%9E%A5-%EB%8C%80%EC%99%B8-%EC%A0%9C%EA%B3%B5-api-%EC%84%A4%EA%B3%84-%EC%A4%91%EA%B8%89)
-- [5장. 매입 및 정산 시스템](about:blank#5%EC%9E%A5-%EB%A7%A4%EC%9E%85-%EB%B0%8F-%EC%A0%95%EC%82%B0-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%8B%AC%ED%99%94)
-- [6장. 시스템 아키텍처](about:blank#6%EC%9E%A5-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%8B%AC%ED%99%94)
-- [7장. 리스크 관리 및 보안](about:blank#7%EC%9E%A5-%EB%A6%AC%EC%8A%A4%ED%81%AC-%EA%B4%80%EB%A6%AC-%EB%B0%8F-%EB%B3%B4%EC%95%88-%EC%8B%AC%ED%99%94)
-- [8장. 주요 약어 및 ID 사전](about:blank#8%EC%9E%A5-%EC%A3%BC%EC%9A%94-%EC%95%BD%EC%96%B4-%EB%B0%8F-id-%EC%82%AC%EC%A0%84)
+- [0장. 결제 Life-Cycle 전체 조감도](#0%EC%9E%A5-%EA%B2%B0%EC%A0%9C-life-cycle-%EC%A0%84%EC%B2%B4-%EC%A1%B0%EA%B0%90%EB%8F%84-%EC%9E%85%EB%AC%B8)
+- [1장. 결제의 역사와 VAN 연동 아키텍처](#1%EC%9E%A5-%EA%B2%B0%EC%A0%9C%EC%9D%98-%EC%97%AD%EC%82%AC%EC%99%80-van-%EC%97%B0%EB%8F%99-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%9E%85%EB%AC%B8)
+- [2장. 카드사 구조와 1차 PG의 역할](#2%EC%9E%A5-%EC%B9%B4%EB%93%9C%EC%82%AC-%EA%B5%AC%EC%A1%B0%EC%99%80-1%EC%B0%A8-pg%EC%9D%98-%EC%97%AD%ED%95%A0-%EC%9E%85%EB%AC%B8)
+- [3장. 10대 결제 수단 상세 연동 구조](#3%EC%9E%A5-10%EB%8C%80-%EA%B2%B0%EC%A0%9C-%EC%88%98%EB%8B%A8-%EC%83%81%EC%84%B8-%EC%97%B0%EB%8F%99-%EA%B5%AC%EC%A1%B0-%EC%A4%91%EA%B8%89)
+- [4장. 대외 제공 API 설계](#4%EC%9E%A5-%EB%8C%80%EC%99%B8-%EC%A0%9C%EA%B3%B5-api-%EC%84%A4%EA%B3%84-%EC%A4%91%EA%B8%89)
+- [5장. 매입 및 정산 시스템](#5%EC%9E%A5-%EB%A7%A4%EC%9E%85-%EB%B0%8F-%EC%A0%95%EC%82%B0-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%8B%AC%ED%99%94)
+- [6장. 시스템 아키텍처](#6%EC%9E%A5-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%8B%AC%ED%99%94)
+- [7장. 리스크 관리 및 보안](#7%EC%9E%A5-%EB%A6%AC%EC%8A%A4%ED%81%AC-%EA%B4%80%EB%A6%AC-%EB%B0%8F-%EB%B3%B4%EC%95%88-%EC%8B%AC%ED%99%94)
+- [8장. 주요 약어 및 ID 사전](#8%EC%9E%A5-%EC%A3%BC%EC%9A%94-%EC%95%BD%EC%96%B4-%EB%B0%8F-id-%EC%82%AC%EC%A0%84)
 
 ---
 
@@ -178,10 +178,10 @@ VAN과의 통신에서 사용하는 데이터 형식인 **ISO8583 전문(電文)
 ISO8583 전문은 크게 3가지 영역으로 구성됩니다.
 
 ```
-┌────────────┬──────────────────────┬─────────────────────────────────────────┐
-│  MTI (4)   │   Bitmap (8 or 16)   │   Data Fields (가변)                     │
-│  메시지유형  │  어떤 필드가 있는지    │  실제 데이터 (카드번호, 금액, 가맹점번호...)  │
-└────────────┴──────────────────────┴─────────────────────────────────────────┘
+┌─────────────┬──────────────────────┬──────────────────────────────────────────────┐
+│  MTI (4)    │   Bitmap (8 or 16)   │   Data Fields (가변)                         │
+│  메시지유형 │  어떤 필드가 있는지  │  실제 데이터 (카드번호, 금액, 가맹점번호...) │
+└─────────────┴──────────────────────┴──────────────────────────────────────────────┘
 ```
 
 **1) MTI (Message Type Indicator)**
@@ -304,13 +304,13 @@ public class VanChannelHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│                    VAN Router                             │
+│                    VAN Router                            │
 │                                                          │
-│  1순위: NICE정보통신 (Primary)                             │
-│  2순위: KICC (Secondary)                                  │
-│  3순위: 스마트로 (Tertiary)                                │
+│  1순위: NICE정보통신 (Primary)                           │
+│  2순위: KICC (Secondary)                                 │
+│  3순위: 스마트로 (Tertiary)                              │
 │                                                          │
-│  라우팅 기준: 카드사 종류, 결제 수단, VAN 상태              │
+│  라우팅 기준: 카드사 종류, 결제 수단, VAN 상태           │
 └──────────────────────────────────────────────────────────┘
 ```
 
@@ -325,7 +325,7 @@ public class VanChannelHandler extends SimpleChannelInboundHandler<ByteBuf> {
 flowchart TD
     A[승인 요청 수신] --> B{Primary VAN 상태 확인}
     B -->|정상| C[Primary VAN으로 전송]
-    B -->|장애(OPEN)| D[Secondary VAN으로 Failover]
+    B -->|"장애(OPEN)"| D[Secondary VAN으로 Failover]
     C --> E{응답 수신}
     E -->|성공| F[승인 처리 완료]
     E -->|Timeout 또는 에러| G[실패 카운트 +1]

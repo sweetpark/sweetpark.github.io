@@ -30,13 +30,13 @@ modified: 2026-09-07
 
 ## 목차
 
-- [0장. 2차 PG란 무엇인가 — 존재 이유와 전체 흐름도](about:blank#0%EC%9E%A5)
-- [1장. Multi-PG 라우팅과 서버 이중화](about:blank#1%EC%9E%A5)
-- [2장. 10대 결제 수단 중계 아키텍처](about:blank#2%EC%9E%A5)
-- [3장. 대외 API 제공 아키텍처](about:blank#3%EC%9E%A5)
-- [4장. 정산 시스템 — 2차 PG의 심장](about:blank#4%EC%9E%A5)
-- [5장. 리스크 관리 및 보안](about:blank#5%EC%9E%A5)
-- [6장. 주요 약어 및 ID 사전](about:blank#6%EC%9E%A5)
+- [0장. 2차 PG란 무엇인가 — 존재 이유와 전체 흐름도](#0장-2차-pg란-무엇인가--존재-이유와-전체-흐름도-입문)
+- [1장. Multi-PG 라우팅과 서버 이중화](#1장-multi-pg-라우팅과-서버-이중화-입문)
+- [2장. 10대 결제 수단 중계 아키텍처](#2장-10대-결제-수단-중계-아키텍처-중급)
+- [3장. 대외 API 제공 아키텍처](#3장-대외-api-제공-아키텍처-중급)
+- [4장. 정산 시스템 — 2차 PG의 심장](#4장-정산-시스템--2차-pg의-심장-심화)
+- [5장. 리스크 관리 및 보안](#5장-리스크-관리-및-보안-심화)
+- [6장. 주요 약어 및 ID 사전](#6장-주요-약어-및-id-사전-2차-pg-관점-참조)
 
 ---
 
@@ -224,14 +224,14 @@ Circuit Breaker (회로 차단기)는 외부 시스템 장애가 내부 시스�
 stateDiagram-v2
     [*] --> CLOSED: 초기 상태 (정상)
 
-    CLOSED --> OPEN: 실패율 임계값 초과\n(예: 5초 내 실패 5회 이상)
-    OPEN --> HALF_OPEN: 대기 시간 경과\n(예: 30초 후)
+    CLOSED --> OPEN: 실패율 임계값 초과<br/>(예: 5초 내 실패 5회 이상)
+    OPEN --> HALF_OPEN: 대기 시간 경과<br/>(예: 30초 후)
     HALF_OPEN --> CLOSED: 테스트 요청 성공
     HALF_OPEN --> OPEN: 테스트 요청 실패
 
-    CLOSED: CLOSED (정상)\n모든 요청 통과
-    OPEN: OPEN (차단)\n모든 요청 즉시 실패 반환\nFailover PG로 자동 전환
-    HALF_OPEN: HALF-OPEN (탐색)\n일부 요청만 통과시켜 복구 확인
+    CLOSED: CLOSED (정상)<br/>모든 요청 통과
+    OPEN: OPEN (차단)<br/>모든 요청 즉시 실패 반환<br/>Failover PG로 자동 전환
+    HALF_OPEN: HALF-OPEN (탐색)<br/>일부 요청만 통과시켜 복구 확인
 ```
 
 > **설계 배경 (Why):** Circuit Breaker 없이 장애 PG에 계속 요청을 보내면 어떻게 될까요? 각 요청이 Timeout(예: 30초)까지 스레드를 점유합니다. 동시 요청 100건이면 100개 스레드가 모두 묶여 내부 시스템 전체가 응답 불가 상태가 됩니다. Circuit Breaker는 “이미 죽은 곳에 요청 보내지 마라”는 안전장치입니다.
@@ -360,7 +360,7 @@ sequenceDiagram
     participant DB
     participant 1차PG
 
-    하위가맹점->>2차_PG: 비인증 결제 요청\n(카드번호 + 유효기간만)
+    하위가맹점->>2차_PG: 비인증 결제 요청<br/>(카드번호 + 유효기간만)
     2차_PG->>DB: 해당 Sub-MID 보증보험 가입 여부 조회
 
     alt 보증보험 미가입
@@ -389,15 +389,15 @@ sequenceDiagram
     participant 1차PG
     participant 하위가맹점_서버
 
-    키오스크->>2차_PG: 결제 요청\n(+ 하위가맹점 Webhook URL 포함)
-    2차_PG->>1차PG: 결제 요청 전달\n(+ 2차_PG Callback URL 포함)
+    키오스크->>2차_PG: 결제 요청<br/>(+ 하위가맹점 Webhook URL 포함)
+    2차_PG->>1차PG: 결제 요청 전달<br/>(+ 2차_PG Callback URL 포함)
     2차_PG-->>키오스크: 202 Accepted (비동기 처리 시작)
 
     Note over 키오스크,1차PG: 고객 서명/PIN 입력 대기 중...
 
-    1차PG->>2차_PG: 결제 완료 Webhook POST\n(승인번호, 거래금액, TID 포함)
-    2차_PG->>2차_PG: DB 상태 업데이트\n(PENDING → APPROVED)
-    2차_PG->>하위가맹점_서버: 결과 Webhook 릴레이 POST\n(하위가맹점 고유 형식으로 가공)
+    1차PG->>2차_PG: 결제 완료 Webhook POST<br/>(승인번호, 거래금액, TID 포함)
+    2차_PG->>2차_PG: DB 상태 업데이트<br/>(PENDING → APPROVED)
+    2차_PG->>하위가맹점_서버: 결과 Webhook 릴레이 POST<br/>(하위가맹점 고유 형식으로 가공)
     하위가맹점_서버-->>2차_PG: 200 OK (수신 확인)
 ```
 
@@ -608,9 +608,9 @@ gantt
 sequenceDiagram
     participant 고객
     participant 2차_PG
-    participant KCB_SCI["본인인증 제휴사\n(KCB / SCI평가정보 / 드림시큐리티)"]
-    participant 쿠콘["펌뱅킹 제휴사\n(쿠콘 / 세틀뱅크/헥토파이낸셜)"]
-    participant 고객계좌["고객 은행 계좌"]
+    participant KCB_SCI as 본인인증 제휴사<br/>(KCB / SCI평가정보 / 드림시큐리티)
+    participant 쿠콘 as 펌뱅킹 제휴사<br/>(쿠콘 / 세틀뱅크/헥토파이낸셜)
+    participant 고객계좌 as 고객 은행 계좌
 
     Note over 고객,KCB_SCI: STEP 1: 회원 가입 및 KYC (고객확인제도)
     고객->>2차_PG: 회원 가입 요청
@@ -619,7 +619,7 @@ sequenceDiagram
 
     Note over 고객,고객계좌: STEP 2: 계좌 소유주 인증 (1원 송금 인증)
     고객->>2차_PG: 계좌 등록 요청 (은행, 계좌번호 입력)
-    2차_PG->>쿠콘: 1원 + 4자리 난수 송금 요청\n(예: 'PG인증 1234')
+    2차_PG->>쿠콘: 1원 + 4자리 난수 송금 요청<br/>(예: 'PG인증 1234')
     쿠콘->>고객계좌: 1원 입금 + 메모: "PG인증 1234"
     고객->>2차_PG: 통장에서 확인한 숫자 '1234' 입력
     2차_PG->>2차_PG: 난수 일치 확인 → 계좌 등록 완료
@@ -782,18 +782,18 @@ sequenceDiagram
     participant 1차PG
     participant 카드사_Vault
 
-    하위가맹점->>2차_PG: 카드 정보 전달\n(카드번호 + 유효기간 + 생년월일 + 비밀번호)
+    하위가맹점->>2차_PG: 카드 정보 전달<br/>(카드번호 + 유효기간 + 생년월일 + 비밀번호)
     Note over 2차_PG: PCI-DSS: DB 저장 절대 금지!
-    2차_PG->>1차PG: 빌링키 발급 API 호출\n(카드 원문 그대로 포워딩)
+    2차_PG->>1차PG: 빌링키 발급 API 호출<br/>(카드 원문 그대로 포워딩)
     1차PG->>카드사_Vault: 카드 정보 암호화 저장
     카드사_Vault-->>1차PG: 저장 완료
-    1차PG-->>2차_PG: 1차 PG BID 발급\n(예: "KCP_BID_abc123xyz")
+    1차PG-->>2차_PG: 1차 PG BID 발급<br/>(예: "KCP_BID_abc123xyz")
 
-    2차_PG->>2차_PG: Sub-BID 생성\n(예: "OUR_BID_def456uvw")
-    2차_PG->>DB: 매핑 저장\n{sub_bid: "OUR_BID_def456uvw",\n pg_bid: "KCP_BID_abc123xyz",\n pg_type: "KCP"}
-    2차_PG-->>하위가맹점: Sub-BID 발급\n("OUR_BID_def456uvw")
+    2차_PG->>2차_PG: Sub-BID 생성<br/>(예: "OUR_BID_def456uvw")
+    2차_PG->>DB: 매핑 저장<br/>{sub_bid: "OUR_BID_def456uvw",<br/> pg_bid: "KCP_BID_abc123xyz",<br/> pg_type: "KCP"}
+    2차_PG-->>하위가맹점: Sub-BID 발급<br/>("OUR_BID_def456uvw")
 
-    Note over 하위가맹점: 가맹점은 Sub-BID만 보관.\n1차 PG BID는 절대 노출 안됨.
+    Note over 하위가맹점: 가맹점은 Sub-BID만 보관.<br/>1차 PG BID는 절대 노출 안됨.
 ```
 
 **반복 결제 시 처리 흐름:**
@@ -806,10 +806,10 @@ sequenceDiagram
     participant 1차PG
 
     loop 매월 결제일
-        하위가맹점->>2차_PG: 정기 결제 요청\n(Sub-BID: "OUR_BID_def456uvw")
+        하위가맹점->>2차_PG: 정기 결제 요청<br/>(Sub-BID: "OUR_BID_def456uvw")
         2차_PG->>DB: Sub-BID로 1차 PG BID 조회
         DB-->>2차_PG: pg_bid="KCP_BID_abc123xyz", pg_type="KCP"
-        2차_PG->>1차PG: 빌링 승인 요청\n(pg_bid: "KCP_BID_abc123xyz")
+        2차_PG->>1차PG: 빌링 승인 요청<br/>(pg_bid: "KCP_BID_abc123xyz")
         1차PG-->>2차_PG: 승인 완료
         2차_PG-->>하위가맹점: 결제 완료 응답
     end
@@ -932,7 +932,7 @@ sequenceDiagram
     participant 2차PG_DB
 
     Note over 1차PG_SFTP: 매일 새벽 1차 PG가 전일자 대사 파일 생성
-    1차PG_SFTP->>2차PG_배치: SFTP로 대사 파일 전송\n(승인/취소 상태, 수수료, 정산예정액)
+    1차PG_SFTP->>2차PG_배치: SFTP로 대사 파일 전송<br/>(승인/취소 상태, 수수료, 정산예정액)
     2차PG_배치->>2차PG_배치: 파일 파싱 (CSV/고정길이 전문)
     2차PG_배치->>2차PG_DB: 2차 PG TID와 1차 PG TID Join하여 비교
     2차PG_배치->>2차PG_배치: 불일치 항목 분류 및 처리
@@ -982,7 +982,7 @@ sequenceDiagram
     Quartz스케줄러->>정산배치: 매일 00:00 실행
     정산배치->>2차PG_DB: 전일자 거래 집계 (Sub-MID별)
     2차PG_DB-->>정산배치: 가맹점별 총 결제액, 취소액, 수수료
-    정산배치->>정산배치: 정산금 계산\n= 총결제액 - 2차PG수수료 - 취소액
+    정산배치->>정산배치: 정산금 계산<br/>= 총결제액 - 2차PG수수료 - 취소액
     정산배치->>2차PG_DB: Risk Manage 한도 확인
 
     alt 정산 한도 이내 (정상)
