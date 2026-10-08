@@ -718,6 +718,13 @@ export default (() => {
       bar.style.left = rect.left + "px";
       bar.style.width = rect.width + "px";
     }
+    // 모바일에서는 sweetpark 헤더가 상단에 고정되므로 그 바로 아래에 붙인다
+    var topbar = document.querySelector(".sidebar.left");
+    var offset = 0;
+    if (topbar && getComputedStyle(topbar).position === "sticky" && window.innerWidth <= 800) {
+      offset = Math.max(0, topbar.getBoundingClientRect().bottom);
+    }
+    bar.style.top = offset + "px";
     bar.classList.toggle("visible", hero.getBoundingClientRect().bottom < 0);
   }
 
