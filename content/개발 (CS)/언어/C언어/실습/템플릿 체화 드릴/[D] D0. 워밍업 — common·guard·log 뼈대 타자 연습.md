@@ -2,7 +2,7 @@
 title: "D0. 워밍업 — common·guard·log 뼈대 타자 연습"
 tags: 
 created: 2026-09-21
-modified: 2026-09-21
+modified: 2026-10-10
 ---
 
 # D0. 워밍업 — `common.h` · `guard.h` · `log.h` 백지 타자
@@ -48,6 +48,166 @@ main.c     위 매크로를 전부 한 번씩 실제로 호출해서 동작 확�
 | **A (1회차)** | 그대로 친다 (복붙 금지, **보고 손으로**) | 1번 문서 전체 |
 | **B (2회차)** | `CHK_STR` + `SAFE_CPY` 추가 | 위 "최소 합격 목록"만 |
 | **C (3회차)** | **백지.** 추가로 `CHK_NOT_NEG(_fd)` 를 직접 설계 | 아무것도 안 봄 |
+
+---
+
+## 1-1. 작업 준비 — 폴더 · gitignore · 포맷터
+
+```bash
+mkdir -p ~/cdrill/d0_warmup/src ~/cdrill/build && cd ~/cdrill
+git init
+printf 'tags\ncscope.*\nbuild/\n*.o\n' > .gitignore    # ★ tags 는 생성물이라 커밋하지 않는다
+```
+
+`\` (줄 잇기) 정렬이 가장 번거로우니 **손으로 맞추지 않는다.** `.clang-format` 한 장으로 해결한다.
+
+```bash
+printf 'BasedOnStyle: LLVM\nIndentWidth: 4\nColumnLimit: 80\nAlignEscapedNewlines: Left\nUseTab: Never\n' > ~/cdrill/.clang-format
+```
+
+| 하고 싶은 것 | vim 에서 |
+| :--- | :--- |
+| 헤더 전체 정렬 (`\` 포함) | `:%!clang-format` |
+| 매크로 하나만 | `V` 로 매크로 줄 선택 → `:!clang-format` |
+| `\` 를 먼저 다 쓰고 나중에 맞추기 | 줄 끝에 `\` 만 대충 붙이고 위 명령 실행 |
+| 줄 끝 `\` 뒤 공백 에러 | `:%s/\\\s\+$/\\/` (`\` 뒤에 공백이 있으면 매크로가 깨진다) |
+
+> [!TIP] 타이핑 순서
+> 매크로 본문을 **먼저 `\` 없이** 한 덩어리로 쓰고, 다 쓴 뒤 `:%!clang-format` 으로 `\` 를 자동으로 붙이고 정렬한다.
+> (clang-format 은 이미 `\` 로 이어진 매크로의 `\` 를 정렬해 준다. `\` 없이 줄바꿈만 한 매크로는 안 이어주므로, 이어 붙일 때만 `\` 를 직접 친다.)
+
+---
+
+## 1-2. 주석 뼈대 — 보고 직접 타이핑
+
+> **사용법**: 아래 뼈대를 `d0_warmup/src/` 의 각 파일에 **주석만 복사**한다.
+> 코드는 주석을 보고 **내가 쓴다.** 막히면 `man` / `K` 로 찾고, 그래도 막히면 정답지(1번 문서)를 연다.
+> `[ ]` 는 다 쓰면 `x` 로 바꾼다. 남은 항목은 `grep -n '\[ \]' *.h` 로 모아 볼 수 있다.
+
+### common.h
+
+```c
+/* common.h — 프로젝트 공통
+ *
+ * [필요한 것 → 헤더]  (사용하는 것만 include, 사용처를 옆에 적는다)
+ *  - printf, FILE, fopen ............ <stdio.h>
+ *  - calloc, free .................. <stdlib.h>
+ *  - memset, strlen ................ <string.h>
+ *  - uint8_t ... 고정폭 정수 ........ <stdint.h>
+ *  - errno, strerror(errno) ........ <errno.h>
+ */
+
+/* [ ] 1. 인클루드 가드: COMMON_H  (파일 맨 위 / 맨 아래 주석 포함) */
+/* [ ] 2. 위 표의 헤더 include */
+/* [ ] 3. 리턴코드 enum (ret_t)
+ *        - 성공은 0 하나, 실패는 전부 음수
+ *        - 최소 5종: 성공 / 일반실패 / 잘못된 인자 / 메모리 부족 / IO 에러
+ *        - 마지막 줄 쉼표, 이름은 RET_ 접두어, typedef 이름은 ret_t */
+/* [ ] 4. ret_str(int) — 코드를 문자열로
+ *        - 헤더에 두므로 'static inline'  (왜? .c 가 여러 개여도 중복 정의 안 나게)
+ *        - switch 의 마지막은 default: "UNKNOWN" */
+```
+
+### log.h
+
+```c
+/* log.h — 최소 로그
+ *
+ * [필요한 것 → 헤더]
+ *  - fprintf, stderr ............... <stdio.h>
+ *  - time, localtime_r, strftime ... <time.h>   (localtime_r 이 왜 _r 인지 man 으로 확인)
+ */
+
+/* [ ] 1. 인클루드 가드: LOG_H */
+/* [ ] 2. 로그 레벨 enum (log_level_t): ERR < WRN < INF < DBG  (값 0부터) */
+/* [ ] 3. 전역 레벨 변수 선언
+ *        - 'extern' 만 쓴다 (실체는 main.c 에 딱 하나)  ← 이유를 한 줄로 적어본다 */
+/* [ ] 4. LOG_PRINT(레벨, 태그, 포맷, ...) 공통 매크로
+ *        - 전체를 do { } while (0) 로 감싼다
+ *        - 현재 레벨보다 낮은 로그는 출력하지 않는다 (if 를 매크로 안에서)
+ *        - 시각 문자열 "YYYY-MM-DD HH:MM:SS" (버퍼 20바이트)
+ *        - stderr 로 "[시각][태그] 메시지\n"
+ *        - 가변 인자가 0개여도 컴파일돼야 한다 → ##__VA_ARGS__ (왜? 앞 쉼표 제거)
+ *        - 매크로 인자 이름은 _ 로 시작 (_lv, _fmt ...) : 지역변수와 안 겹치게 */
+/* [ ] 5. LOG_ERR / LOG_WRN / LOG_INF / LOG_DBG  4개
+ *        - LOG_PRINT 에 레벨과 태그 문자열만 바꿔 넘기는 한 줄짜리 */
+```
+
+### guard.h
+
+```c
+/* guard.h — 가드 매크로
+ *
+ * [필요한 것]
+ *  - common.h : RET_ 코드, ret_str
+ *  - log.h    : LOG_ERR
+ *  - close()  : <unistd.h>  ← SAFE_CLOSE 에 필요 (man 2 close 로 확인)
+ *
+ * [공통 규칙]  모든 매크로에 적용
+ *  - do { } while (0) 로 감싼다. 정의 끝에 ';' 를 붙이지 않는다
+ *  - 인자는 쓸 때마다 ( ) 로 감싼다
+ *  - 인자를 두 번 평가하지 않는다 (함수 호출이 들어와도 한 번만 실행)
+ *  - 로그에 "인자 이름" 과 __func__, __LINE__ 을 같이 찍는다 (# 연산자)
+ */
+
+/* [ ] 1. 인클루드 가드: GUARD_H */
+/* [ ] 2. #include 3종 */
+
+/* ── 즉시 return 판 (자원을 잡기 전) ── */
+/* [ ] 3. CHK_PTR(_p)        : NULL 이면 로그 + RET_INVALID_ARG 리턴 */
+/* [ ] 4. CHK_RANGE(_v,_min,_max) : 범위 밖이면 로그(이름·값·범위) + RET_INVALID_ARG
+ *                                  값은 (int) 캐스팅 후 %d 로 */
+/* [ ] 5. CHK_RET(_expr)     : _expr 의 결과가 RET_OK 가 아니면 로그 + 그 값 그대로 리턴
+ *                              (지역변수 하나에 담아 한 번만 평가) */
+
+/* ── goto 판 (자원을 잡은 후) — 함수 안에 'int ret' 가 있다고 가정 ── */
+/* [ ] 6. CHK_PTR_GOTO(_p,_label)          : NULL → ret 세팅, 로그, goto */
+/* [ ] 7. CHK_RET_GOTO(_expr,_label)       : ret = _expr; 실패면 로그, goto */
+/* [ ] 8. CHK_COND_GOTO(_cond,_ret,_label) : 조건이 거짓이면 ret = _ret, 로그, goto */
+
+/* ── 해제 판 ── */
+/* [ ] 9.  SAFE_FREE(_p)     : NULL 아니면 free 후 NULL 대입 */
+/* [ ] 10. SAFE_FCLOSE(_fp)  : NULL 아니면 fclose 후 NULL 대입 */
+/* [ ] 11. SAFE_CLOSE(_fd)   : 0 이상이면 close 후 -1 대입  (fd 는 '-1' 이 무효값) */
+
+/* [B 회차] CHK_STR(_s) : NULL 또는 빈 문자열이면 INVALID_ARG */
+/* [B 회차] SAFE_CPY(_dst,_src) : 항상 널 종단. _dst 는 '배열' 일 때만 맞다 — 왜? */
+/* [C 회차] CHK_NOT_NEG(_fd)    : 직접 설계 (음수면 에러. 어떤 ret 을 쓸지는 내가 정한다) */
+```
+
+### main.c
+
+```c
+/* main.c — 위 매크로를 전부 한 번씩 호출해서 확인
+ *
+ * [필요한 것]
+ *  - common.h / log.h / guard.h  (순서: 내 헤더는 표준 헤더 뒤)
+ *  - g_log_level 의 실체 정의 한 곳  ← extern 선언의 짝
+ */
+
+/* [ ] 1. g_log_level 정의 (초기값 INF) */
+/* [ ] 2. take_ptr(const char *s, int v)   — 즉시 return 판: CHK_PTR, CHK_RANGE 사용 */
+/* [ ] 3. take_res(const char *path)       — goto 판
+ *        ① ret 은 실패로 시작 ② 포인터 NULL / 이어서 FILE* NULL
+ *        ③ 자원 잡기 전 검사는 CHK_PTR
+ *        ④ calloc → CHK_PTR_GOTO / fopen → CHK_COND_GOTO(IO_ERROR) / 하위 호출 → CHK_RET_GOTO
+ *        ⑤ 끝까지 오면 RET_OK
+ *        ⑥ CLEANUP: 잡은 '역순' 으로 SAFE_ 호출, return ret */
+/* [ ] 4. main() — case1~4 를 호출하고 LOG_INF 로 ret_str(ret)(ret) 출력 */
+```
+
+### 막혔을 때 찾는 순서
+
+```text
+1. 컴파일 에러 문구 → "unknown type name" / "implicit declaration" = include 누락
+2. man 3 <함수>   (vim 안에서는 커서를 단어에 놓고 K)  → SYNOPSIS 맨 위의 #include
+3. 매크로가 이상하면  clang -E src/main.c | less   (전처리 결과를 눈으로 본다)
+4. 그래도 안 되면 정답지(1번 문서)의 해당 매크로만 본다 — 전체를 보지 않는다
+```
+
+> [!TIP] 사용처 찾기
+> 함수/매크로 위에 커서를 두고 `:grep -rnw <Ctrl+R><Ctrl+W> .` → `:copen`. 정의는 `ctags -R .` 후 `Ctrl+]` / `Ctrl+T`.
+> `#define` 매크로도 `Ctrl+]` 로 정의를 찾는다 (universal-ctags 는 기본 포함). 헤더의 prototype 까지 태그에 넣으려면 `ctags -R --c-kinds=+p .`.
 
 ---
 
