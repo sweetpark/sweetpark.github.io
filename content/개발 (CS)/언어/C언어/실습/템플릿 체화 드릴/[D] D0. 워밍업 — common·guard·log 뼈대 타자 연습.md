@@ -161,9 +161,9 @@ printf 'BasedOnStyle: LLVM\nIndentWidth: 4\nColumnLimit: 80\nAlignEscapedNewline
  *                              (지역변수 하나에 담아 한 번만 평가) */
 
 /* ── goto 판 (자원을 잡은 후) — 함수 안에 'int ret' 가 있다고 가정 ── */
-/* [ ] 6. CHK_PTR_GOTO(_p,_label)          : NULL → ret 세팅, 로그, goto */
-/* [ ] 7. CHK_RET_GOTO(_expr,_label)       : ret = _expr; 실패면 로그, goto */
-/* [ ] 8. CHK_COND_GOTO(_cond,_ret,_label) : 조건이 거짓이면 ret = _ret, 로그, goto */
+/* [ ] 6. CHK_PTR_GOTO(_p,_rv,_label)       : NULL → _rv 세팅, 로그, goto */
+/* [ ] 7. CHK_RET_GOTO(_expr,_rv,_label)    : _rv = _expr; 실패면 로그, goto */
+/* [ ] 8. CHK_COND_GOTO(_cond,_code,_rv,_label) : 조건이 거짓이면 _rv = _code, 로그, goto */
 
 /* ── 해제 판 ── */
 /* [ ] 9.  SAFE_FREE(_p)     : NULL 아니면 free 후 NULL 대입 */
@@ -239,12 +239,12 @@ static int take_res(const char *path)
     CHK_PTR(path);             /* 자원 잡기 전 → 즉시 return */
 
     buf = calloc(1, 64);
-    CHK_PTR_GOTO(buf, CLEANUP);
+    CHK_PTR_GOTO(buf, ret, CLEANUP);
 
     fp = fopen(path, "r");
-    CHK_COND_GOTO(fp != NULL, RET_IO_ERROR, CLEANUP);
+    CHK_COND_GOTO(fp != NULL, RET_IO_ERROR, ret, CLEANUP);
 
-    CHK_RET_GOTO(take_ptr("inner", 10), CLEANUP);
+    CHK_RET_GOTO(take_ptr("inner", 10), ret, CLEANUP);
 
     ret = RET_OK;              /* ② 끝까지 왔을 때만 성공 */
 CLEANUP:
@@ -302,7 +302,7 @@ clang -Wall -Wextra -Werror -std=c11 -g -fsanitize=address,undefined d0_warmup/s
 | `ret_t` 5종 이상 + `ret_str()` | 15 | ☐ |
 | 모든 매크로가 `do-while(0)` | 20 | ☐ |
 | 가드 로그에 `#인자이름` + `__func__` | 15 | ☐ |
-| `_GOTO` 계열 3종이 `ret` 을 세팅하고 점프 | 15 | ☐ |
+| `_GOTO` 계열 3종이 인자로 받은 `_rv` 를 세팅하고 점프 | 15 | ☐ |
 | `SAFE_*` 3종이 해제 후 `NULL`/`-1` 대입 | 15 | ☐ |
 | 경고 0 / 새니타이저 0 | 10 | ☐ |
 | 목표 시간 내 | 10 | ☐ |
@@ -314,7 +314,7 @@ clang -Wall -Wextra -Werror -std=c11 -g -fsanitize=address,undefined d0_warmup/s
 | 증상 | 원인 | 고치는 법 |
 | :--- | :--- | :--- |
 | `undefined symbol: g_log_level` | `extern` 만 있고 실체가 없다 | `.c` 파일 **딱 하나**에 `log_level_t g_log_level = LOG_LV_INF;` |
-| `CHK_RET_GOTO` 가 "`ret` undeclared" | 매크로가 **바깥의 `ret` 변수를 쓴다** | 함수 맨 위에 `int ret = RET_FAIL;` 을 먼저 선언 |
+| `CHK_RET_GOTO` 가 "`ret` undeclared" | 호출부가 **넘긴 `ret` 변수가 선언돼 있지 않다** (매크로는 `_rv` 인자로 받을 뿐 선언하지 않는다) | 함수 맨 위에 `int ret = RET_FAIL;` 을 먼저 선언 |
 | 매크로 끝에 `;` 를 붙여서 에러 | `do{}while(0)` **뒤에는** `;` 를 안 붙인다 (호출부에서 붙인다) | 정의 끝은 `while (0)` 로 끝 |
 | `CHK_RANGE(v, 0, 100)` 에서 부호 경고 | `size_t` 를 `%d` 로 찍음 | 매크로 안에서 `(int)` 캐스팅 (템플릿이 이미 그렇게 되어있다) |
 | `goto CLEANUP` 뒤 "jump bypasses initialization" | 선언을 `goto` **뒤에** 했다 | **모든 지역변수를 함수 맨 위에서** 초기화하며 선언 |

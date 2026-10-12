@@ -28,7 +28,7 @@ int f(const in_t *in, out_t *out)
     memset(out, 0x00, sizeof(*out));
 
     buf = calloc(1, N);
-    CHK_PTR_GOTO(buf, CLEANUP);  /* ④ 첫 자원을 잡은 뒤부터는 전부 goto */
+    CHK_PTR_GOTO(buf, ret, CLEANUP);  /* ④ 첫 자원을 잡은 뒤부터는 전부 goto */
 
     ret = RET_OK;                /* ⑤ 끝까지 왔을 때만 성공 */
 CLEANUP:
@@ -232,13 +232,13 @@ clang -Wall -Wextra -Werror -std=c11 -g -DUNIT_TEST \
 >     *out_cfg = NULL;                 /*    실패해도 호출부가 쓰레기를 안 보게 */
 >
 >     cfg = CALLOC(1, sizeof(*cfg));   /* ④ 여기부터 goto */
->     CHK_PTR_GOTO(cfg, CLEANUP);
+>     CHK_PTR_GOTO(cfg, ret, CLEANUP);
 >
 >     line = CALLOC(1, CFG_LINE_MAX + 2);
->     CHK_PTR_GOTO(line, CLEANUP);
+>     CHK_PTR_GOTO(line, ret, CLEANUP);
 >
 >     fp = fopen(path, "r");
->     CHK_COND_GOTO(fp != NULL, RET_IO_ERROR, CLEANUP);
+>     CHK_COND_GOTO(fp != NULL, RET_IO_ERROR, ret, CLEANUP);
 >
 >     while (fgets(line, CFG_LINE_MAX + 2, fp) != NULL) {
 >         char *eq = NULL, *key = NULL, *val = NULL;
@@ -248,26 +248,26 @@ clang -Wall -Wextra -Werror -std=c11 -g -DUNIT_TEST \
 >         if (key[0] == '\0' || key[0] == '#') continue;   /* 빈 줄 / 주석 */
 >
 >         eq = strchr(key, '=');
->         CHK_COND_GOTO(eq != NULL, RET_BAD_FORMAT, CLEANUP);
+>         CHK_COND_GOTO(eq != NULL, RET_BAD_FORMAT, ret, CLEANUP);
 >
 >         *eq = '\0';
 >         val = trim(eq + 1);
 >         key = trim(key);
 >
->         CHK_COND_GOTO(key[0] != '\0', RET_BAD_FORMAT, CLEANUP);
->         CHK_COND_GOTO(strlen(key) <= CFG_KEY_MAX, RET_BAD_FORMAT, CLEANUP);
->         CHK_COND_GOTO(strlen(val) <= CFG_VAL_MAX, RET_BAD_FORMAT, CLEANUP);
+>         CHK_COND_GOTO(key[0] != '\0', RET_BAD_FORMAT, ret, CLEANUP);
+>         CHK_COND_GOTO(strlen(key) <= CFG_KEY_MAX, RET_BAD_FORMAT, ret, CLEANUP);
+>         CHK_COND_GOTO(strlen(val) <= CFG_VAL_MAX, RET_BAD_FORMAT, ret, CLEANUP);
 >
->         CHK_RET_GOTO(cfg_put(cfg, key, val), CLEANUP);
+>         CHK_RET_GOTO(cfg_put(cfg, key, val), ret, CLEANUP);
 >     }
 >
 >     /* 필수 키 검사 */
 >     {
 >         int port = 0, worker = 0;
->         CHK_RET_GOTO(cfg_get_int(cfg, "listen_port", &port), CLEANUP);
->         CHK_RET_GOTO(cfg_get_int(cfg, "worker_num",  &worker), CLEANUP);
->         CHK_COND_GOTO(port   >= 1 && port   <= 65535, RET_BAD_FORMAT, CLEANUP);
->         CHK_COND_GOTO(worker >= 1 && worker <= 64,    RET_BAD_FORMAT, CLEANUP);
+>         CHK_RET_GOTO(cfg_get_int(cfg, "listen_port", &port), ret, CLEANUP);
+>         CHK_RET_GOTO(cfg_get_int(cfg, "worker_num",  &worker), ret, CLEANUP);
+>         CHK_COND_GOTO(port   >= 1 && port   <= 65535, RET_BAD_FORMAT, ret, CLEANUP);
+>         CHK_COND_GOTO(worker >= 1 && worker <= 64,    RET_BAD_FORMAT, ret, CLEANUP);
 >     }
 >
 >     *out_cfg = cfg;                  /* ★ 소유권 이전 */
