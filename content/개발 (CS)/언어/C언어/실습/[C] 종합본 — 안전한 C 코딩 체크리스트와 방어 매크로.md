@@ -349,7 +349,7 @@ CHK_ALLOC_GOTO(buf, ret, CLEANUP);   // 할당 실패는 NO_MEM
 | 14-5 | conformant 배열 `improved_strncpy/strncat` | 구현함 | [에러·API][err] |
 | 14-6 | TBCD ↔ 숫자 문자열 | **미구현** (요구사항 정리만) | [에러·API][err] |
 | 15-0, 15-16 | 스레드 안전 메시지 큐 + SIGINT 종료 | 큐·`sigwait` 종료는 구현함. 교육자료의 "producer가 SIGINT까지 계속 실행"은 **미반영**(고정 2회) | [동시성 §7][conc] |
-| 15-17 | 이체 + 감시 스레드 | 구현함. `ERRORCHECK` 뮤텍스는 **미반영** | [동시성 §8][conc] |
+| 15-17 | 이체 + 감시 스레드 | 구현함 (`ERRORCHECK` 뮤텍스 적용 완료) | [동시성 §8][conc] |
 | 16-7, 16-8 | `htonll`/`ntohll`, 메시지 헤더 encode/decode | 구현함 | [바이트·경고][msc] |
 | 16-9 | TLV 파서 코드 리뷰 | 결함 목록 정리 (코드는 의도적으로 수정하지 않음) | [바이트·경고 §4][msc] |
 

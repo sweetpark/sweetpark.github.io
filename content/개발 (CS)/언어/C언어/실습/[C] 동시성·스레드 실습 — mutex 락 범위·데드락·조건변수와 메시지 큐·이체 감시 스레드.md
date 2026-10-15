@@ -523,7 +523,7 @@ producer가 `CLOSED`를 받으면(시그널로 종료된 경우) `enq fail` 메�
 | 확인·출금·입금을 **하나의 atomic 연산**으로 (출금 함수 + 입금 함수를 차례로 부르는 방식 금지) | ✅ | `transfer_once` 한 구간 |
 | 두 락을 **계좌 번호 오름차순**으로, 출금=입금도 처리 | ✅ | |
 | 감시 스레드는 섞이지 않은 합계, **락을 쥔 채 `printf` 금지** | ✅ | 전체 락 → 합계 → 해제 → 출력 |
-| mutex를 **`PTHREAD_MUTEX_ERRORCHECK`** 로 생성 | ❌ **미반영** | 현재 `pthread_mutex_init(&lock, NULL)` = 기본(NORMAL/DEFAULT) 종류. `pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_ERRORCHECK)`를 쓰면 잘못된 `unlock`이 `EPERM`으로 드러난다 (§2) |
+| mutex를 **`PTHREAD_MUTEX_ERRORCHECK`** 로 생성 | ✅ | `pthread_mutexattr_settype`으로 계좌 mutex 10개를 ERRORCHECK로 `init` (초기에는 기본 종류였다가 교육자료 대조 후 반영) |
 | **모든 pthread 함수의 반환값** 검사 | ✅ | `lock`·`init`·`create`·`join` 검사 |
 | 스레드 인자·통계는 **수명이 충분한 storage duration** | ✅ | `main`의 지역 배열(`tstat[]`, `mstat`)을 넘기되, `main`이 모든 스레드를 `join`한 뒤에 끝나므로 수명이 충분하다 (15-10의 `create_thread` 지역변수와 다른 점) |
 | 스레드별 seed `rand_r` | ✅ | |
@@ -532,7 +532,7 @@ producer가 `CLOSED`를 받으면(시그널로 종료된 경우) `enq fail` 메�
 | 여러 번 반복 실행해 합계 불일치 0, 데드락 없이 종료 | ✅ | 짧은 실행 반복 + 변이 테스트 (아래) |
 
 > [!NOTE]
-> 표에서 유일하게 남은 항목이 `ERRORCHECK` 뮤텍스다. 동작에는 영향이 없지만(락 순서·해제 짝이 맞게 짜여 있다), 요구사항이므로 적용해 두면 §2에서 본 "조용히 지나가는 버그"를 개발 중에 잡을 수 있다.
+> `ERRORCHECK` 적용 후에도 결과는 같았다 (2초 실행 5회 모두 합계 10000 유지, 불일치 0). 락 순서·해제 짝이 맞게 짜여 있어서 `EPERM`/`EDEADLK`가 한 번도 나오지 않은 것이다. 나중에 잘못된 `unlock`이 생기면 조용히 지나가지 않고 반환값으로 드러난다.
 
 ### 처음 작성한 코드의 문제
 
