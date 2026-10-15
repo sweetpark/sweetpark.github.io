@@ -2,7 +2,7 @@
 title: "(C) 환경변수·시그널 실습 — getenv 복사·atexit와 sigaction·pselect 시그널 카운터"
 tags: 
 created: 2026-10-14
-modified: 2026-10-14
+modified: 2026-10-15
 ---
 
 # 환경변수·시그널 실습 — getenv 복사·atexit와 sigaction·pselect 시그널 카운터
@@ -71,7 +71,9 @@ return 0;                          // exit2 → exit1 순으로 실행 (LIFO)
 ```
 
 - `atexit`로 등록한 함수는 `return`(main)이나 `exit()`로 끝날 때 **등록의 반대 순서**로 실행된다.
-- `_Exit()`, `abort()`는 핸들러도 `stdio` 버퍼 비우기도 하지 않는다. 자원 정리가 필요한 프로그램은 이 둘로 끝내지 않는다.
+- `_Exit()`는 `atexit` 핸들러도 시그널 핸들러도 실행하지 않는다. `abort()`도 `atexit` 핸들러를 실행하지 않는다. `stdio` 버퍼를 비우는지는 **구현마다 다르다** (아래 확인 참고). 자원 정리가 필요한 프로그램은 이 둘로 끝내지 않는다.
+- **`atexit` 핸들러 안에서 `exit()`를 호출하거나, 시그널 핸들러 안에서 `exit()`를 호출하는 것은 정의되지 않은 동작**이다 (교육자료 11-3). 핸들러에서 프로세스를 끝내려면 `_Exit()`(async-signal-safe) 또는 flag를 세우고 main이 정상 종료하게 한다.
+- 컨테이너(glibc 2.17)에서 파일에 한 줄을 `fprintf`한 뒤 종료 방법만 바꿔 파일 크기를 확인했다: `exit()` 13바이트, **`abort()` 13바이트**, **`_Exit()` 0바이트**. 즉 이 환경에서 `abort()`는 열린 스트림을 비웠지만 `_Exit()`는 비우지 않았다. glibc 2.27 이후의 `abort()`는 스트림을 비우지 않는 것으로 알려져 있어서(이 환경에서는 확인하지 못했다) **`abort()`에 버퍼 flush를 기대하면 안 된다**.
 
 ---
 
@@ -193,6 +195,15 @@ void handler(int signum) {
 
 - UNIX 계열은 한 번 등록하면 계속 유지되지만, 일부 구현(Windows 등)은 한 번 처리한 뒤 **기본 동작으로 되돌아간다**. 같은 코드가 환경에 따라 다르게 동작하므로 이식성이 낮다. `sigaction`은 동작이 정의돼 있다.
 - 강의 코드는 main 루프에서 `raise(SIGUSR1)`로 자기 자신에게 시그널을 보내 핸들러가 몇 번 호출되는지 확인한다. 핸들러가 계속 등록돼 있다는 가정이 성립해야 동작하는 코드다.
+- 교육자료(12-2)는 "유지될지/한 번만 동작할지"를 코드가 **명시**하라고 정리한다.
+
+  | 원하는 동작 | `signal()` | `sigaction()` |
+  |---|---|---|
+  | 핸들러 **유지** | 구현마다 다름 (Linux는 유지, Windows 등은 1회 후 기본 동작 복구). 핸들러 안에서 다시 `signal(signum, handler)`를 부르면 **복구와 재등록 사이에 기본 동작으로 처리되는 구간**이 생김 | `sa_flags = 0` (`SA_RESETHAND`가 없으면 유지) |
+  | **1회만** 동작 | `#ifndef WINDOWS`로 핸들러 안에서 `signal(signum, SIG_DFL)` | `sa_flags = SA_RESETHAND` |
+
+  `sigaction`은 C 표준이 아니라 POSIX라서 **Windows에서는 쓸 수 없다** (이식성은 `signal`, 동작의 명확함은 `sigaction`).
+- **핸들러 안에서 `signal()`을 불러도 안전한 경우** (핸들러가 유지되는 플랫폼에서, 12-5): 시그널을 **무시**(`SIG_IGN`)하도록 등록, **기본 동작**(`SIG_DFL`) 복구, **다른 핸들러**로 교체. 같은 핸들러를 **재등록**하는 호출은 유지되는 플랫폼에서는 의미가 없고, 유지되지 않는 플랫폼에서는 위의 경합이 생긴다. 그래서 재등록이 필요하면 처음부터 `sigaction`을 쓴다.
 
 ### 핸들러 안에서 하면 안 되는 것 (12-03, 12-04)
 
@@ -205,8 +216,16 @@ void handler(int signum) {
 ```
 
 - 핸들러는 프로그램의 어느 지점에서나 끼어든다. main이 `fputs`나 `malloc` 안에서 락을 잡고 있을 때 핸들러가 같은 락이 필요한 함수를 부르면 **교착(deadlock)**이 난다.
-- `printf`, `fputs`, `malloc`, `free`, `strcpy` 같은 함수는 **async-signal-safe가 아니다**. 핸들러는 `volatile sig_atomic_t` flag만 세우고, 실제 처리는 main 루프에서 한다.
-- 12-04처럼 핸들러가 전역 버퍼에 `strcpy`하면, `free` 이후에 시그널이 오는 경우 **해제된 메모리에 쓴다**. main이 `strcpy`하는 도중에 오면 두 쓰기가 섞인다.
+- `printf`, `fputs`, `malloc`, `free` 같은 함수는 **async-signal-safe가 아니다**. 핸들러는 `volatile sig_atomic_t` flag만 세우고, 실제 처리는 main 루프에서 한다.
+- 12-04처럼 핸들러가 전역 버퍼에 쓰면, `free` 이후에 시그널이 오는 경우 **해제된 메모리에 쓴다**. main이 같은 버퍼에 쓰는 도중에 오면 두 쓰기가 섞인다. 문제는 `strcpy`라는 함수가 아니라 **핸들러가 main과 공유하는 객체를 건드린다**는 점이다.
+
+> [!NOTE]
+> **핸들러 안에서 호출해도 되는 함수의 범위** (교육자료 12-3)
+> - **C 표준**이 보장하는 것은 `abort()`, `_Exit()`, `quick_exit()`, `signal()` 네 개뿐이다.
+> - **POSIX**는 `man 7 signal-safety`에 async-signal-safe 함수 목록을 따로 정의한다 (`write`, `_exit`, `kill`, `sigaction`, `sigprocmask`, `pselect`, `sem_post`, `open`/`close`/`read` 등). `str` 계열 함수도 최신 목록에는 포함되어 있다(교육자료도 "str계열"로 표기). 목록은 POSIX 개정마다 늘어나므로 쓰기 전에 **대상 플랫폼의 man 페이지로 확인**한다.
+> - 목록에 없는 **`printf`·`fputs`·`malloc`·`free` 같은 stdio/힙 함수는 쓰면 안 된다.** 핸들러에서 로그가 꼭 필요하면 `write(2, ...)`를 쓴다.
+> - 핸들러가 **같은 시그널(또는 다른 시그널)에 의해 다시 인터럽트될 수 있다**. 인터럽트돼도 안전한 핸들러만 async-signal-safe라고 부른다. `sigaction`의 `sa_mask`로 처리 중에 끼어들 시그널을 막으면 핸들러가 인터럽트되지 않아 덜 엄격해도 되지만, 그렇더라도 async-signal-safe하지 않은 함수를 부르면 안 된다.
+> - `volatile sig_atomic_t`에 읽고 쓰는 것을 제외하고, 핸들러에서 다른 객체를 읽거나 쓰는 것은 정의되지 않은 동작이다 (`sig_atomic_t`의 범위는 `SIG_ATOMIC_MIN`~`SIG_ATOMIC_MAX`, 구현마다 다르다).
 
 ```c
 static volatile sig_atomic_t g_stop = 0;

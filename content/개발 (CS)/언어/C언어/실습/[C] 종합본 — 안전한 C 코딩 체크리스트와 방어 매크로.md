@@ -105,9 +105,9 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 | 환경변수 | 고정 배열에 `getenv` 값 복사 | 외부 값의 길이를 가정 | 길이 검사 후 `snprintf`, 또는 `strlen+1` 만큼 `malloc`, NULL 검사 | [환경·시그널 11-01][env] |
 | 환경변수 | `getenv` 반환 문자열 수정 | 환경 영역을 직접 바꿈 | `strdup` 복사본에서 수정 | [환경·시그널 11-02][env] |
 | 환경변수 | `strtok`으로 `a::b` 분리 | 연속 구분자를 건너뛰어 **빈 항목 소실** | `strchr`/`strsep`로 직접 분리, 항목 수 = 구분자 수 **+ 1** | [환경·시그널 §3][env] |
-| 종료 | `atexit` 핸들러·버퍼 정리 누락 | `_Exit()`/`abort()` 사용, 핸들러는 등록의 **역순** 실행 | `return`/`exit`로 종료, 정리는 `atexit` | [환경·시그널 11-03][env], [에러·API 13-03][err] |
-| 시그널 | 핸들러 안 `printf`/`free`/`strcpy` | async-signal-safe 아님, 락 교착, 해제된 메모리 접근 | 핸들러는 `volatile sig_atomic_t` flag만, 처리는 main | [환경·시그널 12-03, 12-04][env] |
-| 시그널 | 시그널 유실·중첩, `signal()` 이식성 | 시점에 따라 무시, 구현마다 동작이 다름 | `sigaction` + `sigprocmask` | [환경·시그널 12-01, 12-02][env] |
+| 종료 | `atexit` 핸들러·버퍼 정리 누락 | `_Exit()`/`abort()` 사용(`atexit` 건너뜀, stdio flush는 구현 의존: glibc 2.17은 `abort`만 flush), 핸들러 안 `exit()`는 정의되지 않은 동작 | `return`/`exit`로 종료, 정리는 `atexit`(등록의 **역순** 실행) | [환경·시그널 11-03][env], [에러·API 13-03][err] |
+| 시그널 | 핸들러 안 `printf`/`free`, 공유 객체 접근 | async-signal-safe 아님(C 표준은 `abort`·`_Exit`·`quick_exit`·`signal`만 보장), 락 교착, 해제된 메모리 접근 | 핸들러는 `volatile sig_atomic_t` flag만, 처리는 main (로그가 필요하면 `write`) | [환경·시그널 12-03, 12-04][env] |
+| 시그널 | 시그널 유실·중첩, `signal()` 이식성 | 시점에 따라 무시, 구현마다 핸들러 유지 여부가 다름, 핸들러 안 재등록은 기본 동작 구간이 생김 | `sigaction` + `sigprocmask` (1회용이면 `SA_RESETHAND`) | [환경·시그널 12-01, 12-02][env] |
 | 시그널 | `sleep`이 시그널에 깨어나 카운터가 빨라짐, 대기 직전 시그널 지연 | `sleep`/`nanosleep`은 `EINTR`로 일찍 반환 | 절대 시각 + `pselect`(마스크 해제와 대기를 한 번에), `nanosleep`은 남은 시간으로 재대기 | [환경·시그널 §6][env] |
 | 에러 | in-band 에러 지시자 | `sprintf`의 반환값이 길이이자 에러 | 에러는 반환값, 값은 인자 (`snprintf_m`), `vsnprintf`로 `va_list` 전달 | [에러·API 13-02, §3][err] |
 | 에러 | `atoi`가 에러를 숨김 | `abc`도 0 | `strtol` + `endptr` + `ERANGE` (`my_atoi`), `int`로 줄이기 전에 범위 검사 | [에러·API 13-05, §2][err] |
@@ -127,7 +127,11 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 | 동시성 | 스레드 안전하지 않은 함수 | `strtok`·`rand`·`srand`·`localtime`은 내부 정적 상태 공유 | `strtok_r`·`rand_r`·`localtime_r` | [동시성 15-09, §4][conc] |
 | 동시성 | 종료 신호·큐 | 센티널이 큐가 가득 차면 유실, 폴링 대기 | `close` 플래그 + `broadcast`, 남은 데이터는 drain, 대기는 `cond_wait` | [동시성 15-00, §7][conc] |
 | 정수 | 부호 없는 수의 랩어라운드·언더플로 | `i <= SIZE_MAX`는 항상 참, `len - HDR_LEN`이 `len < HDR_LEN`일 때 거대한 값, `body_len < 0`은 항상 거짓 | 증가·뺄셈 **전에** 비교 (`SIZE_MAX - i < step`, `len < HDR_LEN`) | [바이트·경고 16-04, §4][msc] |
+| 동시성 | 뮤텍스 종류·수명 | `NORMAL`/`DEFAULT`의 잘못된 `unlock`은 표준상 정의되지 않은 동작(glibc는 조용히 성공), 객체 생성·삭제마다 `init`/`destroy`하면 삭제 후 다른 스레드가 접근 | `ERRORCHECK`/`RECURSIVE` 명시, 뮤텍스 수명 > 모든 사용자 스레드, 신호를 보낸 뒤 넘긴 객체 접근 금지 | [동시성 §2, §5][conc] |
+| 동시성 | `pthread_cancel`로 종료 | async 취소는 락 중간에 끊김, deferred라도 루프에 취소 지점이 없으면 취소가 안 먹음(`join` 무한 대기) | 종료 flag, 또는 deferred + `pthread_testcancel()` | [동시성 §3-4][conc] |
 | 정수 | `sizeof(배열)`을 원소 수로 사용 | 바이트 수(12)를 길이(3)로 넘김 → 범위 밖 읽기 | `sizeof(a) / sizeof(a[0])` | [바이트·경고 16-05][msc] |
+| 컴파일러 | 최적화가 "의도한 코드"를 지움 | 읽는 곳이 없는 `memset` 등 dead store는 `-O2`에서 제거됨 (gcc 4.8.5 확인: `-O0` 호출 1개, `-O2` 0개) | `explicit_bzero`·`memset_s`·`volatile` 쓰기, 릴리스 옵션(`-O2`)으로도 시험 | [바이트·경고 16-00][msc] |
+| 정수 | 루프 종료 조건에 `==`/`!=` | `i != 10`(2씩 증가)·`begin > end`는 무한 루프 | 관계 연산자 `<`, `<=` | [바이트·경고 16-04][msc] |
 | 컴파일러 | `switch`의 `default`·`return` 누락 | `default`가 없으면 범위 밖 값에서 반환 없이 끝남, 있으면 누락된 `enum` case를 `-Wall`이 못 잡음 | 모든 case 나열 + `-Wswitch-enum`, 모든 경로 `return` | [바이트·경고 16-01, §4][msc] |
 | 직렬화 | 구조체 통째 `memcpy` | 호스트 엔디안과 패딩이 와이어 포맷에 새어 나옴 | **필드 단위**로 시프트 변환 (`put_be*`/`get_be*`), 실패 시 출력 불변, 외부 입력은 version·type·길이 검증 | [바이트·경고 §3][msc] |
 | 직렬화 | 시프트·우선순위 실수 | `n & 0xFF << 56`은 시프트가 먼저, 변환 없이 네트워크 값 사용 | `(n & 마스크) << k`, `ntohl`/`get_be32`로 변환 후 사용 | [바이트·경고 §2][msc] |
@@ -267,7 +271,7 @@ CHK_ALLOC_GOTO(buf, ret, CLEANUP);   // 할당 실패는 NO_MEM
 - [ ] `getenv` 값은 NULL·길이 검사 후 **복사본**으로 쓰고 직접 수정하지 않는다
 - [ ] 구분자로 쪼갤 때 빈 항목이 의미 있으면 `strtok` 대신 `strchr`/`strsep`, 항목 수 = 구분자 + 1
 - [ ] `open`에 접근 모드를 줬고 `open`은 `< 0`, `fdopen`은 `NULL`을 검사하는가
-- [ ] 종료는 `return`/`exit` (`_Exit`·`abort`는 `atexit`와 버퍼 정리를 건너뜀)
+- [ ] 종료는 `return`/`exit` (`_Exit`·`abort`는 `atexit`를 건너뛰고 stdio flush는 구현마다 다름, 핸들러 안에서 `exit()` 금지)
 - [ ] `signal()` 대신 `sigaction`, 핸들러는 `volatile sig_atomic_t` flag만
 - [ ] 시그널은 평소 block, 대기는 `pselect`/절대 시각, 깨어나면 남은 시간만 다시 대기
 - [ ] 설정 값은 `strtol`로 검증하고, 실패하면 에러를 출력하되 기존 값을 유지
@@ -301,7 +305,9 @@ CHK_ALLOC_GOTO(buf, ret, CLEANUP);   // 할당 실패는 NO_MEM
 - [ ] `enum` `switch`는 모든 case 나열 + `-Wswitch-enum`, 모든 경로에서 `return`
 - [ ] 네트워크로 보내는 정수는 **필드 단위**로 변환 (구조체 통째 `memcpy` 금지), `(n & 마스크) << k`처럼 괄호
 - [ ] 외부에서 받은 헤더는 version·type·길이를 검증하고, 실패하면 출력 구조체를 건드리지 않는가
-- [ ] 빌드는 `-Wall -Wextra`, 새 경고는 억제하지 말고 코드로 해결 (dead code·쓰이지 않는 대입 제거)
+- [ ] 빌드는 `-Wall -Wextra`(`-Wall`이 전부가 아님), 새 경고는 억제하지 말고 코드로 해결 (dead code·쓰이지 않는 대입 제거). 남기는 경고는 **이유를 주석**으로
+- [ ] 루프 종료 조건은 `<`/`<=` 등 관계 연산자, `size_t` 최댓값과의 직접 비교 금지
+- [ ] "지우는" 코드(`memset` 등)가 `-O2`에서도 남는지 확인했는가 (`explicit_bzero` 등)
 
 ### 실패 처리
 - [ ] 자원 획득 후의 실패는 `goto CLEANUP`
@@ -323,7 +329,29 @@ CHK_ALLOC_GOTO(buf, ret, CLEANUP);   // 할당 실패는 NO_MEM
 | 2026-10-14 | errno 사용 규칙 | 초기화·저장·검사·설정 6규칙 | [errno][errno] |
 | 2026-10-15 | 동시성·스레드 (`c_basic #3`, 15번 실습 + 메시지 큐·이체 감시 과제) | §2의 동시성 행(락 경로·이중 해제·범위·획득 순서·조건변수·스레드 수명·취소/시그널·`_r` 함수·큐 종료), §4의 락 설계·변이 검증, §5의 동시성 체크리스트 | [동시성][conc] |
 | 2026-10-15 | 컴파일러 경고·바이트 순서·헤더 직렬화 (`c_basic #3`, 16번 실습 + `byteorder.c`·`enc_dec`·TLV 리뷰) | §2의 정수·컴파일러·직렬화 행, §5의 정수·직렬화·경고 체크리스트 | [바이트·경고][msc] |
+| 2026-10-15 | 교육자료(C어플리케이션 개발 Part2 v1.2)와 노트 대조 | 정정: `abort()` 버퍼 flush·뮤텍스 종류의 표준/구현 구분·`detach` 재호출 결과·핸들러 `strcpy` 설명. 추가: 취소 지점(`testcancel`)·데드락 4조건·`cond_signal` 안전 조건·`signal()` 지속성(`SA_RESETHAND`)·errno 함수 분류·루프 종료 조건·최적화와 dead store·`clearerr` | 각 노트 |
 | (예정) | | | |
+
+### 교육자료 과제와 노트의 대응
+
+교육자료 뒤쪽의 과제 목록을 이 노트들의 실습과 맞춰 본 표다. "구현함"은 해당 노트에 코드와 검증 결과가 있다는 뜻이다.
+
+| 과제 | 내용 | 상태 | 노트 |
+|---|---|---|---|
+| 8-6 | `make_filename`, `my_strncpy`, `my_strncat` | 구현함 | [문자열][str] |
+| 8-7 | `parse_kv`, `read_line` | **미구현** (요구사항 정리만) | [문자열][str] |
+| 9-12 | 문자열 append 라이브러리 (`realloc`) | 구현함 | [메모리][mem] |
+| 9-13 | 가변 길이 메시지 연결리스트 (유연 배열 노드 · `goto` 체인 · 이중 포인터 해제) | 연결리스트 구현함. 교육자료의 요구사항 항목별 대조는 하지 않음 | [메모리][mem] |
+| 10-5, 10-6 | 공백 제거 복사, 줄 번호 붙여 저장 | 구현함 | [파일][fio] |
+| 11-4, 11-5 | 환경변수 로거, `which` | 구현함 | [환경·시그널][env] |
+| 12-6, 12-7 | SIGTERM/SIGINT 카운터, 시그널로 운용하는 카운터 | 구현함 | [환경·시그널][env] |
+| 13-7, 13-8 | `snprintf_m`, `sum_file` | 구현함 | [에러·API][err] |
+| 14-5 | conformant 배열 `improved_strncpy/strncat` | 구현함 | [에러·API][err] |
+| 14-6 | TBCD ↔ 숫자 문자열 | **미구현** (요구사항 정리만) | [에러·API][err] |
+| 15-0, 15-16 | 스레드 안전 메시지 큐 + SIGINT 종료 | 큐·`sigwait` 종료는 구현함. 교육자료의 "producer가 SIGINT까지 계속 실행"은 **미반영**(고정 2회) | [동시성 §7][conc] |
+| 15-17 | 이체 + 감시 스레드 | 구현함. `ERRORCHECK` 뮤텍스는 **미반영** | [동시성 §8][conc] |
+| 16-7, 16-8 | `htonll`/`ntohll`, 메시지 헤더 encode/decode | 구현함 | [바이트·경고][msc] |
+| 16-9 | TLV 파서 코드 리뷰 | 결함 목록 정리 (코드는 의도적으로 수정하지 않음) | [바이트·경고 §4][msc] |
 
 ## 노트 링크
 

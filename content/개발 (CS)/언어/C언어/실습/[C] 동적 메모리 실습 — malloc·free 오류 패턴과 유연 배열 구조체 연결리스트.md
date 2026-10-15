@@ -2,7 +2,7 @@
 title: "(C) 동적 메모리 실습 — malloc·free 오류 패턴과 유연 배열 구조체 연결리스트"
 tags: 
 created: 2026-10-13
-modified: 2026-10-13
+modified: 2026-10-15
 ---
 
 # 동적 메모리 실습 — malloc·free 오류 패턴과 유연 배열 구조체 연결리스트
@@ -68,6 +68,10 @@ void process_list(size_t number) {
 #define FREE(ptr) do { if ((ptr) != NULL) { free(ptr); (ptr) = NULL; } } while (0)
 ```
 
+- **같은 모듈·같은 추상화 수준에서 할당하고 해제한다** (교육자료 9-1). 다른 함수·모듈이 해제하면 "누가 언제 해제했는지"를 알 수 없어서 leak, double free, 해제 후 접근이 생긴다.
+- 해제 직후 `NULL`을 대입하는 이유는 같은 포인터가 **나중에 한 번 더 쓰일 수 있기 때문**이다. 교육자료의 예: `message_type & bitmask_1`일 때 한 번, `& bitmask_2`일 때 또 `free(message)`를 하면 두 비트가 모두 켜진 메시지에서 double free가 난다. 반대로 **지역(non-static) 포인터가 `free` 직후 곧바로 스코프를 벗어나면** 더 쓸 수 없으니 `NULL` 대입은 생략해도 된다.
+- 교육자료의 `FREE`는 `if (...) { ... }`로만 정의돼 있다. `if (c) FREE(p); else ...`처럼 쓰면 `}` 뒤의 `;`가 `if`문을 끝내서 `else`가 짝을 잃고 컴파일 에러가 난다. 위 `do { ... } while (0)` 형태로 감싸는 이유다.
+
 ### free 후 참조 — 9-08 (치명적)
 
 ```c
@@ -83,6 +87,9 @@ for (p = head; p != NULL; p = next) {
 	free(p);
 }
 ```
+
+> [!WARNING]
+> 교육자료(9-8)는 이 패턴이 실제 운영 장애로 이어진 사례를 함께 싣고 있다 (고객사·티켓 정보는 생략). 연결리스트를 해제하는 함수가 `free(p)` 뒤에 `p->next`를 읽어서 **해제된 메모리를 읽은** 채 동작하다가 프로세스 블록이 재기동됐다. 테스트에서는 해제된 메모리에 우연히 이전 값이 남아 있어서 통과하기 쉽다는 점이 이 결함의 위험이다.
 
 ### 해제 누락 — 9-05, 9-09
 
@@ -105,6 +112,25 @@ struct tm *tmb = malloc(sizeof(tmb));   // sizeof(포인터) = 8바이트, struc
 p   = malloc(sizeof(*p));        // 타입이 바뀌어도 따라가는 관용구
 tmb = malloc(sizeof(*tmb));
 ```
+
+교육자료(9-3)는 `sizeof(*p)` 대신 **할당 함수의 반환값을 대상 타입으로 바로 cast**하는 방법을 권한다. C에서 `void *`는 어떤 포인터로도 암시적 변환되므로 `widget *p = malloc(sizeof(gadget))`는 경고 없이 통과하지만, `p = (widget *)malloc(sizeof(widget))`처럼 타입을 쓰면 `sizeof(...)`와 대입 대상의 **타입이 어긋날 때 컴파일러가 잡을 여지**가 생긴다. 이를 매크로로 묶으면 타입을 한 번만 쓴다.
+
+```c
+#define MALLOC(type)                  ((type *)malloc(sizeof(type)))
+#define MALLOC_ARRAY(number, type)    ((type *)malloc((number) * sizeof(type)))
+#define MALLOC_FLEX(stype, number, etype) \
+        ((stype *)malloc(sizeof(stype) + (number) * sizeof(etype)))   // 유연 배열 구조체
+#define CALLOC(number, type)          ((type *)calloc(number, sizeof(type)))
+#define REALLOC_ARRAY(pointer, number, type) \
+        ((type *)realloc(pointer, (number) * sizeof(type)))
+#define REALLOC_FLEX(pointer, stype, number, etype) \
+        ((stype *)realloc(pointer, sizeof(stype) + (number) * sizeof(etype)))
+
+widget *p = MALLOC(widget);                    // 타입 불일치면 "incompatible pointer" 경고
+```
+
+> [!NOTE]
+> 두 방식 모두 **한 곳에서 타입을 맞추는** 장치이고, 장단이 다르다. `sizeof(*p)`는 매크로 없이 쓸 수 있고 변수 타입이 바뀌어도 따라간다. 타입 매크로는 `widget *p = MALLOC(gadget)`처럼 **서로 다른 타입을 쓰면 경고**로 알려 준다. 어느 쪽이든 `(number) * sizeof(type)`의 **곱셈 오버플로**는 막아 주지 않으므로 개수가 외부 값이면 `n > SIZE_MAX / sizeof(type)`을 먼저 확인한다 (아래 `calloc`). 또한 cast를 쓰면 `<stdlib.h>`를 빼먹었을 때 `malloc`의 암묵적 선언(`int` 반환)을 cast가 가려 버릴 수 있어서, 헤더 포함을 반드시 확인한다. 이 저장소의 `mem.h`는 `XNEW(p)`/`XNEWN(p, n)`처럼 `sizeof(*p)` 방식으로 같은 목적(타입 크기 실수 방지 + 곱셈 오버플로 검사)을 이미 해결하고 있어서, 위의 타입 매크로는 따로 넣지 않았다.
 
 9-11은 `sizeof(tmb)`가 **포인터 크기(8바이트)** 라서, 뒤이은 `*tmb = (struct tm){ ... }`가 할당된 영역보다 큰 구조체를 써 넣는다. 덤으로 `struct tm`의 `tm_year`는 **1900년 기준 연도**, `tm_mon`은 **0~11**이라 `2023`, `7`을 그대로 넣으면 `mktime`에서 엉뚱한 날짜가 된다.
 

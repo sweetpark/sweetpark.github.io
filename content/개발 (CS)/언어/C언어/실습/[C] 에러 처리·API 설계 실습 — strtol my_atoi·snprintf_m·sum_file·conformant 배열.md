@@ -2,7 +2,7 @@
 title: "(C) 에러 처리·API 설계 실습 — strtol my_atoi·snprintf_m·sum_file·conformant 배열"
 tags: 
 created: 2026-10-14
-modified: 2026-10-14
+modified: 2026-10-15
 ---
 
 # 에러 처리·API 설계 실습 — strtol my_atoi·snprintf_m·sum_file·conformant 배열
@@ -34,7 +34,7 @@ modified: 2026-10-14
 |---|---|---|
 | 13-01 | `printf` 여러 번 뒤에 `errno`로 출력 오류 판단 | 성공한 호출도 `errno`를 바꿀 수 있다 → 스트림 오류는 `ferror(stdout)` |
 | 13-02 | `sprintf` 반환값(쓴 길이)을 누적해 위치로 사용, 오류·오버플로 검사 없음 | **in-band 에러 지시자를 피한다** → 에러는 반환값, 값은 인자로. `snprintf` 사용 |
-| 13-03 | `abort()`로 종료 → 파일 버퍼가 안 비워지고 `atexit`·정리 미실행 | 종료는 `return`/`exit`, `fclose`는 `FILE *`에 |
+| 13-03 | `abort()`로 종료 → `atexit`·정리 미실행, 파일 버퍼가 써질지는 **구현에 따라 다름** | 종료는 `return`/`exit`, `fclose`는 `FILE *`에 |
 | 13-05 | `atoi`는 에러를 알려주지 않음 | `strtol` + `endptr` + `errno` |
 | 13-06 | `strtoul` 전에 `errno`를 0으로 안 만듦 | 호출 직전 `errno = 0`, 호출 직후 바로 검사 |
 | 14-01 | 인자(`FILE *`) 검사 없음, 읽기 루프가 끝난 이유를 구분 안 함 | 진입부에서 NULL 검사, 끝난 뒤 `ferror` / `feof` 구분 |
@@ -55,7 +55,7 @@ if (errno != 0) { ... }          // 어느 호출이 실패했는지, 정말 pri
 ```
 
 - `errno`는 **실패했을 때만 의미가 있고**, 성공한 라이브러리 호출도 값을 바꿀 수 있다. 호출 사이에 끼면 신뢰할 수 없다.
-- 표준 출력 스트림의 오류는 `ferror(stdout)`으로 한 번에 확인한다.
+- 표준 출력 스트림의 오류는 `ferror(stdout)`으로 한 번에 확인한다. 스트림의 **에러 표시자**는 한 번 설정되면 `clearerr()`를 부르기 전까지 남아 있어서, 중간 호출이 실패했어도 마지막에 한 번 검사하면 잡힌다. (`errno`는 이후 호출이 덮어쓰지만 에러 표시자는 덮어써지지 않는다.) 같은 스트림을 다시 쓰려면 `clearerr()`로 초기화한다.
 - `errno`는 자동으로 0이 되지 않는다. 쓰기 전에 직접 `errno = 0`을 넣고, 호출 **직후**에만 읽는다.
 
 ### in-band 에러 지시자를 피한다 (13-02)
@@ -73,9 +73,11 @@ count += sprintf(buf + count, "%02x ", hex_num[i]);   // 반환값이 "쓴 길�
 | 방법 | 자원 정리 | `atexit` | stdio 버퍼 |
 |---|---|---|---|
 | `return`(main) / `exit()` | O | 실행 | 비움 |
-| `_Exit()` / `abort()` | X | 실행 안 함 | 비우지 않음 |
+| `_Exit()` | X (열린 파일은 OS가 닫음) | 실행 안 함 | 구현 의존 (glibc 2.17에서 **비우지 않음**) |
+| `abort()` | X (열린 파일은 OS가 닫음) | 실행 안 함 | 구현 의존 (glibc 2.17에서 **비움**, 2.27 이후는 비우지 않는 것으로 알려짐) |
 
-- 13-03은 `fprintf(f, ...)` 뒤에 `abort()`를 불러서 **버퍼에 있던 내용이 파일에 쓰이지 않는다**.
+- 13-03은 `fprintf(f, ...)` 뒤에 `abort()`를 불러서 **버퍼에 있던 내용이 파일에 쓰이는지가 구현에 달려 있다**. "abort하면 안 써진다"고 단정하기 쉽지만, 컨테이너(glibc 2.17)에서 확인하니 `abort()`는 13바이트가 **써졌고**(`exit()`와 같음), `_Exit()`는 0바이트였다. 교육자료도 "구현에 따라 파일에 저장될 수도, 안 될 수도 있다"고 적고 있으며, 어느 쪽이든 **결과에 기대면 안 된다**는 것이 요점이다.
+- `abort()`는 `SIGABRT`로 프로세스를 죽이므로 `atexit` 핸들러가 실행되지 않고 비정상 종료(코어 덤프)로 기록된다. 원인을 남기고 싶은 치명적 오류가 아니라면 `exit(EXIT_FAILURE)`로 끝낸다.
 - 코드 뒤쪽의 `close(f)`는 `FILE *`에 `close`를 쓴 오류다(`fclose`여야 한다).
 
 ### atoi 대신 strtol (13-05, 13-06)
@@ -268,6 +270,8 @@ int copy(char *dst, const char *src){ ... *dst = '\0'; }   // int 함수인데 r
 
 - 문자열은 포인터만 넘겨도 되지만, **받는 쪽 버퍼는 크기를 같이** 받아야 오버플로를 검사할 수 있다.
 - 크기를 받는 14-02-1도 **1바이트 넘친다**: `dstend = dst + dst_size`까지 복사한 뒤 `*dst = '\0'`을 쓰면 `dst[dst_size]`에 쓴다. 7칸 버퍼에 긴 문자열을 넣으면 `dst[7]`이 널이 되는 것을 확인했다. `dstend = dst + dst_size - 1`이어야 한다.
+- 교육자료(14-2)의 "수정안"도 **같은 결함**을 갖고 있다 (`dstend = dst + dst_size`). 16칸 배열을 `'X'`로 채우고 `dst_size = 10`으로 긴 문자열을 복사해 `big[10]`을 찍으니 `0`이었다. 즉 크기 10 밖에 널 문자를 썼다. 자료의 코드도 그대로 믿지 말고 **경계값(꽉 찬 입력)** 으로 직접 확인한다.
+- 교육자료는 크기를 **바이트가 아니라 원소 개수**로 넘기라고 권한다 (`char`는 같지만 `int` 배열에서 차이가 난다). `strncpy`/`strncat`의 `n`은 **복사할 최대 길이**이지 `dest`/`src`의 버퍼 크기가 아니므로, 크기를 따로 받는 `improved_strncpy(dest, destcount, src, srccount, n)` 같은 형태가 필요하다.
 
 ### conformant 배열 파라미터 (14-03)
 
@@ -347,6 +351,30 @@ static size_t copy_len(size_t srccount, const char src[srccount], size_t n){
 
 ---
 
+## 📝 교육자료 추가 과제 (14-6) — TBCD 변환 API, 아직 구현하지 않음
+
+IMSI·MSISDN 같은 번호를 저장하는 **TBCD(Telephony BCD)** 형식과 숫자 문자열을 서로 바꾸는 API다. 구현·검증은 아직 하지 않았고, 요구사항과 확인할 점만 정리한다.
+
+- 1바이트에 숫자 2개. **앞 자리 숫자가 하위 4비트, 뒷 자리 숫자가 상위 4비트**이고, 자릿수가 홀수면 마지막 바이트의 상위 4비트를 `0xF`로 채운다.
+- 예: `"12345"` → `0x21 0x43 0xF5` (`1,2` → `0x21`, `3,4` → `0x43`, `5` + 채움 `F` → `0xF5`).
+
+```c
+int digits_to_tbcd(size_t tbcd_size, unsigned char tbcd[tbcd_size], size_t *tbcd_len, const char *digits);
+int tbcd_to_digits(size_t str_size, char str[str_size], size_t tbcd_len, const unsigned char tbcd[tbcd_len]);
+// 성공 0, 실패는 원인별로 구분되는 음수
+```
+
+| 요구 | 확인할 점 |
+|---|---|
+| 배열 인자는 **conformant 배열 파라미터**, 크기는 **원소 개수**로 전달 | 크기 인자를 배열보다 **앞에** 선언 (§5 14-03) |
+| 인자 검증은 **callee 안에서 전부** | `NULL` 포인터, 크기 0인 배열, 빈 문자열, 숫자(`0`~`9`)가 아닌 문자 |
+| 결과가 출력 배열에 안 들어가면 **잘라 쓰지 말고 에러** | `tbcd_to_digits`는 **널 문자까지** 들어가야 한다 (자릿수 + 1) |
+| TBCD 데이터 검증 | `0xA`~`0xE` 값은 에러, `0xF`는 **마지막 바이트의 상위 4비트에서만** 허용 (그 밖의 위치의 `0xF`는 에러) |
+| 에러 시 **출력 배열과 `tbcd_len`을 바꾸지 않는다** | 검증을 모두 끝낸 **뒤에** 쓴다 (`enc_dec`의 "검증 → 쓰기" 순서와 같은 원칙, [바이트 순서 노트 §3](개발%20%28CS%29/언어/C언어/실습/[C]%20바이트%20순서·메시지%20헤더·컴파일러%20경고%20실습%20—%20htonll·enc_dec와%20size_t·switch%20함정.md)) |
+| `main`에서 짝수·홀수 자릿수의 **왕복 변환**과 에러 케이스별 반환값 확인 | 에러마다 서로 다른 음수를 돌려주어야 시험으로 구분할 수 있다 |
+
+---
+
 ## ✅ 정리 — 에러 처리·API 점검 체크리스트
 
 - [ ] 에러는 **반환값**으로, 값은 **인자**로 돌려주는가 (in-band 지시자 금지)
@@ -357,7 +385,7 @@ static size_t copy_len(size_t srccount, const char src[srccount], size_t n){
 - [ ] 반환 타입이 `int`/enum인 함수가 모든 경로에서 `return`하는가
 - [ ] 실패했을 때 출력 인자(`*out`, `*sum`)를 바꾸지 않았는가
 - [ ] 라이브러리 성격의 함수 안에서 메시지 출력·`exit()`·`abort()`를 하지 않는가
-- [ ] 종료는 `return`/`exit`로 하는가 (`_Exit`·`abort`는 `atexit`와 stdio 버퍼를 건너뜀)
+- [ ] 종료는 `return`/`exit`로 하는가 (`_Exit`·`abort`는 `atexit`를 건너뛰고, stdio 버퍼를 비우는지는 구현마다 다름)
 - [ ] 읽기 루프가 끝난 뒤 `ferror`와 `feof`로 이유를 구분하는가
 - [ ] 받는 쪽 버퍼 크기를 인자로 받고, **널 문자 1바이트**까지 계산했는가 (`dstend = dst + dst_size - 1`)
 - [ ] 가변 인자 함수는 `va_start`의 마지막 고정 인자가 맞고, `vsnprintf`로 넘기고, 모든 경로에서 `va_end`하는가
