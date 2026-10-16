@@ -2,15 +2,25 @@
 title: "SD13. 버퍼 시작 지점 이전에 쓰기 — 하한 검사로 치환"
 tags: 
 created: 2026-09-28
-modified: 2026-09-28
+modified: 2026-10-16
 ---
 
 # SD13. 버퍼 시작 지점 이전에 쓰기 — 하한 검사로 치환
 
 > **원본 항목**: [Part 1-3. 메모리 경계 계열 — 13. 버퍼 시작 지점 이전에 쓰기](개발%20%28CS%29/언어/C언어/시큐어코딩/Part%201.%20입력데이터%20검증%20및%20표현/[시큐어코딩]%201-3.%20메모리%20경계%20계열.md#13-버퍼-시작-지점-이전에-쓰기-cwe-124) `CWE-124`
-> **repo 폴더**: `sd13_writebeforestart/` (`make D=sd13_writebeforestart T=main`)
+> **repo 폴더**: `sd13_writebeforestart/` (빌드·실행은 §3-1)
 > **목표 시간**: 1회차 15분 / 2회차 9분 / **3회차 6분**
-> SD11·12가 "위(끝)"를 넘었다면 이 항목은 **"아래(시작)"** 를 넘는다. `expect_crash` 패턴을 그대로 쓴다.
+> SD11·12가 "위(끝)"를 넘었다면 이 항목은 **"아래(시작)"** 를 넘는다.
+> `expect_crash` 패턴을 그대로 쓴다.
+
+> [!NOTE] 이 드릴의 문서 구성 (SD01~SD58 공통)
+> ① **요구사항서** — 어떤 코드가 뚫려 있고, 무엇을 만드나.
+> ② **pseudo code 템플릿** — Bad 와 Good 의 뼈대이고, 회차마다 가린다.
+> ③ **테스트 코드** — 공격은 막히고 정상은 통과해야 끝이다.
+> ④ 자주 하는 실수
+> ⑤ 모범답안 — 맨 뒤에 접어 둔다.
+>
+> 변형 A/B/C 는 **같은 치환 규칙을 다른 소재로 다시 치는 것**이다.
 
 ---
 
@@ -25,34 +35,137 @@ modified: 2026-09-28
   }
 ```
 
-오버플로우는 상한뿐 아니라 하한으로도 발생한다. **감소하는 인덱스**를 볼 때마다 "0 아래로 내려갈 수 있는가"를 반사적으로 묻는다.
+오버플로우는 상한뿐 아니라 하한으로도 발생한다.
+**감소하는 인덱스**를 볼 때마다 "0 아래로 내려갈 수 있는가"를 반사적으로 묻는다.
+
+### 회차별 진행
+
+| 회차 | 변형 | 보는 것 | 순서 |
+| :--- | :--- | :--- | :--- |
+| **1회차** | **A** 역순으로 채우는 고정 배열 | ① 요구사항서<br>② pseudo code **전체** | 1. Bad 를 그대로 쳐서 취약점을 관찰한다.<br>2. Good pseudo 를 한 줄씩 코드로 바꾼다.<br>3. ③ 테스트를 실행한다. |
+| **2회차** | **B** 포인터 뺄셈으로 순회 | ① 요구사항서<br>② pseudo code 의 **번호와 제목만** (Level 2) | 1. Bad 를 치고 취약점을 확인한다.<br>2. 번호만 보고 Good 을 쓴다.<br>3. ③ 테스트를 실행한다. |
+| **3회차** | **C** 가변 길이 배열(VLA) 버전 | ① 요구사항서만 | 1. ③ 테스트를 **먼저 읽는다.**<br>2. 백지에서 Bad 부터 Good 까지 재현한다. |
+
+> 1회차에 막히면 같은 변형을 한 번 더 친다.
+> 3회차를 통과하면 A 를 백지로 다시 친다.
 
 ---
 
-## 1. 취약 시나리오 — 변형 A: 역순으로 채우는 고정 배열
+## 1. 요구사항서
 
-> [!QUOTE] 요구사항서 (발췌)
-> 크기 10짜리 배열에 `count` 개의 값을 **역순**(뒤 인덱스부터)으로 채운다.
-> - `count` 가 배열 크기(10)보다 많을 수 있다 — 이 경우 안전하게 실패 처리해야 한다.
+### 1-A. 변형 A — 역순으로 채우는 고정 배열
 
-### 공격 입력표
+크기 10짜리 배열에 `count` 개의 값을 **역순**(뒤 인덱스부터)으로 채운다.
+- `count` 가 배열 크기(10)보다 많을 수 있다 — 이 경우 안전하게 실패 처리해야 한다.
+
+**함수**
+
+```c
+void write_before_start_bad(int count);
+int write_before_start_good(int count, int *out_arr, size_t arr_size);
+```
+
+#### 공격 입력표
 
 | `count` | Bad 결과 | 이유 |
 | :--- | :--- | :--- |
 | 10 (정상, 배열 크기와 동일) | 정상 동작 | 인덱스가 정확히 9→0으로 끝난다 |
 | 11 (배열 크기 초과) | **버퍼 시작 이전 쓰기로 크래시** | 인덱스가 0 아래로 내려가 `words[-1]` 에 쓴다 |
 
-### 회차별 변형
+### 1-B. 변형 B — 포인터 뺄셈으로 순회
 
-| 회차 | 변형 | 요구사항 |
-| :--- | :--- | :--- |
-| **A (1회차)** | 크기 10 배열 역순 채우기 | 위 내용 |
-| **B (2회차)** | **포인터 뺄셈으로 순회** | 인덱스 대신 포인터(`int *p = arr + N - 1; *p-- = ...`)로 같은 로직을 짜서, 포인터가 배열 시작보다 앞으로 가는 경우도 같은 문제임을 확인 |
-| **C (3회차)** | **가변 길이 배열(VLA) 버전** | 크기를 런타임에 받는 배열로 바꿔서, 컴파일타임 상수(`MAX_WORDS`)에 의존하지 않는 하한 검사를 설계 |
+인덱스 대신 포인터(`int *p = arr + N - 1; *p-- = ...`)로 같은 로직을 짜서, 포인터가 배열 시작보다 앞으로 가는 경우도 같은 문제임을 확인
+
+### 1-C. 변형 C — 가변 길이 배열(VLA) 버전
+
+크기를 런타임에 받는 배열로 바꿔서, 컴파일타임 상수(`MAX_WORDS`)에 의존하지 않는 하한 검사를 설계
 
 ---
 
-## 2. 제출물
+## 2. pseudo code 템플릿 — 보고 쳐서 익힌다
+
+> **사용법**
+> 변형별로 아래 pseudo code 를 소스 파일에 **주석만 복사**한다.
+> 코드는 주석을 보고 **내가 쓴다.**
+> 다 쓰면 `[ ]` 를 `x` 로 바꾼다.
+> 막히면 §5 모범답안(A)의 해당 단계만 본다.
+
+### 2-A. `write_before_start_good` — Level 1 (1회차, 전부 본다)
+
+먼저 Bad 를 그대로 쳐서 §3 의 `test_bad_is_vulnerable` 이 통과하는지(= 실제로 뚫리는지) 확인한다.
+그다음 Good 을 쓴다.
+
+```c
+void write_before_start_bad(int count)
+{
+    /* 1. int words[MAX_WORDS]   (MAX_WORDS 10)
+     * 2. wordIndex = MAX_WORDS - 1
+     * 3. count 번 반복: words[wordIndex] = i, wordIndex--
+     *    ← 0 아래로 내려가는지 검사 없음 */
+}
+
+int write_before_start_good(int count, int *out_arr, size_t arr_size)
+{
+    /* [ ] 1. 지역변수
+     *        int wordIndex, i */
+
+    /* [ ] 2. count < 0 이면 → return -1 */
+
+    /* [ ] 3. wordIndex = (int)arr_size - 1   (초기값은 항상 안전) */
+
+    /* [ ] 4. count 번 반복
+     *        [ ] 4-1. wordIndex < 0 이면 → return -1   ← 매 반복 **쓰기 직전**에 하한 검사
+     *        [ ] 4-2. out_arr[wordIndex] = i
+     *        [ ] 4-3. wordIndex-- */
+
+    /* [ ] 5. return 0 */
+}
+```
+
+### 2-B. `write_before_start_good` — Level 2 (2회차, 번호와 제목만 본다)
+
+```c
+int write_before_start_good(int count, int *out_arr, size_t arr_size)
+{
+    /* [ ] 1. 지역변수 */
+
+    /* [ ] 2. count < 0 이면 → return -1 */
+
+    /* [ ] 3. wordIndex = (int)arr_size - 1   (초기값은 항상 안전) */
+
+    /* [ ] 4. count 번 반복 */
+
+    /* [ ] 5. return 0 */
+}
+```
+
+### 2-C. `write_before_start_good` — Level 3 (3회차, 백지)
+
+```c
+int write_before_start_good(int count, int *out_arr, size_t arr_size)
+{
+    /* 아무것도 안 본다.
+     * §1 요구사항서와 §0 의 치환 규칙만 보고 친다.
+     *
+     * 막히면 아래만 찾아본다.
+     *   - 검사 위치는 초기화가 아니라 **매 반복 직전**
+     *   - `size_t` → `int` 캐스팅 주의
+     */
+}
+```
+
+> [!TIP] 막혔을 때 찾는 순서
+> 1. 컴파일 에러가 나면 에러 문구를 본다.
+>    `unknown type name` / `implicit declaration` 이면 include 누락이다.
+> 2. `man 3 <함수>` 를 연다.
+>    SYNOPSIS 맨 위의 `#include` 를 확인한다.
+> 3. 로직이 막히면 **§3 테스트의 기대값**을 먼저 읽는다.
+>    공격 입력표(§1)와 테스트가 답이다.
+> 4. 그래도 안 되면 모범답안의 해당 단계 **하나만** 본다.
+
+---
+
+## 3. 테스트 코드 — 이게 통과하면 끝
 
 ```text
 sd13_writebeforestart/src/array_ops.h
@@ -60,7 +173,14 @@ sd13_writebeforestart/src/array_ops.c
 sd13_writebeforestart/test/test.c
 ```
 
-### 시험 코드 — 이 형태를 고정한다
+> [!IMPORTANT] 시험 구조는 고정이다 (SD01~SD58 공통)
+> 1. **Bad 가 실제로 뚫린다.**
+>    이 시험이 실패하면 Bad 를 잘못 옮겨 적은 것이다.
+> 2. **Bad 도 정상 입력은 처리한다.**
+> 3. **Good 이 같은 공격을 막는다.**
+> 4. **Good 이 정상 입력까지 막지 않는다.** (과잉 차단 없음)
+
+### 3-A. 변형 A 시험 — 이 형태를 고정한다
 
 ```c
 #define _DEFAULT_SOURCE
@@ -126,17 +246,83 @@ int main(void)
 }
 ```
 
----
+### 3-B · 3-C. 변형 B / C 시험
 
-## 3. 자가 채점표 (100점)
+3-A 와 **같은 4종 구조**에서 호출 함수와 입력만 바꾼다.
 
-| 항목 | 배점 | 체크 |
+**변형 B — 포인터 뺄셈으로 순회**
+
+| 입력 | Bad | Good |
 | :--- | :--- | :--- |
-| `test_bad_is_vulnerable` 통과 — 실제로 하한 미만 쓰기로 크래시한다 | 25 | ☐ |
-| `test_good_blocks_underflow` / `test_good_normal` 통과 | 30 | ☐ |
-| 하한 검사가 **루프 안, 쓰기 직전**에 있다 | 25 | ☐ |
-| `count == arr_size` 경계값(정확히 딱 맞는 경우)이 정상 통과한다 | 15 | ☐ |
-| 목표 시간 내 | 5 | ☐ |
+| 포인터 `p = arr + N - 1; *p-- = ...` 를 `count > N` 번 | 배열 시작보다 앞에 쓴다 | `p < arr` 를 쓰기 직전에 검사 → -1 |
+| `count = N` | 정상 | 정상 |
+
+**변형 C — 가변 길이 배열(VLA) 버전**
+
+| 입력 | Bad | Good |
+| :--- | :--- | :--- |
+| 런타임 크기 `n` 의 VLA 에 `count > n` | 앞쪽 스택을 덮는다 | `wordIndex < 0` 검사로 -1 (`MAX_WORDS` 대신 `n`) |
+| `count = n` | 정상 | 정상 |
+
+### 3-1. 빌드와 실행 (Makefile, gcc)
+
+Makefile 은 [템플릿 체화 드릴 README](개발%20%28CS%29/언어/C언어/실습/템플릿%20체화%20드릴/README.md#공통%20Makefile) 와 **같은 파일**이다.
+recipe 줄은 **반드시 탭**으로 들여쓴다.
+
+> [!example]- 공통 Makefile (gcc)
+> ```makefile
+> # ~/cdrill/Makefile  (템플릿 체화 드릴과 같은 파일)
+> # 사용법:  make D=sd01_sqli V=main SRC="common/mock_db.c sd01_sqli/src/sql_auth.c sd01_sqli/test/test.c"
+> CC       := gcc
+> CFLAGS   := -Wall -Wextra -Werror -std=c11 -D_POSIX_C_SOURCE=200809L -g -DUNIT_TEST -Icommon -I$(D)/src
+> SAN      := -fsanitize=address,undefined -fno-omit-frame-pointer
+> LDLIBS   ?= -pthread
+>
+> D        ?= d1_pure
+> V        ?= main
+> SRC      ?= $(D)/src/$(V).c $(D)/test/test_$(V).c
+> BIN      := build/$(D)_$(V)
+>
+> all: run
+>
+> build:
+> 	@mkdir -p build
+>
+> $(BIN): build $(SRC)
+> 	$(CC) $(CFLAGS) $(SAN) $(SRC) $(LDLIBS) -o $(BIN)
+>
+> run: $(BIN)
+> 	@echo "── run ──────────────────────────────"
+> 	@./$(BIN)
+>
+> check: $(BIN)
+> 	@./$(BIN) && echo "PASS" || (echo "FAIL"; exit 1)
+>
+> clean:
+> 	rm -rf build
+>
+> .PHONY: all run check clean build
+> ```
+
+실행 명령이다.
+
+```bash
+make D=sd13_writebeforestart V=main SRC="sd13_writebeforestart/src/array_ops.c sd13_writebeforestart/test/test.c"
+```
+
+* 마지막 줄이 **`PASS`** 이고 경고 0 이면 통과다.
+* `-Werror` 때문에 컴파일이 안 되면 테스트 이전에 코드를 고친다.
+
+> [!example]- 참고: Makefile 없이 순수 gcc 로 실행
+> ```bash
+> mkdir -p build
+> gcc -Wall -Wextra -Werror -std=c11 -D_POSIX_C_SOURCE=200809L -g -DUNIT_TEST \
+>     -Icommon -Isd13_writebeforestart/src \
+>     -fsanitize=address,undefined -fno-omit-frame-pointer \
+>     sd13_writebeforestart/src/array_ops.c sd13_writebeforestart/test/test.c \
+>     -pthread -o build/sd13_writebeforestart_main
+> ./build/sd13_writebeforestart_main
+> ```
 
 ---
 
@@ -144,9 +330,9 @@ int main(void)
 
 | 실수 | 왜 문제인가 |
 | :--- | :--- |
-| 루프 시작 전에 `count > arr_size` 만 검사하고 끝냄 | 이 항목의 취약점은 "인덱스가 반복 중에 감소하다가" 발생한다. 시작 전 검사만으로는 "정확히 언제 0 아래로 내려가는지" 찾기 어렵다 — 매 반복 직전에 검사하는 게 더 명확하다(이 드릴의 모범답안 방식) |
+| 루프 시작 전에 `count > arr_size` 만 검사하고 끝냄 | 이 항목의 취약점은 "인덱스가 반복 중에 감소하다가" 발생한다.<br>시작 전 검사만으로는 "정확히 언제 0 아래로 내려가는지" 찾기 어렵다 — 매 반복 직전에 검사하는 게 더 명확하다(이 드릴의 모범답안 방식) |
 | 상한 검사(SD15)와 하한 검사(이 항목)를 혼동해서 `>=` 방향을 반대로 씀 | "감소 인덱스는 하한", "증가 인덱스는 상한"이라는 방향 감각을 반사적으로 연결한다 |
-| `int` 대신 `size_t` 로 인덱스를 선언 | `size_t` 는 부호 없는 타입이라 `wordIndex--` 가 0에서 한 번 더 감소하면 거대한 양수(랩어라운드)가 되어 오히려 더 위험해진다. 감소하는 인덱스는 **부호 있는 타입**으로 선언한다 |
+| `int` 대신 `size_t` 로 인덱스를 선언 | `size_t` 는 부호 없는 타입이라 `wordIndex--` 가 0에서 한 번 더 감소하면 거대한 양수(랩어라운드)가 되어 오히려 더 위험해진다.<br>감소하는 인덱스는 **부호 있는 타입**으로 선언한다 |
 
 ---
 
@@ -194,18 +380,8 @@ int main(void)
 > }
 > ```
 >
-> **눈여겨볼 점**: `wordIndex` 의 **초기값**은 항상 안전하다(`arr_size - 1`). 문제는 반복 "횟수"가 배열 크기를 넘을 때만 생긴다 — 그래서 검사를 초기화 시점이 아니라 **매 반복 직전**에 두는 것이 유일하게 안전한 위치다.
-
----
-
-## 6. 회차 기록표
-
-| 회차 | 날짜 | 변형 | 걸린 시간 | 점수 | 막힌 지점 한 줄 |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 |  | A (배열) |  |  |  |
-| 2 |  | B (포인터 뺄셈) |  |  |  |
-| 3 |  | C (VLA) |  |  |  |
-| 점검 (D+14) |  | 랜덤 |  |  |  |
+> **눈여겨볼 점**: `wordIndex` 의 **초기값**은 항상 안전하다(`arr_size - 1`).
+> 문제는 반복 "횟수"가 배열 크기를 넘을 때만 생긴다 — 그래서 검사를 초기화 시점이 아니라 **매 반복 직전**에 두는 것이 유일하게 안전한 위치다.
 
 ---
 

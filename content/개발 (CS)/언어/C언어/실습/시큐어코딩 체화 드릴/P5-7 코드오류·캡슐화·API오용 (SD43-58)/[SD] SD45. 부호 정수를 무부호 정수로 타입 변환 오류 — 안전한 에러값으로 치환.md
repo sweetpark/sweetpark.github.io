@@ -2,15 +2,24 @@
 title: "SD45. 부호 정수를 무부호 정수로 타입 변환 오류 — 안전한 에러값으로 치환"
 tags: 
 created: 2026-09-28
-modified: 2026-09-28
+modified: 2026-10-16
 ---
 
 # SD45. 부호 정수를 무부호 정수로 타입 변환 오류 — 안전한 에러값으로 치환
 
 > **원본 항목**: [Part 5. 코드 오류 — 3. 부호 정수를 무부호 정수로 타입 변환 오류](개발%20%28CS%29/언어/C언어/시큐어코딩/[시큐어코딩]%20Part%205.%20코드%20오류.md#3-부호-정수를-무부호-정수로-타입-변환-오류-cwe-195) `CWE-195`
-> **repo 폴더**: `sd45_signconv/` (`make D=sd45_signconv T=main`)
+> **repo 폴더**: `sd45_signconv/` (빌드·실행은 §3-1)
 > **목표 시간**: 1회차 10분 / 2회차 6분 / **3회차 4분**
 > `-1`이 `unsigned int`로 감기면 `4294967295`가 된다는 걸 값 비교로 확인하는 데서 그치지 않고, **그 값이 실제 경계 검사를 무력화시키는 순간**까지 재현한다.
+
+> [!NOTE] 이 드릴의 문서 구성 (SD01~SD58 공통)
+> ① **요구사항서** — 어떤 코드가 뚫려 있고, 무엇을 만드나.
+> ② **pseudo code 템플릿** — Bad 와 Good 의 뼈대이고, 회차마다 가린다.
+> ③ **테스트 코드** — 공격은 막히고 정상은 통과해야 끝이다.
+> ④ 자주 하는 실수
+> ⑤ 모범답안 — 맨 뒤에 접어 둔다.
+>
+> 변형 A/B/C 는 **같은 치환 규칙을 다른 소재로 다시 치는 것**이다.
 
 ---
 
@@ -24,23 +33,45 @@ modified: 2026-09-28
   }
 ```
 
-에러를 `-1`로 표시하는 관용구는 반환형이 `signed`일 때만 안전하다. 반환형이 `unsigned`인 함수에서 `-1`은 최댓값으로 감겨버려, "에러"가 "역대 가장 큰 정상값"으로 둔갑한다.
+에러를 `-1`로 표시하는 관용구는 반환형이 `signed`일 때만 안전하다.
+반환형이 `unsigned`인 함수에서 `-1`은 최댓값으로 감겨버려, "에러"가 "역대 가장 큰 정상값"으로 둔갑한다.
+
+### 회차별 진행
+
+| 회차 | 변형 | 보는 것 | 순서 |
+| :--- | :--- | :--- | :--- |
+| **1회차** | **A** 문자열 길이 조회 + 경계 검사 | ① 요구사항서<br>② pseudo code **전체** | 1. Bad 를 그대로 쳐서 취약점을 관찰한다.<br>2. Good pseudo 를 한 줄씩 코드로 바꾼다.<br>3. ③ 테스트를 실행한다. |
+| **2회차** | **B** `memcpy` 길이 인자로 변형 | ① 요구사항서<br>② pseudo code 의 **번호와 제목만** (Level 2) | 1. Bad 를 치고 취약점을 확인한다.<br>2. 번호만 보고 Good 을 쓴다.<br>3. ③ 테스트를 실행한다. |
+| **3회차** | **C** `size_t` 버전으로 확장 | ① 요구사항서만 | 1. ③ 테스트를 **먼저 읽는다.**<br>2. 백지에서 Bad 부터 Good 까지 재현한다. |
+
+> 1회차에 막히면 같은 변형을 한 번 더 친다.
+> 3회차를 통과하면 A 를 백지로 다시 친다.
 
 ---
 
-## 1. 취약 시나리오 — 변형 A: 문자열 길이 조회 + 경계 검사
+## 1. 요구사항서
 
-> [!QUOTE] 요구사항서 (발췌)
-> 문자열의 길이를 구해 인덱스 접근 범위를 검사하는 데 사용한다.
-> - 문자열이 `NULL`이면 그 어떤 인덱스도 "범위 안"으로 판정되어서는 안 된다.
+### 1-A. 변형 A — 문자열 길이 조회 + 경계 검사
 
-### 신뢰 경계
+문자열의 길이를 구해 인덱스 접근 범위를 검사하는 데 사용한다.
+- 문자열이 `NULL`이면 그 어떤 인덱스도 "범위 안"으로 판정되어서는 안 된다.
+
+**함수**
+
+```c
+unsigned int len_bad(const char *s);
+unsigned int len_good(const char *s);
+int within_len_bad(unsigned int idx, const char *s);
+int within_len_good(unsigned int idx, const char *s);
+```
+
+#### 신뢰 경계
 
 | 값 | 출처 | 검증 없이 흘러가는 곳 |
 | :--- | :--- | :--- |
 | `len_bad()`의 반환값(`unsigned int`) | `NULL` 에러 표시(`-1`) | 이후 `idx < len` 같은 경계 검사식의 우변 |
 
-### 공격 입력표
+#### 공격 입력표
 
 | 입력 | Bad 결과 | 이유 |
 | :--- | :--- | :--- |
@@ -48,17 +79,98 @@ modified: 2026-09-28
 | `within_len_bad(999999, NULL)` | **`참`(범위 안으로 착각)** | `999999 < 4294967295`이 참이 되어, 원래는 무조건 거부돼야 할 접근이 통과해버린다 |
 | 같은 상황(Good) | `within_len_good(999999, NULL)` → **`거짓`** | `len_good(NULL)`이 `0`이라 `999999 < 0`은 항상 거짓(무부호라 음수 자체가 없음에도 검사가 의도대로 작동) |
 
-### 회차별 변형
+### 1-B. 변형 B — `memcpy` 길이 인자로 변형
 
-| 회차 | 변형 | 요구사항 |
-| :--- | :--- | :--- |
-| **A (1회차)** | 문자열 길이 조회 + 경계 검사 | 위 내용 |
-| **B (2회차)** | **`memcpy` 길이 인자로 변형** | `len_bad`의 결과를 `memcpy(dst, src, len)`의 세 번째 인자로 그대로 넘기는 함수를 만들어, "거대한 길이로 복사를 시도하다 즉시 실패/크래시"하는 것까지 이어서 본다(직접 `memcpy`를 실행하지 않고 "그 크기를 받아들이는지"만 확인해도 충분하다) |
-| **C (3회차)** | **`size_t` 버전으로 확장** | `unsigned int` 대신 `size_t`(64비트 플랫폼에서는 8바이트)로 바꿔, 같은 문제가 자료형이 커져도 동일하게 발생함을 확인한다 |
+`len_bad`의 결과를 `memcpy(dst, src, len)`의 세 번째 인자로 그대로 넘기는 함수를 만들어, "거대한 길이로 복사를 시도하다 즉시 실패/크래시"하는 것까지 이어서 본다(직접 `memcpy`를 실행하지 않고 "그 크기를 받아들이는지"만 확인해도 충분하다)
+
+### 1-C. 변형 C — `size_t` 버전으로 확장
+
+`unsigned int` 대신 `size_t`(64비트 플랫폼에서는 8바이트)로 바꿔, 같은 문제가 자료형이 커져도 동일하게 발생함을 확인한다
 
 ---
 
-## 2. 제출물
+## 2. pseudo code 템플릿 — 보고 쳐서 익힌다
+
+> **사용법**
+> 변형별로 아래 pseudo code 를 소스 파일에 **주석만 복사**한다.
+> 코드는 주석을 보고 **내가 쓴다.**
+> 다 쓰면 `[ ]` 를 `x` 로 바꾼다.
+> 막히면 §5 모범답안(A)의 해당 단계만 본다.
+
+### 2-A. `len_good` — Level 1 (1회차, 전부 본다)
+
+먼저 Bad 를 그대로 쳐서 §3 의 `test_bad_is_vulnerable` 이 통과하는지(= 실제로 뚫리는지) 확인한다.
+그다음 Good 을 쓴다.
+
+```c
+unsigned int len_bad(const char *s)
+{
+    /* 1. s == NULL 이면 return (unsigned int)-1   ← 4294967295 (역대 가장 큰 "정상값")
+     * 2. return strnlen(s, BUFSIZE - 1) */
+}
+
+int within_len_bad(unsigned int idx, const char *s)
+{
+    /* 1. return idx < len_bad(s) */
+}
+
+unsigned int len_good(const char *s)
+{
+    /* [ ] 1. s == NULL 이면 → return 0   (무부호에 안전한 에러값) */
+
+    /* [ ] 2. return (unsigned int)strnlen(s, BUFSIZE - 1)
+     *        BUFSIZE 256 */
+}
+
+int within_len_good(unsigned int idx, const char *s)
+{
+    /* [ ] 3. return idx < len_good(s)   ← Bad 와 **같은 식**, 바뀐 건 len 의 에러값 */
+}
+```
+
+### 2-B. `len_good` — Level 2 (2회차, 번호와 제목만 본다)
+
+```c
+unsigned int len_good(const char *s)
+{
+    /* [ ] 1. s == NULL 이면 → return 0   (무부호에 안전한 에러값) */
+
+    /* [ ] 2. return (unsigned int)strnlen(s, BUFSIZE - 1) */
+}
+
+int within_len_good(unsigned int idx, const char *s)
+{
+    /* [ ] 3. return idx < len_good(s)   ← Bad 와 **같은 식**, 바뀐 건 len 의 에러값 */
+}
+```
+
+### 2-C. `len_good` — Level 3 (3회차, 백지)
+
+```c
+unsigned int len_good(const char *s)
+{
+    /* 아무것도 안 본다.
+     * §1 요구사항서와 §0 의 치환 규칙만 보고 친다.
+     *
+     * 막히면 아래만 찾아본다.
+     *   - `strnlen` 의 feature macro (`_DEFAULT_SOURCE`)
+     *   - 에러값 설계는 반환형이 unsigned 일 때 `0`
+     */
+}
+```
+
+> [!TIP] 막혔을 때 찾는 순서
+> 1. 컴파일 에러가 나면 에러 문구를 본다.
+>    `unknown type name` / `implicit declaration` 이면 include 누락이다.
+> 2. `man 3 <함수>` 를 연다.
+>    SYNOPSIS 맨 위의 `#include` 를 확인한다.
+> 3. 로직이 막히면 **§3 테스트의 기대값**을 먼저 읽는다.
+>    공격 입력표(§1)와 테스트가 답이다.
+> 4. 그래도 안 되면 모범답안의 해당 단계 **하나만** 본다.
+
+---
+
+## 3. 테스트 코드 — 이게 통과하면 끝
 
 ```text
 sd45_signconv/src/signconv.h
@@ -66,7 +178,14 @@ sd45_signconv/src/signconv.c
 sd45_signconv/test/test.c
 ```
 
-### 시험 코드 — 이 형태를 고정한다
+> [!IMPORTANT] 시험 구조는 고정이다 (SD01~SD58 공통)
+> 1. **Bad 가 실제로 뚫린다.**
+>    이 시험이 실패하면 Bad 를 잘못 옮겨 적은 것이다.
+> 2. **Bad 도 정상 입력은 처리한다.**
+> 3. **Good 이 같은 공격을 막는다.**
+> 4. **Good 이 정상 입력까지 막지 않는다.** (과잉 차단 없음)
+
+### 3-A. 변형 A 시험 — 이 형태를 고정한다
 
 ```c
 #include <stdio.h>
@@ -127,16 +246,83 @@ int main(void)
 > [!WARNING] `_DEFAULT_SOURCE`가 필요하다
 > `strnlen()`은 POSIX 확장 함수라 `-std=c11 -pedantic` 아래에서는 `#define _DEFAULT_SOURCE`를 첫 `#include`보다 먼저 적어야 한다([SD06](개발%20%28CS%29/언어/C언어/실습/시큐어코딩%20체화%20드릴/P1%20입력데이터%20검증%20%28SD01-19%29/[SD]%20SD06.%20디렉터리%20경로%20조작%20—%20절대경로%20정규화%20검증으로%20치환.md)에서 다룬 것과 같은 이슈).
 
----
+### 3-B · 3-C. 변형 B / C 시험
 
-## 3. 자가 채점표 (100점)
+3-A 와 **같은 4종 구조**에서 호출 함수와 입력만 바꾼다.
 
-| 항목 | 배점 | 체크 |
+**변형 B — `memcpy` 길이 인자로 변형**
+
+| 입력 | Bad | Good |
 | :--- | :--- | :--- |
-| `test_bad_wraps_to_uint_max` 통과 | 20 | ☐ |
-| `test_good_returns_zero` 통과 | 20 | ☐ |
-| `test_bad_bounds_check_bypassed`/`test_good_bounds_check_holds` 둘 다 통과(실제 경계 검사 영향까지 확인) | 40 | ☐ |
-| 목표 시간 내 | 20 | ☐ |
+| `len_bad(NULL)` 를 `memcpy` 길이로 사용 | 4GB 복사 시도 | 길이 0 → 복사 없음 |
+| 정상 문자열 | 정상 | 정상 |
+
+**변형 C — `size_t` 버전으로 확장**
+
+| 입력 | Bad | Good |
+| :--- | :--- | :--- |
+| `size_t` 반환형에 `(size_t)-1` | 64비트 최댓값 | `0` |
+| 정상 문자열 | 정상 | 정상 |
+
+### 3-1. 빌드와 실행 (Makefile, gcc)
+
+Makefile 은 [템플릿 체화 드릴 README](개발%20%28CS%29/언어/C언어/실습/템플릿%20체화%20드릴/README.md#공통%20Makefile) 와 **같은 파일**이다.
+recipe 줄은 **반드시 탭**으로 들여쓴다.
+
+> [!example]- 공통 Makefile (gcc)
+> ```makefile
+> # ~/cdrill/Makefile  (템플릿 체화 드릴과 같은 파일)
+> # 사용법:  make D=sd01_sqli V=main SRC="common/mock_db.c sd01_sqli/src/sql_auth.c sd01_sqli/test/test.c"
+> CC       := gcc
+> CFLAGS   := -Wall -Wextra -Werror -std=c11 -D_POSIX_C_SOURCE=200809L -g -DUNIT_TEST -Icommon -I$(D)/src
+> SAN      := -fsanitize=address,undefined -fno-omit-frame-pointer
+> LDLIBS   ?= -pthread
+>
+> D        ?= d1_pure
+> V        ?= main
+> SRC      ?= $(D)/src/$(V).c $(D)/test/test_$(V).c
+> BIN      := build/$(D)_$(V)
+>
+> all: run
+>
+> build:
+> 	@mkdir -p build
+>
+> $(BIN): build $(SRC)
+> 	$(CC) $(CFLAGS) $(SAN) $(SRC) $(LDLIBS) -o $(BIN)
+>
+> run: $(BIN)
+> 	@echo "── run ──────────────────────────────"
+> 	@./$(BIN)
+>
+> check: $(BIN)
+> 	@./$(BIN) && echo "PASS" || (echo "FAIL"; exit 1)
+>
+> clean:
+> 	rm -rf build
+>
+> .PHONY: all run check clean build
+> ```
+
+실행 명령이다.
+
+```bash
+make D=sd45_signconv V=main SRC="sd45_signconv/src/signconv.c sd45_signconv/test/test.c"
+```
+
+* 마지막 줄이 **`PASS`** 이고 경고 0 이면 통과다.
+* `-Werror` 때문에 컴파일이 안 되면 테스트 이전에 코드를 고친다.
+
+> [!example]- 참고: Makefile 없이 순수 gcc 로 실행
+> ```bash
+> mkdir -p build
+> gcc -Wall -Wextra -Werror -std=c11 -D_POSIX_C_SOURCE=200809L -g -DUNIT_TEST \
+>     -Icommon -Isd45_signconv/src \
+>     -fsanitize=address,undefined -fno-omit-frame-pointer \
+>     sd45_signconv/src/signconv.c sd45_signconv/test/test.c \
+>     -pthread -o build/sd45_signconv_main
+> ./build/sd45_signconv_main
+> ```
 
 ---
 
@@ -144,9 +330,9 @@ int main(void)
 
 | 실수 | 왜 문제인가 |
 | :--- | :--- |
-| `return -1`을 `return (unsigned int)0 - 1`로 바꿔서 "고쳤다"고 착각 | 표현만 바뀌었을 뿐 값은 여전히 `UINT_MAX`다. 핵심은 "감기지 않는 표현"이 아니라 **"에러를 나타내는 값 자체를 0처럼 안전한 값으로 바꾸는 것"**이다 |
-| 호출자 쪽에서 `(int)len_bad(s) == -1`로 검사하려 함 | 함수가 이미 `unsigned int`를 반환하기로 계약했는데 호출자가 다시 `int`로 캐스팅해 검사하는 건 임시방편이다. 함수 시그니처 자체(반환형과 에러값)를 무부호에 안전하게 설계하는 게 근본 해결책이다 |
-| "이 값이 인덱스나 길이로 쓰이지 않으니 상관없다"고 넘김 | 지금 안 쓰여도 나중에 다른 코드가 이 반환값을 경계 검사나 메모리 크기로 재사용할 수 있다. 함수의 반환값 계약은 사용처와 무관하게 항상 안전해야 한다 |
+| `return -1`을 `return (unsigned int)0 - 1`로 바꿔서 "고쳤다"고 착각 | 표현만 바뀌었을 뿐 값은 여전히 `UINT_MAX`다.<br>핵심은 "감기지 않는 표현"이 아니라 **"에러를 나타내는 값 자체를 0처럼 안전한 값으로 바꾸는 것"**이다 |
+| 호출자 쪽에서 `(int)len_bad(s) == -1`로 검사하려 함 | 함수가 이미 `unsigned int`를 반환하기로 계약했는데 호출자가 다시 `int`로 캐스팅해 검사하는 건 임시방편이다.<br>함수 시그니처 자체(반환형과 에러값)를 무부호에 안전하게 설계하는 게 근본 해결책이다 |
+| "이 값이 인덱스나 길이로 쓰이지 않으니 상관없다"고 넘김 | 지금 안 쓰여도 나중에 다른 코드가 이 반환값을 경계 검사나 메모리 크기로 재사용할 수 있다.<br>함수의 반환값 계약은 사용처와 무관하게 항상 안전해야 한다 |
 
 ---
 
@@ -192,18 +378,9 @@ int main(void)
 > }
 > ```
 >
-> **눈여겨볼 점**: `within_len_bad`와 `within_len_good`은 **완전히 동일한 코드**(`idx < len(s)`)다. 버그는 이 비교식이 아니라 **비교 대상이 되는 함수의 에러값 설계**에 있었다. 같은 로직이라도 그 로직이 딛고 선 함수의 계약이 잘못되면 결과가 뒤집힌다는 걸 보여주는 좋은 예다.
-
----
-
-## 6. 회차 기록표
-
-| 회차 | 날짜 | 변형 | 걸린 시간 | 점수 | 막힌 지점 한 줄 |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 |  | A (길이 조회 + 경계 검사) |  |  |  |
-| 2 |  | B (memcpy 길이 인자) |  |  |  |
-| 3 |  | C (size_t 확장) |  |  |  |
-| 점검 (D+14) |  | 랜덤 |  |  |  |
+> **눈여겨볼 점**: `within_len_bad`와 `within_len_good`은 **완전히 동일한 코드**(`idx < len(s)`)다.
+> 버그는 이 비교식이 아니라 **비교 대상이 되는 함수의 에러값 설계**에 있었다.
+> 같은 로직이라도 그 로직이 딛고 선 함수의 계약이 잘못되면 결과가 뒤집힌다는 걸 보여주는 좋은 예다.
 
 ---
 

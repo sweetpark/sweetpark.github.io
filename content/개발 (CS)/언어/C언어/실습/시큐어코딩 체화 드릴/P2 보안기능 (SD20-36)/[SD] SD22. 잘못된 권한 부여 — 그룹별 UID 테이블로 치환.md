@@ -2,15 +2,24 @@
 title: "SD22. 잘못된 권한 부여 — 그룹별 UID 테이블로 치환"
 tags: 
 created: 2026-09-28
-modified: 2026-09-28
+modified: 2026-10-16
 ---
 
 # SD22. 잘못된 권한 부여 — 그룹별 UID 테이블로 치환
 
 > **원본 항목**: [Part 2-1. 인가·권한 계열 — 3. 잘못된 권한 부여](개발%20%28CS%29/언어/C언어/시큐어코딩/Part%202.%20보안기능/[시큐어코딩]%202-1.%20인가·권한%20계열.md#3-잘못된-권한-부여-cwe-266) `CWE-266`
-> **repo 폴더**: `sd22_privgrant/` (`make D=sd22_privgrant T=main`)
+> **repo 폴더**: `sd22_privgrant/` (빌드·실행은 §3-1)
 > **목표 시간**: 1회차 12분 / 2회차 7분 / **3회차 5분**
 > 실제 `seteuid()` 는 보통 root 권한이 있어야 성공하므로, 이 드릴은 "**어떤 UID를 부여할지 결정하는 로직**"만 떼어서 검증한다(실제 `seteuid()` 호출은 SD23에서 다룬다).
+
+> [!NOTE] 이 드릴의 문서 구성 (SD01~SD58 공통)
+> ① **요구사항서** — 어떤 코드가 뚫려 있고, 무엇을 만드나.
+> ② **pseudo code 템플릿** — Bad 와 Good 의 뼈대이고, 회차마다 가린다.
+> ③ **테스트 코드** — 공격은 막히고 정상은 통과해야 끝이다.
+> ④ 자주 하는 실수
+> ⑤ 모범답안 — 맨 뒤에 접어 둔다.
+>
+> 변형 A/B/C 는 **같은 치환 규칙을 다른 소재로 다시 치는 것**이다.
 
 ---
 
@@ -23,35 +32,127 @@ modified: 2026-09-28
 + return -1;                                 /* 모르는 그룹은 권한 없음 */
 ```
 
-"인증(누구인가)"과 "인가(무엇을 할 수 있는가)"는 별개다. 로그인 성공이 root 권한의 근거가 될 수 없다 — 권한은 항상 **그룹별 최소 유효 UID 테이블**에서 찾는다.
+"인증(누구인가)"과 "인가(무엇을 할 수 있는가)"는 별개다.
+로그인 성공이 root 권한의 근거가 될 수 없다 — 권한은 항상 **그룹별 최소 유효 UID 테이블**에서 찾는다.
+
+### 회차별 진행
+
+| 회차 | 변형 | 보는 것 | 순서 |
+| :--- | :--- | :--- | :--- |
+| **1회차** | **A** 로그인 성공 시 UID 결정 | ① 요구사항서<br>② pseudo code **전체** | 1. Bad 를 그대로 쳐서 취약점을 관찰한다.<br>2. Good pseudo 를 한 줄씩 코드로 바꾼다.<br>3. ③ 테스트를 실행한다. |
+| **2회차** | **B** 부서별 접근 등급 | ① 요구사항서<br>② pseudo code 의 **번호와 제목만** (Level 2) | 1. Bad 를 치고 취약점을 확인한다.<br>2. 번호만 보고 Good 을 쓴다.<br>3. ③ 테스트를 실행한다. |
+| **3회차** | **C** 테이블에 없는 신규 그룹 추가 시 기본값 정책 | ① 요구사항서만 | 1. ③ 테스트를 **먼저 읽는다.**<br>2. 백지에서 Bad 부터 Good 까지 재현한다. |
+
+> 1회차에 막히면 같은 변형을 한 번 더 친다.
+> 3회차를 통과하면 A 를 백지로 다시 친다.
 
 ---
 
-## 1. 취약 시나리오 — 변형 A: 로그인 성공 시 UID 결정
+## 1. 요구사항서
 
-> [!QUOTE] 요구사항서 (발췌)
-> 사용자의 그룹(관리자/일반/게스트)에 따라 부여할 UID를 결정한다.
-> - 관리자 그룹만 UID 0(root)을 받을 수 있다.
-> - 모르는 그룹은 어떤 권한도 받으면 안 된다.
+### 1-A. 변형 A — 로그인 성공 시 UID 결정
 
-### 공격 입력표
+사용자의 그룹(관리자/일반/게스트)에 따라 부여할 UID를 결정한다.
+- 관리자 그룹만 UID 0(root)을 받을 수 있다.
+- 모르는 그룹은 어떤 권한도 받으면 안 된다.
+
+**함수**
+
+```c
+int resolve_uid_bad(int isCorrectUser);
+int resolve_uid_good(group_t group);
+```
+
+#### 공격 입력표
 
 | 상황 | Bad 결과 | 이유 |
 | :--- | :--- | :--- |
 | 정상 로그인(그룹 무관) | **UID 0(root) 부여** | "정상 유저인지"만 확인하고 어떤 그룹인지는 안 본다 |
 | 게스트 그룹 정상 로그인(Good 대상) | 게스트 전용 UID | 그룹에 맞는 권한만 부여 |
 
-### 회차별 변형
+### 1-B. 변형 B — 부서별 접근 등급
 
-| 회차 | 변형 | 요구사항 |
-| :--- | :--- | :--- |
-| **A (1회차)** | 그룹별 UID 결정 | 위 내용 |
-| **B (2회차)** | **부서별 접근 등급** | UID 대신 "결재 등급"(1~5)을 그룹별 테이블에서 조회하는 형태로 변형 |
-| **C (3회차)** | **테이블에 없는 신규 그룹 추가 시 기본값 정책** | 새 그룹이 테이블에 없을 때 "기본값은 항상 최소 권한"이어야 한다는 원칙을 코드로 강제(테이블 순회 결과가 없으면 반드시 최소 권한 상수를 반환하도록 구조화) |
+UID 대신 "결재 등급"(1~5)을 그룹별 테이블에서 조회하는 형태로 변형
+
+### 1-C. 변형 C — 테이블에 없는 신규 그룹 추가 시 기본값 정책
+
+새 그룹이 테이블에 없을 때 "기본값은 항상 최소 권한"이어야 한다는 원칙을 코드로 강제(테이블 순회 결과가 없으면 반드시 최소 권한 상수를 반환하도록 구조화)
 
 ---
 
-## 2. 제출물
+## 2. pseudo code 템플릿 — 보고 쳐서 익힌다
+
+> **사용법**
+> 변형별로 아래 pseudo code 를 소스 파일에 **주석만 복사**한다.
+> 코드는 주석을 보고 **내가 쓴다.**
+> 다 쓰면 `[ ]` 를 `x` 로 바꾼다.
+> 막히면 §5 모범답안(A)의 해당 단계만 본다.
+
+### 2-A. `resolve_uid_good` — Level 1 (1회차, 전부 본다)
+
+먼저 Bad 를 그대로 쳐서 §3 의 `test_bad_is_vulnerable` 이 통과하는지(= 실제로 뚫리는지) 확인한다.
+그다음 Good 을 쓴다.
+
+```c
+int resolve_uid_bad(int isCorrectUser)
+{
+    /* 1. isCorrectUser 이면 return 0   ← 로그인만 성공하면 root
+     * 2. 아니면 return -1 */
+}
+
+int resolve_uid_good(group_t group)
+{
+    /* [ ] 1. 그룹별 테이블 (grp_uid_t { group_t grp; int uid; })
+     *        { GRP_ADMIN, 0 }, { GRP_NORMAL, 1000 }, { GRP_GUEST, 1001 }
+     *        GRP_UNKNOWN 행은 **일부러 만들지 않는다** */
+
+    /* [ ] 2. 테이블을 순회한다
+     *        TBL[i].grp == group 이면 → return TBL[i].uid */
+
+    /* [ ] 3. 못 찾았으면 → return -1   (모르는 그룹은 권한 없음) */
+}
+```
+
+### 2-B. `resolve_uid_good` — Level 2 (2회차, 번호와 제목만 본다)
+
+```c
+int resolve_uid_good(group_t group)
+{
+    /* [ ] 1. 그룹별 테이블 (grp_uid_t { group_t grp; int uid; }) */
+
+    /* [ ] 2. 테이블을 순회한다 */
+
+    /* [ ] 3. 못 찾았으면 → return -1   (모르는 그룹은 권한 없음) */
+}
+```
+
+### 2-C. `resolve_uid_good` — Level 3 (3회차, 백지)
+
+```c
+int resolve_uid_good(group_t group)
+{
+    /* 아무것도 안 본다.
+     * §1 요구사항서와 §0 의 치환 규칙만 보고 친다.
+     *
+     * 막히면 아래만 찾아본다.
+     *   - 테이블 크기는 `sizeof` 로 계산
+     *   - 기본값은 항상 최소 권한
+     */
+}
+```
+
+> [!TIP] 막혔을 때 찾는 순서
+> 1. 컴파일 에러가 나면 에러 문구를 본다.
+>    `unknown type name` / `implicit declaration` 이면 include 누락이다.
+> 2. `man 3 <함수>` 를 연다.
+>    SYNOPSIS 맨 위의 `#include` 를 확인한다.
+> 3. 로직이 막히면 **§3 테스트의 기대값**을 먼저 읽는다.
+>    공격 입력표(§1)와 테스트가 답이다.
+> 4. 그래도 안 되면 모범답안의 해당 단계 **하나만** 본다.
+
+---
+
+## 3. 테스트 코드 — 이게 통과하면 끝
 
 ```text
 sd22_privgrant/src/uid_resolve.h
@@ -59,7 +160,14 @@ sd22_privgrant/src/uid_resolve.c
 sd22_privgrant/test/test.c
 ```
 
-### 시험 코드 — 이 형태를 고정한다
+> [!IMPORTANT] 시험 구조는 고정이다 (SD01~SD58 공통)
+> 1. **Bad 가 실제로 뚫린다.**
+>    이 시험이 실패하면 Bad 를 잘못 옮겨 적은 것이다.
+> 2. **Bad 도 정상 입력은 처리한다.**
+> 3. **Good 이 같은 공격을 막는다.**
+> 4. **Good 이 정상 입력까지 막지 않는다.** (과잉 차단 없음)
+
+### 3-A. 변형 A 시험 — 이 형태를 고정한다
 
 ```c
 #include <stdio.h>
@@ -104,17 +212,83 @@ int main(void)
 }
 ```
 
----
+### 3-B · 3-C. 변형 B / C 시험
 
-## 3. 자가 채점표 (100점)
+3-A 와 **같은 4종 구조**에서 호출 함수와 입력만 바꾼다.
 
-| 항목 | 배점 | 체크 |
+**변형 B — 부서별 접근 등급**
+
+| 입력 | Bad | Good |
 | :--- | :--- | :--- |
-| `test_bad_is_vulnerable` 통과 | 20 | ☐ |
-| `test_good_blocks_over_grant` 통과 | 30 | ☐ |
-| `test_good_normal` 통과 | 20 | ☐ |
-| UID 테이블이 `static const` 로 코드에 고정되어 있다(런타임 조작 불가) | 20 | ☐ |
-| 목표 시간 내 | 10 | ☐ |
+| `GRP_NORMAL` 에 결재 등급 조회 | 항상 최고 등급 | 테이블의 등급 (예: 2) |
+| `GRP_ADMIN` | 최고 등급 | 최고 등급 |
+
+**변형 C — 테이블에 없는 신규 그룹 추가 시 기본값 정책**
+
+| 입력 | Bad | Good |
+| :--- | :--- | :--- |
+| 테이블에 없는 신규 그룹 | root | -1 (최소 권한 상수) |
+| `GRP_GUEST` | 1001 | 1001 |
+
+### 3-1. 빌드와 실행 (Makefile, gcc)
+
+Makefile 은 [템플릿 체화 드릴 README](개발%20%28CS%29/언어/C언어/실습/템플릿%20체화%20드릴/README.md#공통%20Makefile) 와 **같은 파일**이다.
+recipe 줄은 **반드시 탭**으로 들여쓴다.
+
+> [!example]- 공통 Makefile (gcc)
+> ```makefile
+> # ~/cdrill/Makefile  (템플릿 체화 드릴과 같은 파일)
+> # 사용법:  make D=sd01_sqli V=main SRC="common/mock_db.c sd01_sqli/src/sql_auth.c sd01_sqli/test/test.c"
+> CC       := gcc
+> CFLAGS   := -Wall -Wextra -Werror -std=c11 -D_POSIX_C_SOURCE=200809L -g -DUNIT_TEST -Icommon -I$(D)/src
+> SAN      := -fsanitize=address,undefined -fno-omit-frame-pointer
+> LDLIBS   ?= -pthread
+>
+> D        ?= d1_pure
+> V        ?= main
+> SRC      ?= $(D)/src/$(V).c $(D)/test/test_$(V).c
+> BIN      := build/$(D)_$(V)
+>
+> all: run
+>
+> build:
+> 	@mkdir -p build
+>
+> $(BIN): build $(SRC)
+> 	$(CC) $(CFLAGS) $(SAN) $(SRC) $(LDLIBS) -o $(BIN)
+>
+> run: $(BIN)
+> 	@echo "── run ──────────────────────────────"
+> 	@./$(BIN)
+>
+> check: $(BIN)
+> 	@./$(BIN) && echo "PASS" || (echo "FAIL"; exit 1)
+>
+> clean:
+> 	rm -rf build
+>
+> .PHONY: all run check clean build
+> ```
+
+실행 명령이다.
+
+```bash
+make D=sd22_privgrant V=main SRC="sd22_privgrant/src/uid_resolve.c sd22_privgrant/test/test.c"
+```
+
+* 마지막 줄이 **`PASS`** 이고 경고 0 이면 통과다.
+* `-Werror` 때문에 컴파일이 안 되면 테스트 이전에 코드를 고친다.
+
+> [!example]- 참고: Makefile 없이 순수 gcc 로 실행
+> ```bash
+> mkdir -p build
+> gcc -Wall -Wextra -Werror -std=c11 -D_POSIX_C_SOURCE=200809L -g -DUNIT_TEST \
+>     -Icommon -Isd22_privgrant/src \
+>     -fsanitize=address,undefined -fno-omit-frame-pointer \
+>     sd22_privgrant/src/uid_resolve.c sd22_privgrant/test/test.c \
+>     -pthread -o build/sd22_privgrant_main
+> ./build/sd22_privgrant_main
+> ```
 
 ---
 
@@ -122,8 +296,8 @@ int main(void)
 
 | 실수 | 왜 문제인가 |
 | :--- | :--- |
-| 테이블 순회 후 못 찾았을 때 기본값을 `0`(root)으로 둠 | "모르면 최소 권한"이 원칙이다. 실수로 기본값을 관대하게 잡으면 새로 추가되는 그룹이 전부 관리자가 되는 사고로 이어진다 |
-| `isCorrectUser` 하나로 인증과 인가를 동시에 처리하려 함 | Bad의 근본 결함이다. 인증 확인과 권한 조회는 **별개의 함수/단계**로 분리한다 |
+| 테이블 순회 후 못 찾았을 때 기본값을 `0`(root)으로 둠 | "모르면 최소 권한"이 원칙이다.<br>실수로 기본값을 관대하게 잡으면 새로 추가되는 그룹이 전부 관리자가 되는 사고로 이어진다 |
+| `isCorrectUser` 하나로 인증과 인가를 동시에 처리하려 함 | Bad의 근본 결함이다.<br>인증 확인과 권한 조회는 **별개의 함수/단계**로 분리한다 |
 | 그룹 enum에 없는 값(정수 캐스팅 등)이 들어와도 대응 못 함 | `group_t` 는 enum이라 잘못된 정수가 들어오면 정의되지 않은 case가 될 수 있다 — 테이블에 없으면 무조건 거부하는 구조(`for` 루프 후 `return -1`)로 이런 상황도 커버된다 |
 
 ---
@@ -167,17 +341,6 @@ int main(void)
 > ```
 >
 > **눈여겨볼 점**: `TBL` 에 `GRP_UNKNOWN` 항목이 **없다.** 화이트리스트에 "모르는 것"을 위한 행을 일부러 만들지 않는 것 자체가 "모르면 거부"를 코드 구조로 강제하는 방법이다.
-
----
-
-## 6. 회차 기록표
-
-| 회차 | 날짜 | 변형 | 걸린 시간 | 점수 | 막힌 지점 한 줄 |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 |  | A (UID 결정) |  |  |  |
-| 2 |  | B (결재 등급) |  |  |  |
-| 3 |  | C (기본값 정책) |  |  |  |
-| 점검 (D+14) |  | 랜덤 |  |  |  |
 
 ---
 
