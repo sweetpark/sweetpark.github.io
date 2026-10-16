@@ -1,0 +1,88 @@
+---
+title: "Spring Framework 실습 (스프링 MVC) 목차"
+tags: [학습, 목차]
+created: 2026-10-16
+modified: 2026-10-16
+---
+
+**위치**: [학습](학습%20목록.md) › [프레임워크](프레임워크/프레임워크%20목록.md) › [Spring Framework](프레임워크/Spring%20Framework/Spring%20Framework%20목록.md) › 실습 (스프링 MVC)  
+**규모**: 포스팅 19개
+
+## 포스팅
+
+| 포스팅 | 설명 |
+|---|---|
+| [멀티스레드 로깅 - TaskDecorator·Interceptor 재진입 방지·Marker 분리](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/[Spring%20Batch]%20멀티스레드%20로깅%20-%20핵심%20개념%20및%20특징%20정리.md) | 공통 로깅 라이브러리(logging-starter)에서 Spring Batch 멀티스레드 환경의 TraceId 전파, MyBatis Interceptor의 중복 로깅 방지, Logback Ma… |
+| [공통 예외 처리](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/[Spring]%20공통%20예외%20처리%20-%20핵심%20개념%20및%20특징%20정리.md) | @ExceptionHandler/@ControllerAdvice 기반 공통 예외 처리 방식 비교 및 결론. |
+| [대용량 트래픽 로깅 메모리 누수(OOM) 방지 패턴](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/[Spring]%20대용량%20트래픽%20로깅%20메모리%20누수%28OOM%29%20방지%20패턴%20-%20핵심%20개념%20및%20특징%20정리.md) | Servlet/Netty/Batch에 공통 적용되는 로깅 프레임워크에서 대용량 트래픽·파일 업로드·배치 대량 처리 시 발생할 수 있는 힙 메모리 폭발(OOM) 위험을 점검하고, 스트리밍/지연… |
+| [동적 템플릿 엔진 설계 패턴 (계층화·SpEL·Chain of Responsibility)](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/[Spring]%20동적%20템플릿%20엔진%20설계%20패턴%20%28계층화·SpEL·Chain%20of%20-%20핵심%20개념%20및%20특징%20정리.md) | SI 환경처럼 고객사별 요구사항이 파편화된 상황에서, JSON 템플릿 기반 데이터 생성 도구를 점진적으로 고도화하는 4단계 전략. "Init Data 생성 Tool" 미니프로젝트의 고도화 검토… |
+| [로그인 기능](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/[Spring]%20로그인%20기능%20-%20핵심%20개념%20및%20특징%20정리.md) | 로그인 기능 구현 시 다뤄야 할 흐름(로그인 → 검증 → 실패 처리)과 세션/쿠키·JWT·Spring Security 등 주의할 포인트를 정리한다. |
+| [JPA](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/[Spring]%20JPA%20-%20핵심%20개념%20및%20특징%20정리.md) | JPA 연관관계 매핑(@ManyToOne/@OneToMany)과 Mapping 테이블 처리 기준 정리. |
+| [Page 처리](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/[Spring]%20Page%20처리%20-%20핵심%20개념%20및%20특징%20정리.md) | Spring Data의 Pageable을 이용한 페이징 처리 메모. |
+| [Strategy+Factory로 다중 Provider 처리하기](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/[Spring]%20Strategy+Factory로%20다중%20Provider%20처리하기%20-%20핵심%20개념%20및%20특징%20정리.md) | Kakao/Naver/Google/Apple 등 Provider별로 제각각인 로직(대표적으로 소셜 로그인)을 하나의 공통 인터페이스로 감싸고, 신규 Provider 추가 시 기존 코드를 건드리… |
+
+## 검증
+
+| 포스팅 | 설명 |
+|---|---|
+| [검증](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/검증/[Spring]%20검증%20-%20핵심%20개념%20및%20특징%20정리.md) | 상품 등록/수정 검증 구현 — @Validated, Bean Validation, Validator 구분 |
+
+## 로그인 구현
+
+| 포스팅 | 설명 |
+|---|---|
+| [로그인 구현](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/로그인%20구현/[Spring]%20로그인%20구현%20-%20핵심%20개념%20및%20특징%20정리.md) | 쿠키/세션 기반 로그인 유지 구현 및 서블릿 필터 vs 스프링 인터셉터를 이용한 공통 관심사(인증) 처리 |
+
+## 메시지, 국제화
+
+| 포스팅 | 설명 |
+|---|---|
+| [메시지, 국제화](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/메시지,%20국제화/[Spring]%20메시지,%20국제화%20-%20핵심%20개념%20및%20특징%20정리.md) | 메시지 Bean 적용 및 국제화(i18n) — .properties 파일 기반 message/international 처리 |
+
+## 상품 등록 및 조회 수정
+
+| 포스팅 | 설명 |
+|---|---|
+| [상품 등록 및 조회/ 수정](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/상품%20등록%20및%20조회%20수정/[Spring]%20상품%20등록%20및%20조회-%20수정%20-%20핵심%20개념%20및%20특징%20정리.md) | Request Method(@RequestParam, @ModelAttribute)와 PRG 패턴을 이용한 상품 등록/조회/수정 미니 프로젝트 |
+
+## 소셜로그인 전 과정
+
+| 포스팅 | 설명 |
+|---|---|
+| [소셜로그인 전 과정](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/소셜로그인%20전%20과정/[Spring]%20소셜로그인%20전%20과정%20-%20핵심%20개념%20및%20특징%20정리.md) | Spring Security 기반 소셜로그인 전체 흐름 정리 및 permitAll() 관련 트러블슈팅 |
+
+## 스프링 타입 컨버터
+
+| 포스팅 | 설명 |
+|---|---|
+| [스프링 타입 컨버터](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/스프링%20타입%20컨버터/[Spring]%20스프링%20타입%20컨버터%20-%20핵심%20개념%20및%20특징%20정리.md) | @RequestParam/@ModelAttribute/@PathVariable 바인딩 시 동작하는 스프링 타입 컨버터(Converter, ConversionService) 정리 |
+
+## 스프링 파일업로드
+
+| 포스팅 | 설명 |
+|---|---|
+| [스프링 파일업로드](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/스프링%20파일업로드/[Spring]%20스프링%20파일업로드%20-%20핵심%20개념%20및%20특징%20정리.md) | 순수 서블릿(HttpServletRequest) 방식과 스프링 MultipartFile 방식의 파일 업로드 비교 정리 |
+
+## 예외처리와 오류 페이지
+
+| 포스팅 | 설명 |
+|---|---|
+| [예외처리와 오류 페이지](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/예외처리와%20오류%20페이지/[Spring]%20예외처리와%20오류%20페이지%20-%20핵심%20개념%20및%20특징%20정리.md) | 서블릿/스프링 부트의 예외 처리 흐름과 오류 페이지 매핑, @ExceptionHandler/@ControllerAdvice 정리 |
+
+## 회원 등급별 상품 할인 적용
+
+| 포스팅 | 설명 |
+|---|---|
+| [회원 등급별 상품 할인 적용](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/회원%20등급별%20상품%20할인%20적용/[Spring]%20회원%20등급별%20상품%20할인%20적용%20-%20핵심%20개념%20및%20특징%20정리.md) | AppConfig 기반 수동/자동 Bean 등록과 OCP·DIP, 싱글톤을 활용한 회원 등급별 상품 할인 미니 프로젝트 |
+
+## Spring 구현 프로젝트
+
+| 포스팅 | 설명 |
+|---|---|
+| [Spring 구현 프로젝트](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/Spring%20구현%20프로젝트/[Spring]%20Spring%20구현%20프로젝트%20-%20핵심%20개념%20및%20특징%20정리.md) | 순수 Servlet부터 FrontController + Adapter 패턴을 거쳐 Spring MVC(Dispatcher Servlet)에 이르는 과정을 단계별로 직접 구현하며 Spring의… |
+
+## Spring 프레임워크 제작
+
+| 포스팅 | 설명 |
+|---|---|
+| [Spring 프레임워크 제작](프레임워크/Spring%20Framework/실습%20%28스프링%20MVC%29/Spring%20프레임워크%20제작/[Spring]%20Spring%20프레임워크%20제작%20-%20핵심%20개념%20및%20특징%20정리.md) | Servlet + JSP 기반의 간단한 MVC 프레임워크를 직접 제작해보는 미니 프로젝트 |
