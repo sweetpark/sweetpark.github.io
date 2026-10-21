@@ -1,4 +1,5 @@
 ---
+title: "MySQL/MariaDB utf8mb4 문자셋 변경 절차"
 description: "한글과 이모티콘이 깨질 때 MySQL, MariaDB 문자셋을 utf8mb4로 바꾸는 방법을 AWS RDS 파라미터 그룹과 DB 직접 접속 두 가지로 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, MySQL, MariaDB, AWS RDS]
 modified: 2026-09-05

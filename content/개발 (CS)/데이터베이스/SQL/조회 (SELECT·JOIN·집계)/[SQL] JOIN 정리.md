@@ -1,4 +1,5 @@
 ---
+title: "[SQL] JOIN 정리"
 description: "INNER, LEFT, RIGHT, FULL, CROSS JOIN의 차이와 결과를 예제와 함께 한눈에 정리했습니다."
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05

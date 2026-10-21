@@ -1,4 +1,5 @@
 ---
+title: "인증·인가 방식 비교 (API Key·OAuth2·JWT·HMAC·mTLS)"
 description: "API Key, OAuth2, JWT, HMAC, mTLS의 차이와 쓰임을 인증, 인가, 암호화, 해싱 용어 구분부터 비교해 정리했습니다."
 tags: [학습, 개발-CS, 보안, 인증, 인가, JWT, OAuth2, HMAC, mTLS]
 created: 2026-10-02

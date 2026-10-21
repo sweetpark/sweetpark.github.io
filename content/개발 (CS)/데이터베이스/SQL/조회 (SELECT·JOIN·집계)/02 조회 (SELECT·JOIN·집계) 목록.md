@@ -14,7 +14,7 @@ modified: 2026-10-21
 |---|---|
 | [(SQL) 주요 연산자 (distinct,like,between,in,is null)](개발%20%28CS%29/데이터베이스/SQL/조회%20%28SELECT·JOIN·집계%29/[SQL]%20주요%20연산자%20%28distinct,like,between,in,is%20null%29.md) |  |
 | [(SQL) 집계함수, 스칼라함수](개발%20%28CS%29/데이터베이스/SQL/조회%20%28SELECT·JOIN·집계%29/[SQL]%20집계함수,%20스칼라함수.md) |  |
-| [(SQL) DB Left Join 빈값 존재 - 핵심 개념 및 특징 정리](개발%20%28CS%29/데이터베이스/SQL/조회%20%28SELECT·JOIN·집계%29/[SQL]%20DB%20Left%20Join%20빈값%20존재%20-%20핵심%20개념%20및%20특징%20정리.md) | LEFT JOIN과 INNER JOIN의 결과 차이(빈값 처리) 정리 노트. |
+| [(DB) Left Join 빈값 존재](개발%20%28CS%29/데이터베이스/SQL/조회%20%28SELECT·JOIN·집계%29/[SQL]%20DB%20Left%20Join%20빈값%20존재%20-%20핵심%20개념%20및%20특징%20정리.md) | LEFT JOIN과 INNER JOIN의 결과 차이(빈값 처리) 정리 노트. |
 | [(SQL) JOIN 정리](개발%20%28CS%29/데이터베이스/SQL/조회%20%28SELECT·JOIN·집계%29/[SQL]%20JOIN%20정리.md) |  |
 | [Select, where, group, order by](개발%20%28CS%29/데이터베이스/SQL/조회%20%28SELECT·JOIN·집계%29/[SQL]%20Select,%20where,%20group,%20order%20by%20-%20핵심%20개념%20및%20특징%20정리.md) | select 컬럼선택 → 서브쿼리 (== 스칼라 서브쿼리) |
 | [SQL (Select)](개발%20%28CS%29/데이터베이스/SQL/조회%20%28SELECT·JOIN·집계%29/[SQL]%20SQL%20%28Select%29%20-%20핵심%20개념%20및%20특징%20정리.md) | select : 컬럼선택 (4) |

@@ -1,4 +1,5 @@
 ---
+title: "[SQL] 인덱스"
 description: "인덱스를 쓰는 이유와 Full Scan과의 차이, 인덱스를 만들 때 주의할 점을 예시와 함께 정리했습니다."
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05

@@ -1,4 +1,5 @@
 ---
+title: "[DB] Left Join 빈값 존재"
 description: "LEFT JOIN과 INNER JOIN을 쓸 때 값이 없는 행이 어떻게 처리되는지, 결과가 달라지는 이유와 구분 기준을 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, SQL]
 modified: 2026-09-05

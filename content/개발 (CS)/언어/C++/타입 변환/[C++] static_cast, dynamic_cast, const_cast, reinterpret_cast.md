@@ -1,4 +1,5 @@
 ---
+title: "static_cast, dynamic_cast, const_cast, reinterpret_cast"
 description: "C++의 네 가지 캐스팅 연산자 static_cast, dynamic_cast, const_cast, reinterpret_cast의 용도와 차이를 예제로 정리했습니다."
 tags: [C++, 형변환, cast]
 created: 2026-09-05

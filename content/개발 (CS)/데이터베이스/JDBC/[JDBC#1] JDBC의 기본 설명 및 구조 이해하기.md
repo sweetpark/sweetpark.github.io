@@ -1,4 +1,5 @@
 ---
+title: "[JDBC#1] JDBC의 기본 설명 및 구조 이해하기"
 description: "자바에서 DB에 접속하는 표준 API인 JDBC가 무엇인지, 요청 흐름과 기본 구조를 입문자 기준으로 정리했습니다."
 tags: [데이터베이스, JDBC]
 created: 2026-09-05

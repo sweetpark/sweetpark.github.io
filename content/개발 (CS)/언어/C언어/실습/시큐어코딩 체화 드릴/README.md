@@ -232,4 +232,4 @@ make D=sd01_sqli V=main SRC="..." check    # PASS / FAIL 만 출력
 - [시큐어코딩가이드 목록](개발%20%28CS%29/언어/C언어/시큐어코딩/시큐어코딩가이드%20목록.md) — 드릴이 체화시키려는 대상(왜 위험한지)
 - [템플릿 체화 드릴 목록](개발%20%28CS%29/언어/C언어/실습/템플릿%20체화%20드릴/README.md) — 회차 규칙·공통 Makefile 의 원본
 - [c-playgound (GitHub)](https://github.com/sweetpark/c-playgound) — 실제로 손으로 치는 코드 저장소
-- C언어 목록 — 상위 허브
+- [C언어 목록](개발%20%28CS%29/언어/C언어/C언어%20목록.md) — 상위 허브
