@@ -7,9 +7,6 @@ modified: 2026-09-05
 
 # [DB] Left Join 빈값 존재
 
-> [!NOTE]
-> LEFT JOIN과 INNER JOIN의 결과 차이(빈값 처리) 정리 노트.
-
 ## 📌 개념
 
 - LEFT JOIN: FROM 테이블을 기준으로 값이 없어도 null로 결과 출력

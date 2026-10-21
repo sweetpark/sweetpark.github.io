@@ -7,9 +7,6 @@ modified: 2026-09-05
 
 # MySQL/MariaDB utf8mb4 문자셋 변경 절차
 
-> [!NOTE]
-> 한글(과 이모티콘) 저장 깨짐을 해결하기 위해 문자셋을 UTF8mb4로 변경하는 절차. AWS RDS(MariaDB) 파라미터 그룹 변경과, DB에 직접 접속해 컬럼/테이블/DB 단위로 문자셋을 변경하는 SQL을 함께 정리.
-
 ## ⚙️ 개념
 
 > [!NOTE]
