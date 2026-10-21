@@ -1,14 +1,12 @@
 ---
 title: "[기초] JNI (Java-C 연동)"
+description: "Java-C 연동(JNI) 환경설정, so 파일 생성/확인, DLL 개념, gcc로 공유 라이브러리 만들기 정리."
 tags: [학습, 개발-CS, 언어, JAVA, 개발, JNI, C]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # [기초] JNI (Java-C 연동)
-
-> [!NOTE]
-> Java-C 연동(JNI) 환경설정, so 파일 생성/확인, DLL 개념, gcc로 공유 라이브러리 만들기 정리.
 
 ## 🖥️ 시스템/환경
 - JDK 관리: `alternatives`(Linux 계열, 여러 JDK 버전을 시스템 차원에서 전환)

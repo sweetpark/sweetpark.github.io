@@ -1,5 +1,6 @@
 ---
 title: "[JAVA 기술면접] 예외"
+description: "Error와 Exception의 구분, 체크 예외와 런타임 예외의 차이를 묻는 자바 예외 처리 기술면접 질문을 정리했습니다."
 tags: [기술면접, JAVA 관련 기술면접]
 created: 2026-09-05
 modified: 2026-09-05

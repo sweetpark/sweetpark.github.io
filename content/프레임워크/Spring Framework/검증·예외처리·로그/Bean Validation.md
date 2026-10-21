@@ -1,5 +1,6 @@
 ---
 title: "Bean Validation"
+description: "Bean Validation 의존성 추가와 @NotBlank, @NotNull 등 검증 애노테이션 사용법을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "[자료구조] 우선순위 큐 (+JAVA)"
+description: "FIFO 큐와 달리 우선순위가 높은 값부터 나오는 우선순위 큐(PriorityQueue)의 선언, 우선순위 설정, 주요 메서드를 Java로 정리했습니다."
 tags: [알고리즘 & 자료구조, 자료구조]
 created: 2026-09-05
 modified: 2026-09-05

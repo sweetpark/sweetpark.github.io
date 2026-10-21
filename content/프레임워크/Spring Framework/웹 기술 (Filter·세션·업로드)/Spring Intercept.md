@@ -1,5 +1,6 @@
 ---
 title: "Spring Intercept"
+description: "Spring HandlerInterceptor의 개념과 흐름, 인터페이스, WebMvcConfigurer 등록 방법을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

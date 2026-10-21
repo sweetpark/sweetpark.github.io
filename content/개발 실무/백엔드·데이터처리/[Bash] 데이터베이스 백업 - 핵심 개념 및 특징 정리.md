@@ -1,5 +1,6 @@
 ---
 title: "데이터베이스 백업"
+description: "mysqldump 명령과 DBeaver 같은 DB 툴로 데이터베이스를 백업하는 방법을 정리했습니다."
 tags: [학습, 개발실무, 저장소-&-데이터베이스]
 created: 2026-02-04
 modified: 2026-09-05

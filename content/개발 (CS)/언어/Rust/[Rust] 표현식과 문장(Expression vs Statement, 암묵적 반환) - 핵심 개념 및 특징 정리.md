@@ -1,14 +1,12 @@
 ---
 title: "표현식과 문장(Expression vs Statement, 암묵적 반환)"
+description: "Rust에서 return이 필수가 아닌 이유를 표현식과 문장의 차이, 암묵적 반환 개념으로 정리했습니다."
 tags: [학습, 개발-CS, 언어, Rust, 표현식, 문장, 반환]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # 표현식과 문장 (Expression vs Statement, 암묵적 반환)
-
-> [!NOTE]
-> Rust에는 `return` 키워드가 존재하지만 필수가 아니다. 함수 본문이 표현식(expression) 중심으로 설계되어 있기 때문인데, 이 원리는 함수 반환뿐 아니라 `match`, `if`, `{ }` 블록 전체에 공통으로 적용되는 Rust의 핵심 문법 개념이라 별도 노트로 정리.
 
 ## 📌 개념
 

@@ -1,5 +1,6 @@
 ---
 title: "[Thymeleaf] 주석"
+description: "Thymeleaf의 표준 HTML 주석, Thymeleaf 파서 주석, 프로토타입 주석의 차이를 정리했습니다."
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

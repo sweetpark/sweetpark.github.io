@@ -1,5 +1,6 @@
 ---
 title: "모듈 시스템과 가시성(mod, pub, pub use)"
+description: "Rust의 mod, pub, pub use로 모듈을 설계하고 가시성을 제어하는 방법을 GlueSQL core 크레이트 구조로 정리했습니다."
 tags: [학습, 개발-CS, 언어, Rust, 모듈, 가시성, GlueSQL]
 created: 2026-09-05
 modified: 2026-09-05

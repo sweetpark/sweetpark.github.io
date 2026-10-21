@@ -1,5 +1,6 @@
 ---
 title: "JPA"
+description: "JPA 연관관계 매핑(@ManyToOne, @OneToMany)과 매핑 테이블 처리 기준, 1:N 매핑을 정리했습니다."
 tags: [학습, 개발-CS, 언어, JPA, Spring]
 modified: 2026-09-05
 ---

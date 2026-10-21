@@ -1,5 +1,6 @@
 ---
 title: "개발 벤치마크: Sub-agent vs Superpowers Plugin"
+description: "AWS S3 통합 관리 모듈 개발에서 Claude Sub-agent 방식과 Superpowers Plugin 방식의 소요 시간, 토큰 사용량, 산출물을 실측해 비교한 벤치마크입니다."
 tags: [학습, AI-도구, 환경설정]
 modified: 2026-09-05
 ---

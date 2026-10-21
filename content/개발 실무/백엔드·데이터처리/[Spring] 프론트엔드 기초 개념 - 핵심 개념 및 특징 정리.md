@@ -1,14 +1,12 @@
 ---
 title: "프론트엔드 기초 개념"
+description: "HTML과 JSP, JSTL 구조, JavaScript와 jQuery 문법, DOM 조작, 이벤트, AJAX 등 프론트엔드 기초 개념과 실습 예제를 정리했습니다."
 tags: [학습, 개발실무, 프론트엔드]
 created: 2026-02-04
 modified: 2026-09-05
 ---
 
 # 프론트엔드 기초 개념
-
-> [!NOTE]
-> 자주 쓰는 프론트엔드 기초: HTML/JSP·JSTL 구조, JavaScript·jQuery 문법과 DOM 조작·이벤트·AJAX, 그리고 실습 예제 모음.
 
 ## 📌 개념
 

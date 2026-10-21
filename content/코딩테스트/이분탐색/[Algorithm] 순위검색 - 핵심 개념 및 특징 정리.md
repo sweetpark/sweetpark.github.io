@@ -1,5 +1,6 @@
 ---
 title: "순위검색"
+description: "프로그래머스 순위검색: 모든 조건 조합을 HashMap에 점수 리스트로 쌓고 정렬한 뒤 이분탐색(Lower Bound)으로 질의에 답하는 풀이를 정리했습니다."
 tags: [학습, 코딩테스트, 이분탐색, 프로그래머스, 알고리즘, 해시, DFS, LowerBound]
 created: 2026-05-31
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "[CI/CD] merge 해결"
+description: "SVN과 Git 브랜치를 merge할 때 conflict가 나면 선택할 옵션과 SVN merge 절차를 정리했습니다."
 tags: [학습, 개발-CS, 인프라, CICD, SVN, Git]
 modified: 2026-09-05
 ---

@@ -1,14 +1,12 @@
 ---
 title: "Apache Mina"
+description: "Apache Mina 필터 체인 구조 및 주요 Filter 정리."
 tags: [학습, 개발-CS, 네트워크, Apache-Mina]
 created: 2026-02-04
 modified: 2026-09-05
 ---
 
 # Apache Mina
-
-> [!NOTE]
-> Apache Mina 필터 체인 구조 및 주요 Filter 정리.
 
 ## 🖥️ 참고
 - Apache Mina guide: [https://mina.apache.org/mina-project/developer-guide.html](https://mina.apache.org/mina-project/developer-guide.html)

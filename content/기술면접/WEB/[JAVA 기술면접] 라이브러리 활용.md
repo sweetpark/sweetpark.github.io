@@ -1,5 +1,6 @@
 ---
 title: "[JAVA 기술면접] 라이브러리 활용"
+description: "java.base 모듈의 java.lang, util, io, nio, net, time 등 핵심 패키지와 제네릭 등 자바 표준 라이브러리 활용 면접 질문을 정리했습니다."
 tags: [기술면접, JAVA 관련 기술면접]
 created: 2026-09-05
 modified: 2026-09-05

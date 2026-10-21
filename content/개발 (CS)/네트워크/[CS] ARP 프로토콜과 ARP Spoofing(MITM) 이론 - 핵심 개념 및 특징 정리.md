@@ -1,5 +1,6 @@
 ---
 title: "ARP 프로토콜과 ARP Spoofing(MITM) 이론"
+description: "ARP 프로토콜의 동작 원리와 ARP Spoofing으로 중간자 공격(MITM)이 성립하는 과정, 탐지와 방어 기법을 정리했습니다."
 tags: [학습, 개발-CS, 네트워크, 보안, ARP, MITM]
 modified: 2026-09-05
 ---

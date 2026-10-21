@@ -1,5 +1,6 @@
 ---
 title: "[File I/O] 파일 라이브러리 이해하기 (File, Files, Path, Paths)"
+description: "Java 17 기준으로 File, Files, Path, Paths 파일 라이브러리의 차이와 사용법을 정리했습니다."
 tags: [토이프로젝트, 파일 업로드&다운로드]
 created: 2026-09-05
 modified: 2026-09-05

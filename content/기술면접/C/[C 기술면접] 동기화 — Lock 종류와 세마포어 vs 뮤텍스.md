@@ -1,5 +1,6 @@
 ---
 title: "[C 기술면접] 동기화 — Lock 종류와 세마포어 vs 뮤텍스"
+description: "뮤텍스, 세마포어 등 Lock 기법의 종류와 사용 이유, 세마포어와 mutex의 차이, thread-safe 조건을 C 기술면접 질문에 맞춰 정리했습니다."
 tags: [기술면접, C 기술면접, 동기화, lock, mutex, 세마포어, spinlock, rwlock, 데드락]
 created: 2026-10-19
 modified: 2026-10-19

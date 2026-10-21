@@ -1,5 +1,6 @@
 ---
 title: "3GPP NRF 정리 (TS 29.510 Rel-15)"
+description: "3GPP TS 29.510(Release 15) 기준 NRF(Network Repository Function)의 역할과 NF 등록·탐색 구조를 정리했습니다."
 tags: 
 created: 2026-10-19
 modified: 2026-10-19

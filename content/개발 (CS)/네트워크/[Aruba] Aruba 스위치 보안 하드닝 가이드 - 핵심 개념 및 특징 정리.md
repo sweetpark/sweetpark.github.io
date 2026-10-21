@@ -1,5 +1,6 @@
 ---
 title: "Aruba 스위치 보안 하드닝 가이드"
+description: "HPE Aruba 스위치(ArubaOS-Switch, ArubaOS-CX)의 보안 취약점 점검과 하드닝 명령어를 항목별로 두 계열을 나란히 비교해 정리했습니다."
 tags: [학습, 개발-CS, 네트워크, 개발, Aruba, 보안, 하드닝]
 modified: 2026-09-05
 ---

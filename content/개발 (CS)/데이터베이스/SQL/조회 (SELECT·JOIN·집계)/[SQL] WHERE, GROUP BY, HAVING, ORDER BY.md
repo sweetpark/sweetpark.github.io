@@ -1,5 +1,6 @@
 ---
 title: "[SQL] WHERE, GROUP BY, HAVING, ORDER BY"
+description: "WHERE, GROUP BY, HAVING, ORDER BY 절의 역할과 SQL 논리적 실행 순서, 집계함수와 함께 쓸 때의 제약을 예제로 정리했습니다."
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05
 modified: 2026-09-05

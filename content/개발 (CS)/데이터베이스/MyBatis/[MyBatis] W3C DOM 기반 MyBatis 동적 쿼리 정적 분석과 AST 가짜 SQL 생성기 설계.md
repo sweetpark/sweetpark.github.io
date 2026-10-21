@@ -1,5 +1,6 @@
 ---
 title: "[MyBatis] W3C DOM 기반 MyBatis 동적 쿼리 정적 분석과 AST 가짜 SQL 생성기 설계"
+description: "파라미터가 없는 정적 상태에서 MyBatis 동적 태그를 W3C DOM으로 파싱하고, EXPLAIN 왜곡 없이 실행 가능한 가짜 SQL을 합성하는 엔진 설계를 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, MyBatis, 동적SQL, W3C-DOM, 정적분석, SQL튜닝]
 created: 2026-09-05
 modified: 2026-09-05

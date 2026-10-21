@@ -1,5 +1,6 @@
 ---
 title: "대용량 조회 메모리 관리 (SQL vs Java 필터링)"
+description: "조회 결과를 애플리케이션에서 조합할 때 생기는 메모리 압력을 분석하고 SQL과 Java 필터링 선택 기준, ZGC 튜닝, Cursor 스트리밍을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, JVM, GC, 메모리]
 modified: 2026-09-05
 ---

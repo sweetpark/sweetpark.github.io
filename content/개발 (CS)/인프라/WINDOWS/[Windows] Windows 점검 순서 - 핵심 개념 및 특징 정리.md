@@ -1,13 +1,11 @@
 ---
 title: "Windows 점검 순서"
+description: "Windows 서버 정기 점검 시 확인 순서(리소스 → 네트워크 → 로그 → 디스크 → OS → 시리얼)를 단계별로 정리."
 tags: [학습, 개발-CS, 인프라, WINDOWS, 개발]
 modified: 2026-09-05
 ---
 
 # Windows 점검 순서
-
-> [!NOTE]
-> Windows 서버 정기 점검 시 확인 순서(리소스 → 네트워크 → 로그 → 디스크 → OS → 시리얼)를 단계별로 정리.
 
 ## 📌 개념
 

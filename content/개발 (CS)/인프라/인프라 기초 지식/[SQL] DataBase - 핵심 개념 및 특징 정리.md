@@ -1,13 +1,11 @@
 ---
 title: "DataBase"
+description: "데이터베이스와 DBMS 개념, DB 특징, WAS-DB 분리 구성과 스케일 아웃, SQL 분류(DDL/DML/DCL) 정리."
 tags: [학습, 개발-CS, 인프라, 인프라-기초-지식, 개발, 인프라기초]
 modified: 2026-09-05
 ---
 
 # DataBase
-
-> [!NOTE]
-> 데이터베이스와 DBMS 개념, DB 특징, WAS-DB 분리 구성과 스케일 아웃, SQL 분류(DDL/DML/DCL) 정리.
 
 ## 📌 개념
 

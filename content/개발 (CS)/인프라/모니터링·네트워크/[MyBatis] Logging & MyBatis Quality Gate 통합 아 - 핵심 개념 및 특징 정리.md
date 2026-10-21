@@ -1,5 +1,6 @@
 ---
 title: "Logging & MyBatis Quality Gate 통합 아키텍처"
+description: "로깅 표준화(Observability)와 MyBatis SQL 품질 게이트를 빌드 타임 검증과 런타임 관측 체계로 묶은 통합 아키텍처를 정리했습니다."
 tags: [학습, 개발-CS, 인프라, 개발, Observability, MyBatis, ShiftLeft, Grafana, Loki, Architecture]
 modified: 2026-09-05
 ---

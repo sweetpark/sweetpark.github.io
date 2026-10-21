@@ -1,5 +1,6 @@
 ---
 title: "Thymeleaf 기본"
+description: "Thymeleaf의 기본 선언과 텍스트, 객체, List, Map 출력 방법을 정리했습니다."
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

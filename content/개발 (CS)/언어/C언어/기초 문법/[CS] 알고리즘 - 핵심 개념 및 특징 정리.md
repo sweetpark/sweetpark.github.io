@@ -1,14 +1,12 @@
 ---
 title: "알고리즘"
+description: "C 연결 리스트의 구조와 순회 방법, 리눅스 커널의 list_for_each_entry() 매크로를 정리했습니다."
 tags: [학습, 개발-CS, 언어, C언어, 개발, 연결리스트, 자료구조]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # 알고리즘
-
-> [!NOTE]
-> C 연결리스트(Linked List) 구조·순회 방법과 리눅스 커널의 `list_for_each_entry()` 매크로.
 
 ## 📌 개념
 

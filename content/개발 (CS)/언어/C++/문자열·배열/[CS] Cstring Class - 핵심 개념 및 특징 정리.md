@@ -1,14 +1,12 @@
 ---
 title: "Cstring Class"
+description: "MFC CString 클래스의 사용법과 유니코드 문자열, wchar_t 처리를 정리했습니다."
 tags: [학습, 개발-CS, 언어, C++, 개발, 문자열, 유니코드]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # Cstring Class
-
-> [!NOTE]
-> MFC `CString` 클래스 — 유니코드 문자열 처리와 `wchar_t`.
 
 ## 📌 개념
 

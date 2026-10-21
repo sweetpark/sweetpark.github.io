@@ -1,5 +1,6 @@
 ---
 title: "HTTP 메서드 예시"
+description: "HTTP로 클라이언트가 서버에 데이터를 전달하는 방법(쿼리 파라미터, HTML Form, 메시지 바디)을 상황별 예시로 정리했습니다."
 tags: [JAVA 기반 웹개발, HTTP]
 created: 2026-09-05
 modified: 2026-09-05

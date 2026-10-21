@@ -1,5 +1,6 @@
 ---
 title: "D5. TLV 파서 — 모르는 태그 건너뛰기"
+description: "모르는 태그를 건너뛰며 TLV(Tag-Length-Value) 가변 구조를 파싱하는 D5 드릴입니다."
 tags: 
 created: 2026-09-21
 modified: 2026-10-16

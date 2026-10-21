@@ -1,5 +1,6 @@
 ---
 title: "예외처리 (web page)"
+description: "서블릿 예외 처리, 오류 페이지, FilterRegistrationBean과 DispatcherType을 이용한 웹 페이지 예외 처리 방법을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

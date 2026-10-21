@@ -1,5 +1,6 @@
 ---
 title: "SPRING MVC 구조 #1 (Dispatcher Servlet, handler mapping)"
+description: "Spring MVC의 DispatcherServlet 구조 1편으로 요청이 들어와 핸들러 매핑으로 컨트롤러를 찾는 과정을 소스 코드로 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

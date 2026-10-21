@@ -1,14 +1,12 @@
 ---
 title: "✅ Ansible 정리 (실무·면접 교정본)"
+description: "에이전트 없는 SSH 기반 구성 관리 도구 Ansible의 개념, Bash와의 차이(멱등성), 아키텍처, 설치·Inventory·Playbook·Module 사용을 실무·면접 관점으로 정리."
 tags: [학습, 개발-CS, 인프라, AWS, 개발]
 created: 2026년 2월 2일 오후 11:34
 modified: 2026-09-05
 ---
 
 # Ansible 정리 (실무·면접 교정본)
-
-> [!NOTE]
-> 에이전트 없는 SSH 기반 구성 관리 도구 Ansible의 개념, Bash와의 차이(멱등성), 아키텍처, 설치·Inventory·Playbook·Module 사용을 실무·면접 관점으로 정리.
 
 > [!NOTE]
 > 원문을 AI가 검토·보강함(사실 확인 권장).

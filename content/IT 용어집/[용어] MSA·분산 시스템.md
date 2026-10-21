@@ -1,5 +1,6 @@
 ---
 title: "MSA·분산 시스템 용어"
+description: "마이크로서비스, 서비스 메시, 서킷 브레이커, 분산 추적, Kafka 등 MSA·분산 시스템 용어 24개를 정리한 용어집입니다."
 tags: [학습, IT용어집, MSA, 분산시스템, 장애대응, Kafka]
 created: 2026-10-02
 modified: 2026-10-07

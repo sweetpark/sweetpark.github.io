@@ -1,5 +1,6 @@
 ---
 title: "SAX vs DOM Parser"
+description: "MyBatis 동적 쿼리를 정적 분석할 때 SAX 대신 DOM 파서를 고른 이유와 JSqlParser를 통과하는 가짜 SQL을 안전하게 조립하는 전략을 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, MyBatis, XML]
 modified: 2026-09-05
 ---

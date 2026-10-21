@@ -1,5 +1,6 @@
 ---
 title: "SD58. 다중 스레드 프로그램에서 getlogin() 사용 — getlogin_r로 치환"
+description: "시큐어코딩 SD58 다중 스레드 프로그램에서 getlogin() 사용 (CWE-558): 취약한 코드를 getlogin_r 방식으로 바꾸는 치환을 요구사항서, pseudo code, 테스트 코드로 체화하는 드릴입니다."
 tags: 
 created: 2026-09-28
 modified: 2026-10-16

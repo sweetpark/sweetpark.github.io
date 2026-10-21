@@ -1,5 +1,6 @@
 ---
 title: "AIX 서버 점검 명령어 정리 (운영 표준)"
+description: "IBM AIX 서버 정기점검과 장애 대응에 쓰는 명령어를 CPU, 메모리, 디스크, LVM, Paging Space, System Dump, 에러 로그, 네트워크, 파일시스템 확장까지 정리했습니다."
 tags: [학습, 개발-CS, 인프라, 인프라-기초-지식, 개발, AIX, Unix]
 modified: 2026-09-05
 ---

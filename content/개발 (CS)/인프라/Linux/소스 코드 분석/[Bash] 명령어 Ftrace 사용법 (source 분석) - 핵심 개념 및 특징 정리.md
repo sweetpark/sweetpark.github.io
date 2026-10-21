@@ -1,14 +1,12 @@
 ---
 title: "[명령어] Ftrace 사용법 (source 분석)"
+description: "리눅스 기본 tracer인 ftrace로 커널 함수와 이벤트, 프로세스 단위 실행 흐름을 추적해 소스를 분석하는 방법을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 3일 오후 11:08
 modified: 2026-09-05
 ---
 
 # [명령어] Ftrace 사용법 (source 분석)
-
-> [!NOTE]
-> 리눅스 기본 제공 tracer인 ftrace로 커널 함수/이벤트/프로세스 단위 실행 흐름을 추적하여 소스를 분석하는 방법 정리.
 
 ## 📌 개념
 

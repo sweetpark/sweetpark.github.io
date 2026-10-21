@@ -1,5 +1,6 @@
 ---
 title: "@RequestPart (파일 + json 전송)"
+description: "하나의 요청으로 파일과 JSON을 함께 전송할 때 @RequestPart와 ObjectMapper로 처리하는 방법과 Content-Type 이슈를 정리했습니다."
 tags: [학습, 개발실무, 공통]
 created: 2026-02-04
 modified: 2026-09-05

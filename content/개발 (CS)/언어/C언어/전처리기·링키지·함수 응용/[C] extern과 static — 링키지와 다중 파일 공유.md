@@ -1,14 +1,12 @@
 ---
 title: "extern과 static — 링키지와 다중 파일 공유"
+description: "여러 .c 파일로 나뉜 C 프로젝트에서 함수/변수를 다른 파일과 공유할지 말지를 결정하는 링키지(linkage) 개념과, extern/static 실전 사용 패턴을 정리한다."
 tags: [학습, 개발-CS, 언어, C언어, extern, static, 링키지]
 created: 2026-09-16
 modified: 2026-09-16
 ---
 
 # extern과 static — 링키지와 다중 파일 공유
-
-> [!NOTE]
-> 여러 `.c` 파일로 나뉜 C 프로젝트에서 함수/변수를 다른 파일과 공유할지 말지를 결정하는 링키지(linkage) 개념과, `extern`/`static` 실전 사용 패턴을 정리한다.
 
 ## 0. 배경
 

@@ -1,5 +1,6 @@
 ---
 title: "SD34. 취약한 암호화 적절하지 못한 RSA 패딩 — OAEP 패딩 강제로 치환"
+description: "시큐어코딩 SD34 취약한 암호화 적절하지 못한 RSA 패딩 (CWE-325): 취약한 코드를 OAEP 패딩 강제 방식으로 바꾸는 치환을 요구사항서, pseudo code, 테스트 코드로 체화하는 드릴입니다."
 tags: 
 created: 2026-09-28
 modified: 2026-10-16

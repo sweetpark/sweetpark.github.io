@@ -1,5 +1,6 @@
 ---
 title: "Formatter (포맷터)"
+description: "Spring의 Formatter 개념과 인터페이스, @NumberFormat, @DateTimeFormat, WebMvcConfigurer#addFormatters 사용법을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

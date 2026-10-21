@@ -1,5 +1,6 @@
 ---
 title: "Spring 역사 #2 (POJO)"
+description: "Spring의 역사 2편으로 프레임워크에 종속되지 않는 순수 자바 객체 POJO의 개념과 의미를 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

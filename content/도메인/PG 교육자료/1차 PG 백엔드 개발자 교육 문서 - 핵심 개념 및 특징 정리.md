@@ -1,5 +1,6 @@
 ---
 title: "1차 PG 백엔드 개발자 교육 문서"
+description: "PG(Payment Gateway) 도메인에 처음 입문하는 신입·주니어 백엔드 개발자를 위해 입문, 중급, 심화 순서로 정리한 1차 PG 교육 문서입니다."
 tags: [학습, 도메인, PG-교육자료, 자료, Claude]
 modified: 2026-09-07
 ---

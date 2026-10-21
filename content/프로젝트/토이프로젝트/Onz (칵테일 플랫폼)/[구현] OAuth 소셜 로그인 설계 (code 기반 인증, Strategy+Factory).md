@@ -1,14 +1,12 @@
 ---
 title: "OAuth 소셜 로그인 설계 (code 기반 인증, Strategy+Factory)"
+description: "Google/Naver/Kakao/Apple 4개 프로바이더를 지원하는 소셜 로그인을, accessToken이 아닌 code 값 교환 방식으로 설계한 이유와 Provider 확장 구조를 정리했다."
 tags: [학습, 토이프로젝트, Spring-Boot, OAuth, 보안]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # OAuth 소셜 로그인 설계 (code 기반 인증, Strategy+Factory)
-
-> [!NOTE]
-> Google/Naver/Kakao/Apple 4개 프로바이더를 지원하는 소셜 로그인을, accessToken이 아닌 code 값 교환 방식으로 설계한 이유와 Provider 확장 구조를 정리했다.
 
 ## 왜 accessToken이 아닌 code 값을 주고받는가
 

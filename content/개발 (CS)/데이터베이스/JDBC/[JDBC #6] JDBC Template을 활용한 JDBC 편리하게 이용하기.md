@@ -1,5 +1,6 @@
 ---
 title: "[JDBC #6] JDBC Template을 활용한 JDBC 편리하게 이용하기"
+description: "Spring JdbcTemplate으로 SQL 실행, 파라미터 바인딩, 예외 처리, 리소스 정리를 자동화하는 방법과 사용 예제를 정리했습니다."
 tags: [데이터베이스, JDBC]
 created: 2026-09-05
 modified: 2026-09-05

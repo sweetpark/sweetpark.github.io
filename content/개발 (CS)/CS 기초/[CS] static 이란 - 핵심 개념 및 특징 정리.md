@@ -1,14 +1,12 @@
 ---
 title: "static 이란?"
+description: "C/C++ static의 개념과 저장 위치(Global Static Area), 함수 호출 오버헤드를 줄이는 inline 키워드를 정리했습니다."
 tags: [학습, 개발-CS, CS-기초, 기초, 개발, static, inline, 메모리]
 created: 2026-02-03
 modified: 2026-09-05
 ---
 
 # static 이란?
-
-> [!NOTE]
-> static의 개념과 저장 위치(Global Static Area), 그리고 함수 호출 오버헤드를 줄이는 inline 키워드를 정리한다. (C/C++ 관점의 설명)
 
 > [!IMPORTANT]
 > 원문을 AI가 검토·보강함(사실 확인 권장).

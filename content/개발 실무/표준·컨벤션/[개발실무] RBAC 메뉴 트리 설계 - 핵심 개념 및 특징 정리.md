@@ -1,5 +1,6 @@
 ---
 title: "RBAC 메뉴 트리 설계 — soft-delete와 upsert-revive"
+description: "RBAC 메뉴 트리에서 반복되는 설계 문제(테이블 소유권, 부모-자식 정합성, 삭제 후 재등록 시 이력 보존)를 soft-delete와 upsert-revive 패턴으로 해결하는 방법을 정리했습니다."
 tags: [학습, 개발실무, 아키텍처, RBAC]
 modified: 2026-09-05
 ---

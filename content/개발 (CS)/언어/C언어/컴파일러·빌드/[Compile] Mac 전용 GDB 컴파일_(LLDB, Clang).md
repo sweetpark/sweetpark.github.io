@@ -1,5 +1,6 @@
 ---
 title: "Mac 전용 GDB 컴파일 (LLDB, Clang)"
+description: "macOS에서 Clang과 LLDB로 C 코드를 컴파일하고 디버깅할 때 쓰는 플래그(-g, -Wall, -Wextra 등)와 명령을 정리했습니다."
 tags: 
 created: 2026-09-05
 modified: 2026-09-05

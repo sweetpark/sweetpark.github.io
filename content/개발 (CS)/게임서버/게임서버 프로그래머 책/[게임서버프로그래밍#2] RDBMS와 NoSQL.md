@@ -1,5 +1,6 @@
 ---
 title: "[게임서버프로그래밍#2] RDBMS와 NoSQL"
+description: "게임 서버 개발 관점에서 RDBMS와 NoSQL의 정의, 특징, 대표 제품과 차이를 정리했습니다."
 tags: [개발 서적 리뷰, 게임서버 프로그래머 책]
 created: 2026-09-05
 modified: 2026-09-05

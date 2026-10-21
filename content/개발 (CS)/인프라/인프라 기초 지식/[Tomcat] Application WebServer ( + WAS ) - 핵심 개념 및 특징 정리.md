@@ -1,13 +1,11 @@
 ---
 title: "Application WebServer ( + WAS )"
+description: "Application Server, Web Server, WAS의 개념과 차이, Web Server + WAS를 함께 쓰는 이유(로드 밸런싱, 정적/동적 처리 분리) 정리."
 tags: [학습, 개발-CS, 인프라, 인프라-기초-지식, 개발, 인프라기초]
 modified: 2026-09-05
 ---
 
 # Application WebServer ( + WAS )
-
-> [!NOTE]
-> Application Server, Web Server, WAS의 개념과 차이, Web Server + WAS를 함께 쓰는 이유(로드 밸런싱, 정적/동적 처리 분리) 정리.
 
 ## 📌 개념
 

@@ -1,14 +1,12 @@
 ---
 title: "Linux CentOS 마운트"
+description: "CentOS에서 새 디스크를 인식·파티션하고 LVM(PV→VG→LV) 구성 후 포맷·마운트하고 fstab에 등록하는 절차 정리."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 3일 오전 10:32
 modified: 2026-09-05
 ---
 
 # Linux CentOS 마운트
-
-> [!NOTE]
-> CentOS에서 새 디스크를 인식·파티션하고 LVM(PV→VG→LV) 구성 후 포맷·마운트하고 fstab에 등록하는 절차 정리.
 
 ## 📌 개념
 

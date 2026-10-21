@@ -1,5 +1,6 @@
 ---
 title: "(C) 환경변수·시그널 실습 — getenv 복사·atexit와 sigaction·pselect 시그널 카운터"
+description: "환경변수(getenv 복사, atexit)와 시그널(sigaction, pselect) 실습에서 만난 오류 패턴을 정리하고 로그 기록기와 시그널 카운터를 구현했습니다."
 tags: 
 created: 2026-10-14
 modified: 2026-10-15

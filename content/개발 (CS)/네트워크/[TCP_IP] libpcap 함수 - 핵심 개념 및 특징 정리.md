@@ -1,13 +1,11 @@
 ---
 title: "libpcap 함수"
+description: "libpcap 주요 함수(pcap_lookupnet, pcap_open_live, pcap_next, pcap_loop 등)와 TCP/IP, 이더넷 헤더 구조체를 레퍼런스로 정리했습니다."
 tags: [학습, 개발-CS, 네트워크, libpcap, C]
 modified: 2026-09-05
 ---
 
 # libpcap 함수
-
-> [!NOTE]
-> libpcap 라이브러리의 주요 함수(pcap_is_swapped, pcap_lookupnet, pcap_lookupdev, pcap_datalink, pcap_open_live/offline, pcap_next, pcap_loop)와 TCP/IP/이더넷 헤더 구조체 레퍼런스.
 
 ## ⚙️ 구현
 

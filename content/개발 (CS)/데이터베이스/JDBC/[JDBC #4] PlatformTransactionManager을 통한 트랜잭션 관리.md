@@ -1,5 +1,6 @@
 ---
 title: "[JDBC #4] PlatformTransactionManager을 통한 트랜잭션 관리"
+description: "Controller, Service, Repository 계층 구조에서 PlatformTransactionManager로 트랜잭션을 관리하는 방법을 순수 JDBC와 비교해 정리했습니다."
 tags: [데이터베이스, JDBC]
 created: 2026-09-05
 modified: 2026-09-05

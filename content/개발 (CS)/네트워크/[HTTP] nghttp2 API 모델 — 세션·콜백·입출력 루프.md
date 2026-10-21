@@ -1,5 +1,6 @@
 ---
 title: "nghttp2 API 모델 — 세션·콜백·입출력 루프"
+description: "C로 만든 HTTP/2 라이브러리 nghttp2의 세션, 콜백, 입출력 루프 구조와 호출 순서, 책임 분담을 정리했습니다."
 tags: [학습, 개발-CS, 네트워크, HTTP2, nghttp2, C, 콜백]
 created: 2026-10-07
 modified: 2026-10-07

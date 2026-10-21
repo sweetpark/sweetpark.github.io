@@ -1,5 +1,6 @@
 ---
 title: "로그인 기능"
+description: "로그인 → 검증 → 실패 처리 흐름과 세션과 쿠키, JWT, Spring Security 등 로그인 기능 구현 시 주의할 점을 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, 개발, 로그인, 세션, JWT, Security]
 modified: 2026-09-05
 ---

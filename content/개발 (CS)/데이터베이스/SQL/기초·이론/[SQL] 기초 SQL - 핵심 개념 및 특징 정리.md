@@ -1,5 +1,6 @@
 ---
 title: "[기초] SQL"
+description: "MySQL 기준 SQL 기초를 DB와 DBMS 개념부터 DML, JOIN, 스토어드 프로시저, 제약조건, 뷰, 인덱스, 커서, 트리거까지 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, 개발, SQL, MySQL, 인덱스, 뷰, 프로시저, 트리거]
 modified: 2026-09-05
 ---

@@ -1,5 +1,6 @@
 ---
 title: "[JDBC #2] 순수 JDBC 이해하기"
+description: "DriverManager로 DB에 직접 연결하는 순수 JDBC의 기본 구조와 사용 방법, 커넥션 풀이 없을 때의 장단점을 예제와 함께 정리했습니다."
 tags: [데이터베이스, JDBC]
 created: 2026-09-05
 modified: 2026-09-05

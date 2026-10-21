@@ -1,5 +1,6 @@
 ---
 title: "C++ string 라이브러리"
+description: "C++ 표준 std::string을 쓰는 이유를 문자열 이어붙이기를 동적할당으로 직접 구현해 보며 정리했습니다."
 tags: [C++, string]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "Git 되돌리기 정리 (revert·reset·rebase)"
+description: "revert, reset, rebase가 이력을 다루는 방식의 차이와 각각 언제 쓰는지, rebase는 되돌리기가 아니라는 점을 표로 비교해 정리했습니다."
 tags: [학습, 개발-CS, 인프라, 형상관리, Git, revert, reset, rebase]
 created: 2026-10-02
 modified: 2026-10-02

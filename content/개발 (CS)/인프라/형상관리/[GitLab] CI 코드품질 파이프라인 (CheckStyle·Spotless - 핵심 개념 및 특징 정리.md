@@ -1,5 +1,6 @@
 ---
 title: "CI 코드품질 파이프라인 (CheckStyle·Spotless·SpotBugs)"
+description: "Java 프로젝트에 CheckStyle, Spotless, SpotBugs 3종을 도입하고 GitLab CI로 MR 시점에 강제하는 코드 품질 파이프라인 설계를 정리했습니다."
 tags: [학습, 개발-CS, 인프라, CI, 코드품질]
 modified: 2026-09-05
 ---

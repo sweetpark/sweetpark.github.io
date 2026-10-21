@@ -1,5 +1,6 @@
 ---
 title: "JSP 이론 및 기초 문법"
+description: "JSP의 개념과 구성, 지시어, 내장 객체 등 기초 문법 이론을 정리했습니다."
 tags: [JAVA 기반 웹개발, SERVLET & JSP]
 created: 2026-09-05
 modified: 2026-09-05

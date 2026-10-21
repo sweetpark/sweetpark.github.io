@@ -1,5 +1,6 @@
 ---
 title: "Spring MVC ( @RequestMapping )"
+description: "@RequestMapping, @GetMapping, @PathVariable 등 Spring MVC 요청 매핑 애노테이션의 사용법을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

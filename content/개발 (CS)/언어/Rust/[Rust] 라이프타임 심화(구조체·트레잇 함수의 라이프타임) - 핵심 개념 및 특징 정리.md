@@ -1,5 +1,6 @@
 ---
 title: "라이프타임 심화(구조체·트레잇 함수의 라이프타임)"
+description: "참조를 담은 구조체와 여러 라이프타임이 얽힌 함수 시그니처 등 Rust 라이프타임 심화 패턴을 GlueSQL 코드로 정리했습니다."
 tags: [학습, 개발-CS, 언어, Rust, 라이프타임, GlueSQL]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,14 +1,12 @@
 ---
 title: "pthread_create에 구조체 포인터 넘기기 — void 포인터와 이중포인터 정리"
+description: "pthread_create의 마지막 인자(void *)로 구조체 포인터를 넘길 때 &를 붙여야 하는 경우와 안 붙여도 되는 경우, 이중포인터일 때의 규칙을 정리한다."
 tags: [학습, 개발-CS, 언어, C언어, 포인터, 캐스팅, 스레드, pthread]
 created: 2026-09-17
 modified: 2026-09-17
 ---
 
 # pthread_create에 구조체 포인터 넘기기 — void 포인터와 이중포인터 정리
-
-> [!NOTE]
-> `pthread_create`의 마지막 인자(`void *`)로 구조체 포인터를 넘길 때 `&`를 붙여야 하는 경우와 안 붙여도 되는 경우, 이중포인터일 때의 규칙을 정리한다.
 
 ## 0. 배경
 

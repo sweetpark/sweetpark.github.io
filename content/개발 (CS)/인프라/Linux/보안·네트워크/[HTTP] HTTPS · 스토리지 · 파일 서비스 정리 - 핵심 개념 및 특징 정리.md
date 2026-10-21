@@ -1,14 +1,12 @@
 ---
 title: "🔐 HTTPS · 스토리지 · 파일 서비스 정리"
+description: "Self-Signed HTTPS 구축(Apache SSL), 스토리지 종류(DAS/NAS/SAN), NFS·AutoFS·FTP(vsFTP) 파일 서비스 실습 정리."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 2일 오후 11:30
 modified: 2026-09-05
 ---
 
 # HTTPS · 스토리지 · 파일 서비스 정리
-
-> [!NOTE]
-> Self-Signed HTTPS 구축(Apache SSL), 스토리지 종류(DAS/NAS/SAN), NFS·AutoFS·FTP(vsFTP) 파일 서비스 실습 정리.
 
 ## 📌 개념
 

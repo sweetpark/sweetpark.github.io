@@ -1,5 +1,6 @@
 ---
 title: "D2. 표 3장 → 구조체 — Optional·Conditional·union·정렬"
+description: "규격서의 표 3장을 구조체로 옮기며 Optional, Conditional, union, 멤버 정렬을 다루는 D2 드릴입니다."
 tags: 
 created: 2026-09-21
 modified: 2026-10-16

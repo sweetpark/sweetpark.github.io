@@ -1,5 +1,6 @@
 ---
 title: "Select, where, group, order by"
+description: "SELECT, FROM, WHERE, GROUP BY, ORDER BY 각 절에서 서브쿼리를 쓰는 방법(스칼라 서브쿼리, 인라인 뷰)과 성능상 주의점을 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, 개발, SQL, JOIN, Oracle]
 modified: 2026-09-05
 ---

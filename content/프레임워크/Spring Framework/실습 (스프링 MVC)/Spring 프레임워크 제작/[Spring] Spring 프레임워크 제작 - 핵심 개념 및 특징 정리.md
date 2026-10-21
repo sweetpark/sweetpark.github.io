@@ -1,5 +1,6 @@
 ---
 title: "Spring 프레임워크 제작"
+description: "Servlet과 JSP를 기반으로 간단한 MVC 프레임워크를 직접 제작해 보는 미니 프로젝트입니다."
 tags: [학습, 개발-CS, 언어, Spring, 김영한]
 created: 2026-02-04
 modified: 2026-09-05

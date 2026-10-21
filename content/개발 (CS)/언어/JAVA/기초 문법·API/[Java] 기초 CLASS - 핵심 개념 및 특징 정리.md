@@ -1,5 +1,6 @@
 ---
 title: "[기초] CLASS"
+description: "Java 클래스 생성과 이용, this, 매개변수로 클래스 전달, static과 싱글톤 응용 등 기본 문법을 정리했습니다."
 tags: [학습, 개발-CS, 언어, JAVA, 개발, 클래스, static]
 created: 2026-09-05
 modified: 2026-09-05

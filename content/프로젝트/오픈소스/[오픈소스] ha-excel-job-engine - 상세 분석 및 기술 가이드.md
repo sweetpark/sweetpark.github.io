@@ -1,5 +1,6 @@
 ---
 title: "[오픈소스] ha-excel-job-engine - 상세 분석 및 기술 가이드"
+description: "Redis 없이 DB 기반으로 동작하는 고가용성 분산 Job 큐와 OOM이 발생하지 않는 엑셀 내보내기 엔진 ha-excel-job-engine의 상세 분석과 기술 가이드입니다."
 tags: [학습, 오픈소스, Java, Spring-Boot, 분산시스템, Excel, High-Availability]
 created: 2026-09-05
 modified: 2026-09-05

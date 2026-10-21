@@ -1,14 +1,12 @@
 ---
 title: "💽 Linux 디스크 & 파일시스템 정리"
+description: "디스크 구조·파티션(MBR/GPT)·인터페이스, fdisk 파티셔닝, inode, 포맷·마운트, /etc/fstab, Swap, LVM까지 리눅스 디스크·파일시스템 정리."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 2일 오후 11:21
 modified: 2026-09-05
 ---
 
 # Linux 디스크 & 파일시스템 정리
-
-> [!NOTE]
-> 디스크 구조·파티션(MBR/GPT)·인터페이스, fdisk 파티셔닝, inode, 포맷·마운트, /etc/fstab, Swap, LVM까지 리눅스 디스크·파일시스템 정리.
 
 ## 📌 개념
 

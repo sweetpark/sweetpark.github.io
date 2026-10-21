@@ -1,5 +1,6 @@
 ---
 title: "Servlet 예제 ( 회원 저장 / 조회 )"
+description: "Servlet으로 회원 저장과 조회를 구현하는 예제로 구성, 구현 방법과 한계를 정리했습니다."
 tags: [JAVA 기반 웹개발, SERVLET & JSP]
 created: 2026-09-05
 modified: 2026-09-05

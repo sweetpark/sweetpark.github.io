@@ -1,5 +1,6 @@
 ---
 title: "File Upload"
+description: "Spring MVC에서 @PostMapping과 MultipartFile로 파일 업로드를 처리하는 방법을 정리했습니다."
 tags: [학습, 개발-CS, 언어, JAVA, Spring]
 created: 2026-09-05
 modified: 2026-09-05

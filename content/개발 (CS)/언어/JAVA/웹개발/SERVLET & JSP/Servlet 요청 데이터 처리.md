@@ -1,5 +1,6 @@
 ---
 title: "Servlet 요청 데이터 처리"
+description: "Servlet에서 요청 데이터를 처리하는 세 가지 방법(쿼리 파라미터, HTML Form, HTTP 메시지 바디 JSON)을 정리했습니다."
 tags: [JAVA 기반 웹개발, SERVLET & JSP]
 created: 2026-09-05
 modified: 2026-09-05

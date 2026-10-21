@@ -1,14 +1,12 @@
 ---
 title: "🔐 Linux 보안 & DB 기초 정리"
+description: "SELinux(강제적 접근제어, MAC)의 개념, 접근제어 모델(DAC/MAC/RBAC), 동작 모드·정책, 보안 컨텍스트·Boolean·포트 레이블 관리와 실습 시나리오 정리."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 2일 오후 11:28
 modified: 2026-09-05
 ---
 
 # Linux SELinux 정리 (SELinux · 접근제어)
-
-> [!NOTE]
-> SELinux(강제적 접근제어, MAC)의 개념, 접근제어 모델(DAC/MAC/RBAC), 동작 모드·정책, 보안 컨텍스트·Boolean·포트 레이블 관리와 실습 시나리오 정리.
 
 ## 📌 개념
 

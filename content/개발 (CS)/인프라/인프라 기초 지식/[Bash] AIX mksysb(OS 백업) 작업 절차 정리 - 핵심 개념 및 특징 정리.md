@@ -1,13 +1,11 @@
 ---
 title: "AIX mksysb(OS 백업) 작업 절차 정리"
+description: "AIX에서 mksysb로 OS(rootvg) 백업을 수행하는 절차. 사전 환경 점검 → 백업 디바이스(USB) 초기화 → SMIT mksysb 실행 순서로 정리."
 tags: [학습, 개발-CS, 인프라, 인프라-기초-지식, 개발, 인프라기초]
 modified: 2026-09-05
 ---
 
 # AIX mksysb(OS 백업) 작업 절차 정리
-
-> [!NOTE]
-> AIX에서 `mksysb`로 OS(rootvg) 백업을 수행하는 절차. 사전 환경 점검 → 백업 디바이스(USB) 초기화 → SMIT mksysb 실행 순서로 정리.
 
 ## 📌 개념
 

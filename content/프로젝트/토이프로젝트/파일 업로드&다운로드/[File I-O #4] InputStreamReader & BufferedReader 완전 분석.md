@@ -1,5 +1,6 @@
 ---
 title: "[File I/O #4] InputStreamReader & BufferedReader 완전 분석"
+description: "InputStreamReader와 BufferedReader의 동작 원리와 문자 인코딩 처리를 분석한 File I/O 시리즈 4편입니다."
 tags: [토이프로젝트, 파일 업로드&다운로드]
 created: 2026-09-05
 modified: 2026-09-05

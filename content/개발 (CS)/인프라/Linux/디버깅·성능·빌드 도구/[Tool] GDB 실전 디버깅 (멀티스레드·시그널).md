@@ -1,14 +1,12 @@
 ---
 title: "GDB 실전 디버깅 (멀티스레드·시그널)"
+description: "기본 명령어부터 멀티스레드 디버깅(info threads/thread apply all bt로 원인 스레드 찾기), 블로킹 함수를 n으로 넘길 때의 함정, gdb가 SIGINT를 가로채서 Ctrl+C 테스트가 안 먹히는 문제까지 정리한다."
 tags: [학습, 개발-CS, 인프라, Linux, GDB, 멀티스레드, 시그널]
 created: 2026-09-16
 modified: 2026-10-01
 ---
 
 # GDB 실전 디버깅 (멀티스레드·시그널)
-
-> [!NOTE]
-> 기본 명령어부터 멀티스레드 디버깅(`info threads`/`thread apply all bt`로 원인 스레드 찾기), 블로킹 함수를 `n`으로 넘길 때의 함정, gdb가 SIGINT를 가로채서 Ctrl+C 테스트가 안 먹히는 문제까지 정리한다.
 
 ## 1. 기본 명령어
 

@@ -1,5 +1,6 @@
 ---
 title: "D8. 3GPP — IE 표 한 장을 끝까지"
+description: "3GPP 규격의 IE 표 한 장을 끝까지 구조체와 pack, unpack, 테스트 코드로 구현하는 D8 드릴입니다."
 tags: 
 created: 2026-09-21
 modified: 2026-10-16

@@ -1,5 +1,6 @@
 ---
 title: "[유효성검증 #2] Bean Validation를 이용한 유효성 검증"
+description: "Spring Boot에서 가장 많이 쓰는 Bean Validation으로 어노테이션 한 줄로 유효성을 검증하는 방법을 정리했습니다."
 tags: [토이프로젝트, 유효성검사 (Validation)]
 created: 2026-09-05
 modified: 2026-09-05

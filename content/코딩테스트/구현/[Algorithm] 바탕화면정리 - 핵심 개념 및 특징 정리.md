@@ -1,5 +1,6 @@
 ---
 title: "바탕화면정리"
+description: "프로그래머스 바탕화면정리: 흩어진 파일을 모두 포함하는 최소 직사각형(Bounding Box)을 Math.min과 Math.max로 구하는 풀이를 정리했습니다."
 tags: [학습, 코딩테스트, 구현, 프로그래머스, 알고리즘, 완전탐색, 경계상자]
 created: 2026-06-24
 modified: 2026-09-05

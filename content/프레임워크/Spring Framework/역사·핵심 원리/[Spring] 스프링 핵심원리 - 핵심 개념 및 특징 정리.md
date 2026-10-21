@@ -1,14 +1,12 @@
 ---
 title: "스프링 핵심원리"
+description: "좋은 객체지향 설계(SOLID), IoC/DI 컨테이너, 스프링 빈 등록(컴포넌트 스캔), 의존관계 주입 방법, 싱글톤·프로토타입·웹 스코프, 빈 생명주기 콜백 등 김영한 스프링 핵심 원리를 정리한다."
 tags: [학습, 개발-CS, CS-기초, Spring-Framework, 개발, Spring]
 created: 2026년 2월 4일 오전 10:12
 modified: 2026-09-05
 ---
 
 # 스프링 핵심원리
-
-> [!NOTE]
-> 좋은 객체지향 설계(SOLID), IoC/DI 컨테이너, 스프링 빈 등록(컴포넌트 스캔), 의존관계 주입 방법, 싱글톤·프로토타입·웹 스코프, 빈 생명주기 콜백 등 김영한 스프링 핵심 원리를 정리한다.
 
 > [!NOTE] 실행 환경
 > 본문 코드에 `jakarta.annotation.PostConstruct`/`PreDestroy`, `jakarta.inject:jakarta.inject-api:2.0.1` 의존성이 등장하는 것으로 보아 Spring Boot 3.x(Spring 6.x, jakarta 네임스페이스) 환경으로 확인된다.

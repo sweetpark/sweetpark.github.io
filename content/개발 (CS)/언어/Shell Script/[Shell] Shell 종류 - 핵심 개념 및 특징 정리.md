@@ -1,5 +1,6 @@
 ---
 title: "Shell 종류"
+description: "셸 종류(sh, ksh, csh, bash)와 exec, awk, 표준 스트림과 /dev/null 개념을 정리했습니다."
 tags: [학습, 개발-CS, 언어, Shell-Script, 개발, Shell, 리다이렉션]
 created: 2026-09-05
 modified: 2026-09-05

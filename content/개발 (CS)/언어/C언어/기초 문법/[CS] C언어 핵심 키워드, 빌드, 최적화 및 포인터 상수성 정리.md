@@ -1,5 +1,6 @@
 ---
 title: "C언어 핵심 키워드, 빌드, 최적화 및 포인터 상수성 정리"
+description: "const, volatile, extern, #define 등 C 언어 핵심 키워드와 빌드, 최적화, 포인터 상수성을 표로 비교해 정리했습니다."
 tags: [학습, 개발-CS, 언어, C언어, 포인터, 컴파일러, 최적화]
 created: 2026-09-05
 modified: 2026-09-05

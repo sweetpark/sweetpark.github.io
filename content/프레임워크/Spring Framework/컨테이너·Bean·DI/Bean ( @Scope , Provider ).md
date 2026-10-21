@@ -1,5 +1,6 @@
 ---
 title: "Bean ( @Scope , Provider )"
+description: "Spring 빈 스코프의 개념과 지정 방법, 특징, ObjectProvider와 @Scope proxyMode 사용법을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

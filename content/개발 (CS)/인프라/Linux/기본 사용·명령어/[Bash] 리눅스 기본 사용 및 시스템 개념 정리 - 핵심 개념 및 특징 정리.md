@@ -1,14 +1,12 @@
 ---
 title: "리눅스 기본 사용 및 시스템 개념 정리"
+description: "리눅스 기본 사용법과 시스템 개념. 가상 콘솔, Run Level/init·systemd, 에디터(vi), man 도움말, 마운트 개념을 정리."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 3일 오전 10:37
 modified: 2026-09-05
 ---
 
 # 리눅스 기본 사용 및 시스템 개념 정리
-
-> [!NOTE]
-> 리눅스 기본 사용법과 시스템 개념. 가상 콘솔, Run Level/init·systemd, 에디터(vi), man 도움말, 마운트 개념을 정리.
 
 ## 📌 개념
 

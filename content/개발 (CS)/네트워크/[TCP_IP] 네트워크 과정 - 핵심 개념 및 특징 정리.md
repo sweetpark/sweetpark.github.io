@@ -1,14 +1,12 @@
 ---
 title: "네트워크 과정"
+description: "OSI 7계층 / TCP/IP 4계층 구조와 각 계층별 역할, 그리고 TCP·UDP·IP·ARP·ICMP 등 주요 프로토콜 헤더 구조 정리."
 tags: [학습, 개발-CS, 네트워크, 기초, 개발, OSI, TCPIP, 프로토콜]
 created: 2026-02-03
 modified: 2026-09-05
 ---
 
 # 네트워크 과정
-
-> [!NOTE]
-> OSI 7계층 / TCP/IP 4계층 구조와 각 계층별 역할, 그리고 TCP·UDP·IP·ARP·ICMP 등 주요 프로토콜 헤더 구조 정리.
 
 ## 📌 개념
 

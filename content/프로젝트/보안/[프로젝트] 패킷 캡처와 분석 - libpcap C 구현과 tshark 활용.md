@@ -1,5 +1,6 @@
 ---
 title: "[프로젝트] 패킷 캡처와 분석 - libpcap C 구현과 tshark 활용"
+description: "libpcap으로 네트워크 패킷을 직접 캡처하고 Ethernet, IP, TCP 헤더를 파싱해 보며 tshark로 분석하는 C 프로젝트입니다."
 tags: [학습, 보안, 네트워크, C, 패킷분석, tshark]
 created: 2026-09-05
 modified: 2026-09-05

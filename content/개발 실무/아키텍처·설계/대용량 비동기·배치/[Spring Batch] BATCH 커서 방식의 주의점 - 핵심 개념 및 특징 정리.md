@@ -1,13 +1,11 @@
 ---
 title: "[BATCH] 커서 방식의 주의점"
+description: "Spring Batch: Cursor vs Paging Reader 방식 비교 정리"
 tags: [학습, 개발실무, Batch]
 modified: 2026-09-05
 ---
 
 # [BATCH] 커서 방식의 주의점
-
-> [!NOTE]
-> Spring Batch: Cursor vs Paging Reader 방식 비교 정리
 
 ## 📌 개념
 - Spring Batch ItemReader 방식(Cursor / Paging) 비교

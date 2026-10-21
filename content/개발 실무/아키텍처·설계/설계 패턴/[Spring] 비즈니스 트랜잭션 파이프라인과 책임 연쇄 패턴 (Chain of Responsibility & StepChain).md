@@ -1,5 +1,6 @@
 ---
 title: "[Spring] 비즈니스 트랜잭션 파이프라인과 책임 연쇄 패턴 (Chain of Responsibility & StepChain)"
+description: "복잡한 결제 승인 로직을 if-else 대신 독립된 Step 파이프라인으로 나누는 책임 연쇄 패턴(Chain of Responsibility, StepChain)을 Spring에서 구현한 방법을 정리했습니다."
 tags: [Spring, DesignPattern, ChainOfResponsibility, Payment, Refactoring]
 created: 2026-09-05
 modified: 2026-09-05

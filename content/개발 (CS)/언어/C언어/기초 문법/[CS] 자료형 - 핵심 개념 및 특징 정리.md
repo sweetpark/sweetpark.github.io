@@ -1,14 +1,12 @@
 ---
 title: "자료형"
+description: "C 언어의 구조체(struct), 문자열, size_t/ssize_t, extern, typedef, enum 등 자료형 정리."
 tags: [학습, 개발-CS, 언어, C언어, 개발, 구조체, 자료형]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # 자료형
-
-> [!NOTE]
-> C 언어의 구조체(struct), 문자열, size_t/ssize_t, extern, typedef, enum 등 자료형 정리.
 
 ## 📌 개념
 

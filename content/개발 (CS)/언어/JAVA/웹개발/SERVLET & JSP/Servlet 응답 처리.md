@@ -1,5 +1,6 @@
 ---
 title: "Servlet 응답 처리"
+description: "Servlet의 HttpServletResponse 사용법과 텍스트, HTML, JSON 응답 처리 방법을 정리했습니다."
 tags: [JAVA 기반 웹개발, SERVLET & JSP]
 created: 2026-09-05
 modified: 2026-09-05

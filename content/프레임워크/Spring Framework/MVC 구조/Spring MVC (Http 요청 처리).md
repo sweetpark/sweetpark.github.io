@@ -1,5 +1,6 @@
 ---
 title: "Spring MVC (Http 요청 처리)"
+description: "Spring MVC가 HTTP 요청 파라미터와 요청 바디(@RequestBody, HttpEntity, ObjectMapper)를 처리하는 방법을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

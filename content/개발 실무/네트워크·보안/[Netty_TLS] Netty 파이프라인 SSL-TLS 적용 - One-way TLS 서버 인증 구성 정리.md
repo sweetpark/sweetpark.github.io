@@ -1,13 +1,11 @@
 ---
 title: "[Netty_TLS] Netty 파이프라인 SSL-TLS 적용"
+description: "평문 TCP 소켓 통신을 서버 인증서 기반 TLS로 암호화 전환할 때의 표준 절차(One-way TLS) 정리."
 tags: [학습, 개발실무, Netty, TLS]
 modified: 2026-09-05
 ---
 
 # [Netty_TLS] Netty 파이프라인 SSL-TLS 적용
-
-> [!NOTE]
-> 평문 TCP 소켓 통신을 서버 인증서 기반 TLS로 암호화 전환할 때의 표준 절차(One-way TLS) 정리.
 
 > [!NOTE] 실행 환경
 > 이 노트 자체에는 코드가 없어(절차/설계 정리 중심) 버전을 특정할 직접적 근거는 없습니다. 연관 노트인 [Java] 04(SslContextBuilder, netty-tcnative-boringssl-static 사용)로 미루어 **Netty 4.1.x 계열**로 추정되며, JDK 버전은 명시되어 있지 않습니다.

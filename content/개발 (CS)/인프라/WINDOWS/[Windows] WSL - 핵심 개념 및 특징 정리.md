@@ -1,5 +1,6 @@
 ---
 title: "WSL"
+description: "Windows에서 WSL(Windows Subsystem for Linux)을 설치하고 Ubuntu를 실행하는 절차를 정리했습니다."
 tags: [학습, 개발-CS, 인프라, WSL]
 modified: 2026-09-05
 ---

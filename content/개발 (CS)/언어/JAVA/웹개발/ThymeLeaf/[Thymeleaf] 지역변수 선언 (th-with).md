@@ -1,5 +1,6 @@
 ---
 title: "[Thymeleaf] 지역변수 선언 (th:with)"
+description: "Thymeleaf에서 th:with로 지역변수를 선언하고 사용하는 방법을 정리했습니다."
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

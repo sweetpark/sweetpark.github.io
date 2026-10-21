@@ -1,5 +1,6 @@
 ---
 title: "Git·버전관리 용어"
+description: "저장소, 브랜치, 되돌리기(revert, reset, rebase), PR/MR, 코드 리뷰 등 Git 협업에서 자주 쓰는 용어 22개를 정리한 용어집입니다."
 tags: [학습, IT용어집, Git, 버전관리, 협업, 코드리뷰]
 created: 2026-10-02
 modified: 2026-10-02

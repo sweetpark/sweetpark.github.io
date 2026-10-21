@@ -1,5 +1,6 @@
 ---
 title: "SpringMVC ( Http 응답 처리 )"
+description: "Spring MVC의 HTTP 응답 방법으로 View 템플릿, ResponseEntity, @ResponseBody, ModelAndView를 쓰는 방법을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

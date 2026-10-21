@@ -1,14 +1,12 @@
 ---
 title: "epoll — fd가 많아질 때의 대안"
+description: "select()의 fd 개수 제한·O(n) 스캔 비용을 poll()과 epoll()이 각각 어떻게 해결하는지, level-triggered/edge-triggered 차이, 세 API 비교를 정리한다."
 tags: [학습, 개발-CS, 언어, C언어, epoll, poll, select, 파일디스크립터]
 created: 2026-09-16
 modified: 2026-10-19
 ---
 
 # epoll — fd가 많아질 때의 대안
-
-> [!NOTE]
-> `select()`의 fd 개수 제한·O(n) 스캔 비용을 poll()과 epoll()이 각각 어떻게 해결하는지, level-triggered/edge-triggered 차이, 세 API 비교를 정리한다.
 
 ## 0. 배경
 

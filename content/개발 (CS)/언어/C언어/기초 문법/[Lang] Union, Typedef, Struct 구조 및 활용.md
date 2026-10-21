@@ -1,5 +1,6 @@
 ---
 title: "Union, Typedef, Struct 구조 및 활용"
+description: "C 언어 Union의 구조와 특징, Struct와의 메모리 차이, Typedef로 별칭 붙이기, 실무 활용 사례를 정리했습니다."
 tags: 
 created: 2026-09-05
 modified: 2026-09-05

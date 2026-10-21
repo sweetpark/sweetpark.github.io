@@ -1,5 +1,6 @@
 ---
 title: "D7. 데몬 — 시그널·poll·워커큐·graceful shutdown"
+description: "시그널, poll, 워커 큐, graceful shutdown을 갖춘 데몬을 만드는 D7 드릴입니다."
 tags: 
 created: 2026-09-21
 modified: 2026-10-16

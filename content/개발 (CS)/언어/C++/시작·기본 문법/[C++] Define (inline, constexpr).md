@@ -1,5 +1,6 @@
 ---
 title: "Define (inline, constexpr)"
+description: "전처리기 매크로 #define의 사용법과 단점, C++11 이후 대체 수단인 inline과 constexpr의 차이를 정리했습니다."
 tags: [C++, define, inline, constexpr]
 created: 2026-09-05
 modified: 2026-09-05

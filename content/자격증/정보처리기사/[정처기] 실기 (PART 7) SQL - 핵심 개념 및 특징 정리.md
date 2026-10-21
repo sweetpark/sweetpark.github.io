@@ -1,13 +1,11 @@
 ---
 title: "[실기] (PART 7) SQL"
+description: "정보처리기사 실기 PART 7 — 트랜잭션 특성과 SQL(DDL/DML/DCL) 등 데이터베이스·SQL 핵심 정리."
 tags: [학습, 자격증, 정보처리기사]
 modified: 2026-09-05
 ---
 
 # [실기] (PART 7) SQL
-
-> [!NOTE]
-> 정보처리기사 실기 PART 7 — 트랜잭션 특성과 SQL(DDL/DML/DCL) 등 데이터베이스·SQL 핵심 정리.
 
 ## 📌 개념
 

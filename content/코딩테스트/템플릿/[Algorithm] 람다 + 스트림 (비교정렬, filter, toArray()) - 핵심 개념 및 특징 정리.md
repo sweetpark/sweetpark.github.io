@@ -1,5 +1,6 @@
 ---
 title: "람다 + 스트림 (비교정렬, filter, toArray())"
+description: "코딩테스트에서 쓰는 Java 람다와 스트림의 정렬(Comparable, Comparator), toArray(), flatMap 평탄화, filter(Predicate)를 정리했습니다."
 tags: [학습, 코딩테스트, 코테템플릿, 알고리즘, 스트림, 람다]
 created: 2026-04-25
 modified: 2026-09-05

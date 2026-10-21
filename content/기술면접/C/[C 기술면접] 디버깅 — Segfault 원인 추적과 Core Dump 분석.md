@@ -1,5 +1,6 @@
 ---
 title: "[C 기술면접] 디버깅 — Segfault 원인 추적과 Core Dump 분석"
+description: "Segmentation fault가 났을 때 호출 스택으로 위치를 찾고 잘못된 주소와 값을 확인하는 흐름과 core dump 분석 방법을 C 기술면접 질문에 맞춰 정리했습니다."
 tags: [기술면접, C 기술면접, segfault, SIGSEGV, core dump, gdb, AddressSanitizer, valgrind, 디버깅]
 created: 2026-10-19
 modified: 2026-10-19

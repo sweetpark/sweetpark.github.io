@@ -1,5 +1,6 @@
 ---
 title: "캐시 전략과 운영 이슈 (Redis·stampede·무효화·write-behind)"
+description: "캐시를 어디에 두고 언제 쓰고 지울지, Redis 운영, cache stampede, 캐시 무효화, write-behind 등 캐시 전략과 운영 이슈를 정리했습니다."
 tags: [학습, 개발실무, 아키텍처, 캐시, Redis]
 created: 2026-10-02
 modified: 2026-10-02

@@ -1,14 +1,12 @@
 ---
 title: "가변 인자 함수 — stdarg.h로 나만의 printf 만들기"
+description: "printf, snprintf처럼 인자 개수가 호출할 때마다 달라지는 함수를 직접 만드는 방법(stdarg.h)과, 로그 함수를 만들 때 실제로 쓰이는 vsnprintf 조합 패턴을 정리한다."
 tags: [학습, 개발-CS, 언어, C언어, 가변인자, stdarg, 로깅]
 created: 2026-09-17
 modified: 2026-09-17
 ---
 
 # 가변 인자 함수 — stdarg.h로 나만의 printf 만들기
-
-> [!NOTE]
-> `printf`, `snprintf`처럼 인자 개수가 호출할 때마다 달라지는 함수를 직접 만드는 방법(`stdarg.h`)과, 로그 함수를 만들 때 실제로 쓰이는 `vsnprintf` 조합 패턴을 정리한다.
 
 ## 0. 왜 필요한가
 

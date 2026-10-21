@@ -1,5 +1,6 @@
 ---
 title: "객체 지향 (다형성)"
+description: "C++ 다형성을 오버로딩, 오버라이딩(virtual, override), 순수 가상함수와 추상 클래스 중심으로 정리했습니다."
 tags: [C++, 객체지향, 다형성]
 created: 2026-09-05
 modified: 2026-09-05

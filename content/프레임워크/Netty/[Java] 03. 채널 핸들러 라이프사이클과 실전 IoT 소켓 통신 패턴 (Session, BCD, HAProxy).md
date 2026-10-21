@@ -1,5 +1,6 @@
 ---
 title: "[Java] 03. 채널 핸들러 라이프사이클과 실전 IoT 소켓 통신 패턴 (Session, BCD, HAProxy)"
+description: "Netty ChannelInboundHandlerAdapter의 수명 주기와 ReferenceCountUtil로 버퍼 누수를 막는 방법, 세션, BCD, HAProxy 등 IoT 소켓 통신 실전 패턴을 정리했습니다."
 tags: [Netty, ChannelHandler, IoT, Socket, Session, HAProxy]
 created: 2026-09-05
 modified: 2026-09-05

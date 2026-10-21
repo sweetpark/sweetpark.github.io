@@ -1,14 +1,12 @@
 ---
 title: "검증"
+description: "상품 등록/수정 검증 구현 — @Validated, Bean Validation, Validator 구분"
 tags: [학습, 개발-CS, 언어, Spring, 김영한]
 created: 2026-02-04
 modified: 2026-09-05
 ---
 
 # 검증
-
-> [!NOTE]
-> 상품 등록/수정 검증 구현 — @Validated, Bean Validation, Validator 구분
 
 > [!NOTE] 실행 환경
 > 버전 명시 없음 — `@Validated`, Bean Validation(JSR-380) 표준 애노테이션만 사용되어 특정 Spring Boot 버전은 확정하기 어렵다.

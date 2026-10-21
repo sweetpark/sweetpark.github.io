@@ -1,5 +1,6 @@
 ---
 title: "[SQL] VIEW"
+description: "SQL VIEW의 개념과 사용 이유, 사용법, 뷰를 통한 갱신의 제약을 정리했습니다."
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "[Java] 01. Netty 아키텍처와 이벤트 루프 스레드 모델 (EventLoop, Boss·Worker, Bootstrap)"
+description: "고성능 비동기 이벤트 기반 네트워크 프레임워크 Netty의 아키텍처와 Reactor 스레드 모델(EventLoop, Boss·Worker, Bootstrap)을 정리했습니다."
 tags: [Netty, Java, Network, EventLoop, Socket]
 created: 2026-09-05
 modified: 2026-09-05

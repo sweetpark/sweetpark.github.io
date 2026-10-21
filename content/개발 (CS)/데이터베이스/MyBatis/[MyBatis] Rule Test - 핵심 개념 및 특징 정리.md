@@ -1,5 +1,6 @@
 ---
 title: "Rule Test"
+description: "MyBatis Mapper SQL 품질을 빌드 시점에 검증하는 Rule Test와 Quality Gate 설계, FAIL/WARN/GUIDE 3단계 규칙과 Gradle 플러그인 구조를 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, 개발, MyBatis, SQL, QualityGate, Gradle]
 modified: 2026-09-05
 ---

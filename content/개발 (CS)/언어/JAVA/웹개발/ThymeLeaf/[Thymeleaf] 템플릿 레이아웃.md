@@ -1,5 +1,6 @@
 ---
 title: "[Thymeleaf] 템플릿 레이아웃"
+description: "Thymeleaf 3.x의 프래그먼트 표현식(~{...})으로 공통 레이아웃에 title과 section을 파라미터로 전달하는 템플릿 레이아웃 방법을 정리했습니다."
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

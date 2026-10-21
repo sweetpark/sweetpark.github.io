@@ -1,14 +1,12 @@
 ---
 title: "로드밸런스"
+description: "로드밸런서 종류(L4/L7)와 세션 관리 방식(sticky / clustering / storage)의 장단점, 네트워크 로드밸런서 구성(Listener + Target Group) 정리."
 tags: [학습, 개발-CS, 인프라, 인프라-구성, 개발, 로드밸런스]
 created: 2026-02-03
 modified: 2026-09-05
 ---
 
 # 로드밸런스
-
-> [!NOTE]
-> 로드밸런서 종류(L4/L7)와 세션 관리 방식(sticky / clustering / storage)의 장단점, 네트워크 로드밸런서 구성(Listener + Target Group) 정리.
 
 ## 📌 개념
 

@@ -1,5 +1,6 @@
 ---
 title: "인덱스 설계와 쿼리 재구성 패턴"
+description: "EXPLAIN으로 병목 읽기, 복합 인덱스 leftmost-prefix 규칙, 집계 후 JOIN, 윈도우 함수 대체 등 인덱스 설계와 쿼리 재구성 패턴을 정리했습니다."
 tags: [학습, 데이터베이스, SQL, 인덱스, 성능]
 modified: 2026-09-05
 ---

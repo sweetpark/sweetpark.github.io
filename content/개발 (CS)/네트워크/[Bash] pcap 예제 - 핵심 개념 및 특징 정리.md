@@ -1,13 +1,11 @@
 ---
 title: "pcap 예제"
+description: "pcap 개발환경 설치/컴파일 방법과 Ethernet/IP/TCP 헤더 구조, 바이트 오더 변환 함수(htons/htonl/ntohs/ntohl) 정리."
 tags: [학습, 개발-CS, 네트워크, libpcap, C]
 modified: 2026-09-05
 ---
 
 # pcap 예제
-
-> [!NOTE]
-> pcap 개발환경 설치/컴파일 방법과 Ethernet/IP/TCP 헤더 구조, 바이트 오더 변환 함수(htons/htonl/ntohs/ntohl) 정리.
 
 ## ⚙️ 구현
 

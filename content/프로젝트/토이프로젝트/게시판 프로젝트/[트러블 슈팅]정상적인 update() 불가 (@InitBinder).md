@@ -1,5 +1,6 @@
 ---
 title: "[트러블 슈팅]정상적인 update() 불가 (@InitBinder)"
+description: "update()가 정상 동작하지 않던 문제를 @InitBinder의 동작 원리로 해결한 트러블 슈팅 기록입니다."
 tags: [프로젝트, 게시판 프로젝트]
 created: 2026-09-05
 modified: 2026-09-05

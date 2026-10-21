@@ -1,5 +1,6 @@
 ---
 title: "포인터 타입변환"
+description: "C++ 포인터 타입 변환과 상속 관계에서 부모 포인터로 delete할 때 소멸자가 virtual이어야 하는 이유를 정리했습니다."
 tags: [C++, 포인터, 타입변환]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "상품 등록 및 조회/ 수정"
+description: "@RequestParam과 @ModelAttribute, PRG 패턴으로 상품 등록, 조회, 수정을 구현한 미니 프로젝트입니다."
 tags: [학습, 개발-CS, 언어, Spring, 김영한]
 created: 2026-02-04
 modified: 2026-09-05

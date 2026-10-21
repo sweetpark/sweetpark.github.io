@@ -1,5 +1,6 @@
 ---
 title: "SD39. 심볼릭명이 정확한 대상에 매핑되어 있지 않음 — mkstemp로 치환"
+description: "시큐어코딩 SD39 심볼릭명이 정확한 대상에 매핑되어 있지 않음 (CWE-386): 취약한 코드를 mkstemp 방식으로 바꾸는 치환을 요구사항서, pseudo code, 테스트 코드로 체화하는 드릴입니다."
 tags: 
 created: 2026-09-28
 modified: 2026-10-16

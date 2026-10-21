@@ -1,5 +1,6 @@
 ---
 title: "__name__, 2차원배열"
+description: "Python의 __name__ 관례와 2차원 배열 생성·접근, 리스트 다루기를 정리했습니다."
 tags: [학습, 개발-CS, 언어, Python, 개발, 리스트, 배열]
 created: 2026-09-05
 modified: 2026-09-05

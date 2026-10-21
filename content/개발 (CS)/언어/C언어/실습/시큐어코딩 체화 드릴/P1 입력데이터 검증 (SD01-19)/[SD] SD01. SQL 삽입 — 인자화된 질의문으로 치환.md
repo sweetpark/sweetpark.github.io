@@ -1,5 +1,6 @@
 ---
 title: "SD01. SQL 삽입 — 인자화된 질의문으로 치환"
+description: "시큐어코딩 SD01 SQL 삽입 (CWE-89): 취약한 코드를 인자화된 질의문 방식으로 바꾸는 치환을 요구사항서, pseudo code, 테스트 코드로 체화하는 드릴입니다."
 tags: 
 created: 2026-09-28
 modified: 2026-10-16

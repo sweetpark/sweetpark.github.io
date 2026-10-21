@@ -1,5 +1,6 @@
 ---
 title: "공유메모리 동시성 — 락 선택과 프로세스 간 함정"
+description: "공유메모리에서 race condition이 생기는 이유, 세마포어 외의 락 수단, 락을 쥔 채 프로세스가 죽는 경우 등 프로세스 간 락의 함정을 정리했습니다."
 tags: [학습, 개발-CS, CS기초, 운영체제, 공유메모리, 동시성, race-condition, 뮤텍스, 세마포어, robust-mutex]
 created: 2026-10-04
 modified: 2026-10-19

@@ -1,5 +1,6 @@
 ---
 title: "[기초] 자료형"
+description: "Java 기본 자료형(primitive type)의 크기와 특징, 배열 선언 문법을 간단히 정리했습니다."
 tags: [학습, 개발-CS, 언어, JAVA, 개발, 자료형]
 created: 2026-09-05
 modified: 2026-09-05

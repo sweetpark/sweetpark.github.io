@@ -1,5 +1,6 @@
 ---
 title: "SPRING MVC 구조 #2 (Dispatcher Servlet, handler Adapter)"
+description: "Spring MVC DispatcherServlet 구조 2편으로 핸들러를 호출하는 핸들러 어댑터의 역할과 동작을 소스 코드로 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

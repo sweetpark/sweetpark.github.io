@@ -1,5 +1,6 @@
 ---
 title: "[오픈소스] mybatis-sql-tuner-ai - 상세 분석 및 기술 가이드"
+description: "MyBatis 매퍼 XML의 동적 태그를 실행 가능한 fakeSql로 변환해 EXPLAIN으로 분석하는 IntelliJ용 AI 튜닝 도구 mybatis-sql-tuner-ai의 상세 분석과 기술 가이드입니다."
 tags: [학습, 오픈소스, Java, IntelliJ-Plugin, MyBatis, AI, SQL-Tuning]
 created: 2026-09-05
 modified: 2026-09-05

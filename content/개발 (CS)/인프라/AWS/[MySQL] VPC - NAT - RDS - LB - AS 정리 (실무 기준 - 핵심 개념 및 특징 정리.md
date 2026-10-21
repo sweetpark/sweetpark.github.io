@@ -1,5 +1,6 @@
 ---
 title: "✅ VPC / NAT / RDS / LB / AS 정리 (실무 기준 교정본)"
+description: "AWS VPC 생성, NAT Gateway, RDS, 로드밸런서(ELB), 오토 스케일링 구성 절차를 실무 기준으로 교정해 정리했습니다."
 tags: [학습, 개발-CS, 인프라, AWS, 개발]
 created: 2026년 2월 2일 오후 11:33
 modified: 2026-09-05

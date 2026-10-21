@@ -1,5 +1,6 @@
 ---
 title: "[Thymeleaf] 자체 태그 (th:block , th:inline, th:fragment)"
+description: "Thymeleaf의 자체 태그 th:block, th:inline, th:fragment 사용법과 프래그먼트 표현식을 정리했습니다."
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

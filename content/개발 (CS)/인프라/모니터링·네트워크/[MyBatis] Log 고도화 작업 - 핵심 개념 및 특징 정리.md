@@ -1,5 +1,6 @@
 ---
 title: "Log 고도화 작업"
+description: "Spring과 MyBatis 서버의 로그를 요청 흐름(trace) 기준으로 재설계하고 Loki와 Grafana로 가시화한 로그 고도화 작업을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, 개발, Logging, MyBatis, Grafana, Loki, Observability]
 modified: 2026-09-05
 ---

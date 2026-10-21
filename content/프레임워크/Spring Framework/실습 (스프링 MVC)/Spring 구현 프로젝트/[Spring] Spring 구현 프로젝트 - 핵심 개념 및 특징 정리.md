@@ -1,5 +1,6 @@
 ---
 title: "Spring 구현 프로젝트"
+description: "순수 Servlet에서 FrontController와 Adapter 패턴을 거쳐 Spring MVC DispatcherServlet에 이르는 과정을 직접 구현하며 내부 동작을 이해하는 프로젝트입니다."
 tags: [학습, 개발-CS, 언어, Spring, 김영한]
 modified: 2026-09-05
 ---

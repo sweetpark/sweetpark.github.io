@@ -1,5 +1,6 @@
 ---
 title: "Servlet Filter"
+description: "서블릿 Filter를 쓰는 이유와 Filter 인터페이스 구현, FilterRegistrationBean으로 등록하는 방법을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

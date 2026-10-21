@@ -1,5 +1,6 @@
 ---
 title: "기본 문법"
+description: "Bash 셸 스크립트 기본 문법인 변수, 배열, 조건문, 반복문, 리다이렉션, 환경변수와 cut, awk, sed 명령을 정리했습니다."
 tags: [학습, 개발-CS, 언어, Shell-Script, 개발, Shell, 문법]
 created: 2026-09-05
 modified: 2026-09-05

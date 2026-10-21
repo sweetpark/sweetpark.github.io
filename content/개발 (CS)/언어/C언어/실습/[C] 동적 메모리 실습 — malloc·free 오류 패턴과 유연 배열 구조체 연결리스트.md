@@ -1,16 +1,12 @@
 ---
 title: "(C) 동적 메모리 실습 — malloc·free 오류 패턴과 유연 배열 구조체 연결리스트"
+description: "malloc과 free의 오류 패턴(double free, free 후 참조, 해제 누락, 크기 계산 오류)을 정리하고 유연 배열 구조체 연결리스트를 구현했습니다."
 tags: 
 created: 2026-10-13
 modified: 2026-10-15
 ---
 
 # 동적 메모리 실습 — malloc·free 오류 패턴과 유연 배열 구조체 연결리스트
-
-> [!NOTE]
-> C 기초 강의의 동적 메모리 실습(9-01 ~ 9-11)에서 만난 오류 패턴을 정리하고, 이를 바탕으로 `realloc` 기반 문자열 배열과 **유연 배열 멤버(flexible array member) 노드를 쓰는 연결리스트**를 직접 만들어 본다.
->
-> 환경은 Linux 컨테이너, `gcc -g -O0 -Wall -Wextra`.
 
 > [!IMPORTANT]
 > 코드는 컨테이너에서 컴파일·실행해 확인했고, 설명은 AI(Claude)와 함께 코드 리뷰하며 정리했다.

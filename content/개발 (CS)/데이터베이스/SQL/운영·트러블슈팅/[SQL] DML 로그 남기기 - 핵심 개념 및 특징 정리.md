@@ -1,13 +1,11 @@
 ---
 title: "DML 로그 남기기"
+description: "MySQL general_log를 켜서 INSERT/UPDATE 등 DML 쿼리를 테이블에 기록·조회하는 방법과, 대소문자 구분을 위한 my.ini 설정을 정리한다."
 tags: [학습, 개발-CS, 데이터베이스, 개발, SQL]
 modified: 2026-09-05
 ---
 
 # DML 로그 남기기
-
-> [!NOTE]
-> MySQL general_log를 켜서 INSERT/UPDATE 등 DML 쿼리를 테이블에 기록·조회하는 방법과, 대소문자 구분을 위한 my.ini 설정을 정리한다.
 
 ## 📌 개념
 

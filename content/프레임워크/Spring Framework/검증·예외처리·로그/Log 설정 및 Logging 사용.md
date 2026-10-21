@@ -1,5 +1,6 @@
 ---
 title: "Log 설정 및 Logging 사용"
+description: "SLF4J와 Logback으로 로그를 설정하고 사용하는 방법과 로깅의 장점, 참고 사이트를 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,16 +1,12 @@
 ---
 title: "(C) 파일 입출력 실습 — fopen·open 오류 패턴과 임시파일 + rename 안전 저장"
+description: "C 파일 입출력 실습에서 만난 fopen, open 오류 패턴을 정리하고 임시파일과 rename으로 안전하게 저장하는 방법을 단계적으로 구현했습니다."
 tags: 
 created: 2026-10-13
 modified: 2026-10-13
 ---
 
 # 파일 입출력 실습 — fopen·open 오류 패턴과 임시파일 + rename 안전 저장
-
-> [!NOTE]
-> C 기초 강의의 파일 I/O 실습(10-01 ~ 10-04)에서 만난 오류 패턴을 정리하고, 이를 응용해 **공백 제거 복사 프로그램**을 `open`+`fdopen` → 반환값 검사 → **임시 파일 + `rename`** 으로 단계적으로 개선한다.
->
-> 환경은 Linux 컨테이너, `gcc -g -O0 -Wall -Wextra`.
 
 > [!IMPORTANT]
 > 코드는 컨테이너에서 컴파일·실행해 확인했고, 설명은 AI(Claude)와 함께 코드 리뷰하며 정리했다.

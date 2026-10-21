@@ -1,14 +1,12 @@
 ---
 title: "[명령어] Makefile"
+description: "Makefile의 필요성과 기본 구조(Target·의존성·명령·매크로), C 소스 컴파일 흐름과 자동화 매크로($^, $@, $*, $<) 정리."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 3일 오후 11:07
 modified: 2026-09-05
 ---
 
 # [명령어] Makefile
-
-> [!NOTE]
-> Makefile의 필요성과 기본 구조(Target·의존성·명령·매크로), C 소스 컴파일 흐름과 자동화 매크로($^, $@, $*, $<) 정리.
 
 ## 📌 개념
 

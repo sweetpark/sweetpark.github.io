@@ -1,5 +1,6 @@
 ---
 title: "SD36. 같은 포트번호의 다중 연결 — SO_REUSEPORT 신중 사용으로 치환"
+description: "시큐어코딩 SD36 같은 포트번호의 다중 연결 (CWE-605): 취약한 코드를 SO_REUSEPORT 신중 사용 방식으로 바꾸는 치환을 요구사항서, pseudo code, 테스트 코드로 체화하는 드릴입니다."
 tags: 
 created: 2026-09-28
 modified: 2026-10-16

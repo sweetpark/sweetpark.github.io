@@ -1,13 +1,11 @@
 ---
 title: "[Spring] Bean 이름 기반 전략 패턴"
+description: "프로토콜 코드/전문 ID 같은 짧은 문자열을 그대로 Spring Bean 이름으로 등록해 전략 패턴(Strategy Pattern)을 구현하는 방식 정리."
 tags: [학습, 개발실무, Spring]
 modified: 2026-09-05
 ---
 
 # [Spring] Bean 이름 기반 전략 패턴
-
-> [!NOTE]
-> 프로토콜 코드/전문 ID 같은 짧은 문자열을 그대로 Spring Bean 이름으로 등록해 전략 패턴(Strategy Pattern)을 구현하는 방식 정리.
 
 ## 📌 개념
 

@@ -1,5 +1,6 @@
 ---
 title: "서버 배포 (+Docker)"
+description: "Dockerfile 작성, buildx 이미지 빌드, Docker Hub push와 pull, 환경변수와 컨테이너 관리 등 Docker 기반 서버 배포를 정리했습니다."
 tags: [학습, 개발-CS, 인프라, 기초, 개발, Docker, 배포]
 modified: 2026-09-05
 ---

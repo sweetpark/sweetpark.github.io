@@ -1,5 +1,6 @@
 ---
 title: "[Page처리 #3] 성능 차이 비교하기 (OFFSET, CURSOR)"
+description: "OFFSET 방식과 Cursor 방식 페이징의 성능 차이를 Total Count 쿼리와 함께 실제로 비교한 페이징 처리 3편입니다."
 tags: [토이프로젝트, 페이징 처리]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "Onz API 레퍼런스"
+description: "Onz(칵테일 플랫폼) 백엔드가 제공하는 API 엔드포인트를 기능별로 하나로 통합해 정리한 레퍼런스입니다."
 tags: [학습, 토이프로젝트, Spring-Boot, JPA, OAuth, API]
 created: 2026-09-05
 modified: 2026-09-05

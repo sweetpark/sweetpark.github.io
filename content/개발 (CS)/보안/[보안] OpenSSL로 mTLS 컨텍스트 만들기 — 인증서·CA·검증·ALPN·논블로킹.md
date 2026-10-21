@@ -1,5 +1,6 @@
 ---
 title: "OpenSSL로 mTLS 컨텍스트 만들기 — 인증서·CA·검증·ALPN·논블로킹"
+description: "C에서 OpenSSL로 mTLS를 구성할 때 호출하는 함수의 순서와 이유(CA, 인증서, 개인 키, 검증 모드, ALPN, 논블로킹)를 서버와 클라이언트로 나눠 정리했습니다."
 tags: [학습, 개발-CS, 보안, TLS, OpenSSL, mTLS, ALPN, C]
 created: 2026-10-07
 modified: 2026-10-07

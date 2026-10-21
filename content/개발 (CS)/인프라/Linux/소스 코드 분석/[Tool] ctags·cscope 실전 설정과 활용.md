@@ -1,5 +1,6 @@
 ---
 title: "ctags·cscope 실전 설정과 활용"
+description: "IDE 없이 터미널에서 ctags와 cscope로 대규모 C/C++ 코드를 읽는 설정과 인덱스 생성, vim 연동, 호출 관계 추적 순서를 정리했습니다."
 tags: [학습, 개발-CS, 인프라, Linux, ctags, cscope, vim, quickfix, 시그니처힌트]
 created: 2026-09-16
 modified: 2026-09-17

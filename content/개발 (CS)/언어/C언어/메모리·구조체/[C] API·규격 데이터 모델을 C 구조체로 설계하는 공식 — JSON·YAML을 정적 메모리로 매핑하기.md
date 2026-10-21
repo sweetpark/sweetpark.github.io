@@ -1,14 +1,12 @@
 ---
 title: "API·규격 데이터 모델을 C 구조체로 설계하는 공식 — JSON·YAML을 정적 메모리로 매핑하기"
+description: "REST API, OpenAPI, 3GPP, RFC 규격의 JSON·YAML 데이터 모델을 C 구조체로 옮길 때 쓰는 5대 설계 패턴과 메모리 관리 공식을 정리했습니다."
 tags: [학습, 개발-CS, 언어, C언어, 데이터모델, 구조체설계, API, 직렬화, 메모리패턴, 스택힙]
 created: 2026-09-18
 modified: 2026-09-22
 ---
 
 # API·규격 데이터 모델을 C 구조체로 설계하는 공식 — JSON·YAML을 정적 메모리로 매핑하기
-
-> [!NOTE]
-> REST API, OpenAPI(Swagger), 3GPP, IETF RFC 등 규격서나 스키마(JSON/YAML)에 정의된 **데이터 모델(Data Model)**을 고성능·저지연 C 언어 구조체로 옮겨 담을 때 사용하는 **5대 핵심 설계 패턴과 메모리 관리 공식**을 정리한다.
 
 ---
 

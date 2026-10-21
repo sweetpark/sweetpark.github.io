@@ -1,13 +1,11 @@
 ---
 title: "DB 접근 기술 (JDBC Template & MyBatis)"
+description: "스프링에서 DB에 접근하는 두 기술(JDBC Template, MyBatis)의 장단점과 데이터베이스 연동 테스트(임베디드 H2) 방법을 정리한다."
 tags: [학습, 개발-CS, 데이터베이스, 개발, SQL, JDBC, MyBatis]
 modified: 2026-09-05
 ---
 
 # DB 접근 기술 (JDBC Template & MyBatis)
-
-> [!NOTE]
-> 스프링에서 DB에 접근하는 두 기술(JDBC Template, MyBatis)의 장단점과 데이터베이스 연동 테스트(임베디드 H2) 방법을 정리한다.
 
 ## 📌 개념
 

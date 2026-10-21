@@ -1,14 +1,12 @@
 ---
 title: "maven"
+description: "Maven 의존성 트리 확인과, 삭제된 아티팩트(javax.activation:1.0.2)로 인한 다운로드 실패를 dependencyManagement로 해결한 사례 정리."
 tags: [학습, 개발-CS, 인프라, 개발환경, 개발, maven]
 created: 2026-02-03
 modified: 2026-09-05
 ---
 
 # maven
-
-> [!NOTE]
-> Maven 의존성 트리 확인과, 삭제된 아티팩트(`javax.activation:1.0.2`)로 인한 다운로드 실패를 `dependencyManagement`로 해결한 사례 정리.
 
 ## 📌 개념
 

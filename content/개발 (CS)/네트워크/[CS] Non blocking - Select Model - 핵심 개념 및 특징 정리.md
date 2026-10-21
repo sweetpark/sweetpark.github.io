@@ -1,13 +1,11 @@
 ---
 title: "Non blocking / Select Model"
+description: "PortScan 프로젝트에서 사용한 Non-blocking 소켓 설정과 select() 멀티플렉싱 모델(FD_SET/FD_ISSET) 학습 정리."
 tags: [학습, 개발-CS, 네트워크, 소켓, C]
 modified: 2026-09-05
 ---
 
 # Non blocking / Select Model
-
-> [!NOTE]
-> PortScan 프로젝트에서 사용한 Non-blocking 소켓 설정과 `select()` 멀티플렉싱 모델(FD_SET/FD_ISSET) 학습 정리.
 
 ## ⚙️ 구현
 

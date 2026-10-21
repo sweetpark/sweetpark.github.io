@@ -1,5 +1,6 @@
 ---
 title: "D4. Pack·Unpack — 비트필드·엔디안·왕복시험"
+description: "비트필드, 엔디안, 왕복 시험으로 규격서의 비트 그림을 코드로 옮기는 Pack, Unpack D4 드릴입니다."
 tags: 
 created: 2026-09-21
 modified: 2026-10-16

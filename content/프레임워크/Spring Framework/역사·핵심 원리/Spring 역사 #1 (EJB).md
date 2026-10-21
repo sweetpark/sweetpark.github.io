@@ -1,5 +1,6 @@
 ---
 title: "Spring 역사 #1 (EJB)"
+description: "Spring의 역사 1편으로 EJB(Enterprise Java Beans)가 등장한 배경과 한계를 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

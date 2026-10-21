@@ -1,5 +1,6 @@
 ---
 title: "D3. 자원 잡는 함수 — goto CLEANUP·create·destroy"
+description: "goto CLEANUP, create, destroy 쌍으로 실패 경로의 자원 누수를 막는 방법을 체화하는 D3 드릴입니다."
 tags: 
 created: 2026-09-21
 modified: 2026-10-16

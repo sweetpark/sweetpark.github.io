@@ -1,5 +1,6 @@
 ---
 title: "[배포 #1] GitHub Actions를 이용한 배포 (CI/CD 파이프라인 , 무중단배포 X)"
+description: "GitHub Actions로 Docker 기반 자동 배포를 구축하는 CI/CD 파이프라인을 실제 프로젝트 기준으로 정리했습니다. 무중단 배포는 다루지 않습니다."
 tags: [토이프로젝트, 배포]
 created: 2026-09-05
 modified: 2026-09-05

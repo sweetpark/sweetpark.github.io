@@ -1,5 +1,6 @@
 ---
 title: "유명블로그"
+description: "Java/Kotlin 신입 개발자 기술면접을 준비할 때 참고할 만한 블로그와 자료를 모아 두었습니다."
 tags: [학습, 개발-CS, CS-기초, 기타, 기초, 개발, 블로그, 면접]
 created: 2026-02-04
 modified: 2026-09-05

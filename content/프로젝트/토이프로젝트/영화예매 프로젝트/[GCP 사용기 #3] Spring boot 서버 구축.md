@@ -1,5 +1,6 @@
 ---
 title: "[GCP 사용기 #3] Spring boot 서버 구축"
+description: "GCP 서버에 Spring Boot 3.3.5와 Java 17 환경을 구성하고 jar를 systemd 서비스로 등록해 실행하는 과정을 정리했습니다."
 tags: [프로젝트, 영화예매 프로젝트]
 created: 2026-09-05
 modified: 2026-09-05

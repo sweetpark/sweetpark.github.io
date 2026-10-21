@@ -1,5 +1,6 @@
 ---
 title: "[Thymeleaf] 데이터 출력"
+description: "Thymeleaf에서 Model Attribute와 객체를 화면에 출력하는 방법을 정리했습니다."
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

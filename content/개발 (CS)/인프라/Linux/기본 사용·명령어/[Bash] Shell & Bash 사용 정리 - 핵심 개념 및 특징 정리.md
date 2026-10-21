@@ -1,5 +1,6 @@
 ---
 title: "Shell & Bash 사용 정리"
+description: "Bash의 셸 종류, 정규표현식과 와일드카드, 환경·셸 변수, 입출력 리다이렉션과 파일 디스크립터, alias, 환경변수 설정 파일을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 2일 오후 11:18
 modified: 2026-09-05

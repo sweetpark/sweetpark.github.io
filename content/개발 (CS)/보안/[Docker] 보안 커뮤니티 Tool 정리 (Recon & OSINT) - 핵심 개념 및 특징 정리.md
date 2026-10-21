@@ -1,5 +1,6 @@
 ---
 title: "🛠️ 보안 커뮤니티 Tool 정리 (Recon & OSINT)"
+description: "RustScan, Amass 등 외부 자산 식별과 OSINT, 취약한 구성 탐색에 쓰는 커뮤니티 보안 도구(Recon)를 용도별로 정리했습니다."
 tags: [학습, 개발-CS, 보안, 개발, OSINT, Recon, CloudSecurity]
 modified: 2026-09-05
 ---

@@ -1,5 +1,6 @@
 ---
 title: "HTTP 프로토콜 #2 ( Method )"
+description: "HTTP 메서드 GET, POST, PUT, PATCH, DELETE의 의미와 멱등성(idempotent), 캐시 가능 여부를 정리했습니다."
 tags: [JAVA 기반 웹개발, HTTP]
 created: 2026-09-05
 modified: 2026-09-05

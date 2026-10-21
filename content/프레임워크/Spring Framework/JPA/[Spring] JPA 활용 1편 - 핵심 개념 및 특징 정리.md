@@ -1,5 +1,6 @@
 ---
 title: "JPA 활용 1편"
+description: "JPA 엔티티 설계 시 연관관계 주인, 지연 로딩, 컬렉션 초기화 주의점과 변경 감지와 merge의 차이, DTO 활용을 김영한 JPA 활용 강의로 정리했습니다."
 tags: [학습, 개발-CS, CS-기초, Spring-Framework, 개발, Spring]
 created: 2025년 3월 12일 오후 2:14
 modified: 2026-09-05

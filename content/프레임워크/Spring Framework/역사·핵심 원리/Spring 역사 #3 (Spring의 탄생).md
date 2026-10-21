@@ -1,5 +1,6 @@
 ---
 title: "Spring 역사 #3 (Spring의 탄생)"
+description: "Spring이 탄생한 배경과 이름의 의미, Spring Boot가 초기 설정과 Tomcat을 자동으로 해 주는 점을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "@Component에 관하여..."
+description: "@Component, @Autowired, @ComponentScan으로 스프링 빈을 등록하고 주입하는 방법과 서블릿 직접 사용과의 차이를 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

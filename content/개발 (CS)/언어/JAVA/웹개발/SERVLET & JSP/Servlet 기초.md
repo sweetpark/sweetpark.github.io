@@ -1,5 +1,6 @@
 ---
 title: "Servlet 기초"
+description: "Servlet의 개념과 특징, @WebServlet 등록, Spring Boot에서 Servlet을 사용하는 방법을 정리했습니다."
 tags: [JAVA 기반 웹개발, SERVLET & JSP]
 created: 2026-09-05
 modified: 2026-09-05

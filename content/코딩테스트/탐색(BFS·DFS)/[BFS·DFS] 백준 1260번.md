@@ -1,5 +1,6 @@
 ---
 title: "[BFS·DFS] 백준 1260번"
+description: "백준 1260 DFS와 BFS: 그래프를 DFS와 BFS로 각각 탐색한 결과를 출력하는 풀이를 정리했습니다."
 tags: [개발 서적 리뷰, DoIt 알고리즘 코딩테스트]
 created: 2026-09-05
 modified: 2026-09-05

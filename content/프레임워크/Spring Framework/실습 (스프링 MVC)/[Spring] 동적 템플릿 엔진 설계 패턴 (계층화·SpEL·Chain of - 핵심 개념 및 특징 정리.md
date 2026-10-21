@@ -1,5 +1,6 @@
 ---
 title: "동적 템플릿 엔진 설계 패턴 (계층화·SpEL·Chain of Responsibility)"
+description: "고객사별 요구사항이 파편화된 환경에서 JSON 템플릿 기반 데이터 생성 도구를 계층화, SpEL, 책임 연쇄 패턴으로 점진적으로 고도화하는 설계를 정리했습니다."
 tags: [학습, 개발-CS, 언어, 디자인패턴, SpEL, Spring]
 created: 2026-09-05
 modified: 2026-09-05

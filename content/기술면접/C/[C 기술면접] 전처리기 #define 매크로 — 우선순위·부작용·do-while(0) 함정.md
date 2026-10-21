@@ -1,5 +1,6 @@
 ---
 title: "[C 기술면접] 전처리기 #define 매크로 — 우선순위·부작용·do-while(0) 함정"
+description: "#define 매크로에 문장, 변수, 표현식을 넣을 때의 우선순위 문제와 부작용, do { } while(0) 함정을 C 기술면접 질문에 맞춰 정리했습니다."
 tags: [기술면접, C 기술면접, 전처리기, 매크로, define, do-while, 부작용, inline]
 created: 2026-10-19
 modified: 2026-10-19

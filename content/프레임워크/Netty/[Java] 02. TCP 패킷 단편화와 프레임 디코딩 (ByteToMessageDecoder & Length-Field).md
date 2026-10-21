@@ -1,5 +1,6 @@
 ---
 title: "[Java] 02. TCP 패킷 단편화와 프레임 디코딩 (ByteToMessageDecoder & Length-Field)"
+description: "TCP 스트림에서 반드시 생기는 패킷 단편화와 패킷 뭉침 문제를 Netty의 ByteToMessageDecoder와 Length-Field 방식으로 해결하는 프레임 디코딩을 정리했습니다."
 tags: [Netty, TCP, Decoder, ByteBuf, ByteToMessageDecoder]
 created: 2026-09-05
 modified: 2026-09-05

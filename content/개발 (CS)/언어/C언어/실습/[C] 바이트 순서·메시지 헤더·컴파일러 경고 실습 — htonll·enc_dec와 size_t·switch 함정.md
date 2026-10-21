@@ -1,5 +1,6 @@
 ---
 title: "(C) 바이트 순서·메시지 헤더·컴파일러 경고 실습 — htonll·enc_dec와 size_t·switch 함정"
+description: "컴파일러 경고가 알려 주는 결함(size_t, switch 등)을 정리하고 64비트 바이트 순서 변환과 메시지 헤더 encode/decode 모듈을 구현했습니다."
 tags: 
 created: 2026-10-15
 modified: 2026-10-15

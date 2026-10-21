@@ -1,5 +1,6 @@
 ---
 title: "낯선 C 코드베이스 분석 순서 (방법론)"
+description: "디렉터리 구조, Makefile, main(), 헤더, 콜백 역추적, 공통 모듈 순으로 낯선 C 코드베이스를 분석하는 방법론을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, Linux, 방법론, 온보딩, ctags, cscope]
 created: 2026-09-16
 modified: 2026-09-16

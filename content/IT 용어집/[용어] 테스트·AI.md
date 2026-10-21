@@ -1,5 +1,6 @@
 ---
 title: "테스트·AI 활용 용어"
+description: "Testcontainers, 인메모리 DB, 아키텍처 테스트, LLM, 프롬프트, AI 에이전트, MCP 등 테스트와 AI 활용 개발 용어 6개를 정리했습니다."
 tags: [학습, IT용어집, 테스트, AI, 품질]
 created: 2026-10-02
 modified: 2026-10-02

@@ -1,5 +1,6 @@
 ---
 title: "[Performance] SXSSFWorkbook 대용량 엑셀 스트리밍과 동적 ZIP 분할 압축 설계 패턴"
+description: "수십만~수백만 행을 엑셀로 변환할 때 OOM을 막기 위해 Apache POI SXSSFWorkbook 슬라이딩 윈도우와 MyBatis Cursor, 동적 ZIP 분할 압축을 쓰는 설계 패턴을 정리했습니다."
 tags: [학습, 개발실무, 백엔드, Apache-POI, SXSSF, 대용량처리, OOM방지, 스트리밍]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "🔐 Linux 보안 · 원격 · 방화벽 · DNS 정리"
+description: "비대칭키의 한계와 CA, SSH 보안과 키 인증, SCP, firewalld(Zone) 방화벽, DNS 조회와 BIND 서버 구축을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 2일 오후 11:27
 modified: 2026-09-05

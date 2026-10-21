@@ -1,14 +1,12 @@
 ---
 title: "POST & CALLBACK (libcurl HTTP 통신)"
+description: "libcurl을 이용한 HTTP POST + 콜백 처리 예제 코드와 curlopt/curl_formadd 옵션 정리."
 tags: [학습, 개발-CS, 언어, C언어, 개발, HTTP, libcurl]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # POST & CALLBACK (libcurl HTTP 통신)
-
-> [!NOTE]
-> libcurl을 이용한 HTTP POST + 콜백 처리 예제 코드와 curlopt/curl_formadd 옵션 정리.
 
 ## 🖥️ 시스템/환경
 - 라이브러리: libcurl

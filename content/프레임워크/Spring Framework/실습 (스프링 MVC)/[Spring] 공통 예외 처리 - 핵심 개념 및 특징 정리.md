@@ -1,5 +1,6 @@
 ---
 title: "공통 예외 처리"
+description: "@ExceptionHandler와 @ControllerAdvice 기반 공통 예외 처리 방식을 비교하고 결론과 회고를 정리했습니다."
 tags: [학습, 개발-CS, 언어, Spring]
 modified: 2026-09-05
 ---

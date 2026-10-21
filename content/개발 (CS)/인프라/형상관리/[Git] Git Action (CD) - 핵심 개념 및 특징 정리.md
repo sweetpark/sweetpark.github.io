@@ -1,5 +1,6 @@
 ---
 title: "Git Action (CD)"
+description: "GitHub Actions로 별도 러너에서 빌드하고 Docker 이미지를 Docker Hub에 올린 뒤 배포 서버에 SSH로 배포하는 CD 흐름과 워크플로우 예시를 정리했습니다."
 tags: [학습, 개발-CS, 인프라, 형상관리, 개발]
 modified: 2026-09-05
 ---

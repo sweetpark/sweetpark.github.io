@@ -1,5 +1,6 @@
 ---
 title: "☕ Java Backend Core"
+description: "스레드, 동시성, I/O, 네트워크, WAS 구현까지 자바 백엔드 개발자의 필수 지식을 기술이 탄생한 이유의 흐름으로 정리했습니다."
 tags: [학습, 개발-CS, 언어, JAVA, 개발, 동시성, IO, 네트워크, WAS]
 created: 2026-09-05
 modified: 2026-09-05

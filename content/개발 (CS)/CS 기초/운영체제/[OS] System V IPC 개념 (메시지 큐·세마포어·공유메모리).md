@@ -1,14 +1,12 @@
 ---
 title: "System V IPC 개념 (메시지 큐·세마포어·공유메모리)"
+description: "System V가 유닉스 버전 이름이라는 것부터, System V IPC 3형제(메시지 큐/세마포어/공유메모리)의 공통 패턴과 POSIX IPC라는 대안까지 정리한다."
 tags: [학습, 개발-CS, CS기초, 운영체제, IPC, System V, 프로세스통신]
 created: 2026-09-16
 modified: 2026-09-16
 ---
 
 # System V IPC 개념 (메시지 큐·세마포어·공유메모리)
-
-> [!NOTE]
-> System V가 유닉스 버전 이름이라는 것부터, System V IPC 3형제(메시지 큐/세마포어/공유메모리)의 공통 패턴과 POSIX IPC라는 대안까지 정리한다.
 
 ## 0. System V는 OS 이름이 아니라 유닉스 계보 이름
 

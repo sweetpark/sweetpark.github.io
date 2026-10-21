@@ -1,5 +1,6 @@
 ---
 title: "정적 라이브러리 링크 순서와 심볼 위치 추적 (ldd·nm)"
+description: "대규모 C 프로젝트에서 정적 라이브러리 링크 순서 규칙과 ldd, nm으로 심볼이 어느 라이브러리에서 오는지 추적하는 방법을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, Linux, Makefile, 링커, ldd, nm]
 created: 2026-09-16
 modified: 2026-09-16

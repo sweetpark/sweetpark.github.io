@@ -1,14 +1,12 @@
 ---
 title: "ftok과 IPC 키 생성"
+description: "ftok()으로 파일 기반 IPC 키를 생성하는 방법과 함정, 그리고 사람이 직접 hex로 키를 관리하는 명시적 테이블 방식과의 장단점 비교."
 tags: [학습, 개발-CS, CS기초, 운영체제, IPC, System V, ftok]
 created: 2026-09-16
 modified: 2026-09-16
 ---
 
 # ftok과 IPC 키 생성
-
-> [!NOTE]
-> `ftok()`으로 파일 기반 IPC 키를 생성하는 방법과 함정, 그리고 사람이 직접 hex로 키를 관리하는 명시적 테이블 방식과의 장단점 비교.
 
 ## 1. ftok()이란
 

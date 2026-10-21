@@ -1,5 +1,6 @@
 ---
 title: "Fedora CoreOS 설치 및 Ignition-Butane 워크플로우"
+description: "컨테이너 전용 불변 OS인 Fedora CoreOS의 특징과 설치, Ignition과 Butane 설정 워크플로우를 정리했습니다."
 tags: [학습, 개발-CS, 인프라, FedoraCoreOS, Linux, Ignition, Butane]
 modified: 2026-09-05
 ---

@@ -1,5 +1,6 @@
 ---
 title: "ERD , 정규형"
+description: "1~3정규형과 BCNF, 삽입·삭제·수정 이상현상, ERD 구성요소와 카디널리티별 외래키 배치 규칙을 Oracle 실습으로 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, 개발, ERD, 정규형, Oracle]
 modified: 2026-09-05
 ---

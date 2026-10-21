@@ -1,5 +1,6 @@
 ---
 title: "[Thymeleaf] 속성, 반복, 조건 (th:*, th:each,th:if)"
+description: "Thymeleaf의 속성 덮어쓰기와 th:each 반복, th:if 조건 처리 방법을 정리했습니다."
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

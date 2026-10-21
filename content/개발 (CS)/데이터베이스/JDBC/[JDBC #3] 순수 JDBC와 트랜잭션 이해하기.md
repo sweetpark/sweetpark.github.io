@@ -1,5 +1,6 @@
 ---
 title: "[JDBC #3] 순수 JDBC와 트랜잭션 이해하기"
+description: "트랜잭션 ACID, 격리 수준, DB 세션을 정리하고 순수 JDBC로 트랜잭션을 직접 다뤄 본 과정을 설명합니다."
 tags: [데이터베이스, JDBC]
 created: 2026-09-05
 modified: 2026-09-05

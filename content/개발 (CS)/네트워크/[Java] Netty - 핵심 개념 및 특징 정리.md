@@ -1,14 +1,12 @@
 ---
 title: "Netty"
+description: "Netty 프레임워크 기본 구조(Discard/Echo 서버) 및 특징 정리."
 tags: [학습, 개발-CS, 네트워크, Netty]
 created: 2026-02-04
 modified: 2026-09-05
 ---
 
 # Netty
-
-> [!NOTE]
-> Netty 프레임워크 기본 구조(Discard/Echo 서버) 및 특징 정리.
 
 > [!NOTE] 실행 환경
 > 아래 링크가 가리키는 공식 문서(`user-guide-for-4.x`)와 `NioEventLoopGroup`, `ChannelFutureListener` 익명 클래스 스타일로 볼 때 **Netty 4.x 계열**로 추정됩니다(정확한 패치 버전 명시 없음). 코드에 `var`/레코드/패턴 매칭 등 JDK 버전을 특정할 문법적 단서가 없어 **JDK 버전은 명시되어 있지 않습니다**.

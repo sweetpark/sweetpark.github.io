@@ -1,5 +1,6 @@
 ---
 title: "Netty 파이프라인 예외흐름과 핸들러 배치 패턴"
+description: "Netty 파이프라인의 Inbound/Outbound 이벤트 전파와 예외가 Head에서 Tail로만 흐르는 한계, 로깅·트레이스 핸들러 배치 위치를 정리했습니다."
 tags: [학습, 개발-CS, 네트워크, Netty]
 modified: 2026-09-05
 ---

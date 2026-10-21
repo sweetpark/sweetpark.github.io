@@ -1,5 +1,6 @@
 ---
 title: "[게임서버프로그래밍#5] 멀티스레드 Client-Server 구현 (feat: mutex, chrono)"
+description: "서버가 여러 클라이언트를 동시에 처리하기 위한 멀티스레드 구조와 mutex의 역할, chrono 타임아웃 제어를 C++ 예제로 정리했습니다."
 tags: [개발 서적 리뷰, 게임서버 프로그래머 책]
 created: 2026-09-05
 modified: 2026-09-05

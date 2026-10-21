@@ -1,5 +1,6 @@
 ---
 title: "[SQL] 여러 종류의 생성/삭제(create , drop)"
+description: "데이터베이스, 테이블, 뷰, 인덱스, 사용자를 생성하고 삭제하는 SQL CREATE와 DROP 문법을 예제로 정리했습니다."
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05
 modified: 2026-09-05

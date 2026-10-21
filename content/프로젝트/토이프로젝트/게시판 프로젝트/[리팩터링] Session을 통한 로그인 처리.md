@@ -1,5 +1,6 @@
 ---
 title: "[리팩터링] Session을 통한 로그인 처리"
+description: "게시판 프로젝트의 로그인 처리를 Session 기반으로 리팩터링한 과정을 정리했습니다."
 tags: [프로젝트, 게시판 프로젝트]
 created: 2026-09-05
 modified: 2026-09-05

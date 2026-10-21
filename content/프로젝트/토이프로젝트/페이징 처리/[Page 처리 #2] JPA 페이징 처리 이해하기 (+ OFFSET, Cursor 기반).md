@@ -1,5 +1,6 @@
 ---
 title: "[Page 처리 #2] JPA 페이징 처리 이해하기 (+ OFFSET, Cursor 기반)"
+description: "JPA 페이징이 OFFSET 기반 쿼리를 기본으로 하는 이유와 Cursor 기반 페이징과의 차이를 정리한 페이징 처리 2편입니다."
 tags: [토이프로젝트, 페이징 처리]
 created: 2026-09-05
 modified: 2026-09-05

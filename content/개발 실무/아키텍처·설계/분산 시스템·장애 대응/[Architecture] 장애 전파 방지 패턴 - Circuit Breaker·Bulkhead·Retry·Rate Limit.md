@@ -1,5 +1,6 @@
 ---
 title: "장애 전파 방지 패턴 (Circuit Breaker·Bulkhead·Retry·Rate Limit)"
+description: "한 서비스의 장애가 호출하는 쪽으로 번지는 것을 막는 Circuit Breaker, Bulkhead, Retry, Rate Limit 패턴을 정리했습니다."
 tags: [학습, 개발실무, 아키텍처, MSA, 장애대응, 서킷브레이커]
 created: 2026-10-02
 modified: 2026-10-02

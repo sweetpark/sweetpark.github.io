@@ -1,5 +1,6 @@
 ---
 title: "[Log #2] LogBack을 이용한 로그 설정"
+description: "logback-spring.xml로 콘솔과 파일 등 Appender와 롤링 정책을 설정하는 LogBack 로그 설정 방법을 정리했습니다."
 tags: [토이프로젝트, 로그]
 created: 2026-09-05
 modified: 2026-09-05

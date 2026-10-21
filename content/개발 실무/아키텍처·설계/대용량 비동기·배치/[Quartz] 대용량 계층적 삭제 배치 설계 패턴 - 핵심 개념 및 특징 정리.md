@@ -1,5 +1,6 @@
 ---
 title: "대용량 계층적 삭제 배치 설계 패턴"
+description: "FK로 얽힌 여러 테이블에서 읽으면서 삭제하는 대용량 배치를 Cursor Reader와 CompositeItemWriter 계층 삭제, 동적 스케줄링으로 설계하는 패턴을 정리했습니다."
 tags: [학습, 개발실무, Batch]
 modified: 2026-09-05
 ---

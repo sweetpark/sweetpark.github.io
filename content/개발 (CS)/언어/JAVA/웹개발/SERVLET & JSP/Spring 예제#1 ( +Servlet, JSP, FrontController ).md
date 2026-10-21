@@ -1,5 +1,6 @@
 ---
 title: "Spring 예제#1 ( +Servlet, JSP, FrontController )"
+description: "Servlet, JSP, FrontController 패턴으로 요청을 하나의 컨트롤러가 받아 처리하는 구조를 예제로 정리했습니다."
 tags: [JAVA 기반 웹개발, SERVLET & JSP]
 created: 2026-09-05
 modified: 2026-09-05

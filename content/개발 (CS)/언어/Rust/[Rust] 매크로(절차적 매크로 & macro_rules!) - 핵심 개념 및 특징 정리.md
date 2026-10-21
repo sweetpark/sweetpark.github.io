@@ -1,5 +1,6 @@
 ---
 title: "매크로(절차적 매크로 & macro_rules!)"
+description: "Rust 매크로가 함수와 다른 이유, macro_rules! 기본 문법, 매크로 3종류 구분과 GlueSQL의 Row와 구조체 변환 자동 생성 사례를 정리했습니다."
 tags: [학습, 개발-CS, 언어, Rust, 매크로, GlueSQL]
 created: 2026-09-05
 modified: 2026-09-05

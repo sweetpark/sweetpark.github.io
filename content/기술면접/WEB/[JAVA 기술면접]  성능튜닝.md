@@ -1,5 +1,6 @@
 ---
 title: "[JAVA 기술면접]  성능튜닝"
+description: "JVM 실행 과정과 메모리 구조(Method Area, Heap, Stack, PC Register)를 바탕으로 자바 성능 튜닝 기술면접 질문을 정리했습니다."
 tags: [기술면접, JAVA 관련 기술면접]
 created: 2026-09-05
 modified: 2026-09-05

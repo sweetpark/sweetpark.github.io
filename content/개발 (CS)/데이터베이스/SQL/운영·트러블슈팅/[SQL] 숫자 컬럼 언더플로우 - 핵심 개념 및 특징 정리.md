@@ -1,13 +1,11 @@
 ---
 title: "숫자 컬럼 언더플로우 — FLOAT 대신 DOUBLE + TRUNC"
+description: "누적·차감 계산에서 FLOAT 컬럼이 일으키는 언더플로우(음수 오표기) 문제를 DOUBLE과 TRUNC로 보정하는 방법을 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, SQL, 정밀도]
 modified: 2026-09-05
 ---
 
 # 숫자 컬럼 언더플로우 — FLOAT 대신 DOUBLE + TRUNC
-
-> [!NOTE]
-> 누적/차감 계산에 쓰이는 숫자 컬럼이 FLOAT일 때 발생할 수 있는 언더플로우(음수 오표기) 문제와 DOUBLE + 소수점 절삭(TRUNC)으로 보정하는 방법. 실무(IoT 계측값 누적 처리)에서 추출·일반화.
 
 ## 문제
 

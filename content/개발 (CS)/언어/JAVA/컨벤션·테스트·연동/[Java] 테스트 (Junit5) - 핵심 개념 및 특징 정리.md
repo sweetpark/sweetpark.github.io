@@ -1,5 +1,6 @@
 ---
 title: "테스트 (Junit5)"
+description: "JUnit5와 Mockito로 단위 테스트를 작성하는 기술 스택과 구현 방법을 정리했습니다."
 tags: [학습, 개발-CS, 언어, JUnit5, Mockito]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "SD22. 잘못된 권한 부여 — 그룹별 UID 테이블로 치환"
+description: "시큐어코딩 SD22 잘못된 권한 부여 (CWE-266): 취약한 코드를 그룹별 UID 테이블 방식으로 바꾸는 치환을 요구사항서, pseudo code, 테스트 코드로 체화하는 드릴입니다."
 tags: 
 created: 2026-09-28
 modified: 2026-10-16

@@ -1,5 +1,6 @@
 ---
 title: "[Thymeleaf] th:field, th:object"
+description: "Thymeleaf의 th:object와 th:field로 Spring MVC 폼 바인딩을 처리하는 방법을 정리했습니다."
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

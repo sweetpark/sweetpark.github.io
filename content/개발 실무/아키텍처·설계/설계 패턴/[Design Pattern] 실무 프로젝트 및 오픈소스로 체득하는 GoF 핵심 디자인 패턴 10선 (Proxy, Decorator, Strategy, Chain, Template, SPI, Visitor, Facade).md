@@ -1,14 +1,12 @@
 ---
 title: "[Design Pattern] 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선 (Proxy, Decorator, Strategy, Chain, Template, SPI, Visitor, Facade)"
+description: "Proxy, Decorator, Strategy, Chain, Template, SPI, Visitor, Facade 등 GoF 디자인 패턴 10선을 실제 대규모 시스템과 오픈소스 코드 사례로 정리했습니다."
 tags: [학습, 개발실무, 디자인패턴, GoF, Proxy, Decorator, Strategy, ChainOfResponsibility, TemplateMethod, Visitor, Facade]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # [Design Pattern] 실무 프로젝트 및 오픈소스로 체득하는 GoF 핵심 디자인 패턴 10선
-
-> **핵심 요약**  
-> 교과서적인 예제(동물/도형/계산기)가 아니라, 실제 운영 중인 **실무 대규모 분산 및 네트워크 배치 시스템**(실무 시스템)과 **오픈소스 프레임워크**(`ha-excel-job-engine`, `mini-apm-spring-boot-starter`, `mybatis-sql-tuner-ai`)의 실제 코드베이스에 녹아있는 **10대 핵심 디자인 패턴**의 설계 의도, 문제 해결 방식, 그리고 구현 메커니즘을 총정리한다.
 
 ---
 

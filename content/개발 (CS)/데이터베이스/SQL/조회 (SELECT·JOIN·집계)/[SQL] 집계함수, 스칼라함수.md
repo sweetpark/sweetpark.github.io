@@ -1,5 +1,6 @@
 ---
 title: "[SQL] 집계함수, 스칼라함수"
+description: "SQL 집계함수와 스칼라 함수의 차이, 집계함수와 다른 컬럼을 함께 조회할 때 GROUP BY가 필요한 이유를 정리했습니다."
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "소셜로그인 전 과정"
+description: "Spring Security 기반 소셜 로그인의 전체 흐름과 permitAll() 관련 트러블슈팅을 정리했습니다."
 tags: [학습, 개발-CS, 언어, Spring, 김영한]
 modified: 2026-09-05
 ---

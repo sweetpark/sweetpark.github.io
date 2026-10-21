@@ -1,5 +1,6 @@
 ---
 title: "Spring 예제#2 ( Adapter Handler, FrontController )"
+description: "FrontController에 Adapter 패턴(Handler Adapter)을 적용해 다양한 컨트롤러를 유연하게 처리하는 구조를 정리했습니다."
 tags: [JAVA 기반 웹개발, SERVLET & JSP]
 created: 2026-09-05
 modified: 2026-09-05

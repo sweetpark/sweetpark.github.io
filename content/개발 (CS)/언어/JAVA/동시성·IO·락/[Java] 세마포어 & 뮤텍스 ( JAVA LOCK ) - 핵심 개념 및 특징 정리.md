@@ -1,5 +1,6 @@
 ---
 title: "세마포어 & 뮤텍스 ( JAVA LOCK )"
+description: "Mutex와 Semaphore의 개념과 Java 구현, TPS 실험 결과와 트러블슈팅, 주의사항을 정리했습니다."
 tags: [학습, 개발-CS, 언어, JAVA, 개발, 뮤텍스, 세마포어, 동시성]
 created: 2026-09-05
 modified: 2026-09-05

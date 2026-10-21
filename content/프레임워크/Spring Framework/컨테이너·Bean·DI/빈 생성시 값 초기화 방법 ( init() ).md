@@ -1,5 +1,6 @@
 ---
 title: "빈 생성시 값 초기화 방법 ( init() )"
+description: "Spring 빈 생명주기와 초기화 콜백(@PostConstruct, init-method), 소멸 전 콜백을 통해 빈 생성 시 값을 초기화하는 방법을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "인터넷 통신과정 ( + IP, TCP/UDP, PORT, DNS )"
+description: "인터넷 통신 과정을 IP, TCP와 UDP, 포트, DNS 중심으로 정리하고 nslookup 예시를 곁들였습니다."
 tags: [JAVA 기반 웹개발, HTTP]
 created: 2026-09-05
 modified: 2026-09-05

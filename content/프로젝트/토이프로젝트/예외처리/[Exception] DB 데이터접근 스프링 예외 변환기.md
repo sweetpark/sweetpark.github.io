@@ -1,5 +1,6 @@
 ---
 title: "[Exception] DB 데이터접근 스프링 예외 변환기"
+description: "JDBC 예외를 스프링의 데이터 접근 예외로 변환하는 예외 변환기의 동작과 Checked 예외를 UnChecked로 바꾸는 방법을 정리했습니다."
 tags: [토이프로젝트, 예외처리]
 created: 2026-09-05
 modified: 2026-09-05

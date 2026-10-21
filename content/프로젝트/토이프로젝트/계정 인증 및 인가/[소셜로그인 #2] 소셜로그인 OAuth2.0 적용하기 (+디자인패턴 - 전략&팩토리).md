@@ -1,5 +1,6 @@
 ---
 title: "[소셜로그인 #2] 소셜로그인 OAuth2.0 적용하기 (+디자인패턴 : 전략&팩토리)"
+description: "Spring Security 필터로 소셜 로그인 OAuth2.0을 적용하고 전략과 팩토리 디자인 패턴으로 Provider를 확장하는 방법을 정리했습니다."
 tags: [토이프로젝트, 계정 인증 및 인가]
 created: 2026-09-05
 modified: 2026-09-05

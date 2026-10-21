@@ -1,5 +1,6 @@
 ---
 title: "관계형데이터베이스 -테이블"
+description: "관계형 데이터베이스의 기본 용어(행, 열, 릴레이션, 속성)와 unique, not null, default, check 제약조건을 Oracle 테이블 생성 예제로 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, 개발, Oracle, 관계형DB, 무결성]
 modified: 2026-09-05
 ---

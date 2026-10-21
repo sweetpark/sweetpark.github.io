@@ -1,14 +1,12 @@
 ---
 title: "메모리 누수 찾기"
+description: "valgrind로 C/C++ 프로그램의 메모리 누수(leak)를 찾는 방법 정리."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 3일 오후 11:09
 modified: 2026-09-05
 ---
 
 # 메모리 누수 찾기
-
-> [!NOTE]
-> `valgrind`로 C/C++ 프로그램의 메모리 누수(leak)를 찾는 방법 정리.
 
 ## 📌 개념
 

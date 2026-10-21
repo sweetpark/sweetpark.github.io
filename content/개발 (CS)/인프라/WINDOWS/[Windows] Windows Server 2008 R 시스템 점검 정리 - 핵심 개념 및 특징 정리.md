@@ -1,13 +1,11 @@
 ---
 title: "Windows Server 2008 R 시스템 점검 정리"
+description: "Windows Server 2008 R2 서버 점검용 명령어 모음. 시스템 정보·네트워크·디스크·자산 사양을 CMD / WMIC / PowerShell로 확인하는 방법을 정리한다."
 tags: [학습, 개발-CS, 인프라, WINDOWS, 개발]
 modified: 2026-09-05
 ---
 
 # Windows Server 2008 R 시스템 점검 정리
-
-> [!NOTE]
-> Windows Server 2008 R2 서버 점검용 명령어 모음. 시스템 정보·네트워크·디스크·자산 사양을 CMD / WMIC / PowerShell로 확인하는 방법을 정리한다.
 
 ## 📌 개념
 

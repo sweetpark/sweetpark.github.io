@@ -1,14 +1,12 @@
 ---
 title: "Stream·Generic·Lambda로 중복 코드 제거"
+description: "칵테일 맛/재료/추천 맵핑 리스트를 응답 DTO(Map)로 변환하는 반복 코드를, 제네릭 메서드 + 람다로 통합한 리팩토링 기록."
 tags: [학습, 토이프로젝트, Java, 리팩토링]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # Stream·Generic·Lambda로 중복 코드 제거
-
-> [!NOTE]
-> 칵테일 맛/재료/추천 맵핑 리스트를 응답 DTO(Map)로 변환하는 반복 코드를, 제네릭 메서드 + 람다로 통합한 리팩토링 기록.
 
 ## Before — 유사 구조가 반복되는 코드
 

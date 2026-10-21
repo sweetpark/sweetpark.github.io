@@ -1,5 +1,6 @@
 ---
 title: "Grafana Alert Slack 연동 설정 가이드"
+description: "Grafana Loki 에러 로그를 감지해 Slack으로 알림을 보내는 Alert Rule, Contact Point, Notification Policy 설정 절차를 정리했습니다."
 tags: [학습, 개발-CS, 인프라, Grafana, Loki, Slack, Alert]
 modified: 2026-09-05
 ---

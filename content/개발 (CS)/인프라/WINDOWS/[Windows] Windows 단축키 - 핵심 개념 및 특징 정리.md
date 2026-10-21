@@ -1,13 +1,11 @@
 ---
 title: "Windows 단축키"
+description: "Windows 키보드 단축키와 MSC 콘솔, 제어판(CPL), 실행창 명령어를 레퍼런스로 모아 정리했습니다."
 tags: [학습, 개발-CS, 인프라, WINDOWS, 개발]
 modified: 2026-09-05
 ---
 
 # Windows 단축키
-
-> [!NOTE]
-> Windows 키보드 단축키와 실행창 명령어(MSC 콘솔, 제어판 CPL, 실행 명령어) 레퍼런스 모음.
 
 ## 💻 예시
 

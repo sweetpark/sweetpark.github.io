@@ -1,5 +1,6 @@
 ---
 title: "Page 처리"
+description: "Spring Data의 Pageable을 이용한 페이징 처리 방법을 정리했습니다."
 tags: [학습, 개발-CS, 언어, Spring, JPA]
 modified: 2026-09-05
 ---

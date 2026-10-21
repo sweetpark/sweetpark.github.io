@@ -1,5 +1,6 @@
 ---
 title: "📝 [Notion 정리용] 비관적 락 vs 낙관적 락 + MyBatis 적용 가이드"
+description: "비관적 락과 낙관적 락의 개념, MyBatis 구현과 재시도 로직, 선택 기준을 멀티 서버와 트랜잭션 환경의 동시성 제어로 정리했습니다."
 tags: [학습, 개발-CS, 언어, JAVA, 개발, DB락, 동시성, MyBatis]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,14 +1,12 @@
 ---
 title: "MVC #1"
+description: "웹 서버/WAS 구성, 서블릿과 서블릿 컨테이너, 멀티스레드 처리, SSR/CSR, 자바 웹 기술의 역사, 그리고 MVC 패턴(Servlet + JSP) 적용까지 정리한다."
 tags: [학습, 개발-CS, CS-기초, Spring-Framework, 개발, Spring]
 created: 2025년 3월 12일 오후 2:14
 modified: 2026-09-05
 ---
 
 # MVC #1
-
-> [!NOTE]
-> 웹 서버/WAS 구성, 서블릿과 서블릿 컨테이너, 멀티스레드 처리, SSR/CSR, 자바 웹 기술의 역사, 그리고 MVC 패턴(Servlet + JSP) 적용까지 정리한다.
 
 ## 📌 개념
 

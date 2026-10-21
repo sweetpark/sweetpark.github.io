@@ -1,5 +1,6 @@
 ---
 title: "MVC 패턴 ( Servlet + JSP )"
+description: "Servlet과 JSP를 조합한 MVC 패턴으로 컨트롤러, 모델, 뷰를 나누는 방법을 예제와 함께 정리했습니다."
 tags: [JAVA 기반 웹개발, SERVLET & JSP]
 created: 2026-09-05
 modified: 2026-09-05

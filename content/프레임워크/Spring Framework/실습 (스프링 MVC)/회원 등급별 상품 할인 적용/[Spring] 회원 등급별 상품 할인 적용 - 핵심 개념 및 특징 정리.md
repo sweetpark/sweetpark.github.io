@@ -1,5 +1,6 @@
 ---
 title: "회원 등급별 상품 할인 적용"
+description: "AppConfig 기반 수동·자동 Bean 등록과 OCP, DIP, 싱글톤을 활용해 회원 등급별 상품 할인을 적용한 미니 프로젝트입니다."
 tags: [학습, 개발-CS, 언어, Spring, 김영한]
 created: 2026-02-04
 modified: 2026-09-05

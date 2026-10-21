@@ -1,5 +1,6 @@
 ---
 title: "HTTP 헤더 #1"
+description: "HTTP 헤더의 분류와 역할, HTTP 바디(메시지 본문)의 구성을 정리했습니다."
 tags: [JAVA 기반 웹개발, HTTP]
 created: 2026-09-05
 modified: 2026-09-05

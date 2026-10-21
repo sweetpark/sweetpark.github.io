@@ -1,5 +1,6 @@
 ---
 title: "[기초] 배열"
+description: "Java 배열의 선언, 객체 배열, setter와 getter, 깊은 복사와 얕은 복사, 전체 출력 방법을 정리했습니다."
 tags: [학습, 개발-CS, 언어, JAVA, 개발, 배열, ArrayList]
 created: 2026-09-05
 modified: 2026-09-05

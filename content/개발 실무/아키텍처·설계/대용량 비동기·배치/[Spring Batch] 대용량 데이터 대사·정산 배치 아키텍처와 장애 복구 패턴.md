@@ -1,5 +1,6 @@
 ---
 title: "[Spring Batch] 대용량 비즈니스 거래 대사·정산 배치 아키텍처와 장애 복구 패턴"
+description: "수백만 건 결제·금융 거래 원장과 외부 기관 간 불일치를 검증하는 거래 대사와 정산 배치 파이프라인의 Spring Batch 아키텍처, 장애 복구 패턴을 정리했습니다."
 tags: [Spring Batch, Reconciliation, Settlement, Chunk, FaultTolerance, Database]
 created: 2026-09-05
 modified: 2026-09-05

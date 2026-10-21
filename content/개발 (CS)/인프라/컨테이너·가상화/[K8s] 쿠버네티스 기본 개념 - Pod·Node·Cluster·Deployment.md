@@ -1,5 +1,6 @@
 ---
 title: "쿠버네티스 기본 개념 (Pod·Node·Cluster·Deployment)"
+description: "컨테이너 배포와 확장, 장애 복구를 자동화하는 쿠버네티스의 핵심 개념(Pod, Node, Cluster, Deployment)을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, 컨테이너, 쿠버네티스, k8s]
 created: 2026-10-02
 modified: 2026-10-02

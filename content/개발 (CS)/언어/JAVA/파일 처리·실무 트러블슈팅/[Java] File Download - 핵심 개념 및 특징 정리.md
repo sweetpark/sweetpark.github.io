@@ -1,5 +1,6 @@
 ---
 title: "File Download"
+description: "Spring MVC에서 @GetMapping과 ContentDisposition으로 파일 다운로드를 구현하는 방법을 정리했습니다."
 tags: [학습, 개발-CS, 언어, JAVA, Spring]
 created: 2026-09-05
 modified: 2026-09-05

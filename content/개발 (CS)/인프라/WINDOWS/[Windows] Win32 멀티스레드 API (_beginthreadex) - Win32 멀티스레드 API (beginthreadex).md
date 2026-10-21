@@ -1,5 +1,6 @@
 ---
 title: "Win32 멀티스레드 API (_beginthreadex)"
+description: "Windows에서 C로 멀티스레드를 구현할 때 쓰는 _beginthreadex와 관련 Win32 자료형을 정리했습니다."
 tags: [학습, 개발-CS, 언어, C, Windows, 멀티스레드]
 modified: 2026-09-05
 ---

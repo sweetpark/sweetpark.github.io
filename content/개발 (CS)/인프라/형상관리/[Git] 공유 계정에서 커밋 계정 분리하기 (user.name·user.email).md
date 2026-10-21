@@ -1,5 +1,6 @@
 ---
 title: "공유 계정에서 커밋 계정 분리하기 (user.name·user.email)"
+description: "공유 서버에서 git config --global을 쓰면 안 되는 이유와 저장소 단위(local), 환경변수 두 가지 방법으로 커밋 계정(user.name, user.email)을 분리하는 방법을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, 형상관리, Git, 공유계정]
 created: 2026-09-16
 modified: 2026-09-16

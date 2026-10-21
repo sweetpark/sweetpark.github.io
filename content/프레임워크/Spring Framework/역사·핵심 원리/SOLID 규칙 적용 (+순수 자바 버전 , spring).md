@@ -1,5 +1,6 @@
 ---
 title: "SOLID 규칙 적용 (+순수 자바 버전 , spring)"
+description: "SOLID 원칙(OCP, DIP)을 순수 자바와 Spring 컨테이너 버전으로 각각 적용해 보며 기획과 구조, 구현을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

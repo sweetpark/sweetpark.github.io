@@ -1,14 +1,12 @@
 ---
 title: "배열 기반 원형 큐(Ring Buffer) — front·back 인덱스로 만드는 큐"
+description: "고정 크기 배열과 front, back 인덱스로 O(1)에 push/pop하는 원형 큐(Ring Buffer)와 가득 참, 빔 구분 문제를 정리했습니다."
 tags: [학습, 개발-CS, 언어, C언어, 자료구조, 원형큐, 링버퍼]
 created: 2026-09-17
 modified: 2026-09-17
 ---
 
 # 배열 기반 원형 큐(Ring Buffer) — front·back 인덱스로 만드는 큐
-
-> [!NOTE]
-> `malloc`/`free`를 반복하지 않고, 고정 크기 배열 하나로 FIFO 큐를 만드는 원형 큐(circular queue, ring buffer) 패턴을 정리한다. 인덱스 두 개만으로 push/pop을 O(1)에 처리하는 방법과, 그 과정에서 항상 걸리는 "가득 참 vs 빔" 구분 문제를 다룬다.
 
 ## 0. 왜 필요한가
 

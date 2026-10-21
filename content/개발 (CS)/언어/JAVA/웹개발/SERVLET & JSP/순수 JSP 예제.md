@@ -1,5 +1,6 @@
 ---
 title: "순수 JSP 예제"
+description: "서블릿 없이 순수 JSP만으로 회원 등록 폼, 저장, 목록을 구현해 보고 한계를 정리했습니다."
 tags: [JAVA 기반 웹개발, SERVLET & JSP]
 created: 2026-09-05
 modified: 2026-09-05

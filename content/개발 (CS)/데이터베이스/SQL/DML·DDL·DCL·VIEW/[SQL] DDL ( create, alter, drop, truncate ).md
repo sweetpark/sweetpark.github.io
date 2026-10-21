@@ -1,5 +1,6 @@
 ---
 title: "[SQL] DDL ( create, alter, drop, truncate )"
+description: "SQL DDL의 CREATE, DROP, TRUNCATE, ALTER 명령어로 데이터베이스와 테이블 구조를 정의하고 변경하는 방법을 정리했습니다."
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05
 modified: 2026-09-05

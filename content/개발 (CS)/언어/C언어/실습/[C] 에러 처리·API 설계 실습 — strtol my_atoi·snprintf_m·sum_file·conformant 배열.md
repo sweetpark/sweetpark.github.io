@@ -1,5 +1,6 @@
 ---
 title: "(C) 에러 처리·API 설계 실습 — strtol my_atoi·snprintf_m·sum_file·conformant 배열"
+description: "C 에러 처리(errno 한계, atoi 대신 strtol)와 API 설계 실습에서 만난 오류를 정리하고 my_atoi, snprintf_m, sum_file을 구현했습니다."
 tags: 
 created: 2026-10-14
 modified: 2026-10-15

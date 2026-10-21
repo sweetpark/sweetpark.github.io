@@ -1,5 +1,6 @@
 ---
 title: "devstack (OpenStack)"
+description: "OpenStack 개발·테스트용 설치 스크립트 모음인 DevStack의 개념과 단일 노드에 Nova, Neutron, Keystone 등을 구성하는 방법을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, OpenStack, devstack]
 modified: 2026-09-05
 ---

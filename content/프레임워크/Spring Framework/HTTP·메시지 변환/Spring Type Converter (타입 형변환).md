@@ -1,5 +1,6 @@
 ---
 title: "Spring Type Converter (타입 형변환)"
+description: "Spring Converter<S, T> 인터페이스로 타입 변환을 구현하고 등록하는 방법을 필요 예시와 함께 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "📌 Docker + MariaDB 로컬 개발 환경 정리"
+description: "macOS에서 MariaDB 직접 설치 시 생긴 CTE/WITH 오류를 Docker 기반 MariaDB로 해결하고, 서버 기동, 접속, 권한 설정, SQL import를 CLI로 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, 개발, MariaDB, Docker, CTE]
 modified: 2026-09-05
 ---

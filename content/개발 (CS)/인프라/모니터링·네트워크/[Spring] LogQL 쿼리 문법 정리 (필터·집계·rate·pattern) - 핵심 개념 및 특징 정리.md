@@ -1,5 +1,6 @@
 ---
 title: "LogQL 쿼리 문법 정리 (필터·집계·rate·pattern)"
+description: "Grafana Loki의 LogQL 라인 필터, 라벨 집계, 속도(rate) 함수, 필드 추출(pattern) 문법을 운영 대시보드 관점에서 정리했습니다."
 tags: [학습, 개발-CS, 인프라, Grafana, Loki, LogQL]
 modified: 2026-09-05
 ---

@@ -1,5 +1,6 @@
 ---
 title: "sk m&s (배포/CICD 정리)"
+description: "GitHub SSH 커밋 서명과 GitHub Actions로 push부터 SSH, EC2(pm2)까지 자동 배포하는 CI/CD 구축 과정을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, 기타, 개발, 배포, CICD]
 created: 2026-06-26
 modified: 2026-09-05

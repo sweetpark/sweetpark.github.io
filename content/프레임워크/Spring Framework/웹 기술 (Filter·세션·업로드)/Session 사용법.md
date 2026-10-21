@@ -1,5 +1,6 @@
 ---
 title: "Session 사용법"
+description: "Session을 쓰는 이유와 직접 세션 생성, 서블릿 HttpSession, @SessionAttribute 사용법을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

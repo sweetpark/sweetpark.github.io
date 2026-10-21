@@ -1,13 +1,11 @@
 ---
 title: "DNS"
+description: "도메인 구매(가비아) + AWS Route 53 연결, SSL/TLS 인증서 발급(nginx + Certbot), 80포트 리다이렉트까지 HTTPS 서버 구성 정리."
 tags: [학습, 개발-CS, 인프라, 기초, 개발, DNS]
 modified: 2026-09-05
 ---
 
 # DNS
-
-> [!NOTE]
-> 도메인 구매(가비아) + AWS Route 53 연결, SSL/TLS 인증서 발급(nginx + Certbot), 80포트 리다이렉트까지 HTTPS 서버 구성 정리.
 
 ## 📌 개념
 

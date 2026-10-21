@@ -1,14 +1,12 @@
 ---
 title: "[명령어] TAR 사용법"
+description: "tar로 파일을 묶고 푸는 기본 사용법과 gzip/bzip2 압축 옵션 정리."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 3일 오후 11:07
 modified: 2026-09-05
 ---
 
 # [명령어] TAR 사용법
-
-> [!NOTE]
-> `tar`로 파일을 묶고 푸는 기본 사용법과 gzip/bzip2 압축 옵션 정리.
 
 ## 📌 개념
 

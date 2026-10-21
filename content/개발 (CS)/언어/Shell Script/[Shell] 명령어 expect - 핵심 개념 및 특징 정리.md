@@ -1,5 +1,6 @@
 ---
 title: "[명령어] expect"
+description: "대화형 프로그램의 프롬프트에 자동 응답하는 expect 스크립트 도구의 사용법과 예시를 정리했습니다."
 tags: [학습, 개발-CS, 언어, Shell-Script, 개발, Shell, 자동화]
 created: 2026-09-05
 modified: 2026-09-05

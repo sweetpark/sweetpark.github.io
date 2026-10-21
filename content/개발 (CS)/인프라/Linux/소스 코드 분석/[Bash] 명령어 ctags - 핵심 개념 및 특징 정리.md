@@ -1,14 +1,12 @@
 ---
 title: "[명령어] ctags"
+description: "ctags로 소스 심볼 인덱스(tags)를 생성해 vim에서 정의로 점프하는 방법 정리."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 3일 오후 11:08
 modified: 2026-09-05
 ---
 
 # [명령어] ctags
-
-> [!NOTE]
-> `ctags`로 소스 심볼 인덱스(`tags`)를 생성해 vim에서 정의로 점프하는 방법 정리.
 
 > [!NOTE]
 > 원본이 간략하여 일반지식을 AI가 보강함(사실 확인 권장).

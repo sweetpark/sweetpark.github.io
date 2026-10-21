@@ -1,14 +1,12 @@
 ---
 title: "[명령어] SCP 사용법"
+description: "scp(secure copy)로 SSH 채널 위에서 로컬↔원격 간 파일을 암호화 전송하는 방법과 주요 옵션 정리."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 3일 오후 11:07
 modified: 2026-09-05
 ---
 
 # [명령어] SCP 사용법
-
-> [!NOTE]
-> `scp`(secure copy)로 SSH 채널 위에서 로컬↔원격 간 파일을 암호화 전송하는 방법과 주요 옵션 정리.
 
 > [!NOTE]
 > 원본이 간략하여 일반지식을 AI가 보강함(사실 확인 권장).

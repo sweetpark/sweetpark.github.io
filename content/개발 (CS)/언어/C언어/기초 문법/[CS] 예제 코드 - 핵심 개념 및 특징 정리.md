@@ -1,14 +1,12 @@
 ---
 title: "예제 코드"
+description: "sprintf와 strcat를 반복해 U-2021-NN, 형태의 문자열을 만드는 C 예제입니다."
 tags: [학습, 개발-CS, 언어, C언어, 개발, 문자열]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # 예제 코드
-
-> [!NOTE]
-> `sprintf` + `strcat`로 "U-2021-NN," 형태의 문자열을 반복 생성하는 C 예제.
 
 ## 💻 예시
 

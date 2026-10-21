@@ -1,5 +1,6 @@
 ---
 title: "Spring 컨테이너"
+description: "Spring 6.x 공식 문서를 바탕으로 AnnotationConfigApplicationContext와 ClassPathXmlApplicationContext 등 스프링 컨테이너의 종류와 역할을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

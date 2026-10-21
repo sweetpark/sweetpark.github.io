@@ -1,14 +1,12 @@
 ---
 title: "(C) 문자열 함수 실습 — strncpy·strncat 직접 구현과 오버플로 함정"
+description: "C 문자열 실습에서 만난 널 문자, const, signed/unsigned char, off-by-one 오류를 정리하고 strncpy와 strncat을 직접 구현했습니다."
 tags: 
 created: 2026-10-13
 modified: 2026-10-15
 ---
 
 # 문자열 함수 실습 — strncpy·strncat 직접 구현과 오버플로 함정
-
-> [!NOTE]
-> C 기초 강의의 문자열 실습(8-01 ~ 8-05)에서 만난 오류 패턴을 정리하고, `strncpy`·`strncat`·파일명 생성 함수를 직접 구현하며 겪은 버그를 기록한다. 환경은 Linux 컨테이너, `gcc -g -O0 -Wall -Wextra`.
 
 > [!IMPORTANT]
 > 코드는 컨테이너에서 컴파일·실행해 확인했고, 설명은 AI(Claude)와 함께 코드 리뷰하며 정리했다.

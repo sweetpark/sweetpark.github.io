@@ -1,5 +1,6 @@
 ---
 title: "Strategy+Factory로 다중 Provider 처리하기"
+description: "Kakao, Naver, Google, Apple 등 Provider별로 다른 소셜 로그인 로직을 공통 인터페이스로 감싸 Strategy와 Factory 패턴으로 확장하기 쉽게 처리하는 방법을 정리했습니다."
 tags: [학습, 개발-CS, 언어, 디자인패턴, Spring]
 modified: 2026-09-05
 ---

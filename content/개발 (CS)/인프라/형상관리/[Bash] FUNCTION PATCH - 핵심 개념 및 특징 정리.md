@@ -1,13 +1,11 @@
 ---
 title: "[FUNCTION] PATCH"
+description: "patch 명령으로 diff 파일을 적용해 코드 변경분을 병합하는 방법과 -p[num] 경로 옵션 정리."
 tags: [학습, 개발-CS, 인프라, 형상관리, 개발]
 modified: 2026-09-05
 ---
 
 # [FUNCTION] PATCH
-
-> [!NOTE]
-> `patch` 명령으로 diff 파일을 적용해 코드 변경분을 병합하는 방법과 `-p[num]` 경로 옵션 정리.
 
 ## 📌 개념
 

@@ -1,5 +1,6 @@
 ---
 title: "[배포 #2] WAR & JAR 차이"
+description: "WAR와 JAR의 차이, WAR 파일 내부 구조, 빌드 설정과 빌드 방법을 정리했습니다."
 tags: [프로젝트, 영화예매 프로젝트]
 created: 2026-09-05
 modified: 2026-09-05

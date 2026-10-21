@@ -1,5 +1,6 @@
 ---
 title: "[JAVA 기술면접] 라이브러리 (라이브러리, 모듈)"
+description: "자바 라이브러리(.jar, CLASSPATH)와 모듈(module-info)의 차이를 묻는 기술면접 질문을 정리했습니다."
 tags: [기술면접, JAVA 관련 기술면접]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "pthread 멀티스레드 API 레퍼런스"
+description: "Linux/POSIX에서 멀티스레드로 포트를 스캔할 때 쓰는 pthread 기본 API와 recv() 타임아웃 처리를 정리했습니다."
 tags: [학습, 개발-CS, 네트워크, C, pthread, 멀티스레드]
 modified: 2026-09-05
 ---

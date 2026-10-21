@@ -1,5 +1,6 @@
 ---
 title: "실제 예제"
+description: "백업, 로그 파일 정리, 마운트 사용률 점검 등 실무 셸 스크립트 예제를 정리했습니다."
 tags: [학습, 개발-CS, 언어, Shell-Script, 개발, Shell, 예제]
 created: 2026-09-05
 modified: 2026-09-05

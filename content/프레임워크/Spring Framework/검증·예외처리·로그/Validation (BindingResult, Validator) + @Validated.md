@@ -1,5 +1,6 @@
 ---
 title: "Validation (BindingResult, Validator) + @Validated"
+description: "Spring MVC의 BindingResult와 Validator, @Validated로 검증하고 MessageCodesResolver로 오류 메시지를 처리하는 방법을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

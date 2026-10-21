@@ -1,5 +1,6 @@
 ---
 title: "which vs command -v, 프로세스 종료 시그널"
+description: "유닉스 계열에서 셸 스크립트 이식성을 해치는 which의 비표준 동작과 프로세스 종료 시그널에 따라 로그가 달라지는 문제를 정리했습니다."
 tags: [학습, 개발-CS, 언어, Shell-Script, 개발, 이식성, 시그널]
 created: 2026-09-05
 modified: 2026-09-05

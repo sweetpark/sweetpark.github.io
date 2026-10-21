@@ -1,14 +1,12 @@
 ---
 title: "메시지 큐 API (msgget·msgsnd·msgrcv·msgctl)"
+description: "System V 메시지 큐 API 4형제와, 사내 프레임워크가 이를 감싸는 일반적인 래핑 패턴, 메시지 헤더로 응답 주소를 실어 보내는 라우팅 패턴을 정리한다."
 tags: [학습, 개발-CS, CS기초, 운영체제, IPC, System V, msgget, msgrcv]
 created: 2026-09-16
 modified: 2026-09-16
 ---
 
 # 메시지 큐 API (msgget·msgsnd·msgrcv·msgctl)
-
-> [!NOTE]
-> System V 메시지 큐 API 4형제와, 사내 프레임워크가 이를 감싸는 일반적인 래핑 패턴, 메시지 헤더로 응답 주소를 실어 보내는 라우팅 패턴을 정리한다.
 
 ## 1. 메시지 큐 API 4형제
 

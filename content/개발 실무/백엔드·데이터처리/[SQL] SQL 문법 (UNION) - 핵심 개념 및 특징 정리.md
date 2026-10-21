@@ -1,5 +1,6 @@
 ---
 title: "SQL 문법 (UNION)"
+description: "여러 SELECT 결과를 세로로 합치는 집합 연산자 UNION과 UNION ALL의 개념, 사용 조건, 차이를 정리했습니다."
 tags: [학습, 개발실무, 저장소-&-데이터베이스]
 created: 2026-02-04
 modified: 2026-09-05

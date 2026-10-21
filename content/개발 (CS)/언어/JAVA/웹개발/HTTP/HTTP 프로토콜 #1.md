@@ -1,5 +1,6 @@
 ---
 title: "HTTP 프로토콜 #1"
+description: "HTTP의 요청-응답 구조와 무상태(stateless) 특성의 트레이드오프, HTTP 메시지 구성(Start-Line, field-line, message-body)을 정리했습니다."
 tags: [JAVA 기반 웹개발, HTTP]
 created: 2026-09-05
 modified: 2026-09-05

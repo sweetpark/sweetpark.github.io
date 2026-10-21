@@ -1,14 +1,12 @@
 ---
 title: "🚀 Java 중급 1편 핵심 요약 총정리"
+description: "Object 클래스, 불변 객체, String, 래퍼/Enum, java.time, 중첩/익명 클래스, 예외 처리 등 Java 중급 1편 핵심 요약."
 tags: [학습, 개발-CS, 언어, JAVA, 개발, Object, 불변객체, 예외처리]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # 🚀 Java 중급 1편 핵심 요약 총정리
-
-> [!NOTE]
-> Object 클래스, 불변 객체, String, 래퍼/Enum, java.time, 중첩/익명 클래스, 예외 처리 등 Java 중급 1편 핵심 요약.
 
 ## 📌 개념
 

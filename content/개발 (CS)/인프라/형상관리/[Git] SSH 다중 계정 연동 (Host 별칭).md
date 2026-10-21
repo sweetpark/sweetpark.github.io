@@ -1,5 +1,6 @@
 ---
 title: "SSH 다중 계정 연동 (Host 별칭)"
+description: "같은 리눅스 계정을 여러 명이 공유하는 서버에서 SSH Host 별칭으로 사람마다 다른 Git 계정의 키를 분리해 clone과 push하는 방법을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, 형상관리, Git, SSH, 공유계정]
 created: 2026-09-16
 modified: 2026-09-16

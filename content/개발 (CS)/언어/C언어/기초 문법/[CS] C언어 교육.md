@@ -1,5 +1,6 @@
 ---
 title: "C언어 인프런"
+description: "인프런 C언어 강의를 정리한 노트로, 문자열 입출력, Call By Value와 Reference, L-Value와 R-Value, 구조체와 공용체를 다룹니다."
 tags: 
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "성능 분석 도구와 관측 (perf·flame graph·eBPF·메모리)"
+description: "성능 문제와 메모리 증가를 만났을 때 디버깅과 프로파일링의 차이, perf, 플레임 그래프, eBPF 등 어떤 도구로 어디를 볼지 정리했습니다."
 tags: [학습, 개발-CS, 인프라, Linux, 성능, 프로파일링, 관측]
 created: 2026-10-02
 modified: 2026-10-02

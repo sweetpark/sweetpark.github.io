@@ -1,5 +1,6 @@
 ---
 title: "계층적 스트리밍 파이프라인 설계로 OOM 방지"
+description: "대량 데이터 생성 시 OOM을 파일 전체 로드 방식에서 Context 기반 계층적 Stream 처리로 전환해 해결한 설계 패턴을 정리했습니다."
 tags: [학습, 개발-CS, 언어, Stream API, 아키텍처]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "Claude 설치"
+description: "Claude Code CLI를 설치하는 5가지 방법(공식 스크립트, NPM 등)과 방식별 Node.js 필요 여부, 설치 확인 방법을 정리했습니다."
 tags: [학습, AI-도구, 환경설정, AI-환경설정, Claude]
 created: 2026-04-13
 modified: 2026-09-05

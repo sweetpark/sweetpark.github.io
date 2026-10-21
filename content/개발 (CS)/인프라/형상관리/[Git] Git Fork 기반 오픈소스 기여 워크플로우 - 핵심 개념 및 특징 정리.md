@@ -1,5 +1,6 @@
 ---
 title: "Git Fork 기반 오픈소스 기여 워크플로우"
+description: "push 권한이 없는 오픈소스에 기여할 때 쓰는 fork, origin/upstream 재구성, 브랜치 작업, PR 워크플로우를 정리했습니다."
 tags: [학습, 개발-CS, 인프라, Git, GitHub, 오픈소스]
 modified: 2026-09-05
 ---

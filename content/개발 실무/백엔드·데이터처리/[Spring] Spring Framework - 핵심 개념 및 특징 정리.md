@@ -1,14 +1,12 @@
 ---
 title: "Spring Framework"
+description: "@Transactional의 동작 원리(프록시/AOP 기반 롤백)와 실제로 트랜잭션이 적용되지 않았던 실패 사례(예외 자체 처리, 자기 호출, final 메서드) 및 해결책(AOP 재래핑, 프로그래밍 방식 트랜잭션) 정리."
 tags: [학습, 개발실무, 공통]
 created: 2026-02-04
 modified: 2026-09-05
 ---
 
 # Spring Framework
-
-> [!NOTE]
-> `@Transactional`의 동작 원리(프록시/AOP 기반 롤백)와 실제로 트랜잭션이 적용되지 않았던 실패 사례(예외 자체 처리, 자기 호출, **final 메서드**) 및 해결책(AOP 재래핑, **프로그래밍 방식 트랜잭션**) 정리.
 
 ## 📌 개념
 

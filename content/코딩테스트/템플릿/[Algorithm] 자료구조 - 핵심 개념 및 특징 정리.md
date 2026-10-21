@@ -1,5 +1,6 @@
 ---
 title: "자료구조"
+description: "코딩테스트용 Java 자료구조 레퍼런스로 배열과 리스트 비교, remove() 오버로딩 함정, HashMap 활용, HashSet 등을 정리했습니다."
 tags: [학습, 코딩테스트, 알고리즘]
 created: 2025년 9월 2일 오후 9:57
 modified: 2026-09-05

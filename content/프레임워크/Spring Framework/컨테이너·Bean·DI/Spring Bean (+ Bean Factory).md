@@ -1,5 +1,6 @@
 ---
 title: "Spring Bean (+ Bean Factory)"
+description: "Spring Bean의 개념과 BeanFactory, BeanDefinition, 빈 확인 메서드를 AnnotationConfigApplicationContext 예제로 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

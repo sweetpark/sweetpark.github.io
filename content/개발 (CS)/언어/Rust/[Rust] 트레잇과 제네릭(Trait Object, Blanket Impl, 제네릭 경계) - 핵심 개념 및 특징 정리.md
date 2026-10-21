@@ -1,14 +1,12 @@
 ---
 title: "트레잇과 제네릭(Trait Object, Blanket Impl, 제네릭 경계)"
+description: "Rust 제네릭이 필요한 이유와 문법, 트레잇 경계, dyn Trait 동적 디스패치, Blanket Impl을 GlueSQL 코드로 정리했습니다."
 tags: [학습, 개발-CS, 언어, Rust, 트레잇, 제네릭, GlueSQL]
 created: 2026-09-05
 modified: 2026-09-20
 ---
 
 # 트레잇과 제네릭 (Trait Object, Blanket Impl, 제네릭 경계)
-
-> [!NOTE]
-> 제네릭이 왜 필요한지(코드 중복 제거)부터, 제네릭 함수/구조체/열거형/메서드 기본 문법, 트레잇 경계(Trait Bound) 기초를 정리한 뒤, GlueSQL 실전 코드에서 `dyn Trait` 동적 디스패치, 여러 트레잇을 합성하는 Blanket Impl, 복잡한 제네릭 경계까지 실제 사례로 정리.
 
 ## 📌 개념
 

@@ -1,14 +1,12 @@
 ---
 title: "예외처리와 오류 페이지"
+description: "서블릿/스프링 부트의 예외 처리 흐름과 오류 페이지 매핑, @ExceptionHandler/@ControllerAdvice 정리"
 tags: [학습, 개발-CS, 언어, Spring, 김영한]
 created: 2026-02-04
 modified: 2026-09-05
 ---
 
 # 예외처리와 오류 페이지
-
-> [!NOTE]
-> 서블릿/스프링 부트의 예외 처리 흐름과 오류 페이지 매핑, `@ExceptionHandler`/`@ControllerAdvice` 정리
 
 > [!NOTE]
 > 원문을 AI가 검토·보강함(사실 확인 권장) — 코드 예시의 `@Exception` 표기를 `@ExceptionHandler`로, Notion 서식 잔여 기호(`*`)를 제거함.

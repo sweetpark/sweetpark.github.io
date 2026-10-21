@@ -1,5 +1,6 @@
 ---
 title: "[Web] 사내 관리자 포털(Admin Portal) RBAC 메뉴 권한 인가와 세션 감사 인터셉터 패턴"
+description: "관리자 포털에서 역할(RBAC)에 따라 메뉴 접근을 제어하고 세션 감사 인터셉터로 이력을 남기는 패턴을 정리했습니다."
 tags: [Spring MVC, Interceptor, RBAC, Security, Session, Architecture]
 created: 2026-09-05
 modified: 2026-09-05

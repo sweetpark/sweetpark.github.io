@@ -1,5 +1,6 @@
 ---
 title: "[JDBC #5] Transaction Template을  활용한 간단한 트랜잭션 적용"
+description: "Spring TransactionTemplate으로 커밋과 롤백을 자동 처리하는 방법과 설정 예시, 장점을 정리했습니다."
 tags: [데이터베이스, JDBC]
 created: 2026-09-05
 modified: 2026-09-05

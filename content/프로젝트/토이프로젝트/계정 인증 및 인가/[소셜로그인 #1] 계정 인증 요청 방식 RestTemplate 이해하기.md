@@ -1,5 +1,6 @@
 ---
 title: "[소셜로그인 #1] 계정 인증 요청 방식 RestTemplate 이해하기"
+description: "소셜 로그인 1편으로 계정 인증 요청을 보내는 RestTemplate의 개념과 사용법을 정리했습니다."
 tags: [토이프로젝트, 계정 인증 및 인가]
 created: 2026-09-05
 modified: 2026-09-05

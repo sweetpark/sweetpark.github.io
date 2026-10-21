@@ -1,5 +1,6 @@
 ---
 title: "[JAVA 기술면접] 동시성·락 — String 계열·락 종류·데드락"
+description: "String, StringBuffer, StringBuilder의 thread-safe 여부, 락을 잡는 방법, 데드락을 피하면서 성능을 높이는 방법을 Java 기술면접 질문에 맞춰 정리했습니다."
 tags: [기술면접, JAVA 관련 기술면접, 동시성, 락, 데드락, synchronized, ReentrantLock, StringBuilder]
 created: 2026-10-19
 modified: 2026-10-19

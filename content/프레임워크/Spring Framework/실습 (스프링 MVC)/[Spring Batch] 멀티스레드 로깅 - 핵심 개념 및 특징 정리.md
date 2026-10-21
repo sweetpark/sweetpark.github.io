@@ -1,5 +1,6 @@
 ---
 title: "멀티스레드 로깅 - TaskDecorator·Interceptor 재진입 방지·Marker 분리"
+description: "공통 로깅 라이브러리에서 Spring Batch 멀티스레드의 TraceId 전파(TaskDecorator), MyBatis Interceptor 재진입 방지, Marker 분리를 정리했습니다."
 tags: [학습, 개발-CS, 언어, Spring Batch, MyBatis, ThreadLocal, Logback]
 modified: 2026-09-05
 ---

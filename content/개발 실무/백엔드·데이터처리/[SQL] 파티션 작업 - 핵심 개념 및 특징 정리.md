@@ -1,5 +1,6 @@
 ---
 title: "파티션 작업"
+description: "큰 테이블을 나누는 MySQL 파티셔닝의 문법(생성, 추가, 삭제, 재배치)과 Range, List, Hash, Key 종류를 정리했습니다."
 tags: [학습, 개발실무, 저장소-&-데이터베이스]
 created: 2026-02-04
 modified: 2026-09-05

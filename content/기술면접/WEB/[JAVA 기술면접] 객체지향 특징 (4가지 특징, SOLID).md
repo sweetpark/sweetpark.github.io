@@ -1,5 +1,6 @@
 ---
 title: "[JAVA 기술면접] 객체지향 특징 (4가지 특징, SOLID)"
+description: "캡슐화, 상속, 추상화, 다형성 객체지향 4가지 특징과 SOLID 원칙을 Java 기술면접 질문에 맞춰 정리했습니다."
 tags: [기술면접, JAVA 관련 기술면접]
 created: 2026-09-05
 modified: 2026-09-05

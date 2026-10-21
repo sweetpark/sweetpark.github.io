@@ -1,5 +1,6 @@
 ---
 title: "[JAVA 기술면접] Spring·Web 빈출 질문"
+description: "Java, Web, Spring 면접에서 자주 나오는 질문을 영역별 표로 한 줄 정의, 핵심 이유, 실무 포인트 순서로 정리했습니다."
 tags: [기술면접, JAVA 관련 기술면접, Spring, Spring Boot, JPA, 웹, 보안, 인증]
 created: 2026-10-19
 modified: 2026-10-19

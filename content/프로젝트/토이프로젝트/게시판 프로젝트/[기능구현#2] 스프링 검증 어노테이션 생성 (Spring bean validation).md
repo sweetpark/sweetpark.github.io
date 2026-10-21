@@ -1,5 +1,6 @@
 ---
 title: "[기능구현#2] 스프링 검증 어노테이션 생성 (Spring bean validation)"
+description: "Spring bean validation으로 커스텀 검증 어노테이션을 만드는 방법을 게시판 프로젝트 기능 구현으로 정리했습니다."
 tags: [프로젝트, 게시판 프로젝트]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "[오픈소스] mini-apm-spring-boot-starter - 상세 분석 및 기술 가이드"
+description: "무거운 APM 에이전트 없이 Spring Boot에 붙이는 경량 비침투형 관측성 스타터 mini-apm-spring-boot-starter의 상세 분석과 기술 가이드입니다."
 tags: [학습, 오픈소스, Java, Spring-Boot, APM, Observability, Grafana]
 created: 2026-09-05
 modified: 2026-09-05

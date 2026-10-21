@@ -1,5 +1,6 @@
 ---
 title: "N과 M(1)"
+description: "백준 N과 M(1): 1부터 N까지 중복 없이 길이 M의 순열을 visited 배열과 DFS 백트래킹으로 생성하는 풀이를 정리했습니다."
 tags: [학습, 코딩테스트, 구현, 백준, 알고리즘, 순열, 백트래킹, DFS]
 created: 2026-04-07
 modified: 2026-09-05

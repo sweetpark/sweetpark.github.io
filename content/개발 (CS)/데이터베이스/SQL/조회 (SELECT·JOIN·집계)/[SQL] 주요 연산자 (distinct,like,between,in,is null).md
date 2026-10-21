@@ -1,5 +1,6 @@
 ---
 title: "[SQL] 주요 연산자 (distinct,like,between,in,is null)"
+description: "SQL의 DISTINCT, LIKE, BETWEEN, IN, IS NULL 연산자의 사용법과 필요한 이유, 주의점을 예제로 정리했습니다."
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05
 modified: 2026-09-05

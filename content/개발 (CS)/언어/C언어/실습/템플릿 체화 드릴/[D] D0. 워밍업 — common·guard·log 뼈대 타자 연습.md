@@ -1,5 +1,6 @@
 ---
 title: "D0. 워밍업 — common·guard·log 뼈대 타자 연습"
+description: "common, guard, log 뼈대를 매일 타자 연습으로 손에 붙이는 D0 워밍업 드릴입니다. 나머지 드릴의 시간을 절반으로 줄여 줍니다."
 tags: 
 created: 2026-09-21
 modified: 2026-10-16

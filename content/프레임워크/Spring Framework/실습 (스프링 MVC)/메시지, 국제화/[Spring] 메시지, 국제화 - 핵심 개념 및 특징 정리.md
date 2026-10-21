@@ -1,5 +1,6 @@
 ---
 title: "메시지, 국제화"
+description: "메시지 Bean 적용과 .properties 파일 기반 메시지, 국제화(i18n) 처리를 구현한 미니 프로젝트입니다."
 tags: [학습, 개발-CS, 언어, Spring, 김영한]
 created: 2026-02-04
 modified: 2026-09-05

@@ -1,14 +1,12 @@
 ---
 title: "snprintf와 sscanf — 문자열 조립과 파싱의 차이"
+description: "snprintf와 sscanf의 방향 차이, 버퍼 크기 제한, 반환값 의미를 비교하고 커스텀 구분자 파싱을 구조화된 파서로 옮기는 이유를 정리했습니다."
 tags: [학습, 개발-CS, 언어, C언어, snprintf, sscanf, 버퍼오버플로우]
 created: 2026-09-16
 modified: 2026-09-16
 ---
 
 # snprintf와 sscanf — 문자열 조립과 파싱의 차이
-
-> [!NOTE]
-> printf 가족(출력)과 scanf 가족(입력)의 방향 차이, 버퍼 크기 제한 유무, 반환값이 알려주는 정보의 차이를 정리하고, 커스텀 구분자 파싱을 왜 구조화된 파서로 옮기는 게 나은지 실전 사례로 살펴본다.
 
 ## 0. 배경
 

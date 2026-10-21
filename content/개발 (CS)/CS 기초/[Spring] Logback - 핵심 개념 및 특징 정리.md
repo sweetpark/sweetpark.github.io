@@ -1,14 +1,12 @@
 ---
 title: "Logback"
+description: "로그의 개념과 레벨(FATAL~TRACE), 기록 방법, 파사드 패턴(SLF4J), 그리고 logback-spring.xml 설정 예시를 정리한다."
 tags: [학습, 개발-CS, CS-기초, 기초, 개발, Logback]
 created: 2026-02-04
 modified: 2026-09-05
 ---
 
 # Logback
-
-> [!NOTE]
-> 로그의 개념과 레벨(FATAL~TRACE), 기록 방법, 파사드 패턴(SLF4J), 그리고 logback-spring.xml 설정 예시를 정리한다.
 
 ## 📌 개념
 

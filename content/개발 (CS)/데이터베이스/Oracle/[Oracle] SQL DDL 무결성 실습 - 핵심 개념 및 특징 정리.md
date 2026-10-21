@@ -1,5 +1,6 @@
 ---
 title: "SQL DDL 무결성 실습"
+description: "재고관리 미니 프로젝트로 DDL, 제약조건, 무결성 검증을 실습하고 DDL, DML, DCL과 Select 절 순서를 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, 개발, DDL, DML, DCL, 무결성, Oracle]
 modified: 2026-09-05
 ---

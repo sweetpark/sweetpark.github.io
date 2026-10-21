@@ -1,5 +1,6 @@
 ---
 title: "[JAVA 기술면접] MySQL 쿼리 튜닝 — EXPLAIN 해석과 튜닝 기준"
+description: "MySQL EXPLAIN 해석 기준과 쿼리 튜닝이 이뤄지는 방식을 Java 기술면접 질문에 맞춰 정리했습니다."
 tags: [기술면접, JAVA 관련 기술면접, MySQL, EXPLAIN, 쿼리 튜닝, 인덱스, 실행 계획]
 created: 2026-10-19
 modified: 2026-10-19

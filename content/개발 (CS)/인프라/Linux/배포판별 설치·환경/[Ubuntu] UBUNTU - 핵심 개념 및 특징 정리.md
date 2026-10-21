@@ -1,13 +1,11 @@
 ---
 title: "UBUNTU"
+description: "Ubuntu 20.04 한글패치, 파일 송수신(FTP), Windows 실행파일 구동(Wine) 설정 정리."
 tags: [학습, 개발-CS, 인프라, Ubuntu]
 modified: 2026-09-05
 ---
 
 # UBUNTU
-
-> [!NOTE]
-> Ubuntu 20.04 한글패치, 파일 송수신(FTP), Windows 실행파일 구동(Wine) 설정 정리.
 
 ## 🖥️ 시스템/환경
 - 대상 OS: Ubuntu 20.04

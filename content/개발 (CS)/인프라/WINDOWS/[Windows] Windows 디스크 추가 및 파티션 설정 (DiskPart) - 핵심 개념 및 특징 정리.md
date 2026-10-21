@@ -1,13 +1,11 @@
 ---
 title: "Windows 디스크 추가 및 파티션 설정 (DiskPart)"
+description: "Windows에서 diskpart CLI로 새 디스크를 인식·분할하고 볼륨을 생성·포맷하는 절차 정리."
 tags: [학습, 개발-CS, 인프라, WINDOWS, 개발]
 modified: 2026-09-05
 ---
 
 # Windows 디스크 추가 및 파티션 설정 (DiskPart)
-
-> [!NOTE]
-> Windows에서 `diskpart` CLI로 새 디스크를 인식·분할하고 볼륨을 생성·포맷하는 절차 정리.
 
 ## 📌 개념
 

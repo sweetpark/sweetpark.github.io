@@ -1,5 +1,6 @@
 ---
 title: "Socket의 기본 정리 ( feat, Blocking / Non-Blocking )"
+description: "소켓의 개념과 Blocking, Non-Blocking 통신 구조, 비동기 처리가 필요한 이유와 epoll, IOCP 같은 방식을 정리했습니다."
 tags: [개발 서적 리뷰, 게임서버 프로그래머 책]
 created: 2026-09-05
 modified: 2026-09-05

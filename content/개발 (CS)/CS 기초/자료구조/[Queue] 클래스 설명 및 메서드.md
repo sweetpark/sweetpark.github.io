@@ -1,5 +1,6 @@
 ---
 title: "[Queue] 클래스 설명 및 메서드"
+description: "선입선출(FIFO) 자료구조인 Java Queue 인터페이스의 add, offer, remove, poll, peek 메서드 차이와 반환값을 표로 정리했습니다."
 tags: [알고리즘 & 자료구조, 자료구조]
 created: 2026-09-05
 modified: 2026-09-05

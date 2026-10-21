@@ -1,5 +1,6 @@
 ---
 title: "RHEL 8 NTP에서 chrony로의 전환"
+description: "RHEL 8부터 시각 동기화 데몬이 ntpd에서 chronyd로 바뀐 점과 점검 도구가 두 서비스를 모두 고려해야 하는 이유를 정리했습니다."
 tags: [학습, 개발-CS, 인프라, NTP, chrony, RHEL]
 modified: 2026-09-05
 ---

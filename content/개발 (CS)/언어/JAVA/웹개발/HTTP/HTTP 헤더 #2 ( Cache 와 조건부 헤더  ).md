@@ -1,5 +1,6 @@
 ---
 title: "HTTP 헤더 #2 ( Cache 와 조건부 헤더  )"
+description: "HTTP 캐시 헤더와 검증(조건부 요청) 헤더, Cache-Control 지시어, 프록시 캐시와 캐시 무효화 방법을 정리했습니다."
 tags: [JAVA 기반 웹개발, HTTP]
 created: 2026-09-05
 modified: 2026-09-05

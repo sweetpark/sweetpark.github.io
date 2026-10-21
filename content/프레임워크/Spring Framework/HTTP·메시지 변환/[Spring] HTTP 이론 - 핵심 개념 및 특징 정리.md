@@ -1,14 +1,12 @@
 ---
 title: "HTTP 이론"
+description: "인터넷 네트워크(IP/TCP/UDP/DNS)부터 URI, HTTP 메시지 구조·메서드·상태코드·헤더, 쿠키·캐시·조건부 요청까지 김영한 HTTP 강의를 한 문서로 정리한다."
 tags: [학습, 개발-CS, CS-기초, Spring-Framework, 개발, Spring]
 created: 2025년 3월 12일 오후 2:14
 modified: 2026-09-05
 ---
 
 # HTTP 이론
-
-> [!NOTE]
-> 인터넷 네트워크(IP/TCP/UDP/DNS)부터 URI, HTTP 메시지 구조·메서드·상태코드·헤더, 쿠키·캐시·조건부 요청까지 김영한 HTTP 강의를 한 문서로 정리한다.
 
 ## 📌 개념
 

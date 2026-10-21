@@ -1,5 +1,6 @@
 ---
 title: "[SQL] 데이터 타입"
+description: "문자열, 숫자, 날짜·시간, 논리, 이진 등 SQL 데이터 타입을 MySQL 기준으로 정리하고 Oracle 표기 차이를 덧붙였습니다."
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05
 modified: 2026-09-05

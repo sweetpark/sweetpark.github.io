@@ -1,14 +1,12 @@
 ---
 title: "스프링 파일업로드"
+description: "순수 서블릿(HttpServletRequest) 방식과 스프링 MultipartFile 방식의 파일 업로드 비교 정리"
 tags: [학습, 개발-CS, 언어, Spring, 김영한]
 created: 2026-02-04
 modified: 2026-09-05
 ---
 
 # 스프링 파일업로드
-
-> [!NOTE]
-> 순수 서블릿(HttpServletRequest) 방식과 스프링 MultipartFile 방식의 파일 업로드 비교 정리
 
 > [!NOTE]
 > 원문을 AI가 검토·보강함(사실 확인 권장).

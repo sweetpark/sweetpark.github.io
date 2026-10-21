@@ -1,5 +1,6 @@
 ---
 title: "[유효성검증 #1] Validator + BindingResult를 이용한 유효성 검증"
+description: "Spring에서 Validator로 커스텀 유효성 검사를 만들고 BindingResult로 오류를 처리하는 방법을 정리했습니다."
 tags: [토이프로젝트, 유효성검사 (Validation)]
 created: 2026-09-05
 modified: 2026-09-05

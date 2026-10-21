@@ -1,5 +1,6 @@
 ---
 title: "Cookie 사용법"
+description: "Cookie를 쓰는 이유와 종류, HttpServletResponse로 쿠키를 만들고 @CookieValue로 읽는 방법을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,14 +1,12 @@
 ---
 title: "(C) errno 사용 규칙 — 초기화·저장·검사·설정 패턴"
+description: "C에서 errno를 언제 0으로 초기화하고, 읽고, 저장하고, 설정하는지 실습 중 만난 버그를 바탕으로 규칙으로 정리했습니다."
 tags: 
 created: 2026-10-14
 modified: 2026-10-15
 ---
 
 # errno 사용 규칙 — 초기화·저장·검사·설정 패턴
-
-> [!NOTE]
-> 환경변수·시그널·에러 처리 실습에서 `errno` 때문에 생긴 버그를 모아, **언제 0으로 만들고, 언제 읽고, 언제 저장하고, 언제 설정하는지**를 한곳에 정리한 규칙 노트다. 실습 코드는 Docker Desktop의 Linux 컨테이너(`c_app_part1`)에서 `gcc`로 확인했다.
 
 > [!TIP]
 > 관련 노트: [에러 처리·API 설계 실습](개발%20%28CS%29/언어/C언어/실습/[C]%20에러%20처리·API%20설계%20실습%20—%20strtol%20my_atoi·snprintf_m·sum_file·conformant%20배열.md) · [환경변수·시그널 실습](개발%20%28CS%29/언어/C언어/실습/[C]%20환경변수·시그널%20실습%20—%20getenv%20복사·atexit와%20sigaction·pselect%20시그널%20카운터.md) · [종합본](개발%20%28CS%29/언어/C언어/실습/[C]%20종합본%20—%20안전한%20C%20코딩%20체크리스트와%20방어%20매크로.md) · 헤더 [`log.h`의 `LOG_ERRNO`](https://github.com/sweetpark/c-playgound/blob/main/common/log.h)

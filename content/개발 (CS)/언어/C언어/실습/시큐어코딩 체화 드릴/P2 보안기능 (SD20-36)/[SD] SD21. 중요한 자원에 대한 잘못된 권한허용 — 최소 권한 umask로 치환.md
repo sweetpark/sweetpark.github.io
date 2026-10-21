@@ -1,5 +1,6 @@
 ---
 title: "SD21. 중요한 자원에 대한 잘못된 권한허용 — 최소 권한 umask로 치환"
+description: "시큐어코딩 SD21 중요한 자원에 대한 잘못된 권한허용 (CWE-732): 취약한 코드를 최소 권한 umask 방식으로 바꾸는 치환을 요구사항서, pseudo code, 테스트 코드로 체화하는 드릴입니다."
 tags: 
 created: 2026-09-28
 modified: 2026-10-16

@@ -1,5 +1,6 @@
 ---
 title: "유효성검사"
+description: "커스텀 어노테이션, AOP, Validator Factory를 조합해 DTO별 유효성 검사를 적용하는 구조를 정리했습니다."
 tags: [학습, 개발실무, 공통]
 created: 2026-02-04
 modified: 2026-09-05

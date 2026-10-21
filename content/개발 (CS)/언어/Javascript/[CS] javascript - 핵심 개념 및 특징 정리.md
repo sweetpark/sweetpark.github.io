@@ -1,5 +1,6 @@
 ---
 title: "javascript"
+description: "JavaScript의 자료형, var와 let과 const 변수 선언, 변수명 규칙, 블록 스코프 등 기초 문법을 정리했습니다."
 tags: [학습, 개발-CS, 언어, 개발, JavaScript]
 created: 2026-09-05
 modified: 2026-09-05

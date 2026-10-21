@@ -1,5 +1,6 @@
 ---
 title: "HTTP Message Converter"
+description: "Spring MVC가 요청과 응답 바디를 변환하는 HttpMessageConverter의 개념과 동작 방식을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

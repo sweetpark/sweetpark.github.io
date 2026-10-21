@@ -1,5 +1,6 @@
 ---
 title: "**🌿 브랜치 관리 전략 (Branch Management Guide)**"
+description: "브랜치 네이밍 체계, 작업 흐름, Merge Request 작성 가이드를 정리한 Git 브랜치 전략 문서입니다."
 tags: [학습, 개발실무, 컨벤션]
 modified: 2026-09-05
 ---

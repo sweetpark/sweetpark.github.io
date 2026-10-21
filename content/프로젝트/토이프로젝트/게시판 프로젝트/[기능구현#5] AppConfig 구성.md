@@ -1,5 +1,6 @@
 ---
 title: "[기능구현#5] AppConfig 구성"
+description: "게시판 프로젝트에서 Repository 구성과 AppConfig로 빈을 구성하는 방법을 정리했습니다."
 tags: [프로젝트, 게시판 프로젝트]
 created: 2026-09-05
 modified: 2026-09-05

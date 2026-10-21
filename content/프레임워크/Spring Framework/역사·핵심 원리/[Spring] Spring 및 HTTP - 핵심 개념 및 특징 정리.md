@@ -1,14 +1,12 @@
 ---
 title: "Spring 및 HTTP"
+description: "스프링 부트 기반으로 컨트롤러와 디스패처, HTTP 요청 방식, 쿼리스트링과 주소 변수 매핑, Content-Type, 템플릿 엔진, 리다이렉트, CSRF를 정리했습니다."
 tags: [학습, 개발-CS, CS-기초, Spring-Framework, 개발, Spring]
 created: 2026년 2월 2일 오후 11:11
 modified: 2026-09-05
 ---
 
 # Spring 및 HTTP
-
-> [!NOTE]
-> 스프링 부트 기반으로 컨트롤러/디스패처, HTTP 요청 방식(GET/POST/PUT/DELETE), 쿼리스트링·주소변수 매핑, Content-Type, 템플릿 엔진(mustache/jsp), 리다이렉트, 시큐리티(CSRF)·유효성 검사·세션까지 실습 흐름으로 정리한다.
 
 > [!NOTE] 실행 환경
 > 버전 명시 없음 — `@Valid`, `BindingResult`, Spring Security(CSRF) 등 표준 API만 사용되어 특정 버전은 확정하기 어렵다.

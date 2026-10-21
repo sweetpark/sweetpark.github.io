@@ -1,5 +1,6 @@
 ---
 title: "공유메모리 세그먼트 — 크기·key·권한·수명과 삭제"
+description: "공유메모리 세그먼트의 크기를 누가 정하는지, key와 shmid로 찾는 방법, 접근 권한, 수명과 삭제 방식을 정리했습니다."
 tags: [학습, 개발-CS, CS기초, 운영체제, IPC, 공유메모리, shmget, shmat, shm_open, ipcs, 세그먼트]
 created: 2026-10-04
 modified: 2026-10-04

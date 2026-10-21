@@ -1,5 +1,6 @@
 ---
 title: "[오픈소스] PR 본문 작성 템플릿과 컨벤션(GlueSQL 실전 사례)"
+description: "한국어로 먼저 쓰고 영어로 옮기는 워크플로를 전제로 한 오픈소스 PR 본문 작성 템플릿과 컨벤션을 GlueSQL 실제 사례로 정리했습니다."
 tags: [학습, 오픈소스, 오픈소스아카데미, PR, GitHub, 협업, GlueSQL, 템플릿]
 created: 2026-09-20
 modified: 2026-09-20

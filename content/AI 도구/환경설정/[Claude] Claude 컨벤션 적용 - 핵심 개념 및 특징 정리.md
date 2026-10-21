@@ -1,5 +1,6 @@
 ---
 title: "Claude 컨벤션 적용"
+description: "Claude Code의 Root 환경설정 경로와 CLAUDE.md 사전 지식, Agent 생성과 사용법을 컨벤션 적용 관점에서 정리했습니다."
 tags: [학습, AI-도구, 환경설정, AI-환경설정, Claude]
 created: 2026-04-13
 modified: 2026-09-05

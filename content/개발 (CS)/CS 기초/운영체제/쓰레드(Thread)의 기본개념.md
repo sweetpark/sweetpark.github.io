@@ -1,5 +1,6 @@
 ---
 title: "쓰레드(Thread)의 기본개념"
+description: "스레드와 프로세스의 차이, 멀티스레드와 멀티프로세스를 고려하는 경우, 컨텍스트 스위칭의 개념을 정리했습니다."
 tags: [Netty Framework, Thread]
 created: 2026-09-05
 modified: 2026-09-05

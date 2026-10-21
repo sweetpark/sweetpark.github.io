@@ -1,5 +1,6 @@
 ---
 title: "D6. 설계 산출물 — 표를 Mermaid 5종으로"
+description: "앞 드릴에서 만든 설계를 Mermaid 다이어그램 5종으로 남이 읽을 수 있게 표현하는 D6 드릴입니다."
 tags: 
 created: 2026-09-21
 modified: 2026-10-16

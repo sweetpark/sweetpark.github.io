@@ -1,5 +1,6 @@
 ---
 title: "네트워크"
+description: "프로그래머스 네트워크: 연결 요소(Connected Components)의 개수를 DFS와 BFS로 세는 그래프 탐색 풀이를 정리했습니다."
 tags: [학습, 코딩테스트, BFSDFS, 프로그래머스, 알고리즘, DFS, 연결요소]
 created: 2026-05-07
 modified: 2026-09-05

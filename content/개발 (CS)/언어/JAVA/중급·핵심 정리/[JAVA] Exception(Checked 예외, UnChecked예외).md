@@ -1,5 +1,6 @@
 ---
 title: "[JAVA] Exception(Checked 예외, UnChecked예외)"
+description: "Java 예외 계층(Error, Exception)과 Checked 예외, Unchecked 예외의 차이, 예외 처리 방법을 정리했습니다."
 tags: [프로그래밍 언어, JAVA]
 created: 2026-09-05
 modified: 2026-09-05

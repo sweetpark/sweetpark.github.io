@@ -1,14 +1,12 @@
 ---
 title: "👤 Linux 사용자 · 권한 · 로그 관리 정리"
+description: "사용자 수정(usermod)·패스워드 에이징(chage)·그룹 관리, 로그인 정보(who/w/last), sudo·소유권, 로그 관리(rsyslog/journalctl)를 정리."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 2일 오후 11:24
 modified: 2026-09-05
 ---
 
 # Linux 사용자 · 권한 · 로그 관리 정리
-
-> [!NOTE]
-> 사용자 수정(usermod)·패스워드 에이징(chage)·그룹 관리, 로그인 정보(who/w/last), sudo·소유권, 로그 관리(rsyslog/journalctl)를 정리.
 
 ## 📌 개념
 

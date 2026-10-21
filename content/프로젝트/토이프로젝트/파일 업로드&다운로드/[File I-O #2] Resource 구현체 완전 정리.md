@@ -1,5 +1,6 @@
 ---
 title: "[File I/O #2] Resource 구현체 완전 정리"
+description: "Spring Resource 인터페이스와 구현체(ClassPathResource, FileSystemResource 등)를 완전 정리한 File I/O 시리즈 2편입니다."
 tags: [토이프로젝트, 파일 업로드&다운로드]
 created: 2026-09-05
 modified: 2026-09-05

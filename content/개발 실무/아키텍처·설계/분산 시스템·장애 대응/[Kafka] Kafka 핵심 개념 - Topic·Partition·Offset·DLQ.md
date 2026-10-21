@@ -1,5 +1,6 @@
 ---
 title: "Kafka 핵심 개념 (Topic·Partition·Offset·DLQ)"
+description: "Kafka의 Topic, Partition, Offset, Consumer Group, DLQ 등 핵심 개념과 순서 보장, 실패 처리, 부하 분산 같은 실무 이슈를 정리했습니다."
 tags: [학습, 개발실무, 아키텍처, Kafka, 메시징]
 created: 2026-10-02
 modified: 2026-10-02

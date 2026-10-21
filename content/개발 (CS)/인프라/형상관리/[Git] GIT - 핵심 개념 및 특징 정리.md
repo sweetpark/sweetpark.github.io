@@ -1,13 +1,11 @@
 ---
 title: "GIT"
+description: "Git 기본 명령어, 저장소 등록, 변경 확인·복원, 충돌 해결, commit author 수정(rebase)까지 실무 위주로 정리."
 tags: [학습, 개발-CS, 인프라, 형상관리, 개발]
 modified: 2026-09-05
 ---
 
 # GIT
-
-> [!NOTE]
-> Git 기본 명령어, 저장소 등록, 변경 확인·복원, 충돌 해결, commit author 수정(rebase)까지 실무 위주로 정리.
 
 > [!NOTE]
 > 원문의 명령어 오타(스마트 대시, `--amend` 등)와 Notion 자동 링크 잡음을 교정함(사실 확인 권장).

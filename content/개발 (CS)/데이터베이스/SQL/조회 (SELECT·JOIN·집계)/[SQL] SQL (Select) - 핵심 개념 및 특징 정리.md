@@ -1,5 +1,6 @@
 ---
 title: "SQL (Select)"
+description: "SELECT 절의 개념과 FROM, WHERE, GROUP BY, ORDER BY 실행 순서, 함수와 Group by 사용법을 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, 개발, SQL, GroupBy, Oracle]
 modified: 2026-09-05
 ---

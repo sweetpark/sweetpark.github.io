@@ -1,5 +1,6 @@
 ---
 title: "SQL"
+description: "SQL 기초 문법으로 SELECT, WHERE, ORDER BY, JOIN, UNION, 서브쿼리, CRUD 구문을 예시와 함께 정리했습니다."
 tags: [학습, 개발-CS, 인프라, 인프라-기초-지식, 개발, 인프라기초]
 modified: 2026-09-05
 ---

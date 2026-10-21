@@ -1,5 +1,6 @@
 ---
 title: "URI, URL, URN"
+description: "URI, URL, URN의 차이와 URI 스키마 등 일반 문법을 정리했습니다."
 tags: [JAVA 기반 웹개발, HTTP]
 created: 2026-09-05
 modified: 2026-09-05

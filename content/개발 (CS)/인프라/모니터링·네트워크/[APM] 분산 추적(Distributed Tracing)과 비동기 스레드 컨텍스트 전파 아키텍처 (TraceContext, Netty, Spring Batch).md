@@ -1,14 +1,12 @@
 ---
 title: "[APM] 분산 추적(Distributed Tracing)과 비동기 스레드 컨텍스트 전파 아키텍처 (TraceContext, Netty, Spring Batch)"
+description: "에이전트 바이트코드 위빙 없이 순수 Java로 W3C Trace Context를 만족하는 분산 추적(APM)을 구현하고 Netty, Spring Batch 스레드에 컨텍스트를 전파하는 구조를 정리했습니다."
 tags: [학습, 인프라, 모니터링, APM, 분산추적, Netty, Spring-Batch, ThreadLocal]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # [APM] 분산 추적(Distributed Tracing)과 비동기 스레드 컨텍스트 전파 아키텍처 (TraceContext, Netty, Spring Batch)
-
-> **핵심 요약**  
-> 무거운 에이전트 바이트코드 위빙 없이, 순수 Java 코드와 프레임워크 표준 확장점을 이용해 **W3C Trace Context 규격**을 만족하는 고성능 APM 분산 추적 파이프라인을 구축한다. **Tomcat 서블릿 스레드**, **Netty 비동기 이벤트 루프**, **Spring Batch 병렬 청크 워커** 간의 Context Loss(스레드 경계 단절)를 극복하는 아키텍처 패턴을 분석한다.
 
 ---
 

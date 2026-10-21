@@ -1,5 +1,6 @@
 ---
 title: "[JAVA 기술면접] 멀티 DB 트랜잭션 — 분산 트랜잭션·XA·Saga"
+description: "DB를 Active-Active로 두고 한 서버가 두 DB에 걸쳐 트랜잭션이 필요할 때 분산 트랜잭션, XA, Saga로 구현하는 방법을 Java 기술면접 질문에 맞춰 정리했습니다."
 tags: [기술면접, JAVA 관련 기술면접, 트랜잭션, 분산 트랜잭션, XA, 2PC, Saga, Spring, JPA]
 created: 2026-10-19
 modified: 2026-10-19

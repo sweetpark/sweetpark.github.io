@@ -1,14 +1,12 @@
 ---
 title: "문자열 비교와 strcasecmp — strcmp 차이, 대소문자 무시 및 컴파일러 속성 해독"
+description: "strcmp, strcasecmp, strncasecmp의 동작 차이와 반환값 해석, 선언문의 컴파일러 속성(__attribute_pure__, __nonnull)의 의미를 정리했습니다."
 tags: [학습, 개발-CS, 언어, C언어, 문자열, strcmp, strcasecmp, 컴파일러속성, nonnull, pure]
 created: 2026-09-18
 modified: 2026-09-18
 ---
 
 # 문자열 비교와 strcasecmp — strcmp 차이, 대소문자 무시 및 컴파일러 속성 해독
-
-> [!NOTE]
-> C 언어 표준 및 POSIX의 문자열 비교 함수군(`strcmp`, `strcasecmp`, `strncasecmp`)의 동작 차이와 반환값 해석 관용구, 그리고 표준 라이브러리 선언문에 붙어 있는 컴파일러 최적화 속성(`__attribute_pure__`, `__nonnull`)의 실무적 의미를 정리한다.
 
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Ubuntu & redHat (OpenStack)"
+description: "Ubuntu와 RHEL 8에서 DevStack으로 OpenStack을 설치하는 절차와 참고자료를 정리했습니다."
 tags: [학습, 개발-CS, 인프라, OpenStack, Linux]
 modified: 2026-09-05
 ---

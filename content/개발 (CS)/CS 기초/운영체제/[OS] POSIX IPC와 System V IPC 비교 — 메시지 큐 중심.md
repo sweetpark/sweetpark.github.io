@@ -1,5 +1,6 @@
 ---
 title: "POSIX IPC와 System V IPC 비교 — 메시지 큐 중심"
+description: "메시지 큐를 중심으로 POSIX IPC와 System V IPC의 함수 대응, 메시지 선택 방식, 블로킹과 타임아웃, 이벤트 루프 연동 차이를 비교했습니다."
 tags: [학습, 개발-CS, CS기초, 운영체제, IPC, 메시지큐, System V, POSIX, epoll]
 created: 2026-10-07
 modified: 2026-10-07

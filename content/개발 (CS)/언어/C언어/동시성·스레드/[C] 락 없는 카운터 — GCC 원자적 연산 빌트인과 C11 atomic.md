@@ -1,14 +1,12 @@
 ---
 title: "락 없는 카운터 — GCC 원자적 연산 빌트인과 C11 atomic"
+description: "여러 스레드가 동시에 건드리는 정수 카운터를, 뮤텍스 없이도 안전하게 증가시키는 원자적 연산(atomic operation) 빌트인을 정리한다. GCC __sync_*/__atomic_* 빌트인과 C11 <stdatomic.h>를 비교한다."
 tags: [학습, 개발-CS, 언어, C언어, 멀티스레드, 원자적연산, atomic]
 created: 2026-09-17
 modified: 2026-09-17
 ---
 
 # 락 없는 카운터 — GCC 원자적 연산 빌트인과 C11 atomic
-
-> [!NOTE]
-> 여러 스레드가 동시에 건드리는 정수 카운터를, 뮤텍스 없이도 안전하게 증가시키는 원자적 연산(atomic operation) 빌트인을 정리한다. GCC `__sync_*`/`__atomic_*` 빌트인과 C11 `<stdatomic.h>`를 비교한다.
 
 ## 0. 왜 필요한가
 

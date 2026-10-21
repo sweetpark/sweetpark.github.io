@@ -1,5 +1,6 @@
 ---
 title: "SD55. 위험하다고 알려진 함수 사용 — fork 치환으로 치환"
+description: "시큐어코딩 SD55 위험하다고 알려진 함수 사용 (CWE-242): 취약한 코드를 fork 치환 방식으로 바꾸는 치환을 요구사항서, pseudo code, 테스트 코드로 체화하는 드릴입니다."
 tags: 
 created: 2026-09-28
 modified: 2026-10-16

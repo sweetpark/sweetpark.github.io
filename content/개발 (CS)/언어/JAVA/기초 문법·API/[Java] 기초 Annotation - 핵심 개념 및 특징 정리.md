@@ -1,5 +1,6 @@
 ---
 title: "[기초] Annotation"
+description: "코드에 특별한 의미나 기능을 부여하는 메타데이터인 Java 어노테이션의 개념을 정리했습니다."
 tags: [학습, 개발-CS, 언어, JAVA, 개발, 어노테이션]
 created: 2026-09-05
 modified: 2026-09-05

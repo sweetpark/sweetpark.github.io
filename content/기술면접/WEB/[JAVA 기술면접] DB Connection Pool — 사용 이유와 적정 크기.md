@@ -1,5 +1,6 @@
 ---
 title: "[JAVA 기술면접] DB Connection Pool — 사용 이유와 적정 크기"
+description: "DB Connection Pool을 쓰는 이유와 적정 풀 크기를 정하는 기준을 Java 기술면접 질문에 맞춰 정리했습니다."
 tags: [기술면접, JAVA 관련 기술면접, Connection Pool, HikariCP, DB, 성능, 튜닝]
 created: 2026-10-19
 modified: 2026-10-19

@@ -2,7 +2,7 @@
 title: "MyBatis 목차"
 tags: [학습, 목차]
 created: 2026-10-16
-modified: 2026-10-16
+modified: 2026-10-21
 ---
 
 **위치**: [학습](학습%20목록.md) › [개발 (CS)](개발%20%28CS%29/개발%20%28CS%29%20목록.md) › [데이터베이스](개발%20%28CS%29/데이터베이스/데이터베이스%20목록.md) › MyBatis  
@@ -14,8 +14,8 @@ modified: 2026-10-16
 
 | 포스팅 | 설명 |
 |---|---|
-| [DataBase](개발%20%28CS%29/데이터베이스/MyBatis/[MyBatis]%20DataBase%20-%20핵심%20개념%20및%20특징%20정리.md) | DBeaver 접속 이슈, MyBatis DB 연결 설정, SQL 작성 방법 정리. |
-| [(MyBatis) 대용량 트랜잭션 매핑과 동적 SQL 성능 최적화 패턴](개발%20%28CS%29/데이터베이스/MyBatis/[MyBatis]%20대용량%20트랜잭션%20매핑과%20동적%20SQL%20성능%20최적화%20패턴.md) | Netty 소켓 게이트웨이나 금융 결제 시스템처럼 초당 수천 건의 트랜잭션이 발생하는 환경에서, MyBatis XML 동적 쿼리의 성능 왜곡 함정을 회피하고 ExecutorType.BATCH를… |
+| [DataBase](개발%20%28CS%29/데이터베이스/MyBatis/[MyBatis]%20DataBase%20-%20핵심%20개념%20및%20특징%20정리.md) |  |
+| [(MyBatis) 대용량 트랜잭션 매핑과 동적 SQL 성능 최적화 패턴](개발%20%28CS%29/데이터베이스/MyBatis/[MyBatis]%20대용량%20트랜잭션%20매핑과%20동적%20SQL%20성능%20최적화%20패턴.md) |  |
 
 ## 동적 SQL 정적분석 (SAX·DOM·AST)
 

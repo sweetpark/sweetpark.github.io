@@ -1,5 +1,6 @@
 ---
 title: "열거형과 패턴 매칭(Enum & Match)"
+description: "Rust enum이 C와 다른 이유(대수적 데이터 타입), Option<T>로 null을 대체하는 이유, match와 if let 문법을 정리했습니다."
 tags: [학습, 개발-CS, 언어, Rust, 열거형, 패턴매칭, GlueSQL]
 created: 2026-09-05
 modified: 2026-09-20

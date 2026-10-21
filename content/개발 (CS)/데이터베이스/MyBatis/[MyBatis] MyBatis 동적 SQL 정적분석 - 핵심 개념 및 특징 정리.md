@@ -1,5 +1,6 @@
 ---
 title: "MyBatis 동적 SQL 정적분석 - Include 캐싱과 choose 분기 처리"
+description: "MyBatis SQL 정적 분석에서 <include> 태그를 OOM 없이 해석하는 2-Phase 파싱과 <choose> 분기가 EXPLAIN 실행계획을 왜곡하는 문제의 해법을 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, MyBatis, 정적분석]
 modified: 2026-09-05
 ---

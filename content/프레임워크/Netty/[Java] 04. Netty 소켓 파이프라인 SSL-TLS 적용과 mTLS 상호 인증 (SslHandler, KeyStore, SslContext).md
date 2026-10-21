@@ -1,5 +1,6 @@
 ---
 title: "[Java] 04. Netty 소켓 파이프라인 SSL-TLS 적용과 mTLS 상호 인증 (SslHandler, KeyStore, SslContext)"
+description: "TCP 소켓 통신의 도청과 중간자 공격을 막기 위해 Netty 파이프라인에 SslHandler, KeyStore, SslContext로 SSL/TLS와 mTLS 상호 인증을 적용하는 방법을 정리했습니다."
 tags: [Netty, TLS, SSL, mTLS, SslHandler, Security, Socket]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "[SQL] DCL (grant, revoke), TCL"
+description: "SQL DCL(GRANT, REVOKE)로 사용자 권한을 부여하고 회수하는 방법과 TCL(트랜잭션 제어)을 정리했습니다."
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05
 modified: 2026-09-05

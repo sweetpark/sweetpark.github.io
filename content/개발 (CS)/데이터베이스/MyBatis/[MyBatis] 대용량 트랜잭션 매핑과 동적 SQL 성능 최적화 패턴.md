@@ -1,14 +1,12 @@
 ---
 title: "[MyBatis] 대용량 트랜잭션 매핑과 동적 SQL 성능 최적화 패턴"
+description: "초당 수천 건 트랜잭션 환경에서 MyBatis 동적 쿼리의 성능 함정을 피하고 ExecutorType.BATCH로 DB 부하를 줄이는 최적화 기법을 정리했습니다."
 tags: [MyBatis, SQL, Performance, Batch, MySQL]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # [MyBatis] 대용량 트랜잭션 매핑과 동적 SQL 성능 최적화 패턴
-
-> [!NOTE]
-> Netty 소켓 게이트웨이나 금융 결제 시스템처럼 초당 수천 건의 트랜잭션이 발생하는 환경에서, **MyBatis XML 동적 쿼리의 성능 왜곡 함정**을 회피하고 `ExecutorType.BATCH`를 활용해 DB 부하를 최소화하는 실무 최적화 기법을 학습합니다.
 
 ---
 

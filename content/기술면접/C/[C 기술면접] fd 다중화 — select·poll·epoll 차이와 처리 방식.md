@@ -1,15 +1,12 @@
 ---
 title: "[C 기술면접] fd 다중화 — select·poll·epoll 차이와 처리 방식"
+description: "한 스레드가 여러 fd 중 준비된 것만 골라 처리하는 select, poll, epoll의 차이와 처리 방식을 C 기술면접 질문에 맞춰 정리했습니다."
 tags: [기술면접, C 기술면접, file descriptor, select, poll, epoll, 논블로킹, I/O 다중화, 리액터]
 created: 2026-10-19
 modified: 2026-10-19
 ---
 
 # [C 기술면접] fd 다중화 — select·poll·epoll 차이와 처리 방식
-
-> [!NOTE]
-> 질문 9: **file descriptor(fd)를 이용해 처리하는 방식에는 무엇이 있는가? (select, poll, epoll의 차이)**
-> 핵심은 "한 스레드가 **여러 fd 중 준비된 것만** 골라서 처리한다(I/O 다중화)"는 개념이다. `select → poll → epoll` 순으로 **확장성(fd 수가 많을 때의 비용)** 이 개선된다. 락(동기화)이 아니라 **I/O 대기 도구**라는 점도 구분한다.
 
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "GITLAB <> GITHUB 작업"
+description: "내부망 GitLab과 외부 작업 환경을 분리해 운영하면서 GitHub를 기준 저장소로 삼고 GitLab은 반영과 CI, Merge에 쓰는 전략을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, 개발, Git, GitLab, GitHub, 형상관리]
 modified: 2026-09-05
 ---

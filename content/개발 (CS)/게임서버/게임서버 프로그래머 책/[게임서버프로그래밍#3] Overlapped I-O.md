@@ -1,5 +1,6 @@
 ---
 title: "[게임서버프로그래밍#3] Overlapped I/O"
+description: "Windows 환경에서 I/O를 OS에 위임해 CPU 낭비를 줄이는 Overlapped I/O의 개념, 처리 흐름, 전용 함수, 완료 알림 방법을 정리했습니다."
 tags: [개발 서적 리뷰, 게임서버 프로그래머 책]
 created: 2026-09-05
 modified: 2026-09-05

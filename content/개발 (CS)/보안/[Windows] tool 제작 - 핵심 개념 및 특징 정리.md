@@ -1,5 +1,6 @@
 ---
 title: "tool 제작"
+description: "APT 공격의 Lateral Movement(측면 이동) 단계가 내부망에서 어떻게 이뤄지는지 Kill Chain 관점으로 이해하고 탐지·차단 포인트를 정리했습니다."
 tags: [학습, 개발-CS, 보안, 개발, APT, LateralMovement, BlueTeam]
 modified: 2026-09-05
 ---

@@ -1,14 +1,12 @@
 ---
 title: "트러블슈팅 - UTF8mb4 인코딩 이슈 및 개발 중 이슈 모음"
+description: "Onz 서비스 운영/개발 중 겪은 이슈와 해결 과정을 정리했다."
 tags: [학습, 토이프로젝트, Spring-Boot, JPA, AWS, 트러블슈팅]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # 트러블슈팅 - UTF8mb4 인코딩 이슈 및 개발 중 이슈 모음
-
-> [!NOTE]
-> Onz 서비스 운영/개발 중 겪은 이슈와 해결 과정을 정리했다.
 
 ## RDS 한글 깨짐 (UTF8mb4 변경)
 

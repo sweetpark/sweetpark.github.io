@@ -1,5 +1,6 @@
 ---
 title: "C++, C언어와의 유사성"
+description: "C++ 환경 구성, namespace, C언어와의 공통점, 참조자, 리터럴, new/delete를 C와 비교하며 정리했습니다."
 tags: [학습, 개발-CS, 언어, C++, 개발, namespace, 참조자]
 created: 2026-09-05
 modified: 2026-09-05

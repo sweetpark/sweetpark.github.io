@@ -1,5 +1,6 @@
 ---
 title: "프로시저"
+description: "MySQL 저장 프로시저의 생성 문법, 동적 SQL(PREPARE, EXECUTE), IF 조건 처리를 정리했습니다."
 tags: [학습, 개발실무, 저장소-&-데이터베이스]
 created: 2026-02-04
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "SD03. 크로스사이트 스크립트(XSS) — 출력 직전 HTML 이스케이프로 치환"
+description: "시큐어코딩 SD03 크로스사이트 스크립트 (CWE-79): 취약한 코드를 출력 직전 HTML 이스케이프 방식으로 바꾸는 치환을 요구사항서, pseudo code, 테스트 코드로 체화하는 드릴입니다."
 tags: 
 created: 2026-09-28
 modified: 2026-10-16

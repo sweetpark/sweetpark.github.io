@@ -1,14 +1,12 @@
 ---
 title: "가변 길이 구조체(Struct Hack)와 필러 필드 — 헤더 뒤에 매달리는 가변 payload"
+description: "헤더 뒤에 가변 길이 payload가 붙는 struct hack과 C99 유연 배열 멤버, 구조체 크기를 고정하는 필러 필드 관례를 정리했습니다."
 tags: [학습, 개발-CS, 언어, C언어, 구조체, StructHack, 유연배열멤버]
 created: 2026-09-17
 modified: 2026-10-01
 ---
 
 # 가변 길이 구조체(Struct Hack)와 필러 필드 — 헤더 뒤에 매달리는 가변 payload
-
-> [!NOTE]
-> 헤더(고정 크기 메타데이터)와 가변 길이 바디(payload)를 하나의 연속된 메모리 블록으로 표현하는 struct hack 관용구와, 그 표준화된 버전인 C99 유연 배열 멤버(flexible array member)를 정리한다. 구조체 크기를 인위적으로 고정해두는 필러(filler) 필드 관례도 함께 다룬다.
 
 ## 0. 왜 필요한가
 

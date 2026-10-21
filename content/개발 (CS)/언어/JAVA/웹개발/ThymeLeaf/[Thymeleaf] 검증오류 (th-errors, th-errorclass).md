@@ -1,5 +1,6 @@
 ---
 title: "[Thymeleaf] 검증오류 (th:errors, th:errorclass)"
+description: "Thymeleaf의 th:errors, th:errorclass로 검증 오류 메시지와 스타일을 표시하는 방법을 정리했습니다."
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

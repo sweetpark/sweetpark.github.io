@@ -1,5 +1,6 @@
 ---
 title: "mmap — 파일과 공유메모리를 포인터로 붙이기"
+description: "파일이나 메모리를 프로세스의 가상 주소 공간에 붙여 포인터로 읽고 쓰게 하는 mmap 시스템 콜과 POSIX 공유메모리 사용법을 정리했습니다."
 tags: [학습, 개발-CS, CS기초, 운영체제, mmap, munmap, 공유메모리, shm_open, 가상메모리]
 created: 2026-10-04
 modified: 2026-10-04

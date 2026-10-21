@@ -1,5 +1,6 @@
 ---
 title: "MySQL UPDATE SET절 순차평가 함정"
+description: "MySQL UPDATE의 SET 절이 왼쪽에서 오른쪽으로 순차 평가되어 뒤 컬럼의 CASE 조건이 어긋나는 함정의 문제 패턴과 해결을 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, SQL, MySQL]
 modified: 2026-09-05
 ---

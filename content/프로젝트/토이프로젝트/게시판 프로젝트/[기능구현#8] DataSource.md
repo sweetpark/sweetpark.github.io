@@ -1,5 +1,6 @@
 ---
 title: "[기능구현#8] DataSource"
+description: "게시판 프로젝트에서 DataSource의 개념과 구현, 적용 방법을 정리했습니다."
 tags: [프로젝트, 게시판 프로젝트]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "Part 7. API 오용"
+description: "안전하게 쓸 수 없는 함수나 의도에 어긋난 API 사용을 다루는 시큐어코딩 API 오용 영역 5개 항목과 위험함수 치환 기준을 정리했습니다."
 tags: 
 created: 2026-09-28
 modified: 2026-09-28

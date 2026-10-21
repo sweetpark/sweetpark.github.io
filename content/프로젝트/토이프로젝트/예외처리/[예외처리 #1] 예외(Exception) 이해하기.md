@@ -1,5 +1,6 @@
 ---
 title: "[예외처리 #1] 예외(Exception) 이해하기"
+description: "예외(Exception)의 개념과 처리가 필요한 이유를 개인 경험을 바탕으로 이해하기 쉽게 정리했습니다."
 tags: [토이프로젝트, 예외처리]
 created: 2026-09-05
 modified: 2026-09-05

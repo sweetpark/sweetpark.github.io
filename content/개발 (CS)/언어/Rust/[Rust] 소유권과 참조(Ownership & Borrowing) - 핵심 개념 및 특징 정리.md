@@ -1,5 +1,6 @@
 ---
 title: "소유권과 참조(Ownership & Borrowing)"
+description: "Rust 소유권(Ownership)과 이동, 클론, 대여의 차이, 참조(&)와 C 포인터 비교, 자동 역참조, Raw Pointer를 정리했습니다."
 tags: [학습, 개발-CS, 언어, Rust, 소유권, 참조, 메모리]
 created: 2026-09-05
 modified: 2026-09-20

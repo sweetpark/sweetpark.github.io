@@ -1,14 +1,12 @@
 ---
 title: "문자열 배열 재대입과 복사 — strncpy·snprintf·sscanf 비교"
+description: "char str[] = 'test'; 선언 후 str = 'ppp';처럼 재대입이 되는지, 그리고 버퍼로 문자열을 복사할 때 strncpy·snprintf·sscanf가 서로 같은 의미인지를 정리한다."
 tags: [학습, 개발-CS, 언어, C언어, 문자열, strncpy, snprintf, sscanf, 배열, 포인터]
 created: 2026-09-17
 modified: 2026-09-17
 ---
 
 # 문자열 배열 재대입과 복사 — strncpy·snprintf·sscanf 비교
-
-> [!NOTE]
-> `char str[] = "test";` 선언 후 `str = "ppp";`처럼 재대입이 되는지, 그리고 버퍼로 문자열을 복사할 때 `strncpy`·`snprintf`·`sscanf`가 서로 같은 의미인지를 정리한다.
 
 ## 0. 배경
 

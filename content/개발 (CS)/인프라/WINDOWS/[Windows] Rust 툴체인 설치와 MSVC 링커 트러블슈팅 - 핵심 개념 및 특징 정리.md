@@ -1,5 +1,6 @@
 ---
 title: "Rust 툴체인 설치와 MSVC 링커 트러블슈팅"
+description: "Windows와 macOS에서 Rust 툴체인을 설치하는 절차와 MSVC C++ 워크로드 누락으로 링커가 실패하는 문제의 진단과 해결을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, Rust, Windows, MSVC]
 modified: 2026-09-05
 ---

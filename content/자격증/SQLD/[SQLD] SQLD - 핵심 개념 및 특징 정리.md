@@ -1,14 +1,12 @@
 ---
 title: "SQLD"
+description: "SQLD(SQL 개발자) 시험 대비 요약 — 윈도우 함수, 트랜잭션(ACID), DDL/DML/TCL, 조인, 계층형 질의 등 SQL 핵심 개념 정리."
 tags: [학습, 자격증, SQLD, 이력서]
 created: 2023-04-14
 modified: 2026-09-05
 ---
 
 # SQLD
-
-> [!NOTE]
-> SQLD(SQL 개발자) 시험 대비 요약 — 윈도우 함수, 트랜잭션(ACID), DDL/DML/TCL, 조인, 계층형 질의 등 SQL 핵심 개념 정리.
 
 ## 📌 개념
 

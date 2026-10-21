@@ -2,7 +2,7 @@
 title: "GlueSQL 목차"
 tags: [학습, 목차]
 created: 2026-10-16
-modified: 2026-10-16
+modified: 2026-10-21
 ---
 
 > Rust 오픈소스 GlueSQL에 기여하며 정리한 포스팅. 번호 순서대로 보면 됩니다.
@@ -15,7 +15,7 @@ modified: 2026-10-16
 | 포스팅 | 설명 |
 |---|---|
 | [GlueSQL 프로젝트 구조와 필요 문법 개관](프로젝트/오픈소스/GlueSQL/1.%20[Rust]%20GlueSQL%20프로젝트%20구조와%20필요%20문법%20개관%20-%20핵심%20개념%20및%20특징%20정리.md) |  |
-| [오픈소스 컨트리뷰션 실전 가이드(이슈 찾기~PR 작성, GlueSQL 사례)](프로젝트/오픈소스/GlueSQL/2.%20[Rust]%20오픈소스%20컨트리뷰션%20실전%20가이드%28이슈%20찾기부터%20PR%20작성까지,%20GlueSQL%20사례%29%20-%20핵심%20개념%20및%20특징%20정리.md) | "성장하며 열린" 오픈소스 프로젝트(GlueSQL)에 실제로 기여하면서 관찰한 것들을 정리한 실전 가이드. 일반론이 아니라 GitHub API로 최근 머지된 PR 30여 개를 직접 조회해서 확… |
+| [오픈소스 컨트리뷰션 실전 가이드(이슈 찾기~PR 작성, GlueSQL 사례)](프로젝트/오픈소스/GlueSQL/2.%20[Rust]%20오픈소스%20컨트리뷰션%20실전%20가이드%28이슈%20찾기부터%20PR%20작성까지,%20GlueSQL%20사례%29%20-%20핵심%20개념%20및%20특징%20정리.md) |  |
 | [CREATE TABLE 옵션 거부(early-return 검증, GlueSQL #1972)](프로젝트/오픈소스/GlueSQL/3.%20[Rust]%20CREATE%20TABLE%20옵션%20거부%28early-return%20검증,%20GlueSQL%20PR%201972%29%20-%20핵심%20개념%20및%20특징%20정리.md) | 내가 작업해서 머지한 PR #1972(2026-07-28 머지, 커밋 7c9009e) 기록. GlueSQL이 지원하지 않는 CREATE TABLE ... TEMPORARY / LIKE / CL… |
 | [TranslateError Enum 타입화(strum·thiserror, GlueSQL #1975)](프로젝트/오픈소스/GlueSQL/4.%20[Rust]%20TranslateError%20Enum%20타입화%28strum·thiserror,%20GlueSQL%20Issue%201975%29%20-%20핵심%20개념%20및%20특징%20정리.md) | &'static str/String로 에러 사유를 표현하던 TranslateError의 variant들을 전용 enum + strum_macros::Display로 타입화한 리팩터링 기록. 이… |
 | [file-storage 원자적 쓰기 설계와 모듈 분리(GlueSQL #2016)](프로젝트/오픈소스/GlueSQL/5.%20[Rust]%20file-storage%20원자적%20쓰기%20설계와%20모듈%20분리%28GlueSQL%20PR%202016%29%20-%20핵심%20개념%20및%20특징%20정리.md) | 진행 중인 PR #2016(브랜치 file-storage/atomic-writes) 기록. GlueSQL의 file-storage 백엔드가 행(row) 데이터를 File::create + wr… |

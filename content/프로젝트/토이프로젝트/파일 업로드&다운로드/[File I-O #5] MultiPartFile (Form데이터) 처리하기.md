@@ -1,5 +1,6 @@
 ---
 title: "[File I/O #5] MultiPartFile (Form데이터) 처리하기"
+description: "Spring MultipartFile로 Form 데이터와 파일을 처리하는 방법을 정리한 File I/O 시리즈 5편입니다."
 tags: [토이프로젝트, 파일 업로드&다운로드]
 created: 2026-09-05
 modified: 2026-09-05

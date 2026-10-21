@@ -1,14 +1,12 @@
 ---
 title: "[Architecture] 가상 스레드(Virtual Thread) 기반 고가용성 분산 배치 엔진 설계 (Atomic CAS, 이중 큐, 자가 치유)"
+description: "Redis나 ZooKeeper 없이 DB의 원자적 UPDATE(CAS)와 Java 21 가상 스레드로 고가용성 분산 배치 엔진을 만드는 설계(이중 큐, 자가 치유)를 정리했습니다."
 tags: [학습, 개발실무, 아키텍처, VirtualThread, 분산시스템, 고가용성, JobQueue]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # [Architecture] 가상 스레드(Virtual Thread) 기반 고가용성 분산 배치 엔진 설계 (Atomic CAS, 이중 큐, 자가 치유)
-
-> **핵심 요약**  
-> Redis나 ZooKeeper 같은 무거운 분산 코디네이터 없이, **관계형 데이터베이스의 단일 원자적 UPDATE(CAS) 연산**과 **Java 21 가상 스레드(Virtual Thread)**, **이중 인메모리 큐**, 그리고 **크래시 자가 치유(Self-Healing) 스케줄러**를 결합하여 고가용성(HA) 분산 비동기 작업 처리 엔진을 설계하고 구현하는 실전 아키텍처 패턴을 정리한다.
 
 ---
 

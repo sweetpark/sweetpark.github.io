@@ -1,5 +1,6 @@
 ---
 title: "[SQL] DML (select, insert, update, delete)"
+description: "CRUD 개념과 SQL DML의 SELECT, INSERT, UPDATE, DELETE 문법과 사용 예제를 정리했습니다."
 tags: [프로그래밍 언어, SQL]
 created: 2026-09-05
 modified: 2026-09-05

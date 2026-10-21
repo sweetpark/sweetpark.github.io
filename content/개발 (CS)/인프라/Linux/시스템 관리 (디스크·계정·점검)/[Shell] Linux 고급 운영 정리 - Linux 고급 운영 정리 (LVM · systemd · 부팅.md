@@ -1,5 +1,6 @@
 ---
 title: "🧱 Linux 고급 운영 정리"
+description: "LVM 생성·확장, systemd target, 부팅과 GRUB, root 패스워드 복구, RPM/YUM 패키지 관리, 사용자 계정 관리를 정리한 리눅스 고급 운영 노트입니다."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 2일 오후 11:23
 modified: 2026-09-05

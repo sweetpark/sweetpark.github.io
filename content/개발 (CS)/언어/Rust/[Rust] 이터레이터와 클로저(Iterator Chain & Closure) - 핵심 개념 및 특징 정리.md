@@ -1,5 +1,6 @@
 ---
 title: "이터레이터와 클로저(Iterator Chain & Closure)"
+description: "for문 대신 map, filter_map, collect 같은 이터레이터 체인과 클로저로 작성하는 Rust 스타일을 GlueSQL 쿼리 실행 코드로 정리했습니다."
 tags: [학습, 개발-CS, 언어, Rust, 이터레이터, 클로저, GlueSQL]
 created: 2026-09-05
 modified: 2026-09-16

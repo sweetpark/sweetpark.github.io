@@ -1,14 +1,12 @@
 ---
 title: "기호 완전정리(콜론·화살표·등호, String vs &str)"
+description: "Rust에서 헷갈리기 쉬운 콜론, 화살표(->, =>), 등호의 의미와 위치, String과 &str 중 무엇을 고를지를 enum 예제로 정리했습니다."
 tags: [학습, 개발-CS, 언어, Rust, 기호, String, str]
 created: 2026-09-05
 modified: 2026-09-05
 ---
 
 # 기호 완전정리 — `:` vs `->` vs `=>` vs `=`, 그리고 `String` vs `&str`
-
-> [!NOTE]
-> struct-like variant를 가진 enum(`PaymentStatus`)을 직접 써보면 콜론(`:`), 화살표(`->`, `=>`), 등호(`=`)가 비슷하게 생겨서 헷갈리기 쉽다. 각 기호가 등장하는 위치와 의미, 그리고 `String` vs `&str`을 언제 골라야 하는지 하나의 예제로 정리.
 
 ## 📌 개념
 

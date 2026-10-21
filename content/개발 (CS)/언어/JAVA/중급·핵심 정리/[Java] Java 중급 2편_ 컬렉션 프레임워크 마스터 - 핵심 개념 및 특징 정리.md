@@ -1,5 +1,6 @@
 ---
 title: "🚀 Java 중급 2편: 컬렉션 프레임워크 마스터"
+description: "제네릭, List, Set, Map, Stack, Queue, Deque, 순회, 정렬, 불변 컬렉션을 언제 왜 선택하는지 중심으로 정리한 Java 컬렉션 프레임워크 노트입니다."
 tags: [학습, 개발-CS, 언어, JAVA, 개발, 컬렉션, 제네릭, 자료구조]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "네트워크 - VPN & VPC 정리"
+description: "AWS 기준 VPN과 VPC 개념, Subnet, IGW, NAT, 라우팅 테이블, 보안 그룹과 NACL, Endpoint, VPC 생성·삭제 순서, 피어링을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, AWS, 개발]
 created: 2026년 2월 2일 오후 11:32
 modified: 2026-09-05

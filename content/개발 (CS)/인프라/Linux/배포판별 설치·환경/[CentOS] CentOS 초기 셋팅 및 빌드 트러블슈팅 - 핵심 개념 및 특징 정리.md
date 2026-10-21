@@ -1,5 +1,6 @@
 ---
 title: "CentOS 초기 셋팅 및 빌드 트러블슈팅"
+description: "EOL된 CentOS 5.11과 7 환경에서 겪는 YUM mirrorlist 우회, locale로 인한 스크립트 오작동, 32bit 빌드 실패의 해결법을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, CentOS, Linux]
 modified: 2026-09-05
 ---

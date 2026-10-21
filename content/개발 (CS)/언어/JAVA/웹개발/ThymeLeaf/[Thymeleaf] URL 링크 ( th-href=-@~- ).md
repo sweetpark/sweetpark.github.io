@@ -1,5 +1,6 @@
 ---
 title: "[Thymeleaf] URL 링크 ( th:href=\"@~\" )"
+description: "Thymeleaf에서 th:href와 @{...} 표현식으로 URL 링크를 만드는 방법을 정리했습니다."
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "Linux 시스템 관리 핵심정리 (권한/스케줄/아카이브)"
+description: "umask와 특수 권한, 백그라운드 실행, crontab, at/cron 사용 제한, tar·gzip·bzip2 아카이브, 컴파일러 설치를 정리한 리눅스 시스템 관리 노트입니다."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 2일 오후 11:20
 modified: 2026-09-05

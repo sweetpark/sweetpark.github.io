@@ -1,5 +1,6 @@
 ---
 title: "3GPP NSSF 정리 (TS 29.531 Rel-15)"
+description: "3GPP TS 29.531(Release 15) 기준 NSSF(Network Slice Selection Function)의 역할과 슬라이스 선택 구조를 정리했습니다."
 tags: 
 created: 2026-10-19
 modified: 2026-10-19

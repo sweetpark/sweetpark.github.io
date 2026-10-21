@@ -1,5 +1,6 @@
 ---
 title: "HTTP 프로토콜#3 ( 상태코드 )"
+description: "HTTP 상태 코드 2xx, 3xx, 4xx, 5xx의 의미와 대표 코드를 정리했습니다."
 tags: [JAVA 기반 웹개발, HTTP]
 created: 2026-09-05
 modified: 2026-09-05

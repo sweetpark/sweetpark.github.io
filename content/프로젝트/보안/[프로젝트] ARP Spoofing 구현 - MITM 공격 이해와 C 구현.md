@@ -1,5 +1,6 @@
 ---
 title: "[프로젝트] ARP Spoofing 구현 - MITM 공격 이해와 C 구현"
+description: "ARP 프로토콜의 동작 원리와 MITM 공격 성립 과정을 학습하고 libpcap 기반 멀티스레드로 ARP Spoofing 툴을 C로 직접 구현한 프로젝트입니다."
 tags: [학습, 보안, 네트워크, C, ARP-Spoofing]
 created: 2026-09-05
 modified: 2026-09-05

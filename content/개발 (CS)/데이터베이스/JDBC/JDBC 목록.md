@@ -2,7 +2,7 @@
 title: "JDBC 목차"
 tags: [학습, 목차]
 created: 2026-10-16
-modified: 2026-10-16
+modified: 2026-10-21
 ---
 
 **위치**: [학습](학습%20목록.md) › [개발 (CS)](개발%20%28CS%29/개발%20%28CS%29%20목록.md) › [데이터베이스](개발%20%28CS%29/데이터베이스/데이터베이스%20목록.md) › JDBC  
@@ -36,4 +36,4 @@ modified: 2026-10-16
 |---|---|
 | [(DataSource) Connection Pool의 이해와 DataSource](개발%20%28CS%29/데이터베이스/JDBC/[DataSource]%20Connection%20Pool의%20이해와%20DataSource.md) |  |
 | [(JDBC #6) JDBC Template을 활용한 JDBC 편리하게 이용하기](개발%20%28CS%29/데이터베이스/JDBC/[JDBC%206]%20JDBC%20Template을%20활용한%20JDBC%20편리하게%20이용하기.md) |  |
-| [DB 접근 기술 (JDBC Template & MyBatis)](개발%20%28CS%29/데이터베이스/JDBC/[SQL]%20DB%20접근%20기술%20%28JDBC%20Template%20&%20MyBatis%29%20-%20핵심%20개념%20및%20특징%20정리.md) | 스프링에서 DB에 접근하는 두 기술(JDBC Template, MyBatis)의 장단점과 데이터베이스 연동 테스트(임베디드 H2) 방법을 정리한다. |
+| [DB 접근 기술 (JDBC Template & MyBatis)](개발%20%28CS%29/데이터베이스/JDBC/[SQL]%20DB%20접근%20기술%20%28JDBC%20Template%20&%20MyBatis%29%20-%20핵심%20개념%20및%20특징%20정리.md) |  |

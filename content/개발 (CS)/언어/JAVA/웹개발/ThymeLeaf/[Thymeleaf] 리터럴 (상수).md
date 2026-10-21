@@ -1,5 +1,6 @@
 ---
 title: "[Thymeleaf] 리터럴 (상수)"
+description: "Thymeleaf의 리터럴(문자, 숫자 등 상수) 사용법과 문자 리터럴 공백 처리를 정리했습니다."
 tags: [JAVA 기반 웹개발, ThymeLeaf]
 created: 2026-09-05
 modified: 2026-09-05

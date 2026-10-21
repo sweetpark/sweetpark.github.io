@@ -1,5 +1,6 @@
 ---
 title: "Java·JPA·SQL 실무 트러블슈팅 모음 (NPE·FK 제약·상수·정규화·영속성 예외)"
+description: "NPE, 외래키 제약, 상수 초기화 오류, 정규화·반정규화, JPA StaleObjectStateException 등 개발 중 겪은 5가지 이슈와 해결을 정리했습니다."
 tags: [학습, 개발-CS, 언어, JAVA, JPA, SQL]
 created: 2026-09-05
 modified: 2026-09-05

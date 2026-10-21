@@ -1,5 +1,6 @@
 ---
 title: "예외처리 (API)"
+description: "Spring Boot에서 BasicErrorController와 @RestControllerAdvice, WebServerFactoryCustomizer로 API 예외를 처리하는 방법을 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05

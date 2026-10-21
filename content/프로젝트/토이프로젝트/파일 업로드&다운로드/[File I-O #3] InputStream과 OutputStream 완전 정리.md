@@ -1,5 +1,6 @@
 ---
 title: "[File I/O #3] InputStream과 OutputStream 완전 정리"
+description: "Java InputStream과 OutputStream의 구조와 사용법을 완전 정리한 File I/O 시리즈 3편입니다."
 tags: [토이프로젝트, 파일 업로드&다운로드]
 created: 2026-09-05
 modified: 2026-09-05

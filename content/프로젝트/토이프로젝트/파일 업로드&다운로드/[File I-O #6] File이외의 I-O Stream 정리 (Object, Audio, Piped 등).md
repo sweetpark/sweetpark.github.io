@@ -1,5 +1,6 @@
 ---
 title: "[File I/O #6] File이외의 I/O Stream 정리 (Object, Audio, Piped 등)"
+description: "파일 이외의 I/O Stream인 Object, Audio, Piped 스트림 등을 정리한 File I/O 시리즈 6편입니다."
 tags: [토이프로젝트, 파일 업로드&다운로드]
 created: 2026-09-05
 modified: 2026-09-05

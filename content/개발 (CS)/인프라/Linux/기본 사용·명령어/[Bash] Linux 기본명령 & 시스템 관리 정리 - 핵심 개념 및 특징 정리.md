@@ -1,5 +1,6 @@
 ---
 title: "Linux 기본명령 & 시스템 관리 정리"
+description: "find와 grep, sudo와 비밀번호 정책, 파일 속성과 링크, SUID/SGID/Sticky와 ACL, at과 crontab 등 리눅스 기본 명령과 시스템 관리를 정리했습니다."
 tags: [학습, 개발-CS, 인프라, Linux, 개발]
 created: 2026년 2월 2일 오후 11:16
 modified: 2026-09-05

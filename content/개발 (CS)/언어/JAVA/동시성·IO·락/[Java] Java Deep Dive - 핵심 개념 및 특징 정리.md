@@ -1,5 +1,6 @@
 ---
 title: "☕ Java Deep Dive"
+description: "동시성 문제가 왜 생겼고 자바가 어떻게 진화했는지, 실무에서 무엇을 써야 하는지 Java 멀티스레딩과 동시성을 하나의 흐름으로 정리했습니다."
 tags: [학습, 개발-CS, 언어, JAVA, 개발, 멀티스레딩, 동시성]
 created: 2026-09-05
 modified: 2026-09-05

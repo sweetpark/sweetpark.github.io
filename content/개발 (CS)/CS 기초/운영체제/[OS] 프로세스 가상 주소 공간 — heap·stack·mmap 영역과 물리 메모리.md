@@ -1,5 +1,6 @@
 ---
 title: "프로세스 가상 주소 공간 — heap·stack·mmap 영역과 물리 메모리"
+description: "프로세스 가상 주소 공간에서 heap, stack, mmap 영역의 배치와 가상 주소와 물리 메모리가 별개인 이유(Demand Paging), ASLR을 정리했습니다."
 tags: [학습, 개발-CS, CS기초, 운영체제, 가상메모리, 가상주소공간, heap, stack, mmap, demand-paging, ASLR]
 created: 2026-10-04
 modified: 2026-10-04

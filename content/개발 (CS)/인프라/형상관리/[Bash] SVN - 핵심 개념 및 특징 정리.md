@@ -1,13 +1,11 @@
 ---
 title: "SVN"
+description: "Subversion(SVN) 용어와 명령어 정리. 자주 쓰는 status/revert/commit, branch·merge 절차, 기본 명령어 사전, depth 옵션까지 다룬다."
 tags: [학습, 개발-CS, 인프라, 형상관리, 개발]
 modified: 2026-09-05
 ---
 
 # SVN
-
-> [!NOTE]
-> Subversion(SVN) 용어와 명령어 정리. 자주 쓰는 status/revert/commit, branch·merge 절차, 기본 명령어 사전, depth 옵션까지 다룬다.
 
 > [!CAUTION]
 > 원문에 포함되어 있던 내부 SVN 서버 IP와 개인 계정명은 보안상 플레이스홀더(`<SVN_SERVER_IP>`, `<username>`)로 마스킹했다.

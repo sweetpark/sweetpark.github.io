@@ -1,5 +1,6 @@
 ---
 title: "SD56. 작업 디렉터리 변경 없는 chroot Jail 생성 — chdir 동반으로 치환"
+description: "시큐어코딩 SD56 작업 디렉터리 변경 없는 chroot Jail 생성 (CWE-243): 취약한 코드를 chdir 동반 방식으로 바꾸는 치환을 요구사항서, pseudo code, 테스트 코드로 체화하는 드릴입니다."
 tags: 
 created: 2026-09-28
 modified: 2026-10-16

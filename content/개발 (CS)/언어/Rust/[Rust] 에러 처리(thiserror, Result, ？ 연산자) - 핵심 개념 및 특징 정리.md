@@ -1,5 +1,6 @@
 ---
 title: "에러 처리(thiserror, Result, ? 연산자)"
+description: "Rust가 예외 대신 Result<T, E>와 ? 연산자, thiserror로 계층별 에러 타입을 만드는 방법을 GlueSQL 사례로 정리했습니다."
 tags: [학습, 개발-CS, 언어, Rust, 에러처리, thiserror, GlueSQL]
 created: 2026-09-05
 modified: 2026-09-05

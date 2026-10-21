@@ -1,14 +1,12 @@
 ---
 title: "동적 할당 소유권 — caller free vs callee create·destroy 쌍"
+description: "C의 동적 할당 소유권을 caller free와 callee create·destroy 쌍 등 세 가지 모양으로 비교해 누가 free할지 정하는 기준을 정리했습니다."
 tags: [학습, 개발-CS, 언어, C언어, 메모리관리, malloc, 소유권, 캡슐화]
 created: 2026-09-28
 modified: 2026-10-16
 ---
 
 # 동적 할당 소유권 — caller free vs callee create·destroy 쌍
-
-> [!NOTE]
-> C엔 소멸자가 없어서 "누가 `malloc`했으면 누가 `free`하는가"를 매번 코드로 결정해야 한다. 대원칙은 **"할당한 계층이 해제도 책임진다"**지만, 실무에서는 이 원칙이 세 가지 다른 모양으로 구현된다. 셋 다 "결국 caller가 해제 호출을 한다"는 점에서 겉보기엔 비슷해 보이지만, 내부 자원 정리·캡슐화·바이너리 경계 안전성에서 결정적으로 다르다.
 
 ## 0. 세 가지 패턴
 

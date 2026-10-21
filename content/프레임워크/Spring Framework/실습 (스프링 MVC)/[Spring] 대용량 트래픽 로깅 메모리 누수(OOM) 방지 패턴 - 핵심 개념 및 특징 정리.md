@@ -1,5 +1,6 @@
 ---
 title: "대용량 트래픽 로깅 메모리 누수(OOM) 방지 패턴"
+description: "Servlet, Netty, Batch에 공통 적용되는 로깅 프레임워크에서 대용량 트래픽과 파일 업로드, 배치 처리 시 힙 메모리 누수(OOM)를 막는 패턴을 정리했습니다."
 tags: [학습, 개발-CS, 언어, Spring, Jackson, ThreadLocal, OOM]
 modified: 2026-09-05
 ---

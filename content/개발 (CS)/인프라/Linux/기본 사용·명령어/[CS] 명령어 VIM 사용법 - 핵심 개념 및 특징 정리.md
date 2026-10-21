@@ -1,5 +1,6 @@
 ---
 title: "[명령어] VIM 사용법"
+description: "Vim 편집기의 커서·화면 이동, 수정, 복사, 붙여넣기, 삭제, 검색·치환, 창 분할 등 기본 사용법을 정리했습니다."
 tags: [학습, 개발-CS, 인프라, Linux, 개발, netrw, hlsearch]
 created: 2026년 2월 3일 오후 11:07
 modified: 2026-09-17

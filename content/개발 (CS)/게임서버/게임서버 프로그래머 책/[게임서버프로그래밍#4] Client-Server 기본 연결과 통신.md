@@ -1,5 +1,6 @@
 ---
 title: "[게임서버프로그래밍#4] Client-Server 기본 연결과 통신"
+description: "TCP 기반 클라이언트-서버 연결의 기본 흐름(socket, bind, listen, accept)과 비동기 소켓 설정, select 이벤트 감지를 정리했습니다."
 tags: [개발 서적 리뷰, 게임서버 프로그래머 책]
 created: 2026-09-05
 modified: 2026-09-05

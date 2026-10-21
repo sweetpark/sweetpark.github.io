@@ -1,5 +1,6 @@
 ---
 title: "SPRING MVC 구조 #3 (Dispatcher Servlet, View)"
+description: "Spring MVC DispatcherServlet 구조 3편으로 ViewResolver가 뷰를 찾아 렌더링하는 과정을 소스 코드로 정리했습니다."
 tags: [Spring Framework, SPRING]
 created: 2026-09-05
 modified: 2026-09-05
