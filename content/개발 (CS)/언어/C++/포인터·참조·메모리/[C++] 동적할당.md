@@ -1,5 +1,5 @@
 ---
-title: "동적할당"
+description: "C++ 동적 메모리 할당 malloc/free, new/delete, new[]/delete[]의 사용법과 malloc과 new의 차이를 정리했습니다."
 tags: [C++, 동적할당]
 created: 2026-09-05
 modified: 2026-09-05

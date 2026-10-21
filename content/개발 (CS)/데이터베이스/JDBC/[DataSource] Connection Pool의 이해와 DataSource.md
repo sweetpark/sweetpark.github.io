@@ -1,5 +1,5 @@
 ---
-title: "[DataSource] Connection Pool의 이해와 DataSource"
+description: "DB 커넥션을 매번 맺는 비용을 줄이는 커넥션 풀의 개념과 구조, 대표 오픈소스, DataSource 사용법과 직접 구현 예제를 정리했습니다."
 tags: [데이터베이스, JDBC]
 created: 2026-09-05
 modified: 2026-09-05

@@ -1,5 +1,6 @@
 ---
 title: "세마포어와 동시성 제어"
+description: "세마포어가 동시성 제어 도구이면서 IPC로 분류되는 이유, 스레드용과 프로세스용 도구를 가르는 기준, System V 세마포어 기본 API를 정리했습니다."
 tags: [학습, 개발-CS, CS기초, 운영체제, IPC, System V, 세마포어, 동시성]
 created: 2026-09-16
 modified: 2026-10-19

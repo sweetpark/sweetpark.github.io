@@ -1,5 +1,6 @@
 ---
 title: "스레드 동시성 문제 정리 (race·deadlock·livelock·starvation)"
+description: "race condition, deadlock, livelock, starvation을 증상 기준으로 구분하고, 스레드 간 공유 자원과 전용 자원, 원인별 대응법을 표로 정리했습니다."
 tags: [학습, 개발-CS, CS기초, 운영체제, 동시성, 스레드, race-condition, deadlock]
 created: 2026-10-02
 modified: 2026-10-16

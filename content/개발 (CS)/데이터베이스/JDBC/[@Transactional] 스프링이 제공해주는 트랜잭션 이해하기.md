@@ -1,5 +1,5 @@
 ---
-title: "[@Transactional] 스프링이 제공해주는 트랜잭션 이해하기"
+description: "Spring의 @Transactional이 AOP 트랜잭션 프록시로 동작하는 구조를, 트랜잭션을 직접 작성한 코드와 비교해 정리했습니다."
 tags: [데이터베이스, JDBC]
 created: 2026-09-05
 modified: 2026-09-05

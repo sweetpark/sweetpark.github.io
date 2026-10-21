@@ -1,5 +1,5 @@
 ---
-title: "[트랜잭션 #1] @Transactional 프록시 생략으로 인한 Rollback 실패 사례"
+description: "@Transactional이 롤백되지 않았던 실제 사례 두 가지, 예외 처리로 인한 프록시 실패와 self call(내부 호출) 문제의 원인과 해결을 정리했습니다."
 tags: [데이터베이스, 트랜잭션]
 created: 2026-09-05
 modified: 2026-09-05

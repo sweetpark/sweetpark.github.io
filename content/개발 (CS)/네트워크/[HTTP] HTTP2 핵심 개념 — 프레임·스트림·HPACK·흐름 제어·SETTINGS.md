@@ -1,5 +1,6 @@
 ---
 title: "HTTP2 핵심 개념 — 프레임·스트림·HPACK·흐름 제어·SETTINGS"
+description: "HTTP/2(RFC 9113)의 프레임, 스트림, HPACK 헤더 압축, 흐름 제어, SETTINGS를 구현자 관점에서 정리하고 항목별 검증 상태를 표시했습니다."
 tags: [학습, 개발-CS, 네트워크, HTTP2, HPACK, 흐름제어, RFC9113]
 created: 2026-10-07
 modified: 2026-10-07

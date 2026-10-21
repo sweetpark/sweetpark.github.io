@@ -1,5 +1,6 @@
 ---
 title: "프로세스와 좀비 프로세스 (fork·waitpid)"
+description: "자식 프로세스가 종료됐는데 부모가 수거하지 않아 좀비(defunct)로 남는 원인과, fork·wait·waitpid로 PID 고갈을 막는 방법을 정리했습니다."
 tags: [학습, 개발-CS, CS기초, 개발, 프로세스, OS]
 modified: 2026-09-05
 ---

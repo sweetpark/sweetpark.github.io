@@ -1,5 +1,5 @@
 ---
-title: "[SQL] 멀티 RDBMS 실행계획(EXPLAIN) 분석과 복합 인덱스 선택도 계산 알고리즘 (MySQL, MariaDB, Postgres, Oracle)"
+description: "MySQL, MariaDB, PostgreSQL, Oracle의 실행계획(EXPLAIN)을 하나의 파이프라인으로 추출하고, 복합 인덱스 선택도를 계산하는 방법을 정리했습니다."
 tags: [학습, 개발-CS, 데이터베이스, SQL, EXPLAIN, 인덱스최적화, 복합인덱스, RDBMS]
 created: 2026-09-05
 modified: 2026-09-05
