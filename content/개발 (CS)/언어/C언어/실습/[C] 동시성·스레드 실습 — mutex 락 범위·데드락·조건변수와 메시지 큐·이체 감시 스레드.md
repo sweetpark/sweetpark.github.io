@@ -3,7 +3,7 @@ title: "(C) 동시성·스레드 실습 — mutex 락 범위·데드락·조건�
 description: "C 동시성 실습에서 만난 mutex 락 범위, 데드락, 조건변수 오류 패턴을 정리하고 스레드 안전한 메시지 큐와 이체 감시 스레드를 구현했습니다."
 tags: 
 created: 2026-10-15
-modified: 2026-10-15
+modified: 2026-10-22
 ---
 
 # 동시성·스레드 실습 — mutex 락 범위·데드락·조건변수와 메시지 큐·이체 감시 스레드
@@ -47,7 +47,7 @@ modified: 2026-10-15
 
 ---
 
-## 1. 락의 기본 규칙 — 15-01, 15-02, 15-04, 15-05, 15-06
+## 1. 락의 기본 규칙 — 15-01, 15-02, 15-04, 15-05, 15-06, 읽기/쓰기 락(§1-4)
 
 ### 1-1. 같은 변수는 같은 락으로 (15-01)
 
@@ -179,6 +179,97 @@ modified: 2026-10-15
 > > `multiply_monomials`가 락을 잡은 채 `set_values`/`get_sum`/`get_product`(각자 같은 락을 다시 잡음)를 부르므로 **`PTHREAD_MUTEX_RECURSIVE`로 초기화해야만** 동작한다 (`pthread_mutexattr_settype` 후 `pthread_mutexattr_destroy`).
 > >
 > > 다만 수정안에는 `get_sum`/`get_product` 실패 시 **`return -1`만 하고 `unlock`을 안 하는 경로**가 남아 있다. 락을 쥔 채 빠져나가는 경로는 §6-3처럼 정리 코드로 모은다.
+
+### 1-4. 읽는 쪽도 락을 잡아야 한다 — 그리고 읽기가 많다면 rwlock (직접 작성한 예제)
+
+> [!NOTE] 요약
+> - **문제**: 한쪽(`writethr`)만 락을 잡고 다른 쪽(`readthr`)은 락 없이 같은 변수에 접근하면 결과가 틀어짐
+> - **원인**: 락은 **같은 락을 잡는 스레드끼리만** 서로를 막는다. 락 없는 쪽은 임계구역에 그냥 들어온다
+> - **처방**: 접근하는 **모든 경로**(읽기·쓰기 모두)가 같은 락을 잡는다
+> - **성능**: 읽기가 대부분이면 mutex 대신 **rwlock**(읽기 동시 허용, 쓰기 단독)으로 원자성과 성능을 같이 얻는다
+
+> [!INFO]- 상세 보기
+> 아래는 `-DYESLOCK` 유무로 "한쪽만 락" 상황을 재현하는 코드다. 두 스레드가 `critical`을 10만 번씩 +1 / −1 하므로, 올바르면 최종값은 항상 `0`이다.
+>
+> ```c
+> #define TCOUNT 100000
+> pthread_mutex_t lock;
+> int critical;
+>
+> void *readthr(void *varg) {                 // critical -= 1
+>     for (int i = 0; i < TCOUNT; i++) {
+> #ifdef YESLOCK
+>         pthread_mutex_lock(&lock);
+> #endif
+>         critical -= 1;                      // YESLOCK 없으면 락 없이 접근
+> #ifdef YESLOCK
+>         pthread_mutex_unlock(&lock);
+> #endif
+>     }
+>     pthread_exit(NULL);
+> }
+>
+> void *writethr(void *varg) {                // critical += 1 (항상 락)
+>     for (int i = 0; i < TCOUNT; i++) {
+>         pthread_mutex_lock(&lock);
+>         critical += 1;
+>         pthread_mutex_unlock(&lock);
+>     }
+>     pthread_exit(NULL);
+> }
+> ```
+>
+> | 빌드 | 락 | 기대 결과 |
+> |---|---|---|
+> | `gcc -pthread` | writer만 | `critical`이 **0이 아니고 실행마다 달라짐** (갱신 유실) |
+> | `gcc -pthread -DYESLOCK` | reader·writer 모두 | 항상 `0` |
+>
+> **왜 틀어지는가**: `critical -= 1`은 한 줄이지만 **load → sub → store** 세 단계다 ([락 없는 카운터](개발%20%28CS%29/언어/C언어/동시성·스레드/[C]%20락%20없는%20카운터%20—%20GCC%20원자적%20연산%20빌트인과%20C11%20atomic.md) 참고). writer가 락을 잡고 있어도 락 없는 reader는 그 사이에 들어와 같은 옛 값을 읽고 덮어쓴다. 락은 "잡는 쪽끼리"만 서로를 막기 때문에, **한쪽이라도 안 잡으면 락을 건 쪽도 보호받지 못한다** (§1-1의 `credit()` 사례와 같은 원리).
+>
+> > [!NOTE]
+> > 이 코드는 컨테이너가 아닌 환경에서 정리한 것이라 **실행 횟수·불일치 비율은 측정하지 않았다**. 위 "기대 결과"는 동작 원리에서 도출한 것이고, §0 방식(수백~수천 회 반복 실행)으로 확인하면 된다. 레이스는 가끔만 드러날 수 있어 한 번 `0`이 나왔다고 안전한 것이 아니다.
+>
+> **원칙: 읽기든 쓰기든 공유 변수에 닿는 순간 같은 락을 잡는다**
+>
+> | 상황 | 문제 |
+> |---|---|
+> | 쓰기만 락, 읽기는 락 없음 | 읽기가 쓰는 도중의 **중간 상태/찢어진 값**을 볼 수 있고, 읽은 값을 기반으로 쓰는 경우 갱신이 유실됨 |
+> | 읽기·쓰기 모두 같은 mutex | 안전하지만 **읽기끼리도 한 줄로 서야 해서** 읽기 비중이 크면 느림 |
+> | 읽기·쓰기 모두 같은 **rwlock** | 안전하고, 읽기끼리는 **동시에** 들어갈 수 있어 빠름 |
+>
+> 그래서 "성능을 위해 읽기의 락을 뺀다"는 방법은 틀렸다. 락을 빼는 대신 **읽기 전용 락(공유 락)을 쓴다**. (Java 대응: [읽기/쓰기 락 `ReentrantReadWriteLock`](개발%20%28CS%29/언어/JAVA/동시성·IO·락/[Java]%20세마포어%20&%20뮤텍스%20%28%20JAVA%20LOCK%20%29%20-%20핵심%20개념%20및%20특징%20정리.md))
+>
+> ```c
+> pthread_rwlock_t rw = PTHREAD_RWLOCK_INITIALIZER;
+>
+> int get_value(void) {                       // 읽기: 여러 스레드가 동시에 진입 가능
+>     int v;
+>     pthread_rwlock_rdlock(&rw);
+>     v = critical;
+>     pthread_rwlock_unlock(&rw);
+>     return v;
+> }
+>
+> void add_value(int d) {                     // 쓰기: 단독 진입 (읽기도 모두 대기)
+>     pthread_rwlock_wrlock(&rw);
+>     critical += d;
+>     pthread_rwlock_unlock(&rw);
+> }
+> ```
+>
+> | 동작 | 읽기 락 `rdlock` | 쓰기 락 `wrlock` |
+> |---|---|---|
+> | 다른 스레드의 읽기 락과 | **동시 허용** | 대기 |
+> | 다른 스레드의 쓰기 락과 | 대기 | 대기 |
+>
+> > [!WARNING]
+> > **위 예제의 `readthr`는 이름과 달리 값을 수정(`-= 1`)한다.** 변수를 바꾸는 코드는 이름이 `read`여도 **쓰기**이므로 rwlock에서는 `rdlock`이 아니라 **`wrlock`** 을 잡아야 한다. `rdlock` 아래에서 값을 바꾸면 읽기 스레드끼리 동시에 수정해 다시 레이스가 된다. `rdlock`은 **진짜로 읽기만 하는** 구간에만 쓴다.
+>
+> > [!TIP]
+> > rwlock이 항상 mutex보다 빠른 것은 아니다.
+> > - **읽기가 많고 임계구역이 길 때** 이득이 크다. 임계구역이 `+= 1` 정도로 짧으면 rwlock 자체의 관리 비용이 커서 오히려 mutex보다 느릴 수 있다.
+> > - 리더가 계속 들어오면 writer가 굶는 **writer starvation**이 생길 수 있다. 구현마다 정책이 다르다 (glibc는 `pthread_rwlockattr_setkind_np`로 선택).
+> > - 변수 **하나**의 단순 증감이라면 락 대신 원자적 연산(`atomic_fetch_add`)이 가장 가볍다. 여러 값의 일관성이 필요하면 mutex/rwlock이다.
 
 ---
 

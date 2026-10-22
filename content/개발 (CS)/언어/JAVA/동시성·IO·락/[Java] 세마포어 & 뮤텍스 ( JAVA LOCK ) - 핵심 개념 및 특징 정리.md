@@ -3,7 +3,7 @@ title: "세마포어 & 뮤텍스 ( JAVA LOCK )"
 description: "Mutex와 Semaphore의 개념과 Java 구현, TPS 실험 결과와 트러블슈팅, 주의사항을 정리했습니다."
 tags: [학습, 개발-CS, 언어, JAVA, 개발, 뮤텍스, 세마포어, 동시성]
 created: 2026-09-05
-modified: 2026-09-05
+modified: 2026-10-22
 ---
 
 # 세마포어 & 뮤텍스 ( JAVA LOCK )
@@ -342,6 +342,67 @@ public void accessResource() {
 - 🚦 Semaphore = N개
 - Mutex는 보호
 - Semaphore는 제한
+
+#### 9. 읽기/쓰기 락 — 같은 객체의 락을 써도 "모든 경로"가 잡아야 한다
+
+**🧠 Java의 락은 객체에 붙어 있다**
+
+- `synchronized(obj)`는 `obj`가 가진 모니터 락 하나를 잡는다. 읽기용·쓰기용 구분이 없다.
+- 읽기와 쓰기를 **모두 같은 객체의 락**으로 감싸면 따로 생각하지 않아도 안전하다. 대신 읽기끼리도 한 줄로 서므로 성능은 Mutex와 같다.
+- 락이 객체라는 것은 편의일 뿐, C에서 `pthread_mutex_t` 하나를 모두가 공유하는 것과 같은 구조다.
+
+**❌ 한쪽만 락을 잡으면 Java에서도 깨진다**
+
+```java
+public synchronized void add()  { count++; }   // 쓰기: 락 O
+public int get()                { return count; } // 읽기: 락 X → 락을 잡은 쪽도 보호받지 못함
+```
+
+- 락 없는 쪽은 임계구역에 그냥 들어온다. 읽은 값으로 다시 쓰는 코드(`count -= 1`)라면 갱신이 유실된다.
+- Java는 **가시성** 문제가 더해진다. `synchronized`/`volatile` 없이 읽으면 다른 스레드가 쓴 값이 보이지 않을 수 있다.
+- 읽기는 `this`, 쓰기는 `lockObj`처럼 **서로 다른 객체의 락**을 잡아도 서로를 막지 못한다.
+
+**✅ 읽기가 많다면 `ReentrantReadWriteLock`**
+
+```java
+private final ReadWriteLock rw = new ReentrantReadWriteLock();
+private int count;
+
+public int get() {                 // 읽기: 여러 스레드 동시 진입 가능
+    rw.readLock().lock();
+    try { return count; }
+    finally { rw.readLock().unlock(); }
+}
+
+public void add() {                // 쓰기: 단독 진입 (읽기도 모두 대기)
+    rw.writeLock().lock();
+    try { count++; }
+    finally { rw.writeLock().unlock(); }
+}
+```
+
+| 동작 | `readLock` | `writeLock` |
+| --- | --- | --- |
+| 다른 스레드의 읽기 락과 | **동시 허용** | 대기 |
+| 다른 스레드의 쓰기 락과 | 대기 | 대기 |
+
+**⚠️ 주의**
+
+- 값을 **바꾸는** 코드는 이름이 `get`/`read`여도 `writeLock`을 잡아야 한다. `readLock` 아래에서 수정하면 읽기 스레드끼리 동시에 수정해 다시 레이스가 된다.
+- **읽기 락 → 쓰기 락 승격(upgrade)은 불가**하다. 읽기 락을 쥔 채 `writeLock().lock()`을 호출하면 데드락이다. 반대로 쓰기 락 → 읽기 락 **강등(downgrade)** 은 허용된다.
+- 읽기가 많고 임계구역이 길 때 이득이 크다. `count++`처럼 짧은 구간은 락 관리 비용 때문에 오히려 `synchronized`보다 느릴 수 있다.
+- 변수 하나의 단순 증감이면 `AtomicInteger`/`LongAdder`가 가장 가볍다.
+
+**🔗 C와 대응**
+
+| C (pthread) | Java |
+| --- | --- |
+| `pthread_mutex_t` | `synchronized`, `ReentrantLock` |
+| `pthread_rwlock_t` (`rdlock`/`wrlock`) | `ReentrantReadWriteLock` (`readLock()`/`writeLock()`) |
+| `atomic_fetch_add` | `AtomicInteger`, `LongAdder` |
+| — | `StampedLock` (낙관적 읽기) |
+
+C에서 같은 문제를 다룬 글: [동시성·스레드 실습 §1-4](개발%20%28CS%29/언어/C언어/실습/[C]%20동시성·스레드%20실습%20—%20mutex%20락%20범위·데드락·조건변수와%20메시지%20큐·이체%20감시%20스레드.md)
 
 ## 🔗 참고
 
