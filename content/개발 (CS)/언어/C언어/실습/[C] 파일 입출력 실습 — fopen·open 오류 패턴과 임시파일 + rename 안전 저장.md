@@ -9,7 +9,7 @@ modified: 2026-11-11
 # 파일 입출력 — 열기·읽기·줄 끝 처리·안전 저장
 
 > [!TIP]
-> 원본 소스: [`fio/fio_ex.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/fio/fio_ex.c) (안전 저장) · [`fio/fio_ex2.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/fio/fio_ex2.c) (줄 번호) · [`lecture/fio/`](https://github.com/sweetpark/c-playgound/tree/main/c_basic/lecture/fio) (10-01 ~ 10-04)
+> 대응 문제: [P016 create_new](https://github.com/sweetpark/c-playgound/tree/main/drill/P016_create_new) · [P017 chomp](https://github.com/sweetpark/c-playgound/tree/main/drill/P017_chomp) · [P018 count_lines](https://github.com/sweetpark/c-playgound/tree/main/drill/P018_count_lines) · [P019 save_atomic](https://github.com/sweetpark/c-playgound/tree/main/drill/P019_save_atomic)
 
 ---
 

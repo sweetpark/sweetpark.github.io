@@ -15,9 +15,9 @@ modified: 2026-11-11
 | [(C) 동시성·스레드 실습 — mutex 락 범위·데드락·조건변수와 메시지 큐·이체 감시 스레드](개발%20%28CS%29/언어/C언어/실습/[C]%20동시성·스레드%20실습%20—%20mutex%20락%20범위·데드락·조건변수와%20메시지%20큐·이체%20감시%20스레드.md) | 컨테이너 gcc 가 4.8.5 로 오래돼 ThreadSanitizer 를 쓰지 못했다. |
 | [(C) 동적 메모리 실습 — malloc·free 오류 패턴과 유연 배열 구조체 연결리스트](개발%20%28CS%29/언어/C언어/실습/[C]%20동적%20메모리%20실습%20—%20malloc·free%20오류%20패턴과%20유연%20배열%20구조체%20연결리스트.md) |  |
 | [(C) 문자열 함수 실습 — strncpy·strncat 직접 구현과 오버플로 함정](개발%20%28CS%29/언어/C언어/실습/[C]%20문자열%20함수%20실습%20—%20strncpy·strncat%20직접%20구현과%20오버플로%20함정.md) |  |
-| [(C) 바이트 순서·메시지 헤더·컴파일러 경고 실습 — htonll·enc_dec와 size_t·switch 함정](개발%20%28CS%29/언어/C언어/실습/[C]%20바이트%20순서·메시지%20헤더·컴파일러%20경고%20실습%20—%20htonll·enc_dec와%20size_t·switch%20함정.md) |  |
+| [(C) 바이트 순서·메시지 헤더·컴파일러 경고 실습 — htonll·enc_dec와 size_t·switch 함정](개발%20%28CS%29/언어/C언어/실습/[C]%20바이트%20순서·메시지%20헤더·컴파일러%20경고%20실습%20—%20htonll·enc_dec와%20size_t·switch%20함정.md) | 대응 문제: P029 be64 · P030 hdr_codec · P031 count_steps · P032 level_table |
 | [(C) 에러 처리·API 설계 실습 — strtol my_atoi·snprintf_m·sum_file·conformant 배열](개발%20%28CS%29/언어/C언어/실습/[C]%20에러%20처리·API%20설계%20실습%20—%20strtol%20my_atoi·snprintf_m·sum_file·conformant%20배열.md) | errno 규칙은 별도 글: errno 사용 규칙 |
 | [(C) 종합본 — 안전한 C 코딩 체크리스트와 방어 매크로](개발%20%28CS%29/언어/C언어/실습/[C]%20종합본%20—%20안전한%20C%20코딩%20체크리스트와%20방어%20매크로.md) | 📂 템플릿 원본 — 템플릿 체화 드릴 저장소 c-playgound의 common/ |
-| [(C) 파일 입출력 실습 — fopen·open 오류 패턴과 임시파일 + rename 안전 저장](개발%20%28CS%29/언어/C언어/실습/[C]%20파일%20입출력%20실습%20—%20fopen·open%20오류%20패턴과%20임시파일%20+%20rename%20안전%20저장.md) | 원본 소스: fio/fio_ex.c (안전 저장) · fio/fio_ex2.c (줄 번호) · lecture/fio/ (10-01 ~ 10-04) |
-| [(C) 환경변수·시그널 실습 — getenv 복사·atexit와 sigaction·pselect 시그널 카운터](개발%20%28CS%29/언어/C언어/실습/[C]%20환경변수·시그널%20실습%20—%20getenv%20복사·atexit와%20sigaction·pselect%20시그널%20카운터.md) |  |
+| [(C) 파일 입출력 실습 — fopen·open 오류 패턴과 임시파일 + rename 안전 저장](개발%20%28CS%29/언어/C언어/실습/[C]%20파일%20입출력%20실습%20—%20fopen·open%20오류%20패턴과%20임시파일%20+%20rename%20안전%20저장.md) | 대응 문제: P016 create_new · P017 chomp · P018 count_lines · P019 save_atomic |
+| [(C) 환경변수·시그널 실습 — getenv 복사·atexit와 sigaction·pselect 시그널 카운터](개발%20%28CS%29/언어/C언어/실습/[C]%20환경변수·시그널%20실습%20—%20getenv%20복사·atexit와%20sigaction·pselect%20시그널%20카운터.md) | 대응 문제: P020 env_copy · P021 parse_kv · P022 sig_counter · P023 wait_signal |
 | [(C) errno 사용 규칙 — 초기화·저장·검사·설정 패턴](개발%20%28CS%29/언어/C언어/실습/[C]%20errno%20사용%20규칙%20—%20초기화·저장·검사·설정%20패턴.md) | 관련 노트: 에러 처리·API 설계 실습 · 환경변수·시그널 실습 · 종합본 · 헤더 log.h의 LOG_ERRNO |

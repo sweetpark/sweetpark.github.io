@@ -265,6 +265,4 @@ fas = malloc(sizeof(struct flex_array_struct) + sizeof(int) * 4);
 | P012 `sbuf_append` | [§5](#5-realloc) 이중 포인터·임시 변수 | [폴더](https://github.com/sweetpark/c-playgound/tree/main/drill/P012_sbuf_append) |
 | P036 `safe_macros` | [§3](#3-해제-오류) `FREE`, [§2](#2-할당-크기) `XNEW` | [폴더](https://github.com/sweetpark/c-playgound/tree/main/drill/P036_safe_macros) |
 
-- 원본 강의 코드
-	- [`c_basic/lecture/mem/`](https://github.com/sweetpark/c-playgound/tree/main/c_basic/lecture/mem) (9-01 ~ 9-11)
-	- [`c_basic/mem/mem_ex.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/mem/mem_ex.c), [`linkedlist.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/mem/linkedlist.c)
+- 대응 문제: [P007 int_array](https://github.com/sweetpark/c-playgound/tree/main/drill/P007_int_array) · [P008 list_free](https://github.com/sweetpark/c-playgound/tree/main/drill/P008_list_free) · [P009 rec_create](https://github.com/sweetpark/c-playgound/tree/main/drill/P009_rec_create) · [P010 conn_reset](https://github.com/sweetpark/c-playgound/tree/main/drill/P010_conn_reset) · [P011 blob_clone](https://github.com/sweetpark/c-playgound/tree/main/drill/P011_blob_clone) · [P012 sbuf_append](https://github.com/sweetpark/c-playgound/tree/main/drill/P012_sbuf_append)

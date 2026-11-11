@@ -227,9 +227,7 @@ char a[16] = "12345";
 | P028 `split_words`   | [§6](#6-입력-읽기와-외부-값) `strtok_r` | [폴더](https://github.com/sweetpark/c-playgound/tree/main/drill/P028_split_words)   |
 | P037 `join_strs`     | [§3](#3-복사연결-함수가-실제로-보장하는-것) `snprintf` 반환값 누적 | [폴더](https://github.com/sweetpark/c-playgound/tree/main/drill/P037_join_strs)     |
 
-- 원본 강의 코드
-	- [`c_basic/lecture/str/`](https://github.com/sweetpark/c-playgound/tree/main/c_basic/lecture/str) (8-01 ~ 8-05)
-	- [`c_basic/str/str_ex.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/str/str_ex.c)
+- 대응 문제: [P001 safe_copy](https://github.com/sweetpark/c-playgound/tree/main/drill/P001_safe_copy) · [P002 sizeof_macros](https://github.com/sweetpark/c-playgound/tree/main/drill/P002_sizeof_macros) · [P003 build_path](https://github.com/sweetpark/c-playgound/tree/main/drill/P003_build_path) · [P004 str_append](https://github.com/sweetpark/c-playgound/tree/main/drill/P004_str_append) · [P005 get_dirname](https://github.com/sweetpark/c-playgound/tree/main/drill/P005_get_dirname) · [P006 read_line](https://github.com/sweetpark/c-playgound/tree/main/drill/P006_read_line)
 
 ---
 

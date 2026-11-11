@@ -9,10 +9,7 @@ modified: 2026-11-11
 # 바이트 순서·메시지 헤더·컴파일러 경고 — htonll, enc_dec, size_t·switch 함정
 
 > [!TIP]
-> - 원본 소스
->   - 강의 코드 16-01 ~ 16-05, TLV 리뷰: [`lecture/msc/`](https://github.com/sweetpark/c-playgound/tree/main/c_basic/lecture/msc) (`tag_length_value.c` 는 컴파일되지 않는 상태)
->   - 64비트 바이트 순서: [`msc/byteorder.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/msc/byteorder.c)
->   - 헤더 encode/decode: [`enc_dec.h`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/msc/enc_dec.h) · [`enc_dec.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/msc/enc_dec.c) · [`enc_dec_test.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/msc/enc_dec_test.c)
+> - 대응 문제: [P029 be64](https://github.com/sweetpark/c-playgound/tree/main/drill/P029_be64) · [P030 hdr_codec](https://github.com/sweetpark/c-playgound/tree/main/drill/P030_hdr_codec) · [P031 count_steps](https://github.com/sweetpark/c-playgound/tree/main/drill/P031_count_steps) · [P032 level_table](https://github.com/sweetpark/c-playgound/tree/main/drill/P032_level_table)
 > - 컨테이너는 x86 = **리틀엔디안**. 빅엔디안 호스트에서의 동작은 실행해 보지 못했다.
 
 ---
@@ -383,4 +380,3 @@ int hdr_encode(const msg_hdr_t *hdr, uint8_t *buf, size_t buf_size) {
 - [에러 처리·API 설계 실습](개발%20%28CS%29/언어/C언어/실습/[C]%20에러%20처리·API%20설계%20실습%20—%20strtol%20my_atoi·snprintf_m·sum_file·conformant%20배열.md) — in-band 에러, 합산 오버플로, 반환값 설계
 - [종합본](개발%20%28CS%29/언어/C언어/실습/[C]%20종합본%20—%20안전한%20C%20코딩%20체크리스트와%20방어%20매크로.md) — 사고 패턴 → 규칙 종합표
 - [(C) 엔디안(바이트 순서)과 인터넷 체크섬](개발%20%28CS%29/언어/C언어/비트·바이트·정수/[C]%20엔디안%28바이트%20순서%29과%20인터넷%20체크섬%20—%20LSB·MSB와%20htons를%20직접%20만들어보기.md) — `htons` 를 직접 만들어 보는 개념 노트
-- 교육 정리 원본: c_basic #3

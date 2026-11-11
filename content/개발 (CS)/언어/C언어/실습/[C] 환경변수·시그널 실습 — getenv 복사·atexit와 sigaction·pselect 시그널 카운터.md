@@ -9,12 +9,7 @@ modified: 2026-11-11
 # 환경변수·시그널 — getenv 복사, atexit, sigaction, pselect
 
 > [!TIP]
-> - 원본 소스
->   - 로그 기록기: [`env/env_ex.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/env/env_ex.c)
->   - PATH 탐색기: [`env/env_ex2_v1.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/env/env_ex2_v1.c) · [`v2`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/env/env_ex2_v2.c)
->   - 1초 카운터: [`sig/sig_ex.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/sig/sig_ex.c) · [`sig_ex_v2.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/sig/sig_ex_v2.c)
->   - 시그널 카운터: [`sig/sig_ex2.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/sig/sig_ex2.c) · [`sig_ex2_v2.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/sig/sig_ex2_v2.c)
->   - 강의 코드: [`lecture/env/`](https://github.com/sweetpark/c-playgound/tree/main/c_basic/lecture/env) (11-01 ~ 11-03), [`lecture/sig/`](https://github.com/sweetpark/c-playgound/tree/main/c_basic/lecture/sig) (12-01 ~ 12-04)
+> - 대응 문제: [P020 env_copy](https://github.com/sweetpark/c-playgound/tree/main/drill/P020_env_copy) · [P021 parse_kv](https://github.com/sweetpark/c-playgound/tree/main/drill/P021_parse_kv) · [P022 sig_counter](https://github.com/sweetpark/c-playgound/tree/main/drill/P022_sig_counter) · [P023 wait_signal](https://github.com/sweetpark/c-playgound/tree/main/drill/P023_wait_signal)
 > - 시그널 보내기: `kill -HUP <PID>` (종류: `HUP` `USR1` `USR2` `INT` `TERM`)
 
 ---

@@ -11,7 +11,7 @@ modified: 2026-11-11
 > [!TIP]
 > - errno 규칙은 별도 글: [errno 사용 규칙](개발%20%28CS%29/언어/C언어/실습/[C]%20errno%20사용%20규칙%20—%20초기화·저장·검사·설정%20패턴.md)
 > - 종합 표·체크리스트: [종합본](개발%20%28CS%29/언어/C언어/실습/[C]%20종합본%20—%20안전한%20C%20코딩%20체크리스트와%20방어%20매크로.md)
-> - 원본 소스: [`err/my_atoi.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/err/my_atoi.c) · [`err/snprintf.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/err/snprintf.c) · [`err/sum.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/err/sum.c) · [`api/conformant.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/api/conformant.c) · [`lecture/err/`](https://github.com/sweetpark/c-playgound/tree/main/c_basic/lecture/err) · [`lecture/api/`](https://github.com/sweetpark/c-playgound/tree/main/c_basic/lecture/api)
+> - 대응 문제: [P013 my_atoi](https://github.com/sweetpark/c-playgound/tree/main/drill/P013_my_atoi) · [P015 parse_port](https://github.com/sweetpark/c-playgound/tree/main/drill/P015_parse_port) · [P033 array_params](https://github.com/sweetpark/c-playgound/tree/main/drill/P033_array_params) · [P034 sum_file](https://github.com/sweetpark/c-playgound/tree/main/drill/P034_sum_file) · [P037 join_strs](https://github.com/sweetpark/c-playgound/tree/main/drill/P037_join_strs)
 
 ---
 

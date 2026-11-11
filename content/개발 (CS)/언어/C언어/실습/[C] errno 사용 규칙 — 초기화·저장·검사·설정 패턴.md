@@ -213,4 +213,4 @@ while (nanosleep(&req, &rem) != 0) {
 | P034 `sum_file` | [§2](#2-검사--판단은-반환값-이유는-errno) `ferror` / `feof` | [폴더](https://github.com/sweetpark/c-playgound/tree/main/drill/P034_sum_file) |
 | P035 `write_all` | [§5](#5-재시도해야-하는-errno) `EINTR` · `EAGAIN` | [폴더](https://github.com/sweetpark/c-playgound/tree/main/drill/P035_write_all) |
 
-- 원본 강의 코드: [`c_basic/lecture/err/`](https://github.com/sweetpark/c-playgound/tree/main/c_basic/lecture/err), [`c_basic/err/`](https://github.com/sweetpark/c-playgound/tree/main/c_basic/err)
+- 대응 문제: [P014 run_step](https://github.com/sweetpark/c-playgound/tree/main/drill/P014_run_step) · [P015 parse_port](https://github.com/sweetpark/c-playgound/tree/main/drill/P015_parse_port) · [P034 sum_file](https://github.com/sweetpark/c-playgound/tree/main/drill/P034_sum_file) · [P035 write_all](https://github.com/sweetpark/c-playgound/tree/main/drill/P035_write_all)

@@ -18,7 +18,7 @@ modified: 2026-11-11
 > - [`mem.h`](https://github.com/sweetpark/c-playgound/blob/main/drill/common/mem.h) — `XNEW`, `XNEWN`, `XREALLOC`, `MUL_OVERFLOW`
 > - [`strx.h`](https://github.com/sweetpark/c-playgound/blob/main/drill/common/strx.h) — `str_copy`, `str_chomp`
 > - 사용 예: [P038 d0_warmup](https://github.com/sweetpark/c-playgound/tree/main/drill/P038_d0_warmup) (`take_ptr`, `take_res`)
-> - 드릴 스펙: T0. 워밍업 — 규약 백지 쓰기와 빌드 스텁 · 규약 원본: 3. 네이밍·에러·로그·자원해제 규약 · [템플릿 체화 드릴 (블로그)](https://sweetpark.github.io/개발-(cs)/언어/c언어/실습/템플릿-체화-드릴/템플릿-체화-드릴-목록)
+> - [템플릿 체화 드릴 (블로그)](https://sweetpark.github.io/개발-(cs)/언어/c언어/실습/템플릿-체화-드릴/템플릿-체화-드릴-목록)
 
 ## 📌 한 페이지 요약
 
@@ -529,16 +529,16 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 > - **2026-10-14** · 템플릿 헤더 보강 (`common/`)
 >   - 추가된 패턴: `CHK_ALLOC*`, `CHK_RANGE_GOTO`, `CHK_STR_GOTO`, `SAFE_FCLOSE_RET`, `SAFE_CPY` 배열 검사, `LOG_ERRNO`, `mem.h`, `strx.h`
 >   - 노트: [템플릿 원본](https://github.com/sweetpark/c-playgound/tree/main/drill/common)
-> - **2026-10-14** · 환경변수·시그널·에러 처리·API (`c_basic #2`, 11~14번 실습)
+> - **2026-10-14** · 환경변수·시그널·에러 처리·API (11~14번 실습)
 >   - 추가된 패턴: §2의 환경변수·종료·시그널·에러·API 행, §5의 해당 체크리스트
 >   - 노트: [환경·시그널][env], [에러·API][err]
 > - **2026-10-14** · errno 사용 규칙
 >   - 추가된 패턴: 초기화·저장·검사·설정 6규칙
 >   - 노트: [errno][errno]
-> - **2026-10-15** · 동시성·스레드 (`c_basic #3`, 15번 실습 + 메시지 큐·이체 감시 과제)
+> - **2026-10-15** · 동시성·스레드 (15번 실습 + 메시지 큐·이체 감시 과제)
 >   - 추가된 패턴: §2의 동시성 행(락 경로·이중 해제·범위·획득 순서·조건변수·스레드 수명·취소/시그널·`_r` 함수·큐 종료), §4의 락 설계·변이 검증, §5의 동시성 체크리스트
 >   - 노트: [동시성][conc]
-> - **2026-10-15** · 컴파일러 경고·바이트 순서·헤더 직렬화 (`c_basic #3`, 16번 실습 + `byteorder.c`·`enc_dec`·TLV 리뷰)
+> - **2026-10-15** · 컴파일러 경고·바이트 순서·헤더 직렬화 (16번 실습 + `byteorder.c`·`enc_dec`·TLV 리뷰)
 >   - 추가된 패턴: §2의 정수·컴파일러·직렬화 행, §5의 정수·직렬화·경고 체크리스트
 >   - 노트: [바이트·경고][msc]
 > - **2026-10-15** · 교육자료(C어플리케이션 개발 Part2 v1.2)와 노트 대조
@@ -597,7 +597,6 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 - [(C) errno 사용 규칙][errno]
 - [(C) 동시성·스레드 실습][conc]
 - [(C) 바이트 순서·메시지 헤더·컴파일러 경고 실습][msc]
-- 교육 정리 원본: c_basic #1 · c_basic #2 · c_basic #3
 
 - [str]: <[C] 문자열 함수 실습
 	- strncpy·strncat 직접 구현과 오버플로 함정.md>

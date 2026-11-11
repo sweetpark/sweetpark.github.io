@@ -12,12 +12,7 @@ modified: 2026-11-11
 > 컨테이너 gcc 가 4.8.5 로 오래돼 **ThreadSanitizer 를 쓰지 못했다**. 그래서 레이스는 "같은 프로그램을 수백~수천 번 반복 실행해 결과가 어긋나는지"로 확인했고, 락을 일부러 뺀 **변이 버전**이 실제로 실패하는지도 함께 봤다.
 
 > [!TIP]
-> - 원본 소스
->   - 강의 코드 15-01 ~ 15-15: [`lecture/conc/`](https://github.com/sweetpark/c-playgound/tree/main/c_basic/lecture/conc)
->   - 메시지 큐(15-00): [`conc/msgq/`](https://github.com/sweetpark/c-playgound/tree/main/c_basic/conc/msgq)
->   - 이체·감시 종합 과제: [`conc/con_ex.c`](https://github.com/sweetpark/c-playgound/blob/main/c_basic/conc/con_ex.c)
-> - 폴더 이름이 `con` 이 아니라 `conc` 인 이유: `con` 은 Windows 예약 장치 이름이라 git 이 파일을 열지 못한다
-> - `15-04` 는 입력 파일이 없고, `15-03` · `15-15` 는 컴파일되지 않는 상태라 `make lecture` 에서 제외
+> - 대응 문제: [P024 counter_lock](https://github.com/sweetpark/c-playgound/tree/main/drill/P024_counter_lock) · [P025 transfer](https://github.com/sweetpark/c-playgound/tree/main/drill/P025_transfer) · [P026 bounded_queue](https://github.com/sweetpark/c-playgound/tree/main/drill/P026_bounded_queue) · [P027 run_squares](https://github.com/sweetpark/c-playgound/tree/main/drill/P027_run_squares) · [P028 split_words](https://github.com/sweetpark/c-playgound/tree/main/drill/P028_split_words)
 
 ---
 
