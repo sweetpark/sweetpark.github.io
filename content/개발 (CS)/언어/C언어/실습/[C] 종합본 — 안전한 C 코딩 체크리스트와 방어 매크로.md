@@ -3,7 +3,7 @@ title: "(C) 종합본 — 안전한 C 코딩 체크리스트와 방어 매크로
 description: "문자열, 동적 메모리, 파일 I/O, 시그널, 동시성 실습에서 반복된 사고 패턴을 안전한 C 코딩 체크리스트와 방어 매크로로 정리한 종합본입니다."
 tags: 
 created: 2026-10-14
-modified: 2026-10-15
+modified: 2026-11-11
 ---
 
 # 종합본 — 안전한 C 코딩 체크리스트와 방어 매크로
@@ -11,23 +11,27 @@ modified: 2026-10-15
 > [!TIP]
 > **📂 템플릿 원본 — [템플릿 체화 드릴 저장소 `c-playgound`](https://github.com/sweetpark/c-playgound)의 `common/`**
 > 이 종합본의 매크로는 모두 아래 헤더를 기준으로 한다. 드릴(D0)에서 이 헤더들을 반복해서 치고, 바뀐 점은 여기 §3에 반영한다.
-> - [`common.h`](https://github.com/sweetpark/c-playgound/blob/main/common/common.h) — `ret_t` 리턴코드, `ret_str()`, `ARRAY_SIZE`, `UNUSED`
-> - [`log.h`](https://github.com/sweetpark/c-playgound/blob/main/common/log.h) — `LOG_ERR/WRN/INF/DBG`, `LOG_ERRNO`
-> - [`guard.h`](https://github.com/sweetpark/c-playgound/blob/main/common/guard.h) — `CHK_*` 가드 매크로
-> - [`safe.h`](https://github.com/sweetpark/c-playgound/blob/main/common/safe.h) — `SAFE_*` 정리 매크로
-> - [`mem.h`](https://github.com/sweetpark/c-playgound/blob/main/common/mem.h) — `XNEW`, `XNEWN`, `XREALLOC`, `MUL_OVERFLOW`
-> - [`strx.h`](https://github.com/sweetpark/c-playgound/blob/main/common/strx.h) — `str_copy`, `str_chomp`
-> - 사용 예: [`d0_warmup/main.c`](https://github.com/sweetpark/c-playgound/blob/main/d0_warmup/main.c) (`take_ptr`, `take_res`)
+> - [`common.h`](https://github.com/sweetpark/c-playgound/blob/main/drill/common/common.h) — `ret_t` 리턴코드, `ret_str()`, `ARRAY_SIZE`, `UNUSED`
+> - [`log.h`](https://github.com/sweetpark/c-playgound/blob/main/drill/common/log.h) — `LOG_ERR/WRN/INF/DBG`, `LOG_ERRNO`
+> - [`guard.h`](https://github.com/sweetpark/c-playgound/blob/main/drill/common/guard.h) — `CHK_*` 가드 매크로
+> - [`safe.h`](https://github.com/sweetpark/c-playgound/blob/main/drill/common/safe.h) — `SAFE_*` 정리 매크로
+> - [`mem.h`](https://github.com/sweetpark/c-playgound/blob/main/drill/common/mem.h) — `XNEW`, `XNEWN`, `XREALLOC`, `MUL_OVERFLOW`
+> - [`strx.h`](https://github.com/sweetpark/c-playgound/blob/main/drill/common/strx.h) — `str_copy`, `str_chomp`
+> - 사용 예: [P038 d0_warmup](https://github.com/sweetpark/c-playgound/tree/main/drill/P038_d0_warmup) (`take_ptr`, `take_res`)
 > - 드릴 스펙: T0. 워밍업 — 규약 백지 쓰기와 빌드 스텁 · 규약 원본: 3. 네이밍·에러·로그·자원해제 규약 · [템플릿 체화 드릴 (블로그)](https://sweetpark.github.io/개발-(cs)/언어/c언어/실습/템플릿-체화-드릴/템플릿-체화-드릴-목록)
 
 ## 📌 한 페이지 요약
 
 C에서 사고가 나는 지점은 결국 네 가지다.
 
-1. **경계** — 버퍼 크기, 널 문자, off-by-one, 정수 오버플로
-2. **수명** — 할당·해제·닫기의 짝, 해제 후 사용, 이중 해제
-3. **실패 처리** — 반환값을 안 보거나, 실패 경로에서 자원을 흘림
-4. **동시성** — 공유 데이터를 서로 다른 락(또는 락 없이)으로 만지거나, 락을 잡는 순서·범위가 어긋남
+1. **경계**
+	- 버퍼 크기, 널 문자, off-by-one, 정수 오버플로
+2. **수명**
+	- 할당·해제·닫기의 짝, 해제 후 사용, 이중 해제
+3. **실패 처리**
+	- 반환값을 안 보거나, 실패 경로에서 자원을 흘림
+4. **동시성**
+	- 공유 데이터를 서로 다른 락(또는 락 없이)으로 만지거나, 락을 잡는 순서·범위가 어긋남
 
 | 원칙 | 한 줄 규칙 |
 |---|---|
@@ -92,7 +96,7 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 
 ## 2. 사고 유형 → 원인 → 방어 (핵심 표)
 
-> [!INFO]- 사고 유형 → 원인 → 방어 전체 표 펼치기
+> [!INFO] 사고 유형 → 원인 → 방어 전체 표
 > - **문자열** · 널 문자 누락
 >   - 원인: `strncpy`는 원본이 `n` 이상이면 `\0`을 안 붙임
 >   - 방어 규칙 / 매크로: `str_copy()`(잘림 감지) 또는 `SAFE_CPY`
@@ -116,7 +120,7 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 > - **문자열** · 루프 속 `strlen(dst)`
 >   - 원인: 변하는 값을 조건에 사용
 >   - 방어 규칙 / 매크로: 루프 전에 길이를 변수로 고정
->   - 상세 노트: [문자열 §5][str]
+>   - 상세 노트: [문자열 §4][str]
 > - **메모리** · double free
 >   - 원인: 해제 책임자가 둘
 >   - 방어 규칙 / 매크로: 책임자 1곳, `SAFE_FREE`
@@ -316,8 +320,8 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 
 ### 3-1. 가드 매크로 (`guard.h`)
 
-> [!INFO]- 가드 매크로 표 펼치기
-> 원본: [`guard.h`](https://github.com/sweetpark/c-playgound/blob/main/common/guard.h)
+> [!INFO] 가드 매크로 표
+> 원본: [`guard.h`](https://github.com/sweetpark/c-playgound/blob/main/drill/common/guard.h)
 >
 > | 매크로 | 용도 | 동작 |
 > |---|---|---|
@@ -340,8 +344,8 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 
 ### 3-2. 정리 매크로 (`safe.h`)
 
-> [!INFO]- 정리 매크로 표 펼치기
-> 원본: [`safe.h`](https://github.com/sweetpark/c-playgound/blob/main/common/safe.h)
+> [!INFO] 정리 매크로 표
+> 원본: [`safe.h`](https://github.com/sweetpark/c-playgound/blob/main/drill/common/safe.h)
 >
 > | 매크로 | 동작 |
 > |---|---|
@@ -354,12 +358,12 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 
 ### 3-3. 메모리·문자열 보조 헤더
 
-> [!INFO]- 메모리·문자열 보조 헤더 표 펼치기
-> 원본: [`mem.h`](https://github.com/sweetpark/c-playgound/blob/main/common/mem.h) · [`strx.h`](https://github.com/sweetpark/c-playgound/blob/main/common/strx.h)
+> [!INFO] 메모리·문자열 보조 헤더 표
+> 원본: [`mem.h`](https://github.com/sweetpark/c-playgound/blob/main/drill/common/mem.h) · [`strx.h`](https://github.com/sweetpark/c-playgound/blob/main/drill/common/strx.h)
 >
 > | 항목 | 용도 | 동작 |
 > |---|---|---|
-> | `XNEW(p)` | 객체 1개 할당 | `p = calloc(1, sizeof(*p))` — 타입 크기 실수 방지, 0 초기화, 실패 시 로그 |
+> | `XNEW(p)` | 객체 1개 할당 | `p = calloc(1, sizeof(*p))`: 타입 크기 실수 방지, 0 초기화, 실패 시 로그 |
 > | `XNEWN(p,n)` | 배열 할당 | `MUL_OVERFLOW` 검사 후 `calloc(n, sizeof(*p))`. 오버플로면 `p = NULL` |
 > | `XREALLOC(p,sz,rv)` | 크기 변경 | 임시 포인터로 받아 성공 시에만 `p` 갱신, 실패해도 원본 유지 (`rv = RET_NO_MEM`) |
 > | `MUL_OVERFLOW(a,b)` | 곱셈 오버플로 | `size_t` 기준 `a * b`가 넘치면 참 |
@@ -373,7 +377,7 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 
 ### 3-4. 매크로 사용 시 함정
 
-> [!INFO]- 사용 시 함정 펼치기
+> [!INFO] 사용 시 함정
 > | 함정 | 설명 | 대처 |
 > |---|---|---|
 > | 인자 이중 평가 | `SAFE_FREE(p++)`처럼 부작용이 있는 식을 넘기면 여러 번 실행됨 (`MUL_OVERFLOW`의 인자도 두 번 평가) | 매크로 인자에는 **단순 변수만** |
@@ -389,7 +393,7 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 
 ### 3-5. 매크로 vs 함수
 
-> [!INFO]- 매크로 vs 함수 펼치기
+> [!INFO] 매크로 vs 함수
 > - `goto`/`return`을 **호출한 함수 안에서** 실행해야 하면 매크로 (`CHK_*`, `SAFE_*`).
 > - 값을 계산해서 돌려주면 되는 일은 `static inline` 함수 (`str_copy`, `str_chomp`). 타입 검사가 되고 디버깅이 쉽다.
 > - `malloc` 자체를 감싸는 `#define MALLOC`류는 **크기 계산 실수 방지 + 위치 로그**를 한 번에 줄 때만 이득이다. 그래서 `XNEW`/`XNEWN`처럼 `sizeof(*p)`를 강제하는 형태로 만든다.
@@ -397,7 +401,7 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 ---
 ## 4. 매크로로 못 막는 것 — 규칙으로 기억할 것
 
-> [!INFO]- 규칙으로 기억할 것 펼치기
+> [!INFO] 규칙으로 기억할 것
 > | 항목 | 이유 | 규칙 |
 > |---|---|---|
 > | 경계 계산 실수 | 매크로는 크기를 대신 계산해 주지 않음 | 크기 = 글자 수 + 1, 쓰기 전 검사 |
@@ -419,104 +423,104 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 
 ---
 
-## 5. 통합 점검 체크리스트
+## 5. 통합 — 주의해야 할 점 (영역별)
 
 ### 입력·인자
 
-> [!INFO]- 체크리스트 펼치기
-> - [ ] 포인터 인자 NULL 검사 (`CHK_PTR`)
-> - [ ] 숫자 인자 범위 검사 (`CHK_RANGE`), 크기는 `size_t`
-> - [ ] 읽기 전용 인자에 `const`
+> [!INFO] 주의할 점
+> 1. 포인터 인자 NULL 검사 (`CHK_PTR`)
+> 1. 숫자 인자 범위 검사 (`CHK_RANGE`), 크기는 `size_t`
+> 1. 읽기 전용 인자에 `const`
 
 ### 문자열
 
-> [!INFO]- 체크리스트 펼치기
-> - [ ] 버퍼 크기 = 글자 수 + 1, 쓰기 **전** 검사
-> - [ ] `strncpy` 뒤 널 종료 보장 (또는 `snprintf`)
-> - [ ] 루프 조건에 변하는 값(`strlen(dst)`)을 넣지 않았는가
-> - [ ] 리터럴 수정 금지, 입력 루프에 길이 상한
+> [!INFO] 주의할 점
+> 1. 버퍼 크기 = 글자 수 + 1, 쓰기 **전** 검사
+> 1. `strncpy` 뒤 널 종료 보장 (또는 `snprintf`)
+> 1. 루프 조건에 변하는 값(`strlen(dst)`)을 넣지 않았는가
+> 1. 리터럴 수정 금지, 입력 루프에 길이 상한
 
 ### 메모리
 
-> [!INFO]- 체크리스트 펼치기
-> - [ ] `malloc(sizeof(*p))`, 곱셈 오버플로 검사
-> - [ ] 모든 할당 반환값 NULL 검사
-> - [ ] `realloc`은 임시 포인터, 호출자 포인터 갱신은 이중 포인터
-> - [ ] 해제는 **한 번만**, 해제 후 NULL (`SAFE_FREE`)
-> - [ ] 해제한 포인터의 멤버를 읽지 않는가
+> [!INFO] 주의할 점
+> 1. `malloc(sizeof(*p))`, 곱셈 오버플로 검사
+> 1. 모든 할당 반환값 NULL 검사
+> 1. `realloc`은 임시 포인터, 호출자 포인터 갱신은 이중 포인터
+> 1. 해제는 **한 번만**, 해제 후 NULL (`SAFE_FREE`)
+> 1. 해제한 포인터의 멤버를 읽지 않는가
 
 ### 파일
 
-> [!INFO]- 체크리스트 펼치기
-> - [ ] 열기 조건이 의도와 맞는가 (`"wx"` / `O_EXCL`)
-> - [ ] `fseek`·`fwrite`·`fflush`·`fclose`·`rename` 반환값 검사
-> - [ ] 읽기 루프는 `fgets`/`fgetc` 반환값으로 판단 (`feof` 루프 금지)
-> - [ ] 중요한 저장은 임시파일 → `fsync` → `rename`
-> - [ ] `fdopen` 이후엔 `fclose`만, `close` 중복 금지
+> [!INFO] 주의할 점
+> 1. 열기 조건이 의도와 맞는가 (`"wx"` / `O_EXCL`)
+> 1. `fseek`·`fwrite`·`fflush`·`fclose`·`rename` 반환값 검사
+> 1. 읽기 루프는 `fgets`/`fgetc` 반환값으로 판단 (`feof` 루프 금지)
+> 1. 중요한 저장은 임시파일 → `fsync` → `rename`
+> 1. `fdopen` 이후엔 `fclose`만, `close` 중복 금지
 
 ### 환경변수·시그널
 
-> [!INFO]- 체크리스트 펼치기
-> - [ ] `getenv` 값은 NULL·길이 검사 후 **복사본**으로 쓰고 직접 수정하지 않는다
-> - [ ] 구분자로 쪼갤 때 빈 항목이 의미 있으면 `strtok` 대신 `strchr`/`strsep`, 항목 수 = 구분자 + 1
-> - [ ] `open`에 접근 모드를 줬고 `open`은 `< 0`, `fdopen`은 `NULL`을 검사하는가
-> - [ ] 종료는 `return`/`exit` (`_Exit`·`abort`는 `atexit`를 건너뛰고 stdio flush는 구현마다 다름, 핸들러 안에서 `exit()` 금지)
-> - [ ] `signal()` 대신 `sigaction`, 핸들러는 `volatile sig_atomic_t` flag만
-> - [ ] 시그널은 평소 block, 대기는 `pselect`/절대 시각, 깨어나면 남은 시간만 다시 대기
-> - [ ] 설정 값은 `strtol`로 검증하고, 실패하면 에러를 출력하되 기존 값을 유지
+> [!INFO] 주의할 점
+> 1. `getenv` 값은 NULL·길이 검사 후 **복사본**으로 쓰고 직접 수정하지 않는다
+> 1. 구분자로 쪼갤 때 빈 항목이 의미 있으면 `strtok` 대신 `strchr`/`strsep`, 항목 수 = 구분자 + 1
+> 1. `open`에 접근 모드를 줬고 `open`은 `< 0`, `fdopen`은 `NULL`을 검사하는가
+> 1. 종료는 `return`/`exit` (`_Exit`·`abort`는 `atexit`를 건너뛰고 stdio flush는 구현마다 다름, 핸들러 안에서 `exit()` 금지)
+> 1. `signal()` 대신 `sigaction`, 핸들러는 `volatile sig_atomic_t` flag만
+> 1. 시그널은 평소 block, 대기는 `pselect`/절대 시각, 깨어나면 남은 시간만 다시 대기
+> 1. 설정 값은 `strtol`로 검증하고, 실패하면 에러를 출력하되 기존 값을 유지
 
 ### 에러 처리·API
 
-> [!INFO]- 체크리스트 펼치기
-> - [ ] 에러는 반환값으로, 값은 인자로 (in-band 지시자 금지)
-> - [ ] 문자열→숫자는 `strtol` + `endptr` + `ERANGE`, 합산은 **하기 전에** 한계 검사
-> - [ ] 모든 경로에서 `return`하고, 실패하면 출력 인자(`*out`, `*sum`)를 바꾸지 않는다
-> - [ ] 라이브러리 함수는 메시지를 출력하지 않는다 (코드로 알림)
-> - [ ] 받는 쪽 버퍼 크기를 인자로 받고 널 문자 1바이트까지 계산, 크기는 배열 앞에 (conformant)
-> - [ ] 가변 인자 함수는 `va_start(…, fmt)`, `vsnprintf`, 모든 경로 `va_end`
-> - [ ] non-blocking 재시도에는 대기를 두고 partial write를 누적 처리
+> [!INFO] 주의할 점
+> 1. 에러는 반환값으로, 값은 인자로 (in-band 지시자 금지)
+> 1. 문자열→숫자는 `strtol` + `endptr` + `ERANGE`, 합산은 **하기 전에** 한계 검사
+> 1. 모든 경로에서 `return`하고, 실패하면 출력 인자(`*out`, `*sum`)를 바꾸지 않는다
+> 1. 라이브러리 함수는 메시지를 출력하지 않는다 (코드로 알림)
+> 1. 받는 쪽 버퍼 크기를 인자로 받고 널 문자 1바이트까지 계산, 크기는 배열 앞에 (conformant)
+> 1. 가변 인자 함수는 `va_start(…, fmt)`, `vsnprintf`, 모든 경로 `va_end`
+> 1. non-blocking 재시도에는 대기를 두고 partial write를 누적 처리
 
 ### 동시성·스레드
 
-> [!INFO]- 체크리스트 펼치기
-> - [ ] 같은 공유 변수에 접근하는 **모든 경로**(읽기 포함)가 같은 락을 쓰는가
-> - [ ] 서로 관련된 단계(확인 → 변경, 토글 → 읽기, 함수 3개)는 하나의 임계구역으로 묶었는가
-> - [ ] 락 안에서 I/O·`sleep`을 하지 않는가
-> - [ ] 락은 **잡은 함수가 푸는가**, 모든 `return`·에러 경로에서 `unlock`하는가 (`rc`에 담고 한 곳에서 해제)
-> - [ ] 락을 둘 이상 잡을 때 **획득 순서가 모든 스레드에서 같은가**, 같은 락을 두 번 잡지 않는가
-> - [ ] `lock`·`unlock`·`destroy` 반환값을 `!= 0`으로 검사했고, 개발 중에는 `ERRORCHECK`로 확인했는가
-> - [ ] 만든 스레드는 `join` 또는 `detach` **하나만**, `destroy`는 `join` 뒤, 스레드 인자는 스레드가 끝날 때까지 살아 있는가
-> - [ ] 스레드를 종류별로 따로 세어서 생성 실패 시 만든 것만 `join`하는가
-> - [ ] 종료는 `pthread_cancel`(async)이 아니라 **flag**(atomic)로, 시그널은 `sigwait` 전용 스레드에서 받는가
-> - [ ] `cond_wait`는 `while`로 감싸고 `broadcast`로 깨우며, 종료는 `close` 플래그 + drain인가
-> - [ ] `strtok`·`rand`·`localtime` 대신 `_r` 버전을 쓰는가
-> - [ ] 락을 뺀 변이 버전이 **실제로 실패**하는 검증을 만들었는가 (반복 실행 + TSan 가능하면)
+> [!INFO] 주의할 점
+> 1. 같은 공유 변수에 접근하는 **모든 경로**(읽기 포함)가 같은 락을 쓰는가
+> 1. 서로 관련된 단계(확인 → 변경, 토글 → 읽기, 함수 3개)는 하나의 임계구역으로 묶었는가
+> 1. 락 안에서 I/O·`sleep`을 하지 않는가
+> 1. 락은 **잡은 함수가 푸는가**, 모든 `return`·에러 경로에서 `unlock`하는가 (`rc`에 담고 한 곳에서 해제)
+> 1. 락을 둘 이상 잡을 때 **획득 순서가 모든 스레드에서 같은가**, 같은 락을 두 번 잡지 않는가
+> 1. `lock`·`unlock`·`destroy` 반환값을 `!= 0`으로 검사했고, 개발 중에는 `ERRORCHECK`로 확인했는가
+> 1. 만든 스레드는 `join` 또는 `detach` **하나만**, `destroy`는 `join` 뒤, 스레드 인자는 스레드가 끝날 때까지 살아 있는가
+> 1. 스레드를 종류별로 따로 세어서 생성 실패 시 만든 것만 `join`하는가
+> 1. 종료는 `pthread_cancel`(async)이 아니라 **flag**(atomic)로, 시그널은 `sigwait` 전용 스레드에서 받는가
+> 1. `cond_wait`는 `while`로 감싸고 `broadcast`로 깨우며, 종료는 `close` 플래그 + drain인가
+> 1. `strtok`·`rand`·`localtime` 대신 `_r` 버전을 쓰는가
+> 1. 락을 뺀 변이 버전이 **실제로 실패**하는 검증을 만들었는가 (반복 실행 + TSan 가능하면)
 
 ### 정수·직렬화·컴파일러 경고
 
-> [!INFO]- 체크리스트 펼치기
-> - [ ] 부호 없는 수의 뺄셈·증가는 **하기 전에** 비교 (`len < HDR_LEN`, `SIZE_MAX - i < step`)
-> - [ ] 배열 원소 수는 `sizeof(a)/sizeof(a[0])`, `size_t`는 `%zu`, 64비트는 `PRIx64`
-> - [ ] `enum` `switch`는 모든 case 나열 + `-Wswitch-enum`, 모든 경로에서 `return`
-> - [ ] 네트워크로 보내는 정수는 **필드 단위**로 변환 (구조체 통째 `memcpy` 금지), `(n & 마스크) << k`처럼 괄호
-> - [ ] 외부에서 받은 헤더는 version·type·길이를 검증하고, 실패하면 출력 구조체를 건드리지 않는가
-> - [ ] 빌드는 `-Wall -Wextra`(`-Wall`이 전부가 아님), 새 경고는 억제하지 말고 코드로 해결 (dead code·쓰이지 않는 대입 제거). 남기는 경고는 **이유를 주석**으로
-> - [ ] 루프 종료 조건은 `<`/`<=` 등 관계 연산자, `size_t` 최댓값과의 직접 비교 금지
-> - [ ] "지우는" 코드(`memset` 등)가 `-O2`에서도 남는지 확인했는가 (`explicit_bzero` 등)
+> [!INFO] 주의할 점
+> 1. 부호 없는 수의 뺄셈·증가는 **하기 전에** 비교 (`len < HDR_LEN`, `SIZE_MAX - i < step`)
+> 1. 배열 원소 수는 `sizeof(a)/sizeof(a[0])`, `size_t`는 `%zu`, 64비트는 `PRIx64`
+> 1. `enum` `switch`는 모든 case 나열 + `-Wswitch-enum`, 모든 경로에서 `return`
+> 1. 네트워크로 보내는 정수는 **필드 단위**로 변환 (구조체 통째 `memcpy` 금지), `(n & 마스크) << k`처럼 괄호
+> 1. 외부에서 받은 헤더는 version·type·길이를 검증하고, 실패하면 출력 구조체를 건드리지 않는가
+> 1. 빌드는 `-Wall -Wextra`(`-Wall`이 전부가 아님), 새 경고는 억제하지 말고 코드로 해결 (dead code·쓰이지 않는 대입 제거). 남기는 경고는 **이유를 주석**으로
+> 1. 루프 종료 조건은 `<`/`<=` 등 관계 연산자, `size_t` 최댓값과의 직접 비교 금지
+> 1. "지우는" 코드(`memset` 등)가 `-O2`에서도 남는지 확인했는가 (`explicit_bzero` 등)
 
 ### 실패 처리
 
-> [!INFO]- 체크리스트 펼치기
-> - [ ] 자원 획득 후의 실패는 `goto CLEANUP`
-> - [ ] 정리는 획득의 역순, 초기값은 모두 NULL / -1
-> - [ ] `errno`는 실패 직후 저장 (상세: [errno 사용 규칙][errno])
-> - [ ] 하위 함수 실패는 `CHK_RET*`로 전파, 로그에 위치가 남는가
+> [!INFO] 주의할 점
+> 1. 자원 획득 후의 실패는 `goto CLEANUP`
+> 1. 정리는 획득의 역순, 초기값은 모두 NULL / -1
+> 1. `errno`는 실패 직후 저장 (상세: [errno 사용 규칙][errno])
+> 1. 하위 함수 실패는 `CHK_RET*`로 전파, 로그에 위치가 남는가
 
 ---
 
 ## 6. 교육 일정별 추가 기록
 
-> [!INFO]- 교육 일정별 기록 펼치기
+> [!INFO] 교육 일정별 기록
 > 새 교육 내용이 생기면 §2 표에 행을 추가하고 아래에 한 줄을 남긴다.
 >
 > - **2026-10-13** · 문자열·동적 메모리·파일 I/O
@@ -524,7 +528,7 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 >   - 노트: 아래 노트 링크
 > - **2026-10-14** · 템플릿 헤더 보강 (`common/`)
 >   - 추가된 패턴: `CHK_ALLOC*`, `CHK_RANGE_GOTO`, `CHK_STR_GOTO`, `SAFE_FCLOSE_RET`, `SAFE_CPY` 배열 검사, `LOG_ERRNO`, `mem.h`, `strx.h`
->   - 노트: [템플릿 원본](https://github.com/sweetpark/c-playgound/tree/main/common)
+>   - 노트: [템플릿 원본](https://github.com/sweetpark/c-playgound/tree/main/drill/common)
 > - **2026-10-14** · 환경변수·시그널·에러 처리·API (`c_basic #2`, 11~14번 실습)
 >   - 추가된 패턴: §2의 환경변수·종료·시그널·에러·API 행, §5의 해당 체크리스트
 >   - 노트: [환경·시그널][env], [에러·API][err]
@@ -544,7 +548,7 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 
 ### 교육자료 과제와 노트의 대응
 
-> [!INFO]- 과제 대응 표 펼치기
+> [!INFO] 과제 대응 표
 > 교육자료 뒤쪽의 과제 목록을 이 노트들의 실습과 맞춰 본 표다. "구현함"은 해당 노트에 코드와 검증 결과가 있다는 뜻이다.
 >
 > | 과제 | 내용 | 상태 | 노트 |
@@ -564,6 +568,25 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 > | 16-7, 16-8 | `htonll`/`ntohll`, 메시지 헤더 encode/decode | 구현함 | [바이트·경고][msc] |
 > | 16-9 | TLV 파서 코드 리뷰 | 결함 목록 정리 (코드는 의도적으로 수정하지 않음) | [바이트·경고 §4][msc] |
 
+## 7. 실습 문제 (GitHub)
+
+- 풀이·채점은 저장소에서: [c-playgound](https://github.com/sweetpark/c-playgound) — 문제 목록과 진행 현황은 [`PROGRESS.md`](https://github.com/sweetpark/c-playgound/blob/main/PROGRESS.md)
+	- `make P001` 처럼 번호만으로 채점, 풀고 난 뒤의 해설은 각 폴더의 `NOTE.md`
+
+| 영역 | 문제 번호 | 이론 노트 |
+|---|---|---|
+| 문자열 | P001–P006, P017, P020, P021, P028, P037 | [문자열][str] |
+| 메모리 | P007–P012, P036 | [메모리][mem] |
+| errno · 에러 · API | P013–P015, P033–P035 | [errno][errno], [에러·API][err] |
+| 파일 | P016–P019 | [파일][fio] |
+| 환경변수 · 시그널 | P020–P023 | [환경·시그널][env] |
+| 동시성 | P024–P028 | [동시성][conc] |
+| 바이트 순서 · 경고 | P029–P032 | [바이트·경고][msc] |
+| 템플릿 체화 드릴 (가드·정리 매크로 적용) | P038–P045 | 이 노트 §1, §3 |
+| 시큐어코딩 SD01–SD58 | P046–P103 | 시큐어코딩 체화 드릴 |
+
+---
+
 ## 노트 링크
 
 - [(C) 문자열 함수 실습](개발%20%28CS%29/언어/C언어/실습/[C]%20문자열%20함수%20실습%20—%20strncpy·strncat%20직접%20구현과%20오버플로%20함정.md)
@@ -576,11 +599,19 @@ CLEANUP:                                 // ④ 획득의 역순으로 정리
 - [(C) 바이트 순서·메시지 헤더·컴파일러 경고 실습][msc]
 - 교육 정리 원본: c_basic #1 · c_basic #2 · c_basic #3
 
-[str]: <[C] 문자열 함수 실습 — strncpy·strncat 직접 구현과 오버플로 함정.md>
-[mem]: <[C] 동적 메모리 실습 — malloc·free 오류 패턴과 유연 배열 구조체 연결리스트.md>
-[fio]: <[C] 파일 입출력 실습 — fopen·open 오류 패턴과 임시파일 + rename 안전 저장.md>
-[env]: <[C] 환경변수·시그널 실습 — getenv 복사·atexit와 sigaction·pselect 시그널 카운터.md>
-[err]: <[C] 에러 처리·API 설계 실습 — strtol my_atoi·snprintf_m·sum_file·conformant 배열.md>
-[errno]: <[C] errno 사용 규칙 — 초기화·저장·검사·설정 패턴.md>
-[conc]: <[C] 동시성·스레드 실습 — mutex 락 범위·데드락·조건변수와 메시지 큐·이체 감시 스레드.md>
-[msc]: <[C] 바이트 순서·메시지 헤더·컴파일러 경고 실습 — htonll·enc_dec와 size_t·switch 함정.md>
+- [str]: <[C] 문자열 함수 실습
+	- strncpy·strncat 직접 구현과 오버플로 함정.md>
+- [mem]: <[C] 동적 메모리 실습
+	- malloc·free 오류 패턴과 유연 배열 구조체 연결리스트.md>
+- [fio]: <[C] 파일 입출력 실습
+	- fopen·open 오류 패턴과 임시파일 + rename 안전 저장.md>
+- [env]: <[C] 환경변수·시그널 실습
+	- getenv 복사·atexit와 sigaction·pselect 시그널 카운터.md>
+- [err]: <[C] 에러 처리·API 설계 실습
+	- strtol my_atoi·snprintf_m·sum_file·conformant 배열.md>
+- [errno]: <[C] errno 사용 규칙
+	- 초기화·저장·검사·설정 패턴.md>
+- [conc]: <[C] 동시성·스레드 실습
+	- mutex 락 범위·데드락·조건변수와 메시지 큐·이체 감시 스레드.md>
+- [msc]: <[C] 바이트 순서·메시지 헤더·컴파일러 경고 실습
+	- htonll·enc_dec와 size_t·switch 함정.md>

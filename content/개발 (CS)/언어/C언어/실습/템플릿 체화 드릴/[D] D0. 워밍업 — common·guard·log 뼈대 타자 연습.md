@@ -3,29 +3,24 @@ title: "D0. 워밍업 — common·guard·log 뼈대 타자 연습"
 description: "common, guard, log 뼈대를 매일 타자 연습으로 손에 붙이는 D0 워밍업 드릴입니다. 나머지 드릴의 시간을 절반으로 줄여 줍니다."
 tags: 
 created: 2026-09-21
-modified: 2026-10-16
+modified: 2026-11-11
 ---
 
 # D0. 워밍업 — `common.h` · `log.h` · `safe.h` · `guard.h` 백지 타자
 
+> [!TIP]
+> - 실습: [P038_d0_warmup](https://github.com/sweetpark/c-playgound/tree/main/drill/P038_d0_warmup) — `make P038` 로 채점
+> - 공통 헤더: [`drill/common/`](https://github.com/sweetpark/c-playgound/tree/main/drill/common)
+
 > **쓰는 템플릿**: [1. 기본 골격](개발%20%28CS%29/언어/C언어/코드%20골격/[골격]%201.%20기본%20골격%20—%20리턴코드·가드매크로·단일출구%20cleanup.md)
->
-> **목표 시간**: 1회차 20분 / 2회차 12분 / **3회차 8분**
 >
 > **하루 시작할 때 매일 친다.**
 > 이것만 손에 붙으면 나머지 드릴이 절반으로 줄어든다.
 >
-> **기준 헤더**: [`c-playgound/common/`](https://github.com/sweetpark/c-playgound/tree/main/common)
+> **기준 헤더**: [`c-playgound/drill/common/`](https://github.com/sweetpark/c-playgound/tree/main/drill/common)
 > 이 드릴의 정답은 [종합본 §3](개발%20%28CS%29/언어/C언어/실습/[C]%20종합본%20—%20안전한%20C%20코딩%20체크리스트와%20방어%20매크로.md) 과 같은 헤더다.
 > 헤더가 바뀌면 이 노트도 같이 고친다.
 
-> [!NOTE] 이 드릴의 문서 구성 (D0~D9 공통)
-> ① **요구사항서** — 무엇을 만드나, 표로 확정한다.
-> ② **pseudo code 템플릿** — 보고 치는 뼈대이고, 회차마다 가린다.
-> ③ **테스트 코드** — 이게 통과하면 끝이다.
-> ④ 자주 하는 실수
->
-> D0 은 함수가 아니라 **헤더 4개**를 치는 드릴이라 모범답안 대신 기준 헤더 링크를 쓴다.
 
 ---
 
@@ -42,14 +37,6 @@ modified: 2026-10-16
 | `SAFE_FCLOSE_RET`<br>쓰기 파일은 `fclose` 실패도 `ret` 에 반영 | 쓰기 오류는 `fclose` 에서 드러난다 |
 | `LOG_ERRNO` 는 `errno` 를 **먼저 저장**한 뒤 출력 | 로그 안의 `time` / `localtime_r` 이 `errno` 를 덮을 수 있다 |
 | `SAFE_CPY` 는 배열 전용<br>포인터를 넘기면 **컴파일 에러** (`IS_ARRAY`) | `sizeof(포인터)=8` 로 조용히 잘리는 사고 방지 |
-
-### 회차별 진행
-
-| 회차 | 변형 | 보는 것 | 순서 |
-| :--- | :--- | :--- | :--- |
-| **1회차** | **A** 기본 헤더 4개 | ① 요구사항서<br>② pseudo code **전체** | 1. 주석 뼈대를 보고 **손으로** 친다 (복붙 금지).<br>2. ③ 테스트를 실행한다. |
-| **2회차** | **B** A + `CHK_STR*` · `CHK_RANGE_GOTO` · `SAFE_CPY` | ① 요구사항서<br>② pseudo code 의 **번호와 제목만** (Level 2) | 1. 번호만 보고 쓴다.<br>2. ③ 테스트를 실행한다. |
-| **3회차** | **C** B + `CHK_NOT_NEG` 직접 설계 | ① 요구사항서만 | 1. ③ 테스트를 **먼저 읽는다.**<br>2. 백지에서 친다. |
 
 ### 작업 준비 (처음 한 번만)
 
@@ -84,7 +71,7 @@ printf 'BasedOnStyle: LLVM\nIndentWidth: 4\nColumnLimit: 80\nAlignEscapedNewline
 
 ## 1. 요구사항서
 
-`d0_warmup/src/` 에 **헤더 4개** 와 시험 대상 `take.c` / `take.h` 를 만든다.
+작업 폴더의 `src/` 에 **헤더 4개** 와 시험 대상 `take.c` / `take.h` 를 만든다.
 
 정식판을 그대로 재현하는 게 아니라, 아래 표의 항목이 들어 있고 §3 테스트가 통과하면 합격이다.
 
@@ -158,15 +145,14 @@ printf 'BasedOnStyle: LLVM\nIndentWidth: 4\nColumnLimit: 80\nAlignEscapedNewline
 ## 2. pseudo code 템플릿 — 보고 쳐서 익힌다
 
 > **사용법**
-> 아래 뼈대를 `d0_warmup/src/` 의 각 파일에 **주석만 복사**한다.
+> 아래 뼈대를 작업 폴더 `src/` 의 각 파일에 **주석만 복사**한다.
 > 코드는 주석을 보고 **내가 쓴다.**
 > 막히면 `man` / `K` 로 찾고, 그래도 막히면 정답지(1번 문서)나 기준 헤더를 연다.
 >
 > `[ ]` 는 다 쓰면 `x` 로 바꾼다.
 > 남은 항목은 `grep -n '\[ \]' *.h` 로 모아 볼 수 있다.
 
-### Level 1 — 주석 뼈대 (1회차, 전부 본다)
-
+### Level 1 — 주석 뼈대
 #### common.h
 
 ```c
@@ -180,13 +166,13 @@ printf 'BasedOnStyle: LLVM\nIndentWidth: 4\nColumnLimit: 80\nAlignEscapedNewline
  *  - errno, strerror(errno) ........ <errno.h>
  */
 
-/* [ ] 1. 인클루드 가드: COMMON_H  (파일 맨 위 / 맨 아래 주석 포함) */
-/* [ ] 2. 위 표의 헤더 include */
-/* [ ] 3. 리턴코드 enum (ret_t)
+/* 1. 인클루드 가드: COMMON_H  (파일 맨 위 / 맨 아래 주석 포함) */
+/* 2. 위 표의 헤더 include */
+/* 3. 리턴코드 enum (ret_t)
  *        - 성공은 0 하나, 실패는 전부 음수
  *        - 최소 5종: 성공 / 일반실패 / 잘못된 인자 / 메모리 부족 / IO 에러
  *        - 마지막 줄 쉼표, 이름은 RET_ 접두어, typedef 이름은 ret_t */
-/* [ ] 4. ret_str(int) — 코드를 문자열로
+/* 4. ret_str(int) — 코드를 문자열로
  *        - 헤더에 두므로 'static inline'  (왜? .c 가 여러 개여도 중복 정의 안 나게)
  *        - switch 의 마지막은 default: "UNKNOWN" */
 ```
@@ -204,21 +190,21 @@ printf 'BasedOnStyle: LLVM\nIndentWidth: 4\nColumnLimit: 80\nAlignEscapedNewline
  *    -std=c11 이면 localtime_r 이 선언되지 않는다 → 빌드에 -D_POSIX_C_SOURCE=200809L
  */
 
-/* [ ] 1. 인클루드 가드: LOG_H */
-/* [ ] 2. 로그 레벨 enum (log_level_t): ERR < WRN < INF < DBG  (값 0부터) */
-/* [ ] 3. 전역 레벨 변수 선언
+/* 1. 인클루드 가드: LOG_H */
+/* 2. 로그 레벨 enum (log_level_t): ERR < WRN < INF < DBG  (값 0부터) */
+/* 3. 전역 레벨 변수 선언
  *        - 'extern' 만 쓴다 (실체는 .c 에 딱 하나)
  *        - 이유를 한 줄로 적어본다 */
-/* [ ] 4. LOG_PRINT(레벨, 태그, 포맷, ...) 공통 매크로
+/* 4. LOG_PRINT(레벨, 태그, 포맷, ...) 공통 매크로
  *        - 전체를 do { } while (0) 로 감싼다
  *        - 현재 레벨보다 낮은 로그는 출력하지 않는다 (if 를 매크로 안에서)
  *        - 시각 문자열 "YYYY-MM-DD HH:MM:SS" (버퍼 20바이트)
  *        - stderr 로 "[시각][태그] 메시지\n"
  *        - 가변 인자가 0개여도 컴파일돼야 한다 → ##__VA_ARGS__ (왜? 앞 쉼표 제거)
  *        - 매크로 인자 이름은 _ 로 시작 (_lv, _fmt ...) : 지역변수와 안 겹치게 */
-/* [ ] 5. LOG_ERR / LOG_WRN / LOG_INF / LOG_DBG  4개
+/* 5. LOG_ERR / LOG_WRN / LOG_INF / LOG_DBG  4개
  *        - LOG_PRINT 에 레벨과 태그 문자열만 바꿔 넘기는 한 줄짜리 */
-/* [ ] 6. LOG_ERRNO(_fmt, ...) : "메시지: strerror(errno)(errno)" 를 LOG_ERR 로
+/* 6. LOG_ERRNO(_fmt, ...) : "메시지: strerror(errno)(errno)" 를 LOG_ERR 로
  *        - 첫 줄에서 int _e = errno; 로 먼저 저장한다
  *          (왜? LOG_PRINT 안의 time/localtime_r 이 errno 를 바꿀 수 있다) */
 ```
@@ -239,11 +225,11 @@ printf 'BasedOnStyle: LLVM\nIndentWidth: 4\nColumnLimit: 80\nAlignEscapedNewline
  *  - 인자는 단순 변수만 (SAFE_FREE(p++) 금지)
  */
 
-/* [ ] 1. 인클루드 가드: SAFE_H, include 는 위 표대로 */
-/* [ ] 2. SAFE_FREE(_p)     : NULL 아니면 free 후 NULL 대입 */
-/* [ ] 3. SAFE_FCLOSE(_fp)  : NULL 아니면 fclose 후 NULL 대입 */
-/* [ ] 4. SAFE_CLOSE(_fd)   : 0 이상이면 close 후 -1 대입  (fd 는 '-1' 이 무효값) */
-/* [ ] 5. SAFE_FCLOSE_RET(_fp,_rv) : 쓰기 파일용
+/* 1. 인클루드 가드: SAFE_H, include 는 위 표대로 */
+/* 2. SAFE_FREE(_p)     : NULL 아니면 free 후 NULL 대입 */
+/* 3. SAFE_FCLOSE(_fp)  : NULL 아니면 fclose 후 NULL 대입 */
+/* 4. SAFE_CLOSE(_fd)   : 0 이상이면 close 후 -1 대입  (fd 는 '-1' 이 무효값) */
+/* 5. SAFE_FCLOSE_RET(_fp,_rv) : 쓰기 파일용
  *        - fclose 가 0 이 아니고 _rv 가 아직 RET_OK 일 때만 _rv = RET_IO_ERROR
  *          (왜 '아직 RET_OK 일 때만'? 먼저 난 실패의 원인을 보존하려고)
  *        - 어느 쪽이든 마지막에 _fp = NULL */
@@ -272,24 +258,24 @@ printf 'BasedOnStyle: LLVM\nIndentWidth: 4\nColumnLimit: 80\nAlignEscapedNewline
  *  - 로그에 "인자 이름" 과 __func__, __LINE__ 을 같이 찍는다 (# 연산자)
  */
 
-/* [ ] 1. 인클루드 가드: GUARD_H */
-/* [ ] 2. #include 3종 (common.h / log.h / safe.h) */
+/* 1. 인클루드 가드: GUARD_H */
+/* 2. #include 3종 (common.h / log.h / safe.h) */
 
 /* ── 즉시 return 판 (자원을 잡기 전) ── */
-/* [ ] 3. CHK_PTR(_p)        : NULL 이면 로그 + RET_INVALID_ARG 리턴 */
-/* [ ] 4. CHK_RANGE(_v,_min,_max) : 범위 밖이면 로그(이름·값·범위) + RET_INVALID_ARG
+/* 3. CHK_PTR(_p)        : NULL 이면 로그 + RET_INVALID_ARG 리턴 */
+/* 4. CHK_RANGE(_v,_min,_max) : 범위 밖이면 로그(이름·값·범위) + RET_INVALID_ARG
  *                                  값은 (int) 캐스팅 후 %d 로 */
-/* [ ] 5. CHK_RET(_expr)     : _expr 의 결과가 RET_OK 가 아니면 로그 + 그 값 그대로 리턴
+/* 5. CHK_RET(_expr)     : _expr 의 결과가 RET_OK 가 아니면 로그 + 그 값 그대로 리턴
  *                              (지역변수 하나에 담아 한 번만 평가) */
 
 /* ── goto 판 (자원을 잡은 후) — 함수 안에 'int ret' 가 있다고 가정 ── */
-/* [ ] 6. CHK_PTR_GOTO(_p,_rv,_label)       : NULL → _rv 세팅, 로그, goto */
-/* [ ] 7. CHK_RET_GOTO(_expr,_rv,_label)    : _rv = _expr; 실패면 로그, goto */
-/* [ ] 8. CHK_COND_GOTO(_cond,_code,_rv,_label) : 조건이 거짓이면 _rv = _code, 로그, goto */
+/* 6. CHK_PTR_GOTO(_p,_rv,_label)       : NULL → _rv 세팅, 로그, goto */
+/* 7. CHK_RET_GOTO(_expr,_rv,_label)    : _rv = _expr; 실패면 로그, goto */
+/* 8. CHK_COND_GOTO(_cond,_code,_rv,_label) : 조건이 거짓이면 _rv = _code, 로그, goto */
 
 /* ── 할당 판 (할당 실패는 INVALID_ARG 가 아니라 NO_MEM) ── */
-/* [ ] 9.  CHK_ALLOC(_p)                  : NULL 이면 로그 + RET_NO_MEM 리턴 */
-/* [ ] 10. CHK_ALLOC_GOTO(_p,_rv,_label)  : NULL → _rv = RET_NO_MEM, 로그, goto */
+/* 9.  CHK_ALLOC(_p)                  : NULL 이면 로그 + RET_NO_MEM 리턴 */
+/* 10. CHK_ALLOC_GOTO(_p,_rv,_label)  : NULL → _rv = RET_NO_MEM, 로그, goto */
 
 /* ※ 해제 판(SAFE_*)은 safe.h 로 분리했다. guard.h 는 safe.h 를 include 한다. */
 
@@ -308,12 +294,12 @@ printf 'BasedOnStyle: LLVM\nIndentWidth: 4\nColumnLimit: 80\nAlignEscapedNewline
  *  - g_log_level 의 실체는 여기가 아니라 테스트(test_take.c) 에 있다  ← extern 선언의 짝
  */
 
-/* [ ] 1. take_ptr(const char *s, int v)   — 즉시 return 판
+/* 1. take_ptr(const char *s, int v)   — 즉시 return 판
  *        - CHK_PTR(s)
  *        - CHK_RANGE(v, 0, 100)
  *        - 통과하면 LOG_INF 후 RET_OK */
 
-/* [ ] 2. take_res(const char *path)       — goto 판
+/* 2. take_res(const char *path)       — goto 판
  *        ① ret 은 실패로 시작 (int ret = RET_FAIL)
  *        ② 포인터는 NULL, FILE* 도 NULL 로 선언
  *        ③ 자원 잡기 전 검사는 CHK_PTR (즉시 return)
@@ -325,8 +311,7 @@ printf 'BasedOnStyle: LLVM\nIndentWidth: 4\nColumnLimit: 80\nAlignEscapedNewline
  *           (쓰기 파일이면 SAFE_FCLOSE_RET) */
 ```
 
-### Level 2 — 번호와 제목만 (2회차)
-
+### Level 2 — 번호와 제목만
 ```text
 common.h  1 가드 / 2 include / 3 ret_t / 4 ret_str
 log.h     1 가드 / 2 레벨 enum / 3 extern 전역 / 4 LOG_PRINT / 5 레벨별 4개 / 6 LOG_ERRNO
@@ -338,8 +323,7 @@ guard.h   1 가드 / 2 include / 3 CHK_PTR / 4 CHK_RANGE / 5 CHK_RET
 take.c    1 take_ptr / 2 take_res (① ~ ⑧)
 ```
 
-### Level 3 — 백지 (3회차)
-
+### Level 3 — 백지
 ```text
 아무것도 안 본다.
 §1 요구사항서와 §3 테스트만 보고 친다.
@@ -352,7 +336,7 @@ take.c    1 take_ptr / 2 take_res (① ~ ⑧)
    `unknown type name` / `implicit declaration` 이면 include 누락이다.
 2. `man 3 <함수>` 를 연다 (vim 안에서는 커서를 단어에 놓고 `K`).
    SYNOPSIS 맨 위의 `#include` 를 확인한다.
-3. 매크로가 이상하면 `gcc -E d0_warmup/src/take.c | less` 로 전처리 결과를 눈으로 본다.
+3. 매크로가 이상하면 `gcc -E take.c | less` 로 전처리 결과를 눈으로 본다.
 4. 그래도 안 되면 정답지(1번 문서)의 해당 매크로만 본다.
    전체를 보지 않는다.
 
@@ -640,12 +624,14 @@ make D=d0_warmup V=take
 
 * 마지막 줄이 **`PASS`** 이고 경고 0, 새니타이저 리포트 0 이면 통과다.
 * stderr 에 아래 로그가 **보여야** 한다 (눈으로 확인).
-  * `s is NULL (take_ptr/...)` — 인자 **이름**이 찍힌다.
+  * `s is NULL (take_ptr/...)`
+	- 인자 **이름**이 찍힌다.
   * `v(999) out of range [0,100]` 형태의 범위 로그.
-  * `fopen(/no/such/file): No such file or directory(2)` — `LOG_ERRNO` 출력.
+  * `fopen(/no/such/file): No such file or directory(2)`
+	- `LOG_ERRNO` 출력.
 * 안 찍히면 `#_p` 또는 `LOG_ERRNO` 를 잘못 쓴 것이다.
 
-> [!example]- 참고: Makefile 없이 순수 gcc 로 실행
+> [!example] 참고: Makefile 없이 순수 gcc 로 실행
 > ```bash
 > mkdir -p build
 > gcc -Wall -Wextra -Werror -std=c11 -D_POSIX_C_SOURCE=200809L -g \
@@ -665,24 +651,46 @@ make D=d0_warmup V=take
 > 1. 이 파일에서만 `-pedantic` 을 뺀다 **(권장, 가장 간단)**
 > 2. 가변인자를 항상 1개 이상 넘기는 규칙으로 쓴다 (`LOG_INF("%s", "start")`)
 >
-> **이걸 모르고 "내 코드가 틀렸나" 로 20분 날리는 게 1회차의 전형적인 함정이다.**
+> **이걸 모르고 "내 코드가 틀렸나" 로 20분 날리는 게 처음 칠 때의 전형적인 함정이다.**
 
 ---
 
-## 4. 자주 하는 실수
+## 4. 주의해야 할 점
 
-| 증상 | 원인 | 고치는 법 |
-| :--- | :--- | :--- |
-| `undefined symbol: g_log_level` | `extern` 만 있고 실체가 없다 | `.c` 파일 **딱 하나**에 `log_level_t g_log_level = LOG_LV_INF;` |
-| `CHK_RET_GOTO` 가 "`ret` undeclared" | 호출부가 **넘긴 `ret` 변수가 선언돼 있지 않다**<br>(매크로는 `_rv` 인자로 받을 뿐 선언하지 않는다) | 함수 맨 위에 `int ret = RET_FAIL;` 을 먼저 선언 |
-| 매크로 끝에 `;` 를 붙여서 에러 | `do{}while(0)` **뒤에는** `;` 를 안 붙인다<br>(호출부에서 붙인다) | 정의 끝은 `while (0)` 로 끝 |
-| `CHK_RANGE(v, 0, 100)` 에서 부호 경고 | `size_t` 를 `%d` 로 찍음 | 매크로 안에서 `(int)` 캐스팅 |
-| 할당 실패인데 로그/리턴코드가 `INVALID_ARG` | `calloc` 뒤에 `CHK_PTR_GOTO` 를 썼다 | `CHK_ALLOC_GOTO` (`RET_NO_MEM`) |
-| `LOG_ERRNO` 가 엉뚱한 에러를 찍음 | 실패와 로그 사이에 다른 호출(`free`, `close`)이 `errno` 를 덮었다 | 실패 **직후** 바로 `LOG_ERRNO` |
-| `localtime_r` 암묵적 선언 / 미선언 에러 | `-std=c11` 만 쓰면 `localtime_r` 이 선언되지 않는다 | `-D_POSIX_C_SOURCE=200809L` |
-| `SAFE_CPY(p, s)` 가 컴파일 에러 | `p` 가 포인터 — 의도된 에러 | 배열이면 그대로<br>포인터면 `snprintf(p, size, ...)` 나 `str_copy()` |
-| `goto CLEANUP` 뒤 "jump bypasses initialization" | 선언을 `goto` **뒤에** 했다 | **모든 지역변수를 함수 맨 위에서** 초기화하며 선언 |
-| 테스트의 `g_cnt` 가 2 가 나옴 | 매크로 안에서 `_expr` 을 두 번 썼다 | `int _r = (_expr);` 로 한 번만 평가 |
+1. **`undefined symbol: g_log_level`**
+	- `extern` 만 있고 실체가 없다
+	- `.c` 파일 **딱 하나**에 `log_level_t g_log_level = LOG_LV_INF;`
+1. **`CHK_RET_GOTO` 가 "`ret` undeclared"**
+	- 호출부가 **넘긴 `ret` 변수가 선언돼 있지 않다**
+	- (매크로는 `_rv` 인자로 받을 뿐 선언하지 않는다)
+	- 함수 맨 위에 `int ret = RET_FAIL;` 을 먼저 선언
+1. **매크로 끝에 `;` 를 붙여서 에러**
+	- `do{}while(0)` **뒤에는** `;` 를 안 붙인다
+	- (호출부에서 붙인다)
+	- 정의 끝은 `while (0)` 로 끝
+1. **`CHK_RANGE(v, 0, 100)` 에서 부호 경고**
+	- `size_t` 를 `%d` 로 찍음
+	- 매크로 안에서 `(int)` 캐스팅
+1. **할당 실패인데 로그/리턴코드가 `INVALID_ARG`**
+	- `calloc` 뒤에 `CHK_PTR_GOTO` 를 썼다
+	- `CHK_ALLOC_GOTO` (`RET_NO_MEM`)
+1. **`LOG_ERRNO` 가 엉뚱한 에러를 찍음**
+	- 실패와 로그 사이에 다른 호출(`free`, `close`)이 `errno` 를 덮었다
+	- 실패 **직후** 바로 `LOG_ERRNO`
+1. **`localtime_r` 암묵적 선언 / 미선언 에러**
+	- `-std=c11` 만 쓰면 `localtime_r` 이 선언되지 않는다
+	- `-D_POSIX_C_SOURCE=200809L`
+1. **`SAFE_CPY(p, s)` 가 컴파일 에러**
+	- `p` 가 포인터
+		- 의도된 에러
+	- 배열이면 그대로
+	- 포인터면 `snprintf(p, size, ...)` 나 `str_copy()`
+1. **`goto CLEANUP` 뒤 "jump bypasses initialization"**
+	- 선언을 `goto` **뒤에** 했다
+	- **모든 지역변수를 함수 맨 위에서** 초기화하며 선언
+1. **테스트의 `g_cnt` 가 2 가 나옴**
+	- 매크로 안에서 `_expr` 을 두 번 썼다
+	- `int _r = (_expr);` 로 한 번만 평가
 
 ---
 

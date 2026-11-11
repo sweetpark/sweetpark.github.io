@@ -3,28 +3,23 @@ title: "D9. 종합 — 요구사항 한 장을 동작하는 데몬으로"
 description: "요구사항 한 장을 동작하는 데몬으로 완성하며 D0~D8 드릴을 종합하는 D9 최종 드릴입니다."
 tags: 
 created: 2026-09-21
-modified: 2026-10-16
+modified: 2026-11-11
 ---
 
 # D9. 종합 — 요구사항 한 장을 동작하는 데몬으로
 
+> [!TIP]
+> - 종합 과제라서 저장소에 대응하는 문제는 없다
+>   - 앞 드릴을 **가져다 쓰는 것**이 답이다
+> - 선행: [P038](https://github.com/sweetpark/c-playgound/tree/main/drill/P038_d0_warmup) ~ [P045](https://github.com/sweetpark/c-playgound/tree/main/drill/P045_d8_am) 를 모두 통과한 뒤에 한다 (막히면 막힌 문제로 되돌아간다)
+> - 진행 현황: [PROGRESS.md](https://github.com/sweetpark/c-playgound/blob/main/PROGRESS.md)
+
 > **쓰는 템플릿**: 1 ~ 6번 전부
 >
-> **목표 시간**: 1회차 이틀(실작업 6h) / 2회차 4h / **3회차 2h**
->
-> D0~D8 을 **각 3회차까지 끝낸 뒤**에 한다.
+> D0~D8 을 **각각 끝낸 뒤**에 한다.
 > 여기서 막히면 막힌 드릴로 되돌아간다.
 > 그게 이 드릴의 용도다.
 
-> [!NOTE] 이 드릴의 문서 구성 (D0~D9 공통)
-> ① **요구사항서** — 무엇을 만드나, 표로 확정한다.
-> ② **pseudo code 템플릿** — 보고 치는 뼈대이고, 회차마다 가린다.
-> ③ **테스트 코드** — 이게 통과하면 끝이다.
-> ④ 자주 하는 실수
-> ⑤ 회고 — D9 는 모범답안이 없다.
-> 앞 드릴 결과를 **가져다 쓰는 것**이 답이기 때문이다.
->
-> 변형 A/B/C 는 같은 일을 다른 소재로 다시 하는 것이고, 각 변형마다 ①②③이 준비되어 있다.
 
 ---
 
@@ -33,17 +28,6 @@ modified: 2026-10-16
 > **요구사항 한 장을 받아, 설계서와 동작하는 데몬과 시험을 혼자서 끝까지 만든다.**
 
 "C를 안다"가 아니라 **"혼자 끝까지 간다"** 가 기준이다.
-
-### 회차별 진행
-
-| 회차 | 변형 | 보는 것 | 순서 |
-| :--- | :--- | :--- | :--- |
-| **1회차** | **A** 세션 상태 관리 데몬 | ① 요구사항서<br>② pseudo code **전체** | 1. 표 3장과 C 판단표를 채운다.<br>2. 설계서를 그린다 (D6).<br>3. 부품을 이식하고 **새 코드(`session.c`, `handler.c`)만** 만든다.<br>4. ③ 단위 시험 → 인수 시험을 통과시킨다. |
-| **2회차** | **B** 과금 집계기 | ① 요구사항서<br>② pseudo code 의 **번호와 제목만** (Level 2) | 1. 저널 시험(`test_journal`)부터 통과시킨다.<br>2. 인수 시험을 통과시킨다. |
-| **3회차** | **C** 프로토콜 릴레이 | ① 요구사항서만 | 1. ③ 시험을 **먼저 읽는다.**<br>2. 백지에서 만든다. |
-
-> 1회차에 막히면 같은 변형을 한 번 더 한다.
-> 3회차를 통과하면 A 를 백지로 다시 한다.
 
 ---
 
@@ -77,7 +61,8 @@ modified: 2026-10-16
 > **3) 운영**
 > - 설정 파일: `listen_port`, `worker_num`(1~64), `log_level`, `session_max`, `default_ttl`.
 > - `SIGHUP`: `log_level`, `default_ttl` 만 재적재.
-> - `SIGTERM`/`SIGINT`: **graceful shutdown** — 수신 중단 → 큐 소진 → 스레드 종료 → 자원 해제.
+> - `SIGTERM`/`SIGINT`: **graceful shutdown**
+>   - 수신 중단 → 큐 소진 → 스레드 종료 → 자원 해제.
 >   최대 5초.
 > - 1초마다 통계 로그: `active=N expired=N rx=N tx=N drop=N`.
 > - **어떤 입력에도 프로세스가 죽지 않는다.**
@@ -89,7 +74,7 @@ modified: 2026-10-16
 > 그래서 이 드릴에서는 **응답 = 요청 + 16** (`17 ~ 20`)으로 정한다.
 > D5 확장의 "`msg_type >= 128` 이면 응답" 판정은 여기서 **`type >= 16` 이면 응답**으로 바꿔 쓴다.
 
-**C 판단표 — 코딩 전에 채운다 (이 요구사항에서 union 이 필요한가?)**
+**C 판단표: 코딩 전에 채운다 (이 요구사항에서 union 이 필요한가?)**
 
 | 필드 | 조건 | 패턴 | 결론 |
 | :--- | :--- | :--- | :--- |
@@ -106,7 +91,7 @@ modified: 2026-10-16
 > 이 요구사항은 **union 이 필요 없다.**
 > 필요 없는 곳에 union 을 넣지 않는 것도 이 드릴의 채점 대상이다.
 
-**새로 만드는 코드 — 모듈 API (A)**
+**새로 만드는 코드: 모듈 API (A)**
 
 | 파일 | 함수 | 요구사항 |
 | :--- | :--- | :--- |
@@ -133,7 +118,7 @@ modified: 2026-10-16
 | 4 | NOT_FOUND | `UPDATE` / `HEARTBEAT` / `DEREGISTER` 인데 없음 |
 | 6 | NO_RESOURCE | 정원 초과 |
 
-**로그 계약 — 시험이 이 문자열을 `grep` 한다**
+**로그 계약: 시험이 이 문자열을 `grep` 한다**
 
 | 시점 | 레벨 | 형식 |
 | :--- | :--- | :--- |
@@ -145,17 +130,17 @@ modified: 2026-10-16
 
 종료 코드는 D7 과 같다 (0 정상 / 1 설정 / 2 소켓 / 3 스레드).
 
-**산출물 — 세 묶음**
+**산출물: 세 묶음**
 
 | 묶음 | 내용 |
 | :--- | :--- |
-| ① 설계서 | `d9/design.md` — 블록도 / sequence(REGISTER 정상·중복·만료 3종) / erDiagram(`session_t`·해시 버킷·통계) / flowchart(`handle_register()` 내부, 종료점마다 Cause) / stateDiagram(`IDLE → ACTIVE → CLOSING → (삭제)`) |
+| ① 설계서 | `d9/design.md`: 블록도 / sequence(REGISTER 정상·중복·만료 3종) / erDiagram(`session_t`·해시 버킷·통계) / flowchart(`handle_register()` 내부, 종료점마다 Cause) / stateDiagram(`IDLE → ACTIVE → CLOSING → (삭제)`) |
 | ② 코드 | `common.h guard.h log.h`(D0) · `cfg`(D3) · `msg`(D4) · `tlv`(D5) · `jobq` · `daemon.c`(D7) 는 **그대로 가져온다.**<br>**새로 만드는 것은 `session.c` / `handler.c` / `stats.c` 뿐이다.** |
 | ③ 시험 | 아래 §3 |
 
 > [!TIP] 파일 순서가 곧 드릴 순서다
 > 가져다 쓸 수 없으면, 그 드릴을 다시 해야 한다는 신호다.
-> 앞 드릴 코드를 **손보지 않고 붙일 수 없다면** 그 드릴의 3회차가 덜 된 것이다.
+> 앞 드릴 코드를 **손보지 않고 붙일 수 없다면** 그 드릴이 덜 된 것이다.
 
 ### 1-B. 변형 B — 과금 집계기
 
@@ -283,29 +268,28 @@ kind 3 STOP    : session_id(u32 BE) + ts_ms(u64 BE) + bytes_total(u64 BE) + reas
 > 이 드릴은 **새 코드만** 친다.
 > 나머지는 앞 드릴 결과를 가져온다.
 
-### 2-A. Level 1 (1회차, 전부 본다)
-
+### 2-A. Level 1
 ```c
 /* session.c */
-/* [ ] 1. 구조체
+/* 1. 구조체
  *        session_t { id, state, expire_at, closing_at, next }       ← 해시 체인용 next
  *        struct sstore_s { buckets[1024], max, total, active }
  *        버킷 = id % 1024 */
-/* [ ] 2. sstore_create: 가드 → 객체 → (실패 주입 대비) CALLOC → 소유권 이전 */
-/* [ ] 3. find(st, id, &prev)    ← 삭제를 위해 앞 노드를 같이 돌려주는 내부 함수 */
-/* [ ] 4. sstore_register
+/* 2. sstore_create: 가드 → 객체 → (실패 주입 대비) CALLOC → 소유권 이전 */
+/* 3. find(st, id, &prev)    ← 삭제를 위해 앞 노드를 같이 돌려주는 내부 함수 */
+/* 4. sstore_register
  *        있으면: ttl 로 expire_at 갱신, CLOSING 이면 ACTIVE 로 되살림(active++), existed = true
  *        없으면: total >= max 이면 RET_TOO_SMALL
  *                노드 할당 (NO_MEM), 체인 앞에 연결, active++, total++, existed = false */
-/* [ ] 5. sstore_touch: 없거나 CLOSING 이면 NOT_FOUND, 아니면 expire_at 갱신 */
-/* [ ] 6. sstore_remove: find → 체인에서 떼고 → 상태에 따라 카운터 감소 → free */
-/* [ ] 7. sstore_sweep: 모든 버킷을 순회 (순회 중 삭제를 안전하게)
+/* 5. sstore_touch: 없거나 CLOSING 이면 NOT_FOUND, 아니면 expire_at 갱신 */
+/* 6. sstore_remove: find → 체인에서 떼고 → 상태에 따라 카운터 감소 → free */
+/* 7. sstore_sweep: 모든 버킷을 순회 (순회 중 삭제를 안전하게)
  *        ACTIVE && expire_at <= now → CLOSING, closing_at = now + 1, active--, to_closing++
  *        CLOSING && closing_at <= now → 제거, total--, removed++ */
-/* [ ] 8. sstore_destroy: 모든 버킷의 체인을 해제 (NULL 안전) */
+/* 8. sstore_destroy: 모든 버킷의 체인을 해제 (NULL 안전) */
 
 /* handler.c */
-/* [ ] 1. handle_msg
+/* 1. handle_msg
  *        가드 (st, in, rsp_type, cause)
  *        has_session_id 가 없으면 INVALID_ARG
  *        ttl = in->has_ttl ? in->ttl : default_ttl     ← 범위 5~3600 밖이면 BAD_FORMAT
@@ -318,34 +302,32 @@ kind 3 STOP    : session_id(u32 BE) + ts_ms(u64 BE) + bytes_total(u64 BE) + reas
  *        *rsp_type = type + 16 */
 
 /* stats.c */
-/* [ ] 1. stats_t: atomic_ulong rx, tx, drop, expired */
-/* [ ] 2. stats_format: snprintf 반환값으로 잘림 감지 → RET_TOO_SMALL */
+/* 1. stats_t: atomic_ulong rx, tx, drop, expired */
+/* 2. stats_format: snprintf 반환값으로 잘림 감지 → RET_TOO_SMALL */
 
 /* daemon.c (D7 에서 가져온 뼈대에 끼운다) */
-/* [ ] 1. recv_one: msg_unpack → tlv_parse → 실패면 drop++ + WRN "drop: ..." / 성공이면 rx++ → 큐
- * [ ] 2. worker_main: 큐에서 꺼내 handle_msg → 응답 build → 송신 → tx++
+/* 1. recv_one: msg_unpack → tlv_parse → 실패면 drop++ + WRN "drop: ..." / 성공이면 rx++ → 큐
+ * 2. worker_main: 큐에서 꺼내 handle_msg → 응답 build → 송신 → tx++
  *                     (응답 body: SessionId + Cause + 모르는 IE echo)
- * [ ] 3. watcher_main: 1초마다 cond_timedwait → sstore_sweep → expired 개수만큼 "expired session=" 로그
+ * 3. watcher_main: 1초마다 cond_timedwait → sstore_sweep → expired 개수만큼 "expired session=" 로그
  *                      (락 안에서 I/O 하지 않도록 id 목록만 모으고 락 밖에서 로그)
- * [ ] 4. 통계 스레드(또는 watcher 가 겸함): 1초마다 stats_format 로그, 종료 때 한 번 더 */
+ * 4. 통계 스레드(또는 watcher 가 겸함): 1초마다 stats_format 로그, 종료 때 한 번 더 */
 ```
 
-### 2-B. Level 2 (2회차, 번호와 제목만 본다)
-
+### 2-B. Level 2
 ```c
 /* journal.c */
-/* [ ] 1. jrec_t { kind; union { start, interim, stop } u }     ← 태그 = kind, 안 쓰는 arm 은 건드리지 않는다 */
-/* [ ] 2. jrec_pack: kind 로 갈라 필드 단위로 쓰기 → 체크섬 */
-/* [ ] 3. jrec_unpack: magic / kind / len(kind 별 고정 길이) / 체크섬 검증 → 필드 단위로 읽기 */
-/* [ ] 4. journal_replay: 파일을 읽으며 jrec_unpack 반복, 첫 실패 지점에서 멈춤 (valid_end) */
-/* [ ] 5. journal_open: replay → valid_end 로 ftruncate → 잠금(flock) → append 모드 */
-/* [ ] 6. journal_append: pack → fwrite → fflush → fsync, 쓰기 실패는 IO_ERROR (SAFE_FCLOSE_RET) */
-/* [ ] 7. agg_feed / agg_get: 창 = ts_ms / 300000, INTERIM 만 bytes 합산 */
-/* [ ] 8. daemon: write-ahead 순서 (journal_append → agg_feed), 재기동 시 replay 로 복원 */
+/* 1. jrec_t { kind; union { start, interim, stop } u }     ← 태그 = kind, 안 쓰는 arm 은 건드리지 않는다 */
+/* 2. jrec_pack: kind 로 갈라 필드 단위로 쓰기 → 체크섬 */
+/* 3. jrec_unpack: magic / kind / len(kind 별 고정 길이) / 체크섬 검증 → 필드 단위로 읽기 */
+/* 4. journal_replay: 파일을 읽으며 jrec_unpack 반복, 첫 실패 지점에서 멈춤 (valid_end) */
+/* 5. journal_open: replay → valid_end 로 ftruncate → 잠금(flock) → append 모드 */
+/* 6. journal_append: pack → fwrite → fflush → fsync, 쓰기 실패는 IO_ERROR (SAFE_FCLOSE_RET) */
+/* 7. agg_feed / agg_get: 창 = ts_ms / 300000, INTERIM 만 bytes 합산 */
+/* 8. daemon: write-ahead 순서 (journal_append → agg_feed), 재기동 시 replay 로 복원 */
 ```
 
-### 2-C. Level 3 (3회차, 백지)
-
+### 2-C. Level 3
 ```c
 /* 아무것도 안 본다.
  * §1-C 요구사항서와 §3-C 시험만 보고 만든다.
@@ -356,8 +338,7 @@ kind 3 STOP    : session_id(u32 BE) + ts_ms(u64 BE) + bytes_total(u64 BE) + reas
  *   - payload 를 해석하지 않고 헤더 길이만으로 프레임을 자르는 법 (D7 변형 B) */
 ```
 
-### 2-D. 진행 계획 (1회차 기준)
-
+### 2-D. 진행 계획
 | 구간 | 시간 | 하는 일 | 끝났다는 신호 |
 | :--- | :--- | :--- | :--- |
 | ① 표 3장 | 30분 | 메시지별 입력·출력·에러 표 | 에러 표에 Cause 6종이 다 있다 |
@@ -370,7 +351,7 @@ kind 3 STOP    : session_id(u32 BE) + ts_ms(u64 BE) + bytes_total(u64 BE) + reas
 | ⑧ 부하·정리 | 60분 | 30분 부하 + 회고 작성 | 시나리오 8 통과 |
 
 > [!WARNING] ③에서 이식이 안 되면 멈추고 돌아간다
-> 앞 드릴 코드를 **손보지 않고 붙일 수 없다면** 그 드릴의 3회차가 덜 된 것이다.
+> 앞 드릴 코드를 **손보지 않고 붙일 수 없다면** 그 드릴이 덜 된 것이다.
 > 여기서 새로 짜기 시작하면 이 드릴은 종합이 아니라 그냥 큰 숙제가 된다.
 
 ---
@@ -445,7 +426,7 @@ static int g_fail = 0;
 
 ### 3-A. 변형 A 시험
 
-**단위 시험 — `test_session.c`**
+**단위 시험: `test_session.c`**
 
 ```c
 #include "session.h"
@@ -601,7 +582,7 @@ int main(void)
 }
 ```
 
-**단위 시험 — `test_handler.c`**
+**단위 시험: `test_handler.c`**
 
 ```c
 #include <pthread.h>
@@ -724,7 +705,7 @@ int main(void)
 }
 ```
 
-**인수 시험 1 ~ 7 — `accept.sh`**
+**인수 시험 1 ~ 7: `accept.sh`**
 
 | # | 시험 | 방법 | 통과 기준 |
 | :--- | :--- | :--- | :--- |
@@ -735,7 +716,7 @@ int main(void)
 | 5 | **쓰레기 입력** | 무작위 바이트 1000개 | 전부 drop + WRN, 프로세스 생존 |
 | 6 | **정원 초과** | `session_max=100` 으로 101번째 등록 | `Cause=6`, 메모리 증가 없음 |
 | 7 | **graceful shutdown** | 부하 중 SIGTERM | 5초 내 exit 0, **누수 0**, **`rx == tx + drop`** (큐 유실 0) |
-| 8 | **30분 연속 부하** | 초당 10k | RSS 증가 없음(±1MB) — `soak.sh` |
+| 8 | **30분 연속 부하** | 초당 10k | RSS 증가 없음(±1MB): `soak.sh` |
 
 ```bash
 #!/usr/bin/env bash
@@ -857,7 +838,7 @@ echo "pass=$pass fail=$fail"
 if [ "$fail" -eq 0 ]; then echo PASS; else echo "FAIL $fail"; exit 1; fi
 ```
 
-**인수 시험 8 — 30분 부하 (`soak.sh`, `soak_load.py`)**
+**인수 시험 8: 30분 부하 (`soak.sh`, `soak_load.py`)**
 
 ```bash
 #!/usr/bin/env bash
@@ -1112,7 +1093,7 @@ int main(void)
 }
 ```
 
-**복구 시나리오 — `accept_b.sh` (요약)**
+**복구 시나리오: `accept_b.sh` (요약)**
 
 | # | 시나리오 | 방법 | 통과 기준 |
 | :--- | :--- | :--- | :--- |
@@ -1132,7 +1113,7 @@ grep -q 'recovered records=100' "$W/log2" && echo "ok  복구" || echo "X   복�
 
 ### 3-C. 변형 C 시험 — 슬롯과 릴레이
 
-**단위 시험 — `test_rslots.c`**
+**단위 시험: `test_rslots.c`**
 
 ```c
 #include "rslots.h"
@@ -1235,7 +1216,7 @@ int main(void)
 }
 ```
 
-**릴레이 시나리오 — `relay_check.py`**
+**릴레이 시나리오: `relay_check.py`**
 
 ```python
 #!/usr/bin/env python3
@@ -1386,7 +1367,7 @@ python3 d9/test/relay_check.py build/d9_relay
 * 인수 시험은 `ASan` 이 켜진 데몬의 stderr 를 읽으므로 **누수는 `X` 로 나온다.**
 * 포트가 겹치면 `PORT=19150 bash d9/test/accept.sh ...` 처럼 바꾼다.
 
-> [!example]- 참고: Makefile 없이 순수 gcc 로 실행
+> [!example] 참고: Makefile 없이 순수 gcc 로 실행
 > ```bash
 > mkdir -p build
 > # 단위 시험 (변형 A: session)
@@ -1409,27 +1390,50 @@ python3 d9/test/relay_check.py build/d9_relay
 
 ---
 
-## 4. 자주 하는 실수
+## 4. 주의해야 할 점
 
-| 실수 | 증상 |
-| :--- | :--- |
-| 응답 Type 을 `요청 + 128` 로 만듦 | D4 의 `Type` 은 5비트라 **잘려서** 엉뚱한 Type 이 나간다.<br>`요청 + 16` |
-| 세션 삭제를 체인 **머리만** 지원 | 같은 버킷의 가운데·꼬리를 지우면 **체인이 끊긴다** (`test_collision` 이 잡는다) |
-| `CLOSING` 을 정원에서 뺌 | 만료 직후 정원이 새는 것처럼 보여 **정원이 넘친다** |
-| 순회 중 노드를 `free` 한 뒤 `next` 를 읽음 | use-after-free.<br>`next` 를 **먼저** 저장한다 |
-| 감시 스레드가 **락을 잡은 채** 로그를 찍음 | 로그 I/O 가 워커를 막는다.<br>만료 id 만 모아서 **락 밖에서** 로그 |
-| `rx` / `tx` 를 일반 `unsigned long` 로 증가 | 워커끼리 겹쳐 **유실**된다 (`test_stats` 가 잡는다).<br>`atomic` |
-| 종료 때 마지막 통계를 안 찍음 | `rx == tx + drop` 을 확인할 수 없다 |
-| 단위 시험 없이 인수 시험부터 | 어디가 틀렸는지 알 수 없다 |
-| 앞 드릴 코드를 **다시 짬** | 이 드릴은 종합이 아니라 큰 숙제가 된다.<br>이식이 안 되면 그 드릴로 돌아간다 |
-| (B) 집계에 반영한 **뒤에** 저널에 씀 | 중간에 죽으면 집계에는 있고 저널에는 없다 (복구 불가).<br>**저널이 먼저** (write-ahead) |
-| (B) `fwrite` 만 하고 `fsync` 를 안 함 | `kill -9` 가 아니라 **전원 장애**에서 레코드를 잃는다 |
-| (B) 깨진 꼬리를 자르지 않고 이어 씀 | 새 레코드가 깨진 레코드 뒤에 붙어 **다음 replay 가 거기서 멈춘다** |
-| (B) `jrec_t` 를 통째로 `fwrite` | 패딩·엔디안이 파일 포맷에 새어 나온다 |
-| (C) 재전송을 **무한** 반복 | 업스트림이 죽으면 슬롯이 영원히 찬다.<br>**1회** 후 포기 |
-| (C) payload 를 파싱해서 다시 만듦 | 모르는 바이트가 사라진다.<br>**원문 통과** |
-| (C) 늦은 응답을 그냥 클라이언트에 전달 | 이미 timeout 응답을 받은 클라이언트가 **같은 요청의 응답을 두 번** 받는다 |
-| (C) check-out 과 `rslots_due` 가 다른 락 | 응답이 도착한 요청을 **만료 처리**한다 |
+1. **응답 Type 을 `요청 + 128` 로 만듦**
+	- D4 의 `Type` 은 5비트라 **잘려서** 엉뚱한 Type 이 나간다.
+	- `요청 + 16`
+1. **세션 삭제를 체인 **머리만** 지원**
+	- 같은 버킷의 가운데·꼬리를 지우면 **체인이 끊긴다** (`test_collision` 이 잡는다)
+1. **`CLOSING` 을 정원에서 뺌**
+	- 만료 직후 정원이 새는 것처럼 보여 **정원이 넘친다**
+1. **순회 중 노드를 `free` 한 뒤 `next` 를 읽음**
+	- use-after-free.
+	- `next` 를 **먼저** 저장한다
+1. **감시 스레드가 **락을 잡은 채** 로그를 찍음**
+	- 로그 I/O 가 워커를 막는다.
+	- 만료 id 만 모아서 **락 밖에서** 로그
+1. **`rx` / `tx` 를 일반 `unsigned long` 로 증가**
+	- 워커끼리 겹쳐 **유실**된다 (`test_stats` 가 잡는다).
+	- `atomic`
+1. **종료 때 마지막 통계를 안 찍음**
+	- `rx == tx + drop` 을 확인할 수 없다
+1. **단위 시험 없이 인수 시험부터**
+	- 어디가 틀렸는지 알 수 없다
+1. **앞 드릴 코드를 **다시 짬****
+	- 이 드릴은 종합이 아니라 큰 숙제가 된다.
+	- 이식이 안 되면 그 드릴로 돌아간다
+1. **(B) 집계에 반영한 **뒤에** 저널에 씀**
+	- 중간에 죽으면 집계에는 있고 저널에는 없다 (복구 불가).
+	- **저널이 먼저** (write-ahead)
+1. **(B) `fwrite` 만 하고 `fsync` 를 안 함**
+	- `kill -9` 가 아니라 **전원 장애**에서 레코드를 잃는다
+1. **(B) 깨진 꼬리를 자르지 않고 이어 씀**
+	- 새 레코드가 깨진 레코드 뒤에 붙어 **다음 replay 가 거기서 멈춘다**
+1. **(B) `jrec_t` 를 통째로 `fwrite`**
+	- 패딩·엔디안이 파일 포맷에 새어 나온다
+1. **(C) 재전송을 **무한** 반복**
+	- 업스트림이 죽으면 슬롯이 영원히 찬다.
+	- **1회** 후 포기
+1. **(C) payload 를 파싱해서 다시 만듦**
+	- 모르는 바이트가 사라진다.
+	- **원문 통과**
+1. **(C) 늦은 응답을 그냥 클라이언트에 전달**
+	- 이미 timeout 응답을 받은 클라이언트가 **같은 요청의 응답을 두 번** 받는다
+1. **(C) check-out 과 `rslots_due` 가 다른 락**
+	- 응답이 도착한 요청을 **만료 처리**한다
 
 ---
 

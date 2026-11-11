@@ -3,27 +3,21 @@ title: "D6. 설계 산출물 — 표를 Mermaid 5종으로"
 description: "앞 드릴에서 만든 설계를 Mermaid 다이어그램 5종으로 남이 읽을 수 있게 표현하는 D6 드릴입니다."
 tags: 
 created: 2026-09-21
-modified: 2026-10-16
+modified: 2026-11-11
 ---
 
 # D6. 설계 산출물 — 표를 Mermaid 5종으로
 
+> [!TIP]
+> - 코드를 치는 드릴이 아니라서 저장소에 대응하는 문제는 없다
+> - 그릴 대상은 앞 드릴의 결과: [P039 d1](https://github.com/sweetpark/c-playgound/tree/main/drill/P039_d1_msisdn) · [P040 d2](https://github.com/sweetpark/c-playgound/tree/main/drill/P040_d2_subs_type) · [P042 d4](https://github.com/sweetpark/c-playgound/tree/main/drill/P042_d4_msg) · [P043 d5](https://github.com/sweetpark/c-playgound/tree/main/drill/P043_d5_tlv) · [P044 d7](https://github.com/sweetpark/c-playgound/tree/main/drill/P044_d7_jobq)
+> - 식별자(함수·상수 이름)는 저장소 `solutions/` 의 모범답안과 `check.sh` 로 대조한다
+
 > **쓰는 템플릿**: [5. 설계 산출물 Mermaid 치트시트](개발%20%28CS%29/언어/C언어/코드%20골격/[골격]%205.%20설계%20산출물%20Mermaid%20치트시트.md)
->
-> **목표 시간**: 1회차 30분 / 2회차 20분 / **3회차 15분** (확장 포함 **20분**)
 >
 > **코드를 치는 드릴이 아니다.**
 > 앞 드릴에서 짠 것을 **남이 읽을 수 있는 그림**으로 만드는 드릴이다.
 
-> [!NOTE] 이 드릴의 문서 구성 (D0~D9 공통)
-> ① **요구사항서** — 무엇을 그리나, 그림마다 합격 기준을 표로 확정한다.
-> ② **pseudo code 템플릿** — 빈칸이 있는 mermaid 뼈대이고, 회차마다 가린다.
-> ③ **테스트 코드** — 그림이 합격 기준을 지켰는지 검사하는 스크립트(`check.sh`)다.
-> ④ 자주 하는 실수
-> ⑤ 모범답안 — 맨 뒤에 접어 둔다.
->
-> D6 은 코드를 치는 드릴이 아니라서 **"코드"가 mermaid 이고 "테스트"가 합격 기준 검사 스크립트**다.
-> 변형 A/B/C 는 같은 일을 다른 소재로 다시 하는 것이다.
 
 ---
 
@@ -42,17 +36,6 @@ modified: 2026-10-16
 | (⑤) | **stateDiagram-v2** | 상태가 있으면 **언제 바뀌나** | 세션·타이머가 있을 때만 |
 
 **⑤는 상태가 있을 때만.** 없는데 그리면 오히려 읽는 사람이 헷갈린다.
-
-### 회차별 진행
-
-| 회차 | 변형 | 보는 것 | 순서 |
-| :--- | :--- | :--- | :--- |
-| **1회차** | **A** D1 + D2 산출물화 | ① 요구사항서<br>② mermaid 뼈대 **전체** | 1. 뼈대의 `%% [ ]` 를 보고 그림을 완성한다.<br>2. ③ `check.sh` 를 실행한다. |
-| **2회차** | **B** D4 + D5 산출물화 | ① 요구사항서<br>② 뼈대의 **번호와 제목만** (Level 2) | 1. 번호만 보고 그린다.<br>2. ③ `check.sh` 를 실행한다. |
-| **3회차** | **C** D7 산출물화 + 상태도 | ① 요구사항서만 | 1. ③ `check.sh` 의 항목을 **먼저 읽는다.**<br>2. 백지에서 그린다. |
-
-> 1회차에 막히면 같은 변형을 한 번 더 한다.
-> 3회차를 통과하면 A 를 백지로 다시 그린다.
 
 ---
 
@@ -83,7 +66,8 @@ d6_design/design_a.md
 
 ### 확장 — D2 확장본의 ERD (C 와 union 이 들어간다)
 
-5. **erDiagram (확장)**: D2 의 `subs_profile_t` 확장본 — `suspend_cause` (C), `charging_method` 태그 + `prepaid_info` / `postpaid_info` (배타 union) 를 **치트시트 4-3b 관례**로 그린다.
+5. **erDiagram (확장)**: D2 의 `subs_profile_t` 확장본
+	- `suspend_cause` (C), `charging_method` 태그 + `prepaid_info` / `postpaid_info` (배타 union) 를 **치트시트 4-3b 관례**로 그린다.
    - `charging_method` 에 **`TAG`**, arm 은 **엔티티 둘 + 라벨 `charging_method=PREPAID` / `POSTPAID`**
    - `postpaid_info` 의 **배열 개수(`email_cnt`) 는 arm 엔티티 안**에
    - `suspend_cause` 는 **`"C: suspended==true"`** 코멘트.
@@ -138,41 +122,39 @@ d6_design/design_a.md
 
 > **사용법**
 > 아래 뼈대를 `d6_design/design_*.md` 에 **복사**하고, `%% [ ]` 주석을 보고 **내가 채운다.**
-> 다 채우면 `[ ]` 를 `x` 로 바꾼다.
 > 막히면 §5 모범답안의 해당 그림만 본다.
 
-### 2-A. 변형 A — Level 1 (1회차, 전부 본다)
-
+### 2-A. 변형 A — Level 1
 ````text
 ## ① 블록도
 ```mermaid
 flowchart LR
-    %% [ ] 1. subgraph EXT["외부"] 에 Client, DB (원통 모양은 [( )])
-    %% [ ] 2. subgraph PROC["subs_svc 프로세스"] 에 요청 큐 → worker → msisdn_normalize → subs_profile_validate → db_upsert
-    %% [ ] 3. 화살표에 데이터 이름 (요청 / SQL / 응답) — 방향이 보이게
-    %% [ ] 4. 내 모듈(D1, D2)에 style 로 색을 입힌다
+    %% 1. subgraph EXT["외부"] 에 Client, DB (원통 모양은 [( )])
+    %% 2. subgraph PROC["subs_svc 프로세스"] 에 요청 큐 → worker → msisdn_normalize → subs_profile_validate → db_upsert
+    %% 3. 화살표에 데이터 이름 (요청 / SQL / 응답) — 방향이 보이게
+    %% 4. 내 모듈(D1, D2)에 style 로 색을 입힌다
 ```
 
 ## ② Call Flow
 ```mermaid
 sequenceDiagram
     autonumber
-    %% [ ] 1. participant: Client / subs_svc / msisdn_normalize() / DB
-    %% [ ] 2. 요청 → normalize 호출
-    %% [ ] 3. alt 형식 위반      → RET_BAD_FORMAT → 400
+    %% 1. participant: Client / subs_svc / msisdn_normalize() / DB
+    %% 2. 요청 → normalize 호출
+    %% 3. alt 형식 위반      → RET_BAD_FORMAT → 400
     %%        else 타 국가 번호 → RET_NOT_SUPPORTED → 501
     %%        else 정상          → RET_OK → validate → UPSERT
-    %% [ ] 4. 정상 분기 안에 opt 3초 내 응답 없음 → D--xS (timeout) → 504
-    %% [ ] 5. 마지막에 DB OK → 200
+    %% 4. 정상 분기 안에 opt 3초 내 응답 없음 → D--xS (timeout) → 504
+    %% 5. 마지막에 DB OK → 200
 ```
 
 ## ③ ERD
 ```mermaid
 erDiagram
-    %% [ ] 1. SUBS_PROFILE ||--|{ SNSSAI : "allowedNssai (1~8)"        ← N 상한을 라벨에
-    %% [ ] 2. SUBS_PROFILE { 필드마다  타입  이름  "M/O, 범위" }          ← 키는 이름 뒤에 _PK, Optional 은 "O, has_..."
-    %% [ ] 3. SNSSAI { sst, sd }
-    %% [ ] 4. (확장) 두 번째 erDiagram:
+    %% 1. SUBS_PROFILE ||--|{ SNSSAI : "allowedNssai (1~8)"        ← N 상한을 라벨에
+    %% 2. SUBS_PROFILE { 필드마다  타입  이름  "M/O, 범위" }          ← 키는 이름 뒤에 _PK, Optional 은 "O, has_..."
+    %% 3. SNSSAI { sst, sd }
+    %% 4. (확장) 두 번째 erDiagram:
     %%          SUBS_PROFILE ||--o| PREPAID_INFO  : "charging_method=PREPAID"
     %%          SUBS_PROFILE ||--o| POSTPAID_INFO : "charging_method=POSTPAID"
     %%          charging_method 에 "M, TAG"        ← union 의 태그는 한 곳뿐
@@ -183,28 +165,26 @@ erDiagram
 ## ④ msisdn_normalize
 ```mermaid
 flowchart TD
-    %% [ ] 1. 진입 ([ ] 둥근 사각)        S([msisdn_normalize 진입])
-    %% [ ] 2. 가드 {"in / out NULL?"} → 예: RET_INVALID_ARG
-    %% [ ] 3. {"def_cc 1~999?"}       → 아니오: 같은 RET_INVALID_ARG 노드
-    %% [ ] 4. 순회: 허용 문자? / '+' 가 맨 앞? / 숫자 1개 이상?  → 아니오/예: RET_BAD_FORMAT
-    %% [ ] 5. '+' 있음? → def_cc 로 시작? 아니오: RET_NOT_SUPPORTED
-    %% [ ] 6. 선행 0? 에 따라 NSN 만들기 (세 갈래가 한 곳으로 모인다)
-    %% [ ] 7. cc+nsn 15자 이하? 아니오: RET_BAD_FORMAT / 예: RET_OK
+    %% 1. 진입 (둥근 사각)        S([msisdn_normalize 진입])
+    %% 2. 가드 {"in / out NULL?"} → 예: RET_INVALID_ARG
+    %% 3. {"def_cc 1~999?"}       → 아니오: 같은 RET_INVALID_ARG 노드
+    %% 4. 순회: 허용 문자? / '+' 가 맨 앞? / 숫자 1개 이상?  → 아니오/예: RET_BAD_FORMAT
+    %% 5. '+' 있음? → def_cc 로 시작? 아니오: RET_NOT_SUPPORTED
+    %% 6. 선행 0? 에 따라 NSN 만들기 (세 갈래가 한 곳으로 모인다)
+    %% 7. cc+nsn 15자 이하? 아니오: RET_BAD_FORMAT / 예: RET_OK
     %%        종료 노드는 모두 [/"RET_..."/] 모양 (RET_ 로 시작하는 실제 이름)
 ```
 ````
 
-### 2-B. 변형 B — Level 2 (2회차, 번호와 제목만 본다)
-
+### 2-B. 변형 B — Level 2
 ````text
-## ① 블록도          flowchart LR       %% [ ] 송신 / 와이어 / 수신, msg_pack · msg_unpack 위치
-## ② 메시지 왕복      sequenceDiagram   %% [ ] pack → 전송 → unpack, alt 3갈래(TOO_SMALL / BAD_FORMAT / OK), opt 재전송 타임아웃
-## ③ TLV 구조 ERD    erDiagram         %% [ ] msg_body 1:N unknown_ie "0~8", has_ 표시, (확장) kind TAG + arm 엔티티
-## ④ msg_unpack()    flowchart TD      %% [ ] NEED 세 지점, Reserved, 체크섬, 모든 종료점 RET_
+## ① 블록도          flowchart LR       %% 송신 / 와이어 / 수신, msg_pack · msg_unpack 위치
+## ② 메시지 왕복      sequenceDiagram   %% pack → 전송 → unpack, alt 3갈래(TOO_SMALL / BAD_FORMAT / OK), opt 재전송 타임아웃
+## ③ TLV 구조 ERD    erDiagram         %% msg_body 1:N unknown_ie "0~8", has_ 표시, (확장) kind TAG + arm 엔티티
+## ④ msg_unpack()    flowchart TD      %% NEED 세 지점, Reserved, 체크섬, 모든 종료점 RET_
 ````
 
-### 2-C. 변형 C — Level 3 (3회차, 백지)
-
+### 2-C. 변형 C — Level 3
 ````text
 아무것도 안 본다.
 §1-C 요구사항서와 §3 의 check.sh 항목만 보고 그린다.
@@ -244,7 +224,7 @@ d6_design/check.sh                                   합격 기준 검사 스크
 #!/usr/bin/env bash
 # d6_design/check.sh — 설계서(mermaid) 합격 기준 검사
 # 사용법:  bash d6_design/check.sh <설계서.md> <A|B|C> <코드 폴더>...
-#   예)    bash d6_design/check.sh d6_design/design_a.md A common d1_pure/src d2_model/src
+#   예)    bash d6_design/check.sh d6_design/design_a.md A drill/common solutions/P039_d1_msisdn solutions/P040_d2_subs_type
 #   환경변수:  EXT=1  (A 확장: ERD 에 union TAG 와 C 조건 코멘트를 요구)
 #              EXTERNAL="db_upsert"  (코드에 없는 외부 이름. 공백으로 구분)
 
@@ -337,10 +317,10 @@ if [ "$fail" -eq 0 ]; then echo PASS; else echo "FAIL $fail"; exit 1; fi
 ### 3-1. 실행
 
 ```bash
-bash d6_design/check.sh d6_design/design_a.md A common d1_pure/src d2_model/src            # 변형 A
-EXT=1 bash d6_design/check.sh d6_design/design_a.md A common d1_pure/src d2_model/src      # 변형 A (확장 포함)
-bash d6_design/check.sh d6_design/design_b.md B common d4_pack/src d5_tlv/src              # 변형 B
-bash d6_design/check.sh d6_design/design_c.md C common d7_daemon/src                       # 변형 C
+bash d6_design/check.sh d6_design/design_a.md A drill/common solutions/P039_d1_msisdn solutions/P040_d2_subs_type            # 변형 A
+EXT=1 bash d6_design/check.sh d6_design/design_a.md A drill/common solutions/P039_d1_msisdn solutions/P040_d2_subs_type      # 변형 A (확장 포함)
+bash d6_design/check.sh d6_design/design_b.md B drill/common solutions/P042_d4_msg solutions/P043_d5_tlv              # 변형 B
+bash d6_design/check.sh d6_design/design_c.md C drill/common solutions/P044_d7_jobq                       # 변형 C
 ```
 
 * 마지막 줄이 **`PASS`** 이면 통과다.
@@ -364,30 +344,40 @@ bash d6_design/check.sh d6_design/design_c.md C common d7_daemon/src            
 
 ---
 
-## 4. 자주 하는 실수
+## 4. 주의해야 할 점
 
-| 실수 | 고치는 법 |
-| :--- | :--- |
-| 노드 라벨에 `()` `[]` 를 그냥 씀 → 렌더 깨짐 | 라벨 전체를 **큰따옴표**로 감싼다: `A["do_x()"]` |
-| 한글 화살표 라벨에 공백 | `-->|요청 수신|` 은 되지만 특수문자 섞이면 깨진다. 따옴표 사용 |
-| 시퀀스가 **정상 경로만** | 설계서로서 쓸모가 없다. `alt`/`opt` 로 실패를 반드시 |
-| 플로우차트에 **함수 전체**를 다 그림 | 한 장에 노드 15개 이하가 이상적이다.<br>**20개를 넘으면** 함수를 쪼갤 신호다 |
-| 그림의 이름과 코드 이름이 다름 | 리뷰 때 매칭이 안 된다. **복붙할 수 있는 이름**을 쓴다 |
-| union 을 그리면서 **`TAG` 표시를 빼먹음** | 관계선만 보여 "셋 다 있을 수 있다" 로 읽힌다 |
-| C 조건을 그림에 안 적음 | 코드의 `validate` 조건과 대조할 근거가 없다 |
-| (B) ERD 에서 모르는 IE 보관을 `1:1` 로 그림 | 최대 8개이므로 `"0~8"` 상한을 적은 `1:N` 이다 |
-| (C) 상태도에 트리거 없는 전이 | `A --> B` 만 있으면 언제 바뀌는지 모른다.<br>`A --> B : start` 처럼 **이벤트**를 적는다 |
-| (C) 상태도에 종료 상태가 없음 | 세션이 어떻게 끝나는지 읽을 수 없다.<br>`CLOSING --> [*] : closed` |
-
-> [!TIP] 그림이 안 그려지면 함수 설계가 틀린 것이다
-> 노드 20개를 넘거나 화살표가 얽히면 **그림 탓이 아니다.** 그 함수가 너무 많은 일을 한다.
-> 이 드릴의 부수 효과: **설계 결함이 코드 치기 전에 보인다.**
+1. **노드 라벨에 `()` `[]` 를 그냥 씀 → 렌더 깨짐**
+	- 라벨 전체를 **큰따옴표**로 감싼다: `A["do_x()"]`
+1. **한글 화살표 라벨에 공백**
+	- `-->
+	- 요청 수신
+	- ` 은 되지만 특수문자 섞이면 깨진다. 따옴표 사용
+1. **시퀀스가 **정상 경로만****
+	- 설계서로서 쓸모가 없다. `alt`/`opt` 로 실패를 반드시
+1. **플로우차트에 **함수 전체**를 다 그림**
+	- 한 장에 노드 15개 이하가 이상적이다.
+	- **20개를 넘으면** 함수를 쪼갤 신호다
+1. **그림의 이름과 코드 이름이 다름**
+	- 리뷰 때 매칭이 안 된다. **복붙할 수 있는 이름**을 쓴다
+1. **union 을 그리면서 **`TAG` 표시를 빼먹음****
+	- 관계선만 보여 "셋 다 있을 수 있다" 로 읽힌다
+1. **C 조건을 그림에 안 적음**
+	- 코드의 `validate` 조건과 대조할 근거가 없다
+1. **(B) ERD 에서 모르는 IE 보관을 `1:1` 로 그림**
+	- 최대 8개이므로 `"0~8"` 상한을 적은 `1:N` 이다
+1. **(C) 상태도에 트리거 없는 전이**
+	- `A --> B` 만 있으면 언제 바뀌는지 모른다.
+	- `A --> B : start` 처럼 **이벤트**를 적는다
+1. **(C) 상태도에 종료 상태가 없음**
+	- 세션이 어떻게 끝나는지 읽을 수 없다.
+	- `CLOSING --> [*] : closed`
 
 ---
 
 ## 5. 모범답안 (변형 A)
 
-> [!success]- ② Call Flow — 실패와 타임아웃이 들어간 시퀀스
+> - [!success] ② Call Flow
+>   - 실패와 타임아웃이 들어간 시퀀스
 > ```mermaid
 > sequenceDiagram
 >     autonumber
@@ -418,7 +408,8 @@ bash d6_design/check.sh d6_design/design_c.md C common d7_daemon/src            
 >     end
 > ```
 
-> [!success]- ③ ERD — 구조체 그대로
+> - [!success] ③ ERD
+>   - 구조체 그대로
 > ```mermaid
 > erDiagram
 >     SUBS_PROFILE ||--|{ SNSSAI : "allowedNssai (1~8)"
@@ -440,7 +431,8 @@ bash d6_design/check.sh d6_design/design_c.md C common d7_daemon/src            
 >     }
 > ```
 
-> [!success]- ③-b ERD 확장 — C 와 union (D2 확장본)
+> - [!success] ③-b ERD 확장
+>   - C 와 union (D2 확장본)
 > ```mermaid
 > erDiagram
 >     SUBS_PROFILE ||--|{ SNSSAI : "allowedNssai (1~8)"
@@ -469,9 +461,11 @@ bash d6_design/check.sh d6_design/design_c.md C common d7_daemon/src            
 >
 > **확인할 3가지**: ① `TAG` 는 `charging_method` **한 곳뿐**이다.
 > ② `suspend_cause` 는 조건 코멘트만 있고 `TAG` 가 없다 (union 이 아니라는 뜻).
-> ③ `email_cnt` 가 SUBS_PROFILE 이 아니라 **POSTPAID_INFO 안**에 있다 — 코드의 구조체 경계와 같다.
+> - ③ `email_cnt` 가 SUBS_PROFILE 이 아니라 **POSTPAID_INFO 안**에 있다
+>   - 코드의 구조체 경계와 같다.
 
-> [!success]- ④ flowchart — 종료점마다 리턴코드
+> - [!success] ④ flowchart
+>   - 종료점마다 리턴코드
 > ```mermaid
 > flowchart TD
 >     S([msisdn_normalize 진입]) --> G{"in / out NULL?"}
@@ -503,7 +497,8 @@ bash d6_design/check.sh d6_design/design_c.md C common d7_daemon/src            
 >     LEN -- 예 --> OK[/"RET_OK<br/>e164 · nsn · cc 채움"/]
 > ```
 
-> [!success]- ① 블록도 — 경계가 보이게
+> - [!success] ① 블록도
+>   - 경계가 보이게
 > ```mermaid
 > flowchart LR
 >     subgraph EXT["외부"]
