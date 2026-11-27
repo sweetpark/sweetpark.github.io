@@ -3,7 +3,7 @@ title: "(C) 환경변수·시그널 실습 — getenv 복사·atexit와 sigactio
 description: "환경변수(getenv 복사, atexit)와 시그널(sigaction, pselect) 실습에서 만난 오류 패턴을 정리하고 로그 기록기와 시그널 카운터를 구현했습니다."
 tags: 
 created: 2026-10-14
-modified: 2026-11-11
+modified: 2026-11-27
 ---
 
 # 환경변수·시그널 — getenv 복사, atexit, sigaction, pselect
@@ -199,6 +199,42 @@ void handler(int signum) {
 - 유지/1회를 코드가 **명시**한다
 - `sigaction` 은 C 표준이 아니라 POSIX → Windows 에서는 못 쓴다 (이식성은 `signal`, 명확함은 `sigaction`)
 - 핸들러 안에서 `signal()` 을 불러도 안전한 경우: `SIG_IGN` 등록 / `SIG_DFL` 복구 / **다른** 핸들러로 교체
+
+### 12-02a · struct sigaction 구조 — 등록과 해제
+
+`signal(signo, handler)` 은 **핸들러 주소 하나**만 넘긴다. `sigaction()` 은 핸들러에 **옵션까지 묶은 구조체**를 커널에 넘긴다.
+
+```c
+struct sigaction sa;
+memset(&sa, 0x00, sizeof(sa));       /* 안 쓰는 필드에 쓰레기값이 남지 않게 */
+sa.sa_handler = on_signal;           /* ① 누가 처리하나 */
+sigemptyset(&sa.sa_mask);            /* ② 핸들러 실행 중 추가로 막을 시그널 */
+sa.sa_flags = SA_RESTART;            /* ③ 동작 옵션 */
+sigaction(signo, &sa, NULL);         /* 세 번째 인자 = 이전 설정을 돌려받을 곳 (필요 없으면 NULL) */
+```
+
+| 필드 | 역할 | 비고 |
+|---|---|---|
+| `sa_handler` | 핸들러 함수 / `SIG_IGN` / `SIG_DFL` | `signal()` 의 두 번째 인자와 같은 자리 |
+| `sa_mask` | 핸들러가 도는 동안 **추가로** 블록할 시그널 집합 | 처리 중인 `signo` 자신은 `SA_NODEFER` 가 없으면 자동으로 블록된다 |
+| `sa_flags` | 동작 옵션 (`SA_RESTART`, `SA_RESETHAND`, `SA_SIGINFO` …) | `signal()` 에서는 구현이 정해 버리던 부분 |
+
+- 핵심은 **`signal()` 이 구현에 맡기던 것을 코드에 적어서 고정**한다는 점이다
+	- glibc 의 `signal()` 은 내부적으로 `sigaction` 을 불러 만든다 (BSD 의미: 핸들러 유지 + `SA_RESTART`)
+	- 다른 환경에서는 같은 `signal()` 이 1회 후 `SIG_DFL` 복구 / `SA_RESTART` 없음일 수 있다
+
+| 하고 싶은 것 | `sigaction` 으로 |
+|---|---|
+| **등록** | `sa.sa_handler = handler;` + 옵션 → `sigaction(signo, &sa, NULL)` |
+| **해제** (기본 동작 복구) | `sa.sa_handler = SIG_DFL;` → 같은 `sigaction(signo, &sa, NULL)` |
+| **무시** | `sa.sa_handler = SIG_IGN;` → 같은 `sigaction(signo, &sa, NULL)` |
+
+- 등록·해제·무시가 **전부 같은 호출 하나**고, 바뀌는 건 `sa_handler` 뿐이다
+- `SA_RESTART` : 시그널로 끊긴 `read`/`accept` 등을 커널이 **자동 재시작** → `EINTR` 처리가 필요 없다
+	- 끄면 블로킹 호출이 `EINTR` 로 깨어난다 → 종료 깃발을 확인해야 하는 데몬 루프에서는 **끈다** (골격 4 · §1-3)
+	- 반대로 "시그널은 세기만 하고 본 흐름은 끊기지 않게" 할 때는 켠다
+- `sa_handler` 와 `sa_sigaction` 은 **같은 자리(union)** 라서 `SA_SIGINFO` 를 켜면 후자를 쓴다 (트러블슈팅 4 · `siginfo_t`)
+- 연습: [P022 sig_counter](https://github.com/sweetpark/c-playgound/tree/main/drill/P022_sig_counter) — `sigc_install` 에서 `sa` 를 채워 등록, `sigc_uninstall` 에서 `SIG_DFL` 로 해제
 
 ### 12-03 · 12-04 · 핸들러 안에서 하면 안 되는 것
 
